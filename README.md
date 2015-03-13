@@ -8,7 +8,7 @@
   * [Error Alerts](#error-alerts)
   * [Bootstrap Classes](#bootstrap-classes)
 - [Form Types](#form-types)
-  * [Vertical vs. Horizontal](#vertical-vs-horizontal)
+  * [Vertical vs. Horizontal Form](#vertical-vs-horizontal-form)
   * [Matrix Form](#matrix-form)
 - [Form Questions](#form-questions)
   * [Numbering](#numbering)
