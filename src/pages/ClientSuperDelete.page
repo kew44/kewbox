@@ -1,0 +1,19 @@
+<apex:page standardController="Client__c" >
+  <script src="/soap/ajax/29.0/connection.js" type="text/javascript"></script>
+  <script src="/soap/ajax/29.0/apex.js" type="text/javascript"></script>
+  <script>
+      //if (confirm("Are you sure?")) {
+          
+          sforce.connection.sessionId = '{!GETSESSIONID()}';
+          
+          try {
+            var result = sforce.apex.execute("SuperDelete","deleteRecord", {id:"{!Client__c.Id}", item:"client"});
+          } catch(e) {
+              errorDiv.innerHTML = result; 
+              errorDiv.style.display = 'block'; 
+          }
+        //}
+        
+        window.top.location.href = "/a02/o";
+  </script>
+</apex:page>

@@ -1,0 +1,295 @@
+<apex:page standardController="DS_CBCL_B__c" extensions="DS_CBCL_0_5_Report_Controller"  action="{!init}" showHeader="{!NOT(printReport)}">
+
+    <!--JQuery -->
+    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.9.1.js')}"  /><!--allows for JQuery dependencies-->
+    <script> $j = jQuery.noConflict(); </script><!--Reserves the '$' token for JQuery only-->
+    
+    <!-- Bootstrap -->
+        <link href="{!URLFOR($Resource.VFbootstrap3, '/css/VFbootstrap.css')}" rel="stylesheet" media="screen"/>
+            <apex:includeScript value="{!URLFOR($Resource.VFbootstrap3, '/js/bootstrap.min.js')}"/>
+                
+                <!--link to the CSS resource in Salesforce internal document-->
+                    <apex:stylesheet value="{!$Resource.CustomCss}" />
+                    
+    <script>function setFocusOnLoad() {}</script> 
+    
+    <!--supplementary styling information-->
+    <style>
+        .force { font-size: 13px; }
+        .darkerTDTop { border-top: 1px solid #7A7979 !important; }
+        .darkerTHBottom { border-bottom: 2px solid #7A7979 !important; }
+        
+        @media print {
+        #chart_div {page-break-before: always;}
+                }
+    </style>
+    <!--end styling-->
+        
+    <apex:outputPanel layout="none" rendered="{!if(analysis.CBAPPCNY = 1, true, false)}">
+        
+        <!--chart and graph constructed using javascript packages powered by Google-->
+        
+        <!--Load the AJAX API-->
+        <script type="text/javascript" src="https://www.google.com/jsapi"/>        
+        <script type="text/javascript">                   
+        
+         <!--Load the Visualization API and the piechart package.-->
+            google.load("visualization", "1", {packages:["corechart"]});
+            
+            <!--Set a callback to run when the Google Visualization API is loaded.-->
+        google.setOnLoadCallback(drawChart);
+        
+        <!--Callback that creates and populates a data table, instantiates the chart, passes in the data and draws it.-->
+        function drawChart() {
+        
+            <!--Create the data table.-->
+            var data = {
+                "rows": [
+                    {"c": [{"v": "Emotion. React."}, {"v": {!ROUND(analysis.CBERTNY, 0)}}, {"v": 69.5}, {"v": 64.5}, {"v": false}]},
+                    {"c": [{"v": "Anxious/Deprs."}, {"v": {!ROUND(analysis.CBADTNY, 0)}}, {"v": 69.5}, {"v": 64.5}, {"v": false}]},
+                    {"c": [{"v": "Somatic Complnt."}, {"v": {!ROUND(analysis.CBSCTNY, 0)}}, {"v": 69.5}, {"v": 64.5}, {"v": false}]},
+                    {"c": [{"v": "Withdrawn"}, {"v": {!ROUND(analysis.CBWTNY, 0)}}, {"v": 69.5}, {"v": 64.5}, {"v": false}]},
+                    {"c": [{"v": "Sleep Prob."}, {"v": {!ROUND(analysis.CBSPTNY, 0)}}, {"v": 69.5}, {"v": 64.5}, {"v": false}]},
+                    {"c": [{"v": "Attention Prob."}, {"v": {!ROUND(analysis.CBAPTNY, 0)}}, {"v": 69.5}, {"v": 64.5}, {"v": false}]},
+                    {"c": [{"v": "Aggress. Beh."}, {"v": {!ROUND(analysis.CBABTNY, 0)}}, {"v": 69.5}, {"v": 64.5}, {"v": false}]},
+                    {"c": [{"v": "Internal. Prob."}, {"v": {!ROUND(analysis.CBIBTNY, 0)}}, {"v": 63}, {"v": 60}, {"v": false}]},
+                    {"c": [{"v": "External. Prob."}, {"v": {!ROUND(analysis.CBEBTNY, 0)}}, {"v": 63}, {"v": 60}, {"v": false}]},
+                    {"c": [{"v": "Total Score"}, {"v": {!ROUND(analysis.CBTSTNY, 0)}}, {"v": 63}, {"v": 60}, {"v": false}]}],
+                
+                <!--Set chart options-->
+                "cols": [
+                    {"p": {"role": "domain"},"label": "Category","type": "string"},
+                    {"p": {"role": "data"},"label": "T-Score","type": "number"},
+                    {"p": {"role": "data"},"label": "Clinical Range","type": "number"},
+                    {"p": {"role": "data"},"label": "Borderline Range","type": "number"},
+                    {"p": {"role": "certainty"},"type": "boolean"}]
+            };
+            <!--end chart-->
+            
+            <!--visualize the data in the chart above with a line graph-->
+            var x = new google.visualization.DataTable(data);
+            
+            var options = {
+                title: 'T-Score',   
+                series: {
+                    0: { pointSize: 5 },
+                    1: { pointSize: 0 },
+                    2: { pointSize: 0 }
+                },
+                hAxis: { showTextEvery: 1, slantedText: true, slantedTextAngle:30, maxValue: 100, minValue: 30, title: 'Category' },<!--slantedText: false, slantedTextAngle:90, slantedText: false,--><!--x-axis main label-->
+            };
+            
+            var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+            chart.draw(x, options);
+            <!--end graph-->
+        }
+        <!--end chart and graph-->
+        </script>
+        
+    </apex:outputPanel>
+    
+    <!-- "Breadcrumb" heading allows user to navigate to the ClientSummary page -->
+    <apex:outputPanel layout="none" rendered="{!not(printReport)}">
+        <script>
+        $j(document).ready(function() {
+            $j('.bPageTitle').append('<div class="ptBreadcrumb">&nbsp;«&nbsp;<a href="/apex/ClientSummary?id={!cID}&s=0">Back to Client Summary</a></div>');
+        });
+        </script>
+    </apex:outputPanel>
+    <!--end breadcrumb-->
+    
+    <!--print report command for button-->  
+    <apex:outputPanel layout="none" rendered="{!printReport}">
+        <script>        
+        $j(document).ready(function() { 
+            $j('.bPageTitle .ptBody .content').prepend('<img style="display:inline;float:left;" src="{!URLFOR($Resource.images, 'cimiLogo.png')}"/>');
+            window.print(); 
+        });
+        </script>
+    </apex:outputPanel>
+    <!--end print command -->  
+    
+    <apex:form id="DS_CBCL_0_5_REPORT">
+        
+        <apex:sectionHeader title="Child Behavior Check List (CBCL) 1.5-5 Scoring Report" subtitle="{!subtitle}" rendered="{!NOT(printReport)}"/><br/>
+        <apex:sectionHeader title="Child Behavior Check List (CBCL) 1.5-5 Scoring Report" rendered="{!printReport}"/><br/>
+        
+        <!-- pageblock to show ClientInformation header as described in Utility class-->
+        <apex:pageBlock title="Client Information">
+            <div id="force">
+                <apex:outputText value="{!ClientInfo}" escape="false"/>
+            </div>
+        </apex:pageBlock><!--end client info pageBlock-->  
+        
+        <!--begin report content-->
+        <apex:pageBlock title="Symptom Analysis Report">
+            <apex:pageMessages /><!--placeholding structure that allows for system message display-->
+            
+            <div id="force">
+                
+                <!--provides print button functionality and structure-->
+                <apex:outputPanel layout="none" rendered="{!NOT(printReport)}">
+                    <div>
+                        <a href="/apex/DS_CBCL_0_5_Report?cimi={!cimi}&print=1" target="_blank">
+                            <button class="btn btn-default pull-right" type="button">
+                                <i class="glyphicon glyphicon-print"></i> &nbsp;Print
+                            </button>
+                        </a>
+                        <br/>
+                    </div>
+                </apex:outputPanel>
+                <!--end print button-->
+                
+                <!--administration date-->
+                <h4>
+                    <u>Date of administration: 
+                        <apex:outputText value="{0,date,MM/dd/yyyy}">
+                            <apex:param value="{!analysis.DOACY}" />
+                        </apex:outputText>
+                    </u>
+                </h4>                
+                <!--end date-->
+                
+                <br/><br/><!--blank lines-->
+                
+                <!--information-->
+                <p>
+                    The CBCL measures symptoms across a broad range of emotional and behavioral areas in order to identify problems that may be targets for intervention. The CBCL is completed by an adult caregiver who reports on the child's functioning. Results from the CBCL can be used to identify possible treatment areas.                    
+                </p>     
+                <!--end information-->       
+                
+                <h4><u>Potential Treatment Targets</u></h4>   
+                <br/><br/><!--blank lines-->
+                
+            <!--displays a list of all symptoms that are rated as clinically significant, if any-->
+                <apex:outputPanel layout="none" rendered="{!if(clinicalRange != '', true, false)}"> <!--significance, conditional formatting--> 
+                    <b><h5>Clinical Range</h5></b>
+                    
+                    <p>
+                        The child's symptoms on the following scales are in the clinically significant range compared to other children their age: <b>{!clinicalRange}</b>
+                    </p>  
+                </apex:outputPanel>     
+                <!--end critical-->                            
+                
+            <!--displays a list of borderline symptoms, if any-->
+                <apex:outputPanel layout="none" rendered="{!if(borderlinerange != '', true, false)}">     <!--significance, conditional formatting-->     
+                    <b><h5>Borderline Range</h5></b>
+                    
+                    <p>
+                        The child's symptoms on the following scales are in the borderline range compared to other children their age: <b>{!borderlinerange}</b>
+                    </p>
+                </apex:outputPanel>
+                <!--end borderline-->
+                
+                <!--Treatment foci-->
+                <p>These areas may also be a focus of treatment and should be monitored. Exact scores are in the table below.</p>
+                
+                <center>                    
+                    <apex:outputPanel layout="none" rendered="{!if(analysis.CBAPPCNY = 1, true, false)}">
+                        <table class="table" style="max-width:800px;background-color: #F2F2F2;">
+                            <!--headings-->
+                            <thead> 
+                                <tr>
+                                    <th class="darkerTHBottom">Category</th>
+                                    <th class="darkerTHBottom">T-Scores</th>
+                                    <th class="darkerTHBottom">Percentile</th>
+                                    <th class="darkerTHBottom">Significance</th>
+                                </tr>
+                            </thead>
+                            <!--end headings-->
+                            
+                            <tbody>
+                            <!--exact scores table-->
+                                <tr>
+                                    <td class="darkerTDTop"><b>Internalizing Problems Score</b></td><!--category-->
+                                    <td class="darkerTDTop">{!ROUND(analysis.CBIBTNY, 0)}</td> <!--score-->
+                                    <td class="darkerTDTop">{!analysis.CBIBPY}</td><!--percentile-->
+                                    <td class="darkerTDTop {!CASE(analysis.CBIBSY,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!analysis.CBIBSY} Range</td><!--significance, conditional formatting-->
+                                </tr>
+                                <tr>
+                                    <td>Emotionally Reactive</td><!--category-->
+                                    <td>{!ROUND(analysis.CBERTNY, 0)}</td> <!--score-->
+                                    <td>{!analysis.CBERPY}</td><!--percentile-->
+                                    <td class="{!CASE(analysis.CBERSY,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!analysis.CBERSY} Range</td><!--significance, conditional formatting-->
+                                </tr>
+                                <tr>
+                                    <td>Anxious/Depressed</td><!--category-->
+                                    <td>{!ROUND(analysis.CBADTNY, 0)}</td> <!--score-->
+                                    <td>{!analysis.CBADPY}</td><!--percentile-->
+                                    <td class="{!CASE(analysis.CBADSY,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!analysis.CBADSY} Range</td><!--significance, conditional formatting-->
+                                </tr>
+                                <tr>
+                                    <td>Somatic Complaints</td><!--category-->
+                                    <td>{!ROUND(analysis.CBSCTNY, 0)}</td> <!--score-->
+                                    <td>{!analysis.CBSCPY}</td><!--percentile-->
+                                    <td class="{!CASE(analysis.CBSCSY,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!analysis.CBSCSY} Range</td><!--significance, conditional formatting-->
+                                </tr>
+                                <tr>
+                                    <td>Withdrawn</td><!--category-->
+                                    <td>{!ROUND(analysis.CBWTNY, 0)}</td> <!--score-->
+                                    <td>{!analysis.CBWPY}</td><!--percentile-->
+                                    <td class="{!CASE(analysis.CBWSY,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!analysis.CBWSY} Range</td><!--significance, conditional formatting-->
+                                </tr>
+                                <tr>
+                                    <td class="darkerTDTop"><b>Externalizing Problems Score</b></td><!--category-->
+                                    <td class="darkerTDTop">{!ROUND(analysis.CBEBTNY, 0)}</td> <!--score-->
+                                    <td class="darkerTDTop">{!analysis.CBEBPY}</td><!--percentile-->
+                                    <td class="darkerTDTop {!CASE(analysis.CBEBSY,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!analysis.CBEBSY} Range</td><!--significance, conditional formatting-->
+                                </tr>
+                                <tr>
+                                    <td>Attention Problems</td><!--category-->
+                                    <td>{!ROUND(analysis.CBAPTNY, 0)}</td> <!--score-->
+                                    <td>{!analysis.CBAPPY}</td><!--percentile-->
+                                    <td class="{!CASE(analysis.CBAPSY,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!analysis.CBAPSY} Range</td><!--significance, conditional formatting-->
+                                </tr>
+                                <tr>
+                                    <td>Aggressive Behavior</td><!--category-->
+                                    <td>{!ROUND(analysis.CBABTNY, 0)}</td> <!--score-->
+                                    <td>{!analysis.CBABPY}</td><!--percentile-->
+                                    <td class="{!CASE(analysis.CBABSY,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!analysis.CBABSY} Range</td><!--significance, conditional formatting-->
+                                </tr>                                
+                                <tr>
+                                    <td class="darkerTDTop">Sleep Problems</td><!--category-->
+                                    <td class="darkerTDTop">{!ROUND(analysis.CBSPTNY, 0)}</td> <!--score-->
+                                    <td class="darkerTDTop">{!analysis.CBSPPY}</td><!--percentile-->
+                                    <td class="darkerTDTop {!CASE(analysis.CBSPSY,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!analysis.CBSPSY} Range</td><!--significance, conditional formatting-->
+                                </tr>                          
+                                <tr>
+                                    <td><strong>Total Problems Score</strong></td><!--category-->
+                                    <td>{!ROUND(analysis.CBTSTNY, 0)}</td> <!--score-->
+                                    <td>{!analysis.CBTSPY}</td><!--percentile-->
+                                    <td class="{!CASE(analysis.CBTSSY,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!analysis.CBTSSY} Range</td><!--significance, conditional formatting-->
+                                </tr>
+                                <!--end scores table-->
+                            </tbody>
+                            
+                        </table>
+                        
+                        <div id="chart_div" style="max-width:800px; height: 470px;" />
+                        
+                    </apex:outputPanel>
+                    <!--end treatment foci-->
+                    
+                    <!--conditional, If 8 or more scores are missing, this panel is displayed instead of report-->
+                    <apex:outputPanel layout="none" rendered="{!if(analysis.CBAPPCNY = 0, true, false)}">
+                        <div class="well well-lg">
+                            <h4>This record is Not Applicable.</h4><br/><br/>
+                            <p>Score can't be calculated, eight (8) or more anwers to the Child Behavior Check List (CBCL) were left blank.</p>
+                        </div>
+                    </apex:outputPanel>
+                <!--end NaN message-->
+                </center>                
+            </div>
+            <!--end report content-->
+            
+            <!--edit button-->
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!save}" value="Edit" rendered="{!not(printReport)}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+        <!--end button-->
+        
+    </apex:form>
+    <!--end report-->
+    
+</apex:page>

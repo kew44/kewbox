@@ -1,0 +1,110 @@
+<apex:page standardController="Center__c" extensions="CenterController">
+    
+    <!--JQuery -->
+    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.9.1.js')}"  /><!--allows for JQuery dependencies-->  
+    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-ui-1.10.3.custom.min.js')}"  />
+    <apex:stylesheet value="{!URLFOR($Resource.jQuery, '/css/redmond/jquery-ui-1.10.3.custom.min.css')}"  />
+    
+    <script> $j = jQuery.noConflict(); </script><!--Reserves the '$' token for JQuery only-->
+    
+    <!--Begin form content-->
+        <apex:form >
+            <apex:sectionHeader title="{!title}" subtitle="{!subtitle}"/><br/>
+                
+                <!-- primary content pageBlock container-->
+                    <apex:pageBlock title="{!title}" >
+                        <apex:pageMessages /><!--placeholding structure that allows for system message display-->
+                            <apex:pageBlockSection title="General Information" columns="1" id="centerBlock">      
+                            
+                            <!--Type of Center selection-->
+                            <apex:selectRadio value="{!Center__c.Type__c}" id="centerType">
+                            <apex:selectOptions value="{!items}"/>
+                            </apex:selectRadio>
+                            
+                            <!--Center ID-->
+                            <apex:inputField value="{!Center__c.Input_ID__c}" id="centerID" label="Center ID"/>
+                            
+                            <!--Center name, conditional based on Type-->
+                            <apex:inputField value="{!Center__c.Main_center__c}" id="centerLookup" label="Main center"/>
+                            <apex:inputField value="{!Center__c.Name__c}" id="centerName"/>
+                            
+                            <!--JQuery script to associate Center Type and User Type ? -->
+                            <script>
+                            $j(document).ready(function() {
+                            
+                            <!--initialize variables-->    
+                                var mainSub = {!mainSub};
+                                var isAdmin = {!isAdmin};
+                                var createSub = {!createSub};
+                                
+                                $j('[id$=centerLookup]').parent('span').parent('td').parent('tr').hide();<!--hide center lookup field-->
+                                $j('[id$=centerID]').parent('td').parent('tr').hide();<!--hide center id field-->
+                                
+                                if(isAdmin == true) {//admin users can create a main center and/or sub-center
+                                    checkType(mainSub);
+                                    
+                                    $j("[name$=centerType]").change(function(){//indicates main center
+                                        checkType(mainSub); 
+                                    });
+                                    if(createSub == true) {//indicates sub-center
+                                        console.log('test');
+                                        $j('[id$="centerType:1"]').trigger( "click" );
+                                        //$j('[id$="centerType:1"]').prop( "checked", true );
+                                    }
+                                }
+                                <!--non-admin cannot create main or sub center-->
+                                if(isAdmin != true) 
+                                    $j('[id$="centerType:0"]').parent('td').parent('tr').parent('tbody').parent('table').parent('fieldset').parent('td').parent('tr').hide();
+                                
+                            });
+                               
+                               function checkType(mainSub) {//associates center type with behavior
+                                   
+                                   var radioValue = null; 
+                                   
+                                   if(mainSub == 0) {
+                                       $j('[id$=centerLookup]').parent('span').parent('td').parent('tr').hide();<!--hide main center lookup-->
+                                       $j('[id$=centerID]').parent('td').parent('tr').hide();<!--show center id field-->
+                                   }
+                                   
+                                   $j("[name$=centerType]").each(function(i) {
+                                       if($j(this).is(":checked")) {
+                                           if(i == 0) {
+                                               $j('[id$=centerLookup]').parent('span').parent('td').parent('tr').hide();<!--hide main center lookup-->
+                                               $j('[id$=centerID]').parent('td').parent('tr').show();<!--show center id field-->
+                                               if(mainSub == 1) {
+                                                   $j('[id$="centerType:1"]').attr('disabled', 'disabled');
+                                                   $j('[id$=centerID]').attr('disabled', 'disabled');
+                                               }
+                                           }
+                                           else if(i == 1) {
+                                               $j('[id$=centerLookup]').parent('span').parent('td').parent('tr').show();<!--show main center lookup-->
+                                               $j('[id$=centerID]').parent('td').parent('tr').hide();<!--hide center id field-->
+                                               if(mainSub == 2) { 
+                                                   $j('[id$="centerType:0"]').attr('disabled', 'disabled');
+                                                   $j('[id$="centerLookup"]').attr('disabled', 'disabled');
+                                                   $j('[id$="centerLookup"]').parent('span').children('a').hide();
+                                               }
+                                           }
+                                       }
+                                       //console.log(i);
+                                   });  
+                                   return radioValue;  
+                               }
+                               
+                               
+                               
+                               </script>
+</apex:pageBlockSection>
+
+<!--save and cancel control buttons for pageBlock-->
+<apex:pageBlockButtons >
+    <apex:commandButton action="{!save}" value="Save"/>
+</apex:pageBlockButtons><!--end buttons-->
+
+</apex:pageBlock><!--end pageBlock-->
+
+</apex:form>
+<!--end form content-->
+
+</apex:page>

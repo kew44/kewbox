@@ -1,0 +1,156 @@
+<apex:page StandardController="DS_Functioning_Forms_B__c" extensions="DS_FAPGAR_Controller" >
+    
+    <!--JQuery -->
+    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.9.1.js')}"  /><!--allows for JQuery dependencies-->
+    <script> $j = jQuery.noConflict(); </script><!--Reserves the '$' token for JQuery only-->
+    
+    <!-- Bootstrap -->
+        <link href="{!URLFOR($Resource.VFbootstrap3, '/css/VFbootstrap.css')}" rel="stylesheet" media="screen"/>
+            <apex:includeScript value="{!URLFOR($Resource.VFbootstrap3, '/js/bootstrap.min.js')}"/>
+                
+                <!--link to the CSS resource in Salesforce internal document-->
+                    <apex:stylesheet value="{!$Resource.CustomCss}" />                                     
+                        
+                        <script>function setFocusOnLoad() {}</script>
+    
+    <!--JQuery script for allowing de-selection of radiobuttons-->   
+    <script>
+    $j(document).ready(function(){
+        
+        $j('input[type="radio"]').click(function(){
+            
+            var previousValue = $j(this).attr('title');
+            var val = $j(this).val();
+            var name = $j(this).attr('name');
+            
+            if (previousValue == val) {  // uncheck radio button
+                $j(this).removeAttr('checked').change();
+                $j("input[name='"+name+"']:radio").attr('title', '');
+            }
+            else {
+                $j("input[name='"+name+"']:radio").attr('title', val);
+            }
+            
+        });
+        
+    });
+    
+    </script><!--End JQuery deselect radiobutton value script block-->
+    
+    <!-- "Breadcrumb" heading allows user to navigate to the ClientSummary page -->
+    <apex:outputPanel rendered="{!if(forceRedirect = '1', false, true)}" layout="none"><!--//display condition based on variable determined by path-->
+        <script>
+        $j(document).ready(function() {
+            $j('.bPageTitle').append('<div class="ptBreadcrumb">&nbsp;«&nbsp;<a href="/apex/ClientSummary?s=0&id={!client.id}">Back to Client Summary</a></div>');
+        });
+        </script>
+    </apex:outputPanel>
+    <!--Begin form content-->
+    <apex:form id="DS_FORM">        
+        <apex:sectionHeader title="Family Assessment Module Caregiver Report" subtitle="{!subtitle}"/><br/>
+        
+        <!-- pageblock to show ClientInformation header as described in Utility class-->
+        <apex:pageBlock title="Client Information">
+            <div id="force"><apex:outputText value="{!ClientInfo}" escape="false"/> </div>
+        </apex:pageBlock> <!--end client info pageBlock-->  
+        
+        <!-- primary content pageBlock container-->
+        <apex:pageBlock title="Family APGAR (Caregiver Report)" >
+            <apex:pageMessages /><!--placeholding structure that allows for system message display-->
+            
+            <!--Instructional information-->
+            <div>
+                <b>The following 5 questions are designed to be completed by the child’s caregiver.</b>
+                <br />
+                <br />
+                <b>The following questions have been designed to help us better understand you and your family.  You should feel free to ask questions about any item in the questionnaire. Answer each question as “hardly ever,” “some of the time,” “almost always,” or "unknown."  Family is defined as the individual(s) with whom you usually live.</b>
+                <br />
+                <br />
+            </div>
+            <!--end instructions-->
+            
+            <div id="force"> 
+                
+                <table class="table DS-table">
+                    <tbody>
+                        <!-- BEGIN FAPGAR ASSESSMENT-->
+                        
+                        <!--1. Family help satisfaction-->
+                        <tr>
+                            <td><p class="text-right"><b>1.</b></p></td>
+                            <td>I am satisfied with the help that I receive from my family when something is troubling me.
+                                <apex:selectRadio id="BFAPGAR1__c" styleClass="form-control2" value="{!obj.BFAPGAR1__c}" layout="pageDirection" title="{!obj.BFAPGAR1__c}">
+                                    <apex:selectOptions value="{!NSVUItems}"/> 
+                                </apex:selectRadio> 
+                            </td>
+                        </tr>
+                        
+                        <!--2. Family discussion satisfaction-->
+                        <tr>
+                            <td><p class="text-right"><b>2.</b></p></td>
+                            <td>I am satisfied with the way my family discusses items of common interest and shares problem-solving with me.
+                                <apex:selectRadio id="BFAPGAR2__c" styleClass="form-control2" value="{!obj.BFAPGAR2__c}" layout="pageDirection" title="{!obj.BFAPGAR2__c}">
+                                    <apex:selectOptions value="{!NSVUItems}"/> 
+                                </apex:selectRadio> 
+                            </td>
+                        </tr>
+                        
+                        <!--Family acceptance-->
+                        <tr>
+                            <td><p class="text-right"><b>3.</b></p></td>
+                            <td>I find that my family accepts my wishes to take on new activities or make changes in my life-style.
+                                <apex:selectRadio id="BFAPGAR3__c" styleClass="form-control2" value="{!obj.BFAPGAR3__c}" layout="pageDirection" title="{!obj.BFAPGAR3__c}">
+                                    <apex:selectOptions value="{!NSVUItems}"/> 
+                                </apex:selectRadio> 
+                            </td>
+                        </tr>
+                        
+                        <!--Family display affection-->
+                        <tr>
+                            <td><p class="text-right"><b>4.</b></p></td>
+                            <td>I am satisfied with the way my family expresses affection and responds to feelings such as anger, sorrow, and love.
+                                <apex:selectRadio id="BFAPGAR4__c" styleClass="form-control2" value="{!obj.BFAPGAR4__c}" layout="pageDirection" title="{!obj.BFAPGAR4__c}">
+                                    <apex:selectOptions value="{!NSVUItems}"/> 
+                                </apex:selectRadio> 
+                            </td>
+                        </tr>
+                        
+                        <!--Family time together-->
+                        <tr>
+                            <td><p class="text-right"><b>5.</b></p></td>
+                            <td>I am satisfied with the amount of time my family and I spend together.
+                                <apex:selectRadio id="BFAPGAR5__c" styleClass="form-control2" value="{!obj.BFAPGAR5__c}" layout="pageDirection" title="{!obj.BFAPGAR5__c}">
+                                    <apex:selectOptions value="{!NSVUItems}"/> 
+                                </apex:selectRadio> 
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <!--Completion status control-->
+                            <td colspan="2" class="text-right complete-title"><b>Complete?</b></td>
+                            <td>
+                                <apex:selectList id="STATUS_FAPGAR__c" styleClass="form-control input-sm"  style="width:130px" value="{!obj.STATUS_FAPGAR__c}" size="1">
+                                    <apex:selectOption itemValue="Incomplete" itemLabel="Incomplete"/>
+                                    <apex:selectOption itemValue="Complete" itemLabel="Complete"/>
+                                </apex:selectList> 
+                            </td>
+                            <!--end completion status-->
+                        </tr>
+                    </tbody>
+                </table>                
+                
+            </div>
+            
+            <!--save and cancel control buttons for pageBlock-->
+            <apex:pageBlockButtons >
+                <apex:commandButton id="Save" action="{!save}" value="Save"/>
+                <apex:commandButton id="Cancel" action="{!cancel}" value="Cancel" rendered="{!if(forceRedirect = '1', false, true)}"/>
+            </apex:pageBlockButtons><!--end buttons-->
+            
+        </apex:pageBlock><!--end FAPGAR pageBlock-->
+    </apex:form>
+    <!--end form content-->
+    
+    <!--citation information footer-->
+    <p style="class:footer; text-align:center "><i>From: G. Smilkstein. “The Family APGAR: A proposal for Family Function Test and Its Use by Physicians” Journal of Family Practice, 1978, 6, 1231-1239</i></p>
+</apex:page>

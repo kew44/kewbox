@@ -1,0 +1,491 @@
+<apex:page standardController="DS_Functioning_Forms_B__c" extensions="DS_YCINDSEV_Controller">
+
+    <!--JQuery -->
+    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.9.1.js')}"  /><!--allows for JQuery dependencies-->
+    <script> $j = jQuery.noConflict(); </script><!--Reserves the '$' token for JQuery only-->
+    
+    <!-- Bootstrap -->
+        <link href="{!URLFOR($Resource.VFbootstrap3, '/css/VFbootstrap.css')}" rel="stylesheet" media="screen"/>
+            <apex:includeScript value="{!URLFOR($Resource.VFbootstrap3, '/js/bootstrap.min.js')}"/>
+                
+                <!--link to the CSS resource in Salesforce internal document-->
+                    <apex:stylesheet value="{!$Resource.CustomCss}" />
+                        
+                        <script>function setFocusOnLoad() {}</script> 
+      
+    <!--JQuery script for allowing de-selection of radiobuttons-->
+    <script>
+    $j(document).ready(function(){        
+        $j('input[type="radio"]').click(function(){            
+            var previousValue = $j(this).attr('title');
+            var val = $j(this).val();
+            var name = $j(this).attr('name');      
+            
+            if (previousValue == val) {  // uncheck radio button
+                $j(this).removeAttr('checked').change();
+                $j("input[name='"+name+"']:radio").attr('title', '');
+            }
+            else {
+                $j("input[name='"+name+"']:radio").attr('title', val);
+            }            
+        });        
+    });    
+    </script><!--End JQuery deselect radiobutton value script -->      
+    
+    <!--JQuery development module script block-->
+    <script>
+    $j(document).ready(function(){
+        developmentModule({!JSENCODE(developmentModuleStatus)});
+    });
+    
+    function developmentModule(value){//development module criteria
+        
+        if( value == '1' ){// minor development problem
+        <!--show choices of mild developmental concerns--> 
+            $j('.skip-dev').show();
+        <!--hide moderate developmental concerns-->
+            $j('.skip-mid').hide();
+            $j('.skip-element-BDMOREC').prop('checked', false);
+            $j('.skip-element-BDMOEXP').prop('checked', false);
+            $j('.skip-element-BDMOCOG').prop('checked', false);
+            $j('.skip-element-BDMOMOT').prop('checked', false);
+            $j('.skip-element-BDMOSOC').prop('checked', false);
+         <!--hide severe developmental problems-->
+            $j('.skip-sev').hide();
+            $j('.skip-element-BDMSREC').prop('checked', false);
+            $j('.skip-element-BDMSEXP').prop('checked', false);
+            $j('.skip-element-BDMSCOG').prop('checked', false);
+            $j('.skip-element-BDMSMOT').prop('checked', false);
+            $j('.skip-element-BDMSSOC').prop('checked', false);
+        }
+        else if (value == '2'){//moderate developmental problem
+        <!--show choices of moderate developmental concerns--> 
+            $j('.skip-mid').show();  
+        <!--hide  mild developmental concerns--> 
+            $j('.skip-dev').hide();
+            $j('.skip-element-BDMIREC').prop('checked', false);
+            $j('.skip-element-BDMIEXP').prop('checked', false);
+            $j('.skip-element-BDMICOG').prop('checked', false);
+            $j('.skip-element-BDMIMOT').prop('checked', false);
+            $j('.skip-element-BDMISOC').prop('checked', false);
+        <!--hide severe developmental problems-->             
+            $j('.skip-sev').hide();
+            $j('.skip-element-BDMSREC').prop('checked', false);
+            $j('.skip-element-BDMSEXP').prop('checked', false);
+            $j('.skip-element-BDMSCOG').prop('checked', false);
+            $j('.skip-element-BDMSMOT').prop('checked', false);
+            $j('.skip-element-BDMSSOC').prop('checked', false);
+        }
+            else if (value == '3'){//severe developmental problems
+        <!--show choices of severe developmental problems--> 
+                $j('.skip-sev').show();
+        <!--hide  mild developmental concerns--> 
+                $j('.skip-dev').hide();
+                $j('.skip-element-BDMIREC').prop('checked', false);
+                $j('.skip-element-BDMIEXP').prop('checked', false);
+                $j('.skip-element-BDMICOG').prop('checked', false);
+                $j('.skip-element-BDMIMOT').prop('checked', false);
+                $j('.skip-element-BDMISOC').prop('checked', false);
+        <!--hide moderate developmental concerns-->
+                $j('.skip-mid').hide();
+                $j('.skip-element-BDMOREC').prop('checked', false);
+                $j('.skip-element-BDMOEXP').prop('checked', false);
+                $j('.skip-element-BDMOCOG').prop('checked', false);
+                $j('.skip-element-BDMOMOT').prop('checked', false);
+                $j('.skip-element-BDMOSOC').prop('checked', false);
+            }        
+                else{//no concerns or unknown concerns
+        <!--hide  mild developmental concerns--> 
+                    $j('.skip-dev').hide();
+                    $j('.skip-element-BDMIREC').prop('checked', false);
+                    $j('.skip-element-BDMIEXP').prop('checked', false);
+                    $j('.skip-element-BDMICOG').prop('checked', false);
+                    $j('.skip-element-BDMIMOT').prop('checked', false);
+                    $j('.skip-element-BDMISOC').prop('checked', false);
+        <!--hide moderate developmental concerns-->
+                    $j('.skip-mid').hide();
+                    $j('.skip-element-BDMOREC').prop('checked', false);
+                    $j('.skip-element-BDMOEXP').prop('checked', false);
+                    $j('.skip-element-BDMOCOG').prop('checked', false);
+                    $j('.skip-element-BDMOMOT').prop('checked', false);
+                    $j('.skip-element-BDMOSOC').prop('checked', false);
+        <!--hide severe developmental problems-->        
+                    $j('.skip-sev').hide();
+                    $j('.skip-element-BDMSREC').prop('checked', false);
+                    $j('.skip-element-BDMSEXP').prop('checked', false);
+                    $j('.skip-element-BDMSCOG').prop('checked', false);
+                    $j('.skip-element-BDMSMOT').prop('checked', false);
+                    $j('.skip-element-BDMSSOC').prop('checked', false);
+                }
+        
+    }    
+    </script>
+    <!--end development-->
+    
+    <!-- "Breadcrumb" heading allows user to navigate to the ClientSummary page -->
+    <apex:outputPanel rendered="{!if(forceRedirect = '1', false, true)}" layout="none">
+        <script>
+        $j(document).ready(function() {
+            $j('.bPageTitle').append('<div class="ptBreadcrumb">&nbsp;«&nbsp;<a href="/apex/ClientSummary?s=0&id={!client.id}">Back to Client Summary</a></div>');
+        });
+        
+        </script>
+    </apex:outputPanel>
+    <!--Begin form content-->
+    <apex:form id="DS_YCINDSEV_FORM" styleClass="form-horizontal">
+        <apex:sectionHeader title="Young Child Indicators of Severity of Problems-Children Under 6" subtitle="{!subtitle}"/><br/>
+        
+         <!-- pageblock to show ClientInformation header as described in Utility class-->
+               <apex:pageBlock title="Client Information">
+            <div id="force">
+                <apex:outputText value="{!ClientInfo}" escape="false"/>
+            </div>
+        </apex:pageBlock>
+        
+        <!-- primary content pageBlock container-->
+        <apex:pageBlock title="Young Child Indicators of Severity of Problems-Children Under 6"  >
+            <apex:pageMessages /><!--placeholding structure that allows for system message display-->            
+            
+            <div>
+                <b>This section relates to the types of problems and experiences the <u>child</u> might have displayed.  Indicate if the child experienced these types of problems within the past 30 days. Please answer each question. This section should be completed for children <u>younger</u> than age 6 by a caregiver or other collateral source.<br /></b><br />
+                All responses should be for problems experienced <span><b>within the past 30 days.</b></span>
+            </div>  
+            
+            <div id="force"> 
+                
+                <table class="table DS-table">
+                    <tbody>
+                        <!--1. Child's risk of immediate self harm-->
+                        <tr>
+                            <td><p class="text-right"><b>1.</b></p></td>
+                            <td><b>Immediate Risk</b> – Child’s current risk of self-harm. 
+                                <apex:selectRadio styleClass="form-control2" id="YCINDIC" value="{!obj.BIMRISK__c}" layout="pageDirection" title="{!obj.BIMRISK__c}">
+                                    <apex:selectOptions value="{!NSVUItems}"/> 
+                                </apex:selectRadio>
+                            </td>
+                        </tr>
+                        
+                        <!--2. Child's control o emotions-->
+                        <tr>
+                            <td><p class="text-right"><b>2.</b></p></td>
+                            <td><b>Emotional Regulation </b> – Child’s ability: 1) to have developmentally appropriate control over emotions (including joy, excitement, anger, sadness, and fear); 2) to be comforted; 3) to regulate the intensity of emotional  expression particularly when faced with frustration.  
+                                <apex:selectRadio styleClass="form-control2" id="YCINDIC2" value="{!obj.BEMREG__c}" layout="pageDirection" title="{!obj.BEMREG__c}">
+                                    <apex:selectOptions value="{!NYUItems}"/> 
+                                </apex:selectRadio>
+                            </td>
+                        </tr>
+                        
+                        <!--3. Feeding problems-->
+                        <tr>
+                            <td><p class="text-right"><b>3.</b></p></td>
+                            <td><b>Feeding </b> – Issues with feeding (e.g., difficulty sucking, chewing or swallowing, sensory food aversions, symptoms of failure to thrive, overeating and/or Pica (an appetite for non-nutritive substances, such as dirt) )
+                                <apex:selectRadio styleClass="form-control2" id="YCINDIC3" value="{!obj.BFEEDING__c}" layout="pageDirection" title="{!obj.BFEEDING__c}">
+                                    <apex:selectOptions value="{!FeedItems}"/> 
+                                </apex:selectRadio>
+                            </td>
+                        </tr>
+                        
+                        <!--4. Sleep problems-->
+                        <tr>
+                            <td><p class="text-right"><b>4.</b></p></td>
+                            <td><b>Child Sleep Problems </b> – Problems with sleep including insomnia, frequent waking, and nightmares. 
+                                <apex:selectRadio styleClass="form-control2" id="YCINDIC4" value="{!obj.BSLEEP__c}" layout="pageDirection" title="{!obj.BSLEEP__c}">
+                                    <apex:selectOptions value="{!SleepItems}"/> 
+                                </apex:selectRadio>
+                            </td>
+                        </tr>
+                        
+                        <!--5. Play-->
+                        <tr>
+                            <td><p class="text-right"><b>5.</b></p></td>
+                            <td><b>Play</b> – Child’s ability to engage in age-appropriate play (consider child’s developmental age). 
+                                <apex:selectRadio styleClass="form-control2" id="YCINDIC5" value="{!obj.BPLAY__c}" layout="pageDirection" title="{!obj.BPLAY__c}">
+                                    <apex:selectOptions value="{!PlayItems}"/> 
+                                </apex:selectRadio>
+                            </td>
+                        </tr>
+                        
+                        <!--6. Preschool/precare behavior-->
+                        <tr>
+                            <td><p class="text-right"><b>6.</b></p></td>
+                            <td><b>Preschool/Childcare </b> – Child’s behavior in preschool and/or childcare.  
+                                <apex:selectRadio styleClass="form-control2" id="YCINDIC6" value="{!obj.BPRESCH__c}" layout="pageDirection" title="{!obj.BPRESCH__c}">
+                                    <apex:selectOptions value="{!PreCareItems}"/> 
+                                </apex:selectRadio>
+                            </td>
+                        </tr>
+                        
+                        <!--7. Social abilities-->
+                        <tr>
+                            <td><p class="text-right"><b>7.</b></p></td>
+                            <td><b>Social functioning  </b> – Child difficulties with social skills and relationships. 
+                                <apex:selectRadio styleClass="form-control2" id="YCINDIC7" value="{!obj.BSOCFUNC__c}" layout="pageDirection" title="{!obj.BSOCFUNC__c}">
+                                    <apex:selectOptions value="{!SocialItems}"/> 
+                                </apex:selectRadio>
+                            </td>
+                        </tr>
+                        
+                        <!--8. Aggression-->
+                        <tr>
+                            <td><p class="text-right"><b>8.</b></p></td>
+                            <td><b>Aggression </b> – Aggressive behaviors include biting, hitting, kicking, throwing toys and other objects.  
+                                <apex:selectRadio styleClass="form-control2" id="YCINDIC8" value="{!obj.BAGGRESS__c}" layout="pageDirection" title="{!obj.BAGGRESS__c}">
+                                    <apex:selectOptions value="{!AggressiveItems}"/> 
+                                </apex:selectRadio>
+                            </td>
+                        </tr>
+                        
+                        <!--9. Sexualized behaviors-->
+                        <tr>
+                            <td><p class="text-right"><b>9.</b></p></td>
+                            <td><b>Sexualized behaviors  </b> – Sexualized behavior includes both age-inappropriate talking or acting out in sexualized ways.
+                                <apex:selectRadio styleClass="form-control2" id="YCINDIC9" value="{!obj.BSEXBEH__c}" layout="pageDirection" title="{!obj.BSEXBEH__c}">
+                                    <apex:selectOptions value="{!SexualizedItems}"/> 
+                                </apex:selectRadio>
+                            </td>
+                        </tr>                
+                        
+                        <!--10. Attachment-->
+                        <tr>
+                            <td><p class="text-right"><b>10.</b></p></td>
+                            <td><b>Child attachment difficulties  </b> – Item should be rated within the context of the child's significant parental or caregiver relationships.
+                                <apex:selectRadio styleClass="form-control2" id="YCINDIC10" value="{!obj.BATTACH__c}" layout="pageDirection" title="{!obj.BATTACH__c}">
+                                    <apex:selectOptions value="{!AttachmentItems}"/> 
+                                </apex:selectRadio>
+                            </td>
+                        </tr>                
+                        
+                        <!--11. Development-->
+                        <tr>
+                            <td><p class="text-right"><b>11.</b></p></td>
+                            <td><b>Developmental concerns  </b> - Problems may occur in receptive language, expressive language; cognitive, motor, or social domains.
+                                <apex:selectRadio id="BDEVEL__c" styleClass="form-control2" value="{!obj.BDEVEL__c}" layout="pageDirection" onChange="developmentModule(this.value)" title="{!obj.BDEVEL__c}">
+                                    <apex:selectOptions value="{!DevItems}"/> 
+                                </apex:selectRadio> 
+                                <br/>
+                                
+                                <!--conditional display based on development module-->
+                                
+                                <!--minor problems-->
+                                <div class="skipContent skip-dev">
+                                    <p><b>Check domain(s) that needs further consideration:</b></p>
+                                    <div class="checkbox"> 
+                                    <!--checkbox list-->
+                                    
+                                        <div class="checkline">
+                                            <!--receptive language-->
+                                            <label>
+                                                <apex:inputCheckbox id="BDMIREC__c" value="{!obj.BDMIREC__c}" styleClass="form-control2 skip-element-BDMIREC"/>
+                                                Receptive Language (ability to understand or comprehend language heard or read)
+                                            </label>
+                                        </div>
+                                        <div class="checkline">
+                                        <!--expressive language-->
+                                            <label>
+                                                <apex:inputCheckbox id="BDMIEXP__c" value="{!obj.BDMIEXP__c }" styleClass="form-control2 skip-element-BDMIEXP"/>
+                                                Expressive Language (ability to put thoughts into words and sentences that are understandable and grammatically correct) 
+                                            </label>
+                                        </div>
+                                        <div class="checkline">
+                                        <!--cognitive problems-->
+                                            <label>
+                                                <apex:inputCheckbox id="BDMICOG__c" value="{!obj.BDMICOG__c }" styleClass="form-control2 skip-element-BDMICOG"/>
+                                                Cognitive
+                                            </label>
+                                        </div>
+                                        <div class="checkline">
+                                        <!--motor problems-->
+                                            <label>
+                                                <apex:inputCheckbox id="BDMIMOT__c" value="{!obj.BDMIMOT__c }" styleClass="form-control2 skip-element-BDMIMOT"/>
+                                                Motor
+                                            </label>
+                                        </div>
+                                        <div class="checkline">
+                                        <!--social problems-->
+                                            <label>
+                                                <apex:inputCheckbox id="BDMISOC__c" value="{!obj.BDMISOC__c }" styleClass="form-control2 skip-element-BDMISOC"/>
+                                                Social
+                                            </label>
+                                        </div>
+                                        
+                                        <!--end checkboxes-->
+                                    </div>
+                                </div>
+                                <!--end minor problems-->
+                                <!-----------------------------------------------------------> 
+                                <!--moderate problems-->                 
+                                <div class="skipContent skip-mid">
+                                    <p><b>Check domain(s) that needs further consideration:</b></p>
+                                    <div class="checkbox">
+                                    <!--checkbox list--> 
+                                    
+                                        <div class="checkline">
+                                            <!--receptive language-->
+                                            <label>
+                                                <apex:inputCheckbox id="BDMOREC__c" value="{!obj.BDMOREC__c}" styleClass="form-control2 skip-element-BDMOREC"/>
+                                                Receptive Language (ability to understand or comprehend language heard or read)
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="checkline">
+                                        <!--expressive language-->
+                                            <label>
+                                                <apex:inputCheckbox id="BDMOEXP__c" value="{!obj.BDMOEXP__c }" styleClass="form-control2 skip-element-BDMOEXP"/>
+                                                Expressive Language (ability to put thoughts into words and sentences that are understandable and grammatically correct) 
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="checkline">
+                                        <!--cognitive problems-->
+                                            <label>
+                                                <apex:inputCheckbox id="BDMOCOG__c" value="{!obj.BDMOCOG__c }" styleClass="form-control2 skip-element-BDMOCOG"/>
+                                                Cognitive
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="checkline">
+                                        <!--motor problems-->
+                                            <label>
+                                                <apex:inputCheckbox id="BDMOMOT__c" value="{!obj.BDMOMOT__c }" styleClass="form-control2 skip-element-BDMOMOT"/>
+                                                Motor
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="checkline">
+                                        <!--social problems-->
+                                            <label>
+                                                <apex:inputCheckbox id="BDMOSOC__c" value="{!obj.BDMOSOC__c }" styleClass="form-control2 skip-element-BDMOSOC"/>
+                                                Social
+                                            </label>
+                                        </div>
+                                                                                
+                                        <!--end checkboxes-->
+                                    </div>
+                                </div>
+                                <!--end moderate problems-->
+                                <!----------------------------------------------------------->
+                                <!--severe problems-->
+                                <div class="skipContent skip-sev">
+                                    <p><b>Check domain(s) that needs further consideration:</b></p>
+                                    <div class="checkbox"> 
+                                    <!--checkbox list-->
+                                    
+                                        <div class="checkline">
+                                            <!--receptive language-->
+                                            <label>
+                                                <apex:inputCheckbox id="BDSEREC__c" value="{!obj.BDSEREC__c}" styleClass="form-control2 skip-element-BDSEREC"/>
+                                                Receptive Language (ability to understand or comprehend language heard or read)
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="checkline">
+                                        <!--expressive language-->
+                                            <label>
+                                                <apex:inputCheckbox id="BDSEEXP__c" value="{!obj.BDSEEXP__c }" styleClass="form-control2 skip-element-BDSEEXP"/>
+                                                Expressive Language (ability to put thoughts into words and sentences that are understandable and grammatically correct) 
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="checkline">
+                                        <!--cognitive problems-->
+                                            <label>
+                                                <apex:inputCheckbox id="BDSECOG__c" value="{!obj.BDSECOG__c }" styleClass="form-control2 skip-element-BDSECOG"/>
+                                                Cognitive
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="checkline">
+                                        <!--motor problems-->
+                                            <label>
+                                                <apex:inputCheckbox id="BDSEMOT__c" value="{!obj.BDSEMOT__c }" styleClass="form-control2 skip-element-BDSEMOT"/>
+                                                Motor
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="checkline">
+                                        <!--social problems-->
+                                            <label>
+                                                <apex:inputCheckbox id="BDSESOC__c" value="{!obj.BDSESOC__c }" styleClass="form-control2 skip-element-BDSESOC"/>
+                                                Social
+                                            </label>
+                                        </div>
+                                                                                
+                                        <!--end checkboxes-->
+                                    </div>
+                                </div>
+                                <!--end severe problems-->
+                            <!--end conditional display-->
+                            </td>   
+                        </tr>      
+                        <!--end developmental problems-->
+                        
+                        <!--12. Atypical behaviors-->
+                        <tr>
+                            <td><p class="text-right"><b>12.</b></p></td>
+                            <td><b>Atypical behaviors </b>- Includes mouthing after 1 year, head banging, smelling objects, spinning, twirling, hand flapping, finger-flicking, rocking, toe walking, staring at lights, or repetitive and bizarre verbalizations
+                                <apex:selectRadio styleClass="form-control2" id="YCINDIC12" value="{!obj.BATYPBEH__c}"  layout="pageDirection">                        
+                                    <apex:selectOptions value="{!AtypicalItems}"/> 
+                                </apex:selectRadio>
+                            </td>
+                            
+                        </tr>
+                    </tbody> 
+                    <!--end questiomnaire-->
+                    
+                    <tr>   
+                    <!--Completion status control-->
+                        <td colspan="2" class="text-right complete-title"><b>Complete?</b></td>
+                        <td>
+                            <apex:selectList id="STATUS_YCINDSEV" styleClass="form-control input-sm " style="width:130px" value="{!obj.STATUS_YCINDSEV__c}" size="1">
+                                <apex:selectOption itemValue="Incomplete" itemLabel="Incomplete"/>
+                                <apex:selectOption itemValue="Complete" itemLabel="Complete"/>
+                            </apex:selectList> 
+                        </td>
+                    <!--end completion status-->
+                    </tr>          
+                </table>
+                
+            </div>
+            
+        <!--save and cancel control buttons for pageBlock-->                
+            <apex:pageBlockButtons >
+                <apex:commandButton id="Save" action="{!save}" value="Save"/>
+                <apex:commandButton id="Cancel" action="{!cancel}" value="Cancel" rendered="{!if(forceRedirect = '1', false, true)}"/>
+            </apex:pageBlockButtons><!--end buttons--> 
+            
+        </apex:pageBlock><!--end ycindsev pageBlock-->          
+        
+        <apex:actionStatus id="loading" onstart="loading(true)" onstop="loading(false)" />
+    </apex:form>
+    <!--end form content-->
+    
+    <!--supplementary styling information-->
+    <style>
+        .loader {
+        background: url('/img/loading32.gif') scroll no-repeat 0 0;
+        width: 32px;
+        height: 32px;
+        position: absolute;
+        left: 50%;
+        }
+    </style>
+    <!--end styling-->
+    
+    <!--loadingBox-->
+    <div id="load_scrl" class="loadingBox loader" style="display:none;"> </div>
+    
+    <script type="text/javascript">
+    function loading(val) {
+        if(val) { $j('#load_scrl').css('top', $j(document).scrollTop() + 200); $j('.loadingBox').show(); }
+        else $j('.loadingBox').hide();
+    }
+    </script>
+    <!--end loadingBox-->
+    
+    <!--citation information footer-->
+    <p style="class:footer; text-align:center ">
+        <i>This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - Baseline - CRF Version 6 2014
+        </i>
+    </p>
+    
+</apex:page>

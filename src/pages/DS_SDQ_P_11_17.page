@@ -1,0 +1,573 @@
+<apex:page standardController="DS_SDQ_PSI_CDI_B__c" extensions="DS_SDQ_P_O_B_Controller">
+    
+    <!--JQuery -->
+    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.9.1.js')}"  /><!--allows for JQuery dependencies-->
+    <script> $j = jQuery.noConflict(); </script><!--Reserves the '$' token for JQuery only-->
+    
+    <!-- Bootstrap -->
+        <link href="{!URLFOR($Resource.VFbootstrap3, '/css/VFbootstrap.css')}" rel="stylesheet" media="screen"/>
+            <apex:includeScript value="{!URLFOR($Resource.VFbootstrap3, '/js/bootstrap.min.js')}"/>
+                
+                <!--link to the CSS resource in Salesforce internal document-->
+                    <apex:stylesheet value="{!$Resource.CustomCss}" />
+                        
+                        <!--provides framework for "skip-logic" capabilities-->
+                            <script>function setFocusOnLoad() {}</script>
+    <script> var skipElement = JSON.parse("{!JSENCODE(skipElementToJson)}"); </script>
+    <script src="{!URLFOR($Resource.Scripts, '/skipLogic.js')}"></script>
+    
+    <!--JQuery script for allowing de-selection of radiobuttons-->   
+    <script>
+    $j(document).ready(function(){        
+        $j('input[type="radio"]').click(function(){            
+            var previousValue = $j(this).attr('title');
+            var val = $j(this).val();
+            var name = $j(this).attr('name');      
+            
+            if (previousValue == val) {  // uncheck radio button
+                $j(this).removeAttr('checked').change();
+                $j("input[name='"+name+"']:radio").attr('title', '');
+            }
+            else {
+                $j("input[name='"+name+"']:radio").attr('title', val);
+            }            
+        });        
+    });    
+    </script><!--End JQuery deselect radiobutton value script -->
+    
+    <!--JQuery block script for showing or hiding the difficulties impact module based on certain criteria-->
+    <script>
+    $j(document).ready(function(){        
+        difficultModule({!difficultModuleStatus});        
+    });
+    
+    function difficultModule(value) {        
+        console.log(value);
+        if(value == '1' || value == '2' )
+            $j('.skip-difficult').show();
+        else if(value == '3' )
+            $j('.skip-difficult').show();
+            else {//if it is indicated that there are no difficulties, hide the module
+                $j('.skip-difficult').hide();
+                $j('.skip-element-SDPEBCD').val('');
+                $j('.skip-element-SDPTIME').val('');
+                $j('.skip-element-SDPUPSET').val('');
+                $j('.skip-element-SDPFAM').val('');
+                $j('.skip-element-SDPIMPH').val('');
+                $j('.skip-element-SDPIMPF').val('');
+                $j('.skip-element-SDPIMPC').val('');
+                $j('.skip-element-SDPIMPL').val('');
+                skipLogic('SDPEBCD', null);
+                skipLogic('SDPTIME', null);
+                skipLogic('SDPUPSET', null);
+                skipLogic('SDPFAM', null);
+                skipLogic('SDPIMPH', null);
+                skipLogic('SDPIMPF', null);
+                skipLogic('SDPIMPC', null);
+                skipLogic('SDPIMPL', null);
+            }
+    }
+    </script>
+    <!--end difficult module-->
+    
+    <!-- "Breadcrumb" heading allows user to navigate to the ClientSummary page -->
+    <apex:outputPanel rendered="{!if(forceRedirect = '1', false, true)}" layout="none">
+        <script>
+        $j(document).ready(function() {
+            $j('.bPageTitle').append('<div class="ptBreadcrumb">&nbsp;«&nbsp;<a href="/apex/ClientSummary?s=0&id={!client.id}">Back to Client Summary</a></div>');
+        });
+        </script>
+    </apex:outputPanel>
+    <!--Begin form content--> 
+    
+    <apex:sectionHeader title="Strengths and Difficulties Questionnaire" subtitle="{!subtitle}"/><br/>
+    
+        <!-- pageblock to show ClientInformation header as described in Utility class-->
+    <apex:pageBlock title="Client Information">
+        <div id="force">
+            <apex:outputText value="{!ClientInfo}" escape="false"/>
+        </div>
+    </apex:pageBlock> <!--end client info pageBlock--> 
+    
+    <!--Begin form content-->
+    <apex:form id="DS_SDQ_P_11_17" styleClass="form-horizontal">   
+        
+        <!-- primary content pageBlock container-->
+        <apex:pageBlock title="Strengths and Difficulties Questionnaire Parents 11-17" >
+            <apex:pageMessages /><!--placeholding structure that allows for system message display-->
+            
+            <div id="force"> 
+                
+                <table class="table DEMO-table">
+                    <tbody>       
+                    
+                        <!--administration method indication-->         
+                        <tr>
+                            <td style="padding-left: 20px; vertical-align: middle;">How was this form administered?</td>
+                            <td>
+                                <apex:selectList id="METSDOP__c" styleClass="form-control auto-width" value="{!obj[bfVariableMap['METSDOP']]}" size="1" required="true">
+                                    <apex:selectOptions value="{!BMETItems}"/> 
+                                </apex:selectList>
+                            </td>                 
+                        </tr>    
+                        <!--end administration method indication-->   
+                        
+                        <!--administration date indication-->
+                        <tr>
+                            <td style="padding-left:20px; vertical-align: middle;">Date of administration</td>
+                            <td>
+                                <apex:inputField id="BDOASDOP__c" styleClass="form-control auto-width" value="{!obj[bfVariableMap['DOASDOP']]}"  required="true"/>
+                            </td>
+                        </tr>   
+                        <!--end administration date indication-->                          
+                        
+                        <tr>
+                            <td colspan="2">
+                                <!--information/instructions-->
+                                <div>
+                                    For each item, please mark the box for Not True, Somewhat True or Certainly True. It would help us if you answered all items as
+                                    best you can even if you are not absolutely certain. Please give your answers on the basis of your child's behavior over the last six months.
+                                </div>
+                                <!--end info-->
+                                
+                                <div>
+                                    <table class="table table-bordered table-hover table-condensed Clinevaltable">
+                                        <!--heading-->
+                                        <thead>
+                                            <tr>
+                                                <td class="text-center" style="width:300px"/>
+                                                <td class="text-center" style="width:100px"><b>Not True</b></td>
+                                                <td class="text-center" style="width:100px"><b>Somewhat True</b></td>
+                                                <td class="text-center" style="width:100px"><b>Certainly True</b></td>
+                                            </tr>
+                                        </thead>
+                                        <!--end heading-->
+                                        
+                                        <!--SDQ questions radiobutton grid-->
+                                        <tbody>
+                                            <!--1. Considerate-->
+                                            <tr>
+                                                <td>1.  Considerate of other people's feelings</td>
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-1-0" name="SDQ-1" value="0"/></td><!--No-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-1-1" name="SDQ-1" value="1"/></td><!--Somewhat-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-1-2" name="SDQ-1" value="2"/></td><!--Certainly-->
+                                            </tr>
+                                            <!--2. Restless-->
+                                            <tr>
+                                                <td>2.  Restless, overactive, cannot stay still for long</td>
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-2-0" name="SDQ-2" value="0"/></td><!--No-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-2-1" name="SDQ-2" value="1"/></td><!--Somewhat-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-2-2" name="SDQ-2" value="2"/></td><!--Certainly-->
+                                            </tr>
+                                            <!--3. Sick symptoms-->
+                                            <tr>
+                                                <td>3.  Often complains of headaches, stomach-aches or sickness</td>
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-3-0" name="SDQ-3" value="0"/></td><!--No-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-3-1" name="SDQ-3" value="1"/></td><!--Somewhat-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-3-2" name="SDQ-3" value="2"/></td><!--Certainly-->
+                                            </tr>
+                                            <!--4. Shares-->
+                                            <tr>
+                                                <td>4.  Shares readily with other youth, for example CD’s, games, food</td>
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-4-0" name="SDQ-4" value="0"/></td><!--No-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-4-1" name="SDQ-4" value="1"/></td><!--Somewhat-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-4-2" name="SDQ-4" value="2"/></td><!--Certainly-->
+                                            </tr>
+                                            <!--5. Temper-->
+                                            <tr>
+                                                <td>5.  Often loses temper</td>
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-5-0" name="SDQ-5" value="0"/></td><!--No-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-5-1" name="SDQ-5" value="1"/></td><!--Somewhat-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-5-2" name="SDQ-5" value="2"/></td><!--Certainly-->
+                                            </tr>
+                                            <!--6. Solitary-->
+                                            <tr>
+                                                <td>6.  Would rather be alone than with other youth </td>
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-6-0" name="SDQ-6" value="0"/></td><!--No-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-6-1" name="SDQ-6" value="1"/></td><!--Somewhat-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-6-2" name="SDQ-6" value="2"/></td><!--Certainly-->
+                                            </tr>
+                                            <!--7. Well-behaved-->
+                                            <tr>
+                                                <td>7.  Generally well behaved, usually does what adults request </td>
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-7-2" name="SDQ-7" value="2"/></td><!--No-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-7-1" name="SDQ-7" value="1"/></td><!--Somewhat-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-7-0" name="SDQ-7" value="0"/></td><!--Certainly-->
+                                            </tr>
+                                            <!--8. Worries-->
+                                            <tr>
+                                                <td style="border-bottom: 2px solid #000;">8.  Many worries or often seems worried</td>
+                                                <td style="border-bottom: 2px solid #000;" class="text-center"><input type="radio" class="SDQ" id="SDQr-8-0" name="SDQ-8" value="0"/></td><!--No-->
+                                                <td style="border-bottom: 2px solid #000;" class="text-center"><input type="radio" class="SDQ" id="SDQr-8-1" name="SDQ-8" value="1"/></td><!--Somewhat-->
+                                                <td style="border-bottom: 2px solid #000;" class="text-center"><input type="radio" class="SDQ" id="SDQr-8-2" name="SDQ-8" value="2"/></td><!--Certainly-->
+                                            </tr>
+                                            <!--9. Helpful-->
+                                            <tr>
+                                                <td>9.  Helpful if someone is hurt, upset or feeling ill</td>
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-9-0" name="SDQ-9" value="0"/></td><!--No-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-9-1" name="SDQ-9" value="1"/></td><!--Somewhat-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-9-2" name="SDQ-9" value="2"/></td><!--Certainly-->
+                                            </tr>
+                                            <!--10. Fidgeting-->
+                                            <tr>
+                                                <td>10. Constantly fidgeting or squirming   </td>
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-10-0" name="SDQ-10" value="0"/></td><!--No-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-10-1" name="SDQ-10" value="1"/></td><!--Somewhat-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-10-2" name="SDQ-10" value="2"/></td><!--Certainly-->
+                                            </tr>
+                                            <!--11. Friends-->
+                                            <tr>
+                                                <td>11. Has at least one good friend</td>
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-11-2" name="SDQ-11" value="2"/></td><!--No-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-11-1" name="SDQ-11" value="1"/></td><!--Somewhat-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-11-0" name="SDQ-11" value="0"/></td><!--Certainly-->
+                                            </tr>
+                                            <!--12. Fights-->
+                                            <tr>
+                                                <td>12. Often fights with other youth or bullies them   </td>
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-12-0" name="SDQ-12" value="0"/></td><!--No-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-12-1" name="SDQ-12" value="1"/></td><!--Somewhat-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-12-2" name="SDQ-12" value="2"/></td><!--Certainly-->
+                                            </tr>
+                                            <!--13. Unhappy-->
+                                            <tr>
+                                                <td>13. Often unhappy, depressed or tearful </td>
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-13-0" name="SDQ-13" value="0"/></td><!--No-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-13-1" name="SDQ-13" value="1"/></td><!--Somewhat-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-13-2" name="SDQ-13" value="2"/></td><!--Certainly-->
+                                            </tr>
+                                            <!--14. Well-liked-->
+                                            <tr>
+                                                <td>14. Generally liked by other youth  </td>
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-14-2" name="SDQ-14" value="2"/></td><!--No-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-14-1" name="SDQ-14" value="1"/></td><!--Somewhat-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-14-0" name="SDQ-14" value="0"/></td><!--Certainly-->
+                                            </tr>
+                                            <!--15. Distracted-->
+                                            <tr>
+                                                <td>15. Easily distracted, concentration wanders    </td>
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-15-0" name="SDQ-15" value="0"/></td><!--No-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-15-1" name="SDQ-15" value="1"/></td><!--Somewhat-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-15-2" name="SDQ-15" value="2"/></td><!--Certainly-->
+                                            </tr>
+                                            <!--16. Nervous-->
+                                            <tr>
+                                                <td style="border-bottom: 2px solid #000;">16. Nervous in new situations, easily loses confidence  </td>
+                                                <td style="border-bottom: 2px solid #000;" class="text-center"><input type="radio" class="SDQ" id="SDQr-16-0" name="SDQ-16" value="0"/></td><!--No-->
+                                                <td style="border-bottom: 2px solid #000;" class="text-center"><input type="radio" class="SDQ" id="SDQr-16-1" name="SDQ-16" value="1"/></td><!--Somewhat-->
+                                                <td style="border-bottom: 2px solid #000;" class="text-center"><input type="radio" class="SDQ" id="SDQr-16-2" name="SDQ-16" value="2"/></td><!--Certainly-->
+                                            </tr>
+                                            <!--17. Kind -->
+                                            <tr>
+                                                <td>17. Kind to younger children    </td>
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-17-0" name="SDQ-17" value="0"/></td><!--No-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-17-1" name="SDQ-17" value="1"/></td><!--Somewhat-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-17-2" name="SDQ-17" value="2"/></td><!--Certainly-->
+                                            </tr>
+                                            <!--18. Lies-->
+                                            <tr>
+                                                <td>18. Often lies or cheats</td>
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-18-0" name="SDQ-18" value="0"/></td><!--No-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-18-1" name="SDQ-18" value="1"/></td><!--Somewhat-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-18-2" name="SDQ-18" value="2"/></td><!--Certainly-->
+                                            </tr>
+                                            <!--19. Bullied-->
+                                            <tr>
+                                                <td>19. Picked on or bullied by other youth </td>
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-19-0" name="SDQ-19" value="0"/></td><!--No-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-19-1" name="SDQ-19" value="1"/></td><!--Somewhat-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-19-2" name="SDQ-19" value="2"/></td><!--Certainly-->
+                                            </tr>
+                                            <!--20. Offers to help-->
+                                            <tr>
+                                                <td>20. Often offers to help others (parents, teachers, children) </td>
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-20-0" name="SDQ-20" value="0"/></td><!--No-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-20-1" name="SDQ-20" value="1"/></td><!--Somewhat-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-20-2" name="SDQ-20" value="2"/></td><!--Certainly-->
+                                            </tr>
+                                            <!--21. Thinks before acting-->
+                                            <tr>
+                                                <td>21. Thinks things out before acting</td>
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-21-2" name="SDQ-21" value="2"/></td><!--No-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-21-1" name="SDQ-21" value="1"/></td><!--Somewhat-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-21-0" name="SDQ-21" value="0"/></td><!--Certainly-->
+                                            </tr>
+                                            <!--22. Steals-->
+                                            <tr>
+                                                <td>22. Steals from home, school or elsewhere   </td>
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-22-0" name="SDQ-22" value="0"/></td><!--No-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-22-1" name="SDQ-22" value="1"/></td><!--Somewhat-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-22-2" name="SDQ-22" value="2"/></td><!--Certainly-->
+                                            </tr>
+                                            <!--23. Gets along better with adults-->
+                                            <tr>
+                                                <td>23. Gets along better with adults than with other youth</td>
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-23-0" name="SDQ-23" value="0"/></td><!--No-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-23-1" name="SDQ-23" value="1"/></td><!--Somewhat-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-23-2" name="SDQ-23" value="2"/></td><!--Certainly-->
+                                            </tr>
+                                            <!--24. Scared-->
+                                            <tr>
+                                                <td>24. Many fears, easily scared   </td>
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-24-0" name="SDQ-24" value="0"/></td><!--No-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-24-1" name="SDQ-24" value="1"/></td><!--Somewhat-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-24-2" name="SDQ-24" value="2"/></td><!--Certainly-->
+                                            </tr>
+                                            <!--25. Good attention span-->
+                                            <tr>
+                                                <td>25. Good attention span, sees chores or homework through to the end </td>
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-25-2" name="SDQ-25" value="2"/></td><!--No-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-25-1" name="SDQ-25" value="1"/></td><!--Somewhat-->
+                                                <td class="text-center"><input type="radio" class="SDQ" id="SDQr-25-0" name="SDQ-25" value="0"/></td><!--Certainly-->
+                                            </tr>
+                                            
+                                        </tbody>
+                                        <!--end questions grid-->
+                                    </table>
+                                    
+                                    <!--value of radiobutton fields seperate from declaration to maintain one radiobutton per column structure -->
+                                    <apex:inputField id="BSDPCONS__c" value="{!obj[bfVariableMap['SDPCONS']]}"  styleClass="SDQ-1"  style="display:none;"/><!--1. Considerate-->
+                                    <apex:inputField id="SDPREST__c" value="{!obj[bfVariableMap['SDPREST']]}"  styleClass="SDQ-2"  style="display:none;"/><!--2. Restless-->
+                                    <apex:inputField id="SDPSOMA__c" value="{!obj[bfVariableMap['SDPSOMA']]}"  styleClass="SDQ-3"  style="display:none;"/><!--3. Sick symptoms-->
+                                    <apex:inputField id="SDPSHAR__c" value="{!obj[bfVariableMap['SDPSHAR']]}"  styleClass="SDQ-4"  style="display:none;"/><!--4. Shares-->
+                                    <apex:inputField id="SDPTANT__c" value="{!obj[bfVariableMap['SDPTANT']]}"  styleClass="SDQ-5"  style="display:none;"/><!--5. Temper-->
+                                    <apex:inputField id="SDPLONE__c" value="{!obj[bfVariableMap['SDPLONE']]}"  styleClass="SDQ-6"  style="display:none;"/><!--6. Solitary-->
+                                    <apex:inputField id="SDPOBEY__c" value="{!obj[bfVariableMap['SDPOBEY']]}"  styleClass="SDQ-7"  style="display:none;"/><!--7. Well-behaved-->
+                                    <apex:inputField id="SDPWORR__c" value="{!obj[bfVariableMap['SDPWORR']]}"  styleClass="SDQ-8"  style="display:none;"/><!--8. Worries-->
+                                    <apex:inputField id="SDPCARI__c" value="{!obj[bfVariableMap['SDPCARI']]}"  styleClass="SDQ-9"  style="display:none;"/><!--9. Helpful-->
+                                    <apex:inputField id="SDPFIDG__c" value="{!obj[bfVariableMap['SDPFIDG']]}"  styleClass="SDQ-10"  style="display:none;"/><!--10. Fidgeting-->
+                                    <apex:inputField id="SDPFRIE__c" value="{!obj[bfVariableMap['SDPFRIE']]}"  styleClass="SDQ-11"  style="display:none;"/><!--11. Friends-->
+                                    <apex:inputField id="SDPFIGH__c" value="{!obj[bfVariableMap['SDPFIGH']]}"  styleClass="SDQ-12"  style="display:none;"/><!--12. Fights-->
+                                    <apex:inputField id="SDPUNHA__c" value="{!obj[bfVariableMap['SDPUNHA']]}"  styleClass="SDQ-13"  style="display:none;"/><!--13. Unhappy-->
+                                    <apex:inputField id="SDPPOPU__c" value="{!obj[bfVariableMap['SDPPOPU']]}"  styleClass="SDQ-14"  style="display:none;"/><!--14. Well-liked-->
+                                    <apex:inputField id="SDPDIST__c" value="{!obj[bfVariableMap['SDPDIST']]}"  styleClass="SDQ-15"  style="display:none;"/><!--15. Distracted-->
+                                    <apex:inputField id="SDPCLIN__c" value="{!obj[bfVariableMap['SDPCLIN']]}"  styleClass="SDQ-16"  style="display:none;"/><!--16. Nervous-->
+                                    <apex:inputField id="SDPKIND__c" value="{!obj[bfVariableMap['SDPKIND']]}"  styleClass="SDQ-17"  style="display:none;"/><!--17. Kind -->
+                                    <apex:inputField id="SDPLIES__c" value="{!obj[bfVariableMap['SDPLIES']]}"  styleClass="SDQ-18"  style="display:none;"/><!--18. Lies-->
+                                    <apex:inputField id="SDPBULL__c" value="{!obj[bfVariableMap['SDPBULL']]}"  styleClass="SDQ-19"  style="display:none;"/><!--19. Bullied-->
+                                    <apex:inputField id="SDPHELP__c" value="{!obj[bfVariableMap['SDPHELP']]}"  styleClass="SDQ-20"  style="display:none;"/><!--20. Offers to help-->
+                                    <apex:inputField id="SDPREFL__c" value="{!obj[bfVariableMap['SDPREFL']]}"  styleClass="SDQ-21"  style="display:none;"/><!--21. Thinks before acting-->
+                                    <apex:inputField id="SDPSTEA__c" value="{!obj[bfVariableMap['SDPSTEA']]}"  styleClass="SDQ-22"  style="display:none;"/><!--22. Steals-->
+                                    <apex:inputField id="SDPOLDB__c" value="{!obj[bfVariableMap['SDPOLDB']]}"  styleClass="SDQ-23"  style="display:none;"/><!--23. Gets along better with adults-->
+                                    <apex:inputField id="SDPAFRA__c" value="{!obj[bfVariableMap['SDPAFRA']]}"  styleClass="SDQ-24"  style="display:none;"/><!--24. Scared-->
+                                    <apex:inputField id="SDPATTE__c" value="{!obj[bfVariableMap['SDPATTE']]}"  styleClass="SDQ-25"  style="display:none;"/><!--25. Good attention span-->
+                                    
+                                    <!--subtotal variables initialization-->
+                                    <apex:inputField id="SDPEMO__c" value="{!obj[bfVariableMap['SDPEMO']]}" rendered="false" style="display:none;"/><!--emotional-->
+                                    <apex:inputField id="SDPBEH__c" value="{!obj[bfVariableMap['SDPBEH']]}" rendered="false" style="display:none;"/><!--behavioral-->
+                                    <apex:inputField id="SDPHYP__c" value="{!obj[bfVariableMap['SDPHYP']]}" rendered="false" style="display:none;"/><!--hyperactivity-->
+                                    <apex:inputField id="SDPOTC__c" value="{!obj[bfVariableMap['SDPOTC']]}" rendered="false" style="display:none;"/><!--other children-->
+                                    <apex:inputField id="SDPKHB__c" value="{!obj[bfVariableMap['SDPKHB']]}" rendered="false" style="display:none;"/><!--kind and helpful-->
+                                    
+                                    <apex:inputField id="SDPTOT__c" value="{!obj[bfVariableMap['SDPTOT']]}" rendered="false" style="display:none;"/><!--total-->
+                                    
+                                    <!--JQuery script for allowing de-selection of radiobuttons-->
+                                    <script>
+                                    $j('.SDQ').click(function(){
+                                        $j('.' + $j(this).attr('name')).val( $j(this).val() );
+                                    });
+                                    
+                                    for(var i = 1; i <= 25; i++) {  //'i' variable represents question number
+                                        if($j('.SDQ-' + i).val() != '') 
+                                            $j('#SDQr-' + i + '-' + $j('.SDQ-'+i).val()).prop('checked',true);
+                                    }                
+                                    </script><!--End JQuery deselect radiobutton value script block-->
+                                    
+                                    <!--Concerns?-->
+                                    <tr>
+                                        <td>Do you have any other comments or concerns?
+                                        </td>
+                                        <td>
+                                            <apex:inputField styleClass="form-control input-sm auto-width" id="SDPCOMM__c" value="{!obj[bfVariableMap['SDPCOMM']]}"/></td>
+                                    </tr>
+                                    
+                                    <!--Difficulties?-->
+                                    <tr>
+                                        <td>Overall, do you think that your child has difficulties in one or more of the following areas: emotions, concentration, behavior or being able to get on with other people?
+                                        </td>
+                                        <td>
+                                            <apex:selectRadio id="SDPEBCD__c" styleClass="form-control2" value="{!obj[bfVariableMap['SDPEBCD']]}" layout="pageDirection" onChange="difficultModule(this.value)"  title="{!obj[bfVariableMap['SDPEBCD']]}">
+                                                <apex:selectOptions value="{!OverallItems}"/> 
+                                            </apex:selectRadio> </td>
+                                    </tr>
+                                    
+                                    <!--Diffucult module, conditional if any positive indication of difficulties-->
+                                    <!--Difficulties instructions-->
+                                    <tr class="skip-difficult">
+                                        <td>Please answer the following questions about these difficulties:</td>
+                                    </tr>
+                                    <!--end instructions-->
+                                    
+                                    <!--Duration-->
+                                    <tr class="skip-difficult">
+                                        <td>How long have these difficulties been present?</td>
+                                        <td>
+                                            <apex:selectRadio id="SDPTIME__c" styleClass="form-control2 skip-element-SDPTIME" value="{!obj[bfVariableMap['SDPTIME']]}" layout="pageDirection"  title="{!obj[bfVariableMap['SDPTIME']]}" onChange="skipLogic('SDPTIME',this.value)">
+                                                <apex:selectOptions value="{!HowLongItems}"/> 
+                                            </apex:selectRadio> </td>
+                                    </tr>
+                                    <!--end duration-->
+                                    
+                                    <tr> </tr><!--spaceholding blank row-->
+                                    
+                                    <!--upset child?-->
+                                    <tr class="skip-difficult">
+                                        <td>Do the difficulties upset or distress your child?</td>
+                                        <td>
+                                            <apex:selectRadio id="SDPUPSET__c" styleClass="form-control2" value="{!obj[bfVariableMap['SDPUPSET']]}" layout="pageDirection"  title="{!obj[bfVariableMap['SDPUPSET']]}" onChange="skipLogic('SDPUPSET',this.value)">
+                                                <apex:selectOptions value="{!UpsetItems}"/> 
+                                            </apex:selectRadio> </td>
+                                    </tr>
+                                    <!--end upset-->
+                                    
+                                    <!--conditional, if child is upset-->
+                                    <tr class="skip-difficult">
+                                        <td colspan="2">Do the difficulties interfere with your child's everyday life in the following areas?
+                                            <table class="table table-bordered table-hover table-condensed InterfereTable">
+                                                <!--difficulties heading-->
+                                                <thead>
+                                                    <tr>
+                                                        <td class="text-right" style="width:100px" colspan="2"/>
+                                                        <td class="text-center" style="width:100px"><b>Not at all</b></td>
+                                                        <td class="text-center" style="width:100px"><b>Only a little</b></td>
+                                                        <td class="text-center" style="width:100px"><b>A medium amount</b></td>
+                                                        <td class="text-center" style="width:100px"><b>A great deal</b></td>
+                                                    </tr>
+                                                </thead>
+                                                <!--end heading-->
+                                                
+                                                <tbody>
+                                                    <!--Home life-->
+                                                    <tr class="skip-difficult">
+                                                        <td class="text-right" style="width:100px" colspan="2">HOME LIFE</td>
+                                                        <td class="text-center" style="width:100px"><input type="radio" class="SDQI" id="SDQIr-1-0" name="SDQI-1" value="0"/></td><!--no--> 
+                                                        <td class="text-center" style="width:100px"><input type="radio" class="SDQI" id="SDQIr-1-1" name="SDQI-1" value="1"/></td><!--a little-->
+                                                        <td class="text-center" style="width:100px"><input type="radio" class="SDQI" id="SDQIr-1-2" name="SDQI-1" value="2"/></td><!--medium-->
+                                                        <td class="text-center" style="width:100px"><input type="radio" class="SDQI" id="SDQIr-1-3" name="SDQI-1" value="3"/></td><!--a lot-->
+                                                    </tr>
+                                                    <!--end home life-->
+                                                    
+                                                    <!--friendships-->
+                                                    <tr class="skip-difficult">
+                                                        <td class="text-right" style="width:100px" colspan="2">FRIENDSHIPS</td>
+                                                        <td class="text-center" style="width:100px"><input type="radio" class="SDQI" id="SDQIr-2-0" name="SDQI-2" value="0"/></td><!--no--> 
+                                                        <td class="text-center" style="width:100px"><input type="radio" class="SDQI" id="SDQIr-2-1" name="SDQI-2" value="1"/></td><!--a little-->
+                                                        <td class="text-center" style="width:100px"><input type="radio" class="SDQI" id="SDQIr-2-2" name="SDQI-2" value="2"/></td><!--medium-->
+                                                        <td class="text-center" style="width:100px"><input type="radio" class="SDQI" id="SDQIr-2-3" name="SDQI-2" value="3"/></td><!--a lot-->
+                                                    </tr>
+                                                    <!--end friendships-->
+                                                    
+                                                    <!--classroom learning-->
+                                                    <tr class="skip-difficult">
+                                                        <td class="text-right" style="width:100px" colspan="2">CLASSROOM LEARNING</td>
+                                                        <td class="text-center" style="width:100px"><input type="radio" class="SDQI" id="SDQIr-3-0" name="SDQI-3" value="0"/></td><!--no--> 
+                                                        <td class="text-center" style="width:100px"><input type="radio" class="SDQI" id="SDQIr-3-1" name="SDQI-3" value="1"/></td><!--a little-->
+                                                        <td class="text-center" style="width:100px"><input type="radio" class="SDQI" id="SDQIr-3-2" name="SDQI-3" value="2"/></td><!--medium-->
+                                                        <td class="text-center" style="width:100px"><input type="radio" class="SDQI" id="SDQIr-3-3" name="SDQI-3" value="3"/></td><!--a lot-->
+                                                    </tr>
+                                                    <!--end classroom learning-->
+                                                    
+                                                    <!--leisure activities-->
+                                                    <tr class="skip-difficult">
+                                                        <td class="text-right" style="width:100px" colspan="2">LEISURE ACTIVITIES</td>
+                                                        <td class="text-center" style="width:100px"><input type="radio" class="SDQI" id="SDQIr-4-0" name="SDQI-4" value="0"/></td><!--no--> 
+                                                        <td class="text-center" style="width:100px"><input type="radio" class="SDQI" id="SDQIr-4-1" name="SDQI-4" value="1"/></td><!--a little-->
+                                                        <td class="text-center" style="width:100px"><input type="radio" class="SDQI" id="SDQIr-4-2" name="SDQI-4" value="2"/></td><!--medium-->
+                                                        <td class="text-center" style="width:100px"><input type="radio" class="SDQI" id="SDQIr-4-3" name="SDQI-4" value="3"/></td><!--a lot-->
+                                                    </tr>  
+                                                    <!--end leisure activities-->                       
+                                                </tbody>
+                                            </table>
+                                            
+                                            <!--initialize difficulties scores-->
+                                            <apex:inputField id="SDPIMPH__c" value="{!obj[bfVariableMap['SDPIMPH']]}"  styleClass="SDQI-1"  style="display:none;"/><!--Home life-->
+                                            <apex:inputField id="SDPIMPF__c" value="{!obj[bfVariableMap['SDPIMPF']]}"  styleClass="SDQI-2"  style="display:none;"/><!--friendships-->
+                                            <apex:inputField id="SDPIMPC__c" value="{!obj[bfVariableMap['SDPIMPC']]}"  styleClass="SDQI-3"  style="display:none;"/><!--classroom learning-->
+                                            <apex:inputField id="SDPIMPL__c" value="{!obj[bfVariableMap['SDPIMPL']]}"  styleClass="SDQI-4"  style="display:none;"/><!--leisure activities-->
+                                            
+                                            <apex:inputField id="SDPDCL__c" value="{!obj[bfVariableMap['SDPDCL']]}" rendered="false" style="display:none;"/><!--total difficulties-->
+                                            
+                                            <!--JQuery script for allowing de-selection of radiobuttons--> 
+                                            <script>
+                                            $j('.SDQI').click(function(){
+                                                $j('.' + $j(this).attr('name')).val( $j(this).val() );
+                                            });
+                                            
+                                            for(var i = 1; i <= 4; i++) {  //'i' variable represents question number
+                                                if($j('.SDQI-' + i).val() != '') 
+                                                    $j('#SDQIr-' + i + '-' + $j('.SDQI-'+i).val()).prop('checked',true);
+                                            }                
+                                            </script>  <!--End JQuery deselect radiobutton value script block-->               
+                                                                                        
+                                        </td>
+                                    </tr>
+                                    <!--end upset conditional-->
+                                    
+                                    <!--family burden?-->
+                                    <tr class="skip-difficult">
+                                        <td>Do the difficulties put a burden on you or the family as a whole?</td>
+                                        <td>
+                                            <apex:selectRadio id="SDPFAM__c" styleClass="form-control2" value="{!obj[bfVariableMap['SDPFAM']]}" layout="pageDirection"  title="{!obj[bfVariableMap['SDPFAM']]}" onChange="skipLogic('SDPFAM',this.value)">
+                                                <apex:selectOptions value="{!DifficultItems}"/> 
+                                            </apex:selectRadio> </td>
+                                    </tr>
+                                    <!--end burden-->
+                                    
+                                    <!--identify informant-->
+                                    <tr>
+                                        <td>Who was the informant?</td>
+                                        <td >
+                                            <apex:selectList id="SDPINFOR__c" styleClass="form-control"  value="{!obj[bfVariableMap['SDPINFOR']]}" size="1" onChange="skipLogic('SDPINFOR',this.value)">
+                                                <apex:selectOption itemValue="0" itemLabel="Mother"/>
+                                                <apex:selectOption itemValue="1" itemLabel="Father"/>
+                                                <apex:selectOption itemValue="2" itemLabel="Other"/>
+                                            </apex:selectList> 
+                                        </td>
+                                    </tr>
+                                    
+                                    <!--conditional if other, specify-->
+                                    <tr class="skip-SDPINFSP ">
+                                        <td/>
+                                        <td> <apex:outputLabel value=" Please specify: " for="SDPINFSP__c"/>
+                                            <apex:inputField styleClass="form-control input-sm auto-width skip-element-SDPINFSP" id="SDPINFSP__c" value="{!obj[bfVariableMap['SDPINFSP']]}"/>
+                                        </td>
+                                    </tr>                                    
+                                    <!--end conditional-->
+                                </div>
+                            </td>
+                        </tr>
+                        <!--end informant-->
+                        
+                        <tr>
+                        <!--Completion status control-->
+                            <td  class="text-right complete-title"><b>Complete?</b></td>
+                            <td>
+                                <apex:selectList id="STATUS_P_11_17__c" styleClass="form-control input-sm" style="width:130px" size="1" value="{!obj[bfVariableMap['STATUS']]}" >
+                                    <apex:selectOption itemValue="Incomplete" itemLabel="Incomplete"/>
+                                    <apex:selectOption itemValue="Complete" itemLabel="Complete"/>
+                                </apex:selectList> 
+                            </td>
+                            <!--end completion status--> 
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!--Save & view reoprt, save and cancel control buttons for pageBlock-->
+            <apex:pageBlockButtons >
+                <apex:commandButton id="SaveView" action="{!saveviewOld}" value="Save & View Report"/>
+                <apex:commandButton id="Save" action="{!save}" value="Save"/>
+                <apex:commandButton id="Cancel" action="{!cancel}" value="Cancel"/>
+            </apex:pageBlockButtons><!--end buttons-->
+            
+        </apex:pageBlock>
+    </apex:form>
+    <!--end form content-->
+    
+    <!--citation information footer-->
+    <p style="class:footer; text-align:center ">
+        <i>© Robert Goodman, 2005<br/>
+        This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - Baseline - CRF Version 6 2014
+        </i>
+    </p>  
+</apex:page>
