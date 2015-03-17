@@ -47,9 +47,12 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>InDevelopment</deploymentStatus>
     <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>Client__c</fullName>
         <externalId>false</externalId>
@@ -5720,6 +5723,11 @@
         <type>Checkbox</type>
     </fields>
     <label>DS Background Family Info F</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <label>DS Background Family Info F Name</label>
         <trackHistory>false</trackHistory>
