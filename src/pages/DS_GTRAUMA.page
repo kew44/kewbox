@@ -264,6 +264,7 @@
                 <!--Completion status control-->              
                 <td style="text-align: right !important;" colspan="23">
                 <b>Complete?</b>&nbsp;&nbsp;
+                  
                   <apex:selectList styleClass="form-control input-sm" style="width:130px; display: inherit;" value="{!GTRAUMA.STATUS_GTRAUMA__c}" size="1">
                       <apex:selectOption itemValue="Incomplete" itemLabel="Incomplete"/>
                       <apex:selectOption itemValue="Complete" itemLabel="Complete"/>

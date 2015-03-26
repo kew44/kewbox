@@ -5,10 +5,6 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>CancelEdit</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
         <actionName>Clone</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -21,19 +17,11 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>Follow</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
         <actionName>List</actionName>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>SaveEdit</actionName>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -44,15 +32,11 @@
         <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
-    <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
-    <enableSharing>true</enableSharing>
-    <enableStreamingApi>true</enableStreamingApi>
     <fieldSets>
         <fullName>STATUS</fullName>
         <description>SDQ</description>
@@ -80,7 +64,6 @@
         <label>BDOASDOP</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
     <fields>
@@ -90,7 +73,6 @@
         <label>BDOASDOS</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
     <fields>
@@ -100,7 +82,6 @@
         <label>BDOASDYP</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
     <fields>
@@ -113,7 +94,6 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -127,7 +107,6 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -148,7 +127,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -168,7 +146,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -188,7 +165,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -212,7 +188,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -236,7 +211,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -249,7 +223,6 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -274,7 +247,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -298,7 +270,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -322,7 +293,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -346,7 +316,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -357,7 +326,6 @@
         <length>50</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -382,7 +350,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -395,7 +362,6 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -420,7 +386,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -448,7 +413,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -461,7 +425,6 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -486,7 +449,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -514,7 +476,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -538,7 +499,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -562,7 +522,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -586,7 +545,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -610,7 +568,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -634,7 +591,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -647,7 +603,6 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -676,7 +631,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -704,7 +658,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -732,7 +685,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -760,7 +712,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -784,7 +735,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -795,7 +745,6 @@
         <length>50</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -820,7 +769,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -833,7 +781,6 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -858,7 +805,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -882,7 +828,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -906,7 +851,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -930,7 +874,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -954,7 +897,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -978,7 +920,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -991,7 +932,6 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -1016,7 +956,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1040,7 +979,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1064,7 +1002,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1088,7 +1025,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1112,7 +1048,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1136,7 +1071,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1160,7 +1094,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1184,7 +1117,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1212,7 +1144,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1225,7 +1156,6 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -1250,7 +1180,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1274,7 +1203,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1302,7 +1230,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1326,7 +1253,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1350,7 +1276,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1374,7 +1299,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1387,7 +1311,6 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -1412,7 +1335,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1436,7 +1358,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1460,7 +1381,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1484,7 +1404,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1495,7 +1414,6 @@
         <length>50</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -1520,7 +1438,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1533,7 +1450,6 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -1558,7 +1474,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1586,7 +1501,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1598,7 +1512,6 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -1623,7 +1536,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1651,7 +1563,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1675,7 +1586,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1699,7 +1609,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1723,7 +1632,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1747,7 +1655,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1771,7 +1678,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1784,7 +1690,6 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -1813,7 +1718,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1841,7 +1745,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1869,7 +1772,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1897,7 +1799,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1921,7 +1822,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1934,7 +1834,6 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -1959,7 +1858,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1983,7 +1881,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -2007,7 +1904,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -2031,7 +1927,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -2055,7 +1950,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -2079,7 +1973,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -2092,7 +1985,6 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -2117,7 +2009,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -2141,7 +2032,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -2165,7 +2055,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -2189,7 +2078,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -2213,7 +2101,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -2237,7 +2124,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -2261,7 +2147,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -2285,7 +2170,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -2313,7 +2197,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -2326,7 +2209,6 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -2351,7 +2233,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -2375,7 +2256,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -2403,7 +2283,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -2427,7 +2306,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -2438,7 +2316,6 @@
         <label>Client ID</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -2452,7 +2329,6 @@
         <relationshipOrder>0</relationshipOrder>
         <reparentableMasterDetail>false</reparentableMasterDetail>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
@@ -2466,7 +2342,6 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -2480,7 +2355,6 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -2491,7 +2365,6 @@
         <length>50</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -2505,7 +2378,6 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -2519,7 +2391,6 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -2533,7 +2404,6 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -2547,7 +2417,6 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -2561,7 +2430,6 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -2575,7 +2443,6 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -2587,7 +2454,6 @@
         <length>5</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -2607,7 +2473,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -2626,7 +2491,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -2645,7 +2509,6 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <label>DS SDQ PSI CDI B</label>
@@ -2667,39 +2530,6 @@
         <fullName>All1</fullName>
         <filterScope>Everything</filterScope>
         <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>Allnull</fullName>
-        <columns>Client__c</columns>
-        <columns>EMONULLP__c</columns>
-        <columns>EMONULLS__c</columns>
-        <columns>HYPNULLP__c</columns>
-        <columns>HYPNULLS__c</columns>
-        <columns>KHBNULLP__c</columns>
-        <columns>KHBNULLS__c</columns>
-        <columns>OTCNULLP__c</columns>
-        <columns>OTCNULLS__c</columns>
-        <columns>BEHNULLP__c</columns>
-        <columns>BEHNULLS__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>Allnull</label>
-    </listViews>
-    <listViews>
-        <fullName>Allnullparent</fullName>
-        <columns>Client__c</columns>
-        <columns>EMONULLP__c</columns>
-        <columns>HYPNULLP__c</columns>
-        <columns>KHBNULLP__c</columns>
-        <columns>OTCNULLP__c</columns>
-        <columns>BEHNULLP__c</columns>
-        <columns>BSDPBTYP__c</columns>
-        <columns>BSDPETYP__c</columns>
-        <columns>BSDPHTYP__c</columns>
-        <columns>BSDPKTYP__c</columns>
-        <columns>BSDPOTYP__c</columns>
-        <columns>BSDPTYP__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>Allnullparent</label>
     </listViews>
     <listViews>
         <fullName>w_date_All</fullName>

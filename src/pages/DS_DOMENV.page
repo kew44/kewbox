@@ -44,10 +44,8 @@
                 if($j(this).val() != '') 
                     sum += parseInt($j(this).val());
             });
-
-            $j('.total span').html(sum);
             
-            //$j('input[id$=BNTTOTN2]').val(sum);
+            $j('.total span').html(sum);
             $j('.BNTTOTN2').val(sum);
             
         });             
@@ -243,14 +241,12 @@
                                     
                                     <!--total nights out of home-->
                                     <tr>
-                                        <td></td> 
+                                        <td/> 
                                         <td>   <p>Total:</p> </td>  
                                         <td class="total">
                                             <apex:outputField id="BNTTOTN" value="{!obj.BNTTOTN__c}" styleClass="BNTTOTN"/>
                                             <apex:inputField rendered="true" id="BNTTOTN2" value="{!obj.BNTTOTN__c}" styleClass="BNTTOTN2 hidden"/>
                                         </td>
-                                        <td> </td>
-                                        
                                     </tr>
                                     <!--end nights-->
                                     
@@ -281,6 +277,8 @@
         
         <!---Begin Details questionnaire pageBlock-->
         <apex:pageBlock title="Domestic Environment Details"  >
+            
+            <!--<apex:pageMessages /><!--placeholding structure that allows for system message display-->
             
             <div id="force">            
             
@@ -473,6 +471,7 @@
         
         <!--begin Education pageBlock-->
         <apex:pageBlock title="Education"  >
+            <!--<apex:pageMessages /><!--placeholding structure that allows for system message display-->
             
             <div id="force">            
                 <table class="table DS-table">

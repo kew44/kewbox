@@ -32,8 +32,7 @@ public with sharing class DS_CBCL_6_18_Controller {
   public SkipLogic skip {get;set;}
 
   public Map<String, String> bfVariableMap { get; set; }
-
-
+  
   
   Map<String, String> parameter = ut.urlDecode(Apexpages.currentPage().getParameters().get('cimi'));
 

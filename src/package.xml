@@ -17,13 +17,11 @@
         <name>ApexTrigger</name>
     </types>
     <types>
-        
         <members>Audit_Trail__c</members>
         <members>Center__c</members>
         <members>Client_Summary__c</members>
         <members>Client__c</members>
         <members>Clinician__c</members>
-        
         <members>Counter__c</members>
         <members>DS_Background_Family_Info_B__c</members>
         <members>DS_Background_Family_Info_F__c</members>
@@ -41,16 +39,18 @@
         <members>DS_TRDETAIL2__c</members>
         <members>DS_TSCC_TSCYC_B__c</members>
         <members>DS_TSCC_TSCYC_F__c</members>
-        
         <members>Foundation_Countries__c</members>
         <members>Foundation_States__c</members>
-       
         <members>User_Profile__c</members>
         <name>CustomObject</name>
     </types>
     <types>
         <members>*</members>
+        <name>Profile</name>
+    </types>
+    <types>
+        <members>*</members>
         <name>StaticResource</name>
     </types>
-    <version>31.0</version>
+    <version>28.0</version>
 </Package>

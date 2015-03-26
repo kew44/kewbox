@@ -11,7 +11,7 @@ private class TestClass_Role {
 
     ID id = UserInfo.getUserRoleId();
 
-    Profile p = [SELECT Id FROM Profile WHERE Name='Force.com - App Subscription User']; 
+    Profile p = [SELECT Id FROM Profile WHERE Name='System Admin']; 
 
     Integer numCode = ut.getRandomInt(1, 100);
 

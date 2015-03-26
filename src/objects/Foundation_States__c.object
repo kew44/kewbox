@@ -9,7 +9,6 @@
         <label>Country_Code</label>
         <length>4</length>
         <required>false</required>
-        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -19,7 +18,6 @@
         <label>State_Code</label>
         <length>5</length>
         <required>false</required>
-        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -29,7 +27,6 @@
         <label>State_Name</label>
         <length>40</length>
         <required>false</required>
-        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
