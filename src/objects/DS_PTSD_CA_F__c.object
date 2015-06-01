@@ -32,17 +32,90 @@
         <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
-    <deploymentStatus>Deployed</deploymentStatus>
+    <deploymentStatus>InDevelopment</deploymentStatus>
     <enableActivities>true</enableActivities>
     <enableFeeds>false</enableFeeds>
-    <enableHistory>false</enableHistory>
+    <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
+    <fields>
+        <fullName>Client__c</fullName>
+        <externalId>false</externalId>
+        <label>Client</label>
+        <referenceTo>Client__c</referenceTo>
+        <relationshipLabel>DS PTSD CA F</relationshipLabel>
+        <relationshipName>DS_PTSD_CA_F</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>FDOAPTSD__c</fullName>
+        <description>1. PTSD date of administration</description>
+        <externalId>false</externalId>
+        <label>FDOAPTSD</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>FMETPTSD__c</fullName>
+        <description>3. How was this form administered?</description>
+        <externalId>false</externalId>
+        <label>FMETPTSD</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>SECTION__c</fullName>
+        <defaultValue>&apos;1&apos;</defaultValue>
+        <externalId>false</externalId>
+        <label>SECTION</label>
+        <length>3</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <label>DS PTSD CA F</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <label>DS PTSD CA F Name</label>
+        <trackHistory>false</trackHistory>
         <type>Text</type>
     </nameField>
     <pluralLabel>DS PTSD CA F</pluralLabel>
     <searchLayouts/>
-    <sharingModel>ReadWrite</sharingModel>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>PTSD_date_required</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISNULL(FDOAPTSD__c )</errorConditionFormula>
+        <errorDisplayField>FDOAPTSD__c</errorDisplayField>
+        <errorMessage>Please indicate the date of administration.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PTSD_must_indicate_method</fullName>
+        <active>true</active>
+        <description>Method of administration is required.</description>
+        <errorConditionFormula>ISPICKVAL(FMETPTSD__c , &apos;&apos;)</errorConditionFormula>
+        <errorDisplayField>FMETPTSD__c</errorDisplayField>
+        <errorMessage>Please indicate how this form was administered.</errorMessage>
+    </validationRules>
 </CustomObject>

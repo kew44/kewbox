@@ -1,96 +1,42 @@
-/*Page Description:
- *  Controller for VisualForce page DS_DOMENV
- * Last Updated on:
- *  7/18/2014
- * Update Purpose:
- *  Link to the DS_BASELINE2__c object instead of DS_DOMENV__c as part of restructuring
- 7/24/2014-fix redirect
- 7/31/14-Link to DS_Background_Family_Info__c
- 8/13/14-Link to DS_Background_Family_Info_B__c
- * Programmer:
- *  Kelsey
- */
-public with sharing class DS_DOMENV_Controller {
+/**
+ * The controller class for Domestic Environment.  
+ * 
+ **/
 
-  Utility ut = new Utility();
-  Map<String, String> parameter = ut.urlDecode(Apexpages.currentPage().getParameters().get('cimi'));
+public with sharing class DS_DOMENV_Controller extends DS_BasicForm_Controller {
 
-  public DS_Background_Family_Info_B__c obj { get; set; }
-
-  String cID { get; set; }
-  
-  String summaryID;
-
-  public String forceRedirect { get; set; } 
-
-  Boolean edit = FALSE;
-
-  public String subtitle {get; set;}
-    
-  public Client__c client { get; set; }
-
-  public Client_Summary__c summaryInfo { get; set; }
-
-  public String triggerValue {get; set;}
-  public String skipTrigger {get; set;}
-
-  public SkipLogic skip {get;set;} 
-  
-  public String skipElementToJson { get; set; }
+  public String formObject { get; set; }
 
   public DS_DOMENV_Controller(ApexPages.StandardController controller) {
-
-    parameter = ut.urlDecode(Apexpages.currentPage().getParameters().get('cimi'));
-
-    cID = parameter.get('c');
-
-    summaryID = parameter.get('summary');
-    
-    forceRedirect = (parameter.containsKey('f')) ? parameter.get('f') : '';
-
-    skip = new SkipLogic();
   
-    skip.skipLibrary('BPRIMRES', 'show', '98', new Map<String, String>{'BPRIMRSP'=>'text'}); 
-    skip.skipLibrary('BNOMHOUSE', 'show', '98', new Map<String, String>{'BNOMHOUSESP'=>'text'}); 
-    skip.skipLibrary('BLOTHR', 'show', 'true', new Map<String, String>{'BLOTHRSP'=>'text'}); 
-    skip.skipLibrary('BLANGHOM', 'show', '98', new Map<String, String>{'BLANGHMS'=>'text'}); 
-    skip.skipLibrary('BINCOMNW', 'show', '98', new Map<String, String>{'BINCOMSP'=>'text'}); 
+    // Initilize the DS_BasicForm_Controller
+    super(Apexpages.currentPage().getParameters().get('cimi'));
     
+    formObject = 'DS_Background_Family_Info_F__c';
 
-    client = [SELECT Name, INIT__c FROM Client__c WHERE id =: cID];
-//    Client_Summary__c summary = [SELECT SECTION__c FROM Client_Summary__c WHERE ID =:summaryID];
+    // Skiplogic library
+    skip.skipLibrary('PRIMRES', 'show', '98',   new Map<String, String>{'PRIMRSP'    => 'text'}); 
+    skip.skipLibrary('NOMHOUSE','show', '98',   new Map<String, String>{'NOMHOUSESP' => 'text'}); 
+    skip.skipLibrary('LOTHR',   'show', 'true', new Map<String, String>{'LOTHRSP'    => 'text'}); 
+    skip.skipLibrary('LANGHOM', 'show', '98',   new Map<String, String>{'LANGHMS'    => 'text'}); 
+    skip.skipLibrary('INCOMNW', 'show', '98',   new Map<String, String>{'INCOMSP'    => 'text'}); 
     
-    subtitle = '(' + client.Name + ') ' + client.INIT__c;
+    // Set the skip object to form object
+    form.setSkipLogic(skip);
 
-    String getDEMOFields = ut.getFields('DS_Background_Family_Info_B__c');
+    // Set the obj name 
+    form.setObjName('DS_Background_Family_Info_'+form.BorF+'__c');
 
-    List<DS_Background_Family_Info_B__c> record = 
-      Database.query('SELECT ' + getDEMOFields + ', Client__r.Name, Client__r.INIT__c' +  
-                     '  FROM DS_Background_Family_Info_B__c' +                              
-                     ' WHERE Client__c = \''+ cID + '\'');
+    // Get the object record into form.obj
+    form.getObjRecord();
 
-    if(record.size() == 0) { // New record
-      obj = new DS_Background_Family_Info_B__c(CLIENT__c = cID, FORM__c = 'DS_DOMENV');      
-    }
-    else {   // Update record
-      
-      obj = record.get(0);
-      edit = TRUE;
-
-      obj.FORM__c = 'DS_DOMENV';
-
-      for(String lKey : skip.skipList.keySet()) 
-        for(String sKey : skip.skipList.get(lKey).keySet()) {
-          //skip.runSkipLogic(lKey, String.valueOf(obj.get(lKey+'__c')), obj);
-          skip.skipList.get(lKey).get(sKey).addTargetValue(String.valueOf(obj.get(lKey+'__c')));
-        }
-        
-    } 
+    // Serialize the skip library to JSON format
     skipElementToJson = JSON.serialize(skip.skipList);
-  }
 
-  public String getClientInfo() { return ut.clientSection(cID,SummaryID);}  
-  
+    // Get field name from DS_DATA (variable)
+    bfVariableMap = form.getVariable('DOMENV');
+
+  }  
   
   public List<SelectOption> getPrimeRestIems() {
     
@@ -291,30 +237,5 @@ public with sharing class DS_DOMENV_Controller {
     return options; 
         
   }  
-
-  public PageReference cancel() {
-
-    PageReference summaryPage = new PageReference('/apex/ClientSummary?s=0&id=' + cID);
-    summaryPage.setRedirect(true);
-    
-    return summaryPage;
-
-  }
-
-  public PageReference save() {
-
-    PageReference nextPage;
-        
-    try {
-      if(edit == FALSE) insert obj;
-      else update obj;
-      nextPage = new PageReference(skip.formRedirct(cID, '0', forceRedirect));
-      nextPage.setRedirect(true);
-    }
-    catch(DMLException e) { nextPage = null; }
-    
-    return nextPage;
-          
-  }
 
 }

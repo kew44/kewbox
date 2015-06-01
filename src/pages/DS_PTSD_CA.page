@@ -1,91 +1,34 @@
 <apex:page standardController="DS_PTSD_CA_B__c" extensions="DS_PTSD_CA_Controller">
-  
-    <!--JQuery -->
-    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.9.1.js')}"  /><!--allows for JQuery dependencies-->
-    <script> $j = jQuery.noConflict(); </script><!--Reserves the '$' token for JQuery only-->
     
-        <!-- Bootstrap -->
-        <link href="{!URLFOR($Resource.VFbootstrap3, '/css/VFbootstrap.css')}" rel="stylesheet" media="screen"/>
-            <apex:includeScript value="{!URLFOR($Resource.VFbootstrap3, '/js/bootstrap.min.js')}"/>
-
-                <!--link to the CSS resource in Salesforce internal document-->
-                    <apex:stylesheet value="{!$Resource.CustomCss}" />           
-                        
-                        <!--provides framework for "skip-logic" capabilities-->
-                            <script>function setFocusOnLoad() {}</script>
-                            <script> var skipElement = jQuery.parseJSON("{!JSENCODE(skipElementToJson)}"); </script>
-                            <script src="{!URLFOR($Resource.Scripts, '/skipLogic.js')}"></script>
+    <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
     
-    <!--JQuery script for allowing de-selection of radiobuttons-->   
-    <script>
-    $j(document).ready(function(){        
-        $j('input[type="radio"]').click(function(){            
-            var previousValue = $j(this).attr('title');
-            var val = $j(this).val();
-            var name = $j(this).attr('name');      
+    <div class="{!HTMLENCODE(form.visitType)}">
+        <apex:sectionHeader title="{!form.title}" subtitle="{!form.subtitle}" />
+    </div>
+    
+    <div class="bootwrap">
+        
+        <!--Begin form content-->
+        <apex:form id="DS_FORM" styleClass="form-horizontal">
             
-            if (previousValue == val) {  // uncheck radio button
-                $j(this).removeAttr('checked').change();
-                $j("input[name='"+name+"']:radio").attr('title', '');
-            }
-            else {
-                $j("input[name='"+name+"']:radio").attr('title', val);
-            }            
-        });        
-    });    
-    </script><!--End JQuery deselect radiobutton value script -->
-        
-    <!--supplementary style information-->
-    <style>
-        .pbTitle { width:400px !important; }
-        .pbButtonb, .pbButton { float:right; }
-        .form-describe { widht: 60%; }
-        #sidebarCell { display: none;}
-        @media only screen and (min-width : 1224px) {
-        #sidebarCell { display: table-cell;}
-        }
-        #force { font-size: 13px; }
-        .checkboxTD table { width: 300px; }
-        .checkboxTD td { width:20%; }
-        .checkboxTD input { margin-right: 3px !important; }
-        .auto-width { width:auto !important; }
-        
-        .clinicianCheckboxTD table { width: 100px; }
-        .clinicianCheckboxTD input { margin-right: 3px !important; }
-        
-        .complete-title { vertical-align: middle !important; }
-        .auto-width { width:auto !important; display: inline !important; }
-        
-    </style>
-    <!--end styling-->
-        
-    <!-- "Breadcrumb" heading allows user to navigate to the ClientSummary page -->
-    <script>
-    $j(document).ready(function() {
-        $j('.bPageTitle').append('<div class="ptBreadcrumb">&nbsp;«&nbsp;<a href="/apex/ClientSummary?s=0&id={!client.id}">Back to Client Summary</a></div>');
-    });
-    </script>
-    <!--end breadcrumb-->
-    
-    <!--Begin form content-->
-    <apex:form >
-        <apex:sectionHeader title="UCLA PTSD Reaction Index for Children/Adolescents" subtitle="{!subtitle}"/><br/>
-
-        <!-- pageblock to show ClientInformation header as described in Utility class-->
-        <apex:pageBlock title="Client Information">
-            <div id="force">
-                <apex:outputText value="{!ClientInfo}" escape="false"/>
-            </div>
-        </apex:pageBlock><!--end client info pageBlock-->
-        
-        <!-- primary content pageBlock container-->
-        <apex:pageBlock title="UCLA PTSD Reaction Index for Children/Adolescents - DSM-5 ©" >
-            <apex:pageMessages /><!--placeholding structure that allows for system message display-->
+            <!-- pageblock to show ClientInformation header as described in Utility class-->
+            <c:cimiClientInfo displayVisitType="true" formElement="{!form}"/>
+            <!--end client info pageBlock-->
             
-            <div id="force"><br/>
+            <!-- primary content pageBlock container-->
+            <apex:pageBlock title="{!form.title}" >
+                
+                <!--Save & view, save, and cancel control buttons for pageBlock-->
+                <apex:pageBlockButtons >
+                    <apex:commandButton id="Save" action="{!save}" value="Save" styleClass="btn-info btn btn-sm"/>
+                    <apex:commandButton id="Cancel" action="{!cancel}" value="Cancel" styleClass="btn-info btn btn-sm"/>
+                </apex:pageBlockButtons>
+                <!--end buttons-->
+                
+                <apex:pageMessages /><!--placeholding structure that allows for system message display-->
                 
                 <!--information and instructions-->
-                <div class="formTopContent">
+                <div class="alert alert-info">
                     Here is a list of problems people can have after bad things happen. 
                     Please think about the bad thing that happened to you that <u> bothers you the most now</u>. For each problem 
                     <strong>CIRCLE ONE</strong> of the numbers (0, 1, 2, 3 or 4) that tells how often the problem happened to you <strong>in the past month</strong>, even if the bad thing happened a long time ago. 
@@ -93,315 +36,343 @@
                 </div>
                 <!--end info-->
                 
-                <br/><!--blank line-->
+                <!--begin PTSD-CA questionnaire-->
+                <div class="form-group bg-primary">
+                    <label class="col-md-12 col-lg-12 control-label label-bold">Basic Information</label>
+                </div>
                 
-                <table class="table table-hover table-responsive PTSD-table">
+                <!--admin date-->
+                <div class="form-group">
+                    <label class="col-md-6 col-lg-6 control-label label-bold">
+                        <span class="nmbr"></span>
+                        Date of administration
+                    </label>
+                    <div class="col-md-4 col-lg-2">
+                        <apex:inputField id="DOAPTSD__c" styleClass="form-control input-sm" value="{!form.obj[bfVariableMap['DOAPTSD']]}"/>
+                    </div>
+                </div>
+                <!--end date-->
+                
+                <!--administration type-->
+                <div class="form-group">
+                    <label class="col-md-6 col-lg-6 control-label label-bold">
+                        <span class="nmbr"></span>
+                        How was this form administered?
+                    </label>
+                    <div class="col-md-4 col-lg-2">
+                        <apex:selectList id="METPTSD__c" styleClass="form-control input-sm" value="{!form.obj[bfVariableMap['METPTSD']]}" size="1" required="true">
+                            <apex:selectOptions value="{!BMETOption}"/> 
+                        </apex:selectList>
+                    </div>
+                </div>
+                <!--end admin type-->
+                
+                <!--question prompt heading-->
+                <div class="form-group bg-primary">
+                    <label class="col-md-6 col-lg-6 control-label label-bold">Question</label>
+                    <label class="col-md-6 col-lg-6 control-label label-bold">How much of the time during the past month...</label>
+                </div>
+                <!--end heading-->
+                
+                <!--populates PTSD questions from DS_DATA object records-->
+                <apex:repeat value="{!items}" var="item"> 
                     
-                    <tbody>
-                    <!--begin PTSD-CA questionnaire-->
-                        <tr class="warning"><td colspan="3">Basic Information</td></tr>
+                    <!--conditional section heading, only appears when certain section(s) meet criteria (ie dissociative symptoms)-->
+                    <apex:outputPanel layout="none" rendered="{!IF((item.section == TRUE),'TRUE','FALSE')}">
+                        <div class="form-group bg-primary">
+                            <label class="col-md-6 col-lg-6 control-label label-bold">
+                                <apex:outputText value="{!item.content}"/>
+                            </label>
+                        </div>
+                    </apex:outputPanel>
+                    <!--end conditional-->
+                    
+                    <!--base question records-->
+                    <apex:outputPanel layout="none" rendered="{!IF((item.section == FALSE),'TRUE','FALSE')}">
                         
-                        <!--adnin date-->
-                        <tr>
-                            <td></td>
-                            <td>Date of administration</td>
-                            <td><apex:inputField id="DOAPTSD__c" styleClass="form-control auto-width" value="{!obj[bfVariableMap['DOAPTSD']]}"/></td>
-                        </tr>
-                        <!--end date-->
-                        
-                        <!--duration more than 1 month?-->
-                        <tr>
-                            <td></td>
-                            <td>Duration greater than one month?</td>
-                            <td>
-                                <apex:selectList id="PTSDURA__c" styleClass="form-control" value="{!obj[bfVariableMap['PTSDURA']]}" size="1">
-                                    <apex:selectOptions value="{!NYUItems}"/> 
-                                </apex:selectList>
-                            </td>
-                        </tr>
-                        <!--end administration-->
-                        
-                        <!--administration type-->
-                        <tr>
-                            <td></td>
-                            <td>How was this form administered?</td>
-                            <td>
-                                <apex:selectList id="METPTSD__c" styleClass="form-control" value="{!obj[bfVariableMap['METPTSD']]}" size="1" required="true">
-                                    <apex:selectOptions value="{!BMETItems}"/> 
-                                </apex:selectList>
-                            </td>
-                        </tr>
-                        <!--end admin type-->
-                        
-                        <!--question prompt heading-->
-                        <tr class="warning">
-                            <td style="width:48px;">#</td>
-                            <td>Question</td>
-                            <td>How much of the time during the past month...</td>
-                        </tr>
-                        <!--end heading-->
-                        
-                        <!--populates PTSD questions from DS_DATA object records-->
-                        <apex:repeat value="{!items}" var="item"> 
-                        
-                            <!--conditional section heading, only appears when certain section(s) meet criteria (ie dissociative symptoms)-->
-                            <apex:outputPanel layout="none" rendered="{!IF((item.section == TRUE),'TRUE','FALSE')}">
-                                <tr class="warning">
-                                    <td colspan="3"><strong>{!item.content}</strong></td>
-                                </tr>
-                            </apex:outputPanel>
-                            <!--end conditional-->
+                        <div class="form-group">
                             
-                            <!--base question records-->
-                            <apex:outputPanel layout="none" rendered="{!IF((item.section == FALSE),'TRUE','FALSE')}">
-                                <tr>
-                                
-                                    <!--question number and symptom designation type concatinated display-->
-                                    <td>
-                                        <p>{!item.num} <small>{!item.symptom}</small></p>
-                                    </td> 
-                                    <!--end numbering-->
-                                    
-                                    <!--question-->
-                                    <td><apex:outputText value="{!item.content}" escape="false"/></td>
-                                    <!--end question-->
-                                    
-                                    <!--answer selection radiobutton controls-->
-                                    <td class="checkboxTD">
-                                        <apex:selectRadio value="{!obj[item.field]}" title="{!obj[item.field]}">
-                                            <apex:selectOptions value="{!RadioItems}"/>
-                                        </apex:selectRadio> 
-                                    </td>
-                                    <!--end answer selection-->
-                                    
-                                </tr>
-                            </apex:outputPanel>
-                            <!--end base questions-->
+                            <!--question-->
+                            <label class="col-md-6 col-lg-6 control-label label-bold">
+                                <!--question number and symptom designation type concatinated display-->
+                                <span class="nmbr">{!HTMLENCODE(item.num)} <small>{!HTMLENCODE(item.symptom)}</small></span>
+                                <!--end numbering-->
+                                <apex:outputText value="{!item.content}"/>
+                            </label>
+                            <!--end question-->
                             
-                        </apex:repeat>
-                        <!--end client question records from DATA-->
-                        
-                        <tr> <td colspan="3"> </td></tr><!--blank placeholding row-->
-                        
-                        <!--clinician instructions heading-->
-                        <tr>
-                            <td colspan="3" style="border-top: none;">
-                                <h4><u>Clinician:</u></h4>
-                                <h6>Check whether the reactions (thoughts and feelings) above appear to cause clinically significant <b><i>distress</i></b> or <b><i>functional impairment</i></b>.</h6>
-                            </td>
-                        </tr>
-                        <!--end clinician heading-->
-                        
-                        <!--distress section-->
-                        <tr class="warning"><td colspan="3">Clinically Significant Distress: (check if youth endorses #1 below) </td></tr>
-                        <tr>
-                            <td><p class="text-right">1.</p></td>
-                            <td>Do these reactions (thoughts and feelings) bother or upset you a lot?</td>
-                            <td class="clinicianCheckboxTD">
-                                <apex:selectRadio id="PTSD1__c" value="{!obj[bfVariableMap['PTSD1']]}" title="{!obj[bfVariableMap['PTSD1']]}">
-                                    <apex:selectOptions value="{!RadioYesNo}"/> 
+                            <!--answer selection radiobutton controls-->
+                            <div class="col-md-6 col-lg-6">
+                                <apex:selectRadio styleClass="radio-list" value="{!form.obj[item.field]}" title="{!form.obj[item.field]}">
+                                    <apex:selectOptions value="{!RadioItems}"/>
                                 </apex:selectRadio> 
-                            </td>
-                        </tr>
-                        <!--end distress-->
-                        
-                        <!--impairment section-->
-                        <tr class="warning"><td colspan="3">Clinically Significant Functional Impairment: (check if functional impairment at home, at school, in peer relationships, in developmental progression)</td></tr>
-                        
-                        <!--home sub-section-->
-                        <tr class="warning"><td colspan="3">Home: (check if youth endorses #1, #2, or #3 below)</td> </tr>
-                        
-                            <!--1. hard to get along at home?-->
-                            <tr>
-                                <td><p class="text-right">1.</p></td>
-                                <td>Do these reactions (thoughts and feelings) make it harder for you to get along with people at home?</td>
-                                <td class="clinicianCheckboxTD">
-                                    <apex:selectRadio id="PTSFH1__c" value="{!obj[bfVariableMap['PTSFH1']]}" title="{!obj[bfVariableMap['PTSFH1']]}">
-                                        <apex:selectOptions value="{!RadioYesNo}"/> 
-                                    </apex:selectRadio> 
-                                </td>
-                            </tr>
-                            <!--end get along home-->
+                            </div>
+                            <!--end answer selection-->
                             
-                            <!--2. get into trouble at home?-->
-                            <tr>
-                                <td><p class="text-right">2.</p></td>
-                                <td>Do these reactions (thoughts and feelings) get you into trouble at home?</td>
-                                <td class="clinicianCheckboxTD">
-                                    <apex:selectRadio id="PTSFH2__c" value="{!obj[bfVariableMap['PTSFH2']]}" title="{!obj[bfVariableMap['PTSFH2']]}">
-                                        <apex:selectOptions value="{!RadioYesNo}"/> 
-                                    </apex:selectRadio> 
-                                </td>
-                            </tr>
-                            <!--end into trouble home-->
-                            
-                            <!--3. cause other problems at home?-->
-                            <!--radiobutton answer control-->
-                            <tr>
-                                <td><p class="text-right">3.</p></td>
-                                <td>Do these reactions (thoughts and feelings) cause some other problem at home?</td>
-                                <td class="clinicianCheckboxTD">
-                                    <apex:selectRadio id="PTSFH3__c" value="{!obj[bfVariableMap['PTSFH3']]}" title="{!obj[bfVariableMap['PTSFH3']]}">
-                                        <apex:selectOptions value="{!RadioYesNo}"/> 
-                                    </apex:selectRadio> 
-                                </td>
-                            </tr>
-                            <!--end radiobuttion selection-->
-                            
-                            <!--open-ended describe answer field-->
-                            <tr>
-                                <td></td><!--blank space-->                             
-                                <td>
-                                    Describe:
-                                    <apex:inputField id="PTSFHSP__c" styleClass="form-control" value="{!obj[bfVariableMap['PTSFHSP']]}"/>
-                                </td>
-                                <td></td>
-                            </tr>
-                            <!--end describe answer field-->
-                            <!--end problems at home-->
-                        <!--end home-->
-                        
-                        <!--school sub-section-->
-                        <tr class="warning"><td colspan="3">School: (check if youth endorses #1 <i>or</i> #2 below) </td></tr>
-                        
-                            <!--1.performance in school?-->
-                            <tr>
-                                <td><p class="text-right">1.</p></td>
-                                <td>Do these reactions (thoughts and feelings) make it harder for you to do well in school? </td>
-                                <td class="clinicianCheckboxTD">
-                                    <apex:selectRadio id="PTSFS1__c" value="{!obj[bfVariableMap['PTSFS1']]}" title="{!obj[bfVariableMap['PTSFS1']]}">
-                                        <apex:selectOptions value="{!RadioYesNo}"/> 
-                                    </apex:selectRadio> 
-                                </td>
-                            </tr>
-                            <!--end performance in school-->
-                            
-                            <!--2. problems in school-->
-                            <!--radiobutton answer control-->
-                            <tr>
-                                <td><p class="text-right">2.</p></td>
-                                <td>Do these reactions (thoughts and feelings) cause other problems at school?</td>
-                                <td class="clinicianCheckboxTD">
-                                    <apex:selectRadio id="PTSFS2__c" value="{!obj[bfVariableMap['PTSFS2']]}" title="{!obj[bfVariableMap['PTSFS2']]}">
-                                        <apex:selectOptions value="{!RadioYesNo}"/> 
-                                    </apex:selectRadio> 
-                                </td>
-                            </tr>
-                            <!--end radiobuttion selection-->
-                            
-                            <!--open-ended describe answer field-->
-                            <tr>
-                                <td></td>
-                                <td>
-                                    Describe:
-                                    <apex:inputField id="PTSFSSP__c" styleClass="form-control" value="{!obj[bfVariableMap['PTSFSSP']]}"/>
-                                </td>
-                                <td></td>
-                            </tr>
-                            <!--end describe answer field-->
-                            <!--end school problems-->
-                        <!--end school-->
-                        
-                        <!--peers sub-section-->
-                        <tr class="warning"><td colspan="3">Peer Relationships: (check if youth endorses #1 below) </td></tr>
-                            <!--radiobutton answer control-->
-                            <tr>
-                                <td><p class="text-right">1.</p></td>
-                                <td>Do these reactions (thoughts and feelings) make it harder for you to get along with your friends or make new friends?</td>
-                                <td class="clinicianCheckboxTD">
-                                    <apex:selectRadio id="PTSFR1__c" value="{!obj[bfVariableMap['PTSFR1']]}" title="{!obj[bfVariableMap['PTSFR1']]}">
-                                        <apex:selectOptions value="{!RadioYesNo}"/> 
-                                    </apex:selectRadio> 
-                                </td>
-                            </tr>
-                            <!--end radiobuttion selection-->
-                            
-                            <!--open-ended describe answer field-->
-                            <tr>
-                                <td></td><!--blank space-->                             
-                                <td>
-                                    Describe:
-                                    <apex:inputField id="PTSFRSP__c" styleClass="form-control" value="{!obj[bfVariableMap['PTSFRSP']]}"/>
-                                </td>
-                                <td></td><!--blank space-->                             
-                            </tr>
-                            <!--end describe answer field-->
-                        <!--end peers-->
-                        
-                        <!--development sub-section-->
-                        <tr class="warning"><td colspan="3">Developmental Progression: (check if youth endorses #1 below)</td></tr>
-                            <!--1. hard to keep up w/ peers?-->
-                            <tr>
-                                <td><p class="text-right">1.</p></td>
-                                <td>Do these reactions (thoughts and feelings) make it harder for you to do important things that other kids your age are doing?</td>
-                                <td class="clinicianCheckboxTD">
-                                    <apex:selectRadio id="PTSFP1__c" value="{!obj[bfVariableMap['PTSFP1']]}" title="{!obj[bfVariableMap['PTSFP1']]}">
-                                        <apex:selectOptions value="{!RadioYesNo}"/> 
-                                    </apex:selectRadio> 
-                                </td>
-                            </tr>
-                            <!--end keep up-->
-                            
-                            <!--2. other dev problems-->
-                            <!--radiobutton answer control-->
-                            <tr>
-                                <td><p class="text-right">2.</p></td>
-                                <td>Other</td>
-                                <td class="clinicianCheckboxTD">
-                                    <apex:selectRadio id="PTSFP2__c" value="{!obj[bfVariableMap['PTSFP2']]}" title="{!obj[bfVariableMap['PTSFP2']]}">
-                                        <apex:selectOptions value="{!RadioYesNo}"/> 
-                                    </apex:selectRadio> 
-                                </td>
-                            </tr>
-                            <!--end radiobuttion selection-->
-                            
-                            <!--open-ended describe answer field-->
-                            <tr>
-                                <td></td><!--blank space-->                             
-                                <td>
-                                    Describe:
-                                    <apex:inputField id="PTSFPSP__c" styleClass="form-control" value="{!obj[bfVariableMap['PTSFPSP']]}"/>
-                                </td>
-                                <td></td><!--blank space-->
-                            </tr>
-                            <!--end describe answer field-->
-                            <!--end other devproblems-->
-                        <!--end development-->
-                        <!--end impairment-->
-                        
-                        <!--footer-->
-                        <tr>
-                            <!--citation information-->
-                            <td colspan="2" class="text-center complete-title"><small class="pull-left"><i>©2014: Robert S. Pynoos, M.D., M.P.H. and Alan M. Steinberg, Ph.D. All rights reserved.
-                            <br/>
-                            This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - Baseline - CRF Version 6 2014</i></small>
-                            <b>Complete?</b></td>
-   
-                            <!--Completion status control-->
-                            <td>
-                                <apex:selectList id="STATUS__c" styleClass="form-control input-sm" value="{!obj[bfVariableMap['STATUS']]}" size="1">
-                                    <apex:selectOption itemValue="Incomplete" itemLabel="Incomplete"/>
-                                    <apex:selectOption itemValue="Complete" itemLabel="Complete"/>
-                                </apex:selectList> 
-                            </td>
-                            <!--end completion status-->
-                        </tr>  
-                        <!--end footer-->                                  
-                        
-                    </tbody>
-                    <!--end PTSD CA content-->
-                </table>
+                        </div>
+                    </apex:outputPanel>
+                    <!--end base questions-->
+                    
+                </apex:repeat>
+                <!--end client question records from DATA-->
+
+                <!-- duration more than 1 month?-->
+                <div class="form-group">
+                    <label class="col-md-6 col-lg-6 control-label label-bold">
+                        <span class="nmbr"></span>
+                        Have some of these reactions lasted at least one month?
+                    </label>
+                    <div class="col-md-4 col-lg-2">
+                        <apex:selectList id="PTSDURA__c" styleClass="form-control input-sm" value="{!form.obj[bfVariableMap['PTSDURA']]}" size="1">
+                            <apex:selectOptions value="{!NYUOptionWithBlank}"/> 
+                        </apex:selectList>
+                    </div>
+                </div>
+                <!--end duration-->
                 
-            </div>
-            
-            <!--Save & view, save, and cancel control buttons for pageBlock-->
-            <apex:pageBlockButtons >
-                <apex:commandButton id="SaveView" action="{!saveViewReport}" value="Save & View Report"/>
-                <apex:commandButton id="Save" action="{!save}" value="Save"/>
-                <apex:commandButton id="Cancel" action="{!cancel}" value="Cancel"/>
-            </apex:pageBlockButtons><!--end buttons-->
-            
-        </apex:pageBlock><!--end ptsd pageblock-->
-    </apex:form>
+                <!--clinician instructions heading-->
+                <div class="alert alert-info">
+                    <h4><u>Clinician:</u></h4>
+                    <h6>Check whether the reactions (thoughts and feelings) above appear to cause clinically significant <b><i>distress</i></b> or <b><i>functional impairment</i></b>.</h6>   
+                </div>
+                <!--end clinician heading-->
+                
+                <!--distress section-->
+                <div class="form-group bg-primary">
+                    <label class="col-md-12 col-lg-12 control-label label-bold">Clinically Significant Distress: (check if youth endorses #1 below)</label>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-6 col-lg-6 control-label label-bold">
+                        <span class="nmbr">1.</span>
+                        Do these reactions (thoughts and feelings) bother or upset you a lot?
+                    </label>
+                    <div class="col-md-2 col-lg-2">
+                        <apex:selectRadio id="PTSD1__c" value="{!form.obj[bfVariableMap['PTSD1']]}" title="{!form.obj[bfVariableMap['PTSD1']]}">
+                            <apex:selectOptions value="{!RadioYesNo}"/> 
+                        </apex:selectRadio> 
+                    </div>
+                </div>
+                <!--end distress-->
+                
+                <!--impairment section-->
+                <div class="form-group bg-primary">
+                    <label class="col-md-12 col-lg-12 control-label label-bold">Clinically Significant Functional Impairment: (check if functional impairment at home, at school, in peer relationships, in developmental progression)</label>
+                </div>
+                <!--home sub-section-->
+                <div class="form-group">
+                    <label class="col-md-12 col-lg-12 control-label label-bold">Home: (check if youth endorses #1, #2, or #3 below)</label>
+                </div>
+                <!--1. hard to get along at home?-->
+                <div class="form-group">
+                    <label class="col-md-6 col-lg-6 control-label label-bold">
+                        <span class="nmbr">1.</span>
+                        Do these reactions (thoughts and feelings) make it harder for you to get along with people at home?
+                    </label>
+                    <div class="col-md-2 col-lg-2">
+                        <apex:selectRadio id="PTSFH1__c" value="{!form.obj[bfVariableMap['PTSFH1']]}" title="{!form.obj[bfVariableMap['PTSFH1']]}">
+                            <apex:selectOptions value="{!RadioYesNo}"/> 
+                        </apex:selectRadio> 
+                    </div>
+                </div>
+                <!--end get along home-->
+                
+                <!--2. get into trouble at home?-->
+                <div class="form-group">
+                    <label class="col-md-6 col-lg-6 control-label label-bold">
+                        <span class="nmbr">2.</span>
+                        Do these reactions (thoughts and feelings) get you into trouble at home?
+                    </label>
+                    <div class="col-md-6 col-lg-6">
+                        <apex:selectRadio id="PTSFH2__c" value="{!form.obj[bfVariableMap['PTSFH2']]}" title="{!form.obj[bfVariableMap['PTSFH2']]}">
+                            <apex:selectOptions value="{!RadioYesNo}"/> 
+                        </apex:selectRadio> 
+                    </div>
+                </div>
+                <!--end into trouble home-->
+                
+                <!--3. cause other problems at home?-->
+                <div class="form-group">
+                    <label class="col-md-6 col-lg-6 control-label label-bold">
+                        <span class="nmbr">3.</span>
+                        Do these reactions (thoughts and feelings) cause some other problem at home?
+                    </label>
+                    <div class="col-md-6 col-lg-6">
+                        <apex:selectRadio id="PTSFH3__c" value="{!form.obj[bfVariableMap['PTSFH3']]}" title="{!form.obj[bfVariableMap['PTSFH3']]}">
+                            <apex:selectOptions value="{!RadioYesNo}"/> 
+                        </apex:selectRadio>  
+                    </div>
+                </div>
+                
+                <!--open-ended describe answer field-->
+                <div class="form-group">
+                    <label class="col-md-6 col-lg-6 control-label label-bold">
+                        <span class="nmbr"></span>
+                        Describe:
+                    </label>
+                    <div class="col-md-6 col-lg-6">
+                        <apex:inputField id="PTSFHSP__c" styleClass="form-control" value="{!form.obj[bfVariableMap['PTSFHSP']]}"/> 
+                    </div>
+                </div>
+                <!--end describe answer field-->
+                <!--end problems at home-->
+                <!--end home-->
+                
+                <!--school sub-section-->
+                <div class="form-group bg-primary">
+                    <label class="col-md-12 col-lg-12 control-label label-bold">School: (check if youth endorses #1 <i>or</i> #2 below)</label>
+                </div>
+                
+                <!--1.performance in school?-->
+                <div class="form-group">
+                    <label class="col-md-6 col-lg-6 control-label label-bold">
+                        <span class="nmbr">2.</span>
+                        Do these reactions (thoughts and feelings) make it harder for you to do well in school?
+                    </label>
+                    <div class="col-md-6 col-lg-6">
+                        <apex:selectRadio id="PTSFS1__c" value="{!form.obj[bfVariableMap['PTSFS1']]}" title="{!form.obj[bfVariableMap['PTSFS1']]}">
+                            <apex:selectOptions value="{!RadioYesNo}"/> 
+                        </apex:selectRadio>
+                    </div>
+                </div>
+                <!--end performance in school-->
+                
+                <!--2. problems in school-->
+                <div class="form-group">
+                    <label class="col-md-6 col-lg-6 control-label label-bold">
+                        <span class="nmbr">2.</span>
+                        Do these reactions (thoughts and feelings) cause other problems at school?
+                    </label>
+                    <div class="col-md-6 col-lg-6">
+                        <apex:selectRadio id="PTSFS2__c" value="{!form.obj[bfVariableMap['PTSFS2']]}" title="{!form.obj[bfVariableMap['PTSFS2']]}">
+                            <apex:selectOptions value="{!RadioYesNo}"/> 
+                        </apex:selectRadio>  
+                    </div>
+                </div>
+                
+                <!--open-ended describe answer field-->
+                <div class="form-group">
+                    <label class="col-md-6 col-lg-6 control-label label-bold">
+                        <span class="nmbr"></span>
+                        Describe:
+                    </label>
+                    <div class="col-md-6 col-lg-6">
+                        <apex:inputField id="PTSFSSP__c" styleClass="form-control" value="{!form.obj[bfVariableMap['PTSFSSP']]}"/>
+                    </div>
+                </div>
+                <!--end describe answer field-->
+                
+                <!--end school problems-->
+                <!--end school-->
+                
+                <!--Peer Relationships-->
+                <div class="form-group bg-primary">
+                    <label class="col-md-12 col-lg-12 control-label label-bold">Peer Relationships: (check if youth endorses #1 below)</label>
+                </div>
+                
+                <!--1.make nre friend?-->
+                <div class="form-group">
+                    <label class="col-md-6 col-lg-6 control-label label-bold">
+                        <span class="nmbr">1.</span>
+                        Do these reactions (thoughts and feelings) make it harder for you to get along with your friends or make new friends?
+                    </label>
+                    <div class="col-md-6 col-lg-6">
+                        <apex:selectRadio id="PTSFR1__c" value="{!form.obj[bfVariableMap['PTSFR1']]}" title="{!form.obj[bfVariableMap['PTSFR1']]}">
+                            <apex:selectOptions value="{!RadioYesNo}"/> 
+                        </apex:selectRadio> 
+                    </div>
+                </div>
+                <!--end make nre friend-->
+                
+                <!--open-ended describe answer field-->
+                <div class="form-group">
+                    <label class="col-md-6 col-lg-6 control-label label-bold">
+                        <span class="nmbr"></span>
+                        Describe:
+                    </label>
+                    <div class="col-md-6 col-lg-6">
+                        <apex:inputField id="PTSFRSP__c" styleClass="form-control" value="{!form.obj[bfVariableMap['PTSFRSP']]}"/>
+                    </div>
+                </div>
+                <!--end describe answer field-->
+                
+                <!--end peers-->
+                
+                <!--development sub-section-->
+                <div class="form-group bg-primary">
+                    <label class="col-md-12 col-lg-12 control-label label-bold">Developmental Progression: (check if youth endorses #1 below)</label>
+                </div>
+                
+                <!--1. hard to keep up w/ peers?-->
+                <div class="form-group">
+                    <label class="col-md-6 col-lg-6 control-label label-bold">
+                        <span class="nmbr">1.</span>
+                        Do these reactions (thoughts and feelings) make it harder for you to do important things that other kids your age are doing?
+                    </label>
+                    <div class="col-md-6 col-lg-6">
+                        <apex:selectRadio id="PTSFP1__c" value="{!form.obj[bfVariableMap['PTSFP1']]}" title="{!form.obj[bfVariableMap['PTSFP1']]}">
+                            <apex:selectOptions value="{!RadioYesNo}"/> 
+                        </apex:selectRadio> 
+                    </div>
+                </div>
+                <!--end keep up-->
+                
+                <!--2. other dev problems-->
+                <div class="form-group">
+                    <label class="col-md-6 col-lg-6 control-label label-bold">
+                        <span class="nmbr">2.</span>
+                        Other
+                    </label>
+                    <div class="col-md-6 col-lg-6">
+                        <apex:selectRadio id="PTSFP2__c" value="{!form.obj[bfVariableMap['PTSFP2']]}" title="{!form.obj[bfVariableMap['PTSFP2']]}">
+                            <apex:selectOptions value="{!RadioYesNo}"/> 
+                        </apex:selectRadio>  
+                    </div>
+                </div>
+                
+                <!--open-ended describe answer field-->
+                <div class="form-group">
+                    <label class="col-md-6 col-lg-6 control-label label-bold">
+                        <span class="nmbr"></span>
+                        Describe:
+                    </label>
+                    <div class="col-md-6 col-lg-6">
+                        <apex:inputField id="PTSFPSP__c" styleClass="form-control" value="{!form.obj[bfVariableMap['PTSFPSP']]}"/>
+                    </div>
+                </div>
+                <!--end describe answer field-->
+                <!--end other devproblems-->
+                <!--end development-->
+                <!--end impairment-->
+                
+                <!--Completion status control-->
+                <div class="form-group no-border-bottom no-space-bottom">
+                    <label class="control-label col-md-2 col-md-offset-8 text-right">Complete?</label>
+                    <div class="col-md-2">
+                        <apex:selectList id="STATUS__c" styleClass="pull-right form-control input-sm" value="{!form.obj[bfVariableMap['STATUS']]}" size="1">
+                            <apex:selectOption itemValue="Incomplete" itemLabel="Incomplete"/>
+                            <apex:selectOption itemValue="Complete" itemLabel="Complete"/>
+                        </apex:selectList> 
+                    </div>
+                </div>
+                <!--end completion status-->
+                
+                <!--end PTSD CA content-->
+                
+            </apex:pageBlock>
+            <!--end ptsd pageblock-->
+        </apex:form>
+        
+    </div>
+    
+    <!--citation information footer-->
+    <p class="footer" style="text-align:center ">
+        <small class="pull-left">
+            <i>
+                ©2014: Robert S. Pynoos, M.D., M.P.H. and Alan M. Steinberg, Ph.D. All rights reserved.
+                <br/>
+                This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - Baseline - CRF Version 6 2014
+            </i>
+        </small>
+    </p>
     
 </apex:page>

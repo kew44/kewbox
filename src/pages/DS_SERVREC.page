@@ -1,1182 +1,1501 @@
 <apex:page StandardController="DS_Functioning_Forms_B__c" extensions="DS_SERVREC_Controller" >
-
-    <!--JQuery -->
-    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.9.1.js')}"  /><!--allows for JQuery dependencies-->
-    <script> $j = jQuery.noConflict(); </script><!--Reserves the '$' token for JQuery only-->
     
-    <!-- Bootstrap -->
-        <link href="{!URLFOR($Resource.VFbootstrap3, '/css/VFbootstrap.css')}" rel="stylesheet" media="screen"/>
-            <apex:includeScript value="{!URLFOR($Resource.VFbootstrap3, '/js/bootstrap.min.js')}"/>
+    <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
+    
+    <style>
+        .instruction { font-size: 16px !important; }
+
+        .DS-SERVREC-table tr td:first-child { max-width: 475px; }
+    </style>
+
+    <div class="bootwrap">
+        <!--Begin form content-->
+        <apex:form id="DS_SERVREC_FORM">
+
+            <apex:sectionHeader title="{!form.title}"  subtitle="{!form.subtitle}"/><br/>
+            
+            <!-- pageblock to show ClientInformation header as described in Utility class-->
+            <apex:pageBlock title="Client Information">
+                <apex:outputText value="{!form.ClientInfo}" escape="false"/>
+            </apex:pageBlock> <!--end client info pageBlock--> 
+            
+            <!-- primary content pageBlock container-->
+            <apex:pageBlock title="{!form.title}" >
                 
-                <!--link to the CSS resource in Salesforce internal document-->
-                    <apex:stylesheet value="{!$Resource.CustomCss}" />
+                <!--placeholding structure that allows for system message display-->
+                <apex:pageMessages />
+                
+                <!--instructions -->
+                <blockquote class="instruction">
+                    <ul class="list-unstyled">
+                        <li>
+                            Has the child received any of these services or been placed in any of the following within the past 30 days (excluding today's visit) or during their lifetime (excluding the past 30 days)?
+                        </li>
+                        <li>
+                            Did the child receive the services as a result of trauma (could have been anytime during his or her life)?
+                        </li>
+                        <li>
+                            These may include services provided by your center, as well as services provided by any other clinician, setting, or sector.
+                        </li>
+                    </ul>
+                </blockquote>
+                <!--end instructions-->
+                <table class="table DS-SERVREC-table">
+                    <!--frequency heading-->
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>
+                                <apex:outputText value="{!tableHeaderTitle}"></apex:outputText>
+                            </th>
 
-                        <!--provides framework for "skip-logic" capabilities-->
-                            <script>function setFocusOnLoad() {}</script>
-                            <script> var skipElement = JSON.parse("{!JSENCODE(skipElementToJson)}"); </script>
-                            <script src="{!URLFOR($Resource.Scripts, '/skipLogic.js')}"></script>
-    
-    <!--JQuery script for allowing de-selection of radiobuttons-->
-    <script>
-    $j(document).ready(function(){        
-        $j('input[type="radio"]').click(function(){            
-            var previousValue = $j(this).attr('title');
-            var val = $j(this).val();
-            var name = $j(this).attr('name');      
-            
-            if (previousValue == val) {  // uncheck radio button
-                $j(this).removeAttr('checked').change();
-                $j("input[name='"+name+"']:radio").attr('title', '');
-            }
-            else {
-                $j("input[name='"+name+"']:radio").attr('title', val);
-            }            
-        });        
-    });    
-    </script><!--End JQuery deselect radiobutton value script -->        
-    
-    <!-- "Breadcrumb" heading allows user to navigate to the ClientSummary page -->
-    <apex:outputPanel rendered="{!if(forceRedirect = '1', false, true)}" layout="none">
-        <script>
-        $j(document).ready(function() {
-            $j('.bPageTitle').append('<div class="ptBreadcrumb">&nbsp;«&nbsp;<a href="/apex/ClientSummary?s=0&id={!client.id}">Back to Client Summary</a></div>');
-        });
-        
-        </script>
-    </apex:outputPanel>
-    <!--End breadcrumb link--> 
-        
-    <!--Begin form content-->
-    <apex:form id="DS_SERVREC_FORM">
-        <apex:sectionHeader title="Services Recieved"  subtitle="{!subtitle}"/><br/>
-        
-        <!-- pageblock to show ClientInformation header as described in Utility class-->
-        <apex:pageBlock title="Client Information">
-            <div id="force">
-                <apex:outputText value="{!ClientInfo}" escape="false"/>
-            </div>
-        </apex:pageBlock> <!--end client info pageBlock--> 
-        
-        <!-- primary content pageBlock container-->
-        <apex:pageBlock title="Services Received in Past 30 Days, Lifetime, and as a Result of Trauma" >
-            <apex:pageMessages /><!--placeholding structure that allows for system message display-->
-            
-                                <!--instructions -->
-            <div>
-                <b>BASELINE INSTRUCTIONS: Has the child received any of these services or been placed in any of the following within the past 30 days (excluding today's visit) or during their lifetime (excluding the past 30 days)? Did the child receive the services as a result of trauma (could have been anytime during his or her life)?  These may include services provided by your center, as well as services provided by any other clinician, setting, or sector.</b><br />
-            </div> 
-                                <!--end instructions-->
-                                
-            <div id="force">
-                <table class="table DS-table">
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <th>Lifetime</th>
+                            <th>As a Result of Trauma</th>
+                            </apex:outputPanel>
+
+                        </tr>
+                    </thead>
+                    <!--end heading-->
                     <tbody>     
-                    
-                        <!--frequency heading-->
-                        <thead>
-                            <tr>
-                                <th >      </th>
-                                <th  >Past 30 Days</th><br />
-                                <th  >Lifetime</th><br />
-                                <th  >As a Result of Trauma</th><br />
-                            </tr>
-                        </thead>
-                        <!--end heading-->
-                        
+                                               
                         <!--1. inpatient treatment-->
-                        <td><p ><b>1.</b> Inpatient psychiatric unit or a hospital for mental health problems</p></td>
+                        <tr> 
+                            <td>
+                                <label class="control-label">
+                                    <span class="nmbr">1.</span>
+                                    Inpatient psychiatric unit or a hospital for mental health problems
+                                </label>
+                            </td>
                             
                             <!--past 30 days indicator-->
                             <td >
-                                <apex:selectRadio styleClass="form-control2"  title="{!obj.BOSINPSY__c}" id="BOSINPSY__c" value="{!obj.BOSINPSY__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio title="{!form.obj[bfVariableMap['OSINPSY']]}" id="OSINPSY__c" value="{!form.obj[bfVariableMap['OSINPSY']]}" layout="pageDirection">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>                            
                             </td><!--end 30 days-->
                             
+                            
                             <!--lifetime indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BLTINPSY__c" value="{!obj.BLTINPSY__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="LTINPSY__c" value="{!form.obj[bfVariableMap['LTINPSY']]}" layout="pageDirection">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td> <!--end lifetime-->
+                            </td> 
+                            </apex:outputPanel>
+                            <!--end lifetime-->
+                            
                             
                             <!--result of trauma indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BTRINPSY__c" value="{!obj.BTRINPSY__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="TRINPSY__c" value="{!form.obj[bfVariableMap['TRINPSY']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td>   <!--end trauma--> 
+                            </td>   
+                            </apex:outputPanel>
+                            <!--end trauma--> 
+                        </tr>
                         <!--end inpatient-->
                         
                         <tr>
-                        <!--2. residential treatment-->
-                        <td><p ><b>2.</b> Residential treatment center (Self-contained treatment facility where the child lives and goes to school)</p></td>
+                            <!--2. residential treatment-->
+                            <td>
+                                <label class="control-label">
+                                    <span class="nmbr">2.</span>
+                                    Residential treatment center (Self-contained treatment facility where the child lives and goes to school)
+                                </label>
+                            </td>
                             
                             <!--past 30 days indicator-->
                             <td>
-                                    <apex:selectRadio id="BOSRES__c" value="{!obj.BOSRES__c}" layout="pageDirection">
-                                        <apex:selectOptions value="{!InItems}"/>
-                                    </apex:selectRadio>
+                                <apex:selectRadio id="OSRES__c" value="{!form.obj[bfVariableMap['OSRES']]}" layout="pageDirection">
+                                    <apex:selectOptions value="{!NYUOption}"/>
+                                </apex:selectRadio>
                             </td><!--end 30 days-->
                             
                             <!--lifetime indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                    <apex:selectRadio id="BLTRES__c" value="{!obj.BLTRES__c}" layout="pageDirection">
-                                        <apex:selectOptions value="{!InItems}"/>
-                                    </apex:selectRadio>
-                            </td><!--end lifetime-->
+                                <apex:selectRadio id="LTRES__c" value="{!form.obj[bfVariableMap['LTRES']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
+                                </apex:selectRadio>
+                            </td> 
+                            </apex:outputPanel>
+                            <!--end lifetime-->
                             
                             <!--result of trauma indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                    <apex:selectRadio id="BTRRES__c" value="{!obj.BTRRES__c}" layout="pageDirection">
-                                        <apex:selectOptions value="{!InItems}"/>
-                                    </apex:selectRadio>
-                            </td><!--end trauma--> 
-                        <!--end residential-->
+                                <apex:selectRadio id="TRRES__c" value="{!form.obj[bfVariableMap['TRRES']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
+                                </apex:selectRadio>
+                            </td>   
+                            </apex:outputPanel>
+                            <!--end trauma--> 
+                            <!--end residential-->
                         </tr>           
                         
                         <tr>
-                        <!--3. correctional institution-->
-                        <td><p ><b>3.</b> Detention center, training school, jail, or prison</p></td>
+                            <!--3. correctional institution-->
+                            <td>
+                                <label class="control-label">
+                                    <span class="nmbr">3.</span> 
+                                    Detention center, training school, jail, or prison
+                                </label>
+                            </td>
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="BOSDET__c" value="{!obj.BOSDET__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="OSDET__c" value="{!form.obj[bfVariableMap['OSDET']]}" layout="pageDirection">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
-                        
+                            
                             <!--lifetime indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BLTDET__c" value="{!obj.BLTDET__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="LTDET__c" value="{!form.obj[bfVariableMap['LTDET']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end lifetime-->
-                        
+                            </td> 
+                            </apex:outputPanel>
+                            <!--end lifetime-->
+                            
                             <!--result of trauma indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BTRDET__c" value="{!obj.BTRDET__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="TRDET__c" value="{!form.obj[bfVariableMap['TRDET']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end trauma--> 
-                        <!--end institution-->
+                            </td>   
+                            </apex:outputPanel>
+                            <!--end trauma--> 
+                            <!--end institution-->
                         </tr>
                         
                         <tr>
-                        <!--4. group home-->
-                        <td><p ><b>4.</b> Group home (Group residence in a community setting)</p></td>
+                            <!--4. group home-->
+                            <td>
+                                <label class="control-label">
+                                    <span class="nmbr">4.</span>
+                                    Group home (Group residence in a community setting)
+                                </label>
+                            </td>
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="BOSGROUP__c" value="{!obj.BOSGROUP__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="OSGROUP__c" value="{!form.obj[bfVariableMap['OSGROUP']]}" layout="pageDirection">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
-                        
+                            
                             <!--lifetime indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BLTGROUP__c" value="{!obj.BLTGROUP__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="LTGROUP__c" value="{!form.obj[bfVariableMap['LTGROUP']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end lifetime-->
-                        
+                            </td> 
+                            </apex:outputPanel>
+                            <!--end lifetime-->
+                            
                             <!--result of trauma indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BTRGROUP__c" value="{!obj.BTRGROUP__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="TRGROUP__c" value="{!form.obj[bfVariableMap['TRGROUP']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end trauma--> 
-                        <!--end group home-->
+                            </td>   
+                            </apex:outputPanel>
+                            <!--end trauma--> 
+                            <!--end group home-->
                         </tr>
                         
                         <tr>
-                        <!--5. foster treatment-->
-                        <td><p ><b>5.</b> Treatment foster care (Placement with foster parents who receive special training and supervision to help children with problems) </p></td>
+                            <!--5. foster treatment-->
+                            <td>
+                                <label class="control-label">
+                                    <span class="nmbr">5.</span>
+                                    Treatment foster care (Placement with foster parents who receive special training and supervision to help children with problems)
+                                </label>
+                            </td>
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="BOSTXFOS__c" value="{!obj.BOSTXFOS__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="OSTXFOS__c" value="{!form.obj[bfVariableMap['OSTXFOS']]}" layout="pageDirection">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
-                        
+                            
                             <!--lifetime indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BLTTXFOS__c" value="{!obj.BLTTXFOS__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="LTTXFOS__c" value="{!form.obj[bfVariableMap['LTTXFOS']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end lifetime-->
-                        
+                            </td> 
+                            </apex:outputPanel>
+                            <!--end lifetime-->
+                            
                             <!--result of trauma indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BTRTXFOS__c" value="{!obj.BTRTXFOS__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="TRTXFOS__c" value="{!form.obj[bfVariableMap['TRTXFOS']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end trauma--> 
-                        <!--end foster-->
+                            </td>   
+                            </apex:outputPanel>
+                            <!--end trauma--> 
+                            <!--end foster-->
                         </tr>
                         
                         <tr>
-                        <!--6. probation officer-->
-                        <td><p ><b>6.</b> Probation officer or court counselor</p></td>
+                            <!--6. probation officer-->
+                            <td>
+                                <label class="control-label">
+                                    <span class="nmbr">6.</span>
+                                    Probation officer or court counselor
+                                </label>
+                            </td>
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="BOSPROB__c" value="{!obj.BOSPROB__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="OSPROB__c" value="{!form.obj[bfVariableMap['OSPROB']]}" layout="pageDirection">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
-                        
+                            
                             <!--lifetime indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BLTPROB__c" value="{!obj.BLTPROB__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="LTPROB__c" value="{!form.obj[bfVariableMap['LTPROB']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end lifetime-->
-                        
+                            </td> 
+                            </apex:outputPanel>
+                            <!--end lifetime-->
+                            
                             <!--result of trauma indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BTRPROB__c" value="{!obj.BTRPROB__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="TRPROB__c" value="{!form.obj[bfVariableMap['TRPROB']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end trauma--> 
-                        <!--end probation officer-->
+                            </td>   
+                            </apex:outputPanel>
+                            <!--end trauma--> 
+                            <!--end probation officer-->
                         </tr>
                         
                         <tr>
-                        <!--7. day treatment-->
-                        <td><p ><b>7.</b> Day treatment program (Day program that includes a focus on therapy and may also provide education while the child is there)</p></td>
+                            <!--7. day treatment-->
+                            <td>
+                                <label class="control-label">
+                                    <span class="nmbr">7.</span>
+                                    Day treatment program (Day program that includes a focus on therapy and may also provide education while the child is there)
+                                </label>
+                            </td>
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="BOSDAYTR__c" value="{!obj.BOSDAYTR__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="OSDAYTR__c" value="{!form.obj[bfVariableMap['OSDAYTR']]}" layout="pageDirection">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
-                        
+                            
                             <!--lifetime indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BLTDAYTR__c" value="{!obj.BLTDAYTR__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="LTDAYTR__c" value="{!form.obj[bfVariableMap['LTDAYTR']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end lifetime-->
-                        
+                            </td> 
+                            </apex:outputPanel>
+                            <!--end lifetime-->
+                            
                             <!--result of trauma indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BTRDAYTR__c" value="{!obj.BTRDAYTR__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="TRDAYTR__c" value="{!form.obj[bfVariableMap['TRDAYTR']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end trauma--> 
-                        <!--end day treatment-->
+                            </td>   
+                            </apex:outputPanel>
+                            <!--end trauma--> 
+                            <!--end day treatment-->
                         </tr>
                         
                         <tr>
-                        <!--8. case management-->
-                        <td><p ><b>8.</b> Case management or care coordination (Someone who helps the child get the kinds of services s/he needs)</p></td>
+                            <!--8. case management-->
+                            <td>
+                                <label class="control-label">
+                                    <span class="nmbr">8.</span>
+                                    Case management or care coordination (Someone who helps the child get the kinds of services s/he needs)
+                                </label>
+                            </td>
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="BOSCASMG__c" value="{!obj.BOSCASMG__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="OSCASMG__c" value="{!form.obj[bfVariableMap['OSCASMG']]}" layout="pageDirection">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
-                        
+                            
                             <!--lifetime indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BLTCASMG__c" value="{!obj.BLTCASMG__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="LTCASMG__c" value="{!form.obj[bfVariableMap['LTCASMG']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end lifetime-->
-                        
+                            </td> 
+                            </apex:outputPanel>
+                            <!--end lifetime-->
+                            
                             <!--result of trauma indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BTRCASMG__c" value="{!obj.BTRCASMG__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="TRCASMG__c" value="{!form.obj[bfVariableMap['TRCASMG']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end trauma--> 
-                        <!--end case management-->
+                            </td>   
+                            </apex:outputPanel>
+                            <!--end trauma--> 
+                            <!--end case management-->
                         </tr>
                         
                         <tr>
-                        <!--9. in-home-->
-                        <td><p ><b>9.</b> In-home counseling (Services, therapy, or treatment provided in the child’s home)</p></td>
+                            <!--9. in-home-->
+                            <td>
+                                <label class="control-label">
+                                    <span class="nmbr">9.</span>
+                                    In-home counseling (Services, therapy, or treatment provided in the child’s home)
+                                </label>
+                            </td>
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="BOSINHME__c" value="{!obj.BOSINHME__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="OSINHME__c" value="{!form.obj[bfVariableMap['OSINHME']]}" layout="pageDirection">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
-                        
+                            
                             <!--lifetime indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BLTINHME__c" value="{!obj.BLTINHME__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="LTINHME__c" value="{!form.obj[bfVariableMap['LTINHME']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end lifetime-->
-                        
+                            </td> 
+                            </apex:outputPanel>
+                            <!--end lifetime-->
+                            
                             <!--result of trauma indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BTRINHME__c" value="{!obj.BTRINHME__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="TRINHME__c" value="{!form.obj[bfVariableMap['TRINHME']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end trauma--> 
-                        <!--end in-home-->
+                            </td>   
+                            </apex:outputPanel>
+                            <!--end trauma--> 
+                            <!--end in-home-->
                         </tr>
                         
                         <tr>
-                        <!--10. outpatient-->
-                        <td><p ><b>10.</b> Outpatient therapy (From psychologist, social worker, therapist, or other counselor)</p></td>
+                            <!--10. outpatient-->
+                            <td>
+                                <label class="control-label">
+                                    <span class="nmbr">10.</span>
+                                    Outpatient therapy (From psychologist, social worker, therapist, or other counselor)
+                                </label>
+                            </td>
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="BOSOUTTX__c" value="{!obj.BOSOUTTX__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="OSOUTTX__c" value="{!form.obj[bfVariableMap['OSOUTTX']]}" layout="pageDirection">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
-                        
+                            
                             <!--lifetime indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BLTOUTTX__c" value="{!obj.BLTOUTTX__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="LTOUTTX__c" value="{!form.obj[bfVariableMap['LTOUTTX']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end lifetime-->
-                        
+                            </td> 
+                            </apex:outputPanel>
+                            <!--end lifetime-->
+                            
                             <!--result of trauma indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BTROUTTX__c" value="{!obj.BTROUTTX__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="TROUTTX__c" value="{!form.obj[bfVariableMap['TROUTTX']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end trauma--> 
-                        <!--end outpatient-->
+                            </td>   
+                            </apex:outputPanel>
+                            <!--end trauma--> 
+                            <!--end outpatient-->
+                        </tr>
+
+                        <tr>
+                            <th></th>
+                            <th><apex:outputText value="{!tableHeaderTitle}"></apex:outputText></th>
+
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <th>Lifetime</th>
+                            <th>As a Result of Trauma</th>
+                            </apex:outputPanel>
+                        </tr>
+
+                        <tr>
+                            <!--11.outpatient psychiatrist-->
+                            <td>
+                                <label class="control-label">
+                                    <span class="nmbr">11.</span>
+                                    Outpatient treatment from a psychiatrist
+                                </label>
+                            </td>
+                            
+                            <!--past 30 days indicator-->
+                            <td>
+                                <apex:selectRadio id="OSOUTPS__c" value="{!form.obj[bfVariableMap['OSOUTPS']]}" layout="pageDirection">
+                                    <apex:selectOptions value="{!NYUOption}"/>
+                                </apex:selectRadio>
+                            </td><!--end 30 days-->
+                            
+                            <!--lifetime indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:selectRadio id="LTOUTPS__c" value="{!form.obj[bfVariableMap['LTOUTPS']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
+                                </apex:selectRadio>
+                            </td> 
+                            </apex:outputPanel>
+                            <!--end lifetime-->
+                            
+                            <!--result of trauma indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:selectRadio id="TROUTPS__c" value="{!form.obj[bfVariableMap['TROUTPS']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
+                                </apex:selectRadio>
+                            </td>   
+                            </apex:outputPanel>
+                            <!--end trauma--> 
+                            <!--end outpatient psych-->
                         </tr>
                         
                         <tr>
-                        <!--11.outpatient psychiatrist-->
-                        <td><p ><b>11.</b> Outpatient treatment from a psychiatrist</p></td>
+                            <!--12. primary care-->
+                            <td>
+                                <label class="control-label">
+                                    <span class="nmbr">12.</span>
+                                    Primary care physician/pediatrician for symptoms related to trauma or emotional/behavioral problems (Excluding emergency department)
+                                </label>
+                            </td>
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="BOSOUTPS__c" value="{!obj.BOSOUTPS__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="OSPRIMC__c" value="{!form.obj[bfVariableMap['OSPRIMC']]}" layout="pageDirection">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
-                        
+                            
                             <!--lifetime indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BLTOUTPS__c" value="{!obj.BLTOUTPS__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="LTPRIMC__c" value="{!form.obj[bfVariableMap['LTPRIMC']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end lifetime-->
-                        
+                            </td> 
+                            </apex:outputPanel>
+                            <!--end lifetime-->
+                            
                             <!--result of trauma indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BTROUTPS__c" value="{!obj.BTROUTPS__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="TRPRIMC__c" value="{!form.obj[bfVariableMap['TRPRIMC']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end trauma--> 
-                        <!--end outpatient psych-->
+                            </td>   
+                            </apex:outputPanel>
+                            <!--end trauma--> 
+                            <!--end primary care-->
                         </tr>
                         
                         <tr>
-                        <!--12. primary care-->
-                        <td><p ><b>12.</b> Primary care physician/pediatrician for  
-                            symptoms related to trauma or emotional/  
-                            behavioral problems.  (Excluding emergency department)</p> 
-                        </td>
+                            <!--13. school counselor-->
+                            <td>
+                                <label class="control-label">
+                                    <span class="nmbr">13.</span>
+                                    School counselor, school psychologist, or school social worker (For behavioral or emotional problems)
+                                </label>
+                            </td>
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="BOSPRIMC__c" value="{!obj.BOSPRIMC__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="OSSCHCN__c" value="{!form.obj[bfVariableMap['OSSCHCN']]}" layout="pageDirection">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
-                        
+                            
                             <!--lifetime indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BLTPRIMC__c" value="{!obj.BLTPRIMC__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="LTSCHCN__c" value="{!form.obj[bfVariableMap['LTSCHCN']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end lifetime-->
-                        
+                            </td> 
+                            </apex:outputPanel>
+                            <!--end lifetime-->
+                            
                             <!--result of trauma indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BTRPRIMC__c" value="{!obj.BTRPRIMC__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="TRSCHCN__c" value="{!form.obj[bfVariableMap['TRSCHCN']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end trauma--> 
-                        <!--end primary care-->
+                            </td>   
+                            </apex:outputPanel>
+                            <!--end trauma--> 
+                            <!--end school counselor-->
                         </tr>
                         
                         <tr>
-                        <!--13. school counselor-->
-                        <td><p ><b>13.</b> School counselor, school psychologist, or school social worker (For behavioral or emotional problems)</p></td>
+                            <!--14. special class-->
+                            <td>
+                                <label class="control-label">
+                                    <span class="nmbr">14.</span>
+                                    Special class, special school, or Early Intervention Services (Part B or C) (For all or part of the day)
+                                </label>
+                            </td>
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="BOSSCHCN__c" value="{!obj.BOSSCHCN__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="OSSPCL__c" value="{!form.obj[bfVariableMap['OSSPCL']]}" layout="pageDirection">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
-                        
+                            
                             <!--lifetime indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BLTSCHCN__c" value="{!obj.BLTSCHCN__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="LTSPCL__c" value="{!form.obj[bfVariableMap['LTSPCL']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end lifetime-->
-                        
+                            </td> 
+                            </apex:outputPanel>
+                            <!--end lifetime-->
+                            
                             <!--result of trauma indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BTRSCHCN__c" value="{!obj.BTRSCHCN__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="TRSPCL__c" value="{!form.obj[bfVariableMap['TRSPCL']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end trauma--> 
-                        <!--end school counselor-->
+                            </td>   
+                            </apex:outputPanel>
+                            <!--end trauma--> 
+                            <!--end special class-->
                         </tr>
                         
                         <tr>
-                        <!--14. special class-->
-                        <td><p ><b>14.</b> Special class, special school, or Early Intervention Services (Part B or C) (For all or part of the day)</p></td>
+                            <!--15. welfare-->
+                            <td>
+                                <label class="control-label">
+                                    <span class="nmbr">15.</span>
+                                    Child welfare (Excluding foster care)
+                                </label>
+                            </td>
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="BOSSPCL__c" value="{!obj.BOSSPCL__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="OSCHWE2__c" value="{!form.obj[bfVariableMap['OSCHWE2']]}" layout="pageDirection">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
-                        
+                            
                             <!--lifetime indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BLTSPCL__c" value="{!obj.BLTSPCL__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="LTCHWE2__c" value="{!form.obj[bfVariableMap['LTCHWE2']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end lifetime-->
-                        
+                            </td> 
+                            </apex:outputPanel>
+                            <!--end lifetime-->
+                            
                             <!--result of trauma indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BTRSPCL__c" value="{!obj.BTRSPCL__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="TRCHWE2__c" value="{!form.obj[bfVariableMap['TRCHWE2']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end trauma--> 
-                        <!--end special class-->
+                            </td>   
+                            </apex:outputPanel>
+                            <!--end trauma--> 
+                            <!--end welfare-->
                         </tr>
                         
                         <tr>
-                        <!--15. welfare-->
-                        <td><p ><b>15.</b> Child welfare (Excluding foster care)</p></td>
+                            <!--16. social services-->
+                            <td>
+                                <label class="control-label">
+                                    <span class="nmbr">16.</span>
+                                    Social services other than child welfare (e.g., TANF, food stamps, child care)
+                                </label>
+                            </td>
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="BOSCHWE2__c" value="{!obj.BOSCHWE2__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="OSSOCSE__c" value="{!form.obj[bfVariableMap['OSSOCSE']]}" layout="pageDirection">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
-                        
-                            <!--lifetime indicator-->
-                            <td>
-                                <apex:selectRadio id="BLTCHWE2__c" value="{!obj.BLTCHWE2__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
-                                </apex:selectRadio>
-                            </td><!--end lifetime-->
-                        
-                            <!--result of trauma indicator-->
-                            <td>
-                                <apex:selectRadio id="BTRCHWE2__c" value="{!obj.BTRCHWE2__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
-                                </apex:selectRadio>
-                            </td><!--end trauma--> 
-                        <!--end welfare-->
-                        </tr>
-                        
-                        <tr>
-                        <!--16. social services-->
-                        <td><p ><b>16.</b> Social services other than child welfare (e.g., TANF, food stamps, child care)</p></td>
                             
-                            <!--past 30 days indicator-->
-                            <td>
-                                <apex:selectRadio id="BOSSOCSE__c" value="{!obj.BOSSOCSE__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
-                                </apex:selectRadio>
-                            </td><!--end 30 days-->
-                                                
                             <!--lifetime indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BLTSOCSE__c" value="{!obj.BLTSOCSE__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="LTSOCSE__c" value="{!form.obj[bfVariableMap['LTSOCSE']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end lifetime-->
-                        
+                            </td> 
+                            </apex:outputPanel>
+                            <!--end lifetime-->
+                            
                             <!--result of trauma indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BTRSOCSE__c" value="{!obj.BTRSOCSE__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="TRSOCSE__c" value="{!form.obj[bfVariableMap['TRSOCSE']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end trauma--> 
-                        <!--end social services-->
+                            </td>   
+                            </apex:outputPanel>
+                            <!--end trauma--> 
+                            <!--end social services-->
                         </tr>   
                         
                         <tr>
-                        <!--17. foster care-->
-                        <td><p ><b>17.</b> Foster care (Placement in kinship or non-relative foster care)</p></td>
+                            <!--17. foster care-->
+                            <td>
+                                <label class="control-label">
+                                    <span class="nmbr">17.</span>
+                                    Foster care (Placement in kinship or non-relative foster care)
+                                </label>
+                            </td>
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="BOSFOST__c" value="{!obj.BOSFOST__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="OSFOST__c" value="{!form.obj[bfVariableMap['OSFOST']]}" layout="pageDirection">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
-                        
+                            
                             <!--lifetime indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BLTFOST__c" value="{!obj.BLTFOST__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="LTFOST__c" value="{!form.obj[bfVariableMap['LTFOST']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end lifetime-->
-                        
+                            </td> 
+                            </apex:outputPanel>
+                            <!--end lifetime-->
+                            
                             <!--result of trauma indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BTRFOST__c" value="{!obj.BTRFOST__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="TRFOST__c" value="{!form.obj[bfVariableMap['TRFOST']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end trauma--> 
-                        <!--end care-->
+                            </td>   
+                            </apex:outputPanel>
+                            <!--end trauma--> 
+                            <!--end care-->
                         </tr> 
                         
                         <tr>
-                        <!--18. play therapy-->
-                        <td><p ><b>18.</b> Therapeutic recreation services</p></td>
+                            <!--18. play therapy-->
+                            <td>
+                                <label class="control-label">
+                                    <span class="nmbr">18.</span>
+                                    Therapeutic recreation services
+                                </label>
+                            </td>
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="BOSREC__c" value="{!obj.BOSREC__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="OSREC__c" value="{!form.obj[bfVariableMap['OSREC']]}" layout="pageDirection">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
-                        
+                            
                             <!--lifetime indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BLTREC__c" value="{!obj.BLTREC__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="LTREC__c" value="{!form.obj[bfVariableMap['LTREC']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end lifetime-->
-                        
+                            </td> 
+                            </apex:outputPanel>
+                            <!--end lifetime-->
+                            
                             <!--result of trauma indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BTRREC__c" value="{!obj.BTRREC__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="TRREC__c" value="{!form.obj[bfVariableMap['TRREC']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end trauma--> 
-                        <!--end play-->
+                            </td>   
+                            </apex:outputPanel>
+                            <!--end trauma--> 
+                            <!--end play-->
                         </tr> 
                         
                         <tr>
-                        <!--19. ER-->
-                        <td><p ><b>19.</b> Hospital emergency room (For problems related to trauma or emotional or behavioral problems)</p></td>
+                            <!--19. ER-->
+                            <td>
+                                <label class="control-label">
+                                    <span class="nmbr">19.</span>
+                                    Hospital emergency room (For problems related to trauma or emotional or behavioral problems)
+                                </label>
+                            </td>
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="BOSER__c" value="{!obj.BOSER__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="OSER__c" value="{!form.obj[bfVariableMap['OSER']]}" layout="pageDirection">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
-                        
+                            
                             <!--lifetime indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BLTER__c" value="{!obj.BLTER__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="LTER__c" value="{!form.obj[bfVariableMap['LTER']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end lifetime-->
-                        
+                            </td> 
+                            </apex:outputPanel>
+                            <!--end lifetime-->
+                            
                             <!--result of trauma indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BTRER__c" value="{!obj.BTRER__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="TRER__c" value="{!form.obj[bfVariableMap['TRER']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end trauma--> 
-                        <!--end ER-->
+                            </td>   
+                            </apex:outputPanel>
+                            <!--end trauma--> 
+                            <!--end ER-->
                         </tr> 
                         
                         <tr>
-                        <!--20. support group-->
-                        <td><p ><b>20.</b> Self-help groups (e.g., AA, NA)</p></td>
+                            <!--20. support group-->
+                            <td>
+                                <label class="control-label">
+                                    <span class="nmbr">20.</span>
+                                    Self-help groups (e.g., AA, NA)
+                                </label>
+                            </td>
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="BOSSELFH__c" value="{!obj.BOSSELFH__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="OSSELFH__c" value="{!form.obj[bfVariableMap['OSSELFH']]}" layout="pageDirection">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
-                        
-                            <!--lifetime indicator-->
-                            <td>
-                                <apex:selectRadio id="BLTSELFH__c" value="{!obj.BLTSELFH__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
-                                </apex:selectRadio>
-                            </td><!--end lifetime-->
-                        
-                            <!--result of trauma indicator-->
-                            <td>
-                                <apex:selectRadio id="BTRSELFH__c" value="{!obj.BTRSELFH__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
-                                </apex:selectRadio>
-                            </td><!--end trauma--> 
-                        <!--end group-->
-                        </tr> 
-                        
-                        <tr>
-                        <!--21.Meds management-->
-                        <td><p ><b>21.</b> Medication management</p></td>
-                             
-                            <!--past 30 days indicator-->
-                            <td>
-                                <apex:selectRadio id="BOSMED__c" value="{!obj.BOSMED__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
-                                </apex:selectRadio>
-                            </td><!--end 30 days-->
-                        
-                            <!--lifetime indicator-->
-                            <td>
-                                <apex:selectRadio id="BLTMED__c" value="{!obj.BLTMED__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
-                                </apex:selectRadio>
-                            </td><!--end lifetime-->
-                        
-                            <!--result of trauma indicator-->
-                            <td>
-                                <apex:selectRadio id="BTRMED__c" value="{!obj.BTRMED__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
-                                </apex:selectRadio>
-                            </td><!--end trauma--> 
-                        <!--end meds management-->
-                        </tr> 
-                        
-                        <tr>
-                        <!--22. home visit-->
-                        <td><p ><b>22.</b> Home Visiting (e.g., Visit from doctor/nurse, psychiatrist, probation officer, social worker)</p></td>
                             
-                            <!--past 30 days indicator-->
-                            <td>
-                                <apex:selectRadio id="BOSHOMV__c" value="{!obj.BOSHOMV__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
-                                </apex:selectRadio>
-                            </td><!--end 30 days-->
-                        
                             <!--lifetime indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BLTHOMV__c" value="{!obj.BLTHOMV__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="LTSELFH__c" value="{!form.obj[bfVariableMap['LTSELFH']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end lifetime-->
-                        
-                            <!--result of trauma indicator-->
-                            <td>
-                                <apex:selectRadio id="BTRHOMV__c" value="{!obj.BTRHOMV__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
-                                </apex:selectRadio>
-                            </td><!--end trauma--> 
-                        <!--end home visit-->
-                        </tr> 
-                        
-                        <tr>
-                        <!--23. head start-->
-                        <td><p ><b>23.</b> Head Start Program or Early Intervention Service Coordination</p></td>
+                            </td> 
+                            </apex:outputPanel>
+                            <!--end lifetime-->
                             
-                            <!--past 30 days indicator-->
-                            <td>
-                                <apex:selectRadio id="BOSHEADS__c" value="{!obj.BOSHEADS__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
-                                </apex:selectRadio>
-                            </td><!--end 30 days-->
-                        
-                            <!--lifetime indicator-->
-                            <td>
-                                <apex:selectRadio id="BLTHEADS__c" value="{!obj.BLTHEADS__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
-                                </apex:selectRadio>
-                            </td><!--end lifetime-->
-                        
                             <!--result of trauma indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BTRHEADS__c" value="{!obj.BTRHEADS__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="TRSELFH__c" value="{!form.obj[bfVariableMap['TRSELFH']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end trauma-->
-                        <!--end head start-->
+                            </td>   
+                            </apex:outputPanel>
+                            <!--end trauma--> 
+                            <!--end group-->
                         </tr> 
                         
                         <tr>
-                        <!--24. parent ed-->
-                        <td><p ><b>24.</b> Parent education and skill-building programs</p></td>
-                            
-                            <!--past 30 days indicator-->
-                            <td>
-                                <apex:selectRadio id="BOSPARED__c" value="{!obj.BOSPARED__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
-                                </apex:selectRadio>
-                            </td><!--end 30 days-->
-                        
-                            <!--lifetime indicator-->
-                            <td>
-                                <apex:selectRadio id="BLTPARED__c" value="{!obj.BLTPARED__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
-                                </apex:selectRadio>
-                            </td><!--end lifetime-->
-                        
-                            <!--result of trauma indicator-->
-                            <td>
-                                <apex:selectRadio id="BTRPARED__c" value="{!obj.BTRPARED__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
-                                </apex:selectRadio>
-                            </td><!--end trauma--> 
-                        <!--end parent ed-->
-                        </tr> 
-                        
-                        <tr>
-                        <!--25. peers-->
-                        <td><p ><b>25.</b> Peer support / therapy</p></td>
-                            
-                            <!--past 30 days indicator-->
-                            <td>
-                                <apex:selectRadio id="BOSPEER__c" value="{!obj.BOSPEER__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
-                                </apex:selectRadio>
-                            </td><!--end 30 days-->
-                        
-                            <!--lifetime indicator-->
-                            <td>
-                                <apex:selectRadio id="BLTPEER__c" value="{!obj.BLTPEER__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
-                                </apex:selectRadio>
-                            </td><!--end lifetime-->
-                        
-                            <!--result of trauma indicator-->
-                            <td>
-                                <apex:selectRadio id="BTRPEER__c" value="{!obj.BTRPEER__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
-                                </apex:selectRadio>
-                            </td><!--end trauma--> 
-                        <!--end peers-->
-                        </tr> 
-                        
-                        <tr>
-                        <!--26. wraparound-->
-                        <td><p ><b>26.</b> ‘Wraparound’ services</p></td>
+                            <th></th>
+                            <th><apex:outputText value="{!tableHeaderTitle}"></apex:outputText></th>
 
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <th>Lifetime</th>
+                            <th>As a Result of Trauma</th>
+                            </apex:outputPanel>
+
+                        </tr>
+
+                        <tr>
+                            <!--21.Meds management-->
+                            <td>
+                                <label class="control-label">
+                                    <span class="nmbr">21.</span>
+                                    Medication management
+                                </label>
+                            </td>
+                            
+                            <!--past 30 days indicator-->
+                            <td>
+                                <apex:selectRadio id="OSMED__c" value="{!form.obj[bfVariableMap['OSMED']]}" layout="pageDirection">
+                                    <apex:selectOptions value="{!NYUOption}"/>
+                                </apex:selectRadio>
+                            </td><!--end 30 days-->
+                            
+                            <!--lifetime indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:selectRadio id="LTMED__c" value="{!form.obj[bfVariableMap['LTMED']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
+                                </apex:selectRadio>
+                            </td> 
+                            </apex:outputPanel>
+                            <!--end lifetime-->
+                            
+                            <!--result of trauma indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:selectRadio id="TRMED__c" value="{!form.obj[bfVariableMap['TRMED']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
+                                </apex:selectRadio>
+                            </td>   
+                            </apex:outputPanel>
+                            <!--end trauma--> 
+                            <!--end meds management-->
+                        </tr> 
+                        
+                        <tr>
+                            <!--22. home visit-->
+                            <td>
+                                <label class="control-label">
+                                    <span class="nmbr">22.</span>
+                                    Home visiting (e.g., Visit from doctor/nurse, psychiatrist, probation officer, social worker)
+                                </label>
+                            </td>
+                            
+                            <!--past 30 days indicator-->
+                            <td>
+                                <apex:selectRadio id="OSHOMV__c" value="{!form.obj[bfVariableMap['OSHOMV']]}" layout="pageDirection">
+                                    <apex:selectOptions value="{!NYUOption}"/>
+                                </apex:selectRadio>
+                            </td><!--end 30 days-->
+                            
+                            <!--lifetime indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:selectRadio id="LTHOMV__c" value="{!form.obj[bfVariableMap['LTHOMV']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
+                                </apex:selectRadio>
+                            </td> 
+                            </apex:outputPanel>
+                            <!--end lifetime-->
+                            
+                            <!--result of trauma indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:selectRadio id="TRHOMV__c" value="{!form.obj[bfVariableMap['TRHOMV']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
+                                </apex:selectRadio>
+                            </td>   
+                            </apex:outputPanel>
+                            <!--end trauma--> 
+                            <!--end home visit-->
+                        </tr> 
+                        
+                        <tr>
+                            <!--23. head start-->
+                            <td>
+                                <label class="control-label">
+                                    <span class="nmbr">23.</span>
+                                    Head Start Program or Early Intervention Service Coordination
+                                </label>
+                            </td>
+                            
+                            <!--past 30 days indicator-->
+                            <td>
+                                <apex:selectRadio id="OSHEADS__c" value="{!form.obj[bfVariableMap['OSHEADS']]}" layout="pageDirection">
+                                    <apex:selectOptions value="{!NYUOption}"/>
+                                </apex:selectRadio>
+                            </td><!--end 30 days-->
+                            
+                            <!--lifetime indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:selectRadio id="LTHEADS__c" value="{!form.obj[bfVariableMap['LTHEADS']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
+                                </apex:selectRadio>
+                            </td> 
+                            </apex:outputPanel>
+                            <!--end lifetime-->
+                            
+                            <!--result of trauma indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:selectRadio id="TRHEADS__c" value="{!form.obj[bfVariableMap['TRHEADS']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
+                                </apex:selectRadio>
+                            </td>   
+                            </apex:outputPanel>
+                            <!--end trauma-->
+                            <!--end head start-->
+                        </tr> 
+                        
+                        <tr>
+                            <!--24. parent ed-->
+                            <td>
+                                <label class="control-label">
+                                    <span class="nmbr">24.</span>
+                                    Parent education and skill-building programs
+                                </label>
+                            </td>
+                            
+                            <!--past 30 days indicator-->
+                            <td>
+                                <apex:selectRadio id="OSPARED__c" value="{!form.obj[bfVariableMap['OSPARED']]}" layout="pageDirection">
+                                    <apex:selectOptions value="{!NYUOption}"/>
+                                </apex:selectRadio>
+                            </td><!--end 30 days-->
+                            
+                            <!--lifetime indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:selectRadio id="LTPARED__c" value="{!form.obj[bfVariableMap['LTPARED']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
+                                </apex:selectRadio>
+                            </td> 
+                            </apex:outputPanel>
+                            <!--end lifetime-->
+                            
+                            <!--result of trauma indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:selectRadio id="TRPARED__c" value="{!form.obj[bfVariableMap['TRPARED']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
+                                </apex:selectRadio>
+                            </td>   
+                            </apex:outputPanel>
+                            <!--end trauma--> 
+                            <!--end parent ed-->
+                        </tr> 
+                        
+                        <tr>
+                            <!--25. peers-->
+                            <td>
+                                <label class="control-label">
+                                    <span class="nmbr">25.</span>
+                                    Peer support / therapy
+                                </label>
+                            </td>
+                            
+                            <!--past 30 days indicator-->
+                            <td>
+                                <apex:selectRadio id="OSPEER__c" value="{!form.obj[bfVariableMap['OSPEER']]}" layout="pageDirection">
+                                    <apex:selectOptions value="{!NYUOption}"/>
+                                </apex:selectRadio>
+                            </td><!--end 30 days-->
+                            
+                            <!--lifetime indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:selectRadio id="LTPEER__c" value="{!form.obj[bfVariableMap['LTPEER']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
+                                </apex:selectRadio>
+                            </td> 
+                            </apex:outputPanel>
+                            <!--end lifetime-->
+                            
+                            <!--result of trauma indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:selectRadio id="TRPEER__c" value="{!form.obj[bfVariableMap['TRPEER']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
+                                </apex:selectRadio>
+                            </td>   
+                            </apex:outputPanel>
+                            <!--end trauma--> 
+                            <!--end peers-->
+                        </tr> 
+                        
+                        <tr>
+                            <!--26. wraparound-->
+                            <td>
+                                <label class="control-label">
+                                    <span class="nmbr">26.</span>
+                                    ‘Wraparound’ services
+                                </label>
+                            </td>
+                            
                             <!--past 30 days indicator-->                           
-                           <td>
-                                <apex:selectRadio id="BOSWRAP__c" value="{!obj.BOSWRAP__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                            <td>
+                                <apex:selectRadio id="OSWRAP__c" value="{!form.obj[bfVariableMap['OSWRAP']]}" layout="pageDirection">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
-                        
+                            
                             <!--lifetime indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BLTWRAP__c" value="{!obj.BLTWRAP__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="LTWRAP__c" value="{!form.obj[bfVariableMap['LTWRAP']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end lifetime-->
-                        
+                            </td> 
+                            </apex:outputPanel>
+                            <!--end lifetime-->
+                            
                             <!--result of trauma indicator-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="BTRWRAP__c" value="{!obj.BTRWRAP__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                                <apex:selectRadio id="TRWRAP__c" value="{!form.obj[bfVariableMap['TRWRAP']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end trauma--> 
-                        <!--end wraparound-->
+                            </td>   
+                            </apex:outputPanel>
+                            <!--end trauma--> 
+                            <!--end wraparound-->
                         </tr> 
                         
                         <tr>
-                        <!--27. mentor-->
-                        <td><p ><b>27.</b> Mentor</p></td>
+                            <!--27. mentor-->
+                            <td>
+                                <label class="control-label">
+                                    <span class="nmbr">27.</span>
+                                    Mentor
+                                </label>
+                            </td>
                             
                             <!--past 30 days indicator-->
-                            <td style="width: 250px" >
-                                <apex:selectRadio id="BOSMEN__c" value="{!obj.BOSMEN__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                            <td>
+                                <apex:selectRadio id="OSMEN__c" value="{!form.obj[bfVariableMap['OSMEN']]}" layout="pageDirection">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
-                        
+                            
                             <!--lifetime indicator-->
-                            <td style="width: 250px" >
-                                <apex:selectRadio id="BLTMEN__c" value="{!obj.BLTMEN__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:selectRadio id="LTMEN__c" value="{!form.obj[bfVariableMap['LTMEN']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end lifetime-->
-                        
+                            </td> 
+                            </apex:outputPanel>
+                            <!--end lifetime-->
+                            
                             <!--result of trauma indicator-->
-                            <td style="width: 250px" >
-                                <apex:selectRadio id="BTRMEN__c" value="{!obj.BTRMEN__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:selectRadio id="TRMEN__c" value="{!form.obj[bfVariableMap['TRMEN']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end trauma--> 
-                        <!--end mentor-->
+                            </td>   
+                            </apex:outputPanel>
+                            <!--end trauma--> 
+                            <!--end mentor-->
                         </tr> 
                         
                         <tr>
-                        <!--28. other-->
-                        
-                        <!--specify field-->
-                        <td><b>28.</b> Other, please specify:                                 
-                            <apex:inputField id="BOSOSP__c" value="{!obj.BOSOSP__c}" >
-                            </apex:inputField>
-                        </td>
-                        <!--end field-->
+                            <!--28. other-->
+                            
+                            <!--specify field-->
+                            <td>
+                                <label class="control-label">
+                                    <span class="nmbr">28.</span> 
+                                    Other, please specify: &nbsp;                                
+                                    <apex:inputField id="OSOSP__c" value="{!form.obj[bfVariableMap['OSOSP']]}" styleClass="form-control input-sm auto-width-inline"></apex:inputField>
+                                </label>
+                            </td>
+                            <!--end field-->
                             
                             <!--past 30 days indicator-->
-                            <td style="width: 250px" >
-                                <apex:selectRadio id="BOSOTH__c" value="{!obj.BOSOTH__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                            <td>
+                                <apex:selectRadio id="OSOTH__c" value="{!form.obj[bfVariableMap['OSOTH']]}" layout="pageDirection">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td> <!--end 30 days-->
-                        
+                            
                             <!--lifetime indicator-->
-                            <td style="width: 250px" >
-                                <apex:selectRadio id="BLTOTH__c" value="{!obj.BLTOTH__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:selectRadio id="LTOTH__c" value="{!form.obj[bfVariableMap['LTOTH']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td><!--end lifetime-->
-                        
+                            </td> 
+                            </apex:outputPanel>
+                            <!--end lifetime-->
+                            
                             <!--result of trauma indicator-->
-                            <td style="width: 250px" >
-                                <apex:selectRadio id="BTROTH__c" value="{!obj.BTROTH__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!InItems}"/>
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:selectRadio id="TROTH__c" value="{!form.obj[bfVariableMap['TROTH']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                    <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
-                            </td>  <!--end trauma-->               
+                            </td>   
+                            </apex:outputPanel>
+                            <!--end trauma-->               
                         </tr>    
                         
-                        <!--29. Indicate therapy type checkboxes-->
-                        <tr><br/>
-                            <td colspan="3"><p ><b>29.</b> If the child received outpatient therapy/ treatment, please indicate which of the following treatment modalities were received.
-                             <br/>
-                            <b>(Select all that apply.)</b>: </p></td><br />
-                        </tr>
-                                                
-                        <tr ><!--header to indicate if service received in past 30 daysand/or in lifetime-->
-                            <td>
-                                <b>         
-                                    <!--30 days-->
-                                    <td>
-                                        <b>Past 30 Days</b>
-                                    </td>
-                                    <!--lifetime-->
-                                    <td>
-                                        <b>Lifetime</b>
-                                    </td>
-                                </b>
+                        
+                        <tr>
+                            <td colspan="{!if(form.isBaseline, '4', '2')}">
+                                <label class="control-label">
+                                    <span class="nmbr">29.</span>
+                                    If the child received outpatient therapy/ treatment, please indicate which of the following treatment modalities were received.<strong>(Select all that apply.)</strong>
+                                </label>
                             </td>
-                        </tr><!--end header-->
+                        </tr>
                         
-                        <br /><!--blank space-->
+                        <!--29. Indicate therapy type checkboxes-->
+                        <!--header to indicate if service received in past 30 daysand/or in lifetime-->
+                        <tr>
+                            <th></th>         
+                            <!--30 days-->
+                            <th><apex:outputText value="{!tableHeaderTitle}"></apex:outputText></th>
+                            <!--lifetime-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <th>Lifetime</th>
+                            <th></th>
+                            </apex:outputPanel>
+                        </tr>
+                        <!--end header-->
+                                                
+                        <!--Attachment-based-->
+                        <tr>
+                            <td>Attachment-based therapy</td>    
+                            <!--30 days-->
+                            <td>
+                                <apex:inputCheckbox id="OSATT__c" value="{!form.obj[bfVariableMap['OSATT']]}"/>  
+                            </td>
+                            
+                            <!--lifetime-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:inputCheckbox id="LTATT__c" value="{!form.obj[bfVariableMap['LTATT']]}"/>
+                            </td>
+                            <td></td>
+                            </apex:outputPanel>
+                            
+                        </tr>
                         
-                            <!--Attachment-based-->
-                            <tr>
-                                <td>
-                                    Attachment-based therapy
-                                    
-                                    <!--30 days-->
-                                    <td class="skip-BOSATT">
-                                        <apex:inputCheckbox id="BOSATT__c" value="{!obj.BOSATT__c}">  </apex:inputCheckbox>
-                                    </td>
-                                    
-                                        <!--lifetime-->
-                                    <td class="skip-BLTATT">
-                                    <apex:inputCheckbox id="BLTATT__c" value="{!obj.BLTATT__c}">  </apex:inputCheckbox> <br />
-                                    </td>
-                                    
-                                </td>
-                            </tr>
-                
-                            <!--Behavioral-->
-                            <tr>                      
-                                <td>  
-                                    Behavioral therapy
-                                    
-                                    <!--30 days-->
-                                    <td>
-                                        <apex:inputCheckbox id="BOSBEH__c" value="{!obj.BOSBEH__c}">  </apex:inputCheckbox>
-                                    </td>
-                                    <!--lifetime-->
-                                    
-                                    <td>
-                                        <apex:inputCheckbox id="BLTBEH__c" value="{!obj.BLTBEH__c}">  </apex:inputCheckbox> <br />
-                                    </td>
-                                </td >
-                            </tr>
-        
-                            <!--Cognitive-->
-                            <tr>
-                                <td>
-                                    Cognitive therapy
-                                    
-                                    <!--30 days-->
-                                    <td>
-                                        <apex:inputCheckbox id="BOSCOG__c" value="{!obj.BOSCOG__c}">  </apex:inputCheckbox> 
-                                    </td>
-                                    
-                                    <!--lifetime-->
-                                    <td>
-                                        <apex:inputCheckbox id="BLTCOG__c" value="{!obj.BLTCOG__c}">  </apex:inputCheckbox> <br />
-                                    </td>
-                                </td>
-                            </tr>
-
-                            <!--CBT-->
-                            <tr>
-                                <td>
-                                    Cognitive behavioral therapy
-                                    
-                                    <!--30 days-->
-                                    <td>
-                                        <apex:inputCheckbox id="BOSCOGB__c" value="{!obj.BOSCOGB__c}">  </apex:inputCheckbox>
-                                    </td>
-                                    
-                                    <!--lifetime-->
-                                    <td>
-                                        <apex:inputCheckbox id="BLTCOGB__c" value="{!obj.BLTCOGB__c}">  </apex:inputCheckbox> <br />
-                                    </td>
-                                </td>
-                            </tr>
-
-                            <!--Expressive-->
-                            <tr>
-                                <td>
-                                    Expressive therapies (e.g., drawing, movement, theater)
-                                    
-                                    <!--30 days-->
-                                    <td>
-                                        <apex:inputCheckbox id="BOSEXP__c" value="{!obj.BOSEXP__c}">  </apex:inputCheckbox>
-                                    </td>
-                                    
-                                    <!--lifetime-->
-                                    <td>
-                                        <apex:inputCheckbox id="BLTEXP__c" value="{!obj.BLTEXP__c}">  </apex:inputCheckbox> <br />
-                                    </td>
-                                </td>
-                            </tr>
-
-                            <!--Family-->
-                            <tr>
-                                <td>
-                                    Family therapy
-                                    
-                                    <!--30 days-->
-                                    <td>
-                                        <apex:inputCheckbox id="BOSFAM__c" value="{!obj.BOSFAM__c}">  </apex:inputCheckbox> 
-                                    </td>
-                                    
-                                    <!--lifetime-->
-                                    <td>
-                                        <apex:inputCheckbox id="BLTFAM__c" value="{!obj.BLTFAM__c}">  </apex:inputCheckbox> <br />
-                                    </td>
-                                </td>
-                            </tr>
-
-                            <!--Narrative-->
-                            <tr>
-                                <td>
-                                    Narrative therapy
-                                    
-                                    <!--30 days-->
-                                    <td>
-                                        <apex:inputCheckbox id="BOSNAR__c" value="{!obj.BOSNAR__c}">  </apex:inputCheckbox> 
-                                    </td>
-                                    
-                                    <!--lifetime-->
-                                    <td>
-                                        <apex:inputCheckbox id="BLTNAR__c" value="{!obj.BLTNAR__c}">  </apex:inputCheckbox> <br />
-                                    </td>
-                                </td>
-                            </tr>
-
-                            <!--Phase-oriented trauma treatment-->
-                            <tr>               
-                                <td>
-                                    Phase-oriented trauma treatment
-                                    
-                                    <!--30 days-->
-                                    <td>
-                                        <apex:inputCheckbox id="BOSPHAS__c" value="{!obj.BOSPHAS__c}">  </apex:inputCheckbox> 
-                                    </td>
-                                
-                                    <!--lifetime-->
-                                    <td>
-                                        <apex:inputCheckbox id="BLTPHAS__c" value="{!obj.BLTPHAS__c}">  </apex:inputCheckbox> <br />
-                                    </td>
-                                </td>
-                            </tr>
-
-                            <!--Play-->
-                            <tr>
-                                <td>
-                                    Play therapy
-                                    
-                                    <!--30 days-->
-                                    <td>
-                                        <apex:inputCheckbox id="BOSPLAY__c" value="{!obj.BOSPLAY__c}">  </apex:inputCheckbox> 
-                                    </td>
-                                    
-                                    <!--lifetime-->
-                                    <td>
-                                        <apex:inputCheckbox id="BLTPLAY__c" value="{!obj.BLTPLAY__c}">  </apex:inputCheckbox> <br />
-                                    </td>
-                                </td>
-                            </tr>
-
-                            <!--Psychoanalysis-->
-                            <tr>
-                                <td>
-                                    Psychoanalysis
-                                    
-                                    <!--30 days-->
-                                    <td>
-                                        <apex:inputCheckbox id="BOSPSYAN__c" value="{!obj.BOSPSYAN__c}">  </apex:inputCheckbox> 
-                                    </td>
-                                
-                                    <!--lifetime-->
-                                    <td>
-                                        <apex:inputCheckbox id="BLTPSYAN__c" value="{!obj.BLTPSYAN__c}">  </apex:inputCheckbox> <br />
-                                    </td>
-                                </td>
-                            </tr>
-
-                            <!--Psychodynamic psychotherapy-->
-                            <tr>
-                                <td>
-                                    Psychodynamic psychotherapy
-                                    
-                                    <!--30 days-->
-                                    <td>                                        
-                                        <apex:inputCheckbox id="BOSPSYDY__c" value="{!obj.BOSPSYDY__c}">  </apex:inputCheckbox> 
-                                    </td>
-                                    
-                                    <!--lifetime-->
-                                    <td>
-                                        <apex:inputCheckbox id="BLTPSYDY__c" value="{!obj.BLTPSYDY__c}">  </apex:inputCheckbox> <br />
-                                    </td>
-                                </td>                                
-                            </tr>
-                                
-                            <!--Social skills-->
-                            <tr>
-                                <td>
-                                    Social skills training
-                                    
-                                    <!--30 days-->
-                                    <td>
-                                        <apex:inputCheckbox id="BOSSOCSK__c" value="{!obj.BOSSOCSK__c}">  </apex:inputCheckbox>
-                                    </td>
-                                    
-                                    <!--lifetime-->
-                                    <td>
-                                        <apex:inputCheckbox id="BLTSOCSK__c" value="{!obj.BLTSOCSK__c}">  </apex:inputCheckbox> <br />
-                                    </td>
-                                </td>
-                            </tr>
+                        <!--Behavioral-->
+                        <tr>                      
+                            <td>Behavioral therapy</td>
+                            <!--30 days-->
+                            <td>
+                                <apex:inputCheckbox id="OSBEH__c" value="{!form.obj[bfVariableMap['OSBEH']]}"/>
+                            </td>
+                            <!--lifetime-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:inputCheckbox id="LTBEH__c" value="{!form.obj[bfVariableMap['LTBEH']]}"/>
+                            </td>
+                            <td></td>
+                            </apex:outputPanel>
                             
-                            <!--Solution-focused-->
-                            <tr>                                
-                                <td>                                    
-                                    Solution-focused therapy
-                                    
-                                    <!--30 days-->
-                                    <td>
-                                        <apex:inputCheckbox id="BOSSOL__c" value="{!obj.BOSSOL__c}">  </apex:inputCheckbox> 
-                                    </td>
-                                    
-                                    <!--lifetime-->
-                                    <td>
-                                        <apex:inputCheckbox id="BLTSOL__c" value="{!obj.BLTSOL__c}">  </apex:inputCheckbox> <br />
-                                    </td>
-                                </td>
-                            </tr>
-
-                            <!--Stress management-->
-                            <tr>
-                                <td>
-                                    Stress management/relaxation training
-                                    
-                                    <!--30 days-->
-                                    <td>
-                                        <apex:inputCheckbox id="BOSSTRE__c" value="{!obj.BOSSTRE__c}">  </apex:inputCheckbox> 
-                                    </td>
-                                    
-                                    <!--lifetime-->
-                                    <td>
-                                        <apex:inputCheckbox id="BLTSTRE__c" value="{!obj.BLTSTRE__c}">  </apex:inputCheckbox> <br />
-                                    </td>
-                                </td>
-                            </tr>
-
-                            <!--Supportive-->
-                            <tr>
-                                <td>
-                                    Supportive therapy
-                                    
-                                    <!--30 days-->
-                                    <td>
-                                        <apex:inputCheckbox id="BOSSUPP__c" value="{!obj.BOSSUPP__c}">  </apex:inputCheckbox> 
-                                    </td>
-                                    
-                                    <!--lifetime-->
-                                    <td>
-                                        <apex:inputCheckbox id="BLTSUPP__c" value="{!obj.BLTSUPP__c}">  </apex:inputCheckbox> <br />
-                                    </td>
-                                </td>
-                            </tr>
+                        </tr>
+                        
+                        <!--Cognitive-->
+                        <tr>
+                            <td>Cognitive therapy</td>
+                            <!--30 days-->
+                            <td>
+                                <apex:inputCheckbox id="OSCOG__c" value="{!form.obj[bfVariableMap['OSCOG']]}"/> 
+                            </td>
                             
-                            <!--Other-->
-                            <tr>
-                                <td>
-                                    Other, please specify:
-                                    
-                                    <!--specify input box-->        
-                                    <apex:inputField id="BOSTOSP__c" value="{!obj.BOSTOSP__c}"  >
-                                    </apex:inputField>               
-                                </td>
-                                
-                                <!--30 days-->
-                                <td>
-                                    <apex:inputCheckbox id="BOSTOTH__c" value="{!obj.BOSTOTH__c}">  </apex:inputCheckbox> 
-                                </td>                           
-                                
-                                <!--lifetime-->
-                                <td>
-                                    <apex:inputCheckbox id="BLTTOTH__c" value="{!obj.BLTTOTH__c}">  </apex:inputCheckbox> <br />
-                                </td>
-                            </tr>
+                            <!--lifetime-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:inputCheckbox id="LTCOG__c" value="{!form.obj[bfVariableMap['LTCOG']]}"/>
+                            </td>
+                            <td></td>
+                            </apex:outputPanel>
                             
-                           <!-- </tr>  <!--move up?-->
+                        </tr>
+                        
+                        <!--CBT-->
+                        <tr>
+                            <td>Cognitive behavioral therapy</td>
+                            <!--30 days-->
+                            <td>
+                                <apex:inputCheckbox id="OSCOGB__c" value="{!form.obj[bfVariableMap['OSCOGB']]}"/>
+                            </td>
+                            
+                            <!--lifetime-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:inputCheckbox id="LTCOGB__c" value="{!form.obj[bfVariableMap['LTCOGB']]}"/>
+                            </td>
+                            <td></td>
+                            </apex:outputPanel>
+                            
+                        </tr>
+                        
+                        <!--Expressive-->
+                        <tr>
+                            <td>Expressive therapies (e.g., drawing, movement, theater)</td>
+                            <!--30 days-->
+                            <td>
+                                <apex:inputCheckbox id="OSEXP__c" value="{!form.obj[bfVariableMap['OSEXP']]}"/>
+                            </td>
+                            
+                            <!--lifetime-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:inputCheckbox id="LTEXP__c" value="{!form.obj[bfVariableMap['LTEXP']]}"/>
+                            </td>
+                            <td></td>
+                            </apex:outputPanel>
+                            
+                        </tr>
+                        
+                        <!--Family-->
+                        <tr>
+                            <td>Family therapy</td>
+                            <!--30 days-->
+                            <td>
+                                <apex:inputCheckbox id="OSFAM__c" value="{!form.obj[bfVariableMap['OSFAM']]}"/> 
+                            </td>
+                            
+                            <!--lifetime-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:inputCheckbox id="LTFAM__c" value="{!form.obj[bfVariableMap['LTFAM']]}"/>
+                            </td>
+                            <td></td>
+                            </apex:outputPanel>
+                            
+                        </tr>
+                        
+                        <!--Narrative-->
+                        <tr>
+                            <td>Narrative therapy</td> 
+                            <!--30 days-->
+                            <td>
+                                <apex:inputCheckbox id="OSNAR__c" value="{!form.obj[bfVariableMap['OSNAR']]}"/> 
+                            </td>
+                            
+                            <!--lifetime-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:inputCheckbox id="LTNAR__c" value="{!form.obj[bfVariableMap['LTNAR']]}"/>
+                            </td>
+                            <td></td>
+                            </apex:outputPanel>
+                            
+                        </tr>
+                        
+                        <!--Phase-oriented trauma treatment-->
+                        <tr>               
+                            <td>Phase-oriented trauma treatment</td>   
+                            <!--30 days-->
+                            <td>
+                                <apex:inputCheckbox id="OSPHAS__c" value="{!form.obj[bfVariableMap['OSPHAS']]}"/>
+                            </td>
+                            
+                            <!--lifetime-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:inputCheckbox id="LTPHAS__c" value="{!form.obj[bfVariableMap['LTPHAS']]}"/>
+                            </td>
+                            <td></td>
+                            </apex:outputPanel>
+                            
+                        </tr>
+                        
+                        <!--Play-->
+                        <tr>
+                            <td>Play therapy</td>    
+                            <!--30 days-->
+                            <td>
+                                <apex:inputCheckbox id="OSPLAY__c" value="{!form.obj[bfVariableMap['OSPLAY']]}"/>
+                            </td>
+                            
+                            <!--lifetime-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:inputCheckbox id="LTPLAY__c" value="{!form.obj[bfVariableMap['LTPLAY']]}"/>
+                            </td>
+                            <td></td>
+                            </apex:outputPanel>
+                            
+                        </tr>
+                        
+                        <!--Psychoanalysis-->
+                        <tr>
+                            <td>Psychoanalysis</td>    
+                            <!--30 days-->
+                            <td>
+                                <apex:inputCheckbox id="OSPSYAN__c" value="{!form.obj[bfVariableMap['OSPSYAN']]}"/>
+                            </td>
+                            
+                            <!--lifetime-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:inputCheckbox id="LTPSYAN__c" value="{!form.obj[bfVariableMap['LTPSYAN']]}"/>
+                            </td>
+                            <td></td>
+                            </apex:outputPanel>
+                            
+                        </tr>
+                        
+                        <!--Psychodynamic psychotherapy-->
+                        <tr>
+                            <td>Psychodynamic psychotherapy</td>    
+                            <!--30 days-->
+                            <td>                                        
+                                <apex:inputCheckbox id="OSPSYDY__c" value="{!form.obj[bfVariableMap['OSPSYDY']]}"/>
+                            </td>
+                            
+                            <!--lifetime-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:inputCheckbox id="LTPSYDY__c" value="{!form.obj[bfVariableMap['LTPSYDY']]}"/>
+                            </td>
+                            <td></td>
+                            </apex:outputPanel>
+                            
+                        </tr>
+                        
+                        <!--Social skills-->
+                        <tr>
+                            <td>Social skills training</td>    
+                            <!--30 days-->
+                            <td>
+                                <apex:inputCheckbox id="OSSOCSK__c" value="{!form.obj[bfVariableMap['OSSOCSK']]}"/>
+                            </td>
+                            
+                            <!--lifetime-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:inputCheckbox id="LTSOCSK__c" value="{!form.obj[bfVariableMap['LTSOCSK']]}"/>
+                            </td>
+                            <td></td>
+                            </apex:outputPanel>
+                            
+                        </tr>
+                        
+                        <!--Solution-focused-->
+                        <tr>                                
+                            <td>Solution-focused therapy</td>    
+                            <!--30 days-->
+                            <td>
+                                <apex:inputCheckbox id="OSSOL__c" value="{!form.obj[bfVariableMap['OSSOL']]}"/>
+                            </td>
+                            
+                            <!--lifetime-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:inputCheckbox id="LTSOL__c" value="{!form.obj[bfVariableMap['LTSOL']]}"/>
+                            </td>
+                            <td></td>
+                            </apex:outputPanel>
+                            
+                        </tr>
+                        
+                        <!--Stress management-->
+                        <tr>
+                            <td>Stress management/relaxation training</td>    
+                            <!--30 days-->
+                            <td>
+                                <apex:inputCheckbox id="OSSTRE__c" value="{!form.obj[bfVariableMap['OSSTRE']]}"/> 
+                            </td>
+                            
+                            <!--lifetime-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:inputCheckbox id="LTSTRE__c" value="{!form.obj[bfVariableMap['LTSTRE']]}"/>
+                            </td>
+                            <td></td>
+                            </apex:outputPanel>
+                            
+                        </tr>
+                        
+                        <!--Supportive-->
+                        <tr>
+                            <td>Supportive therapy</td>   
+                            <!--30 days-->
+                            <td>
+                                <apex:inputCheckbox id="OSSUPP__c" value="{!form.obj[bfVariableMap['OSSUPP']]}"/> 
+                            </td>
+                            
+                            <!--lifetime-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:inputCheckbox id="LTSUPP__c" value="{!form.obj[bfVariableMap['LTSUPP']]}"/>
+                            </td>
+                            <td></td>
+                            </apex:outputPanel>
+                            
+                        </tr>
+                        
+                        <!--Other-->
+                        <tr>
+                            <td>
+                                Other, please specify: &nbsp;
+                                <!--specify input box-->        
+                                <apex:inputField id="OSTOSP__c" value="{!form.obj[bfVariableMap['OSTOSP']]}" styleClass="form-control input-sm auto-width-inline"/>             
+                            </td>
+                            
+                            <!--30 days-->
+                            <td>
+                                <apex:inputCheckbox id="OSTOTH__c" value="{!form.obj[bfVariableMap['OSTOTH']]}"/>
+                            </td>                           
+                            
+                            <!--lifetime-->
+                            <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                            <td>
+                                <apex:inputCheckbox id="LTTOTH__c" value="{!form.obj[bfVariableMap['LTTOTH']]}"/>
+                            </td>
+                            <td></td>
+                            </apex:outputPanel>
+                        </tr>
+                                    
+                        <tr>
+                            <!--Completion status control-->
+                            <td colspan="{!if(form.isBaseline, '4', '2')}" class="text-right complete-title">
+                                <strong>Complete?</strong> &nbsp;                         
+                                <apex:selectList id="STATUS_SERVREC__c" styleClass="form-control input-sm auto-width-inline" value="{!form.obj[bfVariableMap['STATUS']]}" size="1">
+                                    <apex:selectOption itemValue="Incomplete" itemLabel="Incomplete"/>
+                                    <apex:selectOption itemValue="Complete" itemLabel="Complete"/>
+                                </apex:selectList> 
+                            </td>
+                            <!--end completion status-->
+                        </tr>
+
                     </tbody>
+
+                </table>
                     
-                    <tr>
-                    <!--Completion status control-->
-                        <td/>
-                        <td/>
-                        <td colspan="2" class="text-right complete-title"><b>Complete?</b></td>
-                        <td>                            
-                            <apex:selectList id="STATUS_SERVREC__c" styleClass="form-control input-sm" style="width:130px" value="{!obj.STATUS_SERVREC__c}" size="1">
-                                <apex:selectOption itemValue="Incomplete" itemLabel="Incomplete"/>
-                                <apex:selectOption itemValue="Complete" itemLabel="Complete"/>
-                            </apex:selectList> 
-                        </td>
-                    <!--end completion status-->
-                    </tr>
-</table>
-
-</div>
-        <!--save and cancel control buttons for pageBlock-->
-<apex:pageBlockButtons >
-    <apex:commandButton id="Save" action="{!save}" value="Save"/>
-    <apex:commandButton id="Cancel" action="{!cancel}" value="Cancel" rendered="{!if(forceRedirect = '1', false, true)}"/>
-</apex:pageBlockButtons><!--end buttons--> 
-
-</apex:pageBlock><!--end servrec pageBlock-->  
-</apex:form>
-    <!--end form content--> 
-    
+                <!--save and cancel control buttons for pageBlock-->
+                <apex:pageBlockButtons >
+                    <apex:commandButton id="Save" action="{!save}" value="Save"/>
+                    <apex:commandButton id="Cancel" action="{!cancel}" value="Cancel" rendered="{!if(form.forceRedirect = '1', false, true)}"/>
+                </apex:pageBlockButtons>
+                <!--end buttons--> 
+                
+            </apex:pageBlock>
+            <!--end servrec pageBlock-->  
+        </apex:form>
+        <!--end form content--> 
+    </div>
     <!--citation information footer-->
-<p style="class:footer; text-align:center ">
-    <i>This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - Baseline - CRF Version 6 2014
-    </i></p>
-
+    <p style="class:footer; text-align:center ">
+        <i>This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - Baseline - CRF Version 6 2014
+        </i>
+    </p>
+    
 </apex:page>

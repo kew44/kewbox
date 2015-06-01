@@ -63,6 +63,9 @@ public class Utility {
     else if(summary.SECTION__c == '-1'){
     SectionType='Trauma';
     }
+    else {//if(summary.SECTION__c == '1')
+    SectionType='FollowUp';
+    }
     
     String info = '<table class="table">' +
                     '<thead>'+
@@ -136,7 +139,7 @@ public class Utility {
 
     // print out the encoded value to the debug log so we can see it before/after base64 encode
     Map<String, String> parameter = new Map<String, String>();
-
+System.debug(parameter);
     Integer numCode = integer.valueof(param.substring(param.length()-1, param.length()));
 
     param = param.substring(numCode, param.length()-1);
@@ -268,6 +271,8 @@ public class Utility {
 
     List<String> formPages = new List<String>();
 
+    Set<String> sections = new Set<String>();
+
     Map<String, Sobject> targetObjects = new Map<String, Sobject>();
 
     for(Sobject ob : obj) {
@@ -276,7 +281,10 @@ public class Utility {
 
       clients.add(c);
 
-      targetObjects.put(c, ob);
+      targetObjects.put(c+ob.get('SECTION__c'), ob);
+
+      sections.add(String.valueOf(ob.get('SECTION__c')));
+
     }
 
     for(String sf : statusFields) {
@@ -289,22 +297,22 @@ public class Utility {
 
     }
 
-    List<Client_Summary__c> summary = [SELECT id, Client__c, Page__r.Page__c
+    List<Client_Summary__c> summary = [SELECT id, Client__c, Page__r.Page__c, SECTION__c
                                          FROM Client_Summary__c 
                                         WHERE Client__c IN :clients
                                           AND Page__r.Page__c IN :formPages
-                                          AND Page__r.Object__c =: objName];
+                                          AND Page__r.Object__c =: objName
+                                          AND SECTION__c IN :sections];
 
-//System.debug('>>>>>>>> the value of summary is ' + summary);
     List<Client_Summary__c> updateSummary = new List<Client_Summary__c>();
 
     for(Client_Summary__c s : summary) {
 
       String clientID = s.Client__c;
 
-      if(targetObjects.containsKey(clientID)) {
+      if(targetObjects.containsKey(clientID+s.SECTION__c)) {
         String StatusField = 'STATUS_'+String.valueOf(s.Page__r.Page__c).substringAfter('DS_')+'__c';
-        s.STATUS__c = String.valueOf(targetObjects.get(clientID).get(StatusField));
+        s.STATUS__c = String.valueOf(targetObjects.get(clientID+s.SECTION__c).get(StatusField));
         updatesummary.add(s);
       }
     }

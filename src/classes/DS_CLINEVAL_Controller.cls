@@ -1,100 +1,44 @@
-/*Page Description:
- *  Controller for VisualForce page DS_CLINEVAL
- * Last Updated on:
- *  7/24/2014
- * Update Purpose:
- *         fix redirect
- 7/31/14-Link to DS_Functioning_Forms__c
- * Programmer:
- *  Kelsey
- */
-public with sharing class DS_CLINEVAL_Controller {
-
-  Utility ut = new Utility();
-
-//  public DS_CLINEVAL__c obj { get; set; }        //
-  public DS_Functioning_Forms_B__c obj { get; set; }        
-  
-  String cID;
-  
-  String summaryID;
-  
-  public String forceRedirect {get; set;} 
-
-  Boolean edit = FALSE;
-
-  public String subtitle {get; set;}
-    
-  public Client__c client { get; set; }
-
-  public Client_Summary__c summaryInfo { get; set; }
-
-  public String triggerValue {get; set;}
-  public String skipTrigger {get; set;}
-
-  public SkipLogic skip {get;set;}
-
-  public String skipElementToJson { get; set; }
-
-
-  Map<String, String> parameter = ut.urlDecode(Apexpages.currentPage().getParameters().get('cimi'));
-
+/**
+ * The controller class for Clinical Evaluation.  
+ * 
+ **/
+ 
+public with sharing class DS_CLINEVAL_Controller extends DS_BasicForm_Controller {
 
     public DS_CLINEVAL_Controller(ApexPages.StandardController controller) {
+
+    // Initilize the DS_BasicForm_Controller
+    super(Apexpages.currentPage().getParameters().get('cimi'));
     
-    cID = parameter.get('c');
-
-    summaryID = parameter.get('summary');
-
-    forceRedirect = (parameter.containsKey('f')) ? parameter.get('f') : '';
-
-    skip = new SkipLogic();
-    
-    skip.skipLibrary('BCEOTHY', 'show', '1', new Map<String,String>{'BCEOTHER'=>'text'});    
-    skip.skipLibrary('BCEPRIM', 'show', '98', new Map<String,String>{'BCEPRIMSP'=>'text'});    
+    skip.skipLibrary('CEOTHY', 'show', '1', new Map<String,String>{'CEOTHER'=>'text'});    
+    skip.skipLibrary('CEPRIM', 'show', '98', new Map<String,String>{'CEPRIMSP'=>'text'});    
   
-    client = [SELECT Name, INIT__c FROM Client__c WHERE id =: cID];
-  // Client_Summary__c summary = [SELECT SECTION__c FROM Client_Summary__c WHERE ID =:summaryID];
-    
-    subtitle = '(' + client.Name + ') ' + client.INIT__c;
+    // Set the skip object to form object
+    form.setSkipLogic(skip);
 
-    String getDEMOFields = ut.getFields('DS_Functioning_Forms_B__c');  
-   // String getDEMOFields = ut.getFields('DS_CLINEVAL__c');
+    // Set the obj name 
+    form.setObjName('DS_Functioning_Forms_'+form.BorF+'__c');
+
+    // Get the object record into form.obj
+    form.getObjRecord();
+
+    // Serialize the skip library to JSON format
+    skipElementToJson = JSON.serialize(form.skip.skipList); 
     
-    List<DS_Functioning_Forms_B__c> record = Database.query('SELECT ' + getDEMOFields + ', Client__r.Name, Client__r.INIT__c' +  //CLINEVAL
-   // List<DS_CLINEVAL__c> record = Database.query('SELECT ' + getDEMOFields + ', Client__r.Name, Client__r.INIT__c' + 
-                                     //        '  FROM DS_CLINEVAL__c ' +                                            //CLINEVAL
-                                             '  FROM DS_Functioning_Forms_B__c ' +                                        
-                                                 ' WHERE Client__c = \''+ cID + '\'');
+    List<String> bfVariable = 
+      new List<String>{
+                        'CEOTHY','CEPRIM','CEOTHER','CEPRIMSP',
+                        'CEADHD','CEBIPL','CEDPS','CEDEP','CETG','CEGA','CESEPDS','CESOCAD','CEPANDS','CEPHODS',
+                        'CEOCD','CEASD','CEPTSD','CEADJ','CEATTPR','CEDISYMP','CEDISSO','CESOMAT','CEEAT','CESLPDS',
+                        'CESEXPR','CEODD','CECD','CEEXPL','CEGBP','CESA','CESUBST','CESUICD','CESBD'
+                      };
     
-    
-    if(record.size() == 0) { // New record
+    for(String var : bfVariable)
+      bfVariableMap.put(var, form.BorF+var+'__c');
       
-    //  obj = new DS_CLINEVAL__c(client__c = cID);                //
-      obj = new DS_Functioning_Forms_B__c(client__c = cID, FORM__c = 'DS_CLINEVAL');               
-    //  summary = new Client_Summary__c(FORM_ID__c=summaryID);//
-      
+    bfVariableMap.put('STATUS', 'STATUS_CLINEVAL__c');
     }
-    else {   // Update record
-      
-      obj = record.get(0);
-      edit = TRUE;
-
-      obj.FORM__c = 'DS_CLINEVAL';
-
-      for(String lKey : skip.skipList.keySet()) 
-        for(String sKey : skip.skipList.get(lKey).keySet()) {
-          //skip.runSkipLogic(lKey, String.valueOf(obj.get(lKey+'__c')), obj);
-          skip.skipList.get(lKey).get(sKey).addTargetValue(String.valueOf(obj.get(lKey+'__c')));
-        }
-        
-    } 
-
-    skipElementToJson = JSON.serialize(skip.skipList);
-
-    }
-  public String getClientInfo() { return ut.clientSection(cID,SummaryID);}  
-  
+    
   public List<SelectOption> getYNIems() {
     
     List<SelectOption> options = new List<SelectOption>(); 
@@ -143,30 +87,6 @@ public with sharing class DS_CLINEVAL_Controller {
         
   }
   
-  public  PageReference cancel() {
-
-    PageReference summaryPage = new PageReference('/apex/ClientSummary?s=0&id=' + cID);
-    summaryPage.setRedirect(true);
-    
-    return summaryPage;
-
-  }
-
-  public PageReference save() {
-
-    PageReference nextPage;
-        
-    try {
-      if(edit == FALSE) insert obj;
-      else update obj;
-
-      nextPage = new PageReference(skip.formRedirct(cID, '0', forceRedirect));
-      nextPage.setRedirect(true);
-    }
-    catch(DMLException e) { nextPage = null; }
-    
-    return nextPage;
-      
-  }
 
 }
+    ////////////////////////////////////////////////////////////////

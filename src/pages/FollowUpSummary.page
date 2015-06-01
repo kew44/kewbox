@@ -1,0 +1,500 @@
+<apex:page standardController="Client__c" showheader="true" extensions="FollowUpMockController" action="{!SummaryInit}">
+    
+    <!--JQuery -->
+    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.9.1.js')}"  /><!--allows for JQuery dependencies-->
+    <script> $j = jQuery.noConflict(); </script><!--Reserves the '$' token for JQuery only-->
+    
+    <!-- Bootstrap -->
+        <link href="{!URLFOR($Resource.VFbootstrap3, '/css/VFbootstrap.css')}" rel="stylesheet" media="screen"/>
+            <apex:includeScript value="{!URLFOR($Resource.VFbootstrap3, '/js/bootstrap.min.js')}"/>
+                <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
+                    
+                    <!--link to the CSS resource in Salesforce internal document-->
+                        <apex:stylesheet value="{!$Resource.CustomCss}" />
+                            
+                            <!--supplementary styling information-->
+                                <style>
+                                #sidebarCell { display: none;}
+                                @media only screen and (min-width : 1224px) {
+                                    #sidebarCell { display: table-cell;}
+                                }
+                                #force .panel-default > .panel-heading { background-color: #FFFFFF !important; }
+                                .trauma-status { color: #000 !important; }
+                                </style>
+                                     <!------------------------------------------------------------------------------------------------------------------------------------>
+        <style type="text/css">
+        .custPopup{
+            title:"Confirm New Follow-up";
+            background-color: white;
+            font-color:black;
+            border-width: 2px;
+            border-style: solid;
+            z-index: 9998;
+            left: 50%;
+            padding:10px;
+            position: absolute;
+             width: 550px;
+             height: 200px;
+            margin-left: -250px;
+            top:100px;
+            modal:true;
+            opacity: 0.99;
+        }
+        .popupBackground{
+            background-color:#d3d3d3;
+            opacity: 0.85;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+           // filter: alpha(opacity = 20);
+        }
+    </style>
+    <!--end styling-->
+        
+        <apex:outputPanel layout="none" rendered="{!if(openSection != '', true, false)}">
+            <script>
+            $j(document).ready(function() {
+            $j('.sectionTitle{!openSection}').trigger('click');       
+        });
+                    </script>
+</apex:outputPanel>
+
+<!-- "Breadcrumb" heading allows user to navigate to the ClientSummary page -->
+<script>
+$j(document).ready(function() {
+    $j('.bPageTitle').append('<div class="ptBreadcrumb">&nbsp;«&nbsp;<a href="/a02/o">Back to Client List</a></div>');
+});
+</script>
+
+<!--popup confirmation of new follow-up window-->
+<script>
+function confirmNew(url){
+    confirmWindow= window.open(url,'ConfirmNew', height=200, width=300');
+                               if(window.focus{confirmWindow.focus()}
+return false;
+}
+</script>
+<!--end window function-->
+
+<!--Begin form content-->
+<apex:sectionHeader title="Client Summary" subtitle="{!subtitle}"/>
+
+<!-- pageblock to show ClientInformation header as described in Utility class-->
+<apex:pageBlock title="Client Information">
+    <div id="force">
+        <apex:outputText value="{!ClientInfo}" escape="false"/>
+    </div>
+</apex:pageBlock><!--end client info pageBlock--> 
+
+<apex:pageBlock title="Client Summary">
+    
+    <div id="force">
+        <section>
+            <div class="panel-group" id="accordion"><!--class provides accordion-like folding or expanding behavior functionality-->
+                <div id="baseline" class="panel panel-default">
+                    
+                    <!--Baseline section heading-->
+                    <div class="panel-heading">
+                        <h4 class="panel-title">                            
+                            <i class="fa fa-circle alert-sl-{!if(BaselineBtn = FALSE, 'green', 'red')}"></i><!--status indicator for baseline section-->
+                            
+                            <apex:outputPanel layout="none" rendered="{!BaselineBtn}">
+                                Baseline<!--baseline title-->
+                            </apex:outputPanel>          
+                            
+                            <apex:outputPanel layout="none" rendered="{!NOT(BaselineBtn)}">
+                                <a data-toggle="collapse" class="sectionTitle0" data-parent="#accordion" href="#collapseBase">Baseline</a> <!--invokes accordian behavior when baseline is clicked-->
+                            </apex:outputPanel>
+                            
+                            <p class="pull-right">
+                                
+                                <!--visit date-->
+                                <apex:outputPanel layout="none" rendered="{!NOT(BaselineBtn)}">                                    
+                                    Date of Visit: &nbsp;
+                                    <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                        <apex:param value="{!baselineDate}" />
+                                    </apex:outputText>                                     
+                                </apex:outputPanel>
+                                <!--end visit date-->
+                                
+                                <!--begin start button-->
+                                <apex:outputPanel layout="none" rendered="{!BaselineBtn}"><!--displays if baseline has not been started-->                                    
+                                    <a href="{!URLFOR('/apex/DS_DEMO', null, ['cimi'=urlClientIDBaseDEMO])}">
+                                        <button type="button" class="btn btn-primary btn-xs btn-sl">Start</button>
+                                    </a>                                    
+                                </apex:outputPanel>
+                                <!--end start button-->                                
+                            </p>
+                        </h4>
+                    </div>
+                    <!--end baseline heading-->
+                    
+                    <div id="collapseBase" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <apex:outputPanel layout="none" rendered="{!NOT(BaselineBtn)}"><!--cannot display expanded baseline section unless it has been started-->
+                                
+                                <!--print button functionality-->
+                                <a href="/apex/clientSummaryReport?cimi={!urlClientSummaryReport['0']}">
+                                    <button type="button" class="btn btn-default pull-right">
+                                        <i class="glyphicon glyphicon-list-alt"></i> &nbsp;Summary Report
+                                    </button>
+                                </a>
+                                <!--end print button-->
+                                
+                                <table class="table table-hover">
+                                    <!--heading-->
+                                    <thead>
+                                        <tr>
+                                            <th>Instrument</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <!--end heading-->
+                                    
+                                    <tbody>
+                                        <!--Displays System Screening-->
+                                        <tr>                                            
+                                            <td>System Screening</td><!--heading-->
+                                            <td><i class="fa fa-circle alert-sl-green"></i> Complete</td><!--Status indicator-->
+                                            <td>
+                                                <a href="apex/DS_Base_SSI?id={!client.id}">
+                                                    <button type="button" class="btn btn-primary btn-xs btn-sl">Edit</button><!--edit button-->
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <!--end system screening-->
+                                        
+                                        <!--expanded view, displays list of baseline form information relavent to client based on screening and registration-->
+                                        <apex:repeat value="{!baseline}" var="base">
+                                            <apex:outputPanel layout="none" rendered="{!NOT(AND(genderUnknown = true,base.Page__r.Gender_Required__c = true))}">
+                                                <!--record of information about each form-->
+                                                <tr>
+                                                    <!--page title-->
+                                                    <td>{!base.Page__r.Content__c}</td>
+                                                    <!--end page title-->
+                                                    
+                                                    <!--status indicator-->
+                                                    <td>
+                                                        <i class="fa fa-circle alert-sl-{!CASE(base.STATUS__c,'Complete', 'green', 'Incomplete', 'yellow', 'red')}"></i> 
+                                                        {!CASE(base.STATUS__c,'Complete', 'Complete', 'Incomplete', 'Incomplete', 'Not Started')}
+                                                    </td>
+                                                    <!--status indicator-->
+                                                    
+                                                    <!--start, edit, or view button depending on status and content-->
+                                                    <td>
+                                                        <a href="/apex/{!base.Page__r.Variable__c}{!if( AND( base.FORM_TYPE__c = 'Assessment', base.STATUS__c = 'Complete' ), '_Report', '')}?cimi={!urlSummary[base.id]}">
+                                                            
+                                                            <button type="button" class="btn btn-primary btn-xs btn-sl">
+                                                                {!CASE(base.STATUS__c,'Complete', if(base.FORM_TYPE__c = 'Assessment', 'View', 'Edit'), 'Incomplete', 'Resume', 'Start')}
+                                                            </button>
+                                                        </a>
+                                                    </td>
+                                                    <!--end button-->
+                                                </tr>
+                                                <!--end record of information about each form-->                                                
+                                            </apex:outputPanel>
+                                            
+                                            <apex:outputPanel layout="none" rendered="{!AND(genderUnknown = true,base.Page__r.Gender_Required__c = true)}">
+                                                <!--list of unavailable forms due to insufficient gender selection-->
+                                                <tr>
+                                                    <!--page title-->
+                                                    <td class="td-disable">{!base.Page__r.Content__c}</td>
+                                                    <!--end title-->
+                                                    
+                                                    <!--greyed out indicator-->
+                                                    <td class="td-disable">
+                                                        <i class="fa fa-circle alert-sl-gray"></i> 
+                                                        Not Accessible
+                                                    </td>
+                                                    <!--end indicator-->
+                                                    
+                                                    <!--disabled button-->
+                                                    <td class="td-disable">
+                                                        <a title="If the client’s sex is “declined” or “unknown”, assessments that rely on gender for scoring will not be accessible.
+                                                                  ">
+                                                            <button type="button" class="btn btn-default btn-xs btn-sl" style="background-color:#DBD9D9;cursor: auto;">Start</button>
+                                                        </a>
+                                                    </td>
+                                                    <!--end button-->
+                                                    
+                                                </tr>
+                                                <!--end disabled record-->
+                                            </apex:outputPanel>
+                                        </apex:repeat>
+                                        <!--end list of baseline form information-->                                                                                                                        
+                                    </tbody>
+                                </table>
+                            </apex:outputPanel>
+                        </div>
+                    </div>
+                </div>
+                <!--end baseline section-->
+                
+                <!--trauma history section heading-->
+                <div id="trauma-history" class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <i class="fa fa-circle alert-sl-{!if(traumaBtn = FALSE, 'green', 'red')}"></i><!--status indicator for trauma section-->
+                            <apex:outputPanel layout="none" rendered="{!traumaBtn}">
+                                Trauma History
+                            </apex:outputPanel><!--trauma title-->
+                            
+                            <apex:outputPanel layout="none" rendered="{!NOT(traumaBtn)}">
+                                <a data-toggle="collapse" class="sectionTitle-1" data-parent="#accordion" href="#collapseTrauma">Trauma History</a> <!--invokes accordian behavior when baseline is clicked-->
+                            </apex:outputPanel>
+                            
+                            <p class="pull-right">
+                                
+                                <!--visit date-->
+                                <apex:outputPanel layout="none" rendered="{!NOT(traumaBtn)}">
+                                    Last Visit: &nbsp;
+                                    <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                        <apex:param value="{!gtObj['GTDATE__c']}" />
+                                    </apex:outputText> 
+                                </apex:outputPanel>
+                                <!--end visit date-->
+                                
+                                <!--begin start button-->
+                                <apex:outputPanel layout="none" rendered="{!traumaBtn}">
+                                    <a href="/apex/DS_GTRAUMA?cimi={!urlClientIDGTrauma}">
+                                        <button type="button" class="btn btn-primary btn-xs btn-sl">Start</button>
+                                    </a>
+                                </apex:outputPanel>
+                                <!--end start button-->
+                            </p>
+                        </h4>
+                    </div>
+                    <!--end trauma heading-->
+                    
+                    <div id="collapseTrauma" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <apex:outputPanel layout="none" rendered="{!NOT(traumaBtn)}"><!--cannot display expanded trauma section unless it has been started-->
+                                
+                                <!--edit general trauma button-->
+                                <a href="/apex/DS_GTRAUMA?cimi={!urlClientIDGTrauma}">
+                                    <button type="button" class="btn btn-default pull-right">
+                                        <i class="fa fa-pencil"></i> &nbsp;Edit Trauma History
+                                    </button>
+                                </a>
+                                <!--end general trauma button-->
+                                
+                                <table class="table table-hover">
+                                    <!--heading-->
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Trauma Type</th>
+                                            <th colspan="20">Age</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <!--end heading-->                                  
+                                    <tbody>
+                                        <!--display general trauma-->
+                                        <apex:repeat value="{!rowsGTRAUMA}" var="gt">
+                                            <tr>
+                                                <!--record of information for trauma types and ages-->
+                                                <td>{!gt.num}</td><!--number of trauma type-->
+                                                <td>{!gt.trauma}</td><!--trauma type title-->
+                                                <!--population of age indication-->
+                                                <apex:repeat value="{!ageNum}" var="aNum">
+                                                    <td class="text-center {!if(gtObj['GT'+gt.num+'RA'+aNum+'__c'] = true, 'info', '')}">
+                                                        {!if(VALUE(aNum) < 10, '0'+aNum, aNum)}
+                                                    </td>
+                                                </apex:repeat>
+                                                <!--end age indication-->
+                                                <!--unknown field-->
+                                                <td class="text-center {!if(gtObj['GT'+gt.num+'RAU__c'] = true, 'info', '')}">
+                                                    Unk
+                                                </td>
+                                                <!--end unknown field-->
+                                                
+                                                <!--start, edit, or view button depending on status and content-->
+                                                <td>
+                                                    <apex:outputPanel rendered="{!if(gt.status != 'none', true, false)}" layout="none">
+                                                        <a href="{!gt.url}"> 
+                                                            <button type="button" class="btn btn-primary btn-xs btn-sl">
+                                                                {!CASE(gt.status,'Complete', 'Edit', 'Incomplete', 'Resume', 'Start')}
+                                                            </button>
+                                                        </a>
+                                                    </apex:outputPanel>
+                                                </td>
+                                                <!--end button-->
+                                                
+                                            </tr>
+                                            <!--end record-->
+                                        </apex:repeat>
+                                    </tbody>
+                                </table>
+                            </apex:outputPanel>
+                        </div>
+                    </div>
+                </div>
+                <!--end trauma-->
+                <!----------------------------------------------------------------------------------------------------------------------------------------------> 
+                <apex:form >
+                    <!--Follow Up panel-->
+                    <div id="FollowUp" class="panel panel-default"> 
+                        <!--Follow-Up section heading-->
+                        <div class="panel-heading">
+                            <h4 class="panel-title">            
+                                <!--status indicator for follow-up section-->
+                                <i class="fa fa-circle alert-sl-{!if(fuBtn = FALSE, 'green', 'red')}"></i>
+                                <!--follow-up title-->
+                                <!--<apex:outputPanel layout="none" rendered="{!fuBtn}">
+                                        <!--    Follow-Up-->
+                                <!--</apex:outputPanel>-->
+                                <!--end title-->
+                                <!--invokes accordian behavior when fu is clicked-->
+                                <apex:outputPanel layout="none"><!-- rendered="{!NOT(fuBtn)}">-->
+                                    <a data-toggle="collapse" class="sectionTitle" data-parent="#accordion" href="#collapseFU">
+                                        Follow-Up
+                                    </a>
+                                </apex:outputPanel>
+                                <!--end accordian heading-->
+                            </h4>
+                            <!--keep right-->
+                            <p class="pull-right">
+                            <!--new follow-up form button and popup-->
+                            <apex:outputPanel layout="none">
+                                <apex:commandButton styleClass="btn btn-primary btn-xs"  value="New Follow-Up" action="{!showPopup}" reRender="fuPop"/>
+                                    <!--pop-up confirmation window-->
+                                    <apex:outputPanel id="fuPop">
+                                        <!--background and foreground-->
+                                        <apex:outputPanel styleClass="popupBackground" layout="block" rendered="{!displayPopUp}">
+                                            <apex:outputPanel styleClass="custPopup" layout="block" rendered="{!displayPopUp}">
+                                                <!--message-->
+                                                <p>You have selected "add new Follow-up". Do you wish to continue creating a Follow-up record? </p>
+                                                    <!--table containing buttons-->
+                                                    <table border="0" cellpadding="5" cellspacing="0">                                                              
+                                                        <tr>
+                                                            <!--no-->
+                                                            <td> 
+                                                                <apex:outputPanel layout="none" >
+                                                                    <apex:commandButton styleClass="btn btn-primary btn-xs"  action="{!No}" value="No"/>
+                                                                </apex:outputPanel>
+                                                            </td>
+                                                            <!--yes-->
+                                                            <td>
+                                                                <apex:outputPanel layout="none" >
+                                                                    <apex:commandButton styleClass="btn btn-primary btn-xs"  action="{!Yes}" value="Yes. Let's get started!"/>
+                                                                </apex:outputPanel>
+                                                            </td>
+                                                            <!--later-->
+                                                            <td>
+                                                                <apex:outputPanel layout="none" >
+                                                                    <apex:commandButton styleClass="btn btn-primary btn-xs"  action="{!Later}" value="Yes, but take me to the summary page first."/>
+                                                                </apex:outputPanel>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <!--end button table-->
+                                            </apex:outputPanel>
+                                        </apex:outputPanel>
+                                    </apex:outputPanel>
+                                    <!--end popup-->
+                            </apex:outputPanel>
+                            <!--end new form button and popup-->
+                            </p>
+                            <!--end keep right-->
+                        </div>
+                        <!--end follow-up heading-->    
+                        <!--record of follow up visits section-->
+                        <div id="collapseFU" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <!--table to organize visit records-->
+                                <table class="table table-hover">
+                                    <tbody>
+                                    <apex:outputPanel layout="none"><!-- rendered="{!NOT(fuBtn)}"><!--cannot display follow-up section unless followup has been started-->
+                                        <!--view list of follow-ups-->
+                                        <!--<apex:repeat value="{!followUP}" var="fUp"><!--populates visit records list-->
+                                                <div id="collapseFU" class="panel-collapse collapse panel-default">
+                                                    <!--individual visit record heading-->
+                                                    <div class="panel-heading">
+                                                        <apex:outputPanel layout="none">        
+                                                            <!--follow-up individual record collapsible heading-->
+                                                            <tr>
+                                                                <apex:outputPanel layout="none" >
+                                                                <a data-toggle="collapse" class="sectionTite1" data-parent="#accordion" href="#collapseFU2"><!--invokes accordian behavior when baseline is clicked-->
+                                                                    <!--visit date-->                   
+                                                                    <apex:outputPanel layout="none" rendered="{!NOT(BaselineBtn)}">
+                                                                        Follow-UpDate of Visit: &nbsp;
+                                                                        <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                                                            <apex:param value="{!baselineDate}" /><!--use followDate-->
+                                                                        </apex:outputText>                                     
+                                                                    </apex:outputPanel>
+                                                                    <!--end visit date-->
+                                                                </a> 
+                                                                </apex:outputPanel> 
+                                                            </tr>
+                                                            <!--end individual record heading-->
+                                                            <!--content of visit--> 
+                                                            <tr>
+                                                                <td>
+                                                                    <div id="collapseFU2" class="panel collapse">
+                                                                        <!--Follow-up summary button-->
+                                                                        <apex:outputPanel layout="none" >
+                                                                            <!--keep right-->
+                                                                            <p class="pull-right">
+                                                                                <button type="button" class="btn btn-default pull-right">
+                                                                                    <i class="glyphicon glyphicon-list-alt"></i> &nbsp;Follow-up Summary Report
+                                                                                </button>
+                                                                            </p>
+                                                                            <!--end keep right-->
+                                                                        </apex:outputPanel>
+                                                                        <!--end summary button-->
+                                                                        <!--records of forms for follow-up visit-->
+                                                                        <apex:outputPanel layout="none">
+                                                                            <!--table to organize follow-up forms-->
+                                                                            <apex:pageBlockTable value="{!followUp}" var="fUp" >
+                                                                                <!--page title-->
+                                                                                <apex:column headerValue="Page">
+                                                                                    {!fUp.Page__r.Content__c}
+                                                                                </apex:column>
+                                                                                <!--page status-->
+                                                                                <apex:column headerValue="Status">
+                                                                                    <i class="fa fa-circle alert-sl-{!CASE(fUp.STATUS__c,'Complete', 'green', 'Incomplete', 'yellow', 'red')}"></i> 
+                                                                                        {!CASE(fUp.STATUS__c,'Complete', 'Complete', 'Incomplete', 'Incomplete', 'Not Started')}
+                                                                                </apex:column>
+                                                                                <!--page action button-->
+                                                                                <apex:column headerValue="Action">
+                                                                                    <a href="/apex/{!fUp.Page__r.Variable__c}{!if( AND( fUp.FORM_TYPE__c = 'Assessment', fUp.STATUS__c = 'Complete' ), '_Report', '')}?cimi={!urlClientIDF}" >
+                                                                                        <button type="button" class="btn btn-primary btn-xs btn-sl">
+                                                                                            {!CASE(fUp.STATUS__c,'Complete', if(fUp.FORM_TYPE__c = 'Assessment', 'View', 'Edit'), 'Incomplete', 'Resume', 'Start')}
+                                                                                        </button>
+                                                                                    </a>
+                                                                                </apex:column>
+                                                                            </apex:pageBlockTable>
+                                                                            <!--end forms table-->
+                                                                        </apex:outputPanel>
+                                                                        <!--end forms for visits-->
+                                                                    </div>
+                                                                </td>                                       
+                                                            </tr>
+                                                            <!--end visit content row-->
+                                                        </apex:outputPanel>
+                                                    </div>
+                                                    <!--end individual visit record-->
+                                                </div>
+                                        <!--</apex:repeat>-->
+                                        <!--end list of visits-->
+                                    </apex:outputPanel>
+                                    </tbody>
+                                </table>
+                                <!--end visit records table-->
+                            </div>
+                        </div>
+                        <!--end follow up visits records section-->
+                    </div>
+                    <!--end follow-up panel-->
+                </apex:form>                
+            </div>
+        </section>
+    </div>
+    <!--end client summary page-->
+</apex:pageBlock>
+</apex:page>

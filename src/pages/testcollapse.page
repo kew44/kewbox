@@ -1,0 +1,134 @@
+<apex:page standardController="Client__c" extensions="test_collapse">
+    
+    <!--JQuery -->
+    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.9.1.js')}"  /><!--allows for JQuery dependencies-->
+    <script> $j = jQuery.noConflict(); </script><!--Reserves the '$' token for JQuery only-->
+    
+    <!-- Bootstrap -->
+    <link href="{!URLFOR($Resource.VFbootstrap3, '/css/VFbootstrap.css')}" rel="stylesheet" media="screen"/>
+    <apex:includeScript value="{!URLFOR($Resource.VFbootstrap3, '/js/bootstrap.min.js')}"/>
+
+    <!--link to the CSS resource in Salesforce internal document-->
+    <apex:stylesheet value="{!$Resource.CustomCss}" /> 
+    
+    <div id="force">  
+
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Baseline</a>
+                  </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                  <div class="panel-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Instrument</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>                                            
+                                <td>System Screening</td>
+                                <td><i class="fa fa-circle alert-sl-green"></i> Complete</td>
+                                <td>
+                                    <a href="apex/DS_Base_SSI?id=a02e0000005ScWrAAK" target="_top">
+                                        <button class="btn btn-primary btn-xs btn-sl" type="button">Edit</button>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Baseline Visit and Demographic Information</td>
+                                <td><i class="fa fa-circle alert-sl-yellow"></i> Incomplete</td>
+                                <td>
+                                    <a href="/apex/DS_DEMO?cimi=" target="_top">
+                                        <button class="btn btn-primary btn-xs btn-sl" type="button">Resume</button>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Insurance Information</td>
+                                <td><i class="fa fa-circle alert-sl-yellow"></i> Incomplete</td>
+                                <td>
+                                    <a href="/apex/DS_INSDOMENV?cimi=" target="_top">
+                                        <button class="btn btn-primary btn-xs btn-sl" type="button">Resume</button>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                      </table>
+                  </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                  <h4 class="panel-title">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Follow-up</a>
+                  </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                
+                    <div class="panel-body">
+
+                        <div class="panel-group" id="accordion_followup" role="tablist" aria-multiselectable="true">
+
+                            <apex:repeat value="{!visits}" var="visit" id="theRepeat">
+                            
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingOne_followup_{!visit.sectionNumber}">
+                                      <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion_followup" href="#collapseOne_followup_{!visit.sectionNumber}" aria-expanded="false" aria-controls="collapseOne_followup_{!visit.sectionNumber}">
+                                          Follow-Up Date of Visit:  {!visit.title}
+                                        </a>
+                                      </h4>
+                                    </div>
+                                    <div id="collapseOne_followup_{!visit.sectionNumber}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne_followup_{!visit.sectionNumber}">
+                                      <div class="panel-body">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Instrument</th>
+                                                    <th>Status</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>                                            
+                                                    <td>System Screening</td>
+                                                    <td><i class="fa fa-circle alert-sl-green"></i> Complete</td>
+                                                    <td>
+                                                        <a href="" target="_top">
+                                                            <button class="btn btn-primary btn-xs btn-sl" type="button">Edit</button>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>                                            
+                                                    <td>Insurance Information</td>
+                                                    <td><i class="fa fa-circle alert-sl-green"></i> Complete</td>
+                                                    <td>
+                                                        <a href="" target="_top">
+                                                            <button class="btn btn-primary btn-xs btn-sl" type="button">Edit</button>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                          </table>
+                                      </div>
+                                    </div>
+                                </div>
+                            </apex:repeat>
+                            
+              
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+
+    </div>
+</apex:page>

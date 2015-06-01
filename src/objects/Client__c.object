@@ -255,7 +255,7 @@
     </validationRules>
     <validationRules>
         <fullName>Age_validation</fullName>
-        <active>true</active>
+        <active>false</active>
         <errorConditionFormula>AGE__c !=  FLOOR((TODAY() - DOB1__c)/365.2425)</errorConditionFormula>
         <errorDisplayField>AGE__c</errorDisplayField>
         <errorMessage>Age is wrong</errorMessage>

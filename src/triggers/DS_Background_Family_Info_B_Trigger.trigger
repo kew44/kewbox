@@ -21,10 +21,10 @@ trigger DS_Background_Family_Info_B_Trigger on DS_Background_Family_Info_B__c (b
   
     FormBuilder.MilitaryRefugeHealthDisplayLogic(Trigger.new);
 
-    AuditTrail audit = new AuditTrail(Trigger.new, Trigger.old); 
+    /*AuditTrail audit = new AuditTrail(Trigger.new, Trigger.old); 
   
     if(Trigger.isInsert) { audit.generateLog(Trigger.new, Trigger.old); }
-    if(Trigger.isUpdate) { audit.generateLog(Trigger.new, Trigger.old); }
+    if(Trigger.isUpdate) { audit.generateLog(Trigger.new, Trigger.old); }*/
 
   }
   

@@ -1,4 +1,16 @@
 public class FormBuilder {
+
+    /////start newSummary method ////////
+  public static Client_Summary__c newSummary(String clientID, ID formID, String formCategory, String sectionNum, Boolean required) {
+
+    Client_Summary__c newSummary = 
+      new Client_Summary__c(client__c = clientID, Page__c = formID, 
+                            FORM_TYPE__c = formCategory, REQUIRED__c = required,
+                            SECTION__c = sectionNum);
+
+    return newSummary;
+  }
+    //////////end newSummary method////////////////
                                         
   ////////////start baseline method//////////////// 
   public static void baseline(Set<String> clients) {
@@ -15,7 +27,7 @@ public class FormBuilder {
                                     AND FILE_NAME__c = 'Baseline'
                                ORDER BY Category__c, weight__c];
 
-    //System.debug(formInfo);
+    System.debug(formInfo);
                                         
     Map<Id, Client__c> clientInfo = 
       new Map<Id, Client__c>([SELECT id, age__c, gender__c
@@ -56,20 +68,95 @@ public class FormBuilder {
     insert newSummaryList;
   
   }
-    ///////////////end baseline method/////////////////////   
+    ///////////////end baseline method/////////////////////      
+    
+          ////////////start follow-up method//////////////// 
+  public static void followup(Set<String> clients) {
+  
+  DS_Background_Family_Info_F__c background = new DS_Background_Family_Info_F__c();
+  
+  List<DS_Background_Family_Info_F__c> backgroundList= new List<DS_Background_Family_Info_F__c>();
+                       
+  //for query
+  Client_Summary__c summary = new Client_Summary__c();
+  
+  //new visit
+    List<Client_Summary__c> newSummaryList = new List<Client_Summary__c>();
+        
+    //forms for visit
+    List<DS_Data__c> followformInfo = [SELECT Category__c, Content__c, Variable__c,  
+                                        Age_Range__c, Form__c
+                                   FROM DS_Data__c 
+                                  WHERE (Category__c = 'FollowUp' 
+                                    OR Category__c = 'Assessment')
+                                    AND Data_Type__c = 'DS_Form_Info'
+                                    AND FILE_NAME__c = 'FOLLOWUP'
+                               ORDER BY Category__c, weight__c];
 
-    /////start newSummary method use w/ baseline method////////
-  public static Client_Summary__c newSummary(String clientID, ID formID, String formCategory, String sectionNum, Boolean required) {
 
-    Client_Summary__c newSummary = 
-      new Client_Summary__c(client__c = clientID, Page__c = formID, 
-                            FORM_TYPE__c = formCategory, REQUIRED__c = required,
-                            SECTION__c = sectionNum);
+    system.debug(followformInfo);
+                               
+    //client
+    Map<Id, Client__c> clientInfo = 
+      new Map<Id, Client__c>
+          ([SELECT id, age__c, gender__c
+                                FROM Client__c
+                               WHERE id IN : clients]); 
+      
+    //check to see if skipped rules apply
+Set<String> skippedForm = new Set<String>();                        
+        
+        String sectionNum;        
+        String client_id;
 
-    return newSummary;
+    for(DS_Data__c f : followformInfo) {
+        List<aggregateResult> sections= [SELECT Max (Section__c) section,client__c  FROM Client_summary__c WHERE client__c IN: clients GROUP BY client__c ];//String.valueOf([SELECT Max (Section__c) FROM Client_summary__c WHERE client__c IN: clients GROUP BY client__c ]);
+        System.debug(sections);
+        
+        for (AggregateResult ar : sections)  {
+        System.debug(ar.get('client__c'));
+        client_id= String.valueOf(ar.get('client__c'));
+        
+          System.debug(ar.get('section'));
+        sectionNum = String.valueOf(ar.get('section'));
+        System.debug(sectionNum);
 
+        }        
+        
+        System.debug(client_id);
+    
+        System.debug(sectionNum);
+        
+        
+        Map<String, Integer> Section_Num = new Map<string, Integer>();
+    Section_Num.put(client_id,Integer.valueOf(sectionNum));
+    
+    System.debug(Section_Num);
+    
+  //  Section_Num.put(2, integer.valueOf(sectionNum));//Max(section__c));
+      //  String -> clientID
+      //  int -> Max(section__c)
+
+    //  for(Client__c c : clients) {
+
+        //age range check
+
+        sectionNum=String.valueOf(Integer.valueOf(sectionNum)+1);
+
+        newSummaryList.add(newSummary(client_id, f.id, f.Category__c, sectionNum, true)); 
+System.debug(newSummaryList);
+
+        System.debug(sectionNum);
+     // }
+
+    }
+
+        System.debug(sectionNum);
+    insert newSummaryList;
+
+        System.debug(sectionNum);
   }
-    //////////end newSummary method////////////////
+      ///////////////end follow-up method///////////////////// 
     
   public static void MilitaryRefugeHealthDisplayLogic(List<SObject> obj) {  
 
@@ -77,7 +164,7 @@ public class FormBuilder {
 
     String BorF = (Integer.valueOf(section) > 0) ? 'F' : 'B';
 
-    String category = (Integer.valueOf(section) > 0) ? 'Follow-up' : 'Baseline';
+    String category = (Integer.valueOf(section) > 0) ? 'FollowUp' : 'Baseline';
 
     List<String> forms = new List<String>{'DS_HEALTH', 'DS_MILITARY', 'DS_REFIMM'};
     
@@ -132,77 +219,6 @@ public class FormBuilder {
     insert insertClientSummary;
 
   }
-  
-   /////////////////////////start DemoQ method//////////////////////////////////////
-   /*     public static void DemoQ(set<String> clients) {  
-            List<DS_Data__c> formInfo = [SELECT Category__c, Content__c, Variable__c,  
-                                        Age_Range__c, Form__c
-                                        FROM DS_Data__c 
-                                        WHERE (Category__c = 'Baseline' 
-                                        OR Category__c = 'Assessment'
-                                        OR Category__c = 'GT')
-                                        AND Data_Type__c = 'DS_Form_Info'
-                                        AND FILE_NAME__c = 'Baseline'
-                                        ORDER BY Category__c, weight__c];
-                                        
-        Map<Id, Client__c> clientInfo = 
-            new Map<Id, Client__c>([SELECT id, age__c, gender__c
-                                                              FROM Client__c
-                                                             WHERE id IN : clients
-                                                             ]); 
-
-        Set<String>answers = new Set<String>();   
-    
-    List<DS_Background_Family_Info_B__c> answerInfo = [SELECT BUSBORN__c, BPUSBORN__c, BMILSELF__c, BMILFAMILY__c, BHOVERALL__c, BHTHSTAT__c, FORM__c
-                                                    FROM DS_Background_Family_Info_B__c
-                                                   // WHERE id IN :clients//answers
-                                                 //   WHERE FORM__c = 'DS_DEMO'
-                                                 ];                     
-
-    List<Client_Summary__c> newAddList = new List<Client_Summary__c>();            
-
-        for (DS_Data__c f : formInfo){
-        String sectionNum = (f.Category__c == 'GT') ? '-1' : '0';
-        for(String c : clients) {
-            for(DS_Background_Family_Info_B__c a : answerInfo){
-                if (a.BUSBORN__c=='0'){        
-                    newAddList.add(newAdd(c, f.id, f.Category__c, sectionNum, true));
-                }
-                if (a.BPUSBORN__c=='0'){
-                    newAddList.add(newAdd(c, f.id, f.Category__c, sectionNum, true)); 
-                }
-                if (a.BMILSELF__c=='1'){
-                    newAddList.add(newAdd(c, f.id, f.Category__c, sectionNum, true)); 
-                }
-                if ((a.BMILFAMILY__c=='1')||(a.BMILFAMILY__c=='2')){
-                    newAddList.add(newAdd(c, f.id, f.Category__c, sectionNum, true));      
-                }
-                if ((a.BHOVERALL__c=='4')||(a.BHOVERALL__c=='5')){
-                    newAddList.add(newAdd(c, f.id, f.Category__c, sectionNum, true));       
-                }
-                if ((a.BHTHSTAT__c=='1')||(a.BHTHSTAT__c=='2')){
-                    newAddList.add(newAdd(c, f.id, f.Category__c, sectionNum, true));       
-                }
-                else if(a.BHTHSTAT__c=='3'){
-                    newAddList.add(newAdd(c, f.id, f.Category__c, sectionNum, true));           
-                }
-                }
-            }
-        }
-        insert newAddList;      
-        }*/
-    /////////////////////////end DemoQ method//////////////////////////////////////
-    /////////////////////////start newAdd method use w/ DemoQ method//////////////////////////////////////
-   /* public static Client_Summary__c newAdd(String clientID, ID formID, String formCategory, 
-                                             String sectionNum, Boolean required) {
-            Client_Summary__c newAdd = 
-                new Client_Summary__c(client__c = clientID, Page__c = formID, 
-                                    FORM_TYPE__c = formCategory, REQUIRED__c = required,
-                                    SECTION__c = sectionNum);
-
-            return newAdd;
-    }*/
-    /////////////////////////end newAdd method//////////////////////////////////////
   
 
 }

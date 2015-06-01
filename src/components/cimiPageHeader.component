@@ -1,0 +1,36 @@
+<apex:component >
+
+    <apex:attribute name="skipElement" description="This is the value for skiplogic elements." type="String" required="false"/>
+      
+    <apex:attribute name="formElement" description="This is the value for form object." type="Form" required="true"/>
+
+  
+    <!--JQuery -->
+    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.11.2.min.js')}"  /><!--allows for JQuery dependencies-->
+    <script> $j = jQuery.noConflict(); </script><!--Reserves the '$' token for JQuery only-->
+    
+    <!-- Bootstrap -->
+    <apex:stylesheet value="{!URLFOR($Resource.bootwrap, '/css/bootstrap.css')}" />
+    <apex:includeScript value="{!URLFOR($Resource.bootwrap, '/js/bootstrap.min.js')}"/> 
+
+    <!-- Custom CIMI Styles -->
+    <apex:stylesheet value="{!URLFOR($Resource.cimiStyles)}" />   
+        
+    <!--provides framework for "skip-logic" capabilities-->
+    <script>function setFocusOnLoad() {}</script>
+    <script> var skipElement = JSON.parse("{!skipElement}"); </script>
+    <script src="{!URLFOR($Resource.Scripts, '/skipLogic.js')}"></script>
+    
+    <!-- "Breadcrumb" heading allows user to navigate to the ClientSummary page -->
+    <apex:outputPanel rendered="{!if(formElement.forceRedirect = '1', false, true)}" layout="none">
+        <script>
+            $j(document).ready(function() {
+                $j('.bPageTitle').append('<div class="ptBreadcrumb">&nbsp;«&nbsp;<a href="/apex/ClientSummary?s={!formElement.summary.SECTION__c}&id={!formElement.client.id}">Back to Client Summary</a></div>');
+            });
+        </script>
+    </apex:outputPanel>
+    <!--end breadcrumb-->
+    
+    
+  
+</apex:component>

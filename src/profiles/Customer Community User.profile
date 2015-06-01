@@ -29,6 +29,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>ClientSummaryController2</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>ClientSummaryReportController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -57,8 +61,16 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>DS_BIS_F_Controller</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>DS_BSLC_Controller</apexClass>
         <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>DS_BasicForm_Controller</apexClass>
+        <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>DS_CANSTR_Controller</apexClass>
@@ -109,8 +121,20 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>DS_INFO_Controller</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>DS_INFO_F_Controller</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>DS_INSDOMENV_Controller</apexClass>
         <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>DS_INSDOMENV_F_Controller</apexClass>
+        <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>DS_MILITARY_Controller</apexClass>
@@ -169,12 +193,24 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>FollowUpFormBuilder</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>FollowUpMockController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>ForgotPasswordController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>ForgotPasswordControllerTest</apexClass>
         <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Form</apexClass>
+        <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>FormBuilder</apexClass>
@@ -431,6 +467,10 @@
     <classAccesses>
         <apexClass>scheduledRole</apexClass>
         <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>test_collapse</apexClass>
+        <enabled>false</enabled>
     </classAccesses>
     <fieldPermissions>
         <editable>false</editable>
@@ -2414,6 +2454,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_Background_Family_Info_F__c.Client_ID__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Background_Family_Info_F__c.Client__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_Background_Family_Info_F__c.ETSTATSP__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -2473,9 +2523,9 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>DS_Background_Family_Info_F__c.FCINANY__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -2568,9 +2618,9 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>DS_Background_Family_Info_F__c.FDOV__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -3253,6 +3303,11 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_Background_Family_Info_F__c.FORM__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_Background_Family_Info_F__c.FOTHMILSP__c</field>
         <readable>false</readable>
@@ -3520,6 +3575,51 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>DS_Background_Family_Info_F__c.PRETR__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Background_Family_Info_F__c.SECTION__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Background_Family_Info_F__c.STATUS_DEMO__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Background_Family_Info_F__c.STATUS_DOMENV__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Background_Family_Info_F__c.STATUS_HEALTH__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_Background_Family_Info_F__c.STATUS_INFO_F__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_Background_Family_Info_F__c.STATUS_INSDOMENV_F__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Background_Family_Info_F__c.STATUS_INSDOMENV__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Background_Family_Info_F__c.STATUS_MILITARY__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Background_Family_Info_F__c.STATUS_REFIMM__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -4166,6 +4266,11 @@
         <editable>false</editable>
         <field>DS_Background_Family_Info_F__c.TXYOGA__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_Background_Family_Info_F__c.Visit_Number__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -6059,6 +6164,36 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_CBCL_F__c.Client__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_CBCL_F__c.FCBOMETH__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_CBCL_F__c.FCBYMETH__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_CBCL_F__c.FDOACO__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_CBCL_F__c.FDOACY__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_CBCL_F__c.SECTION__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_DATA__c.Age_Range__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -7764,7 +7899,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.Client__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_Functioning_Forms_F__c.FAGGRESS__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FASSESS__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -7780,6 +7925,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>DS_Functioning_Forms_F__c.FBSLCTREATMENT__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCASEMGMT__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -7894,6 +8044,201 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCCONTACT__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCEADHD__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCEADJ__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCEASD__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCEATTPR__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCEBIPL__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCECD__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCEDEP__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCEDISSO__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCEDISYMP__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCEDPS__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCEEAT__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCEEXPL__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCEGA__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCEGBP__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCEOCD__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCEODD__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCEOTHER__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCEOTHY__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCEPANDS__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCEPHODS__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCEPRIMSP__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCEPRIM__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCEPTSD__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCESA__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCESBD__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCESEPDS__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCESEXPR__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCESLPDS__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCESOCAD__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCESOMAT__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCESUBST__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCESUICD__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCETG__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCHCARE__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCOCCUR__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCOPSERV__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FCSERVICE__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FDDATE__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_Functioning_Forms_F__c.FDEVEL__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -7949,6 +8294,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FDSCESSTR__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FDSDEATH__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_Functioning_Forms_F__c.FDSECOG__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -7974,7 +8329,47 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FDSNOCONT__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FDSOTHER__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FDSOTHSP__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FDSREFOUT__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FDSREFTR__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FEDSERV__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FEMPSERV__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_Functioning_Forms_F__c.FEMREG__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FFAMSERV__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8005,6 +8400,16 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>DS_Functioning_Forms_F__c.FFEEDING__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FHIVTEST__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FHOUSUPP__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8099,8 +8504,258 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FMEDCARE__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FMENHLTH__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FMHS__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNADMINOSP__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNADMIN__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNALCOHOL__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNCANNABIS__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_Functioning_Forms_F__c.FNCCTSBSLC__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNCOCAINE__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNDAILYL__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNDEPRESSED__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNEFFORT__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNFAMILY__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNFRIENDS__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNHALLUCIN__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNHOPELESS__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNINHALANT__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNMETH__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNNERVOUS__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNPCCULTURE__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNPCGOALS__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNPCHELPWND__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNPCHELPWNT__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNPCRESP__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNPCRIGHT__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNPCSATISF__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNPCSERVICE__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNPCSPIRIT__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNPCSTUCK__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNPCTALK__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNPCTREAT__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNPCUNSTOOD__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNPROPIOID__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNRESTLESS__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNSATISFY__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNSCCOMFORT__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNSCENJOY__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNSCHOOL__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNSCLISTEN__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNSCSUPPORT__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNSEDATIVE__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNSOTHERSP__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNSOTHER__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNSTIMULANT__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNSTOPIOID__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNTOBACCO__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNWORTHLESS__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FNWRONG__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FOPRCORE__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FOPRSUPP__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_Functioning_Forms_F__c.FORM__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -8344,6 +8999,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FPSYPHARM__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FSCREEN__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_Functioning_Forms_F__c.FSEXBEH__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -8355,6 +9020,16 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>DS_Functioning_Forms_F__c.FSOCFUNC__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FSRDATE__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FSRECACT__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8434,6 +9109,21 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FTRANS__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FTRPLAN__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.FTRSPEC__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_Functioning_Forms_F__c.FTXCOMP__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -8460,6 +9150,56 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>DS_Functioning_Forms_F__c.FTXTYPSP__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.SECTION__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.STATUS_BIS__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.STATUS_BSLC__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.STATUS_CANSTR__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.STATUS_CLINEVAL__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.STATUS_FAPGAR__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.STATUS_NOMS__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.STATUS_SERVREC__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.STATUS_YCINDSEV__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Functioning_Forms_F__c.STATUS__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -11454,6 +12194,26 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_F__c.Client__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_PTSD_CA_F__c.FDOAPTSD__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_PTSD_CA_F__c.FMETPTSD__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_PTSD_CA_F__c.SECTION__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_SDQ_PSI_CDI_B__c.BDOASDOP__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -12055,6 +12815,46 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>DS_SDQ_PSI_CDI_B__c.STATUS_SDQ_S_11_17__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_F__c.Client__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_F__c.FDOASDOP__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_F__c.FDOASDOS__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_F__c.FDOASDYP__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_F__c.FMETSDOP__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_F__c.FMETSDOS__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_F__c.FMETSDYP__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_F__c.SECTION__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -17420,6 +18220,10 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>ClientSummary2</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>ClientSummaryOLD</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
@@ -17468,6 +18272,10 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>DS_BIS_F</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>DS_BSLC</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
@@ -17508,6 +18316,10 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>DS_DEMO_Old</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>DS_DOMENV</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
@@ -17528,12 +18340,28 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>DS_INFO</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>DS_INFO_F</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>DS_INSDOMENV</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>DS_INSDOMENV_F</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>DS_MILITARY</apexPage>
         <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>DS_NCTSN_TREATMENT_F</apexPage>
+        <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
         <apexPage>DS_NOMS</apexPage>
@@ -17596,6 +18424,10 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>FollowUpSummary</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>ForgotPassword</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
@@ -17650,6 +18482,10 @@
     <pageAccesses>
         <apexPage>failure</apexPage>
         <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>testcollapse</apexPage>
+        <enabled>false</enabled>
     </pageAccesses>
     <userLicense>Customer Community</userLicense>
 </Profile>

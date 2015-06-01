@@ -32,12 +32,97 @@
         <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
-    <deploymentStatus>Deployed</deploymentStatus>
+    <deploymentStatus>InDevelopment</deploymentStatus>
     <enableActivities>true</enableActivities>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
+    <fields>
+        <fullName>Client__c</fullName>
+        <externalId>false</externalId>
+        <label>Client</label>
+        <referenceTo>Client__c</referenceTo>
+        <relationshipLabel>DS CBCL F</relationshipLabel>
+        <relationshipName>DS_CBCL_F</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>FCBOMETH__c</fullName>
+        <description>Administration Method - CBCL OLD</description>
+        <externalId>false</externalId>
+        <label>FCBOMETH</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FCBYMETH__c</fullName>
+        <description>Administration Method - CBCL YOUNG</description>
+        <externalId>false</externalId>
+        <label>FCBYMETH</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FDOACO__c</fullName>
+        <description>1. CBCL 6-18 date of administration</description>
+        <externalId>false</externalId>
+        <label>FDOACO</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>FDOACY__c</fullName>
+        <description>1. CBCL 1.5-5 date of administration</description>
+        <externalId>false</externalId>
+        <label>FDOACY</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>SECTION__c</fullName>
+        <defaultValue>&apos;1&apos;</defaultValue>
+        <externalId>false</externalId>
+        <label>SECTION</label>
+        <length>3</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <label>DS CBCL F</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <label>DS CBCL F Name</label>
         <trackHistory>false</trackHistory>
@@ -45,5 +130,19 @@
     </nameField>
     <pluralLabel>DS CBCL F</pluralLabel>
     <searchLayouts/>
-    <sharingModel>ReadWrite</sharingModel>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>CBCL_date_required</fullName>
+        <active>true</active>
+        <description>Either CBCLO or CBCLY need to be filled out</description>
+        <errorConditionFormula>ISNULL(FDOACO__c) &amp;&amp;ISNULL(FDOACY__c)</errorConditionFormula>
+        <errorMessage>Please indicate the date of administration.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CBCL_method_administered</fullName>
+        <active>true</active>
+        <description>How was this form (CBCL) administered? Either CBCL old or CBCL young must indicate the method administered.</description>
+        <errorConditionFormula>ISPICKVAL(FCBOMETH__c,&apos;&apos;) &amp;&amp; ISPICKVAL(FCBYMETH__c, &apos;&apos;)</errorConditionFormula>
+        <errorMessage>Please indicate how this form was administered.</errorMessage>
+    </validationRules>
 </CustomObject>

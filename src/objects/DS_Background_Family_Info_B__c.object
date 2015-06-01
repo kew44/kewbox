@@ -7018,20 +7018,11 @@
         <fullName>All</fullName>
         <columns>OBJECT_ID</columns>
         <columns>NAME</columns>
-        <columns>Client__c</columns>
         <columns>FORM__c</columns>
-        <columns>STATUS_DEMO__c</columns>
-        <columns>STATUS_DOMENV__c</columns>
-        <columns>STATUS_HEALTH__c</columns>
-        <columns>STATUS_INSDOMENV__c</columns>
-        <columns>STATUS_MILITARY__c</columns>
-        <columns>STATUS_REFIMM__c</columns>
-        <columns>LAST_UPDATE</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>All1</fullName>
+        <columns>Client__c</columns>
+        <columns>Client_ID__c</columns>
+        <columns>BCINOPSP__c</columns>
+        <columns>BCINOPUB__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -7229,6 +7220,14 @@
         <errorConditionFormula>BNTTOTN__c &gt; 30</errorConditionFormula>
         <errorDisplayField>BNTTOTN__c</errorDisplayField>
         <errorMessage>Total nights can not exceed 30.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Domenv_total_nights_out_of_home_more_30</fullName>
+        <active>true</active>
+        <description>total nights out of home can&apos;t be more than 30</description>
+        <errorConditionFormula>BNTTOTN__c &gt; 30</errorConditionFormula>
+        <errorDisplayField>BNTTOTN__c</errorDisplayField>
+        <errorMessage>The total nights out of home can&apos;t be more than 30.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Health_birth_defect_must_indicate</fullName>

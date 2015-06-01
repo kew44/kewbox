@@ -32,12 +32,125 @@
         <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
-    <deploymentStatus>Deployed</deploymentStatus>
+    <deploymentStatus>InDevelopment</deploymentStatus>
     <enableActivities>true</enableActivities>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
+    <fields>
+        <fullName>Client__c</fullName>
+        <externalId>false</externalId>
+        <label>Client</label>
+        <referenceTo>Client__c</referenceTo>
+        <relationshipLabel>DS SDQ PSI CDI F</relationshipLabel>
+        <relationshipName>DS_SDQ_PSI_CDI_F</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>FDOASDOP__c</fullName>
+        <description>1. Parent 11-17: Date of Administration</description>
+        <externalId>false</externalId>
+        <label>FDOASDOP</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>FDOASDOS__c</fullName>
+        <description>1. Self 11-17: Date of Administration</description>
+        <externalId>false</externalId>
+        <label>FDOASDOS</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>FDOASDYP__c</fullName>
+        <description>1. Parent 4-10: Date of Administration</description>
+        <externalId>false</externalId>
+        <label>FDOASDYP</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>FMETSDOP__c</fullName>
+        <description>2. Parent 11-17: How was this form administered?</description>
+        <externalId>false</externalId>
+        <label>FMETSDOP</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FMETSDOS__c</fullName>
+        <description>2. Self 11-17: How was this form administered?</description>
+        <externalId>false</externalId>
+        <label>FMETSDOS</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FMETSDYP__c</fullName>
+        <description>2. Parent 4-10: How was this form administered?</description>
+        <externalId>false</externalId>
+        <label>FMETSDYP</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>SECTION__c</fullName>
+        <defaultValue>&apos;1&apos;</defaultValue>
+        <externalId>false</externalId>
+        <label>SECTION</label>
+        <length>3</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <label>DS SDQ PSI CDI F</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <label>DS SDQ PSI CDI F Name</label>
         <trackHistory>false</trackHistory>
@@ -45,5 +158,19 @@
     </nameField>
     <pluralLabel>DS SDQ PSI CDI F</pluralLabel>
     <searchLayouts/>
-    <sharingModel>ReadWrite</sharingModel>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>SDQ_date_required</fullName>
+        <active>true</active>
+        <description>Date of administration is required</description>
+        <errorConditionFormula>ISBLANK( FDOASDYP__c )&amp;&amp;ISBLANK( FDOASDOS__c )&amp;&amp;ISBLANK( FDOASDOP__c )</errorConditionFormula>
+        <errorMessage>Please indicate the date of administration.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>SDQ_must_indicate_method</fullName>
+        <active>true</active>
+        <description>Method of administration is required</description>
+        <errorConditionFormula>ISPICKVAL( FMETSDOP__c , &apos;&apos;)&amp;&amp;ISPICKVAL( FMETSDOS__c , &apos;&apos;)&amp;&amp;ISPICKVAL( FMETSDYP__c , &apos;&apos;)</errorConditionFormula>
+        <errorMessage>Please indicate the method of administration.</errorMessage>
+    </validationRules>
 </CustomObject>

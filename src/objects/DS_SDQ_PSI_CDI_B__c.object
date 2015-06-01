@@ -2514,30 +2514,8 @@
     <label>DS SDQ PSI CDI B</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>Client__c</columns>
-        <columns>FORM__c</columns>
-        <columns>STATUS_SDQ_P_04_10__c</columns>
-        <columns>STATUS_SDQ_P_11_17__c</columns>
-        <columns>STATUS_SDQ_S_11_17__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>All1</fullName>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>w_date_All</fullName>
-        <columns>BDOASDOP__c</columns>
-        <columns>BDOASDOS__c</columns>
-        <columns>BDOASDYP__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>w date All</label>
     </listViews>
     <nameField>
         <label>DS SDQ PSI CDI B Name</label>

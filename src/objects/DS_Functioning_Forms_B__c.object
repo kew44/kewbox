@@ -6837,49 +6837,8 @@
     <label>DS Functioning Forms B</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>OBJECT_ID</columns>
-        <columns>Client__c</columns>
-        <columns>FORM__c</columns>
-        <columns>STATUS__c</columns>
-        <columns>STATUS_BIS__c</columns>
-        <columns>STATUS_BSLC__c</columns>
-        <columns>STATUS_CANSTR__c</columns>
-        <columns>STATUS_CLINEVAL__c</columns>
-        <columns>STATUS_FAPGAR__c</columns>
-        <columns>STATUS_INDSEV__c</columns>
-        <columns>STATUS_NOMS__c</columns>
-        <columns>STATUS_SERVREC__c</columns>
-        <columns>STATUS_YCINDSEV__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>All1</fullName>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>fg</fullName>
-        <columns>Client__c</columns>
-        <columns>FORM__c</columns>
-        <columns>SECTION__c</columns>
-        <columns>STATUS__c</columns>
-        <columns>STATUS_FAPGAR__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>BFAPGAR_MET__c</columns>
-        <columns>BFAPGAR_RAW__c</columns>
-        <columns>BFAPGAR1__c</columns>
-        <columns>BFAPGAR2__c</columns>
-        <columns>BFAPGAR3__c</columns>
-        <columns>BFAPGAR4__c</columns>
-        <columns>BFAPGAR5__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>fg</label>
-        <language>en_US</language>
     </listViews>
     <nameField>
         <label>DS Functioning Forms B Name</label>
@@ -6889,6 +6848,32 @@
     <pluralLabel>DS Functioning Forms B</pluralLabel>
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Bis_must_indicate_treatment_component</fullName>
+        <active>true</active>
+        <description>If BCBISRECV =1, at least one treatment component must be indicated.</description>
+        <errorConditionFormula>(
+ISPICKVAL( BCBISRECV__c, &apos;1&apos;)&amp;&amp;
+(BCBISCREE__c=false ) &amp;&amp;
+(BCBISASSM__c=false ) &amp;&amp;
+(BCBISCONS__c=false ) &amp;&amp;
+(BCBISMANA__c=false ) &amp;&amp; 
+(BCBISCFTS__c=false ) &amp;&amp;
+(BCBISPFA__c=false ) &amp;&amp;
+(BCBISSPR__c=false ) &amp;&amp;
+(BCBISCRIM__c=false ) &amp;&amp; 
+(BCBISRFSE__c =false ) &amp;&amp;
+(BCBISPSYE__c =false ) &amp;&amp;
+(BCBISSFTP__c=false ) &amp;&amp;
+(BCBISINDT__c=false ) &amp;&amp;
+(BCBISFAMT__c=false ) &amp;&amp;
+(BCBISGRPT__c=false ) &amp;&amp;
+(BCBISSUPG__c=false ) &amp;&amp;
+(BCBISOTHE__c=false ) 
+)</errorConditionFormula>
+        <errorDisplayField>BCBISRECV__c</errorDisplayField>
+        <errorMessage>Please indicate a treatment component.</errorMessage>
+    </validationRules>
     <validationRules>
         <fullName>Bis_must_specify_treatment_component</fullName>
         <active>true</active>
@@ -6900,8 +6885,8 @@
     <validationRules>
         <fullName>Clineval_must_indicate_primary</fullName>
         <active>true</active>
-        <description>&quot;If OTHER selected BCEPRIM=98, this must be completed</description>
-        <errorConditionFormula>ISPICKVAL(BCEPRIM__c , &apos;98&apos;) &amp;&amp; ISBLANK(BCEPRIMSP__c)</errorConditionFormula>
+        <description>&quot;If OTHER selected BCEPRIM=1, this must be completed</description>
+        <errorConditionFormula>ISPICKVAL(BCEPRIM__c , &apos;1&apos;) &amp;&amp; ISBLANK(BCEPRIMSP__c)</errorConditionFormula>
         <errorDisplayField>BCEPRIMSP__c</errorDisplayField>
         <errorMessage>Please indicate the primary problem/symptom/disorder.</errorMessage>
     </validationRules>

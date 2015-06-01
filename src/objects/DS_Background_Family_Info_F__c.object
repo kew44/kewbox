@@ -37,6 +37,75 @@
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
+    <fieldSets>
+        <fullName>STATUS</fullName>
+        <description>STATUS</description>
+        <displayedFields>
+            <field>STATUS_INSDOMENV_F__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>STATUS_HEALTH__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>STATUS_INFO_F__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>STATUS_DOMENV__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>STATUS_MILITARY__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>STATUS_DEMO__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>STATUS_INSDOMENV__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>STATUS_REFIMM__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>STATUS</label>
+    </fieldSets>
+    <fields>
+        <fullName>Client_ID__c</fullName>
+        <externalId>false</externalId>
+        <formula>Client__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Client ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Client__c</fullName>
+        <externalId>false</externalId>
+        <label>Client</label>
+        <referenceTo>Client__c</referenceTo>
+        <relationshipLabel>DS Background Family Info F</relationshipLabel>
+        <relationshipName>DS_Background_Family_Info_F</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
     <fields>
         <fullName>ETSTATSP__c</fullName>
         <description>3. End of treatment status is Other Specified</description>
@@ -3075,6 +3144,16 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>FORM__c</fullName>
+        <externalId>false</externalId>
+        <label>FORM</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>FOTHMILSP__c</fullName>
         <description>1. Other family please specify is service member</description>
         <externalId>false</externalId>
@@ -3833,6 +3912,161 @@
             </picklistValues>
             <picklistValues>
                 <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>SECTION__c</fullName>
+        <defaultValue>&apos;1&apos;</defaultValue>
+        <externalId>false</externalId>
+        <label>SECTION</label>
+        <length>3</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>STATUS_DEMO__c</fullName>
+        <externalId>false</externalId>
+        <label>STATUS_DEMO</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Incomplete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Complete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>STATUS_DOMENV__c</fullName>
+        <externalId>false</externalId>
+        <label>STATUS DOMENV</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Incomplete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Complete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>STATUS_HEALTH__c</fullName>
+        <externalId>false</externalId>
+        <label>STATUS HEALTH</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Incomplete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Complete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>STATUS_INFO_F__c</fullName>
+        <externalId>false</externalId>
+        <label>STATUS INFO F</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Incomplete</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Complete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>STATUS_INSDOMENV_F__c</fullName>
+        <externalId>false</externalId>
+        <label>STATUS INSDOMENV F</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Incomplete</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Complete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>STATUS_INSDOMENV__c</fullName>
+        <externalId>false</externalId>
+        <label>STATUS_INSDOMENV</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Incomplete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Complete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>STATUS_MILITARY__c</fullName>
+        <externalId>false</externalId>
+        <label>STATUS MILITARY</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Incomplete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Complete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>STATUS_REFIMM__c</fullName>
+        <externalId>false</externalId>
+        <label>STATUS REFIMM</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Incomplete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Complete</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -5329,7 +5563,113 @@
         <trackHistory>false</trackHistory>
         <type>Checkbox</type>
     </fields>
+    <fields>
+        <fullName>Visit_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Visit Number</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
     <label>DS Background Family Info F</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>OBJECT_ID</columns>
+        <columns>NAME</columns>
+        <columns>FORM__c</columns>
+        <columns>Client__c</columns>
+        <columns>Client_ID__c</columns>
+        <columns>Visit_Number__c</columns>
+        <columns>FDOV__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>STATUS_DEMO__c</columns>
+        <columns>STATUS_INSDOMENV__c</columns>
+        <columns>STATUS_DOMENV__c</columns>
+        <columns>STATUS_HEALTH__c</columns>
+        <columns>STATUS_MILITARY__c</columns>
+        <columns>STATUS_REFIMM__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>created_5_26</fullName>
+        <columns>NAME</columns>
+        <columns>OBJECT_ID</columns>
+        <columns>Client__c</columns>
+        <columns>Client_ID__c</columns>
+        <columns>Visit_Number__c</columns>
+        <columns>FDOV__c</columns>
+        <columns>FORM__c</columns>
+        <columns>SECTION__c</columns>
+        <columns>STATUS_INFO_F__c</columns>
+        <columns>STATUS_DEMO__c</columns>
+        <columns>STATUS_INSDOMENV__c</columns>
+        <columns>STATUS_DOMENV__c</columns>
+        <columns>STATUS_HEALTH__c</columns>
+        <columns>STATUS_MILITARY__c</columns>
+        <columns>STATUS_REFIMM__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CREATED_DATE</field>
+            <operation>equals</operation>
+            <value>5/26/2015 12:00 AM</value>
+        </filters>
+        <label>created 5-26</label>
+    </listViews>
+    <listViews>
+        <fullName>created_5_27</fullName>
+        <columns>NAME</columns>
+        <columns>OBJECT_ID</columns>
+        <columns>Client__c</columns>
+        <columns>Client_ID__c</columns>
+        <columns>Visit_Number__c</columns>
+        <columns>FDOV__c</columns>
+        <columns>FORM__c</columns>
+        <columns>SECTION__c</columns>
+        <columns>STATUS_INFO_F__c</columns>
+        <columns>STATUS_DEMO__c</columns>
+        <columns>STATUS_INSDOMENV__c</columns>
+        <columns>STATUS_DOMENV__c</columns>
+        <columns>STATUS_HEALTH__c</columns>
+        <columns>STATUS_MILITARY__c</columns>
+        <columns>STATUS_REFIMM__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CREATED_DATE</field>
+            <operation>equals</operation>
+            <value>5/27/2015 12:00 AM</value>
+        </filters>
+        <label>created 5-27</label>
+    </listViews>
+    <listViews>
+        <fullName>created_6_1</fullName>
+        <columns>NAME</columns>
+        <columns>OBJECT_ID</columns>
+        <columns>Client__c</columns>
+        <columns>Client_ID__c</columns>
+        <columns>Visit_Number__c</columns>
+        <columns>FDOV__c</columns>
+        <columns>FORM__c</columns>
+        <columns>SECTION__c</columns>
+        <columns>STATUS_INFO_F__c</columns>
+        <columns>STATUS_DEMO__c</columns>
+        <columns>STATUS_INSDOMENV__c</columns>
+        <columns>STATUS_DOMENV__c</columns>
+        <columns>STATUS_HEALTH__c</columns>
+        <columns>STATUS_MILITARY__c</columns>
+        <columns>STATUS_REFIMM__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CREATED_DATE</field>
+            <operation>equals</operation>
+            <value>6/1/2015 12:00 AM</value>
+        </filters>
+        <label>created 6-1</label>
+    </listViews>
     <nameField>
         <label>DS Background Family Info F Name</label>
         <trackHistory>false</trackHistory>
@@ -5337,5 +5677,162 @@
     </nameField>
     <pluralLabel>DS Background Family Info F</pluralLabel>
     <searchLayouts/>
-    <sharingModel>ReadWrite</sharingModel>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Insdomenv_cannot_select_FNTDTOXN</fullName>
+        <active>false</active>
+        <description>If FNTDTOXN =True these can&apos;t be selected</description>
+        <errorConditionFormula>NOT( ISPICKVAL(FNTDTOXRU__c, &apos;&apos;))
+&amp;&amp;  NOT ISBLANK (FNTDTOXN__c )</errorConditionFormula>
+        <errorDisplayField>FNTDTOXRU__c</errorDisplayField>
+        <errorMessage>FNTDTOXRU cannot be selected if FNTDTOXN is true</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Insdomenv_cannot_select_FNTERRU</fullName>
+        <active>false</active>
+        <description>If FNTHOMEN =True these can&apos;t be selected</description>
+        <errorConditionFormula>NOT( ISPICKVAL(FNTERRU__c, &apos;&apos;))
+&amp;&amp;  NOT ISBLANK (FNTHOMEN__c )</errorConditionFormula>
+        <errorDisplayField>FNTERRU__c</errorDisplayField>
+        <errorMessage>FNTERRU cannot be selected if FNTHOMEN is true</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Insdomenv_cannot_select_FNTHOMEN</fullName>
+        <active>false</active>
+        <description>If FNTHOMEN =True these can&apos;t be selected</description>
+        <errorConditionFormula>NOT( ISPICKVAL(FNTHOMERU__c, &apos;&apos;))
+&amp;&amp;  NOT ISBLANK(FNTHOMEN__c)</errorConditionFormula>
+        <errorDisplayField>FNTHOMERU__c</errorDisplayField>
+        <errorMessage>FNTHOMERU cannot be selected if FNTHOMEN is true</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Insdomenv_cannot_select_FNTHOSPN</fullName>
+        <active>false</active>
+        <description>If FNTHOSPN =True these can&apos;t be selected</description>
+        <errorConditionFormula>NOT( ISPICKVAL(FNTHOSPRU__c, &apos;&apos;))&amp;&amp;  NOT ISBLANK(FNTHOSPN__c)</errorConditionFormula>
+        <errorDisplayField>FNTHOSPRU__c</errorDisplayField>
+        <errorMessage>FNTHOSPRU cannot be selected if FNTHOSPN is true</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Insdomenv_cannot_select_FNTJAILN</fullName>
+        <active>false</active>
+        <description>If FNTJAILN =True these can&apos;t be selected</description>
+        <errorConditionFormula>NOT( ISPICKVAL(FNTJAILRU__c, &apos;&apos;))
+&amp;&amp;  NOT ISBLANK (FNTJAILN__c )</errorConditionFormula>
+        <errorDisplayField>FNTJAILRU__c</errorDisplayField>
+        <errorMessage>FNTJAILRU cannot be selected if FNTJAILN is true</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Insdomenv_must_indicate_priv_or_pub_chi</fullName>
+        <active>true</active>
+        <description>If NO (FCINANY=0) or UNKNOWN (FCINANY=99) selected, skip to question 3; If YES (FCINANY=1), specify type in (FCINPUB, FCINPRIV)</description>
+        <errorConditionFormula>ISPICKVAL(FCINANY__c, &apos;1&apos;)&amp;&amp;((FCINPUB__c = false)&amp;&amp;( FCINPRIV__c = false))</errorConditionFormula>
+        <errorDisplayField>FCINANY__c</errorDisplayField>
+        <errorMessage>You must indicate if the child has private or public insurance.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Insdomenv_must_indicate_priv_or_pub_par</fullName>
+        <active>true</active>
+        <description>If NO (FPINANY=0) or UNKNOWN (FPINANY=99) or selected, skip to question 5;  If YES (FPINANY=1), must specify type in (FPINPUB, FPINPRIV)</description>
+        <errorConditionFormula>ISPICKVAL(FPINANY__c, &apos;1&apos;)&amp;&amp;((FPINPUB__c = false)&amp;&amp;( FPINPRIV__c = false))</errorConditionFormula>
+        <errorDisplayField>FPINANY__c</errorDisplayField>
+        <errorMessage>You must indicate if the parent has private or public insurance.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Insdomenv_must_specify_other_private_ch</fullName>
+        <active>true</active>
+        <description>If OTHER selected (FCINOPRI =1), this must be completed</description>
+        <errorConditionFormula>FCINOPRI__c = true &amp;&amp;  ISBLANK(FCINOPRS__c)</errorConditionFormula>
+        <errorDisplayField>FCINOPRS__c</errorDisplayField>
+        <errorMessage>Please specify the type of private insurance.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Insdomenv_must_specify_other_private_p</fullName>
+        <active>true</active>
+        <description>If OTHER selected (FPINOPRI=1), this must be completed</description>
+        <errorConditionFormula>FPINOPRI__c = true &amp;&amp;  ISBLANK(FPINOPRS__c)</errorConditionFormula>
+        <errorDisplayField>FPINOPRS__c</errorDisplayField>
+        <errorMessage>Please specify the type of private insurance.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Insdomenv_must_specify_other_public_ch</fullName>
+        <active>true</active>
+        <description>If OTHER selected (FCINOPUB=1), this must be completed</description>
+        <errorConditionFormula>FCINOPUB__c = true &amp;&amp;  ISBLANK(FCINOPSP__c)</errorConditionFormula>
+        <errorDisplayField>FCINOPSP__c</errorDisplayField>
+        <errorMessage>Please specify the type of public insurance.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Insdomenv_must_specify_other_public_p</fullName>
+        <active>true</active>
+        <description>If OTHER selected (FPINOPUB=1), this must be completed</description>
+        <errorConditionFormula>FPINOPUB__c = true &amp;&amp;  ISBLANK(FPINOPSP__c)</errorConditionFormula>
+        <errorDisplayField>FPINOPSP__c</errorDisplayField>
+        <errorMessage>Please specify the type of public insurance.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Insdomenv_must_specify_place_living</fullName>
+        <active>false</active>
+        <description>If OTHER selected (FNOMHOUSE=98), this must be completed</description>
+        <errorConditionFormula>ISPICKVAL(FNOMHOUSE__c, &apos;98&apos;)  &amp;&amp;  ISBLANK(FNOMHOUSESP__c)</errorConditionFormula>
+        <errorMessage>Please specify where you [your child] have been living.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Insdomenv_must_specify_private_child_ins</fullName>
+        <active>true</active>
+        <description>If YES selected (FCINPRIV = 1), must choose from the following: FCINHMO, FCINPPO, FCINFFS, FCINOPRI, FCINPRUK</description>
+        <errorConditionFormula>(FCINPRIV__c = true) &amp;&amp;(
+                             (FCINHMO__c = false)&amp;&amp;
+                             (FCINPPO__c = false)&amp;&amp;
+                             (FCINFFS__c = false)&amp;&amp;
+                             (FCINOPRI__c = false)&amp;&amp;
+                             (FCINPRUK__c = false)
+)</errorConditionFormula>
+        <errorDisplayField>FCINPRIV__c</errorDisplayField>
+        <errorMessage>You must specify the type of private insurance that the child is receiving.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Insdomenv_must_specify_private_parent_in</fullName>
+        <active>true</active>
+        <description>If YES selected (FPINPRIV = 1), must choose from the following: FPINHMO, FPINPPO, FPINFFS, FPINOPRI</description>
+        <errorConditionFormula>(FPINPRIV__c = true) &amp;&amp;(
+                             (FPINHMO__c = false)&amp;&amp;
+                             (FPINPPO__c = false)&amp;&amp;
+                             (FPINFFS__c = false)&amp;&amp;
+                             (FPINOPRI__c = false)
+)</errorConditionFormula>
+        <errorDisplayField>FPINPRIV__c</errorDisplayField>
+        <errorMessage>You must specify the type of private insurance that the parent is receiving.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Insdomenv_must_specify_public_child_ins</fullName>
+        <active>true</active>
+        <description>If YES selected (FCINPUB = 1), must choose from the following: FCINMEDR, FCINMEDD, FCINMHC, FCINIH, FCINCHIP, FCINOPUB, FCINPBUK</description>
+        <errorConditionFormula>(FCINPUB__c = true) &amp;&amp;(
+                             (FCINMEDR__c = false)&amp;&amp;
+                             (FCINMEDD__c = false)&amp;&amp;
+                             (FCINMHC__c = false)&amp;&amp;
+                             (FCINIH__c = false)&amp;&amp;
+                             (FCINCHIP__c = false)&amp;&amp;
+                             (FCINOPUB__c = false)&amp;&amp;
+                             (FCINPBUK__c = false)
+)</errorConditionFormula>
+        <errorDisplayField>FCINOPUB__c</errorDisplayField>
+        <errorMessage>You must specify the type of public insurance that the child is receiving.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Insdomenv_must_specify_public_parent_ins</fullName>
+        <active>true</active>
+        <description>If YES selected (FPINPUB = 1), must choose from the following: FINMEDR, FPINMEDD, FPINMHC, FPINIH, FPINCHIP, FPINOPUB</description>
+        <errorConditionFormula>(FPINPUB__c = true) &amp;&amp;(
+                             (FPINMEDR__c = false)&amp;&amp;
+                             (FPINMEDD__c = false)&amp;&amp;
+                             (FPINMHC__c = false)&amp;&amp;
+                             (FPINIH__c = false)&amp;&amp;
+                             (FPINCHIP__c = false)&amp;&amp;
+                             (FPINOPUB__c = false)
+)</errorConditionFormula>
+        <errorDisplayField>FPINPUB__c</errorDisplayField>
+        <errorMessage>You must specify the type of public insurance that the parent is receiving.</errorMessage>
+    </validationRules>
 </CustomObject>

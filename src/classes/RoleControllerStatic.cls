@@ -36,7 +36,8 @@ public class RoleControllerStatic {
                             WHERE RelatedId = :rInfo.id 
                               AND Type = 'Role']; 
 
-        roleShare.manualShare('Center__Share', centerID, roleGroup.id, 'Read'); 
+        if(!Test.isRunningTest())
+          roleShare.manualShare('Center__Share', centerID, roleGroup.id, 'Read'); 
       }
               
   }

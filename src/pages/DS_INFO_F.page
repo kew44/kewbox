@@ -1,0 +1,89 @@
+<apex:page standardController="DS_Background_Family_Info_F__c" extensions="DS_INFO_F_Controller" >
+
+    <!--JQuery -->
+    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.9.1.js')}"  /><!--allows for JQuery dependencies-->
+    <script> $j = jQuery.noConflict(); </script><!--Reserves the '$' token for JQuery only-->
+    
+    <!-- Bootstrap -->
+        <link href="{!URLFOR($Resource.VFbootstrap3, '/css/VFbootstrap.css')}" rel="stylesheet" media="screen"/>
+            <apex:includeScript value="{!URLFOR($Resource.VFbootstrap3, '/js/bootstrap.min.js')}"/>
+                
+                <!--link to the CSS resource in Salesforce internal document-->
+                    <apex:stylesheet value="{!$Resource.CustomCss}" />
+                        
+                        <!--provides framework for "skip-logic" capabilities-->
+                            <script>function setFocusOnLoad() {}</script>
+    <script> var skipElement = JSON.parse("{!JSENCODE(skipElementToJson)}"); </script>
+    <script src="{!URLFOR($Resource.Scripts, '/skipLogic.js')}"></script>
+        
+    <!--JQuery script for allowing de-selection of radiobuttons-->   
+    <script>
+    $j(document).ready(function(){        
+        $j('input[type="radio"]').click(function(){            
+            var previousValue = $j(this).attr('title');
+            var val = $j(this).val();
+            var name = $j(this).attr('name');      
+            
+            if (previousValue == val) {  // uncheck radio button
+                $j(this).removeAttr('checked').change();
+                $j("input[name='"+name+"']:radio").attr('title', '');
+            }
+            else {
+                $j("input[name='"+name+"']:radio").attr('title', val);
+            }            
+        });        
+    });    
+    </script><!--End JQuery deselect radiobutton value script -->      
+    
+    <!-- "Breadcrumb" heading allows user to navigate to the ClientSummary page -->
+    <apex:outputPanel >
+        <script>
+        $j(document).ready(function() {
+            $j('.bPageTitle').append('<div class="ptBreadcrumb">&nbsp;«&nbsp;<a href="/apex/ClientSummary?s=1&id={!client.id}">Back to Client Summary</a></div>');
+        });
+        </script>
+    </apex:outputPanel>
+    <!--end breadcrumb-->
+    
+    <!--Begin form content-->
+    <apex:form id="DS_INFO_F" styleClass="form-horizontal">
+        <apex:sectionHeader title="Follow-Up Information" subtitle="{!subtitle}"/><br/>
+        
+        <!-- pageblock to show ClientInformation header as described in Utility class-->
+        <apex:pageBlock title="Client Information">
+            <div id="force"><apex:outputText value="{!ClientInfo}" escape="false"/></div> <!-- If a div is one line, I would combine on the same line -->
+        </apex:pageBlock> <!--end client info pageBlock-->     
+        
+        <!-- primary content pageBlock container-->
+        <apex:pageBlock title="Follow-Up Information" >
+            <apex:pageMessages /><!--placeholding structure that allows for system message display-->
+            
+            <div id="force">
+                <table >
+                    <tbody>  
+                        <tr class="warning"><td colspan="3">Follow-Up Visit Information</td></tr>
+                        
+                        <!-- <b>1.</b> Date of visit -->
+                        <tr>
+                            <td><p class="text-right"><b>1.</b></p></td>
+                            <td>Date of visit</td>
+                            <td><apex:inputField styleClass="form-control auto-width" value="{!obj.FDOV__c}" required="true"/></td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>    
+            
+            <!--save and cancel control buttons for pageBlock-->
+            <apex:pageBlockButtons >
+                <apex:commandButton id="Save" action="{!save}" value="Save"/>
+               <!-- <apex:commandButton id="Cancel" action="{!cancel}" value="Cancel" rendered="{!if(forceRedirect = '1', false, true)}"/>-->
+            </apex:pageBlockButtons><!--end buttons-->
+            
+        </apex:pageBlock><!--end baseline pageBlock-->
+        
+        <apex:actionStatus id="loading" onstart="loading(true)" onstop="loading(false)" />
+    </apex:form>
+    <!--end form content-->
+    
+</apex:page>

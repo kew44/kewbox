@@ -84,10 +84,10 @@ for(DS_Functioning_Forms_B__c FAPGAR: Trigger.new){
 
     ut.updateSummaryStatusForMergedObject(Trigger.new);
 
-    AuditTrail audit = new AuditTrail(Trigger.new, Trigger.old); 
+    /*AuditTrail audit = new AuditTrail(Trigger.new, Trigger.old); 
   
     if(Trigger.isInsert) { audit.generateLog(Trigger.new, Trigger.old); }
-    if(Trigger.isUpdate) { audit.generateLog(Trigger.new, Trigger.old); }
+    if(Trigger.isUpdate) { audit.generateLog(Trigger.new, Trigger.old); }*/
 
   }
 }

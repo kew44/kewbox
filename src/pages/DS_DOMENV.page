@@ -1,557 +1,515 @@
 <apex:page standardController="DS_Background_Family_Info_B__c" extensions="DS_DOMENV_Controller">
+
+    <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
     
-    <!--JQuery -->
-    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.9.1.js')}"  /><!--allows for JQuery dependencies-->
-    <script> $j = jQuery.noConflict(); </script><!--Reserves the '$' token for JQuery only-->
+    <!-- Script for calculating the number of nights in Domestic Q5 --> 
+    <script src="{!URLFOR($Resource.Scripts, '/DS_DOMENV.js')}"></script>
     
-    <!-- Bootstrap -->
-        <link href="{!URLFOR($Resource.VFbootstrap3, '/css/VFbootstrap.css')}" rel="stylesheet" media="screen"/>
-            <apex:includeScript value="{!URLFOR($Resource.VFbootstrap3, '/js/bootstrap.min.js')}"/>
+    <apex:sectionHeader title="{!form.title}" subtitle="{!form.subtitle}"/>
+
+    <div class="bootwrap">
+
+        <!---BEGIN DOMENV FORM Content-->
+        <apex:form id="DS_DOMENV" styleClass="form-horizontal" style="border-top:none">
+    
+            <!-- pageblock to show ClientInformation header as described in Utility class-->
+            <apex:outputText value="{!form.ClientInfo}" escape="false"/>
+            <!--end header-->
+            
+            <!-- domestic environment information pageBlock container-->
+            <apex:pageBlock title="{!form.title}" >
                 
-                <!--link to the CSS resource in Salesforce internal document-->
-                    <apex:stylesheet value="{!$Resource.CustomCss}" />
-                        
-                        <!--provides framework for "skip-logic" capabilities-->
-                            <script>function setFocusOnLoad() {}</script>
-    <script> var skipElement = JSON.parse("{!JSENCODE(skipElementToJson)}"); </script>
-    <script src="{!URLFOR($Resource.Scripts, '/skipLogic.js')}"></script>
-    
-    <!--JQuery script -->   
-    <script>
-    $j(document).ready(function(){//for allowing de-selection of radiobuttons
-        
-        $j('input[type="radio"]').click(function(){
-            
-            var previousValue = $j(this).attr('title');
-            var val = $j(this).val();
-            var name = $j(this).attr('name');
-            
-            if (previousValue == val) {  // uncheck radio button
-                $j(this).removeAttr('checked').change();
-                $j("input[name='"+name+"']:radio").attr('title', '');
-            }
-            else {
-                $j("input[name='"+name+"']:radio").attr('title', val);
-            }
-            
-        });//end de-selection
-        
-        $j('.nights2').change(function(){//script that provides real-time calculation and display of total nights not at home
-            //********ISSUE: variable may not record in data!******************
-            var sum  = 0;
-            
-            $j('.nights').each(function(){
-                if($j(this).val() != '') 
-                    sum += parseInt($j(this).val());
-            });
-            
-            $j('.total span').html(sum);
-            $j('.BNTTOTN2').val(sum);
-            
-        });             
-        
-    });   
-    
-    </script>   <!--end JQuery script block-->
-    
-    <!-- "Breadcrumb" heading allows user to navigate to the ClientSummary page --> 
-    <apex:outputPanel rendered="{!if(forceRedirect = '1', false, true)}" layout="none">
-        <script>
-        $j(document).ready(function() {
-            $j('.bPageTitle').append('<div class="ptBreadcrumb">&nbsp;«&nbsp;<a href="/apex/ClientSummary?s=0&id={!client.id}">Back to Client Summary</a></div>');
-        });
-        </script>
-    </apex:outputPanel>
-    
-    
-    <apex:sectionHeader title="Domestic Environment" subtitle="{!subtitle}"/><br/>
-    
-    <!-- pageblock to show ClientInformation header as described in Utility class-->
-    <apex:pageBlock title="Client Information">
-        <div id="force"><apex:outputText value="{!ClientInfo}" escape="false"/> </div>
-    </apex:pageBlock><!--end header-->
-    
-    <!---BEGIN DOMENV FORM Content--->
-    <apex:form id="DS_DOMENV" styleClass="form-horizontal" style="border-top:none">
-        
-        <!-- domestic environment information pageBlock container-->
-        <apex:pageBlock title="Domestic Environment" >
-        
-        
-            <!--save and cancel control buttons for pageBlock-->
-            <div class="pbBottomButtons">
-                <table border="0" cellpadding="0" cellspacing="0">
-                    <tr>
-                        <td class="pbButtonb ">
-                            <apex:commandButton action="{!save}"  value="Save" />
-                            <apex:commandButton action="{!cancel}"  value="Cancel"  rendered="{!if(forceRedirect = '1', false, true)}"/>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <!--end buttons-->
-            
-            <apex:pageMessages /><!--placeholding structure that allows for system message display-->
-            
-            <div id="force"> 
+                <!--save and cancel control buttons for pageBlock-->
+                <apex:pageBlockButtons >
+                    <apex:commandButton action="{!save}"  value="Save" />
+                    <apex:commandButton action="{!cancel}"  value="Cancel"  rendered="{!if(form.forceRedirect = '1', false, true)}"/>
+                </apex:pageBlockButtons><!--end buttons-->
                 
-                <table class="table DS-table">
-                    <tbody>
-                        <!--Begin Domestic Environment questions-->
+                <!--placeholding structure that allows for system message display-->
+                <apex:pageMessages />
+                
+                <h3>Domestic Environment</h3>
+
+                <!--1. Primary residence-->
+                <div class="form-group">
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">1.</span>
+                        Where is the child’s current primary residence? <b>(Select only one.)</b>
+                    </label>
+                    <div class="col-md-6 col-lg-6">
+                        <apex:selectRadio styleClass="radio-list" id="PRIMRES2__c" value="{!form.obj[bfVariableMap['PRIMRES']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['PRIMRES']]}" onChange="skipLogic('PRIMRES',this.value)">
+                            <apex:selectOptions value="{!PrimeRestIems}"/>
+                        </apex:selectRadio>
+                    </div>
+                </div>
+                
+
+                <!--Begin Domestic Environment questions-->
                         
-                        <!--1. Primary residence-->
-                        <tr>
-                            <td><b>1.</b> Where is the child’s current primary residence? <b>(Select only one.)</b>
-                                <apex:selectRadio styleClass="form-control2" id="BPRIMRES__c" value="{!obj.BPRIMRES__c}" layout="pageDirection" title="{!obj.BPRIMRES__c}" onChange="skipLogic('BPRIMRES',this.value)">
-                                    <apex:selectOptions value="{!PrimeRestIems}"/>
-                                </apex:selectRadio>
-                            </td>
-                        </tr>
-                        
-                        <!--Conditional if  other, specify-->
-                        <tr class="skip-BPRIMRSP">
-                            <td class="skipContent">
-                                Please Specify: 
-                                <apex:inputField styleClass="form-control2 skip-element-BPRIMRSP" id="BPRIMRSP__c" value="{!obj.BPRIMRSP__c}"/>
-                            </td>
-                        </tr><!--end conditional-->
-                        
-                        <!--2. Months at residence-->
-                        <tr>
-                            <td><b>2.</b> How many months has the child been living in above setting? <b>(Select only one.)</b>
-                                <apex:selectRadio styleClass="form-control2" id="BPRESMO__c" value="{!obj.BPRESMO__c}" layout="pageDirection" title="{!obj.BPRESMO__c}">
-                                    <apex:selectOptions value="{!HowLongIems}"/>
-                                </apex:selectRadio>
-                            </td>
-                        </tr>    
-                        
-                        <!--3. Out of home placements-->
-                        <tr>
-                            <td><b>3.</b> During the course of the child’s life how many out of home placements has he/she had (i.e., Foster care, group home, correctional facility)?  <b>(Select only one.)</b>
-                                <apex:selectRadio styleClass="form-control2" id="BPROHPL__c" value="{!obj.BPROHPL__c}" layout="pageDirection" title="{!obj.BPROHPL__c}">
-                                    <apex:selectOptions value="{!OutPlaceIems}"/>
-                                </apex:selectRadio>
-                            </td>
-                        </tr>   
-                        
-                        <!--4. Primary living location-->
-                        <tr>
-                            <td><b>4.</b> In the past 30 days, where have you [has your child] been living most of the time? <b>(Select only one.)</b>
-                                <apex:selectRadio styleClass="form-control2" id="BNOMHOUSE__c" value="{!obj.BNOMHOUSE__c}" layout="pageDirection" title="{!obj.BNOMHOUSE__c}" onChange="skipLogic('BNOMHOUSE',this.value)">
-                                    <apex:selectOptions value="{!LiveMostItems}"/>
-                                </apex:selectRadio>
-                            </td>
-                        </tr>    
-                        
-                        <!--Conditional if other living location, please specify-->
-                        <tr class="skip-BNOMHOUSESP">
-                            <td class="skipContent">
-                                Please Specify: 
-                                <apex:inputField styleClass="form-control2 skip-element-BNOMHOUSESP" id="BNOMHOUSESP__c" value="{!obj.BNOMHOUSESP__c}"/>
-                            </td>
-                        </tr>
-                        
-                        <!--5. Housing stability-->
-                        <tr>
-                            <td><b>5.</b> The following question refers to stability in housing for the child.<br/>
-                                <br/>
-                                <table class="table DS-table">
+                <!--1. Primary residence-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">
+                        <span class="nmbr">1.</span>
+                        Where is the child’s current primary residence? (Select only one.)
+                    </label>
+                    <div class="col-md-4">
+                        <apex:selectRadio id="PRIMRES__c" value="{!form.obj[bfVariableMap['PRIMRES']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['PRIMRES']]}" onChange="skipLogic('PRIMRES',this.value)">
+                            <apex:selectOptions value="{!PrimeRestIems}"/>
+                        </apex:selectRadio>
+                        <div class="skip-PRIMRSP skipContent">
+                            Please Specify: 
+                            <apex:inputField styleClass="skip-element-PRIMRSP" id="PRIMRSP__c" value="{!form.obj[bfVariableMap['PRIMRSP']]}"/>
+                        </div>
+                    </div>
+                </div>     
+
+                <!--2. Months at residence-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">
+                        <span class="nmbr">2.</span>
+                        How many months has the child been living in above setting? (Select only one)
+                    </label>
+                    <div class="col-md-4">
+                        <apex:selectRadio id="PRESMO__c" value="{!form.obj[bfVariableMap['PRESMO']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['PRESMO']]}">
+                            <apex:selectOptions value="{!HowLongIems}"/>
+                        </apex:selectRadio>
+                    </div>
+                </div>     
+
+                <!--3. Out of home placements-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">
+                        <span class="nmbr">3.</span>
+                        During the course of the child’s life how many out of home placements has he/she had (i.e., Foster care, group home, correctional facility)? (Select only one)
+                    </label>
+                    <div class="col-md-4">
+                        <apex:selectRadio id="PROHPL__c" value="{!form.obj[bfVariableMap['PROHPL']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['PROHPL']]}">
+                            <apex:selectOptions value="{!OutPlaceIems}"/>
+                        </apex:selectRadio>
+                    </div>
+                </div> 
+
+                <!--4. Primary living location-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">
+                        <span class="nmbr">4.</span>
+                        In the past 30 days, where have you [has your child] been living most of the time? (Select only one)
+                    </label>
+                    <div class="col-md-4">
+                        <apex:selectRadio id="NOMHOUSE__c" value="{!form.obj[bfVariableMap['NOMHOUSE']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['NOMHOUSE']]}" onChange="skipLogic('NOMHOUSE',this.value)">
+                            <apex:selectOptions value="{!LiveMostItems}"/>
+                        </apex:selectRadio>
+                        <div class="skip-NOMHOUSESP skipContent">
+                            Please Specify: 
+                            <apex:inputField styleClass="skip-element-NOMHOUSESP" id="NOMHOUSESP__c" value="{!form.obj[bfVariableMap['NOMHOUSESP']]}"/>
+                        </div>
+                    </div>
+                </div>    
+
+                <div class="form-group">
+                    <label class="col-md-12 control-label">
+                        <span class="nmbr">5.</span>
+                        The following question refers to stability in housing for the child.
+                    </label>
+                    <div class="col-md-12">
+
+                        <table class="table DS-table">
+                            
+                            <!--indication sub-heading-->
+                            <thead>
+                                <th/>
+                                <th>In the past 30 days, how many...</th>
+                                <th>Number of Nights/Times</th>
+                                <th>Refused or Unknown</th>
+                            </thead>
+                            <!--end sub-heading-->
+                            
+                            <tbody>
+
+                                <!--A. nights homeless-->
+                                <tr> 
+                                    <!--question-->
+                                    <td>   <p class="text-right"><b>a.</b></p></td>
+                                    <td>nights have you [has your child] been homeless?</td>
                                     
-                                    <!--indication sub-heading-->
-                                    <tr>
-                                        <td/>
-                                        <td ><b>In the past 30 days, how many...</b></td>
-                                        <td><b>Number of Nights/Times</b></td>
-                                        <td ><b>Refused or Unknown</b></td>
-                                    </tr>
-                                    <!--end sub-heading-->
+                                    <!--answer field-->
+                                    <td class="nights2">
+                                        <apex:inputField id="NTHOMEN__c" value="{!form.obj[bfVariableMap['NTHOMEN']]}" styleclass="nights" />
+                                    </td>
                                     
-                                    <!--A. nights homeless-->
-                                    <tr> 
-                                        <!--question-->
-                                        <td>   <p class="text-right"><b>a.</b></p></td>
-                                        <td>nights have you [has your child] been homeless?</td>
-                                        
-                                        <!--answer field-->
-                                        <td class="nights2">
-                                            <apex:inputField id="BNTHOMEN__c" value="{!obj.BNTHOMEN__c}" styleclass="nights" />
-                                        </td>
-                                        
-                                        <!--non-answer indicator-->
-                                        <td ><apex:selectRadio styleClass="form-control2" id="BNTHOMERU__c" value="{!obj.BNTHOMERU__c}" title="{!obj.BNTHOMERU__c}">
-                                            <apex:selectOptions value="{!CTYREFUSEItems}"/>
-                                            </apex:selectRadio></td>
-                                    </tr>
-                                    <!--end nights homeless-->
-                                    
-                                    <!--B. nights in hospital mental care-->
-                                    <tr>     
-                                        <!--question-->
-                                        <td>   <p class="text-right"><b>b.</b></p></td>
-                                        <td>nights have you [has your child] spent in a hospital for mental health care?   </td>
-                                        
-                                        <!--answer field-->
-                                        <td class="nights2">
-                                            <apex:inputField id="BNTHOSPN__c" value="{!obj.BNTHOSPN__c}" styleclass="nights" />
-                                        </td>
-                                        
-                                        <!--non-answer indicator-->
-                                        <td><apex:selectRadio styleClass="form-control2" id="BNTHOSPRU__c" value="{!obj.BNTHOSPRU__c}" title="{!obj.BNTHOSPRU__c}">
-                                            <apex:selectOptions value="{!CTYREFUSEItems}"/>
-                                            </apex:selectRadio></td>                                        
-                                    </tr>
-                                    <!--end mental care-->
-                                    
-                                    <!--C. nights in rehab-->
-                                    <tr>     
-                                        <!--question-->
-                                        <td>   <p class="text-right"><b>c.</b></p></td>
-                                        <td>nights have you [has your child] spent in a facility for detox/inpatient or residential substance abuse treatment?</td>
-                                        
-                                        <!--answer field-->
-                                        <td class="nights2">
-                                            <apex:inputField id="BNTDTOXN__c" value="{!obj.BNTDTOXN__c}" styleclass="nights" />      
-                                        </td>                 
-                                        
-                                        <!--non-answer indicator-->                     
-                                        <td><apex:selectRadio styleClass="form-control2" id="BNTDTOXRU__c" value="{!obj.BNTDTOXRU__c}" title="{!obj.BNTDTOXRU__c}">
-                                            <apex:selectOptions value="{!CTYREFUSEItems}"/>
-                                            </apex:selectRadio></td>                                        
-                                    </tr>
-                                    <!--end rehab-->
-                                    
-                                    <!--D. nights in jail-->
-                                    <tr>     
-                                        <!--question-->
-                                        <td>   <p class="text-right"><b>d.</b></p></td>
-                                        <td>nights have you [has your child] spent in a correctional facility, including juvenile detention, jail, or prison?</td>
-                                        
-                                        <!--answer field-->
-                                        <td class="nights2">
-                                            <apex:inputField id="BNTJAILN__c" value="{!obj.BNTJAILN__c}" styleclass="nights" />
-                                        </td>
-                                        
-                                        <!--non-answer indicator-->
-                                        <td><apex:selectRadio styleClass="form-control2" id="BNTJAILRU__c" value="{!obj.BNTJAILRU__c}" title="{!obj.BNTJAILRU__c}">
-                                            <apex:selectOptions value="{!CTYREFUSEItems}"/>
-                                            </apex:selectRadio>
-                                        </td>                                        
-                                    </tr> 
-                                    <!--end jail-->
-                                    
-                                    <!--total nights out of home-->
-                                    <tr>
-                                        <td/> 
-                                        <td>   <p>Total:</p> </td>  
-                                        <td class="total">
-                                            <apex:outputField id="BNTTOTN" value="{!obj.BNTTOTN__c}" styleClass="BNTTOTN"/>
-                                            <apex:inputField rendered="true" id="BNTTOTN2" value="{!obj.BNTTOTN__c}" styleClass="BNTTOTN2 hidden"/>
-                                        </td>
-                                    </tr>
-                                    <!--end nights-->
-                                    
-                                    <!--E. psychiatric emergency room visits-->
-                                    <tr>     
-                                        <!--question-->
-                                        <td>   <p class="text-right"><b>e.</b></p></td>
-                                        <td>times have you [has your child] gone to an emergency room for a psychiatric or emotional problem?</td>
-                                        
-                                        <!--answer field-->
-                                        <td><apex:inputField id="BNTERN__c" value="{!obj.BNTERN__c}"/></td>
-                                        
-                                        <!--non-answer indicator-->
-                                        <td><apex:selectRadio styleClass="form-control2" id="BNTERRU__c" value="{!obj.BNTERRU__c}" title="{!obj.BNTERRU__c}">
-                                            <apex:selectOptions value="{!CTYREFUSEItems}"/>
-                                            </apex:selectRadio></td>                                        
-                                    </tr>
-                                    <!--end visits-->
-                                </table>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </apex:pageBlock>
-        <!--end domestic environment information pageBlock-->
-        
-        
-        <!---Begin Details questionnaire pageBlock-->
-        <apex:pageBlock title="Domestic Environment Details"  >
-            
-            <!--<apex:pageMessages /><!--placeholding structure that allows for system message display-->
-            
-            <div id="force">            
-            
-                <table class="table DS-table">
-                    <tbody>
-                        <!--instructions-->
-                        <tr><b>If ‘Home (with parent(s))’ or ‘With relatives or other family’ is selected for primary residence on the <u>Domestic Environment</u> form at Baseline, complete the following questions.</b></tr>
-                        <!--end instructions-->
-                        
-                        <!--1. Types of adults-->
-                        <tr>
-                            <td><b>1.</b>  What types of adults live in the home with the child?<b> (Select all that apply.)</b><br/></td>
-                            <td>
-                                <!--begin checkbox list-->
-                                <div class="checkbox">
+                                    <!--non-answer indicator-->
+                                    <td ><apex:selectRadio id="NTHOMERU__c" value="{!form.obj[bfVariableMap['NTHOMERU']]}" title="{!form.obj[bfVariableMap['NTHOMERU']]}">
+                                        <apex:selectOptions value="{!CTYREFUSEItems}"/>
+                                        </apex:selectRadio></td>
+                                </tr>
+                                <!--end nights homeless-->
                                 
-                                    <!--Mother-->
-                                    <div class="checkline">
-                                        <label>
-                                            <apex:inputField id="BLMOTHER__c" value="{!obj.BLMOTHER__c}" styleClass="form-control2" />
-                                            Mother (Biological, adoptive, or step)   <br/>
-                                        </label>
-                                    </div>
+                                <!--B. nights in hospital mental care-->
+                                <tr>     
+                                    <!--question-->
+                                    <td>   <p class="text-right"><b>b.</b></p></td>
+                                    <td>nights have you [has your child] spent in a hospital for mental health care?   </td>
                                     
-                                    <!--Father-->
-                                    <div class="checkline">
-                                        <label>
-                                            <apex:inputField id="BLFATHER__c" value="{!obj.BLFATHER__c}" styleClass="form-control2" />
-                                            Father (Biological, adoptive, or step)   <br/>
-                                        </label>
-                                    </div>
+                                    <!--answer field-->
+                                    <td class="nights2">
+                                        <apex:inputField id="NTHOSPN__c" value="{!form.obj[bfVariableMap['NTHOSPN']]}" styleclass="nights" />
+                                    </td>
                                     
-                                    <!--Parent's significant other-->
-                                    <div class="checkline">
-                                        <label>
-                                            <apex:inputField id="BLPARTNR__c" value="{!obj.BLPARTNR__c}" styleClass="form-control2" />
-                                            Parent’s partner/significant other  <br/>
-                                        </label>
-                                    </div>
+                                    <!--non-answer indicator-->
+                                    <td><apex:selectRadio id="NTHOSPRU__c" value="{!form.obj[bfVariableMap['NTHOSPRU']]}" title="{!form.obj[bfVariableMap['NTHOSPRU']]}">
+                                        <apex:selectOptions value="{!CTYREFUSEItems}"/>
+                                        </apex:selectRadio></td>                                        
+                                </tr>
+                                <!--end mental care-->
+                                
+                                <!--C. nights in rehab-->
+                                <tr>     
+                                    <!--question-->
+                                    <td>   <p class="text-right"><b>c.</b></p></td>
+                                    <td>nights have you [has your child] spent in a facility for detox/inpatient or residential substance abuse treatment?</td>
                                     
-                                    <!--Grandparent-->
-                                    <div class="checkline">
-                                        <label>
-                                            <apex:inputField id="BLGRAND__c" value="{!obj.BLGRAND__c}" styleClass="form-control2" />
-                                            Grandparent<br/>
-                                        </label>
-                                    </div>
+                                    <!--answer field-->
+                                    <td class="nights2">
+                                        <apex:inputField id="NTDTOXN__c" value="{!form.obj[bfVariableMap['NTDTOXN']]}" styleclass="nights" />      
+                                    </td>                 
                                     
-                                    <!--adult relative-->
-                                    <div class="checkline">
-                                        <label>
-                                            <apex:inputField id="BLOREL__c" value="{!obj.BLOREL__c}" styleClass="form-control2" />
-                                            Other adult relative (e.g., aunts, cousins)  <br/>
-                                        </label>
-                                    </div>
+                                    <!--non-answer indicator-->                     
+                                    <td><apex:selectRadio id="NTDTOXRU__c" value="{!form.obj[bfVariableMap['NTDTOXRU']]}" title="{!form.obj[bfVariableMap['NTDTOXRU']]}">
+                                        <apex:selectOptions value="{!CTYREFUSEItems}"/>
+                                        </apex:selectRadio></td>                                        
+                                </tr>
+                                <!--end rehab-->
+                                
+                                <!--D. nights in jail-->
+                                <tr>     
+                                    <!--question-->
+                                    <td>   <p class="text-right"><b>d.</b></p></td>
+                                    <td>nights have you [has your child] spent in a correctional facility, including juvenile detention, jail, or prison?</td>
                                     
-                                    <!--non-related-->
-                                    <div class="checkline">
-                                        <label>
-                                            <apex:inputField id="BLNONREL__c" value="{!obj.BLNONREL__c}" styleClass="form-control2" />
-                                            Other adult non-relative  <br/>
-                                        </label>
-                                    </div>
+                                    <!--answer field-->
+                                    <td class="nights2">
+                                        <apex:inputField id="NTJAILN__c" value="{!form.obj[bfVariableMap['NTJAILN']]}" styleclass="nights" />
+                                    </td>
                                     
-                                    <!--unknown-->
-                                    <div class="checkline">
-                                        <label>
-                                            <apex:inputField id="BLUNK__c" value="{!obj.BLUNK__c}" styleClass="form-control2" />
-                                            Unknown  <br/>
-                                        </label>
-                                    </div>
+                                    <!--non-answer indicator-->
+                                    <td><apex:selectRadio id="NTJAILRU__c" value="{!form.obj[bfVariableMap['NTJAILRU']]}" title="{!form.obj[bfVariableMap['NTJAILRU']]}">
+                                        <apex:selectOptions value="{!CTYREFUSEItems}"/>
+                                        </apex:selectRadio>
+                                    </td>                                        
+                                </tr> 
+                                <!--end jail-->
+                                
+                                <!--total nights out of home-->
+                                <tr>
+                                    <td/> 
+                                    <td>   <p>Total:</p> </td>  
+                                    <td class="total">
+                                        <apex:outputField id="NTTOTN" value="{!form.obj[bfVariableMap['NTTOTN']]}" styleClass="NTTOTN"/>
+                                        <apex:inputField rendered="true" id="NTTOTN2" value="{!form.obj[bfVariableMap['NTTOTN']]}" styleClass="NTTOTN2 hidden"/>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <!--end nights-->
+                                
+                                <!--E. psychiatric emergency room visits-->
+                                <tr>     
+                                    <!--question-->
+                                    <td>   <p class="text-right"><b>e.</b></p></td>
+                                    <td>times have you [has your child] gone to an emergency room for a psychiatric or emotional problem?</td>
                                     
-                                    <!--other-->
-                                    <div class="checkline">
-                                        <label>
-                                            <apex:inputField id="BLOTHR__c" value="{!obj.BLOTHR__c}" styleClass="form-control2" onchange="skipLogic('BLOTHR',this.checked)"/>
-                                            Other <br/>
-                                        </label>
-                                        
-                                        <!--conditional, if other selected, please specify-->
-                                        <div class="skip-BLOTHRSP">
-                                            <apex:outputLabel value=" Please specify: " for="BLOTHRSP__c"/>
-                                            <apex:inputField styleClass="form-control input-sm auto-width skip-element-BLOTHRSP" id="BLOTHRSP__c" value="{!obj.BLOTHRSP__c}"/>
-                                        </div>
-                                        <!--end conditional-->                                        
-                                    </div>
+                                    <!--answer field-->
+                                    <td><apex:inputField id="NTERN__c" value="{!form.obj[bfVariableMap['NTERN']]}"/></td>
                                     
-                                </div>
-                                <!--end checkboxes-->
-                            </td>
-                        </tr>
-                        <!--end adult types-->
-                        
-                        <!--2. number of adults in home-->
-                        <tr>
-                            <td><b>2.</b>  Total number of adults (18 years of age or older) living in child’s home: </td>
-                            <td><apex:inputField id="BADHOMSP__c" value="{!obj.BADHOMSP__c}"/></td>
-                        </tr>
-                        <!--unknown checkbox-->
-                        <tr>
-                            <td><b>Or, check the following if unknown:</b></td>
-                            <td><apex:inputCheckbox id="BADHOME__c" value="{!obj.BADHOMECHECK__c}" styleClass="form-control2" /></td>                      
-                        </tr>
-                        <!--end adult number-->
-                        
-                        <!--3. number of children in home-->
-                        <tr>
-                            <td><b>3.</b>  Total number of children younger than 18 years of age (including client) living in child’s home: </td>
-                            <td><apex:inputField id="BCHHOMSP__c" value="{!obj.BCHHOMSP__c}"/></td>
-                        </tr>
-                        <!--unknown checkbox-->
-                        <tr>
-                            <td><b>Or, check the following if unknown:</b></td> 
-                            <td><apex:inputCheckbox id="BCHHOME__c" value="{!obj.BCHHOMECHECK__c}" styleClass="form-control2" /></td>                      
-                        </tr>
-                        <!--end child number-->
-                        
-                        <!--4. primary language-->
-                        <tr>
-                            <td><b>4.</b>   Primary language spoken at home: <b>(Select only one.)</b> <br/></td>
-                            <td>
-                                <apex:selectRadio id="BLANGHOM__c" value="{!obj.BLANGHOM__c}" title="{!obj.BLANGHOM__c}" layout="pageDirection" onChange="skipLogic('BLANGHOM',this.value)">
-                                    <apex:selectOptions value="{!LangItems}"/>
-                                </apex:selectRadio>
-                            </td>
-                        </tr> 
-                        
-                        <!--conditional, if primary language id other, specify-->
-                        <tr class="skip-BLANGHMS">
-                            <td/>
-                            <td class="skipContent" styleclass="align-right">
-                                Please Specify: 
-                                <apex:inputField styleClass="form-control2 skip-element-BLANGHMS" id="BLANGHMS__c" value="{!obj.BLANGHMS__c}"/>
-                            </td>
-                        </tr>
-                        <!--end conditional-->
-                        <!--end language-->
-                        
-                        <!--5. income total for household-->
-                        <tr>
-                            <td><b>5.</b>  What is the total income for the child’s household for the past year, before taxes and including all sources? (US $) <b>(Select only one.)</b> <br/></td>
-                            <td>
-                                <apex:selectRadio id="BINCOMNW__c" value="{!obj.BINCOMNW__c}" title="{!obj.BINCOMNW__c}" layout="pageDirection" onChange="skipLogic('BINCOMNW',this.value)">
-                                    <apex:selectOptions value="{!IncomeItems}"/>
-                                </apex:selectRadio>
-                            </td>
-                        </tr> 
-                        
-                        <!--conditional, if other income range, specify-->
-                        <tr class="skip-BINCOMSP">
-                            <td/>
-                            <td class="skipContent" styleclass="align-right">
-                                Please Specify: 
-                                <apex:inputField styleClass="form-control2 skip-element-BINCOMSP" id="BINCOMSP__c" value="{!obj.BINCOMSP__c}"/>
-                            </td>
-                        </tr>
-                        <!--end conditional-->
-                        <!--end income-->
-                        
-                        <!--6. Caregiver rates family resources-->
-                        <tr>
-                            <td><b> Caregiver Rating: </b> <p />
-                                <b>6.</b>  Please rate your family’s resources (income and other resources available to address family needs). <b>(Select only one.)</b> <br/></td>
-                            <td>
-                                <apex:selectRadio id="BFAMRES__c" value="{!obj.BFAMRES__c}" title="{!obj.BFAMRES__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!FamResItems}"/>
-                                </apex:selectRadio>
-                            </td>
-                        </tr> 
-                        <!--end caregiver rating-->
-                        
-                        <!--7. Clinician rating-->
-                        <tr>
-                            <td><b> Clinician Rating: </b>  <p /> 
-                                <b>7.</b>  Please rate the child and caregiving system. <b>(Select only one.)</b><br/></td>
-                            <td>
-                                <apex:selectRadio id="BCARESYS__c" value="{!obj.BCARESYS__c}" title="{!obj.BCARESYS__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!CareGiveItems}"/>
-                                </apex:selectRadio>
-                            </td>
-                        </tr>    
-                        <!--end clinician-->
-                        
-                    </tbody>
-                </table>
-            </div>
-        </apex:pageBlock>
-        <!--end details pageBlock-->
-        
-        
-        <!--begin Education pageBlock-->
-        <apex:pageBlock title="Education"  >
-            <!--<apex:pageMessages /><!--placeholding structure that allows for system message display-->
-            
-            <div id="force">            
-                <table class="table DS-table">
-                    <tbody>
-                        <!--1. Education level of child-->
-                        <tr><td><b>1.</b>   What is the highest level of education you have [your child has] finished, whether or not you [he/she has] received a degree?</td> 
-                            <td >
-                                <apex:selectRadio styleClass="form-control2"  title="{!obj.BEDUCATE__c}" id="BEDUCATE__c" value="{!obj.BEDUCATE__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!GradeItems}"/>
-                                </apex:selectRadio>
-                            </td>  
-                        </tr>
-                        <!--end level-->
-                        
-                        <!--2. days absent?-->
-                        <tr><td><b>2.</b>    During the past 30 days of school, how many days were you [was your child] absent for any reason?</td>
-                            <td >
-                                <apex:selectRadio styleClass="form-control2"  title="{!obj.BABSENT__c}" id="BABSENT__c" value="{!obj.BABSENT__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!AbsentItems}"/>
-                                </apex:selectRadio>
-                            </td>  
-                        </tr>
-                        <!--end absent-->
-                        
-                        <!--2a. unexcused absences-->
-                        <tr><td><b>a.</b> If absent, how many days were unexcused absences? </td>
-                            <td >
-                                <apex:selectRadio styleClass="form-control2"  title="{!obj.BABSENTUX__c}" id="BABSENTUX__c" value="{!obj.BABSENTUX__c}" layout="pageDirection">
-                                    <apex:selectOptions value="{!AbsentItems}"/>
-                                </apex:selectRadio>
-                            </td>  
-                        </tr>
-                        <!--end unexcused-->
-                        
-                        <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
-                        
-                        <tr>
-                            <!--Completion status control-->
-                            <td colspan="2" class="text-right complete-title">
-                                <b>Complete?</b>
-                                &nbsp;&nbsp;
-                                <apex:selectList styleClass="form-control input-sm auto-width" value="{!obj.STATUS_DOMENV__c}" size="1" id="STATUS_DOMENV__c">
-                                    <apex:selectOption itemValue="Incomplete" itemLabel="Incomplete"/>
-                                    <apex:selectOption itemValue="Complete" itemLabel="Complete"/>
-                                </apex:selectList> 
-                            </td>
-                            <!--end completion status-->  
-                        </tr>
-                        
-                    </tbody>
-                </table>
+                                    <!--non-answer indicator-->
+                                    <td><apex:selectRadio id="NTERRU__c" value="{!form.obj[bfVariableMap['NTERRU']]}" title="{!form.obj[bfVariableMap['NTERRU']]}">
+                                        <apex:selectOptions value="{!CTYREFUSEItems}"/>
+                                        </apex:selectRadio></td>                                        
+                                </tr>
+                                <!--end visits-->
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>  
+
                 
-            </div>
+            </apex:pageBlock>
+            <!--end domestic environment information pageBlock-->
             
-            <!--save and cancel control buttons for pageBlock-->
-            <div class="pbBottomButtons">
-                <table border="0" cellpadding="0" cellspacing="0">
-                    <tr>
-                        <td class="pbTitle">&nbsp;</td>
-                        <td class="pbButtonb ">
-                            <apex:commandButton id="Save" action="{!save}"  value="Save" />
-                            <apex:commandButton id="Cancel" action="{!cancel}"  value="Cancel"  rendered="{!if(forceRedirect = '1', false, true)}"/>
-                        </td>
-                    </tr>
-                </table>
-            </div><!--end buttons-->
             
-            <!--placeholder footer class-->
-            <div class="pbFooter secondaryPalette">
-                <div class="bg"></div>
-            </div>
-        </apex:pageBlock>
-        <!--end placeholder-->
+            <!---Begin Details questionnaire pageBlock-->
+            <apex:pageBlock title="Domestic Environment Details"  >
+                
+                <!--instructions-->
+                <p><b>If ‘Home (with parent(s))’ or ‘With relatives or other family’ is selected for primary residence on the <u>Domestic Environment</u> form at Baseline, complete the following questions.</b></p>
+                <!--end instructions-->
+
+                <!--1. Types of adults-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">
+                        <span class="nmbr">1.</span>
+                        What type(s) of adults live in the home with the child? (Select all that apply)
+                    </label>
+                    <div class="col-md-4">
+                        <!--begin checkbox list-->
+                        <div class="checkbox">
+                            
+                            <!--Mother-->
+                            <div class="checkline">
+                                <label>
+                                    <apex:inputField id="LMOTHER__c" value="{!form.obj[bfVariableMap['LMOTHER']]}" />
+                                    Mother (Biological, adoptive, or step)   <br/>
+                                </label>
+                            </div>
+                            
+                            <!--Father-->
+                            <div class="checkline">
+                                <label>
+                                    <apex:inputField id="LFATHER__c" value="{!form.obj[bfVariableMap['LFATHER']]}" />
+                                    Father (Biological, adoptive, or step)   <br/>
+                                </label>
+                            </div>
+                            
+                            <!--Parent's significant other-->
+                            <div class="checkline">
+                                <label>
+                                    <apex:inputField id="LPARTNR__c" value="{!form.obj[bfVariableMap['LPARTNR']]}" />
+                                    Parent’s partner/significant other  <br/>
+                                </label>
+                            </div>
+                            
+                            <!--Grandparent-->
+                            <div class="checkline">
+                                <label>
+                                    <apex:inputField id="LGRAND__c" value="{!form.obj[bfVariableMap['LGRAND']]}" />
+                                    Grandparent<br/>
+                                </label>
+                            </div>
+                            
+                            <!--adult relative-->
+                            <div class="checkline">
+                                <label>
+                                    <apex:inputField id="LOREL__c" value="{!form.obj[bfVariableMap['LOREL']]}"  />
+                                    Other adult relative (e.g., aunts, cousins)  <br/>
+                                </label>
+                            </div>
+                            
+                            <!--non-related-->
+                            <div class="checkline">
+                                <label>
+                                    <apex:inputField id="LNONREL__c" value="{!form.obj[bfVariableMap['LNONREL']]}" />
+                                    Other adult non-relative  <br/>
+                                </label>
+                            </div>
+                            
+                            <!--unknown-->
+                            <div class="checkline">
+                                <label>
+                                    <apex:inputField id="LUNK__c" value="{!form.obj[bfVariableMap['LUNK']]}" />
+                                    Unknown  <br/>
+                                </label>
+                            </div>
+                            
+                            <!--other-->
+                            <div class="checkline">
+                                <label>
+                                    <apex:inputField id="LOTHR__c" value="{!form.obj[bfVariableMap['LOTHR']]}"  onchange="skipLogic('LOTHR',this.checked)"/>
+                                    Other <br/>
+                                </label>
+                                
+                                <!--conditional, if other selected, please specify-->
+                                <div class="skip-LOTHRSP">
+                                    <apex:outputLabel value=" Please specify: " for="LOTHRSP__c"/>
+                                    <apex:inputField styleClass="form-control input-sm auto-width skip-element-LOTHRSP" id="LOTHRSP__c" value="{!form.obj[bfVariableMap['LOTHRSP']]}"/>
+                                </div>
+                                <!--end conditional-->                                        
+                            </div>
+                            
+                        </div>
+                        <!--end checkboxes-->
+                    </div>
+                </div> 
+                <!--end adult types-->
+
+                <!--2. number of adults in home-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">
+                        <span class="nmbr">2.</span>
+                        Total number of adults (18 years of age or older) living in child’s home:
+                    </label>
+                    <div class="col-md-4">
+                        <apex:inputField id="ADHOMSP__c" value="{!form.obj[bfVariableMap['ADHOMSP']]}"/>
+                        <!--unknown checkbox-->
+                        <div>
+                            Or, check the following if unknown: &nbsp;
+                            <apex:inputCheckbox id="ADHOME__c" value="{!form.obj[bfVariableMap['ADHOMECHECK']]}" />
+                        </div>
+                    </div>
+                </div> 
+                <!--end adult number-->
+
+                <!--3. number of children in home-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">
+                        <span class="nmbr">3.</span>
+                        Total number of children (younger than 18 years of age, including client) living in child’s home:
+                    </label>
+                    <div class="col-md-4">
+                        <apex:inputField id="CHHOMSP__c" value="{!form.obj[bfVariableMap['CHHOMSP']]}"/>
+                        <!--unknown checkbox-->
+                        <div>
+                            Or, check the following if unknown: &nbsp;
+                            <apex:inputCheckbox id="CHHOME__c" value="{!form.obj[bfVariableMap['CHHOMECHECK']]}" />
+                        </div>
+                    </div>
+                </div> 
+                <!--end child number-->
+
+                <!--4. primary language-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">
+                        <span class="nmbr">4.</span>
+                        Primary language spoken at home: (Select only one)
+                    </label>
+                    <div class="col-md-4">
+                        <apex:selectRadio id="LANGHOM__c" value="{!form.obj[bfVariableMap['LANGHOM']]}" title="{!form.obj[bfVariableMap['LANGHOM']]}" layout="pageDirection" onChange="skipLogic('LANGHOM',this.value)">
+                            <apex:selectOptions value="{!LangItems}"/>
+                        </apex:selectRadio>
+                        <!--conditional, if primary language id other, specify-->
+                        <div class="skip-LANGHMS">
+                            Please Specify: 
+                            <apex:inputField styleClass="skip-element-LANGHMS" id="LANGHMS__c" value="{!form.obj[bfVariableMap['LANGHMS']]}"/>
+                        </div>
+                        <!--end conditional-->
+                    </div>
+                </div> 
+                <!--end language-->
+
+                <!--5. income total for household-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">
+                        <span class="nmbr">5.</span>
+                        What is the total income for the child’s household for the past year, before taxes and including all sources? (US $) (Select only one)
+                    </label>
+                    <div class="col-md-4">
+                        <apex:selectRadio id="INCOMNW__c" value="{!form.obj[bfVariableMap['INCOMNW']]}" title="{!form.obj[bfVariableMap['INCOMNW']]}" layout="pageDirection" onChange="skipLogic('INCOMNW',this.value)">
+                            <apex:selectOptions value="{!IncomeItems}"/>
+                        </apex:selectRadio>
+                        <!--conditional, if primary language id other, specify-->
+                        <div class="skip-INCOMSP">
+                            Please Specify: 
+                            <apex:inputField styleClass="skip-element-INCOMSP" id="INCOMSP__c" value="{!form.obj[bfVariableMap['INCOMSP']]}"/>
+                        </div>
+                        <!--end conditional-->
+                    </div>
+                </div> 
+                <!--end income-->
+
+                <!--6. Caregiver rates family resources-->
+                <div class="form-group">
+                    <b> Caregiver Rating: </b>
+                    <label class="col-md-4 control-label">
+                        <span class="nmbr">6.</span>
+                        Please rate your family’s resources (income and other resources available to address family needs). (Select only one)
+                    </label>
+                    <div class="col-md-4">
+                        <apex:selectRadio id="FAMRES__c" value="{!form.obj[bfVariableMap['FAMRES']]}" title="{!form.obj[bfVariableMap['FAMRES']]}" layout="pageDirection">
+                            <apex:selectOptions value="{!FamResItems}"/>
+                        </apex:selectRadio>
+                    </div>
+                </div> 
+                <!--end caregiver rating-->
+
+                <!--7. Clinician rating-->
+                <div class="form-group">
+                    <b> Clinician Rating: </b>
+                    <label class="col-md-4 control-label">
+                        <span class="nmbr">7.</span>
+                        Please rate the child and caregiving system. (Select only one)
+                    </label>
+                    <div class="col-md-4">
+                        <apex:selectRadio id="CARESYS__c" value="{!form.obj[bfVariableMap['CARESYS']]}" title="{!form.obj[bfVariableMap['CARESYS']]}" layout="pageDirection">
+                            <apex:selectOptions value="{!CareGiveItems}"/>
+                        </apex:selectRadio>
+                    </div>
+                </div> 
+                <!--end clinician-->
+
+            </apex:pageBlock>
+            <!--end details pageBlock-->
+            
+            
+            <!--begin Education pageBlock-->
+            <apex:pageBlock title="Education"  >
+
+                <!--1. Education level of child-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">
+                        <span class="nmbr">1.</span>
+                        What is the highest level of education you have [your child has] finished, whether or not you [he/she has] received a degree?
+                    </label>
+                    <div class="col-md-4">
+                        <apex:selectRadio title="{!form.obj[bfVariableMap['EDUCATE']]}" id="EDUCATE__c" value="{!form.obj[bfVariableMap['EDUCATE']]}" layout="pageDirection">
+                            <apex:selectOptions value="{!GradeItems}"/>
+                        </apex:selectRadio>
+                    </div>
+                </div> 
+                <!--end level-->
+
+                <!--2. days absent?-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">
+                        <span class="nmbr">2.</span>
+                        During the past 30 days of school, how many days were you [was your child] absent for any reason?
+                    </label>
+                    <div class="col-md-4">
+                        <apex:selectRadio title="{!form.obj[bfVariableMap['ABSENT']]}" id="ABSENT__c" value="{!form.obj[bfVariableMap['ABSENT']]}" layout="pageDirection">
+                            <apex:selectOptions value="{!AbsentItems}"/>
+                        </apex:selectRadio>
+                    </div>
+                </div> 
+                <!--end absent-->
+
+                <!--2a. unexcused absences-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">
+                        <span class="nmbr">2a.</span>
+                        If absent, how many days were unexcused absences?
+                    </label>
+                    <div class="col-md-4">
+                        <apex:selectRadio title="{!form.obj[bfVariableMap['ABSENTUX']]}" id="ABSENTUX__c" value="{!form.obj[bfVariableMap['ABSENTUX']]}" layout="pageDirection">
+                            <apex:selectOptions value="{!AbsentItems}"/>
+                        </apex:selectRadio>
+                    </div>
+                </div> 
+                <!--end unexcused-->
+
+                <!--Completion status control-->
+                <div class="text-right complete-title ">
+                    <b>Complete?</b>
+                    &nbsp;&nbsp;
+                    <apex:selectList styleClass="form-control input-sm auto-width" value="{!form.obj[bfVariableMap['STATUS']]}" size="1" id="STATUS_DOMENV__c">
+                        <apex:selectOption itemValue="Incomplete" itemLabel="Incomplete"/>
+                        <apex:selectOption itemValue="Complete" itemLabel="Complete"/>
+                    </apex:selectList> 
+                </div>
+                <!--end completion status-->
+
+            </apex:pageBlock>
+            <!--end placeholder-->
+            
+        </apex:form>
+        <!--end form content-->
         
-    </apex:form>
-    <!--end form content-->
-    
+    </div>
+
     <!--citation information footer-->
     <p style="class:footer; text-align:center ">
         <i>This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - Baseline - CRF Version 6 2014
         </i>
     </p>
+
 </apex:page>

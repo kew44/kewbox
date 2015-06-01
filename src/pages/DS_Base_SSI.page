@@ -40,10 +40,11 @@
                                 <apex:inputField value="{!Client__c.INIT__c}" label="<b>2.</b> Child's initials <b>(Enter a dash if no middle initial.)</b>" id="INIT"/>
                                 
                                 <!--Date of Birth-->
-                                <apex:inputField value="{!Client__c.DOB1__c}" label="<b>3.</b> Child's date of birth" id="DOB1"/>
+                                <!--<apex:inputText value="{!Client__c.DOB1__c}" label="3. Child's date of birth (Please use the format: MM/DD/YYYY)" id="DOB1"/>-->
+                                <apex:inputField showDatePicker="false" value="{!Client__c.DOB1__c}" label="<b>3.</b> Child's date of birth (Please use the format: MM/DD/YYYY)" id="DOB1"/>
                                 
                                 <!--Date of Birth re-entry-->
-                                <apex:inputField value="{!Client__c.DOB2__c}" label="<b>4.</b> Confirm child's date of birth" id="DOB2"/>
+                                <apex:inputField showDatePicker="false" value="{!Client__c.DOB2__c}" label="<b>4.</b> Confirm child's date of birth" id="DOB2"  />
                                 
                                 <!--Child age in whole years-->
                                 <apex:inputField value="{!Client__c.AGE__c}" label="<b>5.</b> Child's age" id="AGE"/>
