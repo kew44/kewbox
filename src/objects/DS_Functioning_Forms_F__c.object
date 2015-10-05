@@ -39,12 +39,7 @@
     <enableReports>true</enableReports>
     <fieldSets>
         <fullName>STATUS</fullName>
-        <description>STATUS</description>
-        <displayedFields>
-            <field>STATUS__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
+        <description>for status fields</description>
         <displayedFields>
             <field>STATUS_BIS__c</field>
             <isFieldManaged>false</isFieldManaged>
@@ -71,6 +66,11 @@
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
+            <field>STATUS_INDSEV__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
             <field>STATUS_NOMS__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
@@ -87,6 +87,29 @@
         </displayedFields>
         <label>STATUS</label>
     </fieldSets>
+    <fields>
+        <fullName>Background_ID__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Background ID</label>
+        <referenceTo>DS_Background_Family_Info_F__c</referenceTo>
+        <relationshipLabel>DS Functioning Forms F</relationshipLabel>
+        <relationshipName>DS_Functioning_Forms_F</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Client_ID__c</fullName>
+        <externalId>false</externalId>
+        <formula>Client__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Client ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <fields>
         <fullName>Client__c</fullName>
         <externalId>false</externalId>
@@ -1092,6 +1115,29 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>FCEPSY__c</fullName>
+        <description>Psychotic Disorder</description>
+        <externalId>false</externalId>
+        <label>FCEPSY</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>FCEPTSD__c</fullName>
         <description>13. Post traumatic stress disorder</description>
         <externalId>false</externalId>
@@ -1575,6 +1621,15 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>FDOV__c</fullName>
+        <externalId>false</externalId>
+        <formula>Background_ID__r.FDOV__c</formula>
+        <label>FDOV</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
         <fullName>FDSCESSTR__c</fullName>
         <defaultValue>false</defaultValue>
         <description>2. What is the consumer&apos;s discharge status? = Mutually agreed cessation of treatment</description>
@@ -1932,6 +1987,28 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>FFAPGAR_MET__c</fullName>
+        <externalId>false</externalId>
+        <label>FFAPGAR_MET</label>
+        <length>15</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FFAPGAR_RAW__c</fullName>
+        <description>Raw score for fapgar questions 1-5.</description>
+        <externalId>false</externalId>
+        <label>FFAPGAR_RAW</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>FFEEDING__c</fullName>
         <description>3. Feeding</description>
         <externalId>false</externalId>
@@ -2241,7 +2318,7 @@
     </fields>
     <fields>
         <fullName>FISPCSA__c</fullName>
-        <description>13. Commercial Sex (e.g., Exchanging sex for money, drugs or other resources, prostitution)</description>
+        <description>13. Commercial sexual exploitation (e.g., Exchanging sex for money, drugs or other resources, prostitution)</description>
         <externalId>false</externalId>
         <label>FISPCSA</label>
         <picklist>
@@ -4210,16 +4287,6 @@ eating, and/or Bulimia)</description>
         <type>Picklist</type>
     </fields>
     <fields>
-        <fullName>FORM__c</fullName>
-        <externalId>false</externalId>
-        <label>FORM</label>
-        <length>50</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>FOSATT__c</fullName>
         <defaultValue>false</defaultValue>
         <description>29. Attachment-based therapy</description>
@@ -5757,6 +5824,25 @@ eating, and/or Bulimia)</description>
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>FTXCOMPL__c</fullName>
+        <description>5. BSLC treatment completed</description>
+        <externalId>false</externalId>
+        <label>FTXCOMPL</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>FTXCOMP__c</fullName>
         <description>5. BSLC treatment completed</description>
         <externalId>false</externalId>
@@ -5882,7 +5968,7 @@ eating, and/or Bulimia)</description>
         <picklist>
             <picklistValues>
                 <fullName>Incomplete</fullName>
-                <default>true</default>
+                <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>Complete</fullName>
@@ -5900,7 +5986,7 @@ eating, and/or Bulimia)</description>
         <picklist>
             <picklistValues>
                 <fullName>Incomplete</fullName>
-                <default>true</default>
+                <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>Complete</fullName>
@@ -5918,7 +6004,7 @@ eating, and/or Bulimia)</description>
         <picklist>
             <picklistValues>
                 <fullName>Incomplete</fullName>
-                <default>true</default>
+                <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>Complete</fullName>
@@ -5936,7 +6022,7 @@ eating, and/or Bulimia)</description>
         <picklist>
             <picklistValues>
                 <fullName>Incomplete</fullName>
-                <default>true</default>
+                <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>Complete</fullName>
@@ -5954,7 +6040,25 @@ eating, and/or Bulimia)</description>
         <picklist>
             <picklistValues>
                 <fullName>Incomplete</fullName>
-                <default>true</default>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Complete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>STATUS_INDSEV__c</fullName>
+        <externalId>false</externalId>
+        <label>STATUS INDSEV</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Incomplete</fullName>
+                <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>Complete</fullName>
@@ -5972,7 +6076,7 @@ eating, and/or Bulimia)</description>
         <picklist>
             <picklistValues>
                 <fullName>Incomplete</fullName>
-                <default>true</default>
+                <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>Complete</fullName>
@@ -5990,7 +6094,7 @@ eating, and/or Bulimia)</description>
         <picklist>
             <picklistValues>
                 <fullName>Incomplete</fullName>
-                <default>true</default>
+                <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>Complete</fullName>
@@ -6008,25 +6112,7 @@ eating, and/or Bulimia)</description>
         <picklist>
             <picklistValues>
                 <fullName>Incomplete</fullName>
-                <default>true</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete</fullName>
                 <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
-        <trackHistory>false</trackHistory>
-        <type>Picklist</type>
-    </fields>
-    <fields>
-        <fullName>STATUS__c</fullName>
-        <externalId>false</externalId>
-        <label>STATUS</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Incomplete</fullName>
-                <default>true</default>
             </picklistValues>
             <picklistValues>
                 <fullName>Complete</fullName>
@@ -6051,6 +6137,48 @@ eating, and/or Bulimia)</description>
     <pluralLabel>DS Functioning Forms F</pluralLabel>
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Bis_date_completed_cannot_be_future</fullName>
+        <active>true</active>
+        <errorConditionFormula>FCBISCODT__c &gt; TODAY()</errorConditionFormula>
+        <errorDisplayField>FCBISCODT__c</errorDisplayField>
+        <errorMessage>Date cannot be in the future.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Bis_date_left_cannot_be_before_start_dt</fullName>
+        <active>true</active>
+        <errorConditionFormula>FCBISLFDT__c &gt; FCBISTCDT__c</errorConditionFormula>
+        <errorDisplayField>FCBISLFDT__c</errorDisplayField>
+        <errorMessage>Date client left treatment cannot be before date treatment started.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Bis_date_left_cannot_be_future</fullName>
+        <active>true</active>
+        <errorConditionFormula>FCBISLFDT__c &gt; TODAY()</errorConditionFormula>
+        <errorDisplayField>FCBISLFDT__c</errorDisplayField>
+        <errorMessage>Date cannot be in the future.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Bis_date_start_cannot_be_future</fullName>
+        <active>true</active>
+        <errorConditionFormula>FCBISTCDT__c &gt; TODAY()</errorConditionFormula>
+        <errorDisplayField>FCBISTCDT__c</errorDisplayField>
+        <errorMessage>Date cannot be in the future.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Bis_date_started_cannot_be_before_birth</fullName>
+        <active>true</active>
+        <errorConditionFormula>Client__r.DOB1__c &gt;FCBISTCDT__c</errorConditionFormula>
+        <errorDisplayField>FCBISTCDT__c</errorDisplayField>
+        <errorMessage>Date cannot be before date of birth.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Bis_dt_completed_cannot_be_before_start</fullName>
+        <active>true</active>
+        <errorConditionFormula>FCBISCODT__c &gt; FCBISTCDT__c</errorConditionFormula>
+        <errorDisplayField>FCBISCODT__c</errorDisplayField>
+        <errorMessage>Date treatment completed cannot be before date treatment started.</errorMessage>
+    </validationRules>
     <validationRules>
         <fullName>Bis_must_indicate_treatment_component</fullName>
         <active>true</active>
@@ -6086,10 +6214,52 @@ ISPICKVAL( FCBISRECV__c, &apos;1&apos;)&amp;&amp;
         <errorMessage>Please specify the treatment component.</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Bslc_date_completed_cannot_be_future</fullName>
+        <active>true</active>
+        <errorConditionFormula>FTXCPDT__c&gt;TODAY()</errorConditionFormula>
+        <errorDisplayField>FTXCPDT__c</errorDisplayField>
+        <errorMessage>Date cannot be in the future.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Bslc_date_left_cannot_be_before_start_dt</fullName>
+        <active>true</active>
+        <errorConditionFormula>FTXSTDT__c &gt; FTXLFTDT__c</errorConditionFormula>
+        <errorDisplayField>FTXLFTDT__c</errorDisplayField>
+        <errorMessage>Date client left treatment cannot be before date treatment started.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Bslc_date_left_cannot_be_future</fullName>
+        <active>true</active>
+        <errorConditionFormula>FTXLFTDT__c&gt;TODAY()</errorConditionFormula>
+        <errorDisplayField>FTXLFTDT__c</errorDisplayField>
+        <errorMessage>Date cannot be in the future.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Bslc_date_start_cannot_be_future</fullName>
+        <active>true</active>
+        <errorConditionFormula>FTXSTDT__c&gt;TODAY()</errorConditionFormula>
+        <errorDisplayField>FTXSTDT__c</errorDisplayField>
+        <errorMessage>Date cannot be in the future.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Bslc_date_started_cannot_be_before_birth</fullName>
+        <active>true</active>
+        <errorConditionFormula>Client__r.DOB1__c&gt; FTXSTDT__c</errorConditionFormula>
+        <errorDisplayField>FTXSTDT__c</errorDisplayField>
+        <errorMessage>Date cannot be before date of birth.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Bslc_dt_completed_cannot_be_before_start</fullName>
+        <active>true</active>
+        <errorConditionFormula>FTXSTDT__c &gt; FTXCPDT__c</errorConditionFormula>
+        <errorDisplayField>FTXCPDT__c</errorDisplayField>
+        <errorMessage>Date treatment completed cannot be before date treatment started.</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Clineval_must_indicate_primary</fullName>
         <active>true</active>
-        <description>&quot;If OTHER selected FCEPRIM=1, this must be completed</description>
-        <errorConditionFormula>ISPICKVAL(FCEPRIM__c , &apos;1&apos;) &amp;&amp; ISBLANK(FCEPRIMSP__c)</errorConditionFormula>
+        <description>&quot;If OTHER selected FCEPRIM=98, this must be completed</description>
+        <errorConditionFormula>ISPICKVAL(FCEPRIM__c , &apos;98&apos;) &amp;&amp; ISBLANK(FCEPRIMSP__c)</errorConditionFormula>
         <errorDisplayField>FCEPRIMSP__c</errorDisplayField>
         <errorMessage>Please indicate the primary problem/symptom/disorder.</errorMessage>
     </validationRules>
@@ -6118,6 +6288,14 @@ ISPICKVAL( FCBISRECV__c, &apos;1&apos;)&amp;&amp;
         <errorMessage>You MUST indicate if the child has attempted suicide in the past 30 days.</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Indsev_must_not_blank_if_refused_unknown</fullName>
+        <active>true</active>
+        <description>If &quot;Somewhat/sometimes a problem&quot; (1) or &quot;Very much/often a problem&quot; (2) selected for FISPCRIM, this is displayed.  Neither &quot;Refused&quot; (96) nor &quot;Unknown&quot; (99) can be selected if anything is entered for FISPCRSP</description>
+        <errorConditionFormula>(FISPCRSP__c != null) &amp;&amp; NOT(ISPICKVAL(FISPCRRU__c, &apos;&apos;))</errorConditionFormula>
+        <errorDisplayField>FISPCRSP__c</errorDisplayField>
+        <errorMessage>Number of times and Refused or Unknown can not be indicated</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Noms_must_specify_how_often_used_other</fullName>
         <active>true</active>
         <description>If OTHER selected (FNSOTHER=98), this must be completed</description>
@@ -6136,17 +6314,17 @@ ISPICKVAL( FCBISRECV__c, &apos;1&apos;)&amp;&amp;
     <validationRules>
         <fullName>Servrec_must_specify_other_service</fullName>
         <active>true</active>
-        <description>If OTHER selected (FOSOTH=1), this must be completed</description>
+        <description>If &quot;Yes&quot; (1) selected, this must be completed.  ErrorConditionFormula:ISPICKVAL(FOSOTH__c , &apos;1&apos;) &amp;&amp;  ISBLANK(FOSOSP__c)</description>
         <errorConditionFormula>ISPICKVAL(FOSOTH__c , &apos;1&apos;) &amp;&amp;  ISBLANK(FOSOSP__c)</errorConditionFormula>
         <errorDisplayField>FOSOSP__c</errorDisplayField>
-        <errorMessage>Please specify other service received.</errorMessage>
+        <errorMessage>Specify service.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Servrec_must_specify_other_therapy</fullName>
         <active>true</active>
-        <description>If OTHER selected (FOSTOTH=1), this must be completed</description>
+        <description>If &quot;Other&quot; selected, this must be completed. ErrorConditionFormula:FOSTOTH__c = true &amp;&amp;  ISBLANK(FOSTOSP__c)</description>
         <errorConditionFormula>FOSTOTH__c = true &amp;&amp;  ISBLANK(FOSTOSP__c)</errorConditionFormula>
-        <errorDisplayField>FOSTOTH__c</errorDisplayField>
-        <errorMessage>Please specify other therapy received since Last CIMI Assessment</errorMessage>
+        <errorDisplayField>FOSTOSP__c</errorDisplayField>
+        <errorMessage>Specify therapy/treatment.</errorMessage>
     </validationRules>
 </CustomObject>

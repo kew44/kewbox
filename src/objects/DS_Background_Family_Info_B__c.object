@@ -5212,6 +5212,15 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>BMSTSUB__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Substance use or abuse</description>
+        <externalId>false</externalId>
+        <label>BMSTSUB</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>BMSTSUIC__c</fullName>
         <defaultValue>false</defaultValue>
         <description>Service members experienced Stress symptoms: Suicidal thoughts or attempts</description>
@@ -6550,6 +6559,20 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>B_VISIT_AGE__c</fullName>
+        <description>Age calculated using Baseline date of visit and date of birth.</description>
+        <externalId>false</externalId>
+        <formula>FLOOR(( BDOV__c -Client__r.DOB1__c )/365.2425)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>B_VISIT_AGE</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>CTYBORN__c</fullName>
         <description>Country child born</description>
         <externalId>false</externalId>
@@ -6732,16 +6755,6 @@
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>FORM__c</fullName>
-        <externalId>false</externalId>
-        <label>FORM</label>
-        <length>50</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>RAKNTV__c</fullName>
         <defaultValue>false</defaultValue>
         <description>Race is Alaska Native</description>
@@ -6912,7 +6925,7 @@
         <picklist>
             <picklistValues>
                 <fullName>Incomplete</fullName>
-                <default>true</default>
+                <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>Complete</fullName>
@@ -7016,13 +7029,18 @@
     <label>DS Background Family Info B</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>OBJECT_ID</columns>
-        <columns>NAME</columns>
-        <columns>FORM__c</columns>
         <columns>Client__c</columns>
-        <columns>Client_ID__c</columns>
-        <columns>BCINOPSP__c</columns>
-        <columns>BCINOPUB__c</columns>
+        <columns>NAME</columns>
+        <columns>B_VISIT_AGE__c</columns>
+        <columns>SECTION__c</columns>
+        <columns>STATUS_DEMO__c</columns>
+        <columns>STATUS_DOMENV__c</columns>
+        <columns>STATUS_HEALTH__c</columns>
+        <columns>STATUS_INSDOMENV__c</columns>
+        <columns>STATUS_MILITARY__c</columns>
+        <columns>STATUS_REFIMM__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -7035,14 +7053,6 @@
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
     <validationRules>
-        <fullName>DEMO_method_administered</fullName>
-        <active>true</active>
-        <description>How was this form (DEMO) administered?</description>
-        <errorConditionFormula>FORM__c = &quot;DS_DEMO&quot; &amp;&amp; ISPICKVAL(BMET__c , &apos;&apos;)</errorConditionFormula>
-        <errorDisplayField>BMET__c</errorDisplayField>
-        <errorMessage>Please indicate how this form was administered.</errorMessage>
-    </validationRules>
-    <validationRules>
         <fullName>Demo_11_inches</fullName>
         <active>true</active>
         <description>Do not allow greater than 11 Inches</description>
@@ -7051,12 +7061,35 @@
         <errorMessage>Cannot enter a number greater than 11 for inches.</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Demo_cannot_enter_zip_if_unknown</fullName>
+        <active>true</active>
+        <description>Zip code cannot be entered if it is unknown.</description>
+        <errorConditionFormula>NOT( ISBLANK( BNZCODESP__c ) )&amp;&amp;
+( BZIPCODECHECK__c = true)</errorConditionFormula>
+        <errorDisplayField>BNZCODESP__c</errorDisplayField>
+        <errorMessage>&apos;Unknown&apos; cannot be selected if the zip code has been entered.</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Demo_child_born_must_specify_country</fullName>
         <active>true</active>
         <description>If NO selected (BUSBORN=0), this must be completed</description>
         <errorConditionFormula>ISPICKVAL(BUSBORN__c ,&quot;No&quot;) &amp;&amp; CTYBORN__c=&apos;null&apos;</errorConditionFormula>
         <errorDisplayField>CTYBORN__c</errorDisplayField>
         <errorMessage>If child was not born in the US, please specify a birth country.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Demo_date_cannot_be_before_birth</fullName>
+        <active>true</active>
+        <errorConditionFormula>Client__r.DOB1__c &gt; BDOV__c</errorConditionFormula>
+        <errorDisplayField>BDOV__c</errorDisplayField>
+        <errorMessage>Baseline date cannot be before birth.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Demo_date_cannot_be_future</fullName>
+        <active>true</active>
+        <errorConditionFormula>BDOV__c &gt; TODAY()</errorConditionFormula>
+        <errorDisplayField>BDOV__c</errorDisplayField>
+        <errorMessage>Date cannot be in the future.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Demo_dev_disability_must_complete</fullName>
@@ -7101,6 +7134,14 @@
         <errorMessage>If child is Hispanic or Latino, ethnicity must be indicated</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Demo_method_administered</fullName>
+        <active>true</active>
+        <description>How was this form (DEMO) administered?</description>
+        <errorConditionFormula>NOT(ISPICKVAL(STATUS_DEMO__c, &apos;&apos;)) &amp;&amp; ISPICKVAL(BMET__c , &apos;&apos;)</errorConditionFormula>
+        <errorDisplayField>BMET__c</errorDisplayField>
+        <errorMessage>Please indicate how this form was administered.</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Demo_must_specify_number_visits</fullName>
         <active>true</active>
         <description>If NO selected (CUREPI=0), this must be completed</description>
@@ -7137,7 +7178,7 @@
         <active>true</active>
         <description>If OTHER selected (BPROTHNW=1), this must be completed</description>
         <errorConditionFormula>((BPROTHNW__c = true) &amp;&amp; ISBLANK (BPROSPNW__c ))</errorConditionFormula>
-        <errorDisplayField>BPROTNW__c</errorDisplayField>
+        <errorDisplayField>BPROSPNW__c</errorDisplayField>
         <errorMessage>Must specify the provider(s)</errorMessage>
     </validationRules>
     <validationRules>
@@ -7181,6 +7222,39 @@
         <errorMessage>Height must be under 7 feet</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Domenv_cannot_enter_adults_if_unknown</fullName>
+        <active>true</active>
+        <description>&quot;Unknown&quot; (99) cannot be selected if anything is entered for BADHOMSP.	
+Nothing can be entered here if &quot;Unknown&quot; (99) is selected.</description>
+        <errorConditionFormula>NOT( ISBLANK( BADHOMSP__c ) )&amp;&amp; 
+(  BADHOMECHECK__c  = true)</errorConditionFormula>
+        <errorDisplayField>BADHOMSP__c</errorDisplayField>
+        <errorMessage>&apos;Unknown&apos; cannot be selected if number of adults has been entered.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Domenv_cannot_enter_children_if_unknown</fullName>
+        <active>true</active>
+        <description>&quot;Unknown&quot; (99) cannot be selected if anything is entered for BCHHOMSP.	
+Nothing can be entered here if &quot;Unknown&quot; (99) is selected.</description>
+        <errorConditionFormula>NOT( ISBLANK( BCHHOMSP__c ) )&amp;&amp; 
+(  BCHHOMECHECK__c  = true)</errorConditionFormula>
+        <errorDisplayField>BCHHOMSP__c</errorDisplayField>
+        <errorMessage>&apos;Unknown&apos; cannot be selected if number of children has been entered.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Domenv_cannot_exceed_total_absences</fullName>
+        <active>true</active>
+        <description>Value cannot be greater than value selected for BABSENT.</description>
+        <errorConditionFormula>(
+(VALUE(TEXT( BABSENT__c))  &lt;= 5) &amp;&amp;
+(VALUE(TEXT( BABSENTUX__c))  &lt;= 5) 
+)
+&amp;&amp;
+(VALUE(TEXT( BABSENTUX__c)) &gt;(VALUE(TEXT( BABSENT__c))))</errorConditionFormula>
+        <errorDisplayField>BABSENTUX__c</errorDisplayField>
+        <errorMessage>The number of unexcused absences cannot exceed the number of total absences. Please review your answers for question two of the education section to resolve this conflict.</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Domenv_must_complete_if_living_w_family</fullName>
         <active>true</active>
         <description>If &quot;Home with parent(s))&quot; or &quot;With relatives or other family&quot; is selected (BPRIMRES=2,3), questions 1 through 7 must be completed</description>
@@ -7188,6 +7262,14 @@
 ( OR(ISPICKVAL(BPRESMO__c, &apos;null&apos;),ISPICKVAL(BPROHPL__c, &apos;null&apos;),ISPICKVAL(BNOMHOUSE__c, &apos;null&apos;)))</errorConditionFormula>
         <errorDisplayField>BPRIMRES__c</errorDisplayField>
         <errorMessage>Form must be completed if child is living with parents or other family members.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Domenv_must_specify_housing</fullName>
+        <active>true</active>
+        <description>If &quot;Other&quot; (98) selected, this must be completed.</description>
+        <errorConditionFormula>ISPICKVAL(BNOMHOUSE__c, &quot;98&quot;) &amp;&amp; ISBLANK(BNOMHOUSESP__c)</errorConditionFormula>
+        <errorDisplayField>BNOMHOUSESP__c</errorDisplayField>
+        <errorMessage>Specify housing.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Domenv_must_specify_language</fullName>
@@ -7214,12 +7296,19 @@
         <errorMessage>Please specify total income.</errorMessage>
     </validationRules>
     <validationRules>
-        <fullName>Domenv_total_nights_out_of_home_exceed30</fullName>
+        <fullName>Domenv_must_specify_unexcused_days</fullName>
         <active>true</active>
-        <description>Total nights can not exceed 30</description>
-        <errorConditionFormula>BNTTOTN__c &gt; 30</errorConditionFormula>
-        <errorDisplayField>BNTTOTN__c</errorDisplayField>
-        <errorMessage>Total nights can not exceed 30.</errorMessage>
+        <description>If BABSENT = 1, 2, 3, 4, or 5, this must be completed.</description>
+        <errorConditionFormula>OR(
+(ISPICKVAL(BABSENT__c, &apos;1&apos;)),
+(ISPICKVAL(BABSENT__c, &apos;2&apos;)),
+(ISPICKVAL(BABSENT__c, &apos;3&apos;)),
+(ISPICKVAL(BABSENT__c, &apos;4&apos;)),
+(ISPICKVAL(BABSENT__c, &apos;5&apos;))
+)
+&amp;&amp; ISPICKVAL(BABSENTUX__c,&apos;null&apos;)</errorConditionFormula>
+        <errorDisplayField>BABSENTUX__c</errorDisplayField>
+        <errorMessage>Please specify the number of unexcused absences.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Domenv_total_nights_out_of_home_more_30</fullName>
@@ -7272,8 +7361,8 @@
     <validationRules>
         <fullName>Health_must_specify_other_health_problem</fullName>
         <active>true</active>
-        <description>If OTHER selected (BHISOTHR=98), this must be completed</description>
-        <errorConditionFormula>ISPICKVAL(BHISOTHR__c, &apos;98&apos;)  &amp;&amp;  ISBLANK(BHISOTSP__c)</errorConditionFormula>
+        <description>If OTHER selected (BHISOTHR= &apos;0&apos; OR &apos;1&apos; OR &apos;2&apos; OR &apos;3&apos;), this must be completed</description>
+        <errorConditionFormula>OR(ISPICKVAL(BHISOTHR__c, &apos;0&apos;),ISPICKVAL(BHISOTHR__c, &apos;1&apos;), ISPICKVAL(BHISOTHR__c, &apos;2&apos;), ISPICKVAL(BHISOTHR__c, &apos;3&apos;)) &amp;&amp;  ISBLANK(BHISOTSP__c)</errorConditionFormula>
         <errorDisplayField>BHISOTSP__c</errorDisplayField>
         <errorMessage>Please specify the other health condition.</errorMessage>
     </validationRules>
@@ -7292,7 +7381,7 @@
         <errorConditionFormula>NOT( ISPICKVAL(BNTDTOXRU__c, &apos;&apos;))
 &amp;&amp;  NOT ISBLANK (BNTDTOXN__c )</errorConditionFormula>
         <errorDisplayField>BNTDTOXRU__c</errorDisplayField>
-        <errorMessage>BNTDTOXRU cannot be selected if BNTDTOXN is true</errorMessage>
+        <errorMessage>Neither &apos;Refused&apos; nor &apos;Unknown&apos; can be selected if a number has been entered.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Insdomenv_cannot_select_BNTERRU</fullName>
@@ -7301,7 +7390,7 @@
         <errorConditionFormula>NOT( ISPICKVAL(BNTERRU__c, &apos;&apos;))
 &amp;&amp;  NOT ISBLANK (BNTHOMEN__c )</errorConditionFormula>
         <errorDisplayField>BNTERRU__c</errorDisplayField>
-        <errorMessage>BNTERRU cannot be selected if BNTHOMEN is true</errorMessage>
+        <errorMessage>Neither &apos;Refused&apos; nor &apos;Unknown&apos; can be selected if a number has been entered.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Insdomenv_cannot_select_BNTHOMEN</fullName>
@@ -7310,7 +7399,7 @@
         <errorConditionFormula>NOT( ISPICKVAL(BNTHOMERU__c, &apos;&apos;))
 &amp;&amp;  NOT ISBLANK(BNTHOMEN__c)</errorConditionFormula>
         <errorDisplayField>BNTHOMERU__c</errorDisplayField>
-        <errorMessage>BNTHOMERU cannot be selected if BNTHOMEN is true</errorMessage>
+        <errorMessage>Neither &apos;Refused&apos; nor &apos;Unknown&apos; can be selected if a number has been entered.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Insdomenv_cannot_select_BNTHOSPN</fullName>
@@ -7318,7 +7407,7 @@
         <description>If BNTHOSPN =True these can&apos;t be selected</description>
         <errorConditionFormula>NOT( ISPICKVAL(BNTHOSPRU__c, &apos;&apos;))&amp;&amp;  NOT ISBLANK(BNTHOSPN__c)</errorConditionFormula>
         <errorDisplayField>BNTHOSPRU__c</errorDisplayField>
-        <errorMessage>BNTHOSPRU cannot be selected if BNTHOSPN is true</errorMessage>
+        <errorMessage>Neither &apos;Refused&apos; nor &apos;Unknown&apos; can be selected if a number has been entered.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Insdomenv_cannot_select_BNTJAILN</fullName>
@@ -7327,27 +7416,7 @@
         <errorConditionFormula>NOT( ISPICKVAL(BNTJAILRU__c, &apos;&apos;))
 &amp;&amp;  NOT ISBLANK (BNTJAILN__c )</errorConditionFormula>
         <errorDisplayField>BNTJAILRU__c</errorDisplayField>
-        <errorMessage>BNTJAILRU cannot be selected if BNTJAILN is true</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Insdomenv_must_indicate_if_insured_child</fullName>
-        <active>false</active>
-        <description>If NO (BCINANY=0) or UNKNOWN (BCINANY=99) selected, skip to question 3; If YES (BCINANY=1), specify type in (BCINPUB, BCINPRIV)
-Required Field</description>
-        <errorConditionFormula>ISPICKVAL(BCINANY__c, &apos;&apos;)</errorConditionFormula>
-        <errorDisplayField>BCINANY__c</errorDisplayField>
-        <errorMessage>You must indicate whether the child is insured or not, or indicate unknown.
-Required field.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Insdomenv_must_indicate_if_insured_paren</fullName>
-        <active>false</active>
-        <description>If NO (BPINANY=0) or UNKNOWN (BPINANY=99) selected, skip to question 3; If YES (BPINANY=1), specify type in (BPINPUB, BPINPRIV)
-Required Field</description>
-        <errorConditionFormula>ISPICKVAL(BPINANY__c, &apos;&apos;)</errorConditionFormula>
-        <errorDisplayField>BPINANY__c</errorDisplayField>
-        <errorMessage>You must indicate whether the parent is insured or not, or indicate unknown.
-Required field.</errorMessage>
+        <errorMessage>Neither &apos;Refused&apos; nor &apos;Unknown&apos; can be selected if a number has been entered.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Insdomenv_must_indicate_priv_or_pub_chi</fullName>
@@ -7566,7 +7635,7 @@ Q6 = BMDIFRI__c</description>
 (ISPICKVAL(BMFMR4__c, &quot;98&quot;)&amp;&amp;(ISBLANK(BMFMR4SP__c)))
 )</errorConditionFormula>
         <errorDisplayField>BMFM1B__c</errorDisplayField>
-        <errorMessage>Please specify the Other family member.</errorMessage>
+        <errorMessage>Please specify the &apos;Other&apos; family member.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Military_grandparent_must_answer_q3</fullName>
@@ -7592,7 +7661,7 @@ Q6 = BMDIFRI__c</description>
         <description>If Other selected (BMPIOTH__c  = 1), this must be completed</description>
         <errorConditionFormula>BMPIOTH__c= true &amp;&amp;   ISBLANK(BMPIOSP__c)</errorConditionFormula>
         <errorDisplayField>BMPIOSP__c</errorDisplayField>
-        <errorMessage>Please specify the &quot;Other&quot; physical injury sustained.</errorMessage>
+        <errorMessage>Please specify the &apos;Other&apos; physical injury sustained.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Military_killed_oth_must_specify</fullName>
@@ -7670,11 +7739,12 @@ Q6 = BMDIFRI__c</description>
         <active>true</active>
         <description>If YES selected (BMST = 1), must specify type of stress symptoms by choosing one of the following: BMSTPTSD, BMSTDEP, BMSTSUIC, BMSTOTH, BMSTUK</description>
         <errorConditionFormula>(BMST__c = true) &amp;&amp;(
-( BMSTPTSD__c= false)&amp;&amp;
+(BMSTPTSD__c= false)&amp;&amp;
 (BMSTDEP__c = false)&amp;&amp;
+(BMSTSUB__c = false)&amp;&amp;
 (BMSTSUIC__c = false)&amp;&amp;
-(BMSTOTH__c = false)&amp;&amp;
-(BMSTUK__c = false)
+(BMSTUK__c = false) &amp;&amp;
+(BMSTOTH__c = false)
 )</errorConditionFormula>
         <errorDisplayField>BMST__c</errorDisplayField>
         <errorMessage>You must specify at least one type of stress.</errorMessage>
@@ -7747,7 +7817,7 @@ Q6 = BMDIFRI__c</description>
         <description>If Other selected (BMSTOTH__c  = 1), this must be completed</description>
         <errorConditionFormula>BMSTOTH__c= true &amp;&amp;   ISBLANK(BMSTOSP__c)</errorConditionFormula>
         <errorDisplayField>BMSTOSP__c</errorDisplayField>
-        <errorMessage>Please specify the &quot;Other&quot; stress symptom.</errorMessage>
+        <errorMessage>Please specify the &apos;Other&apos; stress symptom.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Military_uncle_must_answer_q3</fullName>
@@ -7771,7 +7841,7 @@ Q6 = BMDIFRI__c</description>
         <fullName>Refimm_cannot_be_born_in_us_if_age_entry</fullName>
         <active>true</active>
         <description>If NO (USBORN=0 and/or PUSBORN=0) to question 3 and/or 4, respectively, of Baseline Demo form, must complete questions 1 through 9</description>
-        <errorConditionFormula>(! ISNULL(BAGENT__c)) &amp;&amp; (BAGUS__c = true)</errorConditionFormula>
+        <errorConditionFormula>(( NOT( ISBLANK( BAGENT__c ) ))&amp;&amp;( BAGUS__c = true))</errorConditionFormula>
         <errorDisplayField>BAGUS__c</errorDisplayField>
         <errorMessage>Child cannot be considered US-born if there is an age of entry. Please review your answers for question one to resolve this conflict.</errorMessage>
     </validationRules>

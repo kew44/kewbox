@@ -1,4 +1,4 @@
-<apex:page standardController="DS_Background_Family_Info_B__c" extensions="DS_INSDOMENV_Controller" tabStyle="DS_Functioning_Forms_F__c">
+<apex:page standardController="DS_Background_Family_Info_B__c" extensions="DS_INSDOMENV_Controller"><!-- tabStyle="DS_Functioning_Forms_F__c">-->
     
     <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
     
@@ -27,7 +27,7 @@
                 
                 <!-- 1. Is the child currently covered? -->
                 <div class="form-group">
-                    <label class="col-md-6 col-lg-6 control-label label-bold">
+                    <label class="col-md-6 col-lg-6 control-label ">
                         <span class="nmbr">1.</span>
                         Is the child currently covered by any type of public or private health insurance?
                     </label>
@@ -42,8 +42,8 @@
                 <div class="form-group skip-CINPUB">
                     
                     <label class="col-md-6 col-lg-6 control-label">
-                        <span class="nmbr"></span>
-                        What type of public or private health insurance is currently covering the child? (Select all that apply.)
+                        <span class="nmbr">1a.</span>
+                        What type of public or private health insurance is currently covering the child?<strong> (Select all that apply.)</strong>
                     </label>
                     
                     <div class="col-md-6 col-lg-6">
@@ -110,7 +110,7 @@
                                         </div>
                                     </div><!--end checkboxes-->
                                     <div class="form-group no-border-bottom no-space-bottom skip-CINOPSP">
-                                        <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please Specify:" for="CINOPSP__c"/> 
+                                        <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please specify:" for="CINOPSP__c"/> 
                                         <div class="col-md-4 col-lg-4 specify-input">                           
                                             <apex:inputField styleClass="form-control skip-element-CINOPSP input-sm"  id="CINOPSP__c" value="{!form.obj[bfVariableMap['CINOPSP']]}"/>
                                         </div>
@@ -165,7 +165,7 @@
                                             </label>                         
                                         </div>
                                         <div class="form-group no-border-bottom no-space-bottom skip-CINOPRS"><!--Conditional if other, specify-->
-                                            <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please Specify:" for="CINOPRS__c"/>
+                                            <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please specify:" for="CINOPRS__c"/>
                                             <div class="col-md-4 col-lg-4 specify-input">
                                                 <apex:inputField styleClass="form-control skip-element-CINOPRS input-sm"  id="CINOPRS__c" value="{!form.obj[bfVariableMap['CINOPRS']]}" />
                                             </div>
@@ -179,9 +179,9 @@
                 
                 <!-- 2. parent/guardian covered by any type of insurance? -->
                 <div class="form-group">
-                    <label class="col-md-6 col-lg-6 control-label label-bold">
+                    <label class="col-md-6 col-lg-6 control-label ">
                         <span class="nmbr">2.</span>
-                        Is the child’s parent/guardian covered by any type of insurance?
+                        Is the child’s parent/guardian covered by any type of health insurance?
                     </label>
                     <div class="col-md-6 col-lg-6">
                         <apex:selectRadio styleClass="radio-list" id="PINANY__c" value="{!form.obj[bfVariableMap['PINANY']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['PINANY']]}" onChange="skipLogic('PINANY',this.value)">
@@ -192,8 +192,8 @@
                 
                 <div class="form-group skip-PINPUB">
                     <label class="col-md-6 col-lg-6 control-label">
-                        <span class="nmbr"></span>
-                        What type of public or private health insurance is currently covering the child? (Select all that apply.)
+                        <span class="nmbr">2a.</span>
+                        What type of public or private health insurance is currently covering the child's parent/guardian?<strong> (Select all that apply.)</strong>
                     </label>
                     <div class="col-md-6 col-lg-6">
                         <!--public insurance-->
@@ -212,7 +212,7 @@
                                         <div class="checkbox"> 
                                             <label>
                                                 <apex:inputCheckbox id="PINCHIP__c" value="{!form.obj[bfVariableMap['PINCHIP']]}" label="Children’s Health Insurance Program (CHIP)" styleClass="skip-element-PINCHIP"/>
-                                                Children’s Health Insurance Program (CHIP) (Parents under 18 years of age)
+                                                Children’s Health Insurance Program (CHIP)<b> (Parents under 18 years of age)</b>
                                             </label>
                                         </div>
                                         <!--Indian Health Service-->
@@ -252,7 +252,7 @@
                                         </div>
                                     </div><!--end checkboxes-->
                                     <div class="form-group no-border-bottom no-space-bottom skip-PINOPSP"><!--Conditional if other, specify-->
-                                        <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please Specify:" for="PINOPSP__c"/>
+                                        <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please specify:" for="PINOPSP__c"/>
                                         <div class="col-md-4 col-lg-4 specify-input">
                                             <apex:inputField styleClass="skip-element-PINOPSP form-control input-sm" id="PINOPSP__c" value="{!form.obj[bfVariableMap['PINOPSP']]}"/>
                                         </div>
@@ -301,7 +301,7 @@
                                             </label>   
                                         </div>
                                         <div class="form-group no-border-bottom no-space-bottom skip-PINOPRS"><!--Conditional if other, specify-->
-                                            <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please Specify:" for="PINOPRS__c"/>
+                                            <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please specify:" for="PINOPRS__c"/>
                                             <div class="col-md-4 col-lg-4 specify-input">
                                                 <apex:inputField styleClass="form-control skip-element-PINOPRS input-sm"  id="PINOPRS__c" value="{!form.obj[bfVariableMap['PINOPRS']]}" />
                                             </div>
@@ -333,10 +333,7 @@
         
     </div>
     
-    <!--citation information footer-->
-    <p class="footer" style="text-align:center ">
-        <i>This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - Baseline - CRF Version 6 2014
-        </i>
-    </p>
+    <!--citation information footer-->    
+    <c:cimiFormFooter formElement="{!form}"/>
     
 </apex:page>

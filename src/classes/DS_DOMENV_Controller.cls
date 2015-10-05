@@ -5,15 +5,11 @@
 
 public with sharing class DS_DOMENV_Controller extends DS_BasicForm_Controller {
 
-  public String formObject { get; set; }
-
   public DS_DOMENV_Controller(ApexPages.StandardController controller) {
   
     // Initilize the DS_BasicForm_Controller
     super(Apexpages.currentPage().getParameters().get('cimi'));
     
-    formObject = 'DS_Background_Family_Info_F__c';
-
     // Skiplogic library
     skip.skipLibrary('PRIMRES', 'show', '98',   new Map<String, String>{'PRIMRSP'    => 'text'}); 
     skip.skipLibrary('NOMHOUSE','show', '98',   new Map<String, String>{'NOMHOUSESP' => 'text'}); 
@@ -43,7 +39,7 @@ public with sharing class DS_DOMENV_Controller extends DS_BasicForm_Controller {
     List<SelectOption> options = new List<SelectOption>(); 
     
     options.add(new SelectOption('1','Independent (alone or with peers)')); 
-    options.add(new SelectOption('2','Home (with parent(s)) ')); 
+    options.add(new SelectOption('2','Home (With parent(s)) ')); 
     options.add(new SelectOption('3','With relatives or other family ')); 
     options.add(new SelectOption('4','Regular foster care ')); 
     options.add(new SelectOption('5','Treatment foster care')); 

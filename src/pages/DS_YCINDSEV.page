@@ -7,10 +7,20 @@
     </div>
     
     <!--development module script-->
-    <script src="{!URLFOR($Resource.Scripts, '/DS_YCINDSEV.js')}"></script>
+    <script src="{!URLFOR($Resource.JS_DS_YCINDSEV)}"></script>
 
     <script>
-    $j(document).ready(function(){ developmentModule('{!HTMLENCODE(developmentModuleStatus)}', 'true'); });
+    $j(document).ready(function(){ 
+        
+        var developmentModuleStatus = {!IF(HTMLENCODE(developmentModuleStatus) = null, 'null', HTMLENCODE(developmentModuleStatus))};
+        
+        if(developmentModuleStatus != null){
+            developmentModule({!HTMLENCODE(developmentModuleStatus)})
+        }
+        else{
+            developmentModule($j('[name$="DEVEL__c"]:checked').val());
+        }
+    });
     </script>
     
     <div class="bootwrap">
@@ -36,16 +46,17 @@
                 
                 <!--information and instructions-->
                 <div class="alert alert-info">
-                    <b>This section relates to the types of problems and experiences the <u>child</u> might have displayed.  Indicate if the child experienced these types of problems within the past 30 days. Please answer each question. This section should be completed for children <u>younger</u> than age 6 by a caregiver or other collateral source.<br /></b><br />
-                    All responses should be for problems experienced <b>within the past 30 days.</b>
-                </div>
+                    <strong>This section relates to the types of problems and experiences the <u>child</u> might have displayed. Indicate if the child experienced these types of problems within the past 30 days. Please answer each question. This section should be completed for children <u>younger</u> than age 6 by a caregiver or other collateral source.</strong>
+                   
+                    <br/><br/>All responses should be for problems experienced <strong>within the past 30 days.</strong>
+                    </div>
                 <!--end info-->
                 
                 <!--1. Child's risk of immediate self harm-->
                 <div class="form-group">
-                    <label class="col-md-12 col-lg-12 control-label label-bold">
+                    <label class="col-md-12 col-lg-12 control-label">
                         <span class="nmbr">1.</span>
-                        Immediate Risk – Child’s current risk of self-harm.
+                        <strong>Immediate Risk</strong> – Child’s current risk of self-harm.
                     </label>
                     <div class="col-md-12 col-lg-12">
                         <apex:selectRadio styleClass="radio-list" id="IMRISK__c" value="{!form.obj[bfVariableMap['IMRISK']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['IMRISK']]}">
@@ -56,9 +67,9 @@
                 
                 <!--2. Child's control o emotions-->
                 <div class="form-group">
-                    <label class="col-md-12 col-lg-12 control-label label-bold">
+                    <label class="col-md-12 col-lg-12 control-label ">
                         <span class="nmbr">2.</span>
-                        Emotional Regulation – Child’s ability: 1) to have developmentally appropriate control over emotions (including joy, excitement, anger, sadness, and fear); 2) to be comforted; 3) to regulate the intensity of emotional  expression particularly when faced with frustration.  
+                        <strong>Emotional Regulation</strong> – Child’s ability: 1) to have developmentally appropriate control over emotions (including joy, excitement, anger, sadness, and fear); 2) to be comforted; 3) to regulate the intensity of emotional  expression particularly when faced with frustration.  
                     </label>
                     <div class="col-md-12 col-lg-12">
                         <apex:selectRadio styleClass="radio-list" id="EMREG__c" value="{!form.obj[bfVariableMap['EMREG']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['EMREG']]}">
@@ -69,35 +80,35 @@
                 
                 <!--3. Feeding problems-->
                 <div class="form-group">
-                    <label class="col-md-12 col-lg-12 control-label label-bold">
+                    <label class="col-md-12 col-lg-12 control-label ">
                         <span class="nmbr">3.</span>
-                        Feeding – Issues with feeding (e.g., difficulty sucking, chewing or swallowing, sensory food aversions, symptoms of failure to thrive, overeating and/or Pica (an appetite for non-nutritive substances, such as dirt) ).
+                        <strong>Feeding</strong> – Issues with feeding (e.g., difficulty sucking, chewing or swallowing, sensory food aversions, symptoms of failure to thrive, overeating and/or Pica (an appetite for non-nutritive substances, such as dirt)).
                     </label>
                     <div class="col-md-12 col-lg-12">
                         <apex:selectRadio styleClass="radio-list" id="FEEDING__c" value="{!form.obj[bfVariableMap['FEEDING']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['FEEDING']]}">
-                            <apex:selectOptions value="{!NSVUItems}"/> 
+                            <apex:selectOptions value="{!FeedItems}"/> 
                         </apex:selectRadio>
                     </div>
                 </div>
                 
                 <!--4. Sleep problems-->
                 <div class="form-group">
-                    <label class="col-md-12 col-lg-12 control-label label-bold">
+                    <label class="col-md-12 col-lg-12 control-label ">
                         <span class="nmbr">4.</span>
-                        Sleep Problems – Problems with sleep including insomnia, frequent waking, and nightmares.
+                        <strong>Sleep Problems</strong> – Problems with sleep including insomnia, frequent waking, and nightmares.
                     </label>
                     <div class="col-md-12 col-lg-12">
                         <apex:selectRadio styleClass="radio-list" id="SLEEP__c" value="{!form.obj[bfVariableMap['SLEEP']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['SLEEP']]}">
-                            <apex:selectOptions value="{!NSVUItems}"/> 
+                            <apex:selectOptions value="{!SleepItems}"/> 
                         </apex:selectRadio>
                     </div>
                 </div>
                 
                 <!--5. Play-->
                 <div class="form-group">
-                    <label class="col-md-12 col-lg-12 control-label label-bold">
+                    <label class="col-md-12 col-lg-12 control-label ">
                         <span class="nmbr">5.</span>
-                        Play – Child’s ability to engage in age-appropriate play (consider child’s developmental age). 
+                        <strong>Play</strong> – Child’s ability to engage in age-appropriate play (consider child’s developmental age). 
                     </label>
                     <div class="col-md-12 col-lg-12">
                         <apex:selectRadio styleClass="radio-list" id="PLAY__c" value="{!form.obj[bfVariableMap['PLAY']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['PLAY']]}">
@@ -108,9 +119,9 @@
                 
                 <!--6. Preschool/precare behavior-->
                 <div class="form-group">
-                    <label class="col-md-12 col-lg-12 control-label label-bold">
+                    <label class="col-md-12 col-lg-12 control-label ">
                         <span class="nmbr">6.</span>
-                        Preschool/Childcare – Child’s behavior in preschool and/or childcare.
+                        <strong>Preschool/Childcare</strong> – Child’s behavior in preschool and/or childcare.
                     </label>
                     <div class="col-md-12 col-lg-12">
                         <apex:selectRadio styleClass="radio-list" id="PRESCH__c" value="{!form.obj[bfVariableMap['PRESCH']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['PRESCH']]}">
@@ -121,9 +132,9 @@
                 
                 <!--7. Social abilities-->
                 <div class="form-group">
-                    <label class="col-md-12 col-lg-12 control-label label-bold">
+                    <label class="col-md-12 col-lg-12 control-label ">
                         <span class="nmbr">7.</span>
-                        Social Functioning – Child difficulties with social skills and relationships.
+                        <strong>Social Functioning</strong> – Child difficulties with social skills and relationships.
                     </label>
                     <div class="col-md-12 col-lg-12">
                         <apex:selectRadio styleClass="radio-list" id="SOCFUNC__c" value="{!form.obj[bfVariableMap['SOCFUNC']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['SOCFUNC']]}">
@@ -134,22 +145,22 @@
                 
                 <!--8. Aggression-->
                 <div class="form-group">
-                    <label class="col-md-12 col-lg-12 control-label label-bold">
+                    <label class="col-md-12 col-lg-12 control-label ">
                         <span class="nmbr">8.</span>
-                        Aggression – Aggressive behaviors include biting, hitting, kicking, throwing toys and other objects.
+                        <strong>Aggression</strong> – Aggressive behaviors include biting, hitting, kicking, throwing toys and other objects.
                     </label>
                     <div class="col-md-12 col-lg-12">
                         <apex:selectRadio styleClass="radio-list" id="AGGRESS__c" value="{!form.obj[bfVariableMap['AGGRESS']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['AGGRESS']]}">
-                            <apex:selectOptions value="{!PreCareItems}"/> 
+                            <apex:selectOptions value="{!AggressiveItems}"/> 
                         </apex:selectRadio>
                     </div>
                 </div>
                 
                 <!--9. Sexualized Behaviors-->
                 <div class="form-group">
-                    <label class="col-md-12 col-lg-12 control-label label-bold">
+                    <label class="col-md-12 col-lg-12 control-label ">
                         <span class="nmbr">9.</span>
-                        Sexualized Behaviors – Sexualized behavior includes both age-inappropriate talking or acting out in sexualized ways.
+                        <strong>Sexualized Behaviors</strong> – Sexualized behavior includes both age-inappropriate talking or acting out in sexualized ways.
                     </label>
                     <div class="col-md-12 col-lg-12">
                         <apex:selectRadio styleClass="radio-list" id="SEXBEH__c" value="{!form.obj[bfVariableMap['SEXBEH']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['SEXBEH']]}">
@@ -160,9 +171,9 @@
                 
                 <!--10. Attachment-->
                 <div class="form-group">
-                    <label class="col-md-12 col-lg-12 control-label label-bold">
+                    <label class="col-md-12 col-lg-12 control-label ">
                         <span class="nmbr">10.</span>
-                        Child Attachment Difficulties – Item should be rated within the context of the child's significant parental or caregiver relationships.
+                        <strong>Child Attachment Difficulties</strong> – Item should be rated within the context of the child's significant parental or caregiver relationships.
                     </label>
                     <div class="col-md-12 col-lg-12">
                         <apex:selectRadio styleClass="radio-list" id="ATTACH__c" value="{!form.obj[bfVariableMap['ATTACH']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['ATTACH']]}">
@@ -173,9 +184,9 @@
                 
                 <!--11. Development-->
                 <div class="form-group">
-                    <label class="col-md-12 col-lg-12 control-label label-bold">
+                    <label class="col-md-12 col-lg-12 control-label ">
                         <span class="nmbr">11.</span>
-                        Developmental Concerns - Problems may occur in receptive language, expressive language; cognitive, motor, or social domains.
+                        <strong>Developmental Concerns</strong> - Problems may occur in receptive language, expressive language; cognitive, motor, or social domains.
                     </label>
                     <div class="col-md-12 col-lg-12">
                         <apex:selectRadio styleClass="radio-list" id="DEVEL__c" value="{!form.obj[bfVariableMap['DEVEL']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['DEVEL']]}" onChange="developmentModule(this.value, 'false')">
@@ -188,7 +199,7 @@
                             <div class="col-md-11 col-lg-11 col-md-offset-1 col-lg-offset-1">
                                 
                                 <div class="skipContent skip-dev">
-                                    <p><b>Check domain(s) that needs further consideration:</b></p>
+                                    <p>Check domain(s) that needs further consideration:</p>
                                     <!--checkbox list-->
                                     <!--receptive language-->
                                     <div class="checkbox">
@@ -232,7 +243,7 @@
                                 
                                 <!--moderate problems-->                 
                                 <div class="skipContent skip-mid">
-                                    <p><b>Check domain(s) that needs further consideration:</b></p>
+                                    <p>Check domain(s) that needs further consideration:</p>
                                     
                                     <!--checkbox list--> 
                                     
@@ -283,7 +294,7 @@
                                 
                                 <!--severe problems-->
                                 <div class="skipContent skip-sev">
-                                    <p><b>Check domain(s) that needs further consideration:</b></p>
+                                    <p>Check domain(s) that needs further consideration:</p>
                                     
                                     <!--checkbox list-->
                                     
@@ -340,9 +351,9 @@
                 
                 <!--12. Atypical behaviors-->
                 <div class="form-group">
-                    <label class="col-md-12 col-lg-12 control-label label-bold">
+                    <label class="col-md-12 col-lg-12 control-label ">
                         <span class="nmbr">12.</span>
-                        Atypical Behaviors - Includes mouthing after 1 year, head banging, smelling objects, spinning, twirling, hand flapping, finger-flicking, rocking, toe walking, staring at lights, or repetitive and bizarre verbalizations.
+                        <strong>Atypical Behaviors</strong> - Includes mouthing after 1 year, head banging, smelling objects, spinning, twirling, hand flapping, finger-flicking, rocking, toe walking, staring at lights, or repetitive and bizarre verbalizations.
                     </label>
                     <div class="col-md-12 col-lg-12">
                         <apex:selectRadio styleClass="radio-list" id="ATYPBEH__c" value="{!form.obj[bfVariableMap['ATYPBEH']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['ATYPBEH']]}">
@@ -366,7 +377,11 @@
             </apex:pageBlock>
             
         </apex:form>
-        
+<!--end form content-->
+
+    <!--citation information footer-->    
+    <c:cimiFormFooter formElement="{!form}"/>
+            
     </div>
     
 </apex:page>

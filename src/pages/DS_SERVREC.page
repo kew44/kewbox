@@ -1,46 +1,48 @@
 <apex:page StandardController="DS_Functioning_Forms_B__c" extensions="DS_SERVREC_Controller" >
     
     <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
-    
-    <style>
-        .instruction { font-size: 16px !important; }
 
-        .DS-SERVREC-table tr td:first-child { max-width: 475px; }
-    </style>
+    <div class="{!HTMLENCODE(form.visitType)}">
+        <apex:sectionHeader title="{!HTMLENCODE(form.title)}" subtitle="{!HTMLENCODE(form.subtitle)}" />
+    </div>
 
     <div class="bootwrap">
         <!--Begin form content-->
-        <apex:form id="DS_SERVREC_FORM">
-
-            <apex:sectionHeader title="{!form.title}"  subtitle="{!form.subtitle}"/><br/>
+        <apex:form id="DS_SERVREC_FORM" styleClass="form-horizontal">
             
             <!-- pageblock to show ClientInformation header as described in Utility class-->
-            <apex:pageBlock title="Client Information">
-                <apex:outputText value="{!form.ClientInfo}" escape="false"/>
-            </apex:pageBlock> <!--end client info pageBlock--> 
+            <apex:outputText value="{!form.ClientInfo}" escape="false"/>
+    
             
             <!-- primary content pageBlock container-->
             <apex:pageBlock title="{!form.title}" >
+
+                <!--save and cancel control buttons for pageBlock-->
+                <apex:pageBlockButtons >
+                    <apex:commandButton id="Save" action="{!save}" value="Save" styleClass="btn btn-info btn-sm"/>
+                    <apex:commandButton id="Cancel" action="{!cancel}" value="Cancel" styleClass="btn btn-info btn-sm" rendered="{!if(form.forceRedirect = '1', false, true)}"/>
+                </apex:pageBlockButtons>
+                <!--end buttons--> 
                 
                 <!--placeholding structure that allows for system message display-->
                 <apex:pageMessages />
                 
-                <!--instructions -->
-                <blockquote class="instruction">
-                    <ul class="list-unstyled">
-                        <li>
-                            Has the child received any of these services or been placed in any of the following within the past 30 days (excluding today's visit) or during their lifetime (excluding the past 30 days)?
-                        </li>
-                        <li>
-                            Did the child receive the services as a result of trauma (could have been anytime during his or her life)?
-                        </li>
-                        <li>
-                            These may include services provided by your center, as well as services provided by any other clinician, setting, or sector.
-                        </li>
-                    </ul>
-                </blockquote>
+                <!-- Baseline instructions -->
+                <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                    <div class="alert alert-info baseline-alert">
+                        <strong>BASELINE INSTRUCTIONS: Has the child received any of these services or been placed in any of the following within the past 30 days (excluding today’s visit) or during their lifetime (excluding the past 30 days)?  Did the child receive the services as a result of trauma (could have been anytime during his or her life)?  These may include services provided by your center, as well as services provided by any other clinician, setting, or sector.</strong>                     
+                    </div> 
+                </apex:outputPanel>
+                
+                <!-- Follow-up instructions -->
+                <apex:outputPanel rendered="{!form.isFollowUp}" layout="none">
+                    <div class="alert alert-info followup-alert">
+                        <strong>FOLLOW-UP INSTRUCTIONS: Has the child received any of these services or been placed in any of the following (excluding today's visit) since his or her last CIMI assessment? These may include services provided by your Center as well as services provided by any other clinician, setting, or sector.</strong>
+                    </div>        
+                </apex:outputPanel>
+
                 <!--end instructions-->
-                <table class="table DS-SERVREC-table">
+                <table class="table table-bordered table-condensed table-striped table-servrec">
                     <!--frequency heading-->
                     <thead>
                         <tr>
@@ -70,7 +72,7 @@
                             
                             <!--past 30 days indicator-->
                             <td >
-                                <apex:selectRadio title="{!form.obj[bfVariableMap['OSINPSY']]}" id="OSINPSY__c" value="{!form.obj[bfVariableMap['OSINPSY']]}" layout="pageDirection">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" title="{!form.obj[bfVariableMap['OSINPSY']]}" id="OSINPSY__c" value="{!form.obj[bfVariableMap['OSINPSY']]}" layout="lineDirection">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>                            
                             </td><!--end 30 days-->
@@ -79,7 +81,7 @@
                             <!--lifetime indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="LTINPSY__c" value="{!form.obj[bfVariableMap['LTINPSY']]}" layout="pageDirection">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="LTINPSY__c" value="{!form.obj[bfVariableMap['LTINPSY']]}" layout="lineDirection">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td> 
@@ -90,7 +92,7 @@
                             <!--result of trauma indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="TRINPSY__c" value="{!form.obj[bfVariableMap['TRINPSY']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="TRINPSY__c" value="{!form.obj[bfVariableMap['TRINPSY']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td>   
@@ -110,7 +112,7 @@
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="OSRES__c" value="{!form.obj[bfVariableMap['OSRES']]}" layout="pageDirection">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="OSRES__c" value="{!form.obj[bfVariableMap['OSRES']]}" layout="lineDirection">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
@@ -118,7 +120,7 @@
                             <!--lifetime indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="LTRES__c" value="{!form.obj[bfVariableMap['LTRES']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="LTRES__c" value="{!form.obj[bfVariableMap['LTRES']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td> 
@@ -128,7 +130,7 @@
                             <!--result of trauma indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="TRRES__c" value="{!form.obj[bfVariableMap['TRRES']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="TRRES__c" value="{!form.obj[bfVariableMap['TRRES']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td>   
@@ -148,7 +150,7 @@
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="OSDET__c" value="{!form.obj[bfVariableMap['OSDET']]}" layout="pageDirection">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="OSDET__c" value="{!form.obj[bfVariableMap['OSDET']]}" layout="lineDirection">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
@@ -156,7 +158,7 @@
                             <!--lifetime indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="LTDET__c" value="{!form.obj[bfVariableMap['LTDET']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="LTDET__c" value="{!form.obj[bfVariableMap['LTDET']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td> 
@@ -166,7 +168,7 @@
                             <!--result of trauma indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="TRDET__c" value="{!form.obj[bfVariableMap['TRDET']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="TRDET__c" value="{!form.obj[bfVariableMap['TRDET']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td>   
@@ -186,7 +188,7 @@
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="OSGROUP__c" value="{!form.obj[bfVariableMap['OSGROUP']]}" layout="pageDirection">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="OSGROUP__c" value="{!form.obj[bfVariableMap['OSGROUP']]}" layout="lineDirection">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
@@ -194,7 +196,7 @@
                             <!--lifetime indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="LTGROUP__c" value="{!form.obj[bfVariableMap['LTGROUP']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="LTGROUP__c" value="{!form.obj[bfVariableMap['LTGROUP']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td> 
@@ -204,7 +206,7 @@
                             <!--result of trauma indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="TRGROUP__c" value="{!form.obj[bfVariableMap['TRGROUP']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="TRGROUP__c" value="{!form.obj[bfVariableMap['TRGROUP']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td>   
@@ -224,7 +226,7 @@
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="OSTXFOS__c" value="{!form.obj[bfVariableMap['OSTXFOS']]}" layout="pageDirection">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="OSTXFOS__c" value="{!form.obj[bfVariableMap['OSTXFOS']]}" layout="lineDirection">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
@@ -232,7 +234,7 @@
                             <!--lifetime indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="LTTXFOS__c" value="{!form.obj[bfVariableMap['LTTXFOS']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="LTTXFOS__c" value="{!form.obj[bfVariableMap['LTTXFOS']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td> 
@@ -242,7 +244,7 @@
                             <!--result of trauma indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="TRTXFOS__c" value="{!form.obj[bfVariableMap['TRTXFOS']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="TRTXFOS__c" value="{!form.obj[bfVariableMap['TRTXFOS']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td>   
@@ -262,7 +264,7 @@
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="OSPROB__c" value="{!form.obj[bfVariableMap['OSPROB']]}" layout="pageDirection">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="OSPROB__c" value="{!form.obj[bfVariableMap['OSPROB']]}" layout="lineDirection">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
@@ -270,7 +272,7 @@
                             <!--lifetime indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="LTPROB__c" value="{!form.obj[bfVariableMap['LTPROB']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="LTPROB__c" value="{!form.obj[bfVariableMap['LTPROB']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td> 
@@ -280,7 +282,7 @@
                             <!--result of trauma indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="TRPROB__c" value="{!form.obj[bfVariableMap['TRPROB']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="TRPROB__c" value="{!form.obj[bfVariableMap['TRPROB']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td>   
@@ -300,7 +302,7 @@
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="OSDAYTR__c" value="{!form.obj[bfVariableMap['OSDAYTR']]}" layout="pageDirection">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="OSDAYTR__c" value="{!form.obj[bfVariableMap['OSDAYTR']]}" layout="lineDirection">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
@@ -308,7 +310,7 @@
                             <!--lifetime indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="LTDAYTR__c" value="{!form.obj[bfVariableMap['LTDAYTR']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="LTDAYTR__c" value="{!form.obj[bfVariableMap['LTDAYTR']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td> 
@@ -318,7 +320,7 @@
                             <!--result of trauma indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="TRDAYTR__c" value="{!form.obj[bfVariableMap['TRDAYTR']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="TRDAYTR__c" value="{!form.obj[bfVariableMap['TRDAYTR']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td>   
@@ -338,7 +340,7 @@
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="OSCASMG__c" value="{!form.obj[bfVariableMap['OSCASMG']]}" layout="pageDirection">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="OSCASMG__c" value="{!form.obj[bfVariableMap['OSCASMG']]}" layout="lineDirection">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
@@ -346,7 +348,7 @@
                             <!--lifetime indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="LTCASMG__c" value="{!form.obj[bfVariableMap['LTCASMG']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="LTCASMG__c" value="{!form.obj[bfVariableMap['LTCASMG']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td> 
@@ -356,7 +358,7 @@
                             <!--result of trauma indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="TRCASMG__c" value="{!form.obj[bfVariableMap['TRCASMG']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="TRCASMG__c" value="{!form.obj[bfVariableMap['TRCASMG']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td>   
@@ -376,7 +378,7 @@
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="OSINHME__c" value="{!form.obj[bfVariableMap['OSINHME']]}" layout="pageDirection">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="OSINHME__c" value="{!form.obj[bfVariableMap['OSINHME']]}" layout="lineDirection">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
@@ -384,7 +386,7 @@
                             <!--lifetime indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="LTINHME__c" value="{!form.obj[bfVariableMap['LTINHME']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="LTINHME__c" value="{!form.obj[bfVariableMap['LTINHME']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td> 
@@ -394,7 +396,7 @@
                             <!--result of trauma indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="TRINHME__c" value="{!form.obj[bfVariableMap['TRINHME']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="TRINHME__c" value="{!form.obj[bfVariableMap['TRINHME']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td>   
@@ -414,7 +416,7 @@
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="OSOUTTX__c" value="{!form.obj[bfVariableMap['OSOUTTX']]}" layout="pageDirection">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="OSOUTTX__c" value="{!form.obj[bfVariableMap['OSOUTTX']]}" layout="lineDirection">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
@@ -422,7 +424,7 @@
                             <!--lifetime indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="LTOUTTX__c" value="{!form.obj[bfVariableMap['LTOUTTX']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="LTOUTTX__c" value="{!form.obj[bfVariableMap['LTOUTTX']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td> 
@@ -432,7 +434,7 @@
                             <!--result of trauma indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="TROUTTX__c" value="{!form.obj[bfVariableMap['TROUTTX']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="TROUTTX__c" value="{!form.obj[bfVariableMap['TROUTTX']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td>   
@@ -462,7 +464,7 @@
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="OSOUTPS__c" value="{!form.obj[bfVariableMap['OSOUTPS']]}" layout="pageDirection">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="OSOUTPS__c" value="{!form.obj[bfVariableMap['OSOUTPS']]}" layout="lineDirection">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
@@ -470,7 +472,7 @@
                             <!--lifetime indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="LTOUTPS__c" value="{!form.obj[bfVariableMap['LTOUTPS']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="LTOUTPS__c" value="{!form.obj[bfVariableMap['LTOUTPS']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td> 
@@ -480,7 +482,7 @@
                             <!--result of trauma indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="TROUTPS__c" value="{!form.obj[bfVariableMap['TROUTPS']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="TROUTPS__c" value="{!form.obj[bfVariableMap['TROUTPS']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td>   
@@ -500,7 +502,7 @@
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="OSPRIMC__c" value="{!form.obj[bfVariableMap['OSPRIMC']]}" layout="pageDirection">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="OSPRIMC__c" value="{!form.obj[bfVariableMap['OSPRIMC']]}" layout="lineDirection">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
@@ -508,7 +510,7 @@
                             <!--lifetime indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="LTPRIMC__c" value="{!form.obj[bfVariableMap['LTPRIMC']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="LTPRIMC__c" value="{!form.obj[bfVariableMap['LTPRIMC']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td> 
@@ -518,7 +520,7 @@
                             <!--result of trauma indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="TRPRIMC__c" value="{!form.obj[bfVariableMap['TRPRIMC']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="TRPRIMC__c" value="{!form.obj[bfVariableMap['TRPRIMC']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td>   
@@ -538,7 +540,7 @@
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="OSSCHCN__c" value="{!form.obj[bfVariableMap['OSSCHCN']]}" layout="pageDirection">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="OSSCHCN__c" value="{!form.obj[bfVariableMap['OSSCHCN']]}" layout="lineDirection">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
@@ -546,7 +548,7 @@
                             <!--lifetime indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="LTSCHCN__c" value="{!form.obj[bfVariableMap['LTSCHCN']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="LTSCHCN__c" value="{!form.obj[bfVariableMap['LTSCHCN']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td> 
@@ -556,7 +558,7 @@
                             <!--result of trauma indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="TRSCHCN__c" value="{!form.obj[bfVariableMap['TRSCHCN']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="TRSCHCN__c" value="{!form.obj[bfVariableMap['TRSCHCN']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td>   
@@ -576,7 +578,7 @@
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="OSSPCL__c" value="{!form.obj[bfVariableMap['OSSPCL']]}" layout="pageDirection">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="OSSPCL__c" value="{!form.obj[bfVariableMap['OSSPCL']]}" layout="lineDirection">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
@@ -584,7 +586,7 @@
                             <!--lifetime indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="LTSPCL__c" value="{!form.obj[bfVariableMap['LTSPCL']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="LTSPCL__c" value="{!form.obj[bfVariableMap['LTSPCL']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td> 
@@ -594,7 +596,7 @@
                             <!--result of trauma indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="TRSPCL__c" value="{!form.obj[bfVariableMap['TRSPCL']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="TRSPCL__c" value="{!form.obj[bfVariableMap['TRSPCL']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td>   
@@ -614,7 +616,7 @@
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="OSCHWE2__c" value="{!form.obj[bfVariableMap['OSCHWE2']]}" layout="pageDirection">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="OSCHWE2__c" value="{!form.obj[bfVariableMap['OSCHWE2']]}" layout="lineDirection">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
@@ -622,7 +624,7 @@
                             <!--lifetime indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="LTCHWE2__c" value="{!form.obj[bfVariableMap['LTCHWE2']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="LTCHWE2__c" value="{!form.obj[bfVariableMap['LTCHWE2']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td> 
@@ -632,7 +634,7 @@
                             <!--result of trauma indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="TRCHWE2__c" value="{!form.obj[bfVariableMap['TRCHWE2']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="TRCHWE2__c" value="{!form.obj[bfVariableMap['TRCHWE2']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td>   
@@ -652,7 +654,7 @@
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="OSSOCSE__c" value="{!form.obj[bfVariableMap['OSSOCSE']]}" layout="pageDirection">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="OSSOCSE__c" value="{!form.obj[bfVariableMap['OSSOCSE']]}" layout="lineDirection">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
@@ -660,7 +662,7 @@
                             <!--lifetime indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="LTSOCSE__c" value="{!form.obj[bfVariableMap['LTSOCSE']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="LTSOCSE__c" value="{!form.obj[bfVariableMap['LTSOCSE']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td> 
@@ -670,7 +672,7 @@
                             <!--result of trauma indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="TRSOCSE__c" value="{!form.obj[bfVariableMap['TRSOCSE']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="TRSOCSE__c" value="{!form.obj[bfVariableMap['TRSOCSE']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td>   
@@ -690,7 +692,7 @@
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="OSFOST__c" value="{!form.obj[bfVariableMap['OSFOST']]}" layout="pageDirection">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="OSFOST__c" value="{!form.obj[bfVariableMap['OSFOST']]}" layout="lineDirection">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
@@ -698,7 +700,7 @@
                             <!--lifetime indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="LTFOST__c" value="{!form.obj[bfVariableMap['LTFOST']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="LTFOST__c" value="{!form.obj[bfVariableMap['LTFOST']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td> 
@@ -708,7 +710,7 @@
                             <!--result of trauma indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="TRFOST__c" value="{!form.obj[bfVariableMap['TRFOST']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="TRFOST__c" value="{!form.obj[bfVariableMap['TRFOST']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td>   
@@ -728,7 +730,7 @@
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="OSREC__c" value="{!form.obj[bfVariableMap['OSREC']]}" layout="pageDirection">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="OSREC__c" value="{!form.obj[bfVariableMap['OSREC']]}" layout="lineDirection">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
@@ -736,7 +738,7 @@
                             <!--lifetime indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="LTREC__c" value="{!form.obj[bfVariableMap['LTREC']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="LTREC__c" value="{!form.obj[bfVariableMap['LTREC']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td> 
@@ -746,7 +748,7 @@
                             <!--result of trauma indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="TRREC__c" value="{!form.obj[bfVariableMap['TRREC']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="TRREC__c" value="{!form.obj[bfVariableMap['TRREC']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td>   
@@ -766,7 +768,7 @@
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="OSER__c" value="{!form.obj[bfVariableMap['OSER']]}" layout="pageDirection">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="OSER__c" value="{!form.obj[bfVariableMap['OSER']]}" layout="lineDirection">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
@@ -774,7 +776,7 @@
                             <!--lifetime indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="LTER__c" value="{!form.obj[bfVariableMap['LTER']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="LTER__c" value="{!form.obj[bfVariableMap['LTER']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td> 
@@ -784,7 +786,7 @@
                             <!--result of trauma indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="TRER__c" value="{!form.obj[bfVariableMap['TRER']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="TRER__c" value="{!form.obj[bfVariableMap['TRER']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td>   
@@ -804,7 +806,7 @@
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="OSSELFH__c" value="{!form.obj[bfVariableMap['OSSELFH']]}" layout="pageDirection">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="OSSELFH__c" value="{!form.obj[bfVariableMap['OSSELFH']]}" layout="lineDirection">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
@@ -812,7 +814,7 @@
                             <!--lifetime indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="LTSELFH__c" value="{!form.obj[bfVariableMap['LTSELFH']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="LTSELFH__c" value="{!form.obj[bfVariableMap['LTSELFH']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td> 
@@ -822,7 +824,7 @@
                             <!--result of trauma indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="TRSELFH__c" value="{!form.obj[bfVariableMap['TRSELFH']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="TRSELFH__c" value="{!form.obj[bfVariableMap['TRSELFH']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td>   
@@ -853,7 +855,7 @@
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="OSMED__c" value="{!form.obj[bfVariableMap['OSMED']]}" layout="pageDirection">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="OSMED__c" value="{!form.obj[bfVariableMap['OSMED']]}" layout="lineDirection">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
@@ -861,7 +863,7 @@
                             <!--lifetime indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="LTMED__c" value="{!form.obj[bfVariableMap['LTMED']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="LTMED__c" value="{!form.obj[bfVariableMap['LTMED']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td> 
@@ -871,7 +873,7 @@
                             <!--result of trauma indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="TRMED__c" value="{!form.obj[bfVariableMap['TRMED']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="TRMED__c" value="{!form.obj[bfVariableMap['TRMED']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td>   
@@ -891,7 +893,7 @@
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="OSHOMV__c" value="{!form.obj[bfVariableMap['OSHOMV']]}" layout="pageDirection">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="OSHOMV__c" value="{!form.obj[bfVariableMap['OSHOMV']]}" layout="lineDirection">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
@@ -899,7 +901,7 @@
                             <!--lifetime indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="LTHOMV__c" value="{!form.obj[bfVariableMap['LTHOMV']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="LTHOMV__c" value="{!form.obj[bfVariableMap['LTHOMV']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td> 
@@ -909,7 +911,7 @@
                             <!--result of trauma indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="TRHOMV__c" value="{!form.obj[bfVariableMap['TRHOMV']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="TRHOMV__c" value="{!form.obj[bfVariableMap['TRHOMV']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td>   
@@ -929,7 +931,7 @@
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="OSHEADS__c" value="{!form.obj[bfVariableMap['OSHEADS']]}" layout="pageDirection">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="OSHEADS__c" value="{!form.obj[bfVariableMap['OSHEADS']]}" layout="lineDirection">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
@@ -937,7 +939,7 @@
                             <!--lifetime indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="LTHEADS__c" value="{!form.obj[bfVariableMap['LTHEADS']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="LTHEADS__c" value="{!form.obj[bfVariableMap['LTHEADS']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td> 
@@ -947,7 +949,7 @@
                             <!--result of trauma indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="TRHEADS__c" value="{!form.obj[bfVariableMap['TRHEADS']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="TRHEADS__c" value="{!form.obj[bfVariableMap['TRHEADS']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td>   
@@ -967,7 +969,7 @@
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="OSPARED__c" value="{!form.obj[bfVariableMap['OSPARED']]}" layout="pageDirection">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="OSPARED__c" value="{!form.obj[bfVariableMap['OSPARED']]}" layout="lineDirection">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
@@ -975,7 +977,7 @@
                             <!--lifetime indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="LTPARED__c" value="{!form.obj[bfVariableMap['LTPARED']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="LTPARED__c" value="{!form.obj[bfVariableMap['LTPARED']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td> 
@@ -985,7 +987,7 @@
                             <!--result of trauma indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="TRPARED__c" value="{!form.obj[bfVariableMap['TRPARED']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="TRPARED__c" value="{!form.obj[bfVariableMap['TRPARED']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td>   
@@ -1005,7 +1007,7 @@
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="OSPEER__c" value="{!form.obj[bfVariableMap['OSPEER']]}" layout="pageDirection">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="OSPEER__c" value="{!form.obj[bfVariableMap['OSPEER']]}" layout="lineDirection">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
@@ -1013,7 +1015,7 @@
                             <!--lifetime indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="LTPEER__c" value="{!form.obj[bfVariableMap['LTPEER']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="LTPEER__c" value="{!form.obj[bfVariableMap['LTPEER']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td> 
@@ -1023,7 +1025,7 @@
                             <!--result of trauma indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="TRPEER__c" value="{!form.obj[bfVariableMap['TRPEER']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="TRPEER__c" value="{!form.obj[bfVariableMap['TRPEER']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td>   
@@ -1043,7 +1045,7 @@
                             
                             <!--past 30 days indicator-->                           
                             <td>
-                                <apex:selectRadio id="OSWRAP__c" value="{!form.obj[bfVariableMap['OSWRAP']]}" layout="pageDirection">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="OSWRAP__c" value="{!form.obj[bfVariableMap['OSWRAP']]}" layout="lineDirection">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
@@ -1051,7 +1053,7 @@
                             <!--lifetime indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="LTWRAP__c" value="{!form.obj[bfVariableMap['LTWRAP']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="LTWRAP__c" value="{!form.obj[bfVariableMap['LTWRAP']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td> 
@@ -1061,7 +1063,7 @@
                             <!--result of trauma indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="TRWRAP__c" value="{!form.obj[bfVariableMap['TRWRAP']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="TRWRAP__c" value="{!form.obj[bfVariableMap['TRWRAP']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td>   
@@ -1081,7 +1083,7 @@
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="OSMEN__c" value="{!form.obj[bfVariableMap['OSMEN']]}" layout="pageDirection">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="OSMEN__c" value="{!form.obj[bfVariableMap['OSMEN']]}" layout="lineDirection">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td><!--end 30 days-->
@@ -1089,7 +1091,7 @@
                             <!--lifetime indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="LTMEN__c" value="{!form.obj[bfVariableMap['LTMEN']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="LTMEN__c" value="{!form.obj[bfVariableMap['LTMEN']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td> 
@@ -1099,7 +1101,7 @@
                             <!--result of trauma indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="TRMEN__c" value="{!form.obj[bfVariableMap['TRMEN']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="TRMEN__c" value="{!form.obj[bfVariableMap['TRMEN']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td>   
@@ -1113,17 +1115,21 @@
                             
                             <!--specify field-->
                             <td>
-                                <label class="control-label">
-                                    <span class="nmbr">28.</span> 
-                                    Other, please specify: &nbsp;                                
-                                    <apex:inputField id="OSOSP__c" value="{!form.obj[bfVariableMap['OSOSP']]}" styleClass="form-control input-sm auto-width-inline"></apex:inputField>
-                                </label>
+                                <div class="form-group no-space-bottom no-border-bottom">
+                                    <label class="col-md-3 col-lg-3 control-label">
+                                        <span class="nmbr">28.</span> 
+                                        Other, please specify:                               
+                                    </label>
+                                    <div class="col-md-4 col-lg-4">
+                                        <apex:inputField id="OSOSP__c" value="{!form.obj[bfVariableMap['OSOSP']]}" styleClass="form-control input-sm"></apex:inputField>
+                                    </div>
+                                </div>
                             </td>
                             <!--end field-->
                             
                             <!--past 30 days indicator-->
                             <td>
-                                <apex:selectRadio id="OSOTH__c" value="{!form.obj[bfVariableMap['OSOTH']]}" layout="pageDirection">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="OSOTH__c" value="{!form.obj[bfVariableMap['OSOTH']]}" layout="lineDirection">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td> <!--end 30 days-->
@@ -1131,7 +1137,7 @@
                             <!--lifetime indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="LTOTH__c" value="{!form.obj[bfVariableMap['LTOTH']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="LTOTH__c" value="{!form.obj[bfVariableMap['LTOTH']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td> 
@@ -1141,26 +1147,27 @@
                             <!--result of trauma indicator-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                             <td>
-                                <apex:selectRadio id="TROTH__c" value="{!form.obj[bfVariableMap['TROTH']]}" layout="pageDirection" rendered="{!form.isBaseline}">
+                                <apex:selectRadio styleClass="radio-list radio-list-inline" id="TROTH__c" value="{!form.obj[bfVariableMap['TROTH']]}" layout="lineDirection" rendered="{!form.isBaseline}">
                                     <apex:selectOptions value="{!NYUOption}"/>
                                 </apex:selectRadio>
                             </td>   
                             </apex:outputPanel>
                             <!--end trauma-->               
                         </tr>    
-                        
-                        
+                        <!--header to indicate if service received in past 30 daysand/or in lifetime-->
+                    
                         <tr>
                             <td colspan="{!if(form.isBaseline, '4', '2')}">
                                 <label class="control-label">
                                     <span class="nmbr">29.</span>
-                                    If the child received outpatient therapy/ treatment, please indicate which of the following treatment modalities were received.<strong>(Select all that apply.)</strong>
+                                    If the child received outpatient therapy/ treatment, please indicate which of the following treatment modalities were received.
+                                    <apex:outputPanel rendered="{!form.isFollowUp}" layout="none">
+                                        since his or her last CIMI assessment.
+                                    </apex:outputPanel>
+                                     <strong>(Select all that apply.)</strong>
                                 </label>
                             </td>
                         </tr>
-                        
-                        <!--29. Indicate therapy type checkboxes-->
-                        <!--header to indicate if service received in past 30 daysand/or in lifetime-->
                         <tr>
                             <th></th>         
                             <!--30 days-->
@@ -1171,7 +1178,8 @@
                             <th></th>
                             </apex:outputPanel>
                         </tr>
-                        <!--end header-->
+                        
+                        <!--29. Indicate therapy type checkboxes-->
                                                 
                         <!--Attachment-based-->
                         <tr>
@@ -1445,9 +1453,14 @@
                         <!--Other-->
                         <tr>
                             <td>
-                                Other, please specify: &nbsp;
-                                <!--specify input box-->        
-                                <apex:inputField id="OSTOSP__c" value="{!form.obj[bfVariableMap['OSTOSP']]}" styleClass="form-control input-sm auto-width-inline"/>             
+                                <div class="form-group no-space-bottom no-border-bottom">
+                                    <label class="control-label col-md-3 col-lg-3">
+                                        Other, please specify:
+                                    </label>
+                                    <div class="col-md-4 col-lg-4">
+                                        <apex:inputField id="OSTOSP__c" value="{!form.obj[bfVariableMap['OSTOSP']]}" styleClass="form-control input-sm auto-width-inline"/>             
+                                    </div>
+                                </div>
                             </td>
                             
                             <!--30 days-->
@@ -1457,45 +1470,34 @@
                             
                             <!--lifetime-->
                             <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
-                            <td>
-                                <apex:inputCheckbox id="LTTOTH__c" value="{!form.obj[bfVariableMap['LTTOTH']]}"/>
-                            </td>
-                            <td></td>
+                                <td>
+                                    <apex:inputCheckbox id="LTTOTH__c" value="{!form.obj[bfVariableMap['LTTOTH']]}"/>
+                                </td>
+                                <td></td>
                             </apex:outputPanel>
                         </tr>
-                                    
-                        <tr>
-                            <!--Completion status control-->
-                            <td colspan="{!if(form.isBaseline, '4', '2')}" class="text-right complete-title">
-                                <strong>Complete?</strong> &nbsp;                         
-                                <apex:selectList id="STATUS_SERVREC__c" styleClass="form-control input-sm auto-width-inline" value="{!form.obj[bfVariableMap['STATUS']]}" size="1">
-                                    <apex:selectOption itemValue="Incomplete" itemLabel="Incomplete"/>
-                                    <apex:selectOption itemValue="Complete" itemLabel="Complete"/>
-                                </apex:selectList> 
-                            </td>
-                            <!--end completion status-->
-                        </tr>
-
                     </tbody>
 
                 </table>
-                    
-                <!--save and cancel control buttons for pageBlock-->
-                <apex:pageBlockButtons >
-                    <apex:commandButton id="Save" action="{!save}" value="Save"/>
-                    <apex:commandButton id="Cancel" action="{!cancel}" value="Cancel" rendered="{!if(form.forceRedirect = '1', false, true)}"/>
-                </apex:pageBlockButtons>
-                <!--end buttons--> 
-                
+                <!--Completion status control-->
+                <div class="form-group no-border-bottom no-space-bottom">
+                    <label class="control-label col-md-2 col-md-offset-8 text-right">Complete?</label>
+                    <div class="col-md-2">                       
+                        <apex:selectList id="STATUS_SERVREC__c" styleClass="form-control input-sm" value="{!form.obj[bfVariableMap['STATUS']]}" size="1">
+                            <apex:selectOption itemValue="Incomplete" itemLabel="Incomplete"/>
+                            <apex:selectOption itemValue="Complete" itemLabel="Complete"/>
+                        </apex:selectList> 
+                    </div>
+                </div>
+                <!--end completion status-->
             </apex:pageBlock>
             <!--end servrec pageBlock-->  
         </apex:form>
-        <!--end form content--> 
+<!--end form content-->
+
+    <!--citation information footer-->    
+    <c:cimiFormFooter formElement="{!form}"/>
+    
     </div>
-    <!--citation information footer-->
-    <p style="class:footer; text-align:center ">
-        <i>This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - Baseline - CRF Version 6 2014
-        </i>
-    </p>
     
 </apex:page>

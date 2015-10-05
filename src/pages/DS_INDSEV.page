@@ -1,20 +1,27 @@
-<apex:page standardController="DS_Background_Family_Info_B__c" extensions="DS_INSDOMENV_Controller">
-    
+<apex:page standardController="DS_Background_Family_Info_B__c" extensions="DS_INDSEV_Controller">
+     
     <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
     
-    <apex:sectionHeader title="{!form.title}" subtitle="{!form.subtitle}" />
-
+    <!--Script for Suicide and Criminal Activity modules-->
+    <script src="{!URLFOR($Resource.JS_DS_INDSEV)}"></script>
+    
+    <div class="{!HTMLENCODE(form.visitType)}">
+        <apex:sectionHeader title="{!HTMLENCODE(form.title)}" subtitle="{!HTMLENCODE(form.subtitle)}" />
+    </div>
+                
+    <script> $j(document).ready(function(){ suicideModule(); criminalModule(); }); </script>
+    
     <div class="bootwrap">
         <!--Begin form content-->
         <apex:form id="DS_FORM" styleClass="form-horizontal">
             
             <!-- pageblock to show ClientInformation header as described in Utility class-->
-            <apex:pageBlock title="Client Information">
-                <apex:outputText value="{!form.ClientInfo}" escape="false"/>
-            </apex:pageBlock><!--end client info pageBlock-->
+            <c:cimiClientInfo displayVisitType="true" formElement="{!form}"/>
+            <!--end client info pageBlock-->
             
             <!-- primary content pageBlock container-->
-            <apex:pageBlock title="{!form.title}" >
+            <apex:pageBlock title="{!HTMLENCODE(form.title)}" >
+                
                 <!--save and cancel control buttons for pageBlock-->
                 <apex:pageBlockButtons >
                     <apex:commandButton id="Save" action="{!save}" value="Save" styleClass="btn-info btn btn-sm"/>
@@ -23,282 +30,364 @@
                 
                 <!--placeholding structure that allows for system message display-->
                 <apex:pageMessages />
+
+                <!--instructions -->
+                <div class="alert alert-info">
+                    <strong>This section relates to the types of problems and experiences the <u>child</u> might have displayed. Indicate if the child experienced these types of problems within the past 30 days.  Please answer each question. This section should be completed for children ages 6 and older by client, caregiver, or other collateral source.</strong>
+                    <br/><br/>
+                    All responses should be for problems experienced <strong>within the past 30 days.</strong>
+                </div>        
+                <!--end instructions--> 
                 
-                <!-- 1. Is the child currently covered? -->
+                <!--1. Academic problems-->
                 <div class="form-group">
-                    <label class="col-md-4 control-label">
+                    <!--q1 question-->
+                    <label class="col-md-6 col-lg-6 control-label">
                         <span class="nmbr">1.</span>
-                        Is the child currently covered by any type of public or private health insurance?
+                        Academic problems (i.e., Problems with school work or grades)
                     </label>
-                    <div class="col-md-4">
-                        <apex:selectRadio id="CINANY__c" value="{!form.obj[bfVariableMap['CINANY']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['CINANY']]}" onChange="skipLogic('CINANY',this.value)">
-                            <apex:selectOptions value="{!NYUOption}"/> 
+                    <!--q1 answer choices-->
+                    <div class="col-md-6 col-lg-6">
+                        <apex:selectRadio styleClass="radio-list" id="ISPACAD__c" value="{!form.obj[bfVariableMap['ISPACAD']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['ISPACAD']]}" >
+                            <apex:selectOptions value="{!NSVUItems}"/>
                         </apex:selectRadio>
                     </div>
                 </div>
+                <!--end q1-->
                 
-                
-                <div class="form-group skip-CINPUB">
-                    
-                    <label class="col-md-4 control-label">
-                        <span class="nmbr"></span>
-                        What type of public or private health insurance is currently covering the child? (Select all that apply.)
-                    </label>
-                    
-                    <div class="col-md-4">
-                        
-                        <!--public insurance-->
-                        <div class="checkbox">
-                            <label>
-                                <apex:inputCheckbox styleClass="skip-element-CINPUB" id="CINPUB__c" value="{!form.obj[bfVariableMap['CINPUB']]}" label="Public" onChange="skipLogic('CINPUB',this.checked)"/>
-                                Public
-                            </label> 
-                        </div> 
-                        
-                        <div class="skip-CINCHIP">
-                            <div class="skipContent">
-                                <!--Chip-->
-                                <div class="checkbox">
-                                    <label>             
-                                        <apex:inputCheckbox styleClass="skip-element-CINCHIP"  id="CINCHIP__c" value="{!form.obj[bfVariableMap['CINCHIP']]}" label="Children’s Health Insurance Program (CHIP)"/>
-                                        Children’s Health Insurance Program (CHIP)
-                                    </label>
-                                </div>
-                                <!--Indian Health Service-->
-                                <div class="checkbox">
-                                    <label>             
-                                        <apex:inputCheckbox styleClass="skip-element-CINIH"  id="CINIH__c" value="{!form.obj[bfVariableMap['CINIH']]}" label="Indian Health Service"/>
-                                        Indian Health Service
-                                    </label>
-                                </div>
-                                <!--Medicaid-->
-                                <div class="checkbox">
-                                    <label>             
-                                        <apex:inputCheckbox styleClass="skip-element-CINMEDD"  id="CINMEDD__c" value="{!form.obj[bfVariableMap['CINMEDD']]}" label="Medicaid"/>
-                                        Medicaid
-                                    </label>
-                                </div>
-                                <!--Medicare-->
-                                <div class="checkbox">
-                                    <label>             
-                                        <apex:inputCheckbox styleClass="skip-element-CINMEDR"  id="CINMEDR__c" value="{!form.obj[bfVariableMap['CINMEDR']]}" label="Medicare"/>
-                                        Medicare
-                                    </label>
-                                </div>
-                                <!--Military-->
-                                <div class="checkbox">
-                                    <label>             
-                                        <apex:inputCheckbox styleClass="skip-element-CINMHC"  id="CINMHC__c" value="{!form.obj[bfVariableMap['CINMHC']]}" label="Military health care (TRICARE, CHAMPVA)"/>
-                                        Military health care (TRICARE, CHAMPVA)
-                                    </label>
-                                </div> 
-                                <!--Unknown-->
-                                <div class="checkbox">
-                                    <label>             
-                                        <apex:inputCheckbox styleClass="skip-element-CINPBUK"  id="CINPBUK__c" value="{!form.obj[bfVariableMap['CINPBUK']]}" label="Unknown"/>
-                                        Unknown
-                                    </label>
-                                </div>                
-                                <!--Other-->
-                                <div class="checkbox">
-                                    <label>             
-                                        <apex:inputCheckbox styleClass="skip-element-CINOPUB"  id="CINOPUB__c" value="{!form.obj[bfVariableMap['CINOPUB']]}" label="Other public" onChange="skipLogic('CINOPUB',this.checked)"/>
-                                        Other public
-                                    </label>
-                                    <div class="skip-CINOPSP"><!--Conditional if other, specify-->
-                                        <apex:outputLabel value="Please Specify: " for="CINOPSP__c"/>                            
-                                        <apex:inputField styleClass="form-control skip-element-CINOPSP auto-width-inline input-sm"  id="CINOPSP__c" value="{!form.obj[bfVariableMap['CINOPSP']]}" label="Please Specify"/><br/>
-                                    </div><!--end other conditional-->
-                                </div>
-                            </div><!--end checkboxes-->
-                        </div>
-                        
-                        <!--private insurance-->
-                        <div class="checkbox">
-                            <label>
-                                <apex:inputCheckbox styleClass="skip-element-CINPRIV"  id="CINPRIV__c" value="{!form.obj[bfVariableMap['CINPRIV']]}" label="Private" onChange="skipLogic('CINPRIV',this.checked)"/>
-                                Private
-                            </label>
-                        </div>
-                        <div class="skip-CINHMO">
-                            
-                            <div class="checkbox skipContent">
-                                <!--HMO-->
-                                <div class="checkbox">                                                
-                                    <label>             
-                                        <apex:inputCheckbox styleClass="skip-element-CINHMO"  id="CINHMO__c" value="{!form.obj[bfVariableMap['CINHMO']]}" label="HMO"/>
-                                        HMO
-                                    </label>
-                                </div>
-                                <!--PPO-->
-                                <div class="checkbox">
-                                    <label>              
-                                        <apex:inputCheckbox styleClass="skip-element-CINPPO"  id="CINPPO__c" value="{!form.obj[bfVariableMap['CINPPO']]}" label="PPO"/>
-                                        PPO
-                                    </label>
-                                </div>
-                                <!--fee for service-->
-                                <div class="checkbox">
-                                    <label> 
-                                        <apex:inputCheckbox styleClass="skip-element-CINFFS"  id="CINFFS__c" value="{!form.obj[bfVariableMap['CINFFS']]}" label="Fee-for-service"/>
-                                        Fee-for-service
-                                    </label>
-                                </div>
-                                <!--unknown-->
-                                <div class="checkbox">
-                                    <label> 
-                                        <apex:inputCheckbox styleClass="skip-element-CINPRUK"  id="CINPRUK__c" value="{!form.obj[bfVariableMap['CINPRUK']]}" label="Unknown"/>
-                                        Unknown
-                                    </label>
-                                </div>
-                                <!--other-->
-                                <div class="checkbox">
-                                    <label> 
-                                        <apex:inputCheckbox styleClass="skip-element-CINOPRI"  id="CINOPRI__c" value="{!form.obj[bfVariableMap['CINOPRI']]}" label="Other private" onChange="skipLogic('CINOPRI',this.checked)"/>
-                                        Other private
-                                    </label>
-                                    <div class="skip-CINOPRS"><!--Conditional if other, specify-->
-                                        <apex:outputLabel value="Please Specify: " for="CINOPRS__c"/>
-                                        <apex:inputField styleClass="form-control skip-element-CINOPRS auto-width-inline input-sm"  id="CINOPRS__c" value="{!form.obj[bfVariableMap['CINOPRS']]}" label="Please Specify"/>
-                                    </div>
-                                    <!--end other conditional-->                           
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 2. parent/guardian covered by any type of insurance? -->
+                <!--2.-->
                 <div class="form-group">
-                    <label class="col-md-4 control-label">
+                    <!--q2 question-->
+                    <label class="col-md-6 col-lg-6 control-label">
                         <span class="nmbr">2.</span>
-                        Is the child’s parent/guardian covered by any type of insurance?
+                        Behavior problems in school or daycare (i.e., Getting into trouble, detention, suspension, expulsion)
                     </label>
-                    <div class="col-md-4">
-                        <apex:selectRadio id="PINANY__c" value="{!form.obj[bfVariableMap['PINANY']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['PINANY']]}" onChange="skipLogic('PINANY',this.value)">
-                            <apex:selectOptions value="{!NYUOption}"/> 
+                    <!--q2 answer choices-->
+                    <div class="col-md-6 col-lg-6">
+                        <apex:selectRadio styleClass="radio-list" id="ISPBEHS__c" value="{!form.obj[bfVariableMap['ISPBEHS']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['ISPBEHS']]}" >
+                            <apex:selectOptions value="{!NSVUItems}"/>
                         </apex:selectRadio>
                     </div>
                 </div>
+                <!--end q2-->
                 
-                <div class="form-group skip-PINPUB">
-                    <label class="col-md-4 control-label">
-                        <span class="nmbr"></span>
-                        What type of public or private health insurance is currently covering the child? (Select all that apply.)
+                <!--3.-->
+                <div class="form-group">
+                    <!--q3 question-->
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">3.</span>
+                        Problems with skipping school or daycare (i.e., Where he/she skipped at least 4 days in the past month, or skipped parts of the day on at least half of the school days)
                     </label>
-                    <div class="col-md-4">
-                        <!--public insurance-->
-                        <div class="checkbox">
-                            <label>
-                                <apex:inputCheckbox styleClass="skip-element-PINPUB" id="PINPUB__c" value="{!form.obj[bfVariableMap['PINPUB']]}" label="Public" onChange="skipLogic('PINPUB',this.checked)"/>
-                                Public
-                            </label>  
-                        </div>
-                        <!--conditional checkboxes if public insurance-->
-                        <div class="skip-PINCHIP">
-                            <div class="skipContent">
-                                <!--Chip-->
-                                <div class="checkbox"> 
-                                    <label>
-                                        <apex:inputCheckbox id="PINCHIP__c" value="{!form.obj[bfVariableMap['PINCHIP']]}" label="Children’s Health Insurance Program (CHIP)"/>
-                                        Children’s Health Insurance Program (CHIP) (Parents under 18 years of age)
-                                    </label>
-                                </div>
-                                <!--Indian Health Service-->
-                                <div class="checkbox">
-                                    <label>
-                                        <apex:inputCheckbox id="PINIH__c" value="{!form.obj[bfVariableMap['PINIH']]}" label="Indian Health Service"/>
-                                        Indian Health Service
-                                    </label>
-                                </div>
-                                <!--Medicaid-->
-                                <div class="checkbox">
-                                    <label>
-                                        <apex:inputCheckbox id="PINMEDD__c" value="{!form.obj[bfVariableMap['PINMEDD']]}" label="Medicaid"/>
-                                        Medicaid
-                                    </label>
-                                </div>
-                                <!--Medicare-->
-                                <div class="checkbox">
-                                    <label>
-                                        <apex:inputCheckbox id="PINMEDR__c" value="{!form.obj[bfVariableMap['PINMEDR']]}" label="Medicare"/>
-                                        Medicare
-                                    </label>
-                                </div>
-                                <!--Military-->
-                                <div class="checkbox">
-                                    <label>
-                                        <apex:inputCheckbox id="PINMHC__c" value="{!form.obj[bfVariableMap['PINMHC']]}" label="Military health care (TRICARE, CHAMPVA)"/>
-                                        Military health care (TRICARE, CHAMPVA)
-                                    </label>
-                                </div>  
-                                <!--Other-->
-                                <div class="checkbox">
-                                    <label>
-                                        <apex:inputCheckbox styleClass="skip-element-PINOPUB" id="PINOPUB__c" value="{!form.obj[bfVariableMap['PINOPUB']]}" label="Other Public" onChange="skipLogic('PINOPUB', this.checked)"/>
-                                        Other public
-                                    </label>
-                                    <div class="skip-PINOPSP"><!--Conditional if other, specify-->
-                                        <apex:outputLabel value="Please Specify: "  for="PINOPSP__c"/>
-                                        <apex:inputField styleClass="form-control skip-element-PINOPSP auto-width-inline input-sm" id="PINOPSP__c" value="{!form.obj[bfVariableMap['PINOPSP']]}" label="Please Specify"/><br/>
-                                    </div><!--end other conditional-->
-                                </div>
-                            </div><!--end checkboxes-->
-                        </div>
-                        
-                        <!--private insurance-->
-                        <div class="checkbox">
-                            <label>
-                                <apex:inputCheckbox styleClass="skip-element-PINPRIV"  id="PINPRIV__c" value="{!form.obj[bfVariableMap['PINPRIV']]}" label="Private" onChange="skipLogic('PINPRIV',this.checked)"/>
-                                Private
-                            </label>
-                        </div>
-                        <!--conditional checkboxes if private insurance-->
-                        <div class="skip-PINHMO">
-                            <div class="skipContent">
-                                <!--HMO-->
-                                <div class="checkbox">
-                                    <label>
-                                        <apex:inputCheckbox id="PINHMO__c" value="{!form.obj[bfVariableMap['PINHMO']]}" label="HMO"/>
-                                        HMO
-                                    </label>
-                                </div>
-                                <!--PPO-->
-                                <div class="checkbox">
-                                    <label>
-                                        <apex:inputCheckbox id="PINPPO__c" value="{!form.obj[bfVariableMap['PINPPO']]}" label="PPO"/>
-                                        PPO
-                                    </label>
-                                </div>
-                                <!--fee for service-->
-                                <div class="checkbox">
-                                    <label>
-                                        <apex:inputCheckbox id="PINFFS__c" value="{!form.obj[bfVariableMap['PINFFS']]}" label="Fee-for-service  "/>
-                                        Fee-for-service
-                                    </label>
-                                </div>
-                                <!--other-->
-                                <div class="checkbox">
-                                    <label>
-                                        <apex:inputCheckbox styleClass="skip-element-PINOPRI"  id="PINOPRI__c" value="{!form.obj[bfVariableMap['PINOPRI']]}" label="Other private" onChange="skipLogic('PINOPRI',this.checked)"/>
-                                        Other private
-                                    </label>
-                                    <div class="skip-PINOPRS"><!--Conditional if other, specify-->
-                                        <apex:outputLabel value="Please Specify: " for="PINOPRS__c"/>
-                                        <apex:inputField styleClass="form-control skip-element-PINOPRS auto-width-inline input-sm"  id="PINOPRS__c" value="{!form.obj[bfVariableMap['PINOPRS']]}" label="Please Specify"/>
-                                    </div><!--end other conditional-->     
-                                </div>
-                            </div>
-                        </div>
-                        <!--end private conditional-->
+                    <!--q3 answer choices-->
+                    <div class="col-md-6 col-lg-6">
+                        <apex:selectRadio styleClass="radio-list" id="ISPSKPS__c" value="{!form.obj[bfVariableMap['ISPSKPS']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['ISPSKPS']]}" >
+                            <apex:selectOptions value="{!NSVUItems}"/>
+                        </apex:selectRadio>
                     </div>
                 </div>
+                <!--end q3-->
                 
-                <!--Completion status control-->
+                <!--4.-->
                 <div class="form-group">
-                    <label class="control-label col-md-2 col-md-offset-8">Complete?</label>
+                    <!--q4 question-->
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">4.</span>
+                        Behavior problems at home or community (i.e., Violent or aggressive behavior; breaking rules, fighting, destroying property, or other dangerous or illegal behavior)
+                    </label>
+                    <!--q4 answer choices-->
+                    <div class="col-md-6 col-lg-6">
+                        <apex:selectRadio styleClass="radio-list" id="ISPBEHH__c" value="{!form.obj[bfVariableMap['ISPBEHH']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['ISPBEHH']]}" >
+                            <apex:selectOptions value="{!NSVUItems}"/>
+                        </apex:selectRadio>
+                    </div>
+                </div>
+                <!--end q4-->
+                
+                <!--5.-->
+                <div class="form-group">
+                    <!--q5 question-->
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">5.</span>
+                        Suicidality (i.e., Thinking about killing himself/herself or attempting to do so)
+                    </label>
+                    <!--q5 answer choices-->
+                    <div class="col-md-6 col-lg-6">
+                        <apex:selectRadio styleClass="radio-list" id="ISPSUIC__c" value="{!form.obj[bfVariableMap['ISPSUIC']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['ISPSUIC']]}" onChange="suicideModule()" >
+                            <apex:selectOptions value="{!NSVUItems}"/>
+                        </apex:selectRadio>
+                    </div>
+                </div>
+                <!--end q5-->                
+                
+                <!--6.-->
+                <div class="form-group">
+                    <!--q6 question-->
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">6.</span>
+                        Other self-injurious behaviors (i.e., Cutting him/herself, pulling out his/her own hair)
+                    </label>
+                    <!--q6 answer choices-->
+                    <div class="col-md-6 col-lg-6">
+                        <apex:selectRadio styleClass="radio-list" id="ISPSINJ__c" value="{!form.obj[bfVariableMap['ISPSINJ']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['ISPSINJ']]}" >
+                            <apex:selectOptions value="{!NSVUItems}"/>
+                        </apex:selectRadio>
+                    </div>
+                </div>
+                <!--end q6-->
+                
+                <!--7.-->
+                <div class="form-group">
+                    <!--q7 question-->
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">7.</span>
+                        Developmentally inappropriate sexualized behaviors (i.e., Saying or doing things about sex that children his/her age do not usually know or do)
+                    </label>
+                    <!--q7 answer choices-->
+                    <div class="col-md-6 col-lg-6">
+                        <apex:selectRadio styleClass="radio-list" id="ISPSXBE__c" value="{!form.obj[bfVariableMap['ISPSXBE']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['ISPSXBE']]}" >
+                            <apex:selectOptions value="{!NSVUItems}"/>
+                        </apex:selectRadio>
+                    </div>
+                </div>
+                <!--end q7-->
+                
+                <!--8.-->
+                <div class="form-group">
+                    <!--q8 question-->
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">8.</span>
+                        Alcohol use (i.e., Use of alcohol)
+                    </label>
+                    <!--q8 answer choices-->
+                    <div class="col-md-6 col-lg-6">
+                        <apex:selectRadio styleClass="radio-list" id="ISPALC__c" value="{!form.obj[bfVariableMap['ISPALC']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['ISPALC']]}" >
+                            <apex:selectOptions value="{!NSVUItems}"/>
+                        </apex:selectRadio>
+                    </div>
+                </div>
+                <!--end q8-->
+                
+                <!--9.-->
+                <div class="form-group">
+                    <!--q9 question-->
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">9.</span>
+                        Substance use (i.e., Use of illicit drugs or misuse of prescription medication)
+                    </label>
+                    <!--q9 answer choices-->
+                    <div class="col-md-6 col-lg-6">
+                        <apex:selectRadio styleClass="radio-list" id="ISPSA__c" value="{!form.obj[bfVariableMap['ISPSA']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['ISPSA']]}" >
+                            <apex:selectOptions value="{!NSVUItems}"/>
+                        </apex:selectRadio>
+                    </div>
+                </div>
+                <!--end q9-->
+                
+                <!--10.-->
+                <div class="form-group">
+                    <!--q10 question-->
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">10.</span>
+                        Attachment problems (i.e., Difficulty forming and maintaining trusting relationships with other people)
+                    </label>
+                    <!--q10 answer choices-->
+                    <div class="col-md-6 col-lg-6">
+                        <apex:selectRadio styleClass="radio-list" id="ISPATT__c" value="{!form.obj[bfVariableMap['ISPATT']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['ISPATT']]}" >
+                            <apex:selectOptions value="{!NSVUItems}"/>
+                        </apex:selectRadio>
+                    </div>
+                </div>
+                <!--end q10-->
+                
+                <!--11.-->
+                <div class="form-group">
+                    <!--q11 question-->
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">11.</span>
+                        Criminal activity (i.e., Activities that are illegal, and/or that have resulted in being stopped by the police or arrested)
+                    </label>
+                    <!--q11 answer choices-->
+                    <div class="col-md-6 col-lg-6">
+                        <apex:selectRadio styleClass="radio-list" id="ISPCRIM__c" value="{!form.obj[bfVariableMap['ISPCRIM']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['ISPCRIM']]}"  onChange="criminalModule()">
+                            <apex:selectOptions value="{!NSVUItems}"/>
+                        </apex:selectRadio>
+                    </div>
+                </div>
+                <!--end q11-->
+                
+                <!--12.-->
+                <div class="form-group">
+                    <!--q12 question-->
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">12.</span>
+                        Running away from home (i.e., Staying away for at least one night)
+                    </label>
+                    <!--q12 answer choices-->
+                    <div class="col-md-6 col-lg-6">
+                        <apex:selectRadio styleClass="radio-list" id="ISPRUN__c" value="{!form.obj[bfVariableMap['ISPRUN']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['ISPRUN']]}" >
+                            <apex:selectOptions value="{!NSVUItems}"/>
+                        </apex:selectRadio>
+                    </div>
+                </div>
+                <!--end q12-->
+                
+                <!--13.-->
+                <div class="form-group">
+                    <!--q13 question-->
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">13.</span>
+                        Commercial sexual exploitation (i.e., Exchanging sex for money, drugs or other resources, prostitution)
+                    </label>
+                    <!--q13 answer choices-->
+                    <div class="col-md-6 col-lg-6">
+                        <apex:selectRadio styleClass="radio-list" id="ISPCSA__c" value="{!form.obj[bfVariableMap['ISPCSA']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['ISPCSA']]}" >
+                            <apex:selectOptions value="{!NSVUItems}"/>
+                        </apex:selectRadio>
+                    </div>
+                </div>
+                <!--end q13-->
+                
+                <!--14.-->
+                <div class="form-group">
+                    <!--q14 question-->
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">14.</span>
+                        Child has shown signs of an eating disorder (i.e., Anorexia, Binge Eating, and/or Bulimia)
+                    </label>
+                    <!--q14 answer choices-->
+                    <div class="col-md-6 col-lg-6">
+                        <apex:selectRadio styleClass="radio-list" id="ISPED__c" value="{!form.obj[bfVariableMap['ISPED']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['ISPED']]}" >
+                            <apex:selectOptions value="{!NSVUItems}"/>
+                        </apex:selectRadio>
+                    </div>
+                </div>
+                <!--end q14-->
+                
+                <!--15.-->
+                <div class="form-group">
+                    <!--q15 question-->
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">15.</span>
+                        Child has other medical problems or disabilities (i.e., Chronic or recurrent condition that affects the child’s ability to function)
+                    </label>
+                    <!--q15 answer choices-->
+                    <div class="col-md-6 col-lg-6">
+                        <apex:selectRadio styleClass="radio-list" id="ISPDISA__c" value="{!form.obj[bfVariableMap['ISPDISA']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['ISPDISA']]}" >
+                            <apex:selectOptions value="{!NSVUItems}"/>
+                        </apex:selectRadio>
+                    </div>
+                </div>
+                <!--end q15-->
+                
+                <!--Suicide module, conditional-->
+                <div class="alert alert-info skip-suicide">
+                    <strong>Suicide Detail:</strong> <br>Please complete if the answer to question 5 above is "Somewhat" or "Very much."</br>
+                </div>
+                
+                <!--16. Suicidal talk-->
+                <div class="skip-suicide form-group">
+                    <!--q16 question-->
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">16.</span>
+                        Has the child ever talked about killing themselves (suicide)?
+                    </label>
+                    <!--q16 answer choices-->
+                    <div class="col-md-3 col-lg-3">
+                        <apex:selectList id="SUITALK__c"  styleClass="form-control input-sm skip-element-SUITALK"  value="{!form.obj[bfVariableMap['SUITALK']]}" title="{!form.obj[bfVariableMap['SUITALK']]}" size="1" onChange="skipLogic('SUITALK',this.value)">
+                            <apex:selectOptions value="{!NYUOptionWithBlank}"/>
+                        </apex:selectList>
+                    </div>
+                </div> 
+
+                <!--Conditional, if child has talked about suicide, was it in the past 30 days?-->
+                <div class="skipContent  skip-SUTAMO form-group">
+                    <!--conditional question-->
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr"/>
+                        In the past 30 days, has the child talked about committing suicide?
+                    </label>
+                    <!--conditional answer choices-->
+                    <div class="skipContent skip-suicide skip-SUTAMO col-md-3 col-lg-3">
+                        <apex:selectList id="SUTAMO__c" styleClass="form-control input-sm skip-element-SUTAMO" value="{!form.obj[bfVariableMap['SUTAMO']]}" size="1">   
+                            <apex:selectOptions value="{!NYUOptionWithBlank}"/> 
+                        </apex:selectList>
+                    </div>
+                </div>
+                <!--end conditional-->
+
+                <!--end q16-->
+        
+                <!--17. Suicide attempt-->
+                <div class="skip-suicide form-group">
+                    <!--q17 question-->
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">17.</span>
+                        Has the child ever attempted suicide?
+                    </label>
+                    <!--q17 answer choices-->
+                    <div class="col-md-3 col-lg-3">
+                        <apex:selectList id="SUIATT__c" styleClass="form-control input-sm skip-element-SUIATT" value="{!form.obj[bfVariableMap['SUIATT']]}" title="{!form.obj[bfVariableMap['SUIATT']]}" size="1" onChange="skipLogic('SUIATT',this.value)">
+                            <apex:selectOptions value="{!NYUOptionWithBlank}"/>
+                        </apex:selectList>
+                    </div>
+                </div>
+                <!--Conditional, if child has talked about suicide, was it in the past 30 days?-->
+                <div class="skipContent  skip-SUATMO form-group">
+                    <!--conditional question-->
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr"/>
+                        In the past 30 days, has the child attempted suicide?
+                    </label>
+                    <!--conditional answer choices-->
+                    <div class="skipContent skip-suicide skip-SUATMO col-md-3 col-lg-3">
+                        <apex:selectList id="SUATMO__c" styleClass="form-control input-sm skip-element-SUATMO" value="{!form.obj[bfVariableMap['SUATMO']]}" size="1">   
+                            <apex:selectOptions value="{!NYUOptionWithBlank}"/> 
+                        </apex:selectList>
+                    </div>
+                </div>
+                <!--end conditional-->   
+                <!--end q17-->
+                <!--end suicide module-->
+                                
+                <!--criminal module, conditional-->
+                <div class="alert alert-info skip-criminal" >
+                    <strong>Criminal Activity Detail:</strong> <br>Please complete if the answer to question 11 above is "Somewhat" or "Very much."</br>
+                </div>
+                
+                <!--18. Criminal Activity-->
+                <div class="skip-criminal form-group">
+                    <!--q18 question-->
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">18.</span>
+                        In the past 30 days, how many times have you [has your child] been arrested?                        
+                    </label>
+                    <!--q18 response-->
+                    <div class=" col-md-6 col-lg-6">
+                        <div class="skip-element-ISPCRSP form-group no-border-bottom no-space-bottom">
+                            <label class="skip-element-ISPCRSP col-md-3 col-lg-3 control-label">
+                                Times:
+                            </label>
+                            <div class="col-lg-6 col-md-6 skip-element-ISPCRSP ">
+                                <apex:inputField styleClass=" form-control input-sm" id="ISPCRSP__c" value="{!form.obj[bfVariableMap['ISPCRSP']]}" />
+                            </div>
+                        </div>
+                        <!--q18 refused/unknown-->
+                        <div class="form-group no-border-bottom no-space-bottom">
+                            <div class="col-lg-6 col-md-6 col-lg-offset-6 col-md-offset-6">
+                                <apex:selectRadio id="ISPCRRU__c" styleClass="radio-list radio-list-inline" value="{!form.obj[bfVariableMap['ISPCRRU']]}"  onChange="skipLogic('ISPCRRU', this.value)" >
+                                    <apex:selectOptions value="{!RefUnkItems}" /> 
+                                </apex:selectRadio>
+                            </div>
+                        </div>
+                    </div>      
+                </div>                
+                <!--end criminal module-->
+
+                <!--Completion status control-->
+                <div class="form-group no-border-bottom no-space-bottom">
+                    <label class="control-label col-md-2 col-md-offset-8 text-right">Complete?</label>
                     <div class="col-md-2">
-                        <apex:selectList id="STATUS_INSDOMENV__c" styleClass="pull-right form-control input-sm auto-width-inline" value="{!form.obj[bfVariableMap['STATUS']]}" size="1">
+                        <apex:selectList id="STATUS_INSDOMENV__c" styleClass="pull-right form-control input-sm" value="{!form.obj[bfVariableMap['STATUS']]}" size="1">
                             <apex:selectOption itemValue="Incomplete" itemLabel="Incomplete"/>
                             <apex:selectOption itemValue="Complete" itemLabel="Complete"/>
                         </apex:selectList> 
@@ -309,14 +398,11 @@
             </apex:pageBlock><!--end insdomenv pageBlock-->
             
         </apex:form>
-        <!--end form content-->
+<!--end form content-->
+
+    <!--citation information footer-->    
+    <c:cimiFormFooter formElement="{!form}"/>    
         
     </div>
-    
-    <!--citation information footer-->
-    <p class="footer" style="text-align:center ">
-        <i>This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - Baseline - CRF Version 6 2014
-        </i>
-    </p>
-    
+        
 </apex:page>

@@ -181,6 +181,25 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>BBSLCTREATMENT__c</fullName>
+        <description>1. Is this child receiving a treatment from a therapist participating in the breakthrough series or learning collaborative for that treatment?</description>
+        <externalId>false</externalId>
+        <label>BBSLCTREATMENT</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>BCBISASSM__c</fullName>
         <defaultValue>false</defaultValue>
         <description>Child receives assessment</description>
@@ -999,6 +1018,29 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>BCEPSY__c</fullName>
+        <description>Psychotic Disorder</description>
+        <externalId>false</externalId>
+        <label>BCEPSY</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>BCEPTSD__c</fullName>
         <description>Post traumatic stress disorder</description>
         <externalId>false</externalId>
@@ -1371,6 +1413,15 @@
         <label>BDMOSOC</label>
         <trackHistory>false</trackHistory>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>BDOV__c</fullName>
+        <externalId>false</externalId>
+        <formula>Background_ID__r.BDOV__c</formula>
+        <label>BDOV</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
     </fields>
     <fields>
         <fullName>BDSECOG__c</fullName>
@@ -1862,7 +1913,7 @@
     </fields>
     <fields>
         <fullName>BISPCSA__c</fullName>
-        <description>Commercial Sexual Acts</description>
+        <description>Commercial sexual exploitation</description>
         <externalId>false</externalId>
         <label>BISPCSA</label>
         <picklist>
@@ -5386,25 +5437,6 @@
         <type>Picklist</type>
     </fields>
     <fields>
-        <fullName>BSLCTREATMENT__c</fullName>
-        <description>1. Is this child receiving a treatment from a therapist participating in the breakthrough series or learning collaborative for that treatment?</description>
-        <externalId>false</externalId>
-        <label>BSLCTREATMENT</label>
-        <picklist>
-            <picklistValues>
-                <fullName>0</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>1</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
-        <trackHistory>false</trackHistory>
-        <type>Picklist</type>
-    </fields>
-    <fields>
         <fullName>BSLEEP__c</fullName>
         <description>Sleep Problems</description>
         <externalId>false</externalId>
@@ -6508,9 +6540,9 @@
         <type>Picklist</type>
     </fields>
     <fields>
-        <fullName>BTXCOMP__c</fullName>
+        <fullName>BTXCOMPL__c</fullName>
         <externalId>false</externalId>
-        <label>BTXCOMP</label>
+        <label>BTXCOMPL</label>
         <picklist>
             <picklistValues>
                 <fullName>0</fullName>
@@ -6610,6 +6642,18 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Background_ID__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Background ID</label>
+        <referenceTo>DS_Background_Family_Info_B__c</referenceTo>
+        <relationshipLabel>DS Functioning Forms B</relationshipLabel>
+        <relationshipName>DS_Functioning_Forms_B</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Client_ID__c</fullName>
         <externalId>false</externalId>
         <formula>Client__r.Name</formula>
@@ -6632,16 +6676,6 @@
         <trackHistory>false</trackHistory>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
-    </fields>
-    <fields>
-        <fullName>FORM__c</fullName>
-        <externalId>false</externalId>
-        <label>FORM</label>
-        <length>50</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <fields>
         <fullName>SECTION__c</fullName>
@@ -6816,29 +6850,31 @@
         <trackHistory>false</trackHistory>
         <type>Picklist</type>
     </fields>
-    <fields>
-        <fullName>STATUS__c</fullName>
-        <externalId>false</externalId>
-        <label>STATUS</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Incomplete</fullName>
-                <default>true</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
-        <trackHistory>false</trackHistory>
-        <type>Picklist</type>
-    </fields>
     <label>DS Functioning Forms B</label>
     <listViews>
         <fullName>All</fullName>
         <filterScope>Everything</filterScope>
         <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Servrec</fullName>
+        <columns>Client__c</columns>
+        <columns>STATUS_SERVREC__c</columns>
+        <columns>BOSINPSY__c</columns>
+        <columns>BOSRES__c</columns>
+        <columns>BOSDET__c</columns>
+        <columns>BOSGROUP__c</columns>
+        <columns>BOSTXFOS__c</columns>
+        <columns>BOSPROB__c</columns>
+        <columns>BOSDAYTR__c</columns>
+        <columns>BOSCASMG__c</columns>
+        <columns>BOSINHME__c</columns>
+        <columns>BOSOUTPS__c</columns>
+        <columns>BOSPRIMC__c</columns>
+        <columns>BOSSCHCN__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>Servrec</label>
     </listViews>
     <nameField>
         <label>DS Functioning Forms B Name</label>
@@ -6848,6 +6884,49 @@
     <pluralLabel>DS Functioning Forms B</pluralLabel>
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Bis_date_completed_cannot_be_future</fullName>
+        <active>true</active>
+        <description>Date can&apos;t be greater than today.</description>
+        <errorConditionFormula>BCBISCODT__c &gt; TODAY()</errorConditionFormula>
+        <errorDisplayField>BCBISCODT__c</errorDisplayField>
+        <errorMessage>Date cannot be in the future.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Bis_date_left_cannot_be_before_start_dt</fullName>
+        <active>true</active>
+        <errorConditionFormula>BCBISLFDT__c &gt;  BCBISTCDT__c</errorConditionFormula>
+        <errorDisplayField>BCBISLFDT__c</errorDisplayField>
+        <errorMessage>Date client left treatment cannot be before date treatment started.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Bis_date_left_cannot_be_future</fullName>
+        <active>true</active>
+        <errorConditionFormula>BCBISLFDT__c &gt; TODAY()</errorConditionFormula>
+        <errorDisplayField>BCBISLFDT__c</errorDisplayField>
+        <errorMessage>Date cannot be in the future.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Bis_date_start_cannot_be_future</fullName>
+        <active>true</active>
+        <errorConditionFormula>BCBISTCDT__c &gt; TODAY()</errorConditionFormula>
+        <errorDisplayField>BCBISTCDT__c</errorDisplayField>
+        <errorMessage>Date cannot be in the future.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Bis_date_started_cannot_be_before_birth</fullName>
+        <active>true</active>
+        <errorConditionFormula>Client__r.DOB1__c &gt; BCBISTCDT__c</errorConditionFormula>
+        <errorDisplayField>BCBISTCDT__c</errorDisplayField>
+        <errorMessage>Date cannot be before date of birth.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Bis_dt_completed_cannot_be_before_start</fullName>
+        <active>true</active>
+        <errorConditionFormula>BCBISCODT__c  &gt; BCBISTCDT__c</errorConditionFormula>
+        <errorDisplayField>BCBISCODT__c</errorDisplayField>
+        <errorMessage>Date treatment completed cannot be before date treatment started.</errorMessage>
+    </validationRules>
     <validationRules>
         <fullName>Bis_must_indicate_treatment_component</fullName>
         <active>true</active>
@@ -6883,10 +6962,52 @@ ISPICKVAL( BCBISRECV__c, &apos;1&apos;)&amp;&amp;
         <errorMessage>Please specify the treatment component.</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Bslc_date_completed_cannot_be_future</fullName>
+        <active>true</active>
+        <errorConditionFormula>BTXCPDT__c&gt;TODAY()</errorConditionFormula>
+        <errorDisplayField>BTXCPDT__c</errorDisplayField>
+        <errorMessage>Date cannot be in the future.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Bslc_date_left_cannot_be_before_start_dt</fullName>
+        <active>true</active>
+        <errorConditionFormula>BTXSTDT__c &gt; BTXLFTDT__c</errorConditionFormula>
+        <errorDisplayField>BTXLFTDT__c</errorDisplayField>
+        <errorMessage>Date client left treatment cannot be before date treatment started.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Bslc_date_left_cannot_be_future</fullName>
+        <active>true</active>
+        <errorConditionFormula>BTXLFTDT__c&gt;TODAY()</errorConditionFormula>
+        <errorDisplayField>BTXLFTDT__c</errorDisplayField>
+        <errorMessage>Date cannot be in the future.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Bslc_date_start_cannot_be_future</fullName>
+        <active>true</active>
+        <errorConditionFormula>BTXSTDT__c&gt;TODAY()</errorConditionFormula>
+        <errorDisplayField>BTXSTDT__c</errorDisplayField>
+        <errorMessage>Date cannot be in the future.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Bslc_date_started_cannot_be_before_birth</fullName>
+        <active>true</active>
+        <errorConditionFormula>Client__r.DOB1__c&gt; BTXSTDT__c</errorConditionFormula>
+        <errorDisplayField>BTXSTDT__c</errorDisplayField>
+        <errorMessage>Date cannot be before date of birth.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Bslc_dt_completed_cannot_be_before_start</fullName>
+        <active>true</active>
+        <errorConditionFormula>BTXSTDT__c &gt;  BTXCPDT__c</errorConditionFormula>
+        <errorDisplayField>BTXCPDT__c</errorDisplayField>
+        <errorMessage>Date treatment completed cannot be before date treatment started.</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Clineval_must_indicate_primary</fullName>
         <active>true</active>
-        <description>&quot;If OTHER selected BCEPRIM=1, this must be completed</description>
-        <errorConditionFormula>ISPICKVAL(BCEPRIM__c , &apos;1&apos;) &amp;&amp; ISBLANK(BCEPRIMSP__c)</errorConditionFormula>
+        <description>&quot;If OTHER selected BCEPRIM=98, this must be completed</description>
+        <errorConditionFormula>ISPICKVAL(BCEPRIM__c , &apos;98&apos;) &amp;&amp; ISBLANK(BCEPRIMSP__c)</errorConditionFormula>
         <errorDisplayField>BCEPRIMSP__c</errorDisplayField>
         <errorMessage>Please indicate the primary problem/symptom/disorder.</errorMessage>
     </validationRules>
@@ -6913,6 +7034,14 @@ ISPICKVAL( BCBISRECV__c, &apos;1&apos;)&amp;&amp;
         <errorConditionFormula>ISPICKVAL(BSUIATT__c , &apos;1&apos;) &amp;&amp; ISPICKVAL(BSUATMO__c , &apos;&apos;)</errorConditionFormula>
         <errorDisplayField>BSUATMO__c</errorDisplayField>
         <errorMessage>You MUST indicate if the child has attempted suicide in the past 30 days.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Indsev_must_not_blank_if_refused_unknown</fullName>
+        <active>true</active>
+        <description>Neither &quot;Refused&quot; (96) nor &quot;Unknown&quot; (99) can be selected if anything is entered for BISPCRSP</description>
+        <errorConditionFormula>(BISPCRSP__c != null) &amp;&amp; NOT(ISPICKVAL(BISPCRRU__c, &apos;&apos;))</errorConditionFormula>
+        <errorDisplayField>BISPCRSP__c</errorDisplayField>
+        <errorMessage>Number of times and Refused or Unknown can not be indicated.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Noms_must_specify_how_often_used_other</fullName>
@@ -6943,7 +7072,7 @@ ISPICKVAL( BCBISRECV__c, &apos;1&apos;)&amp;&amp;
         <active>true</active>
         <description>If OTHER selected (BOSTOTH=1), this must be completed</description>
         <errorConditionFormula>BOSTOTH__c = true &amp;&amp;  ISBLANK(BOSTOSP__c)</errorConditionFormula>
-        <errorDisplayField>BOSTOTH__c</errorDisplayField>
+        <errorDisplayField>BOSTOSP__c</errorDisplayField>
         <errorMessage>Please specify other therapy received in the past 30 days</errorMessage>
     </validationRules>
 </CustomObject>

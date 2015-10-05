@@ -49,11 +49,20 @@
     </fieldSets>
     <fields>
         <fullName>BDOAPTSD__c</fullName>
-        <defaultValue>TODAY()</defaultValue>
         <description>PTSD date of administration</description>
         <externalId>false</externalId>
         <label>BDOAPTSD</label>
         <required>true</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>BDOV__c</fullName>
+        <externalId>false</externalId>
+        <formula>Background_ID__r.BDOV__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>BDOV</label>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <type>Date</type>
     </fields>
@@ -545,28 +554,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>BPTSECTIONN__c</fullName>
-        <externalId>false</externalId>
-        <label>BPTSECTIONN</label>
-        <precision>3</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>BPTSECTION__c</fullName>
-        <externalId>false</externalId>
-        <formula>IF(BPTSECTIONN__c = 0, &apos;Baseline&apos;, &apos;Follow-up &apos; &amp; TEXT(BPTSECTIONN__c))</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>BPTSECTION</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>BPTSEMN__c</fullName>
         <externalId>false</externalId>
         <formula>IF( BPTSECN__c &gt;= 2, 1, 0 )</formula>
@@ -702,27 +689,9 @@
         <type>Picklist</type>
     </fields>
     <fields>
-        <fullName>BPTSFP2__c</fullName>
-        <externalId>false</externalId>
-        <label>BPTSFP2</label>
-        <picklist>
-            <picklistValues>
-                <fullName>0</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>1</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
-        <trackHistory>false</trackHistory>
-        <type>Picklist</type>
-    </fields>
-    <fields>
         <fullName>BPTSFPC__c</fullName>
         <externalId>false</externalId>
-        <formula>MAX( VALUE(TEXT(BPTSFP1__c)) , VALUE(TEXT(BPTSFP2__c)) )  = 1</formula>
+        <formula>MAX( VALUE(TEXT(BPTSFP1__c)) )  = 1</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>BPTSFPC</label>
         <trackHistory>false</trackHistory>
@@ -1864,6 +1833,18 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Background_ID__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Background ID</label>
+        <referenceTo>DS_Background_Family_Info_B__c</referenceTo>
+        <relationshipLabel>DS PTSD CA B</relationshipLabel>
+        <relationshipName>DS_PTSD_CA_B</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Client_ID__c</fullName>
         <externalId>false</externalId>
         <formula>Client__r.Name</formula>
@@ -1888,17 +1869,6 @@
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
     <fields>
-        <fullName>FORM__c</fullName>
-        <defaultValue>&apos;DS_PTSD_CA&apos;</defaultValue>
-        <externalId>false</externalId>
-        <label>FORM</label>
-        <length>50</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>SECTION__c</fullName>
         <defaultValue>&apos;0&apos;</defaultValue>
         <externalId>false</externalId>
@@ -1912,7 +1882,7 @@
     <fields>
         <fullName>STATUS_PTSD_CA__c</fullName>
         <externalId>false</externalId>
-        <label>STATUS_PTSD_CA</label>
+        <label>STATUS PTSD CA</label>
         <picklist>
             <picklistValues>
                 <fullName>Incomplete</fullName>
@@ -1941,6 +1911,27 @@
     <pluralLabel>DS PTSD CA B</pluralLabel>
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>PTSD_date_cannot_be_before_BDOV</fullName>
+        <active>true</active>
+        <errorConditionFormula>BDOV__c &gt;  BDOAPTSD__c</errorConditionFormula>
+        <errorDisplayField>BDOAPTSD__c</errorDisplayField>
+        <errorMessage>Baseline PTSD-RI date of administration cannot be before Baseline date of visit.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PTSD_date_cannot_be_before_birth</fullName>
+        <active>true</active>
+        <errorConditionFormula>Client__r.DOB1__c &gt;  BDOAPTSD__c</errorConditionFormula>
+        <errorDisplayField>BDOAPTSD__c</errorDisplayField>
+        <errorMessage>Baseline date of administration cannot be before birth.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PTSD_date_cannot_be_future</fullName>
+        <active>true</active>
+        <errorConditionFormula>BDOAPTSD__c &gt; TODAY()</errorConditionFormula>
+        <errorDisplayField>BDOAPTSD__c</errorDisplayField>
+        <errorMessage>Enter a valid date.</errorMessage>
+    </validationRules>
     <validationRules>
         <fullName>PTSD_date_required</fullName>
         <active>true</active>

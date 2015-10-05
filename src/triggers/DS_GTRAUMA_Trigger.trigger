@@ -149,12 +149,14 @@ trigger DS_GTRAUMA_Trigger on DS_GTRAUMA__c (before insert, before update, after
 
   if(Trigger.isAfter) { 
 
-    ut.updateSummaryStatus(Trigger.new, 'DS_GTRAUMA', 'STATUS_GTRAUMA__c');
+    //ut.updateSummaryStatus(Trigger.new, 'DS_GTRAUMA', 'STATUS_GTRAUMA__c');
+      
+      ut.updateSummaryStatusForMergedObject(Trigger.new);
 
-    AuditTrail audit = new AuditTrail(Trigger.new, Trigger.old); 
+    /*AuditTrail audit = new AuditTrail(Trigger.new, Trigger.old); 
   
     if(Trigger.isInsert) { audit.generateLog(Trigger.new, Trigger.old); }
-    if(Trigger.isUpdate) { audit.generateLog(Trigger.new, Trigger.old); }
+    if(Trigger.isUpdate) { audit.generateLog(Trigger.new, Trigger.old); }*/
 
   }
     

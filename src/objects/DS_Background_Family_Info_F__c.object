@@ -41,32 +41,7 @@
         <fullName>STATUS</fullName>
         <description>STATUS</description>
         <displayedFields>
-            <field>STATUS_INSDOMENV_F__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>STATUS_HEALTH__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>STATUS_INFO_F__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>STATUS_DOMENV__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>STATUS_MILITARY__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>STATUS_DEMO__c</field>
+            <field>STATUS_FOLLOWUPINFO__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
@@ -76,12 +51,58 @@
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
+            <field>STATUS_DEMO__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>STATUS_MILITARY__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
             <field>STATUS_REFIMM__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>STATUS_DOMENV__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>STATUS_HEALTH__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>STATUS_NCTSNTREAT__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
         <label>STATUS</label>
     </fieldSets>
+    <fields>
+        <fullName>BDOV__c</fullName>
+        <externalId>false</externalId>
+        <formula>Baseline_ID__r.BDOV__c</formula>
+        <label>BDOV</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Baseline_ID__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Baseline ID</label>
+        <referenceTo>DS_Background_Family_Info_B__c</referenceTo>
+        <relationshipLabel>DS Background Family Info F</relationshipLabel>
+        <relationshipName>DS_Background_Family_Info_F</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
     <fields>
         <fullName>Client_ID__c</fullName>
         <externalId>false</externalId>
@@ -105,48 +126,6 @@
         <trackHistory>false</trackHistory>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
-    </fields>
-    <fields>
-        <fullName>ETSTATSP__c</fullName>
-        <description>3. End of treatment status is Other Specified</description>
-        <externalId>false</externalId>
-        <label>ETSTATSP</label>
-        <length>50</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>ETSTAT__c</fullName>
-        <description>3. End of treatment status</description>
-        <externalId>false</externalId>
-        <label>ETSTAT</label>
-        <picklist>
-            <picklistValues>
-                <fullName>1</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>2</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>3</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>4</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>98</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
-        <trackHistory>false</trackHistory>
-        <type>Picklist</type>
     </fields>
     <fields>
         <fullName>FABSENTUX__c</fullName>
@@ -635,6 +614,48 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>FETSTATSP__c</fullName>
+        <description>3. End of treatment status is Other Specified</description>
+        <externalId>false</externalId>
+        <label>FETSTATSP</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FETSTAT__c</fullName>
+        <description>3. End of treatment status</description>
+        <externalId>false</externalId>
+        <label>FETSTAT</label>
+        <picklist>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>98</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>FFAMRES__c</fullName>
         <description>6. Please rate your family&apos;s resources</description>
         <externalId>false</externalId>
@@ -725,10 +746,11 @@
         <description>13. Height Feet</description>
         <externalId>false</externalId>
         <label>FHEIGHFT</label>
-        <length>3</length>
+        <precision>2</precision>
         <required>false</required>
+        <scale>0</scale>
         <trackHistory>false</trackHistory>
-        <type>Text</type>
+        <type>Number</type>
         <unique>false</unique>
     </fields>
     <fields>
@@ -736,10 +758,11 @@
         <description>13. Height Inches</description>
         <externalId>false</externalId>
         <label>FHEIGHIN</label>
-        <length>3</length>
+        <precision>2</precision>
         <required>false</required>
+        <scale>0</scale>
         <trackHistory>false</trackHistory>
-        <type>Text</type>
+        <type>Number</type>
         <unique>false</unique>
     </fields>
     <fields>
@@ -1213,6 +1236,45 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>FHOVERALL__c</fullName>
+        <description>How would you rate your [your child’s] overall health right now?</description>
+        <externalId>false</externalId>
+        <label>FHOVERALL</label>
+        <picklist>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>96</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>FHSRED__c</fullName>
         <defaultValue>false</defaultValue>
         <description>3. Emergency Department is the service</description>
@@ -1271,29 +1333,6 @@
         <description>3. None is the service</description>
         <externalId>false</externalId>
         <label>FHSR</label>
-        <picklist>
-            <picklistValues>
-                <fullName>0</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>1</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>99</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
-        <trackHistory>false</trackHistory>
-        <type>Picklist</type>
-    </fields>
-    <fields>
-        <fullName>FHSTAT__c</fullName>
-        <description>11. Has the child&apos;s health status changed since the last CIMI assessment?</description>
-        <externalId>false</externalId>
-        <label>FHSTAT</label>
         <picklist>
             <picklistValues>
                 <fullName>0</fullName>
@@ -2801,7 +2840,7 @@
     </fields>
     <fields>
         <fullName>FMSTAT__c</fullName>
-        <description>10. Has the child&apos;s military status changed since the last CIMI assessment?</description>
+        <description>11. Have you [has your child] or someone in your [your child&apos;s] family experienced any military-associated life changes since the last CIMI assessment (e.g., deployment, injury, reintegration, etc.)?</description>
         <externalId>false</externalId>
         <label>FMSTAT</label>
         <picklist>
@@ -2861,6 +2900,15 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>FMSTSUB__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Substance use or abuse</description>
+        <externalId>false</externalId>
+        <label>FMSTSUB</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>FMSTSUIC__c</fullName>
         <defaultValue>false</defaultValue>
         <description>5. Service members experienced Stress symptoms: Suicidal thoughts or attempts</description>
@@ -2886,6 +2934,29 @@
         <label>FMST</label>
         <trackHistory>false</trackHistory>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FNEWTR__c</fullName>
+        <description>4.  Has any new trauma been experienced?</description>
+        <externalId>false</externalId>
+        <label>FNEWTR</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
     </fields>
     <fields>
         <fullName>FNOMHOUSESP__c</fullName>
@@ -3138,16 +3209,6 @@
         <externalId>false</externalId>
         <label>FNZCODESP</label>
         <length>5</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>FORM__c</fullName>
-        <externalId>false</externalId>
-        <label>FORM</label>
-        <length>50</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <type>Text</type>
@@ -3428,6 +3489,25 @@
             </picklistValues>
             <picklistValues>
                 <fullName>99</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FPRETR__c</fullName>
+        <description>5.  Has any previously experienced trauma been revealed?</description>
+        <externalId>false</externalId>
+        <label>FPRETR</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -3719,6 +3799,1528 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>FTXACCUP__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>8.  PSI = Acupuncture</description>
+        <externalId>false</externalId>
+        <label>FTXACCUP</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXADVOC__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>8.  PSI = Advocacy activities</description>
+        <externalId>false</externalId>
+        <label>FTXADVOC</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXAFCBT__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>6.  SIP = Alternatives for Families: A Cognitive Behavioral Therapy (AF-CBT)</description>
+        <externalId>false</externalId>
+        <label>FTXAFCBT</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXARC__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>6.  SIP = Attachment, Self-Regulation, and Competence (ARC)</description>
+        <externalId>false</externalId>
+        <label>FTXARC</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXATTACH__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>4.  Gen modality of treatment = Attachment-based therapy</description>
+        <externalId>false</externalId>
+        <label>FTXATTACH</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXBEHATX__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>4.  Gen modality of treatment = Behavioral therapy</description>
+        <externalId>false</externalId>
+        <label>FTXBEHATX</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXBIS__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>6.  SIP = Trauma-Informed Brief Intervention Services (TIBIS)</description>
+        <externalId>false</externalId>
+        <label>FTXBIS</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXCARE__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>8.  PSI = Child-Adult Relationship Enhancement (CARE)</description>
+        <externalId>false</externalId>
+        <label>FTXCARE</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXCBITS__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>6.  SIP = Cognitive-Behavioral Intervention for Trauma in Schools (CBITS)</description>
+        <externalId>false</externalId>
+        <label>FTXCBITS</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXCBTSRI__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>6.  SIP = Combined Trauma-Focused Cognitive Behavioral Therapy(TF-CBT) and Selective Serotonin Reuptake Inhibitors (SSRI) Treatment</description>
+        <externalId>false</externalId>
+        <label>FTXCBTSRI</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXCDCP__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>8.  PSI = Child Development-Community Policing Program (CDCP)</description>
+        <externalId>false</externalId>
+        <label>FTXCDCP</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXCLINIC__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>3.  Treatment setting is Clinic</description>
+        <externalId>false</externalId>
+        <label>FTXCLINIC</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXCMTFT__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>6.  SIP = Culturally Modified Trauma-Focused Treatment (CM-TFT)</description>
+        <externalId>false</externalId>
+        <label>FTXCMTFT</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXCM__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>8.  PSI = Case management/ case coordination</description>
+        <externalId>false</externalId>
+        <label>FTXCM</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXCOGBEH__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>4.  Gen modality of treatment = Cognitive behavioral</description>
+        <externalId>false</externalId>
+        <label>FTXCOGBEH</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXCOGTX__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>4.  Gen modality of treatment = Cognitive therapy</description>
+        <externalId>false</externalId>
+        <label>FTXCOGTX</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXCOPE__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>8.  PSI = Community Outreach Program - Esperanza (COPE)</description>
+        <externalId>false</externalId>
+        <label>FTXCOPE</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXCOUNS__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>9.  Clinician/ Provider = Therapist/Counselor</description>
+        <externalId>false</externalId>
+        <label>FTXCOUNS</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXCPCGB__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>6.  SIP = Combined Parent Child Cognitive-Behavioral Therapy: Empowering Families Who Are at Risk for Physical Abuse</description>
+        <externalId>false</externalId>
+        <label>FTXCPCGB</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXCPP__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>6.  SIP = Child-Parent Psychotherapy</description>
+        <externalId>false</externalId>
+        <label>FTXCPP</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXCTTG__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>6.  SIP = Trauma and Grief Component Therapy for Adolescents (TGCT-A)</description>
+        <externalId>false</externalId>
+        <label>FTXCTTG</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXDAYPAR__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>3.  Treatment setting is Day treatment/partial hospitalization</description>
+        <externalId>false</externalId>
+        <label>FTXDAYPAR</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXDAYTX__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>4.  Gen modality of treatment = Day treatment or partial hospitalization</description>
+        <externalId>false</externalId>
+        <label>FTXDAYTX</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXDBTSP__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>6.  SIP = Adapted Dialectical Behavior Therapy for Special Population (DBT-SP)</description>
+        <externalId>false</externalId>
+        <label>FTXDBTSP</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXDEBR__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>8.  PSI = Debriefing</description>
+        <externalId>false</externalId>
+        <label>FTXDEBR</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXEMDR__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>6.  SIP = Eye Movement Desensitization and Reprocessing</description>
+        <externalId>false</externalId>
+        <label>FTXEMDR</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXEXTX__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>4.  Gen modality of treatment = Expressive therapies (Drawing, movement, theater)</description>
+        <externalId>false</externalId>
+        <label>FTXEXTX</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXFAMTX__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>4.  Gen modality of treatment = Family therapy</description>
+        <externalId>false</externalId>
+        <label>FTXFAMTX</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXFDTVIS__c</fullName>
+        <description>2.  Family Therapy, # visits specified.</description>
+        <externalId>false</externalId>
+        <label>FTXFDTVIS</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTXFDT__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>2.  Child has received Family or Dyadic therapy</description>
+        <externalId>false</externalId>
+        <label>FTXFDT</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXGHDAY__c</fullName>
+        <description>1.  Received treatment in Group Home, # days specified.</description>
+        <externalId>false</externalId>
+        <label>FTXGHDAY</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTXGH__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>1.  Received treatment in Group Home</description>
+        <externalId>false</externalId>
+        <label>FTXGH</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXGTADV__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>6.  SIP = Group Treatment for Children Affected by Domestic Violence (GTADV)</description>
+        <externalId>false</externalId>
+        <label>FTXGTADV</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXGTVIS__c</fullName>
+        <description>2.   Group Therapy, # visits specified.</description>
+        <externalId>false</externalId>
+        <label>FTXGTVIS</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTXGT__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>2.  Child has received Group Therapy</description>
+        <externalId>false</externalId>
+        <label>FTXGT</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXHOME__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>3.  Treatment setting is Home</description>
+        <externalId>false</externalId>
+        <label>FTXHOME</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXHONMAK__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>8.  PSI = Honoring Children, Making Relatives (HC-MR)</description>
+        <externalId>false</externalId>
+        <label>FTXHONMAK</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXHONMEN__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>8.  PSI = Honoring Children, Mending the Circle (HC-MC)</description>
+        <externalId>false</externalId>
+        <label>FTXHONMEN</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXHONRES__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>8.  PSI = Honoring Children, Respectful Ways (HC-RW)</description>
+        <externalId>false</externalId>
+        <label>FTXHONRES</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXHOSDAY__c</fullName>
+        <description>1.  Received treatment in Hospital, # days specified</description>
+        <externalId>false</externalId>
+        <label>FTXHOSDAY</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTXHOS__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>1.  Received treatment in Hospital.</description>
+        <externalId>false</externalId>
+        <label>FTXHOS</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXIFACES__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>8.  PSI = International Family Adult and Child Enhancement Services (IFACES)</description>
+        <externalId>false</externalId>
+        <label>FTXIFACES</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXIHS__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>4.  Gen modality of treatment = Intensive in-home services</description>
+        <externalId>false</externalId>
+        <label>FTXIHS</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXITCT__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>6.  SIP = Integrative Treatment of Complex Trauma (ITCT)</description>
+        <externalId>false</externalId>
+        <label>FTXITCT</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXITCVIS__c</fullName>
+        <description>2.  Individual therapy for Child, # visits specified</description>
+        <externalId>false</externalId>
+        <label>FTXITCVIS</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTXITC__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>2.  Received Individual Therapy for Child</description>
+        <externalId>false</externalId>
+        <label>FTXITC</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXITPVIS__c</fullName>
+        <description>2.  Individual therapy for Parent, # visits specified.</description>
+        <externalId>false</externalId>
+        <label>FTXITPVIS</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTXITP__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>2.  Received Individual Therapy for Parent</description>
+        <externalId>false</externalId>
+        <label>FTXITP</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXLEADCLSP__c</fullName>
+        <description>Please specify:</description>
+        <externalId>false</externalId>
+        <label>FTXLEADCLSP</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTXLEADCL__c</fullName>
+        <description>10.  Primary lead clinician/ provider</description>
+        <externalId>false</externalId>
+        <label>FTXLEADCL</label>
+        <picklist>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>7</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>8</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>9</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>10</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>11</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>12</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>13</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>14</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>98</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FTXLFSKLS__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>6.  SIP = Life Skills/Life Stories</description>
+        <externalId>false</externalId>
+        <label>FTXLFSKLS</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXMDEXT__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>9.  Clinician/ Provider = Physician Extender</description>
+        <externalId>false</externalId>
+        <label>FTXMDEXT</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXMENTOR__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>8.  PSI = Mentoring</description>
+        <externalId>false</externalId>
+        <label>FTXMENTOR</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXMFGVIS__c</fullName>
+        <description>2.  Multi-Family group therapy, # visits specified.</description>
+        <externalId>false</externalId>
+        <label>FTXMFGVIS</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTXMFG__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>2.  Received Multi-Family group therapy</description>
+        <externalId>false</externalId>
+        <label>FTXMFG</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXMMTT__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>6.  SIP = Trauma-Focused Coping (TFC)/ Multimodality Trauma Treatment (MMTT)</description>
+        <externalId>false</externalId>
+        <label>FTXMMTT</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXMODPRISP__c</fullName>
+        <description>Please specify:</description>
+        <externalId>false</externalId>
+        <label>FTXMODPRISP</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTXMODPRI__c</fullName>
+        <description>5.  Primary Gen Modality of Treatment</description>
+        <externalId>false</externalId>
+        <label>FTXMODPRI</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>7</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>8</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>9</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>10</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>11</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>12</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>13</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>14</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>15</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>16</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>17</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>18</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>19</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>20</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>21</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>22</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>98</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FTXMST__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>6.  SIP = Multi-systemic Treatment (MST)</description>
+        <externalId>false</externalId>
+        <label>FTXMST</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXNARTX__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>4.  Gen modality of treatment = Narrative therapy</description>
+        <externalId>false</externalId>
+        <label>FTXNARTX</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXNONE__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>4. General modality of treatment = None</description>
+        <externalId>false</externalId>
+        <label>FTXNONE</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXOCLIN__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>9.  Clinician/ Provider = Other Clinician</description>
+        <externalId>false</externalId>
+        <label>FTXOCLIN</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXOCLISP__c</fullName>
+        <description>9.  Clinician/ Provider = Other Clinician specified</description>
+        <externalId>false</externalId>
+        <label>FTXOCLISP</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTXOCT__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>9.  Clinician/ Provider = Occupational therapist</description>
+        <externalId>false</externalId>
+        <label>FTXOCT</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXOIDAY__c</fullName>
+        <description>1.  Received Other Inpatient treatment, # days specified</description>
+        <externalId>false</externalId>
+        <label>FTXOIDAY</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTXOITYP__c</fullName>
+        <description>1.  Other inpatient treatment, type specified.</description>
+        <externalId>false</externalId>
+        <label>FTXOITYP</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTXOI__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>1.  Received Other inpatient treatment</description>
+        <externalId>false</externalId>
+        <label>FTXOI</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXOMD__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>9.  Clinician/ Provider = Other Physician (MD)</description>
+        <externalId>false</externalId>
+        <label>FTXOMD</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXOP__c</fullName>
+        <description>2.  Has child received any outpatient therapy?</description>
+        <externalId>false</externalId>
+        <label>FTXOP</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FTXOTHMOD__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>4.  Gen modality of treatment = Other</description>
+        <externalId>false</externalId>
+        <label>FTXOTHMOD</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXOTMOSP__c</fullName>
+        <description>4.  Gen modality of treatment = Other Specified</description>
+        <externalId>false</externalId>
+        <label>FTXOTMOSP</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTXOTTYP__c</fullName>
+        <description>2.  Other Therapy, type specified</description>
+        <externalId>false</externalId>
+        <label>FTXOTTYP</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTXOTVIS__c</fullName>
+        <description>2.  Received Other Therapy, # visits specified.</description>
+        <externalId>false</externalId>
+        <label>FTXOTVIS</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTXOT__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>2.  Received Other Therapy</description>
+        <externalId>false</externalId>
+        <label>FTXOT</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXPARAPR__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>9.  Clinician/ Provider = Paraprofessional</description>
+        <externalId>false</externalId>
+        <label>FTXPARAPR</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXPARTR__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>4.  Gen modality of treatment = Parent training</description>
+        <externalId>false</externalId>
+        <label>FTXPARTR</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXPCIT__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>6.  SIP = Parent-Child Interaction Therapy (PCIT)</description>
+        <externalId>false</externalId>
+        <label>FTXPCIT</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXPDPT__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>4.  Gen modality of treatment = Psychodynamic therapy</description>
+        <externalId>false</externalId>
+        <label>FTXPDPT</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXPFA__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>8.  PSI = Psychological First Aid (PFA)</description>
+        <externalId>false</externalId>
+        <label>FTXPFA</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXPHARM__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>4.  Gen modality of treatment = Pharmacotherapy/ medication</description>
+        <externalId>false</externalId>
+        <label>FTXPHARM</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXPLAY__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>4.  Gen modality of treatment = Play therapy</description>
+        <externalId>false</externalId>
+        <label>FTXPLAY</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXPOTT__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>4.  Gen modality of treatment = Phase-oriented trauma treatment</description>
+        <externalId>false</externalId>
+        <label>FTXPOTT</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXPRISIPSP__c</fullName>
+        <description>Please specify:</description>
+        <externalId>false</externalId>
+        <label>FTXPRISIPSP</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTXPRISIP__c</fullName>
+        <description>7.  Primary Specific Intervention Protocol</description>
+        <externalId>false</externalId>
+        <label>FTXPRISIP</label>
+        <picklist>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>7</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>8</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>9</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>10</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>11</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>12</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>13</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>14</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>15</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>16</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>17</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>18</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>19</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>20</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>21</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>22</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>23</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>24</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>25</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>26</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>27</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>98</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FTXPSB__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>6. SIP = Children with Problematic Sexual Behavior Cognitive-Behavioral Treatment Program: School-age Program (PSB-CBT)</description>
+        <externalId>false</externalId>
+        <label>FTXPSB</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXPSIOTH__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>8.  PSI = Other</description>
+        <externalId>false</externalId>
+        <label>FTXPSIOTH</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXPSNONE__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>8. PSI = None</description>
+        <externalId>false</externalId>
+        <label>FTXPSNONE</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXPSOTSP__c</fullName>
+        <description>8.  PSI = Other PSI specified</description>
+        <externalId>false</externalId>
+        <label>FTXPSOTSP</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTXPSYANL__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>4.  Gen modality of treatment = Psychoanalysis</description>
+        <externalId>false</externalId>
+        <label>FTXPSYANL</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXPSYCHO__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>9.  Clinician/ Provider = Psychologist</description>
+        <externalId>false</externalId>
+        <label>FTXPSYCHO</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXPSYCST__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>9.  Clinician/ Provider = Psychiatrist</description>
+        <externalId>false</externalId>
+        <label>FTXPSYCST</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXPSYEDU__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>8.  PSI = Psycho-education</description>
+        <externalId>false</externalId>
+        <label>FTXPSYEDU</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXPTSMGT__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>8.  PSI = Posttraumatic Stress Management (PTSM)</description>
+        <externalId>false</externalId>
+        <label>FTXPTSMGT</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXRES__c</fullName>
+        <description>1.  Has child received any inpatient/residential treatment?</description>
+        <externalId>false</externalId>
+        <label>FTXRES</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FTXRLH__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>6.  SIP = Real Life Heroes (RLH)</description>
+        <externalId>false</externalId>
+        <label>FTXRLH</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXRN__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>9.  Clinician/ Provider =  Nurse (RN , LPN)</description>
+        <externalId>false</externalId>
+        <label>FTXRN</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXRTCDAY__c</fullName>
+        <description>1.  Residential Treatment Center # days specified</description>
+        <externalId>false</externalId>
+        <label>FTXRTCDAY</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTXRTC__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>1.  Received treatment in Residential Treatment Center</description>
+        <externalId>false</externalId>
+        <label>FTXRTC</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXSAFHAR__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>8.  PSI = Safe Harbor Program</description>
+        <externalId>false</externalId>
+        <label>FTXSAFHAR</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXSANCT__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>6.  SIP = Sanctuary Model</description>
+        <externalId>false</externalId>
+        <label>FTXSANCT</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXSCHBAS__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>4.  Gen modality of treatment = School-based treatment</description>
+        <externalId>false</externalId>
+        <label>FTXSCHBAS</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXSCHOOL__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>3.  Treatment setting is School</description>
+        <externalId>false</externalId>
+        <label>FTXSCHOOL</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXSCHSW__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>9.  Clinician/ Provider = School Social Worker</description>
+        <externalId>false</externalId>
+        <label>FTXSCHSW</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXSCLPSY__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>9.  Clinician Provider = School Psychologist</description>
+        <externalId>false</externalId>
+        <label>FTXSCLPSY</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXSELF__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>8.  PSI = Self-management/ Coaching</description>
+        <externalId>false</externalId>
+        <label>FTXSELF</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXSIOTSP__c</fullName>
+        <description>6.  SIP = Specifiy SIP Other</description>
+        <externalId>false</externalId>
+        <label>FTXSIOTSP</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTXSIPNO__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>6.  Specific Intervention Protocol (SIP) = No Protocol</description>
+        <externalId>false</externalId>
+        <label>FTXSIPNO</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXSIPOTH__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>6.  SIP = SIP Other</description>
+        <externalId>false</externalId>
+        <label>FTXSIPOTH</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXSMART__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>6.  SIP = Safety, Mentoring, Advocacy, Recovery, and Treatment (SMART)</description>
+        <externalId>false</externalId>
+        <label>FTXSMART</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXSOLFC__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>4.  Gen modality of treatment = Solution-focused therapy</description>
+        <externalId>false</externalId>
+        <label>FTXSOLFC</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXSOTHSP__c</fullName>
+        <description>3.  Treatment setting is Other, specified</description>
+        <externalId>false</externalId>
+        <label>FTXSOTHSP</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTXSOTH__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>3.  Treatment setting is Other</description>
+        <externalId>false</externalId>
+        <label>FTXSOTH</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXSPARCS__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>6.  SIP  = Structured Psychotherapy for Adolescents Responding to Chronic Stress (SPARCS)</description>
+        <externalId>false</externalId>
+        <label>FTXSPARCS</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXSST__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>4.  Gen modality of treatment = Social skills training</description>
+        <externalId>false</externalId>
+        <label>FTXSST</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXSTREET__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>8.  PSI = Streetwork Project</description>
+        <externalId>false</externalId>
+        <label>FTXSTREET</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXSTRESS__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>4.  Gen modality of treatment = Stress management/relaxation training</description>
+        <externalId>false</externalId>
+        <label>FTXSTRESS</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXSUPGRP__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>8.  PSI = Support Groups</description>
+        <externalId>false</externalId>
+        <label>FTXSUPGRP</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXSUPTX__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>4.  Gen modality of treatment = Supportive therapy</description>
+        <externalId>false</externalId>
+        <label>FTXSUPTX</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXSWTR__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>9.  Clinician/ Provider = Social Worker Trainee</description>
+        <externalId>false</externalId>
+        <label>FTXSWTR</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXSW__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>9.  Clinician/ Provider = Social Worker</description>
+        <externalId>false</externalId>
+        <label>FTXSW</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXTAP__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>8.  PSI = Assessment-Based Treatment for Traumatized Children: Trauma Assessment Pathway (TAP)</description>
+        <externalId>false</externalId>
+        <label>FTXTAP</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXTARGET__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>6.  SIP = Trauma Affect Regulation: Guidelines for Education and Therapy (TARGET)</description>
+        <externalId>false</externalId>
+        <label>FTXTARGET</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXTDBT__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>6.  SIP = Youth Dialectical Behavioral Therapy (YDBT)</description>
+        <externalId>false</externalId>
+        <label>FTXTDBT</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXTFCBT__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>6.  SIP = Trauma-Focused Cognitive Behavioral Therapy (TF-CBT)</description>
+        <externalId>false</externalId>
+        <label>FTXTFCBT</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXTGCBT__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>6.  SIP = Trauma-Focused Cognitive Behavioral Therapy for Childhood Traumatic Grief (TG-CBT)</description>
+        <externalId>false</externalId>
+        <label>FTXTGCBT</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXTHCAMP__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>8.  PSI = Therapeutic recreational activities including summer camp</description>
+        <externalId>false</externalId>
+        <label>FTXTHCAMP</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXTPEER__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>4.  Gen modality of treatment = Peer therapy</description>
+        <externalId>false</externalId>
+        <label>FTXTPEER</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXTRANL__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>9.  Clinician/ Provider = Translator/interpreter</description>
+        <externalId>false</externalId>
+        <label>FTXTRANL</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXTST__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>6.  SIP = Trauma System Therapy (TST)</description>
+        <externalId>false</externalId>
+        <label>FTXTST</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXTSYTR__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>9.  Clinician/ Provider = Psychology Trainee/Intern</description>
+        <externalId>false</externalId>
+        <label>FTXTSYTR</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXWAS__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>4.  Gen modality of treatment = &apos;Wrap around&apos; services</description>
+        <externalId>false</externalId>
+        <label>FTXWAS</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FTXYOGA__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>8.  PSI = Meditation/ Yoga</description>
+        <externalId>false</externalId>
+        <label>FTXYOGA</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>FUNCMIL__c</fullName>
         <defaultValue>false</defaultValue>
         <description>1. Uncle is service member</description>
@@ -3851,6 +5453,26 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>FVISITCHECK__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Or, check the following if unknown:</description>
+        <externalId>false</externalId>
+        <label>FVISITCHECK</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FVISITS__c</fullName>
+        <description>How many visits has the child had since his/her last CIMI assessment?</description>
+        <externalId>false</externalId>
+        <label>FVISITS</label>
+        <length>3</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>FWEIGEST__c</fullName>
         <defaultValue>false</defaultValue>
         <description>13. Height or weight are an estimate</description>
@@ -3861,12 +5483,15 @@
     </fields>
     <fields>
         <fullName>FWEIGHT__c</fullName>
-        <defaultValue>false</defaultValue>
         <description>13. Weight in pounds</description>
         <externalId>false</externalId>
         <label>FWEIGHT</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
         <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>FZIPCODECHECK__c</fullName>
@@ -3878,46 +5503,18 @@
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>NEWTR__c</fullName>
-        <description>4.  Has any new trauma been experienced?</description>
+        <fullName>F_VISIT_AGE__c</fullName>
+        <description>Age calculated using FollowUp date of visit and date of birth.</description>
         <externalId>false</externalId>
-        <label>NEWTR</label>
-        <picklist>
-            <picklistValues>
-                <fullName>0</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>1</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>99</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
+        <formula>FLOOR(( FDOV__c -Client__r.DOB1__c )/365.2425)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>F_VISIT_AGE</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
         <trackHistory>false</trackHistory>
-        <type>Picklist</type>
-    </fields>
-    <fields>
-        <fullName>PRETR__c</fullName>
-        <description>5.  Has any previously experienced trauma been revealed?</description>
-        <externalId>false</externalId>
-        <label>PRETR</label>
-        <picklist>
-            <picklistValues>
-                <fullName>0</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>1</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
-        <trackHistory>false</trackHistory>
-        <type>Picklist</type>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>SECTION__c</fullName>
@@ -3933,7 +5530,7 @@
     <fields>
         <fullName>STATUS_DEMO__c</fullName>
         <externalId>false</externalId>
-        <label>STATUS_DEMO</label>
+        <label>STATUS DEMO</label>
         <picklist>
             <picklistValues>
                 <fullName>Incomplete</fullName>
@@ -3952,6 +5549,24 @@
         <fullName>STATUS_DOMENV__c</fullName>
         <externalId>false</externalId>
         <label>STATUS DOMENV</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Incomplete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Complete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>STATUS_FOLLOWUPINFO__c</fullName>
+        <externalId>false</externalId>
+        <label>STATUS FOLLOWUPINFO</label>
         <picklist>
             <picklistValues>
                 <fullName>Incomplete</fullName>
@@ -3991,25 +5606,7 @@
         <picklist>
             <picklistValues>
                 <fullName>Incomplete</fullName>
-                <default>true</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete</fullName>
                 <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
-        <trackHistory>false</trackHistory>
-        <type>Picklist</type>
-    </fields>
-    <fields>
-        <fullName>STATUS_INSDOMENV_F__c</fullName>
-        <externalId>false</externalId>
-        <label>STATUS INSDOMENV F</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Incomplete</fullName>
-                <default>true</default>
             </picklistValues>
             <picklistValues>
                 <fullName>Complete</fullName>
@@ -4023,7 +5620,7 @@
     <fields>
         <fullName>STATUS_INSDOMENV__c</fullName>
         <externalId>false</externalId>
-        <label>STATUS_INSDOMENV</label>
+        <label>STATUS INSDOMENV</label>
         <picklist>
             <picklistValues>
                 <fullName>Incomplete</fullName>
@@ -4057,6 +5654,24 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>STATUS_NCTSNTREAT__c</fullName>
+        <externalId>false</externalId>
+        <label>STATUS NCTSNTREAT</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Incomplete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Complete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>STATUS_REFIMM__c</fullName>
         <externalId>false</externalId>
         <label>STATUS REFIMM</label>
@@ -4075,1495 +5690,6 @@
         <type>Picklist</type>
     </fields>
     <fields>
-        <fullName>TXACCUP__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>8.  PSI = Acupuncture</description>
-        <externalId>false</externalId>
-        <label>TXACCUP</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXADVOC__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>8.  PSI = Advocacy activities</description>
-        <externalId>false</externalId>
-        <label>TXADVOC</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXAFCBT__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>6.  SIP = Alternatives for Families: A Cognitive Behavioral Therapy (AF-CBT)</description>
-        <externalId>false</externalId>
-        <label>TXAFCBT</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXARC__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>6.  SIP = Attachment, Self-Regulation, and Competence (ARC)</description>
-        <externalId>false</externalId>
-        <label>TXARC</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXATTACH__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>4.  Gen modality of treatment = Attachment-based therapy</description>
-        <externalId>false</externalId>
-        <label>TXATTACH</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXBEHATX__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>4.  Gen modality of treatment = Behavioral therapy</description>
-        <externalId>false</externalId>
-        <label>TXBEHATX</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXBIS__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>6.  SIP = Trauma-Informed Brief Intervention Services (TIBIS)</description>
-        <externalId>false</externalId>
-        <label>TXBIS</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXCARE__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>8.  PSI = Child-Adult Relationship Enhancement (CARE)</description>
-        <externalId>false</externalId>
-        <label>TXCARE</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXCBITS__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>6.  SIP = Cognitive-Behavioral Intervention for Trauma in Schools (CBITS)</description>
-        <externalId>false</externalId>
-        <label>TXCBITS</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXCBTSRI__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>6.  SIP = Combined Trauma-Focused Cognitive Behavioral Therapy(TF-CBT) and Selective Serotonin Reuptake Inhibitors (SSRI) Treatment</description>
-        <externalId>false</externalId>
-        <label>TXCBTSRI</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXCDCP__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>8.  PSI = Child Development-Community Policing Program (CDCP)</description>
-        <externalId>false</externalId>
-        <label>TXCDCP</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXCLINIC__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>3.  Treatment setting is Clinic</description>
-        <externalId>false</externalId>
-        <label>TXCLINIC</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXCMTFT__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>6.  SIP = Culturally Modified Trauma-Focused Treatment (CM-TFT)</description>
-        <externalId>false</externalId>
-        <label>TXCMTFT</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXCM__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>8.  PSI = Case management/ case coordination</description>
-        <externalId>false</externalId>
-        <label>TXCM</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXCOGBEH__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>4.  Gen modality of treatment = Cognitive behavioral</description>
-        <externalId>false</externalId>
-        <label>TXCOGBEH</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXCOGTX__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>4.  Gen modality of treatment = Cognitive therapy</description>
-        <externalId>false</externalId>
-        <label>TXCOGTX</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXCOMP__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>8.  PSI = Competence-based auxiliary services (COMP)</description>
-        <externalId>false</externalId>
-        <label>TXCOMP</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXCOPE__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>8.  PSI = Community Outreach Program - Esperanza (COPE)</description>
-        <externalId>false</externalId>
-        <label>TXCOPE</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXCOUNS__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>9.  Clinician/ Provider = Therapist/Counselor</description>
-        <externalId>false</externalId>
-        <label>TXCOUNS</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXCPCGB__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>6.  SIP = Combined  Parent Child Cognitive-Behavioral Approach for Children &amp; Families At-Risk for Child Physical Abuse</description>
-        <externalId>false</externalId>
-        <label>TXCPCGB</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXCPP__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>6.  SIP = Child-Parent Psychotherapy</description>
-        <externalId>false</externalId>
-        <label>TXCPP</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXCTTG__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>6.  SIP = UCLA Trauma/Grief Program for Adolescents: Component Therapy for Trauma and Grief (CTTG)</description>
-        <externalId>false</externalId>
-        <label>TXCTTG</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXDAYPAR__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>3.  Treatment setting is Day treatment/partial hospitalization</description>
-        <externalId>false</externalId>
-        <label>TXDAYPAR</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXDAYTX__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>4.  Gen modality of treatment = Day treatment or partial hospitalization</description>
-        <externalId>false</externalId>
-        <label>TXDAYTX</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXDBTSP__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>6.  SIP = Adapted Dialectical Behavior Therapy for Special Population (DBT-SP)</description>
-        <externalId>false</externalId>
-        <label>TXDBTSP</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXDEBR__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>8.  PSI = Debriefing</description>
-        <externalId>false</externalId>
-        <label>TXDEBR</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXEMDR__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>6.  SIP = Eye Movement Desensitization and Reprocessing</description>
-        <externalId>false</externalId>
-        <label>TXEMDR</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXEXTX__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>4.  Gen modality of treatment = Expressive therapies (Drawing, movement, theater)</description>
-        <externalId>false</externalId>
-        <label>TXEXTX</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXFAMTX__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>4.  Gen modality of treatment = Family therapy</description>
-        <externalId>false</externalId>
-        <label>TXFAMTX</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXFDTVIS__c</fullName>
-        <description>2.  Family Therapy, # visits specified.</description>
-        <externalId>false</externalId>
-        <label>TXFDTVIS</label>
-        <length>50</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>TXFDT__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>2.  Child has received Family or Dyadic therapy</description>
-        <externalId>false</externalId>
-        <label>TXFDT</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXGHDAY__c</fullName>
-        <description>1.  Received treatment in Group Home, # days specified.</description>
-        <externalId>false</externalId>
-        <label>TXGHDAY</label>
-        <length>50</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>TXGH__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>1.  Received treatment in Group Home</description>
-        <externalId>false</externalId>
-        <label>TXGH</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXGTADV__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>6.  SIP = Group Treatment for Children Affected by Domestic Violence (GTADV)</description>
-        <externalId>false</externalId>
-        <label>TXGTADV</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXGTVIS__c</fullName>
-        <description>2.   Group Therapy, # visits specified.</description>
-        <externalId>false</externalId>
-        <label>TXGTVIS</label>
-        <length>50</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>TXGT__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>2.  Child has received Group Therapy</description>
-        <externalId>false</externalId>
-        <label>TXGT</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXHOME__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>3.  Treatment setting is Home</description>
-        <externalId>false</externalId>
-        <label>TXHOME</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXHONMAK__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>8.  PSI = Honoring Children, Making Relatives (HC-MR)</description>
-        <externalId>false</externalId>
-        <label>TXHONMAK</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXHONMEN__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>8.  PSI = Honoring Children, Mending the Circle (HC-MC)</description>
-        <externalId>false</externalId>
-        <label>TXHONMEN</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXHONRES__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>8.  PSI = Honoring Children, Respectful Ways (HC-RW)</description>
-        <externalId>false</externalId>
-        <label>TXHONRES</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXHOSDAY__c</fullName>
-        <description>1.  Received treatment in Hospital, # days specified</description>
-        <externalId>false</externalId>
-        <label>TXHOSDAY</label>
-        <length>50</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>TXHOS__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>1.  Received treatment in Hospital.</description>
-        <externalId>false</externalId>
-        <label>TXHOS</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXIFACES__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>8.  PSI = International Family Adult and Child Enhancement Services (IFACES)</description>
-        <externalId>false</externalId>
-        <label>TXIFACES</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXIHS__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>4.  Gen modality of treatment = Intensive in-home services</description>
-        <externalId>false</externalId>
-        <label>TXIHS</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXITCT__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>6.  SIP = Integrative Treatment of Complex Trauma (ITCT)</description>
-        <externalId>false</externalId>
-        <label>TXITCT</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXITCVIS__c</fullName>
-        <description>2.  Individual therapy for Child, # visits specified</description>
-        <externalId>false</externalId>
-        <label>TXITCVIS</label>
-        <length>50</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>TXITC__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>2.  Received Individual Therapy for Child</description>
-        <externalId>false</externalId>
-        <label>TXITC</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXITPVIS__c</fullName>
-        <description>2.  Individual therapy for Parent, # visits specified.</description>
-        <externalId>false</externalId>
-        <label>TXITPVIS</label>
-        <length>50</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>TXITP__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>2.  Received Individual Therapy for Parent</description>
-        <externalId>false</externalId>
-        <label>TXITP</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXLEADCL__c</fullName>
-        <description>10.  Primary lead clinician/ provider</description>
-        <externalId>false</externalId>
-        <label>TXLEADCL</label>
-        <picklist>
-            <picklistValues>
-                <fullName>1</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>2</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>3</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>4</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>5</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>6</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>7</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>8</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>9</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>10</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>11</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>12</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>13</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>14</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>98</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
-        <trackHistory>false</trackHistory>
-        <type>Picklist</type>
-    </fields>
-    <fields>
-        <fullName>TXLFSKLS__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>6.  SIP = Life Skills/Life Stories</description>
-        <externalId>false</externalId>
-        <label>TXLFSKLS</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXMDEXT__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>9.  Clinician/ Provider = Physician Extender</description>
-        <externalId>false</externalId>
-        <label>TXMDEXT</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXMENTOR__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>8.  PSI = Mentoring</description>
-        <externalId>false</externalId>
-        <label>TXMENTOR</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXMFGVIS__c</fullName>
-        <description>2.  Multi-Family group therapy, # visits specified.</description>
-        <externalId>false</externalId>
-        <label>TXMFGVIS</label>
-        <length>50</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>TXMFG__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>2.  Received Multi-Family group therapy</description>
-        <externalId>false</externalId>
-        <label>TXMFG</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXMMTT__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>6.  SIP = Multi-modality Trauma Treatment Trauma-Focused Coping (MMTT)</description>
-        <externalId>false</externalId>
-        <label>TXMMTT</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXMODPRI__c</fullName>
-        <description>5.  Primary Gen Modality of Treatment</description>
-        <externalId>false</externalId>
-        <label>TXMODPRI</label>
-        <picklist>
-            <picklistValues>
-                <fullName>0</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>1</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>2</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>3</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>4</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>5</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>6</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>7</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>8</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>9</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>10</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>11</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>12</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>13</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>14</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>15</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>16</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>17</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>18</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>19</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>20</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>21</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>22</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>98</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
-        <trackHistory>false</trackHistory>
-        <type>Picklist</type>
-    </fields>
-    <fields>
-        <fullName>TXMST__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>6.  SIP = Multi-systemic Treatment (MST)</description>
-        <externalId>false</externalId>
-        <label>TXMST</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXNARTX__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>4.  Gen modality of treatment = Narrative therapy</description>
-        <externalId>false</externalId>
-        <label>TXNARTX</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXNONE__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>4. General modality of treatment = None</description>
-        <externalId>false</externalId>
-        <label>TXNONE</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXOCLIN__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>9.  Clinician/ Provider = Other Clinician</description>
-        <externalId>false</externalId>
-        <label>TXOCLIN</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXOCLISP__c</fullName>
-        <description>9.  Clinician/ Provider = Other Clinician specified</description>
-        <externalId>false</externalId>
-        <label>TXOCLISP</label>
-        <length>50</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>TXOCT__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>9.  Clinician/ Provider = Occupational therapist</description>
-        <externalId>false</externalId>
-        <label>TXOCT</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXOIDAY__c</fullName>
-        <description>1.  Received Other Inpatient treatment, # days specified</description>
-        <externalId>false</externalId>
-        <label>TXOIDAY</label>
-        <length>50</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>TXOITYP__c</fullName>
-        <description>1.  Other inpatient treatment, type specified.</description>
-        <externalId>false</externalId>
-        <label>TXOITYP</label>
-        <length>50</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>TXOI__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>1.  Received Other inpatient treatment</description>
-        <externalId>false</externalId>
-        <label>TXOI</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXOMD__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>9.  Clinician/ Provider = Other Physician (MD)</description>
-        <externalId>false</externalId>
-        <label>TXOMD</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXOP__c</fullName>
-        <description>2.  Has child received any outpatient therapy?</description>
-        <externalId>false</externalId>
-        <label>TXOP</label>
-        <picklist>
-            <picklistValues>
-                <fullName>0</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>1</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
-        <trackHistory>false</trackHistory>
-        <type>Picklist</type>
-    </fields>
-    <fields>
-        <fullName>TXOTHMOD__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>4.  Gen modality of treatment = Other</description>
-        <externalId>false</externalId>
-        <label>TXOTHMOD</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXOTMOSP__c</fullName>
-        <description>4.  Gen modality of treatment = Other Specified</description>
-        <externalId>false</externalId>
-        <label>TXOTMOSP</label>
-        <length>50</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>TXOTTYP__c</fullName>
-        <description>2.  Other Therapy, type specified</description>
-        <externalId>false</externalId>
-        <label>TXOTTYP</label>
-        <length>50</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>TXOTVIS__c</fullName>
-        <description>2.  Received Other Therapy, # visits specified.</description>
-        <externalId>false</externalId>
-        <label>TXOTVIS</label>
-        <length>50</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>TXOT__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>2.  Received Other Therapy</description>
-        <externalId>false</externalId>
-        <label>TXOT</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXPARAPR__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>9.  Clinician/ Provider = Paraprofessional</description>
-        <externalId>false</externalId>
-        <label>TXPARAPR</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXPARTR__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>4.  Gen modality of treatment = Parent training</description>
-        <externalId>false</externalId>
-        <label>TXPARTR</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXPCIT__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>6.  SIP = Parent-Child Interaction Therapy (PCIT)</description>
-        <externalId>false</externalId>
-        <label>TXPCIT</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXPDPT__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>4.  Gen modality of treatment = Psychodynamic therapy</description>
-        <externalId>false</externalId>
-        <label>TXPDPT</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXPFA__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>8.  PSI = Psychological First Aid (PFA)</description>
-        <externalId>false</externalId>
-        <label>TXPFA</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXPHARM__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>4.  Gen modality of treatment = Pharmacotherapy/ medication</description>
-        <externalId>false</externalId>
-        <label>TXPHARM</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXPLAY__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>4.  Gen modality of treatment = Play therapy</description>
-        <externalId>false</externalId>
-        <label>TXPLAY</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXPOTT__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>4.  Gen modality of treatment = Phase-oriented trauma treatment</description>
-        <externalId>false</externalId>
-        <label>TXPOTT</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXPRISIP__c</fullName>
-        <description>7.  Primary Specific Intervention Protocol</description>
-        <externalId>false</externalId>
-        <label>TXPRISIP</label>
-        <picklist>
-            <picklistValues>
-                <fullName>1</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>2</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>3</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>4</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>5</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>6</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>7</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>8</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>9</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>10</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>11</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>12</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>13</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>14</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>15</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>16</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>17</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>18</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>19</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>20</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>21</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>22</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>23</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>24</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>25</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>26</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>27</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>98</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
-        <trackHistory>false</trackHistory>
-        <type>Picklist</type>
-    </fields>
-    <fields>
-        <fullName>TXPSIOTH__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>8.  PSI = Other</description>
-        <externalId>false</externalId>
-        <label>TXPSIOTH</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXPSNONE__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>8. PSI = None</description>
-        <externalId>false</externalId>
-        <label>TXPSNONE</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXPSOTSP__c</fullName>
-        <description>8.  PSI = Other PSI specified</description>
-        <externalId>false</externalId>
-        <label>TXPSOTSP</label>
-        <length>50</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>TXPSYANL__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>4.  Gen modality of treatment = Psychoanalysis</description>
-        <externalId>false</externalId>
-        <label>TXPSYANL</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXPSYCHO__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>9.  Clinician/ Provider = Psychologist</description>
-        <externalId>false</externalId>
-        <label>TXPSYCHO</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXPSYCST__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>9.  Clinician/ Provider = Psychiatrist</description>
-        <externalId>false</externalId>
-        <label>TXPSYCST</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXPSYEDU__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>8.  PSI = Psycho-education</description>
-        <externalId>false</externalId>
-        <label>TXPSYEDU</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXPTSMGT__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>8.  PSI = Posttraumatic Stress Management (PTSM)</description>
-        <externalId>false</externalId>
-        <label>TXPTSMGT</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXRES__c</fullName>
-        <description>1.  Has child received any inpatient/residential treatment?</description>
-        <externalId>false</externalId>
-        <label>TXRES</label>
-        <picklist>
-            <picklistValues>
-                <fullName>0</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>1</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
-        <trackHistory>false</trackHistory>
-        <type>Picklist</type>
-    </fields>
-    <fields>
-        <fullName>TXRLH__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>6.  SIP = Real Life Heroes (RLH)</description>
-        <externalId>false</externalId>
-        <label>TXRLH</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXRN__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>9.  Clinician/ Provider =  Nurse (RN , LPN)</description>
-        <externalId>false</externalId>
-        <label>TXRN</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXRTCDAY__c</fullName>
-        <description>1.  Residential Treatment Center # days specified</description>
-        <externalId>false</externalId>
-        <label>TXRTCDAY</label>
-        <length>50</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>TXRTC__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>1.  Received treatment in Residential Treatment Center</description>
-        <externalId>false</externalId>
-        <label>TXRTC</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXSAFHAR__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>8.  PSI = Safe Harbor Program</description>
-        <externalId>false</externalId>
-        <label>TXSAFHAR</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXSANCT__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>6.  SIP = Sanctuary Model</description>
-        <externalId>false</externalId>
-        <label>TXSANCT</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXSCHBAS__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>4.  Gen modality of treatment = School-based treatment</description>
-        <externalId>false</externalId>
-        <label>TXSCHBAS</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXSCHOOL__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>3.  Treatment setting is School</description>
-        <externalId>false</externalId>
-        <label>TXSCHOOL</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXSCHSW__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>9.  Clinician/ Provider = School Social Worker</description>
-        <externalId>false</externalId>
-        <label>TXSCHSW</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXSCLPSY__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>9.  Clinician Provider = School Psychologist</description>
-        <externalId>false</externalId>
-        <label>TXSCLPSY</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXSELF__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>8.  PSI = Self-management/ Coaching</description>
-        <externalId>false</externalId>
-        <label>TXSELF</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXSIOTSP__c</fullName>
-        <description>6.  SIP = Specifiy SIP Other</description>
-        <externalId>false</externalId>
-        <label>TXSIOTSP</label>
-        <length>50</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>TXSIPNO__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>6.  Specific Intervention Protocol (SIP) = No Protocol</description>
-        <externalId>false</externalId>
-        <label>TXSIPNO</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXSIPOTH__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>6.  SIP = SIP Other</description>
-        <externalId>false</externalId>
-        <label>TXSIPOTH</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXSMART__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>6.  SIP = Safety, Mentoring, Advocacy, Recovery, and Treatment (SMART)</description>
-        <externalId>false</externalId>
-        <label>TXSMART</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXSOLFC__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>4.  Gen modality of treatment = Solution-focused therapy</description>
-        <externalId>false</externalId>
-        <label>TXSOLFC</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXSOTHSP__c</fullName>
-        <description>3.  Treatment setting is Other, specified</description>
-        <externalId>false</externalId>
-        <label>TXSOTHSP</label>
-        <length>50</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>TXSOTH__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>3.  Treatment setting is Other</description>
-        <externalId>false</externalId>
-        <label>TXSOTH</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXSPARCS__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>6.  SIP  = Structured Psychotherapy for Adolescents Responding to Chronic Stress (SPARCS)</description>
-        <externalId>false</externalId>
-        <label>TXSPARCS</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXSST__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>4.  Gen modality of treatment = Social skills training</description>
-        <externalId>false</externalId>
-        <label>TXSST</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXSTREET__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>8.  PSI = Streetwork Project</description>
-        <externalId>false</externalId>
-        <label>TXSTREET</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXSTRESS__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>4.  Gen modality of treatment = Stress management/relaxation training</description>
-        <externalId>false</externalId>
-        <label>TXSTRESS</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXSUPGRP__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>8.  PSI = Support Groups</description>
-        <externalId>false</externalId>
-        <label>TXSUPGRP</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXSUPTX__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>4.  Gen modality of treatment = Supportive therapy</description>
-        <externalId>false</externalId>
-        <label>TXSUPTX</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXSWTR__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>9.  Clinician/ Provider = Social Worker Trainee</description>
-        <externalId>false</externalId>
-        <label>TXSWTR</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXSW__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>9.  Clinician/ Provider = Social Worker</description>
-        <externalId>false</externalId>
-        <label>TXSW</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXTAP__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>8.  PSI = Assessment-Based Treatment for Traumatized Children: Trauma Assessment Pathway (TAP)</description>
-        <externalId>false</externalId>
-        <label>TXTAP</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXTARGET__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>6.  SIP = Trauma Affect Regulation: Guidelines for Education and Therapy for Adolescents and Pre-Adolescents (TARGET-A)</description>
-        <externalId>false</externalId>
-        <label>TXTARGET</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXTDBT__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>6.  SIP = Youth Dialectical Behavioral Therapy (YDBT)</description>
-        <externalId>false</externalId>
-        <label>TXTDBT</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXTFCBT__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>6.  SIP = Trauma-Focused Cognitive Behavioral Therapy (TF-CBT)</description>
-        <externalId>false</externalId>
-        <label>TXTFCBT</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXTGCBT__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>6.  SIP = Trauma-Focused Cognitive Behavioral Therapy for Childhood Traumatic Grief (TG-CBT)</description>
-        <externalId>false</externalId>
-        <label>TXTGCBT</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXTHCAMP__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>8.  PSI = Therapeutic recreational activities including summer camp</description>
-        <externalId>false</externalId>
-        <label>TXTHCAMP</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXTPEER__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>4.  Gen modality of treatment = Peer therapy</description>
-        <externalId>false</externalId>
-        <label>TXTPEER</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXTRANL__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>9.  Clinician/ Provider = Translator/interpreter</description>
-        <externalId>false</externalId>
-        <label>TXTRANL</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXTST__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>6.  SIP = Trauma System Therapy (TST)</description>
-        <externalId>false</externalId>
-        <label>TXTST</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXTSYTR__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>9.  Clinician/ Provider = Psychology Trainee/Intern</description>
-        <externalId>false</externalId>
-        <label>TXTSYTR</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXWAS__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>4.  Gen modality of treatment = &apos;Wrap around&apos; services</description>
-        <externalId>false</externalId>
-        <label>TXWAS</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>TXYOGA__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>8.  PSI = Meditation/ Yoga</description>
-        <externalId>false</externalId>
-        <label>TXYOGA</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>Visit_Number__c</fullName>
         <externalId>false</externalId>
         <label>Visit Number</label>
@@ -5577,98 +5703,23 @@
     <label>DS Background Family Info F</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>OBJECT_ID</columns>
-        <columns>NAME</columns>
-        <columns>FORM__c</columns>
         <columns>Client__c</columns>
-        <columns>Client_ID__c</columns>
-        <columns>Visit_Number__c</columns>
-        <columns>FDOV__c</columns>
+        <columns>NAME</columns>
+        <columns>F_VISIT_AGE__c</columns>
+        <columns>SECTION__c</columns>
+        <columns>STATUS_DEMO__c</columns>
+        <columns>STATUS_DOMENV__c</columns>
+        <columns>STATUS_FOLLOWUPINFO__c</columns>
+        <columns>STATUS_HEALTH__c</columns>
+        <columns>STATUS_INFO_F__c</columns>
+        <columns>STATUS_INSDOMENV__c</columns>
+        <columns>STATUS_MILITARY__c</columns>
+        <columns>STATUS_NCTSNTREAT__c</columns>
+        <columns>STATUS_REFIMM__c</columns>
         <columns>CREATED_DATE</columns>
         <columns>LAST_UPDATE</columns>
-        <columns>STATUS_DEMO__c</columns>
-        <columns>STATUS_INSDOMENV__c</columns>
-        <columns>STATUS_DOMENV__c</columns>
-        <columns>STATUS_HEALTH__c</columns>
-        <columns>STATUS_MILITARY__c</columns>
-        <columns>STATUS_REFIMM__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>created_5_26</fullName>
-        <columns>NAME</columns>
-        <columns>OBJECT_ID</columns>
-        <columns>Client__c</columns>
-        <columns>Client_ID__c</columns>
-        <columns>Visit_Number__c</columns>
-        <columns>FDOV__c</columns>
-        <columns>FORM__c</columns>
-        <columns>SECTION__c</columns>
-        <columns>STATUS_INFO_F__c</columns>
-        <columns>STATUS_DEMO__c</columns>
-        <columns>STATUS_INSDOMENV__c</columns>
-        <columns>STATUS_DOMENV__c</columns>
-        <columns>STATUS_HEALTH__c</columns>
-        <columns>STATUS_MILITARY__c</columns>
-        <columns>STATUS_REFIMM__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CREATED_DATE</field>
-            <operation>equals</operation>
-            <value>5/26/2015 12:00 AM</value>
-        </filters>
-        <label>created 5-26</label>
-    </listViews>
-    <listViews>
-        <fullName>created_5_27</fullName>
-        <columns>NAME</columns>
-        <columns>OBJECT_ID</columns>
-        <columns>Client__c</columns>
-        <columns>Client_ID__c</columns>
-        <columns>Visit_Number__c</columns>
-        <columns>FDOV__c</columns>
-        <columns>FORM__c</columns>
-        <columns>SECTION__c</columns>
-        <columns>STATUS_INFO_F__c</columns>
-        <columns>STATUS_DEMO__c</columns>
-        <columns>STATUS_INSDOMENV__c</columns>
-        <columns>STATUS_DOMENV__c</columns>
-        <columns>STATUS_HEALTH__c</columns>
-        <columns>STATUS_MILITARY__c</columns>
-        <columns>STATUS_REFIMM__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CREATED_DATE</field>
-            <operation>equals</operation>
-            <value>5/27/2015 12:00 AM</value>
-        </filters>
-        <label>created 5-27</label>
-    </listViews>
-    <listViews>
-        <fullName>created_6_1</fullName>
-        <columns>NAME</columns>
-        <columns>OBJECT_ID</columns>
-        <columns>Client__c</columns>
-        <columns>Client_ID__c</columns>
-        <columns>Visit_Number__c</columns>
-        <columns>FDOV__c</columns>
-        <columns>FORM__c</columns>
-        <columns>SECTION__c</columns>
-        <columns>STATUS_INFO_F__c</columns>
-        <columns>STATUS_DEMO__c</columns>
-        <columns>STATUS_INSDOMENV__c</columns>
-        <columns>STATUS_DOMENV__c</columns>
-        <columns>STATUS_HEALTH__c</columns>
-        <columns>STATUS_MILITARY__c</columns>
-        <columns>STATUS_REFIMM__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CREATED_DATE</field>
-            <operation>equals</operation>
-            <value>6/1/2015 12:00 AM</value>
-        </filters>
-        <label>created 6-1</label>
     </listViews>
     <nameField>
         <label>DS Background Family Info F Name</label>
@@ -5679,59 +5730,311 @@
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
     <validationRules>
+        <fullName>Domenv_cannot_enter_adults_if_unknown</fullName>
+        <active>true</active>
+        <description>&quot;Unknown&quot; (99) cannot be selected if anything is entered for FADHOMSP.	
+Nothing can be entered here if &quot;Unknown&quot; (99) is selected.</description>
+        <errorConditionFormula>NOT( ISBLANK( FADHOMSP__c ) )&amp;&amp; 
+(  FADHOMECHECK__c  = true)</errorConditionFormula>
+        <errorDisplayField>FADHOMSP__c</errorDisplayField>
+        <errorMessage>&apos;Unknown&apos; cannot be selected if number of adults has been entered.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Domenv_cannot_enter_children_if_unknown</fullName>
+        <active>true</active>
+        <description>&quot;Unknown&quot; (99) cannot be selected if anything is entered for FCHHOMSP.	
+Nothing can be entered here if &quot;Unknown&quot; (99) is selected.</description>
+        <errorConditionFormula>NOT( ISBLANK( FCHHOMSP__c ) )&amp;&amp; 
+(  FCHHOMECHECK__c  = true)</errorConditionFormula>
+        <errorDisplayField>FCHHOMSP__c</errorDisplayField>
+        <errorMessage>&apos;Unknown&apos; cannot be selected if number of children has been entered.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Domenv_cannot_exceed_total_absences</fullName>
+        <active>true</active>
+        <description>Value cannot be greater than value selected for FABSENT.</description>
+        <errorConditionFormula>(
+(VALUE(TEXT( FABSENT__c))  &lt;= 5) &amp;&amp;
+(VALUE(TEXT( FABSENTUX__c))  &lt;= 5) 
+)
+&amp;&amp;
+(VALUE(TEXT( FABSENTUX__c)) &gt;(VALUE(TEXT( FABSENT__c))))</errorConditionFormula>
+        <errorDisplayField>FABSENTUX__c</errorDisplayField>
+        <errorMessage>The number of unexcused absences cannot exceed the number of total absences. Please review your answers for question two of the education section to resolve this conflict.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Domenv_must_complete_if_living_w_family</fullName>
+        <active>true</active>
+        <description>If &quot;Home with parent(s))&quot; or &quot;With relatives or other family&quot; is selected (FPRIMRES=2,3), questions 1 through 7 must be completed</description>
+        <errorConditionFormula>(OR( ISPICKVAL(FPRIMRES__c,&apos;2&apos;),ISPICKVAL(FPRIMRES__c,&apos;3&apos;))) &amp;&amp;
+( OR(ISPICKVAL(FPRESMO__c, &apos;null&apos;),ISPICKVAL(FPROHPL__c, &apos;null&apos;),ISPICKVAL(FNOMHOUSE__c, &apos;null&apos;)))</errorConditionFormula>
+        <errorDisplayField>FPRIMRES__c</errorDisplayField>
+        <errorMessage>Form must be completed if child is living with parents or other family members.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Domenv_must_specify_housing</fullName>
+        <active>true</active>
+        <description>If &quot;Other&quot; (98) selected, this must be completed.</description>
+        <errorConditionFormula>ISPICKVAL(FNOMHOUSE__c, &quot;98&quot;) &amp;&amp; ISBLANK(FNOMHOUSESP__c)</errorConditionFormula>
+        <errorDisplayField>FNOMHOUSESP__c</errorDisplayField>
+        <errorMessage>Specify housing.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Domenv_must_specify_language</fullName>
+        <active>true</active>
+        <description>If OTHER selected (FLANGHOM=98), this must be completed</description>
+        <errorConditionFormula>ISPICKVAL(FLANGHOM__c, &quot;98&quot;) &amp;&amp;   ISBLANK(FLANGHMS__c)</errorConditionFormula>
+        <errorDisplayField>FLANGHMS__c</errorDisplayField>
+        <errorMessage>Please specify primary language.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Domenv_must_specify_other_adult</fullName>
+        <active>true</active>
+        <description>If OTHER selected (FLOTHR=1), this must be completed</description>
+        <errorConditionFormula>FLOTHR__c=true &amp;&amp;   ISBLANK(FLOTHRSP__c)</errorConditionFormula>
+        <errorDisplayField>FLOTHRSP__c</errorDisplayField>
+        <errorMessage>Please specify other adult.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Domenv_must_specify_total_income</fullName>
+        <active>true</active>
+        <description>If OTHER selected (FINCOMNW=98), this must be completed</description>
+        <errorConditionFormula>ISPICKVAL(FINCOMNW__c, &quot;98&quot;) &amp;&amp;   ISBLANK(FINCOMSP__c)</errorConditionFormula>
+        <errorDisplayField>FINCOMSP__c</errorDisplayField>
+        <errorMessage>Please specify total income.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Domenv_must_specify_unexcused_days</fullName>
+        <active>true</active>
+        <description>If FABSENT = 1, 2, 3, 4, or 5, this must be completed.</description>
+        <errorConditionFormula>OR(
+(ISPICKVAL(FABSENT__c, &apos;1&apos;)),
+(ISPICKVAL(FABSENT__c, &apos;2&apos;)),
+(ISPICKVAL(FABSENT__c, &apos;3&apos;)),
+(ISPICKVAL(FABSENT__c, &apos;4&apos;)),
+(ISPICKVAL(FABSENT__c, &apos;5&apos;))
+)
+&amp;&amp; ISPICKVAL(FABSENTUX__c,&apos;null&apos;)</errorConditionFormula>
+        <errorDisplayField>FABSENTUX__c</errorDisplayField>
+        <errorMessage>Please specify the number of unexcused absences.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Domenv_specify_days_unexcused</fullName>
+        <active>true</active>
+        <description>If FABSENT = 1, 2, 3, 4, or 5, this must be completed.</description>
+        <errorConditionFormula>(OR(
+ISPICKVAL( FABSENT__c , &apos;1&apos;), 
+ISPICKVAL( FABSENT__c , &apos;2&apos;),  
+ISPICKVAL( FABSENT__c , &apos;3&apos;),  
+ISPICKVAL( FABSENT__c , &apos;4&apos;),  
+ISPICKVAL( FABSENT__c , &apos;5&apos;)  ))
+&amp;&amp; 
+(ISPICKVAL( FABSENT__c , &apos;null&apos;))</errorConditionFormula>
+        <errorDisplayField>FABSENTUX__c</errorDisplayField>
+        <errorMessage>Please specify the number of unexcused absences.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Domenv_total_nights_out_of_home_more_30</fullName>
+        <active>true</active>
+        <description>total nights out of home can&apos;t be more than 30</description>
+        <errorConditionFormula>FNTTOTN__c &gt; 30</errorConditionFormula>
+        <errorDisplayField>FNTTOTN__c</errorDisplayField>
+        <errorMessage>The total nights out of home can&apos;t be more than 30.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Followup_11_inches</fullName>
+        <active>true</active>
+        <description>Do not allow greater than 11 Inches</description>
+        <errorConditionFormula>FHEIGHIN__c&gt;11</errorConditionFormula>
+        <errorDisplayField>FHEIGHIN__c</errorDisplayField>
+        <errorMessage>Cannot enter a number greater than 11 for inches.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Followup_cannot_enter_visits_if_unknown</fullName>
+        <active>true</active>
+        <description># of visits cannot be entered if it is unknown.</description>
+        <errorConditionFormula>NOT( ISBLANK( FVISITS__c ) )&amp;&amp; 
+(  FVISITCHECK__c  = true)</errorConditionFormula>
+        <errorDisplayField>FVISITS__c</errorDisplayField>
+        <errorMessage>&apos;Unknown&apos; cannot be selected if the number of visits has been entered.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Followup_cannot_enter_zip_if_unknown</fullName>
+        <active>true</active>
+        <description>Zip code cannot be entered if it is unknown.</description>
+        <errorConditionFormula>NOT( ISBLANK( FNZCODESP__c ) )&amp;&amp; 
+(  FZIPCODECHECK__c  = true)</errorConditionFormula>
+        <errorDisplayField>FNZCODESP__c</errorDisplayField>
+        <errorMessage>&apos;Unknown&apos; cannot be selected if the zip code has been entered.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Followup_date_cannot_be_before_BDOV</fullName>
+        <active>true</active>
+        <errorConditionFormula>BDOV__c   &gt;  FDOV__c</errorConditionFormula>
+        <errorDisplayField>FDOV__c</errorDisplayField>
+        <errorMessage>Follow-up date cannot be before Baseline date. Please review the Baseline and/or Follow-up date of visit.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Followup_date_cannot_be_before_birth</fullName>
+        <active>true</active>
+        <errorConditionFormula>Client__r.DOB1__c &gt; FDOV__c</errorConditionFormula>
+        <errorDisplayField>FDOV__c</errorDisplayField>
+        <errorMessage>Follow-up date cannot be before Birth</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Followup_date_cannot_be_future</fullName>
+        <active>true</active>
+        <errorConditionFormula>FDOV__c &gt; TODAY()</errorConditionFormula>
+        <errorDisplayField>FDOV__c</errorDisplayField>
+        <errorMessage>Date cannot be in the future.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Followup_must_specify_followup_type</fullName>
+        <active>true</active>
+        <description>If &quot;Other&quot; (98) selected, this must be completed.</description>
+        <errorConditionFormula>ISPICKVAL(FUTYPE__c, &quot;98&quot;)  &amp;&amp;  ISBLANK(FUTYPESP__c)</errorConditionFormula>
+        <errorDisplayField>FUTYPESP__c</errorDisplayField>
+        <errorMessage>Please specify type of follow-up</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Followup_must_specify_guardian</fullName>
+        <active>true</active>
+        <description>If &quot;Other&quot; (98) selected, this must be completed.
+ISPICKVAL(FGUARD__c, &quot;98&quot;)  &amp;&amp;  ISBLANK(FGUARDSP__c)</description>
+        <errorConditionFormula>ISPICKVAL(FGUARD__c, &quot;98&quot;)  &amp;&amp;  ISBLANK(FGUARDSP__c)</errorConditionFormula>
+        <errorDisplayField>FGUARDSP__c</errorDisplayField>
+        <errorMessage>Please specify legal guardian</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Followup_must_specify_placement_change</fullName>
+        <active>true</active>
+        <description>if other checked, specify</description>
+        <errorConditionFormula>(FPCHGOTHR__c = true)  &amp;&amp;  ISBLANK(FPCHGSP__c)</errorConditionFormula>
+        <errorDisplayField>FPCHGSP__c</errorDisplayField>
+        <errorMessage>Please specify change in placement</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Followup_must_specify_source_info</fullName>
+        <active>true</active>
+        <description>if other checked, specify</description>
+        <errorConditionFormula>(FINFOTHR__c = true)  &amp;&amp;  ISBLANK(FINFOSP__c)</errorConditionFormula>
+        <errorDisplayField>FINFOSP__c</errorDisplayField>
+        <errorMessage>Please specify from whom the data is collected</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Followup_must_specify_status</fullName>
+        <active>true</active>
+        <description>If &quot;Other&quot; (98) selected, this must be completed.</description>
+        <errorConditionFormula>ISPICKVAL(FETSTAT__c, &quot;98&quot;)  &amp;&amp;  ISBLANK(FETSTATSP__c)</errorConditionFormula>
+        <errorDisplayField>FETSTATSP__c</errorDisplayField>
+        <errorMessage>Please specify status</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Followup_must_specify_time_range</fullName>
+        <active>true</active>
+        <description>If &quot;Other&quot; (98) selected, this must be completed.</description>
+        <errorConditionFormula>ISPICKVAL(FUTIME__c, &quot;98&quot;)  &amp;&amp;  ISBLANK(FUTIMESP__c)</errorConditionFormula>
+        <errorDisplayField>FUTIMESP__c</errorDisplayField>
+        <errorMessage>Please specify follow-up timeframe</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Followup_under_500_lbs</fullName>
+        <active>true</active>
+        <description>Do not allow greater than 500</description>
+        <errorConditionFormula>FWEIGHT__c &gt;500</errorConditionFormula>
+        <errorDisplayField>FWEIGHT__c</errorDisplayField>
+        <errorMessage>Client weight cannot exceed 500 pounds.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Followup_under_7_feet</fullName>
+        <active>true</active>
+        <description>Do not allow greater than 7 Feet</description>
+        <errorConditionFormula>FHEIGHFT__c &gt;7</errorConditionFormula>
+        <errorDisplayField>FHEIGHFT__c</errorDisplayField>
+        <errorMessage>Height must be under 7 feet</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Health_must_indicate_treatment</fullName>
+        <active>true</active>
+        <description>If &quot;Yes&quot; (1) selected, display checkboxes beneath and message: &quot;If Yes: Please identify the course of treatment. (Select all that apply).&quot;ErrorConditionFormula:  (ISPICKVAL(FTRT__c ,&amp;&apos;1’) &amp;&amp;(FTRTOMED__c = false) &amp;&amp;(FTRTINJ__c = false) &amp;&amp;(FTRTPL__c = fals</description>
+        <errorConditionFormula>(ISPICKVAL(FTRT__c ,&apos;1&apos;) &amp;&amp;(FTRTOMED__c = false) &amp;&amp;(FTRTINJ__c = false) &amp;&amp;(FTRTPL__c = false) &amp;&amp;(FTRTPD__c = false) &amp;&amp;(FTRTOTHR__c = false) &amp;&amp;(FTRTUK__c = false) )</errorConditionFormula>
+        <errorDisplayField>FTRT__c</errorDisplayField>
+        <errorMessage>Indicate treatment.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Health_must_specify_other_health_problem</fullName>
+        <active>true</active>
+        <description>If OTHER selected (FHISOTHR= &apos;0&apos; OR &apos;1&apos; OR &apos;2&apos; OR &apos;3&apos;), this must be completed</description>
+        <errorConditionFormula>OR(ISPICKVAL(FHISOTHR__c, &apos;0&apos;),ISPICKVAL(FHISOTHR__c, &apos;1&apos;), ISPICKVAL(FHISOTHR__c, &apos;2&apos;), ISPICKVAL(FHISOTHR__c, &apos;3&apos;)) &amp;&amp; ISBLANK(FHISOTSP__c)</errorConditionFormula>
+        <errorDisplayField>FHISOTSP__c</errorDisplayField>
+        <errorMessage>Specify health condition.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Health_must_specify_other_treatment</fullName>
+        <active>true</active>
+        <description>If &quot;Other&quot; selected, this must be completed. ErrorConditionFormula:FTRTOTHR__c=true  &amp;&amp;  ISBLANK(FTRTOTSP__c)</description>
+        <errorConditionFormula>FTRTOTHR__c=true  &amp;&amp;  ISBLANK(FTRTOTSP__c)</errorConditionFormula>
+        <errorDisplayField>FTRTOTSP__c</errorDisplayField>
+        <errorMessage>Specify treatment.</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Insdomenv_cannot_select_FNTDTOXN</fullName>
-        <active>false</active>
-        <description>If FNTDTOXN =True these can&apos;t be selected</description>
+        <active>true</active>
+        <description>Neither &quot;Refused&quot; (96) nor &quot;Unknown&quot; (99) can be selected if anything is entered for FNTDTOXN. ErrorConditionFormula:NOT( ISPICKVAL(FNTDTOXRU__c, &apos;‘))
+&amp;&amp;  NOT ISBLANK (FNTDTOXN__c )</description>
         <errorConditionFormula>NOT( ISPICKVAL(FNTDTOXRU__c, &apos;&apos;))
 &amp;&amp;  NOT ISBLANK (FNTDTOXN__c )</errorConditionFormula>
-        <errorDisplayField>FNTDTOXRU__c</errorDisplayField>
-        <errorMessage>FNTDTOXRU cannot be selected if FNTDTOXN is true</errorMessage>
+        <errorDisplayField>FNTDTOXN__c</errorDisplayField>
+        <errorMessage>Neither &apos;Refused&apos; nor &apos;Unknown&apos; can be selected if a number has been entered.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Insdomenv_cannot_select_FNTERRU</fullName>
-        <active>false</active>
-        <description>If FNTHOMEN =True these can&apos;t be selected</description>
+        <active>true</active>
+        <description>Neither &quot;Refused&quot; (96) nor &quot;Unknown&quot; (99) can be selected if anything is entered for FNTERN. ErrorConditionFormula:NOT( ISPICKVAL(FNTERRU__c, &apos;‘))
+&amp;&amp;  NOT ISBLANK (FNTERN__c )</description>
         <errorConditionFormula>NOT( ISPICKVAL(FNTERRU__c, &apos;&apos;))
-&amp;&amp;  NOT ISBLANK (FNTHOMEN__c )</errorConditionFormula>
+&amp;&amp;  NOT ISBLANK (FNTERN__c )</errorConditionFormula>
         <errorDisplayField>FNTERRU__c</errorDisplayField>
-        <errorMessage>FNTERRU cannot be selected if FNTHOMEN is true</errorMessage>
+        <errorMessage>Neither &apos;Refused&apos; nor &apos;Unknown&apos; can be selected if a number has been entered.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Insdomenv_cannot_select_FNTHOMEN</fullName>
-        <active>false</active>
-        <description>If FNTHOMEN =True these can&apos;t be selected</description>
+        <active>true</active>
+        <description>Neither &quot;Refused&quot; (96) nor &quot;Unknown&quot; (99) can be selected if anything is entered for FNTHOMEN. ErrorConditionFormula:NOT( ISPICKVAL(FNTHOMERU__c, &apos;‘))
+&amp;&amp;  NOT ISBLANK (FNTHOMEN__c )</description>
         <errorConditionFormula>NOT( ISPICKVAL(FNTHOMERU__c, &apos;&apos;))
 &amp;&amp;  NOT ISBLANK(FNTHOMEN__c)</errorConditionFormula>
         <errorDisplayField>FNTHOMERU__c</errorDisplayField>
-        <errorMessage>FNTHOMERU cannot be selected if FNTHOMEN is true</errorMessage>
+        <errorMessage>Neither &apos;Refused&apos; nor &apos;Unknown&apos; can be selected if a number has been entered.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Insdomenv_cannot_select_FNTHOSPN</fullName>
-        <active>false</active>
-        <description>If FNTHOSPN =True these can&apos;t be selected</description>
+        <active>true</active>
+        <description>Neither &quot;Refused&quot; (96) nor &quot;Unknown&quot; (99) can be selected if anything is entered for FNTHOSPN. ErrorConditionFormula:NOT( ISPICKVAL(FNTHOSPRU__c, &apos;‘))&amp;&amp;  NOT ISBLANK(FNTHOSPN__c)</description>
         <errorConditionFormula>NOT( ISPICKVAL(FNTHOSPRU__c, &apos;&apos;))&amp;&amp;  NOT ISBLANK(FNTHOSPN__c)</errorConditionFormula>
         <errorDisplayField>FNTHOSPRU__c</errorDisplayField>
-        <errorMessage>FNTHOSPRU cannot be selected if FNTHOSPN is true</errorMessage>
+        <errorMessage>Neither &apos;Refused&apos; nor &apos;Unknown&apos; can be selected if a number has been entered.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Insdomenv_cannot_select_FNTJAILN</fullName>
-        <active>false</active>
-        <description>If FNTJAILN =True these can&apos;t be selected</description>
+        <active>true</active>
+        <description>Neither &quot;Refused&quot; (96) nor &quot;Unknown&quot; (99) can be selected if anything is entered for FNTJAILN. ErrorConditionFormula:NOT( ISPICKVAL(FNTJAILRU__c, &apos;‘))
+&amp;&amp;  NOT ISBLANK (FNTJAILN__c )</description>
         <errorConditionFormula>NOT( ISPICKVAL(FNTJAILRU__c, &apos;&apos;))
 &amp;&amp;  NOT ISBLANK (FNTJAILN__c )</errorConditionFormula>
         <errorDisplayField>FNTJAILRU__c</errorDisplayField>
-        <errorMessage>FNTJAILRU cannot be selected if FNTJAILN is true</errorMessage>
+        <errorMessage>Neither &apos;Refused&apos; nor &apos;Unknown&apos; can be selected if a number has been entered.</errorMessage>
     </validationRules>
     <validationRules>
-        <fullName>Insdomenv_must_indicate_priv_or_pub_chi</fullName>
+        <fullName>Insdomenv_must_indicate_if_insured_child</fullName>
         <active>true</active>
-        <description>If NO (FCINANY=0) or UNKNOWN (FCINANY=99) selected, skip to question 3; If YES (FCINANY=1), specify type in (FCINPUB, FCINPRIV)</description>
+        <description>If NO (FPINANY=0) or UNKNOWN (FPINANY=99) or selected, skip to question 5;  If YES (FPINANY=1), must specify type in (FPINPUB, FPINPRIV)</description>
         <errorConditionFormula>ISPICKVAL(FCINANY__c, &apos;1&apos;)&amp;&amp;((FCINPUB__c = false)&amp;&amp;( FCINPRIV__c = false))</errorConditionFormula>
         <errorDisplayField>FCINANY__c</errorDisplayField>
         <errorMessage>You must indicate if the child has private or public insurance.</errorMessage>
     </validationRules>
     <validationRules>
-        <fullName>Insdomenv_must_indicate_priv_or_pub_par</fullName>
+        <fullName>Insdomenv_must_indicate_if_insured_paren</fullName>
         <active>true</active>
         <description>If NO (FPINANY=0) or UNKNOWN (FPINANY=99) or selected, skip to question 5;  If YES (FPINANY=1), must specify type in (FPINPUB, FPINPRIV)</description>
         <errorConditionFormula>ISPICKVAL(FPINANY__c, &apos;1&apos;)&amp;&amp;((FPINPUB__c = false)&amp;&amp;( FPINPRIV__c = false))</errorConditionFormula>
@@ -5744,7 +6047,7 @@
         <description>If OTHER selected (FCINOPRI =1), this must be completed</description>
         <errorConditionFormula>FCINOPRI__c = true &amp;&amp;  ISBLANK(FCINOPRS__c)</errorConditionFormula>
         <errorDisplayField>FCINOPRS__c</errorDisplayField>
-        <errorMessage>Please specify the type of private insurance.</errorMessage>
+        <errorMessage>Specify private insurance.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Insdomenv_must_specify_other_private_p</fullName>
@@ -5760,7 +6063,7 @@
         <description>If OTHER selected (FCINOPUB=1), this must be completed</description>
         <errorConditionFormula>FCINOPUB__c = true &amp;&amp;  ISBLANK(FCINOPSP__c)</errorConditionFormula>
         <errorDisplayField>FCINOPSP__c</errorDisplayField>
-        <errorMessage>Please specify the type of public insurance.</errorMessage>
+        <errorMessage>Specify public insurance.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Insdomenv_must_specify_other_public_p</fullName>
@@ -5768,71 +6071,407 @@
         <description>If OTHER selected (FPINOPUB=1), this must be completed</description>
         <errorConditionFormula>FPINOPUB__c = true &amp;&amp;  ISBLANK(FPINOPSP__c)</errorConditionFormula>
         <errorDisplayField>FPINOPSP__c</errorDisplayField>
-        <errorMessage>Please specify the type of public insurance.</errorMessage>
+        <errorMessage>Specify public insurance.</errorMessage>
     </validationRules>
     <validationRules>
-        <fullName>Insdomenv_must_specify_place_living</fullName>
+        <fullName>Military_NO_National_Guard_branch</fullName>
+        <active>true</active>
+        <description>If 2, 3, or 4 (Navy, Marine Corps or Coast Guard) is chosen for &quot;BRANCH&quot; (previous question) AND 1 (National Guard) is chosen here, give error message &quot;This branch does not have a National Guard component&quot;</description>
+        <errorConditionFormula>OR(
+(OR(ISPICKVAL(FMFM1B__c,&apos;4&apos;),ISPICKVAL(FMFM1B__c,&apos;3&apos;), ISPICKVAL(FMFM1B__c , &apos;2&apos;))   &amp;&amp;ISPICKVAL(FMFM1B2__c,&apos;1&apos;)),
+(OR(ISPICKVAL(FMFM2B__c,&apos;4&apos;),ISPICKVAL(FMFM2B__c,&apos;3&apos;), ISPICKVAL(FMFM2B__c , &apos;2&apos;))   &amp;&amp;ISPICKVAL(FMFM2B2__c,&apos;1&apos;)),
+(OR(ISPICKVAL(FMFM3B__c,&apos;4&apos;),ISPICKVAL(FMFM3B__c,&apos;3&apos;), ISPICKVAL(FMFM3B__c , &apos;2&apos;))   &amp;&amp;ISPICKVAL(FMFM3B2__c,&apos;1&apos;)),
+(OR(ISPICKVAL(FMFM4B__c,&apos;4&apos;),ISPICKVAL(FMFM4B__c,&apos;3&apos;), ISPICKVAL(FMFM4B__c , &apos;2&apos;))   &amp;&amp;ISPICKVAL(FMFM4B2__c,&apos;1&apos;))
+)</errorConditionFormula>
+        <errorDisplayField>FMFM1B2__c</errorDisplayField>
+        <errorMessage>This branch does not have a National Guard component</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Military_aunt_must_answer_q3</fullName>
+        <active>true</active>
+        <description>If Aunt selected (FAUNMILL = 1), must answer question 3.
+Q3 = FMILSERV__c</description>
+        <errorConditionFormula>FAUNMIL__c = true &amp;&amp;  ISPICKVAL(FMILSERV__c, &apos;null&apos;)</errorConditionFormula>
+        <errorDisplayField>FAUNMIL__c</errorDisplayField>
+        <errorMessage>Clients who identify that the child&apos;s aunt served in the military MUST provide an answer for question 3.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Military_aunt_must_answer_q6</fullName>
+        <active>true</active>
+        <description>If Aunt selected (FAUNMILL = 1), must answer question 6.
+Q6 = FMDIFRI__c</description>
+        <errorConditionFormula>FAUNMIL__c = true &amp;&amp;   ISPICKVAL( FMDIFRI__c, &apos;null&apos;)</errorConditionFormula>
+        <errorDisplayField>FAUNMIL__c</errorDisplayField>
+        <errorMessage>Clients who identify that the child&apos;s aunt served in the military MUST provide an answer for question 6.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Military_brother_must_answer_q3</fullName>
+        <active>true</active>
+        <description>If Brother selected (FBROMILL = 1), must answer question 3.
+Q3 = FMILSERV__c</description>
+        <errorConditionFormula>FBROMIL__c = true &amp;&amp; ISPICKVAL(FMILSERV__c, &apos;null&apos;)</errorConditionFormula>
+        <errorDisplayField>FMILSERV__c</errorDisplayField>
+        <errorMessage>Clients who identify that the child&apos;s brother served in the military MUST provide an answer for question 3.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Military_brother_must_answer_q6</fullName>
+        <active>true</active>
+        <description>If Brother selected (FBROMILL = 1), must answer question 6.
+Q6 = FMDIFRI__c</description>
+        <errorConditionFormula>FBROMIL__c = true &amp;&amp; ISPICKVAL( FMDIFRI__c, &apos;null&apos;)</errorConditionFormula>
+        <errorDisplayField>FMILSERV__c</errorDisplayField>
+        <errorMessage>Clients who identify that the child&apos;s brother served in the military MUST provide an answer for question 6.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Military_cousin_must_answer_q3</fullName>
+        <active>true</active>
+        <description>If Cousin selected (FCOUMILL = 1), must answer question 3.
+Q3 = FMILSERV__c</description>
+        <errorConditionFormula>FCOUMIL__c = true &amp;&amp;  ISPICKVAL(FMILSERV__c, &apos;null&apos;)</errorConditionFormula>
+        <errorDisplayField>FCOUMIL__c</errorDisplayField>
+        <errorMessage>Clients who identify that the child&apos;s cousin served in the military MUST provide an answer for question 3.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Military_cousin_must_answer_q6</fullName>
+        <active>true</active>
+        <description>If Cousin selected (FCOUMILL = 1), must answer question 6.
+Q6 = FMDIFRI__c</description>
+        <errorConditionFormula>FCOUMIL__c = true &amp;&amp; ISPICKVAL( FMDIFRI__c, &apos;null&apos;)</errorConditionFormula>
+        <errorDisplayField>FCOUMIL__c</errorDisplayField>
+        <errorMessage>Clients who identify that the child&apos;s cousin served in the military MUST provide an answer for question 6.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Military_dad_must_answer_q3</fullName>
+        <active>true</active>
+        <description>If Father selected (FDADMILL = 1), must answer question 3.
+Q3 = FMILSERV__c</description>
+        <errorConditionFormula>FDADMIL__c = true &amp;&amp;   ISPICKVAL(FMILSERV__c, &apos;null&apos;)</errorConditionFormula>
+        <errorDisplayField>FDADMIL__c</errorDisplayField>
+        <errorMessage>Clients who identify that the child&apos;s father served in the military MUST provide an answer for question 3.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Military_dad_must_answer_q6</fullName>
+        <active>true</active>
+        <description>If Father selected (FDADMILL = 1), must answer question 6.
+Q6 = FMDIFRI__c</description>
+        <errorConditionFormula>FDADMIL__c = true &amp;&amp;   ISPICKVAL( FMDIFRI__c, &apos;null&apos;)</errorConditionFormula>
+        <errorDisplayField>FDADMIL__c</errorDisplayField>
+        <errorMessage>Clients who identify that the child&apos;s father served in the military MUST provide an answer for question 6.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Military_difficulty_oth_must_specify</fullName>
+        <active>true</active>
+        <description>If Other selected (FMDIFRIO__c  = 1), this must be completed</description>
+        <errorConditionFormula>FMDIFRIO__c= true &amp;&amp;   ISBLANK(FMDIFRIOSP__c)</errorConditionFormula>
+        <errorDisplayField>FMDIFRIOSP__c</errorDisplayField>
+        <errorMessage>Please specify the other difficulties with reintegration.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Military_family_member_other_specify</fullName>
+        <active>true</active>
+        <description>If Other selected (FMFMR1__c = 98), this must be completed</description>
+        <errorConditionFormula>OR(
+(ISPICKVAL(FMFMR1__c, &quot;98&quot;)&amp;&amp;(ISBLANK(FMFMR1SP__c))),
+(ISPICKVAL(FMFMR2__c, &quot;98&quot;)&amp;&amp;(ISBLANK(FMFMR2SP__c))),
+(ISPICKVAL(FMFMR3__c, &quot;98&quot;)&amp;&amp;(ISBLANK(FMFMR3SP__c))),
+(ISPICKVAL(FMFMR4__c, &quot;98&quot;)&amp;&amp;(ISBLANK(FMFMR4SP__c)))
+)</errorConditionFormula>
+        <errorDisplayField>FMFMR1SP__c</errorDisplayField>
+        <errorMessage>Please specify the &apos;Other&apos; family member.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Military_grandparent_must_answer_q3</fullName>
+        <active>true</active>
+        <description>If Grandparent selected (FGRAMILL = 1), must answer question 3.
+Q3 = FMILSERV__c</description>
+        <errorConditionFormula>FGRAMIL__c = true &amp;&amp;  ISPICKVAL(FMILSERV__c, &apos;null&apos;)</errorConditionFormula>
+        <errorDisplayField>FGRAMIL__c</errorDisplayField>
+        <errorMessage>Clients who identify that the child&apos;s grandparent served in the military MUST provide an answer for question 3.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Military_grandparent_must_answer_q6</fullName>
+        <active>true</active>
+        <description>If Grandparent selected (FGRAMILL = 1), must answer question 6.
+Q6 = FMDIFRI__c</description>
+        <errorConditionFormula>FGRAMIL__c = true &amp;&amp;  ISPICKVAL( FMDIFRI__c, &apos;null&apos;)</errorConditionFormula>
+        <errorDisplayField>FGRAMIL__c</errorDisplayField>
+        <errorMessage>Clients who identify that the child&apos;s grandparent served in the military MUST provide an answer for question 6.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Military_injury_oth_must_specify</fullName>
+        <active>true</active>
+        <description>If Other selected (FMPIOTH__c  = 1), this must be completed</description>
+        <errorConditionFormula>FMPIOTH__c= true &amp;&amp;   ISBLANK(FMPIOSP__c)</errorConditionFormula>
+        <errorDisplayField>FMPIOSP__c</errorDisplayField>
+        <errorMessage>Please specify the &apos;Other&apos; physical injury sustained.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Military_killed_oth_must_specify</fullName>
+        <active>true</active>
+        <description>If Other selected (FMKILOTH__c  = 1), this must be completed</description>
+        <errorConditionFormula>FMKILOTH__c= true &amp;&amp;   ISBLANK(FMKILOSP__c)</errorConditionFormula>
+        <errorDisplayField>FMKILOSP__c</errorDisplayField>
+        <errorMessage>Please specify the reason killed</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Military_mom_must_answer_q3</fullName>
+        <active>true</active>
+        <description>If Mother selected (FMOMMILL = 1), must answer question 3.
+Q3 = FMILSERV__c</description>
+        <errorConditionFormula>FMOMMIL__c = true &amp;&amp;  ISPICKVAL(FMILSERV__c, &apos;null&apos;)</errorConditionFormula>
+        <errorDisplayField>FMOMMIL__c</errorDisplayField>
+        <errorMessage>Clients who identify that the child&apos;s mother served in the military MUST provide an answer for question 3</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Military_mom_must_answer_q6</fullName>
+        <active>true</active>
+        <description>If Mother selected (FMOMMILL = 1), must answer question 6.
+Q6 = FMDIFRI__c</description>
+        <errorConditionFormula>FMOMMIL__c = true &amp;&amp;  ISPICKVAL( FMDIFRI__c, &apos;null&apos;)</errorConditionFormula>
+        <errorDisplayField>FMOMMIL__c</errorDisplayField>
+        <errorMessage>Clients who identify that the child&apos;s mother served in the military MUST provide an answer for question 6.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Military_must_specify_difficulties</fullName>
+        <active>true</active>
+        <description>If YES selected (FMDIFRI = 1), must specify difficulties experienced by choosing one of the following: FMDIFRIE, FMDIFRIH, FMDIFRIL, FMDIFRIA, FMDIFRIO, FMDIFRIUK</description>
+        <errorConditionFormula>( ISPICKVAL(FMDIFRI__c,&apos;1&apos;)) &amp;&amp;(
+( FMDIFRIE__c= false)&amp;&amp;
+(FMDIFRIH__c = false)&amp;&amp;
+(FMDIFRIL__c = false)&amp;&amp;
+(FMDIFRIA__c = false)&amp;&amp;
+(FMDIFRIO__c = false)&amp;&amp;
+(FMDIFRIUK__c = false)
+)</errorConditionFormula>
+        <errorDisplayField>FMDIFRI__c</errorDisplayField>
+        <errorMessage>You must specify at least one type of difficulty with reintegration.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Military_must_specify_how_killed</fullName>
+        <active>true</active>
+        <description>If YES selected (FMKIL = 1), must specify how the service member was killed by choosing one of the following: FMKILCOM, FMKILACC, FMKILMED, FMKILSUIC, FMKILOTH, FMKILUK</description>
+        <errorConditionFormula>(FMKIL__c = true) &amp;&amp;(
+( FMKILCOM__c= false)&amp;&amp;
+(FMKILACC__c = false)&amp;&amp;
+(FMKILMED__c = false)&amp;&amp;
+(FMKILSUIC__c = false)&amp;&amp;
+(FMKILOTH__c = false)&amp;&amp;
+(FMKILUK__c = false)
+)</errorConditionFormula>
+        <errorDisplayField>FMKIL__c</errorDisplayField>
+        <errorMessage>You must specify how the service member was killed.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Military_must_specify_type_of_injury</fullName>
+        <active>true</active>
+        <description>If YES selected (FMPI = 1), must specify type of injury by choosing one of the following: FMPIAMP, FMPITBI, FMPIBRN, FMPICPF, FMPIOTH, FMPIUK</description>
+        <errorConditionFormula>(FMPI__c = true) &amp;&amp;(
+(FMPIAMP__c= false)&amp;&amp;
+(FMPITBI__c = false)&amp;&amp;
+(FMPIBRN__c = false)&amp;&amp;
+(FMPICPF__c = false)&amp;&amp;
+(FMPIOTH__c = false)&amp;&amp;
+(FMPIUK__c = false)
+)</errorConditionFormula>
+        <errorDisplayField>FMPI__c</errorDisplayField>
+        <errorMessage>You must specify at least one type of physical injury.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Military_must_specify_type_of_stress</fullName>
+        <active>true</active>
+        <description>If YES selected (FMST = 1), must specify type of stress symptoms by choosing one of the following: FMSTPTSD, FMSTDEP, FMSTSUIC, FMSTOTH, FMSTUK</description>
+        <errorConditionFormula>(FMST__c = true) &amp;&amp;(
+( FMSTPTSD__c= false)&amp;&amp;
+(FMSTDEP__c = false)&amp;&amp;
+(FMSTSUIC__c = false)&amp;&amp;
+(FMSTOTH__c = false)&amp;&amp;
+(FMSTUK__c = false)
+)</errorConditionFormula>
+        <errorDisplayField>FMST__c</errorDisplayField>
+        <errorMessage>You must specify at least one type of stress.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Military_other_must_answer_q3</fullName>
+        <active>true</active>
+        <description>If Other selected (FOTHMILL = 1), must answer question 3.
+Q3 = FMILSERV__c</description>
+        <errorConditionFormula>FOTHMIL__c = true &amp;&amp;  ISPICKVAL(FMILSERV__c, &apos;null&apos;)</errorConditionFormula>
+        <errorDisplayField>FOTHMIL__c</errorDisplayField>
+        <errorMessage>Clients who identify that the child&apos;s other relative served in the military MUST provide an answer for question 3.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Military_other_must_answer_q6</fullName>
+        <active>true</active>
+        <description>If Other selected (FOTHMILL = 1), must answer questions 6.
+Q6 = FMDIFRI__c</description>
+        <errorConditionFormula>FOTHMIL__c = true &amp;&amp;   ISPICKVAL( FMDIFRI__c, &apos;null&apos;)</errorConditionFormula>
+        <errorDisplayField>FOTHMIL__c</errorDisplayField>
+        <errorMessage>Clients who identify that the child&apos;s other relative served in the military MUST provide an answer for question 6.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Military_other_must_specify</fullName>
+        <active>true</active>
+        <description>If Other selected (FOTHMILL = 1), other relative MUST be specified</description>
+        <errorConditionFormula>FOTHMIL__c = true &amp;&amp;  ISBLANK(FOTHMILSP__c)</errorConditionFormula>
+        <errorDisplayField>FOTHMILSP__c</errorDisplayField>
+        <errorMessage>Clients who identify that the child&apos;s other relative served in the military MUST specify the type of other relative.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Military_self_must_answer_q3</fullName>
+        <active>true</active>
+        <description>If SELF selected (FSELFMIL = 1), must answer question 3.
+Q3 = FMILSERV__c</description>
+        <errorConditionFormula>FSELFMIL__c = true &amp;&amp; ISPICKVAL(FMILSERV__c, &apos;null&apos;)</errorConditionFormula>
+        <errorDisplayField>FSELFMIL__c</errorDisplayField>
+        <errorMessage>Clients who identify that the child served in the military MUST provide an answer for question 3.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Military_self_must_answer_q6</fullName>
+        <active>true</active>
+        <description>If SELF selected (FSELFMIL = 1), must answer question 6.
+Q6 = FMDIFRI__c</description>
+        <errorConditionFormula>FSELFMIL__c = true &amp;&amp; ISPICKVAL( FMDIFRI__c, &apos;null&apos;)</errorConditionFormula>
+        <errorDisplayField>FSELFMIL__c</errorDisplayField>
+        <errorMessage>Clients who identify that the child served in the military MUST provide an answer for question 6.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Military_sister_must_answer_q3</fullName>
+        <active>true</active>
+        <description>If Sister selected (FSISMILL = 1), must answer question 3.
+Q3 = FMILSERV__c</description>
+        <errorConditionFormula>FSISMIL__c = true &amp;&amp; ISPICKVAL(FMILSERV__c, &apos;null&apos;)</errorConditionFormula>
+        <errorDisplayField>FSISMIL__c</errorDisplayField>
+        <errorMessage>Clients who identify that the child&apos;s sister served in the military MUST provide an answer for question 3.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Military_sister_must_answer_q6</fullName>
+        <active>true</active>
+        <description>If Sister selected (FSISMILL = 1), must answer question 6.
+Q6 = FMDIFRI__c</description>
+        <errorConditionFormula>FSISMIL__c = true &amp;&amp; ISPICKVAL(FMDIFRI__c, &apos;null&apos;)</errorConditionFormula>
+        <errorDisplayField>FSISMIL__c</errorDisplayField>
+        <errorMessage>Clients who identify that the child&apos;s sister served in the military MUST provide an answer for question 6.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Military_stress_oth_must_specify</fullName>
+        <active>true</active>
+        <description>If Other selected (FMSTOTH__c  = 1), this must be completed</description>
+        <errorConditionFormula>FMSTOTH__c= true &amp;&amp;   ISBLANK(FMSTOSP__c)</errorConditionFormula>
+        <errorDisplayField>FMSTOSP__c</errorDisplayField>
+        <errorMessage>Please specify the &apos;Other&apos; stress symptom.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Military_uncle_must_answer_q3</fullName>
+        <active>true</active>
+        <description>If Uncle selected (FUNCMILL = 1), must answer question 3
+Q3 = FMILSERV__c</description>
+        <errorConditionFormula>FUNCMIL__c = true &amp;&amp;  ISPICKVAL(FMILSERV__c, &apos;null&apos;)</errorConditionFormula>
+        <errorDisplayField>FUNCMIL__c</errorDisplayField>
+        <errorMessage>Clients who identify that the child&apos;s uncle served in the military MUST provide an answer for question 3.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Military_uncle_must_answer_q6</fullName>
+        <active>true</active>
+        <description>If Uncle selected (FUNCMILL = 1), must answer question 6
+Q6 = FMDIFRI__c</description>
+        <errorConditionFormula>FUNCMIL__c = true &amp;&amp;  ISPICKVAL(FMDIFRI__c, &apos;null&apos;)</errorConditionFormula>
+        <errorDisplayField>FUNCMIL__c</errorDisplayField>
+        <errorMessage>Clients who identify that the child&apos;s uncle served in the military MUST provide an answer for question 6.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Nctsntreat_other_must_complete_q1</fullName>
+        <active>true</active>
+        <description>FTXOITYP: If &quot;Other&quot; selected, this must be completed.</description>
+        <errorConditionFormula>FTXOI__c=true &amp;&amp; ISBLANK(FTXOITYP__c)</errorConditionFormula>
+        <errorDisplayField>FTXOITYP__c</errorDisplayField>
+        <errorMessage>Specify treatment.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Nctsntreat_other_must_complete_q10</fullName>
+        <active>true</active>
+        <description>FTXLEADCLSP: If &quot;Other&quot; selected, this must be completed.</description>
+        <errorConditionFormula>ISPICKVAL(FTXLEADCL__c, &apos;98&apos;) &amp;&amp; ISBLANK(FTXLEADCLSP__c)</errorConditionFormula>
+        <errorDisplayField>FTXLEADCLSP__c</errorDisplayField>
+        <errorMessage>Specify provider.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Nctsntreat_other_must_complete_q2</fullName>
+        <active>true</active>
+        <description>FTXOTTYP: If &quot;Other&quot; selected, this must be completed.</description>
+        <errorConditionFormula>FTXOT__c=true &amp;&amp; ISBLANK(FTXOTTYP__c)</errorConditionFormula>
+        <errorDisplayField>FTXOTTYP__c</errorDisplayField>
+        <errorMessage>Specify treatment.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Nctsntreat_other_must_complete_q3</fullName>
+        <active>true</active>
+        <description>FTXSOTHSP: If &quot;Other&quot; selected, this must be completed.</description>
+        <errorConditionFormula>FTXSOTH__c=true &amp;&amp; ISBLANK(FTXSOTHSP__c)</errorConditionFormula>
+        <errorDisplayField>FTXSOTHSP__c</errorDisplayField>
+        <errorMessage>Specify setting.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Nctsntreat_other_must_complete_q4</fullName>
+        <active>true</active>
+        <description>FTXOTMOSP: If &quot;Other&quot; selected, this must be completed.</description>
+        <errorConditionFormula>FTXOTHMOD__c=true &amp;&amp; ISBLANK(FTXOTMOSP__c)</errorConditionFormula>
+        <errorDisplayField>FTXOTMOSP__c</errorDisplayField>
+        <errorMessage>Specify modality.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Nctsntreat_other_must_complete_q5</fullName>
+        <active>true</active>
+        <description>FTXMODPRISP: If &quot;Other&quot; selected, this must be completed.</description>
+        <errorConditionFormula>ISPICKVAL(FTXMODPRI__c, &apos;98&apos;)&amp;&amp; ISBLANK(FTXMODPRISP__c)</errorConditionFormula>
+        <errorDisplayField>FTXMODPRISP__c</errorDisplayField>
+        <errorMessage>Specify modality.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Nctsntreat_other_must_complete_q6</fullName>
+        <active>true</active>
+        <description>FTXSIOTSP: If &quot;Other&quot; selected, this must be completed.</description>
+        <errorConditionFormula>FTXSIPOTH__c=true &amp;&amp; ISBLANK(FTXSIOTSP__c)</errorConditionFormula>
+        <errorDisplayField>FTXSIOTSP__c</errorDisplayField>
+        <errorMessage>Specify intervention.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Nctsntreat_other_must_complete_q7</fullName>
+        <active>true</active>
+        <description>FTXPRISIPSP: If &quot;Other&quot; selected, this must be completed.</description>
+        <errorConditionFormula>ISPICKVAL(FTXPRISIP__c, &apos;98&apos;) &amp;&amp; ISBLANK(FTXPRISIPSP__c)</errorConditionFormula>
+        <errorDisplayField>FTXPRISIPSP__c</errorDisplayField>
+        <errorMessage>Specify intervention protocol.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Nctsntreat_other_must_complete_q8</fullName>
+        <active>true</active>
+        <description>FTXPSOTSP: If &quot;Other&quot; selected, this must be completed.</description>
+        <errorConditionFormula>FTXPSIOTH__c=true &amp;&amp; ISBLANK(FTXPSOTSP__c)</errorConditionFormula>
+        <errorDisplayField>FTXPSOTSP__c</errorDisplayField>
+        <errorMessage>Specify service.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Nctsntreat_other_must_complete_q9</fullName>
+        <active>true</active>
+        <description>FTXOCLISP: If &quot;Other&quot; selected, this must be completed.</description>
+        <errorConditionFormula>FTXOCLIN__c=true &amp;&amp; ISBLANK(FTXOCLISP__c)</errorConditionFormula>
+        <errorDisplayField>FTXOCLISP__c</errorDisplayField>
+        <errorMessage>Specify provider.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Nctsntreat_required_q5</fullName>
         <active>false</active>
-        <description>If OTHER selected (FNOMHOUSE=98), this must be completed</description>
-        <errorConditionFormula>ISPICKVAL(FNOMHOUSE__c, &apos;98&apos;)  &amp;&amp;  ISBLANK(FNOMHOUSESP__c)</errorConditionFormula>
-        <errorMessage>Please specify where you [your child] have been living.</errorMessage>
+        <description>FTXMODPRI: Primary modality must be selected (if not = error message);</description>
+        <errorConditionFormula>ISPICKVAL(FTXMODPRI__c, &apos;&apos;)</errorConditionFormula>
+        <errorDisplayField>FTXMODPRI__c</errorDisplayField>
+        <errorMessage>Q5. Indicate primary modality.</errorMessage>
     </validationRules>
     <validationRules>
-        <fullName>Insdomenv_must_specify_private_child_ins</fullName>
+        <fullName>Nctsntreat_required_q7</fullName>
         <active>true</active>
-        <description>If YES selected (FCINPRIV = 1), must choose from the following: FCINHMO, FCINPPO, FCINFFS, FCINOPRI, FCINPRUK</description>
-        <errorConditionFormula>(FCINPRIV__c = true) &amp;&amp;(
-                             (FCINHMO__c = false)&amp;&amp;
-                             (FCINPPO__c = false)&amp;&amp;
-                             (FCINFFS__c = false)&amp;&amp;
-                             (FCINOPRI__c = false)&amp;&amp;
-                             (FCINPRUK__c = false)
-)</errorConditionFormula>
-        <errorDisplayField>FCINPRIV__c</errorDisplayField>
-        <errorMessage>You must specify the type of private insurance that the child is receiving.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Insdomenv_must_specify_private_parent_in</fullName>
-        <active>true</active>
-        <description>If YES selected (FPINPRIV = 1), must choose from the following: FPINHMO, FPINPPO, FPINFFS, FPINOPRI</description>
-        <errorConditionFormula>(FPINPRIV__c = true) &amp;&amp;(
-                             (FPINHMO__c = false)&amp;&amp;
-                             (FPINPPO__c = false)&amp;&amp;
-                             (FPINFFS__c = false)&amp;&amp;
-                             (FPINOPRI__c = false)
-)</errorConditionFormula>
-        <errorDisplayField>FPINPRIV__c</errorDisplayField>
-        <errorMessage>You must specify the type of private insurance that the parent is receiving.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Insdomenv_must_specify_public_child_ins</fullName>
-        <active>true</active>
-        <description>If YES selected (FCINPUB = 1), must choose from the following: FCINMEDR, FCINMEDD, FCINMHC, FCINIH, FCINCHIP, FCINOPUB, FCINPBUK</description>
-        <errorConditionFormula>(FCINPUB__c = true) &amp;&amp;(
-                             (FCINMEDR__c = false)&amp;&amp;
-                             (FCINMEDD__c = false)&amp;&amp;
-                             (FCINMHC__c = false)&amp;&amp;
-                             (FCINIH__c = false)&amp;&amp;
-                             (FCINCHIP__c = false)&amp;&amp;
-                             (FCINOPUB__c = false)&amp;&amp;
-                             (FCINPBUK__c = false)
-)</errorConditionFormula>
-        <errorDisplayField>FCINOPUB__c</errorDisplayField>
-        <errorMessage>You must specify the type of public insurance that the child is receiving.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Insdomenv_must_specify_public_parent_ins</fullName>
-        <active>true</active>
-        <description>If YES selected (FPINPUB = 1), must choose from the following: FINMEDR, FPINMEDD, FPINMHC, FPINIH, FPINCHIP, FPINOPUB</description>
-        <errorConditionFormula>(FPINPUB__c = true) &amp;&amp;(
-                             (FPINMEDR__c = false)&amp;&amp;
-                             (FPINMEDD__c = false)&amp;&amp;
-                             (FPINMHC__c = false)&amp;&amp;
-                             (FPINIH__c = false)&amp;&amp;
-                             (FPINCHIP__c = false)&amp;&amp;
-                             (FPINOPUB__c = false)
-)</errorConditionFormula>
-        <errorDisplayField>FPINPUB__c</errorDisplayField>
-        <errorMessage>You must specify the type of public insurance that the parent is receiving.</errorMessage>
+        <description>FTXPRISIP: Intervention protocol must be selected (if not = error message)</description>
+        <errorConditionFormula>ISPICKVAL(FTXPRISIP__c, &apos;null&apos;)</errorConditionFormula>
+        <errorDisplayField>FTXPRISIP__c</errorDisplayField>
+        <errorMessage>Q7. Indicate intervention.</errorMessage>
     </validationRules>
 </CustomObject>

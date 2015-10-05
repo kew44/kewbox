@@ -179,17 +179,6 @@
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
     <fields>
-        <fullName>FORM__c</fullName>
-        <defaultValue>&apos;DS_GTRAUMA&apos;</defaultValue>
-        <externalId>false</externalId>
-        <label>FORM</label>
-        <length>50</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>GT10RA0__c</fullName>
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
@@ -4707,6 +4696,20 @@
         <customTabListAdditionalFields>GT9R__c</customTabListAdditionalFields>
     </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>GTrauma_date_cannot_be_before_birth</fullName>
+        <active>true</active>
+        <errorConditionFormula>Client__r.DOB1__c &gt; GTDATE__c</errorConditionFormula>
+        <errorDisplayField>GTDATE__c</errorDisplayField>
+        <errorMessage>General trauma administration date cannot be before birth.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>GTrauma_date_cannot_be_future</fullName>
+        <active>true</active>
+        <errorConditionFormula>GTDATE__c &gt; TODAY()</errorConditionFormula>
+        <errorDisplayField>GTDATE__c</errorDisplayField>
+        <errorMessage>Date cannot be in the future.</errorMessage>
+    </validationRules>
     <validationRules>
         <fullName>GTrauma_must_indicate_tr1</fullName>
         <active>true</active>

@@ -1,25 +1,13 @@
 /*Page Description:
- *  Test class for DS_Functioning_Forms_B
- *
- * Last Updated on:
- * 7/23/2014
- * Update Purpose:
- * condense all BASELINE2 tests 
- * restructuring
- * batch testing
- * compatibility
- 9/10-re-separated individual form methods for easier updating
- * Programmer:
- *  Kelsey
- */
+*  Test class for DS_Functioning_Forms_B
+*10/1/15- Update to include asserts for R2 November Patch 
+*/
 @isTest
 private class TestClass_DS_Functioning_Forms_B{
-//////////////////////////////////////////////////////////////////////////////////////////////////
-
-//////////////////////////////////////////////////////////////////////////////////////////////////   
+    
 
   static TestMethod void Test_TestInsertUpdateDelete() {
-    TestClass_Utility test_ut = new TestClass_Utility();
+    TestClass_A_Utility test_ut = new TestClass_A_Utility();
     Client__c client = test_ut.createClientSummary();
     ///begin bulk insert
     List<DS_Functioning_Forms_B__c> bulkObj = new List<DS_Functioning_Forms_B__c>();     
@@ -33,7 +21,7 @@ private class TestClass_DS_Functioning_Forms_B{
 static TestMethod void Test_samlpeAsserts(){
 
     Utility ut = new Utility();
-    TestClass_Utility test_ut = new TestClass_Utility();
+    TestClass_A_Utility test_ut = new TestClass_A_Utility();
     
 //create test client 
     Client__c client = test_ut.createClientSummary();
@@ -46,15 +34,15 @@ ApexPages.currentPage().getParameters().put('cimi',cimi);
     ApexPages.StandardController sc = new ApexPages.StandardController(obj);
     
     //    controllers
- //DS_SERVREC_Controller servrecController = new DS_SERVREC_Controller(sc);
-// DS_CANSTR_Controller canstrController = new DS_CANSTR_Controller(sc); 
- //DS_YCINDSEV_Controller ycindsevController = new DS_YCINDSEV_Controller(sc);
-// DS_INDSEV_Controller indsevController = new DS_INDSEV_Controller(sc);
-// DS_NOMS_Controller nomsController = new DS_NOMS_Controller(sc);
+/* DS_SERVREC_Controller servrecController = new DS_SERVREC_Controller(sc);
+ DS_CANSTR_Controller canstrController = new DS_CANSTR_Controller(sc); 
+ DS_YCINDSEV_Controller ycindsevController = new DS_YCINDSEV_Controller(sc);
+ DS_INDSEV_Controller indsevController = new DS_INDSEV_Controller(sc);
+ DS_NOMS_Controller nomsController = new DS_NOMS_Controller(sc);
  DS_FAPGAR_Controller fapgarController = new DS_FAPGAR_Controller(sc);
-// DS_BIS_Controller bisController = new DS_BIS_Controller(sc);
-// DS_BSLC_Controller bslcController = new DS_BSLC_Controller(sc);
-// DS_CLINEVAL_Controller clinevalController = new DS_CLINEVAL_Controller(sc);
+ DS_BIS_Controller bisController = new DS_BIS_Controller(sc);
+ DS_BSLC_Controller bslcController = new DS_BSLC_Controller(sc);
+ DS_CLINEVAL_Controller clinevalController = new DS_CLINEVAL_Controller(sc);*/
  
  //variables
  
@@ -65,9 +53,9 @@ ApexPages.currentPage().getParameters().put('cimi',cimi);
         obj.BFAPGAR5__c='99';
        // obj.BFAPGAR_MET = 'Not Met';
  
-/*String BOSMEN='99';
+String BOSMEN='99';
 Boolean BLTCOGB = true;
-String BOSOSP= 'null'; 
+String BOSOTHSP= 'null'; 
  
 String BSTFAM='1';
 String BSTINTP='0';
@@ -90,6 +78,7 @@ String BISPCRSP= 'null';
 String BNDAILYL='1';
 String BNADMINOSP= 'null'; 
 
+ /*FAPGAR vars on FAPGAR test form*/
 
 String BCBISRECV = '1';//
 Date BCBISTCDT=system.today();
@@ -103,14 +92,14 @@ String BTXTYPSP= 'null';
 
 String BCEPRIM='2';
 String BCEOTHY = '1';
-String BCEOTHER= 'null'; */
+String BCEOTHER= 'null'; 
  
  insert obj;
  
  //asserts
-/*  System.assertNotEquals(obj.BOSMEN__c,BOSMEN , 'It is known if the child has recieved mentor services or not within the last 30 days.'); 
+  System.assertNotEquals(obj.BOSMEN__c,BOSMEN , 'It is known if the child has recieved mentor services or not within the last 30 days.'); 
   System.assertNotEquals(obj.BLTCOGB__c,BLTCOGB , 'Child has NOT recieved cognitive behavioral therapy in lifetime.');
-  System.assertNotEquals(obj.BOSOSP__c,BOSOSP , 'Other service is specified as'+obj.BOSOSP__c+'.');
+  //System.assertNotEquals(obj.BOSOTHSP__c,BOSOTHSP , 'Other service is specified as'+obj.BOSOTHSP__c+'.');
   
   System.assertNotEquals(obj.BSTFAM__c, BSTFAM, 'Child is NOT considered to have moderate level of family strengths.');
   System.assertNotEquals(obj.BSTINTP__c,BSTINTP , 'Child does NOT have significant interpersonal strengths.');
@@ -133,20 +122,21 @@ String BCEOTHER= 'null'; */
   System.assertNotEquals(obj.BNDAILYL__c, BNDAILYL, 'I [my child] do[es] NOT strongly disagree that the child is handling dsily life.');
   System.assertNotEquals(obj.BNADMINOSP__c,BNADMINOSP , 'Form was administered by '+obj.BNADMINOSP__c+'.');
   
+ /*Asserts for FAPGAR are on FAPGAR test form */
   
   System.assertNotEquals(obj.BCBISRECV__c, BCBISRECV, 'Child/family is NOT receiving brief intervention services.');
   System.assertNotEquals(obj.BCBISOTHS__c, BCBISOTHS, 'Other treatment component specified as '+obj.BCBISOTHS__c+'.');
   
   System.assertNotEquals(obj.BNCCTSBSLC__c,BNCCTSBSLC , 'Breakthrough series or learning collaborative NOT led by the UCLA-Duke University National Center for Child Traumatic Stress');
-  System.assertNotEquals(obj.BTXCOMP__c, BTXCOMP, 'Treatment was NOT completed.');
+ // System.assertNotEquals(obj.BTXCOMP__c, BTXCOMP, 'Treatment was NOT completed.');
   System.assertNotEquals(obj.BTXTYPSP__c, BTXTYPSP, 'Other treatment specified as '+obj.BTXTYPSP__c+'.');
   
   System.assertNotEquals(obj.BCEPRIM__c, BCEPRIM, 'The primary problem is NOT Bipolar Disorder.');
   System.assertNotEquals(obj.BCEOTHY__c, BCEOTHY, 'No additional problems.');
-  System.assertNotEquals(obj.BCEOTHER__c, BCEOTHER , 'Other problem identified as '+obj.BCEOTHER__c+'.');*/
+  System.assertNotEquals(obj.BCEOTHER__c, BCEOTHER , 'Other problem identified as '+obj.BCEOTHER__c+'.');
   
  //save/cancels
- /*   servrecController.save();
+  /*  servrecController.save();
    servrecController.cancel();
    
    canstrController.save();
@@ -159,12 +149,12 @@ String BCEOTHER= 'null'; */
    indsevController.cancel();
    
    nomsController.save();
-   nomsController.cancel();*/
+   nomsController.cancel();
    
    fapgarController.save();
    fapgarController.cancel();
    
-  /* bisController.save();
+   bisController.save();
    bisController.cancel();
    
    bslcController.save();

@@ -1,71 +1,61 @@
-<apex:page standardController="DS_SDQ_PSI_CDI_B__c" extensions="DS_SDQ_P_O_B_Report_Controller"  action="{!init}" showHeader="{!NOT(printReport)}">
-
-    <!--JQuery -->
-    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.9.1.js')}"  /><!--allows for JQuery dependencies-->
-    <script> $j = jQuery.noConflict(); </script><!--Reserves the '$' token for JQuery only-->
+<apex:page standardController="DS_SDQ_PSI_CDI_B__c" extensions="DS_SDQ_P_11_17_Report_Controller" action="{!init}"  showHeader="{!NOT(printReport)}" id="sdq-op-report">
     
-    <!-- Bootstrap -->
-        <link href="{!URLFOR($Resource.VFbootstrap3, '/css/VFbootstrap.css')}" rel="stylesheet" media="screen"/>
-            <apex:includeScript value="{!URLFOR($Resource.VFbootstrap3, '/js/bootstrap.min.js')}"/>
-                
-                <!--link to the CSS resource in Salesforce internal document-->
-                    <apex:stylesheet value="{!$Resource.CustomCss}" />
-                    
-    <script>function setFocusOnLoad() {}</script>
+    <link href="{!URLFOR($Resource.CSS_DS_Report)}" rel="stylesheet" media="screen, print"/>
+    <link href="{!URLFOR($Resource.CSS_DS_SDQ_Report)}" rel="stylesheet" media="screen, print"/>
     
-    <!-- "Breadcrumb" heading allows user to navigate to the ClientSummary page -->
-    <apex:outputPanel layout="none" rendered="{!not(printReport)}">
-        <script>
-        $j(document).ready(function() {
-            $j('.bPageTitle').append('<div class="ptBreadcrumb">&nbsp;«&nbsp;<a href="/apex/ClientSummary?id={!cID}&s=0">Back to Client Summary</a></div>');
-        });
-        </script>
-    </apex:outputPanel>
-    <!--end breadcrumb-->
+    <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
     
-    <!--print report command for button-->    
-    <apex:outputPanel layout="none" rendered="{!printReport}">
+    <script src="{!URLFOR($Resource.Scripts, 'DS_SDQ.js')}"></script>
+    
+    <div class="{!HTMLENCODE(form.visitType)}-assessment">
+        <apex:sectionHeader title="{!HTMLENCODE(form.title)}" subtitle="{!HTMLENCODE(form.subtitle)}" />
+    </div>    
+    
+    <!--print report command for button-->
+   	<apex:outputPanel layout="none" rendered="{!printReport}">
         <script>        
-        $j(document).ready(function() { 
-            $j('.bPageTitle .ptBody .content').prepend('<img style="display:inline;float:left;" src="{!URLFOR($Resource.images, 'cimiLogo.png')}"/>');
-            window.print(); 
-        });
-        </script>
+        	$j(document).ready(function() { 
+                $j('.history-total-score').removeClass('col-md-12 col-lg-6').addClass('print-chart-width');
+                $j('.history-subscale-score').removeClass('col-md-12 col-lg-6').addClass('print-chart-width');
+            	window.print(); 
+        	});
+    	</script>
     </apex:outputPanel>
-    <!--end print command -->    
-    
-    <apex:form id="DS_SDQ_P_11_17_REPORT">
-        
-        <apex:sectionHeader title="Strengths and Difficulties Questionnaire Parent Scoring Report" subtitle="{!subtitle}" rendered="{!NOT(printReport)}"/><br/>
-        <apex:sectionHeader title="Strengths and Difficulties Questionnaire Parent Scoring Report"   rendered="{!printReport}"/><br/>
-        
-        <!-- pageblock to show ClientInformation header as described in Utility class-->
-        <apex:pageBlock title="Client Information">
-            <div id="force">
-                <apex:outputText value="{!ClientInfo}" escape="false"/>
-            </div>
-        </apex:pageBlock><!--end client info pageBlock-->  
-                
-    <!--Begin SDQ Older Childrens' Parents' report content-->
-        <!--sdq page heading pageBlock-->
-        <apex:pageBlock title="Strengths and Difficulties Questionnaire Parent Scoring Report">
-            <apex:pageMessages />
+    <!--end print command -->
             
-            <div id="force">
-       
-                  
-        <!--start warning, conditional if any nulls present-->
-            <apex:outputPanel styleClass="warning" layout="none" rendered="{!if(missingRange!= '', true, false)}"><!--  rendered="{!(obj.EMONULLP__c>2) || (obj.BEHNULLP__c>2) || (obj.HYPNULLP__c>2) || (obj.OTCNULLP__c>2) || (obj.KHBNULLP__c>2)}"-->
-            <div class="message warningM3" role="alert">
-            <div id="j_id0:j_id5:j_id8:j_id9:j_id10:j_id11:0:j_id12:j_id13:j_id15" class="messageText">
-            <span id="j_id0:j_id5:j_id8:j_id9:j_id10:j_id11:0:j_id12:j_id13:j_id16" style="color:#cc0000">
-            <img alt="ERROR" class="msgIcon" src="/s.gif" title="ERROR"/>
-                Please note that if one or two items are missing from any scale, the pro-rated total is not provided at this time.
-            </span>
-            </div>
-            </div>
-            </apex:outputPanel>
-        <!--end warning-->             
+    <div class="bootwrap">
+        <!--Begin SDQ Older Childrens' Parents' report content-->
+        <apex:form id="DS_SDQ_P_11_17_REPORT"  styleClass="form-horizontal">
+            
+            <!-- pageblock to show ClientInformation header as described in Utility class-->
+            <c:cimiClientInfo displayVisitType="true" formElement="{!form}"/>
+            <!--end client info pageBlock-->
+                       
+            <!-- primary content pageBlock container-->
+            <apex:pageBlock title="{!HTMLENCODE(form.title)}" >
+                
+                <!--Save & view, save, and cancel control buttons for pageBlock-->
+                <apex:pageBlockButtons >
+                    <apex:commandButton action="{!editRecord}" value="Edit" styleClass="btn-info btn btn-sm" rendered="{!not(printReport)}"/>
+                </apex:pageBlockButtons>
+                <!--end buttons-->
+                
+                <!--placeholding structure that allows for system message display-->
+                <apex:pageMessages />
+        
+                <!--start warning, conditional if any nulls present-->
+                    <apex:outputPanel styleClass="warning" layout="none" rendered="{!if(missingRange!= '', true, false)}">
+                        <div class="message warningM3" role="alert">
+                            <div id="j_id0:j_id5:j_id8:j_id9:j_id10:j_id11:0:j_id12:j_id13:j_id15" class="messageText">
+                                <span id="j_id0:j_id5:j_id8:j_id9:j_id10:j_id11:0:j_id12:j_id13:j_id16" style="color:#cc0000">
+                                    <img alt="ERROR" class="msgIcon" src="/s.gif" title="ERROR"/>
+                                        Please note that if one or two items are missing from any scale, the pro-rated total is not provided at this time.
+                                    </span>
+                            </div>
+                        </div>
+                    </apex:outputPanel>
+                <!--end warning-->  
+                
                 <!--provides print button functionality and structure-->
                 <apex:outputPanel layout="none" rendered="{!NOT(printReport)}">
                     <div>
@@ -79,35 +69,33 @@
                 </apex:outputPanel>
                 <!--end print button-->
                 
+                <!--information-->
+                <div class="alert alert-info">
+                    The Strengths and Difficulties Questionnaire (SDQ) is a screening measure for early detection of behavioral problems and strengths in children and adolescents. 
+                    The SDQ subscales include:
+                    <i>Emotional Symptoms, Behavioral Difficulties, Hyperactivity-Inattention, Peer Problems, and Prosocial Behavior.</i><br/>
+                    Total Difficulties and the Impact are also recorded.<br/>
+                    The significance of each score is classified as 'Normal/Average', 'Clinical', or 'Borderline'.
+                </div>
+                <!--end information-->
+                                
                <!--administration date -->
-                <p >  <h5>
-                <b>
-                    <u>
+                <div >
+                    <p><h5><b><u>
                         Date of administration: &nbsp;
-                        <apex:outputField id="BDOASDOP__c" value="{!obj.BDOASDOP__c}"/>
-                    </u>
-                </b></h5>
-            </p>
-               <!--end administration date -->
-               
-            <!--information-->
-            The Strengths and Difficulties Questionnaire (SDQ) is a screening measure for early detection of behavioral problems and strengths in children and adolescents. 
-            The SDQ subscales include:
-            <i>Emotional Symptoms, Behavioral Difficulties, Hyperactivity-Inattention, Peer Problems, and Kind and Helpful Behavior.</i><br/><br/>
-            Total Difficulties and the Impact of any Difficulties on the Child's Life are also recorded.<br/><br/>
-            The significance of each score is classified as 'Normal/Average', 'Clinical', or 'Borderline'.
-            <!--end information-->
-            <br/><!--blank line break-->
-            <br/><!--blank line break-->
-            
-            <!--specific reports of severity-->
-            <!--displays a list of all symptoms that are rated as clinically significant, if any-->
-            <apex:outputPanel layout="none" rendered="{!if(clinicalRange != '', true, false)}">
-                <p>
-                    The child's symptoms on the following scales are rated clinically significant compared to other children their age: <b>{!clinicalRange}</b><br/>
-                </p>   
-            </apex:outputPanel>
-            <!--end clinical list-->
+                        <apex:outputField id="DOASDOP__c" value="{!form.obj[bfVariableMap['DOASDOP']]}"/>
+                    </u></b></h5></p>
+                </div>
+                <!--end administration date -->
+                
+                <!--specific reports of severity-->
+                <!--displays a list of all symptoms that are rated as clinically significant, if any-->
+                <apex:outputPanel layout="none" rendered="{!if(clinicalRange != '', true, false)}">
+                    <p>
+                        The child's symptoms on the following scales are rated clinically significant compared to other children their age: <b>{!clinicalRange}</b><br/>
+                    </p>   
+                </apex:outputPanel>
+                <!--end clinical list-->
             
             <!--displays a list of borderline symptoms, if any-->
             <apex:outputPanel layout="none" rendered="{!if(borderlineRange!= '', true, false)}">
@@ -118,213 +106,376 @@
             <!--end borderline list-->
             
             <!--displays list of symptoms that are missing values and cannot be determined, if any-->
-          <!--  <apex:outputPanel layout="none" rendered="{!if(missingRange!= '', true, false)}">
-                <p>
-                    Data for the following scales are missing or incomplete: <b>{!missingRange}</b>
-                </p>   
-            </apex:outputPanel>-->
-            <!--end missing list-->
-            
-            <apex:outputPanel >
-                <table class="table" style="max-width:800px;background-color: #F2F2F2;">
+                  <apex:outputPanel layout="none" rendered="{!if(missingRange!= '', true, false)}">
+                    <p>
+                        Data for the following scales are missing or incomplete: <b>{!missingRange}</b>
+                    </p>   
+                </apex:outputPanel>
+                <!--end missing list-->
                 
-                    <!--report information heading-->
-                    <thead> 
-                        <tr>
-                            <th class="darkerTHBottom">Category</th>
-                            <th class="darkerTHBottom">Score</th>
-                            <th class="darkerTHBottom">Significance</th>
-                        </tr>
-                    </thead>
-                    <!--end heading-->
+                    <table class="table" style="table-table table-bordered table-striped">
+                    
+                        <!--report information heading-->
+                        <thead> 
+                            <tr>
+                                <th colspan="1" class="darkerTHBottom">
+                                    <br/>
+                                    Category |
+                                    Date of administration
+                                </th>
+                                <th>
+                                    Current Significance
+                                </th>
+                                <apex:repeat value="{!visits}" var="visit">
+                                    <th class="darkerTHBottom">
+                                    <apex:outputText value="{0,date,MM/dd/yyyy}" >
+                                        <apex:param value="{!visit.DOASDOP}" />
+                                    </apex:outputText>
+                                    </th>
+                                </apex:repeat>
+                            </tr>
+                        </thead>
+                        <!--end heading-->
                     
                     <tbody>
                         <!--Total Difficulties-->
                         <tr>
                             <!--category, total, conditional formatting if missing-->
-                            <td class="darkerTDTop {!CASE(missingRange, '', '', 'warning')}"><b>Total Difficulties</b></td><!--category-->  
+                            <td class="darkerTDTop {!CASE(missingRange, '', '', 'warning')}"><b>Total Difficulties</b></td><!--category-->    
+                                                                
+                                <!--significance, conditional formatting-->                       
+                                <td><!-- class="{!CASE({!form.obj[bfVariableMap['SDPTYP']]},'Borderline', 'warning', 'Clinical', 'danger','')} {!CASE(missingRange, '', '', 'warning')}">-->
+                                    {!form.obj[bfVariableMap['SDPTYP']]}
+                                </td>  <!--significance, conditional formatting--> 
                             
-                            <!--score, conditional, if NOT missing-->                             
-                            <td class="{!CASE(missingRange, '', '', 'warning')}" style="display:{!if(missingRange = '',  'table-cell','none')};">                                
-                                    {!obj.BSDPTOT__c}                                 
-                            </td>         
-                            
-                            <!--Alternative message, conditional, if missing-->
-                            <td class="{!CASE(missingRange, '', '', 'warning')}" style="display:{!if(missingRange != '',  'table-cell','none')};">
-                            <!--image-->
-                                        <div class="message warningM3" role="alert">
-                                            <img alt="ERROR" class="msgIcon" src="/s.gif" title="ERROR"/>
-                                                <!--message-->
-                                                Not Available.
-                                        </div>
-                                    </td>
-                                                          
-                            <!--significance, conditional formatting-->                       
-                            <td class="{!CASE(obj.BSDPTYP__c,'Borderline', 'warning', 'Clinical', 'danger','')} {!CASE(missingRange, '', '', 'warning')}">
-                                {!obj.BSDPTYP__c}
-                            </td>  <!--significance, conditional formatting--> 
-                        </tr>
+                                <apex:repeat value="{!visits}" var="visit">
+                                    <apex:outputpanel rendered="{!if(visit.SDPTYP !='Missing/Incomplete', true, false)}">                                               
+                                        <td class="{!CASE(form.obj[bfVariableMap['SDPTYP']], 'Missing/Incomplete',  '', 'warning')} {!CASE(visit.SDPTYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
+                                            {!visit.SDPTOT}
+                                        </td>   
+                                    </apex:outputpanel>
+                                    
+                                    <apex:outputpanel rendered="{!if(visit.SDPTYP ='Missing/Incomplete', true, false)}">
+                                        <!--Alternative message, conditional, if missing-->
+                                        <td class="{!CASE(form.obj[bfVariableMap['SDPTYP']], 'Missing/Incomplete',  '', 'warning')} {!CASE(visit.SDPTYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
+                                        <!--image-->
+                                            <div class="message warningM3" role="alert">
+                                                <img alt="ERROR" class="msgIcon" src="/s.gif" title="ERROR"/>
+                                                    <!--message-->
+                                                    Not Available.
+                                            </div>
+                                        </td>
+                                    </apex:outputpanel>
+                                </apex:repeat> 
+                            </tr>    
     <!-------------------------------------------------------------------------------------------------------------------------------------> 
-                        <!--emotional-->
-                        <tr>
-                            <!--category, total, conditional formatting if missing-->
-                            <td class="darkerTDTop"><b>Emotional Symptoms</b></td><!--category-->
-                            
-                            <!--score, conditional, if NOT missing-->                             
-                            <td style="display:{!if((obj.BSDPETYP__c !='Missing/Incomplete'),  'table-cell','none')}" >        
-                                {!obj.BSDPEMO__c}
-                            </td>  <!--score-->                        
-                            
-                            <!--Alternative message, conditional, if missing-->
-                            <td  style="display:{!if((obj.BSDPETYP__c =='Missing/Incomplete'),  'table-cell','none')}">
-                            <!--image-->
-                                        <div class="message warningM3" role="alert">
-                                            <img alt="ERROR" class="msgIcon" src="/s.gif" title="ERROR"/>
-                                                <!--message-->
-                                                Not Available.
-                                        </div>
-                                    </td>
-                            
-                            <!--significance, conditional formatting-->               
-                            <td class="{!CASE(obj.BSDPETYP__c,'Borderline', 'warning', 'Clinical', 'danger','')}">
-                                {!obj.BSDPETYP__c}
-                            </td>  <!--significance, conditional formatting-->
-                        </tr>      
-    <!-------------------------------------------------------------------------------------------------------------------------------------> 
-                        <!--behavioral-->                                                 
-                        <tr>
-                            <!--category, total, conditional formatting if missing-->
-                            <td class="darkerTDTop"><b>Behavioral Difficulties</b></td><!--category-->
-                            
-                            <!--score, conditional, if NOT missing-->
-                            <td style="display:{!if((obj.BSDPBTYP__c !='Missing/Incomplete'),  'table-cell','none')}" >
-                                {!obj.BSDPBEH__c}
-                            </td>        <!--score-->        
-                            
-                            <!--Alternative message, conditional, if missing-->
-                            <td  style="display:{!if((obj.BSDPBTYP__c =='Missing/Incomplete'),  'table-cell','none')}">
-                            <!--image-->
-                                        <div class="message warningM3" role="alert">
-                                            <img alt="ERROR" class="msgIcon" src="/s.gif" title="ERROR"/>
-                                                <!--message-->
-                                                Not Available.
-                                        </div>
-                                    </td>
-                            
-                            <!--significance, conditional formatting-->                        
-                            <td class="{!CASE(obj.BSDPBTYP__c,'Borderline', 'warning', 'Clinical', 'danger','')}">
-                                {!obj.BSDPBTYP__c}</td>            <!--significance, conditional formatting-->                 
-                        </tr>    
-    <!-------------------------------------------------------------------------------------------------------------------------------------> 
-                        <!--hyperactivity-->                
-                        <tr>
-                            <!--category, total, conditional formatting if missing-->
-                            <td class="darkerTDTop"><b>Hyperactivity-Inattention</b></td><!--category-->
-                            
-                            <!--score, conditional, if NOT missing-->                             
-                            <td style="display:{!if((obj.BSDPHTYP__c !='Missing/Incomplete'),  'table-cell','none')}" >
-                                {!obj.BSDPHYP__c}
-                            </td>       <!--score-->                                 
-                            
-                            <!--Alternative message, conditional, if missing-->
-                            <td  style="display:{!if((obj.BSDPHTYP__c =='Missing/Incomplete'),  'table-cell','none')}">
-                            <!--image-->
-                                        <div class="message warningM3" role="alert">
-                                            <img alt="ERROR" class="msgIcon" src="/s.gif" title="ERROR"/>
-                                                <!--message-->
-                                                Not Available.
-                                        </div>
-                                    </td>
-                            
-                            <!--significance, conditional formatting-->  
-                            <td class="{!CASE(obj.BSDPHTYP__c,'Borderline', 'warning', 'Clinical', 'danger','')}">
-                                {!obj.BSDPHTYP__c}</td>            <!--significance, conditional formatting-->                   
-                        </tr>                        
-    <!-------------------------------------------------------------------------------------------------------------------------------------> 
-                        <!--Peers/other children-->
-                        <tr>
-                            <!--category, total, conditional formatting if missing-->
-                            <td class="darkerTDTop"><b>Peer Problems</b></td><!--category-->
-                            
-                            <!--score, conditional, if NOT missing-->                                       
-                            <td style="display:{!if((obj.BSDPOTYP__c !='Missing/Incomplete'),  'table-cell','none')}" >
-                                {!obj.BSDPOTC__c}
-                            </td>                      <!--score-->             
-                            
-                            <!--Alternative message, conditional, if missing-->           
-                            <td  style="display:{!if((obj.BSDPOTYP__c =='Missing/Incomplete'),  'table-cell','none')}">
-                            <!--image-->
-                                        <div class="message warningM3" role="alert">
-                                            <img alt="ERROR" class="msgIcon" src="/s.gif" title="ERROR"/>
-                                                <!--message-->
-                                                Not Available.
-                                        </div>
-                                    </td>
-                            
-                            <!--significance, conditional formatting-->  
-                            <td class="{!CASE(obj.BSDPOTYP__c,'Borderline', 'warning', 'Clinical', 'danger','')}">
-                                {!obj.BSDPOTYP__c}</td>         <!--significance, conditional formatting-->                      
-                        </tr>
-    <!-------------------------------------------------------------------------------------------------------------------------------------> 
-                        <!--kind and helpful-->
-                        <tr>
-                            <!--category, total, conditional formatting if missing-->
-                            <td class="darkerTDTop"><b>Prosocial Behavior</b></td><!--category-->
-                            
-                            <!--score, conditional, if NOT missing-->                             
-                            <td style="display:{!if((obj.BSDPKTYP__c !='Missing/Incomplete'),  'table-cell','none')}" >
-                                {!obj.BSDPKHB__c}                  
-                            </td>                     <!--score-->             
-                            
-                            <!--Alternative message, conditional, if missing-->
-                            <td  style="display:{!if((obj.BSDPKTYP__c =='Missing/Incomplete'),  'table-cell','none')}">
-                            <!--image-->
-                                        <div class="message warningM3" role="alert">
-                                            <img alt="ERROR" class="msgIcon" src="/s.gif" title="ERROR"/>
-                                                <!--message-->
-                                                Not Available.
-                                        </div>
-                                    </td>
-                            
-                            <!--significance, conditional formatting-->  
-                            <td class="{!CASE(obj.BSDPKTYP__c,'Borderline', 'warning', 'Clinical', 'danger','')}">
-                                {!obj.BSDPKTYP__c}
-                            </td>         <!--significance, conditional formatting-->                      
-                        </tr>
-    <!-------------------------------------------------------------------------------------------------------------------------------------> 
-                        <!--difficulties impact-->
-                        <tr>
-                            <td class="darkerTDTop"><b>Impact</b></td>  <!--category-->            
-                            <td>
-                                {!obj.BSDPDCL__c}
-                            </td>
-                            <!--score-->                     
-                            <td class="{!CASE(obj.BSDPITYP__c,'Borderline', 'warning', 'Clinical', 'danger','')}"> 
-                                {!obj.BSDPITYP__c}
-                            </td>      <!--significance, conditional formatting-->                                                              
-                        </tr>                        
-    <!-------------------------------------------------------------------------------------------------------------------------------------> 
-                    </tbody>                    
-                </table>              
+                            <!--emotional-->
+                            <tr>
+                                <!--category, total, conditional formatting if missing-->
+                                <td class="darkerTDTop"><b>Emotional Problems</b></td><!--category-->                                   
                                 
-            </apex:outputPanel>
-            <!--end sdq report content-->
+                                <!--significance, conditional formatting-->               
+                                <td ><!--class="{!CASE({!form.obj[bfVariableMap['SDPETYP']]},'Borderline', 'warning', 'Clinical', 'danger','')}{!CASE(missingRange, '', '', 'warning')}">-->
+                                     {!form.obj[bfVariableMap['SDPETYP']]}
+                                </td>  <!--significance, conditional formatting-->
+                            
+                                <apex:repeat value="{!visits}" var="visit">
+                                    <apex:outputpanel rendered="{!if(visit.SDPETYP !='Missing/Incomplete', true, false)}">
+                                        <td  class="{!CASE(form.obj[bfVariableMap['SDPETYP']], 'Missing/Incomplete',  '', 'warning')} {!CASE(visit.SDPETYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
+                                            {!visit.SDPEMO}
+                                        </td>   
+                                    </apex:outputpanel>
+                                    
+                                    <apex:outputpanel rendered="{!if(visit.SDPETYP ='Missing/Incomplete', true, false)}">
+                                        <!--Alternative message, conditional, if missing-->
+                                        <td class="{!CASE(form.obj[bfVariableMap['SDPETYP']], 'Missing/Incomplete',  '', 'warning')} {!CASE(visit.SDPETYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
+                                        <!--image-->
+                                            <div class="message warningM3" role="alert">
+                                                <img alt="ERROR" class="msgIcon" src="/s.gif" title="ERROR"/>
+                                                    <!--message-->
+                                                    Not Available.
+                                            </div>
+                                        </td>       
+                                    </apex:outputpanel>                                      
+                                </apex:repeat>
+                            </tr>      
+    <!-------------------------------------------------------------------------------------------------------------------------------------> 
+                            <!--behavioral-->                                                 
+                            <tr>
+                                <!--category, total, conditional formatting if missing-->
+                                <td class="darkerTDTop"><b>Behavioral Difficulties</b></td><!--category-->                             
+                                
+                                <!--significance, conditional formatting-->                        
+                                <td ><!--class="{!CASE({!form.obj[bfVariableMap['SDPBTYP']]},'Borderline', 'warning', 'Clinical', 'danger','')} {!CASE(missingRange, '', '', 'warning')}">-->
+                                     {!form.obj[bfVariableMap['SDPBTYP']]}
+                                 </td>            <!--significance, conditional formatting-->              
+                                
+                                <apex:repeat value="{!visits}" var="visit">
+                                    <apex:outputpanel rendered="{!if(visit.SDPBTYP !='Missing/Incomplete', true, false)}">
+                                        <td  class="{!CASE(form.obj[bfVariableMap['SDPBTYP']], 'Missing/Incomplete',  '', 'warning')} {!CASE(visit.SDPBTYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
+                                            {!visit.SDPBEH}
+                                        </td>   
+                                    </apex:outputpanel>
+                                    
+                                    <apex:outputpanel rendered="{!if(visit.SDPBTYP ='Missing/Incomplete', true, false)}">
+                                        <!--Alternative message, conditional, if missing-->
+                                        <td class="{!CASE(form.obj[bfVariableMap['SDPBTYP']], 'Missing/Incomplete',  '', 'warning')} {!CASE(visit.SDPBTYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
+                                        <!--image-->
+                                            <div class="message warningM3" role="alert">
+                                                <img alt="ERROR" class="msgIcon" src="/s.gif" title="ERROR"/>
+                                                    <!--message-->
+                                                    Not Available.
+                                            </div>
+                                        </td>
+                                    </apex:outputpanel>
+                                </apex:repeat> 
+                            </tr>    
+    <!-------------------------------------------------------------------------------------------------------------------------------------> 
+                            <!--hyperactivity-->          
+                            <tr>
+                                <!--category, total, conditional formatting if missing-->
+                                <td class="darkerTDTop"><b>Hyperactivity</b></td><!--category-->                          
+                                
+                                <!--significance, conditional formatting-->  
+                                <td ><!--class="{!CASE({!form.obj[bfVariableMap['SDPHTYP']]},'Borderline', 'warning', 'Clinical', 'danger','')}">-->
+                                     {!form.obj[bfVariableMap['SDPHTYP']]}
+                                </td>            <!--significance, conditional formatting-->         
+                                
+                                <apex:repeat value="{!visits}" var="visit">
+                                    <apex:outputpanel rendered="{!if(visit.SDPHTYP !='Missing/Incomplete', true, false)}">
+                                        <td  class="{!CASE(form.obj[bfVariableMap['SDPHTYP']], 'Missing/Incomplete',  '', 'warning')} {!CASE(visit.SDPHTYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
+                                            {!visit.SDPHYP}
+                                        </td>            
+                                    </apex:outputpanel>
+                                
+                                    <apex:outputpanel rendered="{!if(visit.SDPHTYP ='Missing/Incomplete', true, false)}">
+                                        <!--Alternative message, conditional, if missing-->
+                                        <td class="{!CASE(form.obj[bfVariableMap['SDPHTYP']], 'Missing/Incomplete',  '', 'warning')} {!CASE(visit.SDPHTYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
+                                        <!--image-->
+                                            <div class="message warningM3" role="alert">
+                                                <img alt="ERROR" class="msgIcon" src="/s.gif" title="ERROR"/>
+                                                    <!--message-->
+                                                    Not Available.
+                                            </div>
+                                        </td>
+                                    </apex:outputpanel>
+                                </apex:repeat>                  
+                            </tr>                        
+    <!-------------------------------------------------------------------------------------------------------------------------------------> 
+                            <!--Peers/other children-->
+                            <tr>
+                                <!--category, total, conditional formatting if missing-->
+                                <td class="darkerTDTop"><b>Peer Problems</b></td><!--category-->             
+                                
+                                <!--significance, conditional formatting-->  
+                                <td ><!--class="{!CASE({!form.obj[bfVariableMap['SDPOTYP']]},'Borderline', 'warning', 'Clinical', 'danger','')}">-->
+                                     {!form.obj[bfVariableMap['SDPOTYP']]}
+                                 </td>         <!--significance, conditional formatting-->              
+                                
+                                <apex:repeat value="{!visits}" var="visit">
+                                    <apex:outputpanel rendered="{!if(visit.SDPOTYP !='Missing/Incomplete', true, false)}">
+                                        <td class="{!CASE(form.obj[bfVariableMap['SDPOTYP']], 'Missing/Incomplete',  '', 'warning')} {!CASE(visit.SDPOTYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
+                                            {!visit.SDPOTC}
+                                        </td>   
+                                    </apex:outputpanel>         
+                                
+                                    <apex:outputpanel rendered="{!if(visit.SDPOTYP ='Missing/Incomplete', true, false)}">
+                                        <!--Alternative message, conditional, if missing-->    
+                                        <td class="{!CASE(form.obj[bfVariableMap['SDPOTYP']], 'Missing/Incomplete',  '', 'warning')} {!CASE(visit.SDPOTYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
+                                        <!--image-->
+                                            <div class="message warningM3" role="alert">
+                                                <img alt="ERROR" class="msgIcon" src="/s.gif" title="ERROR"/>
+                                                    <!--message-->
+                                                    Not Available.
+                                            </div>
+                                        </td>
+                                    </apex:outputpanel>
+                                </apex:repeat>                       
+                            </tr>
+    <!-------------------------------------------------------------------------------------------------------------------------------------> 
+                            <!--kind and helpful-->
+                            <tr>
+                                <!--category, total, conditional formatting if missing-->
+                                <td class="darkerTDTop"><b>Prosocial</b></td><!--category-->                    
+                                
+                                <!--significance, conditional formatting-->  
+                                <td><!-- class="{!CASE({!form.obj[bfVariableMap['SDPKTYP']]},'Borderline', 'warning', 'Clinical', 'danger','')}">-->
+                                     {!form.obj[bfVariableMap['SDPKTYP']]}
+                                 </td>         <!--significance, conditional formatting-->              
+                                
+                                <apex:repeat value="{!visits}" var="visit">
+                                    <apex:outputpanel rendered="{!if(visit.SDPKTYP !='Missing/Incomplete', true, false)}">
+                                        <td class="{!CASE(form.obj[bfVariableMap['SDPKTYP']], 'Missing/Incomplete',  '', 'warning')} {!CASE(visit.SDPKTYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
+                                            {!visit.SDPKHB}
+                                        </td>        
+                                    </apex:outputpanel>
+                                    
+                                    <apex:outputpanel rendered="{!if(visit.SDPKTYP ='Missing/Incomplete', true, false)}">
+                                        <!--Alternative message, conditional, if missing-->
+                                        <td class="{!CASE(form.obj[bfVariableMap['SDPKTYP']], 'Missing/Incomplete',  '', 'warning')} {!CASE(visit.SDPKTYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
+                                        <!--image-->
+                                            <div class="message warningM3" role="alert">
+                                                <img alt="ERROR" class="msgIcon" src="/s.gif" title="ERROR"/>
+                                                    <!--message-->
+                                                    Not Available.
+                                            </div>
+                                        </td>
+                                    </apex:outputpanel>
+                                </apex:repeat>                           
+                            </tr>
+    <!-------------------------------------------------------------------------------------------------------------------------------------> 
+                            <!--difficulties impact-->
+                            <tr>
+                                <td class="darkerTDTop"><b>Impact</b></td>  <!--category-->                                   
+                                
+                                <!--significance, conditional formatting-->  
+                                <td><!-- class="{!CASE({!form.obj[bfVariableMap['SDPITYP']]},'Borderline', 'warning', 'Clinical', 'danger','')}">-->
+                                     {!form.obj[bfVariableMap['SDPITYP']]}
+                                 </td>         <!--significance, conditional formatting-->                         
+                                
+                                <apex:repeat value="{!visits}" var="visit">
+                                    <apex:outputpanel rendered="{!if(visit.SDPITYP !='Missing/Incomplete', true, false)}">
+                                        <td class="{!CASE(form.obj[bfVariableMap['SDPITYP']], 'Missing/Incomplete',  '', 'warning')} {!CASE(visit.SDPITYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
+                                            {!visit.SDPDCL}
+                                        </td>
+                                    </apex:outputpanel>
+                                    
+                                    <apex:outputpanel rendered="{!if(visit.SDPITYP ='Missing/Incomplete', true, false)}">
+                                        <!--Alternative message, conditional, if missing-->
+                                        <td class="{!CASE(form.obj[bfVariableMap['SDPITYP']], 'Missing/Incomplete',  '', 'warning')} {!CASE(visit.SDPITYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
+                                        <!--image-->
+                                            <div class="message warningM3" role="alert">
+                                                <img alt="ERROR" class="msgIcon" src="/s.gif" title="ERROR"/>
+                                                    <!--message-->
+                                                    Not Available.
+                                            </div>
+                                        </td>
+                                    </apex:outputpanel>
+                                </apex:repeat>                                                      
+                            </tr>                        
+                        </tbody>                    
+                    </table>   
+            	
+            	<apex:outputPanel layout="none" rendered="{!displayHistory}">
             
-        </div>
-        
-        <!--save and cancel control buttons for pageBlock-->
-        <apex:pageBlockButtons >
-            <apex:commandButton action="{!saveOld}" value="Edit" rendered="{!not(printReport)}"/>
-        </apex:pageBlockButtons><!--end buttons-->
-    </apex:pageBlock><!--end pageBlock-->
-</apex:form>
-    <!--end form content-->
-    
+                <div class="form-group">
+                    <div class="col-md-12 col-lg-6 history-total-score">
+                        <div id="linechart_material"></div>
+                    </div>
+                    <div class="col-md-12 col-lg-6 history-subscale-score">
+                        <div id="columnchart_material"></div>
+                        <div id="columnchart_values"></div>
+                    </div>
+                </div>
+                    
+                
+                                   
+               </apex:outputPanel>
+                <!--end sdq report content-->    
+                
+            </apex:pageBlock>
+            <!--end pageBlock-->
+                
     <!--citation information footer-->
     <p style="class:footer; text-align:center ">
         <i>© Robert Goodman, 2005<br/>
-        This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - Baseline - CRF Version 6 2014
+        This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - {!CASE(form.visitType, 'baseline', 'Baseline', 'Follow-Up')} - CRF Version 6 2014
         </i>
     </p> 
-
+        </apex:form>
+        <!--end form content-->
+        
+    </div>
+                    
+    <apex:outputPanel rendered="{!displayHistory}">
+        
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript">
+           
+            var chartHeight = {!IF(printReport, 350, 500)};
+            
+            google.load("visualization", "1.1", {packages:['corechart', 'bar', 'line']});
+        google.setOnLoadCallback(drawLineChart);
+        google.setOnLoadCallback(drawAnnotations);
+        
+        function drawAnnotations() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Subscale');
+            <apex:repeat value="{!visits}" var="visit">
+                data.addColumn('number', '<apex:outputText value="{0,date,MM/dd/yyyy}">
+                               <apex:param value="{!visit.DOASDOP}" />
+                               </apex:outputText>');
+                               data.addColumn({type: 'string', role: 'annotation'});
+            </apex:repeat>
+                
+            data.addRows([
+                 ['Emptional Symptoms' <apex:repeat value="{!visits}" var="ve">, {!ve.SDPEMO}, '{!CASE(ve.SDPETYP,'Borderline','B','Clinical','C','')}'</apex:repeat>],
+                 ['Conduct Problems' <apex:repeat value="{!visits}" var="vb">, {!vb.SDPBEH}, '{!CASE(vb.SDPBTYP,'Borderline','B','Clinical','C','')}'</apex:repeat>],
+                 ['Hyperactivity' <apex:repeat value="{!visits}" var="vh">, {!vh.SDPHYP}, '{!CASE(vh.SDPHTYP,'Borderline','B','Clinical','C','')}'</apex:repeat>],
+                 ['Peer Problems' <apex:repeat value="{!visits}" var="vo">, {!vo.SDPOTC}, '{!CASE(vo.SDPOTYP,'Borderline','B','Clinical','C','')}'</apex:repeat>],
+                 ['Prosocial Behavior' <apex:repeat value="{!visits}" var="vk">, {!vk.SDPKHB}, '{!CASE(vk.SDPKTYP,'Borderline','B','Clinical','C','')}'</apex:repeat>],
+                 ['Impact' <apex:repeat value="{!visits}" var="vi">, {!vi.SDPDCL}, '{!CASE(vi.SDPITYP,'Borderline','B','Clinical','C','')}'</apex:repeat>]
+                ]);
+                
+                var options = {
+                    title: 'SDQ Subscale Scores',
+                    annotations: {
+                        alwaysOutside: false,
+                        textStyle: {
+                            fontSize: 14,
+                            color: '#000',
+                            auraColor: 'none'
+                        }
+                    },
+                    hAxis: {
+                        title: 'Subscale',
+                    },
+                    vAxis: {
+                        title: 'Score'
+                    },
+                    height: chartHeight
+                };
+                
+                var chart = new google.visualization.ColumnChart(document.getElementById('columnchart_material'));
+                chart.draw(data, options);
+                }
+                
+                function drawLineChart() {
+                
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Date of Assessment');
+                data.addColumn('number', 'Total Score');
+                
+                data.addRows([
+                <apex:repeat value="{!visits}" var="visit">
+                ['<apex:outputText value="{0,date,MM/dd/yyyy}">
+                <apex:param value="{!visit.DOASDOP}" />
+                </apex:outputText>', {!visit.SDPTOT}],
+                </apex:repeat> 
+            ]);
+            
+            var options = {
+                title: 'SDQ Total Score',
+                series: {
+                    0: { pointSize: 5 }
+                },
+                hAxis: {
+                    title: 'Date of Assessment',
+                    
+                },
+                vAxis: {
+                    title: 'Total Score',
+                    maxValue: 100, minValue: 30
+                },
+                height: chartHeight
+            };
+            
+            var chart2 = new google.visualization.LineChart(document.getElementById('linechart_material'));
+            
+            chart2.draw(data, options);
+        }
+        </script>
+        
+    </apex:outputPanel>
+                
 </apex:page>

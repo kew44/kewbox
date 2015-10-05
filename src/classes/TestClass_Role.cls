@@ -5,13 +5,13 @@ private class TestClass_Role {
 
     Utility ut = new Utility();
 
-    TestClass_Utility test_ut = new TestClass_Utility();
+    TestClass_A_Utility test_ut = new TestClass_A_Utility();
 
     Center__c center = test_ut.createMainCenter();
 
     ID id = UserInfo.getUserRoleId();
 
-    Profile p = [SELECT Id FROM Profile WHERE Name='System Admin']; 
+    Profile p = [SELECT Id FROM Profile WHERE Name='Force.com - App Subscription User']; 
 
     Integer numCode = ut.getRandomInt(1, 100);
 

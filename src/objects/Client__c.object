@@ -46,6 +46,7 @@
     <enableReports>true</enableReports>
     <fields>
         <fullName>AGE__c</fullName>
+        <description>Client&apos;s age as entered in the System Screening</description>
         <externalId>false</externalId>
         <label>Age</label>
         <precision>2</precision>
@@ -128,10 +129,22 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>CENTER__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Center</label>
+        <referenceTo>Center__c</referenceTo>
+        <relationshipLabel>Clients</relationshipLabel>
+        <relationshipName>Clients</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>CURRENT_AGE__c</fullName>
         <description>Current age =( today&apos;s date - date of birth)/365 days</description>
         <externalId>false</externalId>
-        <formula>( (TODAY()  - ( DOB1__c )))/365</formula>
+        <formula>FLOOR((TODAY() - DOB1__c)/365.2425)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>CURRENT_AGE</label>
         <precision>18</precision>
@@ -198,7 +211,7 @@
     <fields>
         <fullName>INIT__c</fullName>
         <externalId>false</externalId>
-        <label>Initial</label>
+        <label>INITIALS</label>
         <length>3</length>
         <required>true</required>
         <trackHistory>false</trackHistory>
@@ -217,7 +230,24 @@
     </fields>
     <label>Client</label>
     <listViews>
-        <fullName>All</fullName>
+        <fullName>My_Clients</fullName>
+        <columns>Clinician__c</columns>
+        <columns>NAME</columns>
+        <columns>INIT__c</columns>
+        <columns>GENDER__c</columns>
+        <columns>DOB1__c</columns>
+        <columns>AGE__c</columns>
+        <columns>CURRENT_AGE__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>OBJECT_ID</columns>
+        <filterScope>Everything</filterScope>
+        <label>My Clients</label>
+    </listViews>
+    <listViews>
+        <fullName>test_cbcl</fullName>
+        <columns>OBJECT_ID</columns>
         <columns>NAME</columns>
         <columns>Clinician__c</columns>
         <columns>INIT__c</columns>
@@ -225,11 +255,18 @@
         <columns>AGE__c</columns>
         <columns>CURRENT_AGE__c</columns>
         <columns>DOB1__c</columns>
+        <columns>DOB2__c</columns>
+        <columns>SITEID__c</columns>
         <columns>CREATEDBY_USER.ALIAS</columns>
         <columns>CREATED_DATE</columns>
         <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
-        <label>All</label>
+        <filters>
+            <field>Clinician__c</field>
+            <operation>equals</operation>
+            <value>6758-00-04</value>
+        </filters>
+        <label>test cbcl</label>
     </listViews>
     <nameField>
         <label>Client ID</label>
@@ -259,6 +296,20 @@
         <errorConditionFormula>AGE__c !=  FLOOR((TODAY() - DOB1__c)/365.2425)</errorConditionFormula>
         <errorDisplayField>AGE__c</errorDisplayField>
         <errorMessage>Age is wrong</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Date_of_birth_cannot_be_future_1</fullName>
+        <active>true</active>
+        <errorConditionFormula>DOB1__c  &gt;TODAY()</errorConditionFormula>
+        <errorDisplayField>DOB1__c</errorDisplayField>
+        <errorMessage>Date cannot be in the future.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Date_of_birth_cannot_be_future_2</fullName>
+        <active>true</active>
+        <errorConditionFormula>DOB2__c  &gt;TODAY()</errorConditionFormula>
+        <errorDisplayField>DOB2__c</errorDisplayField>
+        <errorMessage>Date cannot be in the future.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Double_entry_for_dob</fullName>

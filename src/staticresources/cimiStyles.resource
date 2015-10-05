@@ -55,10 +55,10 @@ font-weight: normal;
 }
 
 span.nmbr{
-display: block;
-float: left;
-height: 20px;
-width: 20px;
+	display: block;
+	float: left;
+	height: 20px;
+	width: 20px;
 }
 
 /* fixes the input sizing for dropdown menus*/
@@ -99,16 +99,26 @@ font-weight:normal;
 	padding-left: 8px;
 }
 
+.radio-list.radio-list-inline label{
+	padding-right: 8px;
+}
+
 div.bootwrap .form-group fieldset{
 	padding-top: 7px;
 }
 
-.specify-label{
+.specify-label,
+.specify-matrix{
 	padding-left: 21px;
 }
 
-div.bootwrap .specify-input{
-	margin-left: -120px;
+.specify-matrix{
+	padding-top: 0px;
+	padding-bottom: 7px;
+}
+
+.specify-input.specify-matrix{
+	width: 125px;
 }
 
 .form-group{
@@ -173,4 +183,136 @@ h3{
 	font-size: 1.4em;
 }
 
-        
+@media (min-width: 992px) {
+	table.military-table{
+		table-layout: fixed;
+	}
+}
+
+div.bootwrap .table-striped > tbody > tr:nth-child(odd){
+	background-color: white;
+}
+
+div.bootwrap .radio-inline input[type="radio"]{
+	margin-top: 0;
+}
+
+div.bootwrap .table-domenv th{
+	font-weight: normal;
+}
+
+div.bootwrap .table-domenv th:nth-of-type(3){
+	width: 30%;
+}
+
+div.bootwrap .table-domenv input[type="text"]{
+	width: 50px;
+}
+
+.table-domenv .radio-list label:first-of-type{
+	margin-right: 5px;
+}
+
+div.form-pageblock-subheader{
+  width: 100%;
+  padding: 5px;
+  background-color: #d8d8d8;
+  margin-bottom: 20px;
+}
+
+div.bootwrap .form-pageblock-subheader h3{
+	font-size: 1.3em;
+  	color: #333;
+}
+
+div.bootwrap .table-servrec .form-group label{
+	padding-left: 0;
+}
+
+div.bootwrap .alert.alert-info{
+	line-height: 1.5em;
+}
+
+/* PTSD RI */
+div.bootwrap .form-ptsd-ca h4{
+	font-size: 1em;
+	font-weight: bold;
+	margin-bottom: .5em;
+	display: block;
+}
+
+div.bootwrap .form-ptsd-ca h5{
+	font-size: 1em;
+	margin-top: .5em;
+	margin-bottom: .5em;
+	display: block;
+	font-style: italic;
+}
+
+div.bootwrap .form-ptsd-ca h5:nth-of-type(2){
+	margin-top: 1em;
+}
+
+.form-ptsd-ca span.nmbr{
+	width: 40px;
+}
+
+div.bootwrap input.input-date{
+	float: left;
+	width: 170px;
+}
+
+div.input-date .requiredBlock{
+	height: 28px;
+}
+
+/* PTSD report */
+div.bootwrap .ptsd-report .ptsd-table { border:none; }
+div.bootwrap .ptsd-report .ptsd-angle-noborder { border:none; background-color: #f8f8f8; }
+div.bootwrap .ptsd-report .ptsd-table thead tr th { text-align: center; vertical-align: top; border-top: 1px solid #ddd !important; }       
+div.bootwrap .ptsd-report .first-row td { text-align: center; }
+div.bootwrap .ptsd-report .ptsd-table ul { padding: 0px; }
+div.bootwrap .ptsd-report .ptsd-angle-icon { cursor: pointer; cursor: hand; }
+div.bootwrap .ptsd-report .ptsd-visit-cell-width { min-width: 75px; }
+div.bootwrap .ptsd-report .ptsd-table .first-row td { vertical-align: middle; }
+div.bootwrap .ptsd-report .ptsd-detail-hide { display: none; }
+
+/* CBCL young and old */
+div.bootwrap .form-cbcl span.nmbr {
+  	width: 34px;
+}
+
+
+/* Form table */
+div.bootwrap .form-table h4 {
+  	font-size: 1em;
+  	font-weight: bold;
+  	margin-bottom: .5em;
+  	display: block;
+}
+
+
+
+div.bootwrap .form-table .striped-question > .form-group:nth-child(odd) { background-color: white; }
+
+div.bootwrap .form-table .striped-question .missing-answer { background-color: #FFE3F1 !important; }
+
+div.bootwrap .form-table .striped-question .form-group:hover {
+    background-color: #d9edf7;
+}
+
+div.bootwrap .form-table .striped-question .form-group {
+    margin-bottom: 0px;
+}      
+
+.citation-footer { text-align: center; }
+
+/* Follow-up icon for the subtitle */ 
+
+/*.followup .bPageTitle .content img {
+    content: url("/servlet/servlet.ImageServer?id=015e0000000MLxy&oid=00De0000005UKMn&lastMod=1431964832000");
+}
+
+.followup .bPageTitle .content:after { content: ''; display: block;
+    background-image: url("/servlet/servlet.ImageServer?id=015e0000000MLxy&oid=00De0000005UKMn&lastMod=1431964832000");
+}*/

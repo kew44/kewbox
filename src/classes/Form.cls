@@ -42,10 +42,10 @@ global with sharing class Form {
         this.cID = parameter.get('c');
         this.summaryID = parameter.get('summary');
         this.forceRedirect = (parameter.containsKey('f')) ? parameter.get('f') : '';
-        
+                
         this.client = (cID != null) ? [SELECT Name, INIT__c, GENDER__c, CURRENT_AGE__c FROM Client__c WHERE id =: cID] : null;
         this.summary = (summaryID != null) ? [SELECT SECTION__c, Page__r.CONTENT__c FROM Client_Summary__c WHERE ID =:summaryID] : null;
-        
+          
         this.BorF = (Integer.valueOf(summary.SECTION__c) > 0) ? 'F' : 'B';
 
         this.isBaseline = (Integer.valueOf(summary.SECTION__c) > 0) ? false : true;
@@ -132,6 +132,7 @@ global with sharing class Form {
 
         try {
             upsert obj;
+            system.debug(obj);
             return true;
         } 
         catch(DMLException e) { system.debug(e); }

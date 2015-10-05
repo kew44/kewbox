@@ -76,6 +76,11 @@ public with sharing class ClientSummaryReportController {
   public Boolean SDQParentExisted{get;set;}
   public Boolean SDQSelfExisted{get;set;}
   public List<SDQElement> sdqList {get;set;}
+  
+  //FAPGAR vars
+  public Boolean FAPGARExisted{get;set;}
+  public Integer FAPGARTotal{get;set;}
+  public Boolean FAPGARBlank{get;set;}
 
   //Generic Standardized measures (PTSD+CBCL+SDQ) vars
   public Boolean measureExisted { get; set; }
@@ -258,9 +263,7 @@ public with sharing class ClientSummaryReportController {
       this.exp = exp;
     }
   
-  }
-  
-  
+  } 
 
   public ClientSummaryReportController(ApexPages.StandardController controller) {
 
@@ -300,7 +303,8 @@ public with sharing class ClientSummaryReportController {
   List<SObject> cbcl = 
         Database.query('SELECT ' + ut.getFields('DS_CBCL_'+BorF+'__c') +  
                        '  FROM DS_CBCL_' + BorF + '__c' +
-                       ' WHERE client__c = \'' + cID + '\'');
+                       ' WHERE client__c = \'' + cID + '\''+
+                     '   AND SECTION__c = \''+ section + '\'');
                        
     if(cbcl.size() > 0) clientCBCL= cbcl.get(0);
 
@@ -308,7 +312,8 @@ public with sharing class ClientSummaryReportController {
       List<SObject> ptsd = 
         Database.query('SELECT ' + ut.getFields('DS_PTSD_CA_'+BorF+'__c') +  
                      '  FROM DS_PTSD_CA_' + BorF + '__c' +
-                     ' WHERE client__c = \'' + cID + '\''); 
+                     ' WHERE client__c = \'' + cID + '\''+
+                     '   AND SECTION__c = \''+ section + '\''); 
                       
     if(ptsd.size() > 0) clientPTSD= ptsd.get(0);
     
@@ -316,13 +321,15 @@ public with sharing class ClientSummaryReportController {
     List<Sobject> sdq = 
         Database.query('SELECT ' + ut.getFields('DS_SDQ_PSI_CDI_'+BorF+'__c') +  
                      '  FROM DS_SDQ_PSI_CDI_' + BorF + '__c' +
-                     ' WHERE client__c = \'' + cID + '\''); 
+                     ' WHERE client__c = \'' + cID + '\''+
+                     '   AND SECTION__c = \''+ section + '\'');
                       
     if(sdq.size() > 0) clientSDQ= sdq.get(0);
                        
     Date dob = Date.valueOf(client.DOB1__c);
-    Date visitDate = Date.valueOf(clientBackgroundInfo.get('BDOV__c'));
-    visitAge = dob.daysBetween(visitDate)/365;
+    Date visitDate = Date.valueOf(clientBackgroundInfo.get(BorF + 'DOV__c'));
+    visitAge = Integer.valueOf(clientBackgroundInfo.get(BorF + '_VISIT_AGE__c'));//dob.daysBetween(visitDate)/365;
+    System.debug(visitAge);
 
     cansExisted = false;
     iosExisted = false;
@@ -340,9 +347,10 @@ public with sharing class ClientSummaryReportController {
     SDQParentExisted = false;
     SDQSelfExisted = false;
     SDQExisted = false;
+    FAPGARExisted = false;
 
     if(clientFunctioningForm != null) { 
-      cans(); ios();  service(); measure(); evaluation(); 
+      cans(); ios();  service(); measure(); evaluation(); fapgar();
     }
     
     trauma();
@@ -690,21 +698,34 @@ public with sharing class ClientSummaryReportController {
       element.value = 1;
 
       Integer value30 = Integer.valueOf(clientFunctioningForm.get(BorF+'OS'+element.field+'__c'));
-      Integer valueLife = Integer.valueOf(clientFunctioningForm.get(BorF+'LT'+element.field+'__c'));
-
       if(value30 == 1) service30.add(element.item);
-      if(valueLife == 1) serviceLife.add(element.item);
-
+      
+      if (BorF =='B'){//No Followup equivalent, B only
+          Integer valueLife = Integer.valueOf(clientFunctioningForm.get('BLT'+element.field+'__c'));
+          if(valueLife == 1) serviceLife.add(element.item);
+    }
     }
 
     serviceExisted = (service30.size() > 0 || serviceLife.size() > 0) ? true : false;
 
     service30Existed = (service30.size() > 0) ? true : false;
     serviceLifeExisted = (serviceLife.size() > 0) ? true : false;
-
-
   }
+  
+  //Fapgar
+    public void fapgar(){//there is a valid raw score
+        FAPGARTotal = Integer.valueOf(clientFunctioningForm.get(BorF+'FAPGAR_RAW__c'));
+        FAPGARExisted = (FAPGARTotal >= 0) ? true : false;  
+        FAPGARBlank= false;    
+        
+        for(Integer i = 1; i <= 5; i++) {
+            
+            if(clientFunctioningForm.get(BorF+'FAPGAR'+String.valueOf(i)+'__c') == null) 
+                FAPGARBlank = true;
+            
+        }
 
+    }
 
   //Standardized Measures
   
@@ -817,6 +838,7 @@ public with sharing class ClientSummaryReportController {
     otherEvaluationList.put(27, new Element('Substance-Related and Addictive Disorders','CESUBST', null));
     otherEvaluationList.put(28, new Element('Suicidality','CESUICD', null));
     otherEvaluationList.put(29, new Element('Suicidal Behavior Disorder','CESBD', null));
+    otherEvaluationList.put(30, new Element('Psychotic Disorder','CEPSY', null));
     otherEvaluationList.put(98, new Element('Other',null, null));
 
     List<Integer> removeElement = new List<Integer>{98};

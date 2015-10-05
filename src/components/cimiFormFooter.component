@@ -1,0 +1,13 @@
+<apex:component >
+    
+    <apex:attribute name="formElement" description="This is the standard footer for form object." type="Form" required="true"/>
+        
+    <!--citation information footer-->
+    <p style="class:footer; text-align:center ">
+        <i>This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - 
+        {!CASE(formElement.visitType, 'baseline', 'Baseline', 'followup', 'Follow-Up', 'Trauma Detail')}
+        - CRF Version 6 2015
+        </i>
+    </p>   
+    
+</apex:component>

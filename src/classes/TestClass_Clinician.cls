@@ -3,7 +3,7 @@ private class TestClass_Clinician {
 
   static TestMethod void Test_ClinicianController_CreateClinician() {
 
-    TestClass_Utility ut = new TestClass_Utility();
+    TestClass_A_Utility ut = new TestClass_A_Utility();
 
     ut.addAdminToCounter();
 
@@ -22,7 +22,7 @@ private class TestClass_Clinician {
 
   static TestMethod void Test_ClinicianController_EditClinician() {
 
-    TestClass_Utility ut = new TestClass_Utility();
+    TestClass_A_Utility ut = new TestClass_A_Utility();
 
     Clinician__c clinician = Test0_TestClinicianInsert();
 
@@ -38,7 +38,7 @@ private class TestClass_Clinician {
 
   static TestMethod Clinician__c Test0_TestClinicianInsert() {
 
-    TestClass_Utility ut = new TestClass_Utility();
+    TestClass_A_Utility ut = new TestClass_A_Utility();
 
     Clinician__c clinician = ut.createClinician();
 

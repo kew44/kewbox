@@ -10,16 +10,25 @@
     <script> $j = jQuery.noConflict(); </script><!--Reserves the '$' token for JQuery only-->
     
     <!-- Bootstrap -->
-    <apex:stylesheet value="{!URLFOR($Resource.bootwrap, '/css/bootstrap.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.bootwrap, '/css/bootstrap.css')}" html-media="screen,print" />
+    <!--<link href="{!URLFOR($Resource.bootwrap, '/css/bootstrap.css')}" rel="stylesheet" media="screen, print"/>-->
     <apex:includeScript value="{!URLFOR($Resource.bootwrap, '/js/bootstrap.min.js')}"/> 
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"></link>
 
     <!-- Custom CIMI Styles -->
     <apex:stylesheet value="{!URLFOR($Resource.cimiStyles)}" />   
         
-    <!--provides framework for "skip-logic" capabilities-->
+    <!-- inFocus on the text fields when the page is loaded -->
     <script>function setFocusOnLoad() {}</script>
-    <script> var skipElement = JSON.parse("{!skipElement}"); </script>
+    
+    <apex:outputPanel rendered="{!if(skipElement = '', false, true)}" layout="none">
+        <script> var skipElement = JSON.parse("{!skipElement}"); </script>
+    </apex:outputPanel>
+
     <script src="{!URLFOR($Resource.Scripts, '/skipLogic.js')}"></script>
+    
     
     <!-- "Breadcrumb" heading allows user to navigate to the ClientSummary page -->
     <apex:outputPanel rendered="{!if(formElement.forceRedirect = '1', false, true)}" layout="none">

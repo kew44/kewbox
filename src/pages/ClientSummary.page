@@ -21,14 +21,17 @@
         @media only screen and (min-width : 1224px) {
             #sidebarCell { display: table-cell;}
         }
+        div.bootwrap .follow-up-form { background-color: transparent !important; }
         #force .panel-default > .panel-heading { background-color: #FFFFFF !important; }
         .trauma-status { color: #000 !important; }
+        
     </style>
 
     <!------------------------------------------------------------------------------------------------------------------------------------>
     <style type="text/css">
         .custPopup{
             title:"Confirm New Follow-up";    
+            position:fixed;
             background:#eee;
             background-color: white;
             font-color:black;
@@ -38,9 +41,8 @@
             left: 50%;
             padding:10px;
             position: absolute;
-            width: 580px;
-            height: 100px;
-            margin-left: -250px;
+            align:center;
+            margin-left: -500px;
             top:100px;
             modal:true;
             filter: alpha(opacity = 100);
@@ -48,12 +50,12 @@
         .popupBackground{
             background-color:#d3d3d3;
             opacity: 0.95;
-            position: absolute;
+            position: fixed;
             width: 100%;
             height: 100%;
             top: 0;
             left: 0;
-            z-index: 90;
+            z-index: 100;
             filter: alpha(opacity = 90);
         }
         </style>
@@ -78,8 +80,8 @@ $j(document).ready(function() {
 <script>
 function confirmNew(url){
     confirmWindow= window.open(url,'ConfirmNew', height=200, width=300);
-    if(window.focus{confirmWindow.focus()}
-    return false;
+    if(window.focus){confirmWindow.focus()
+    return false;}
 }
 </script>
 <!--end window function-->
@@ -141,18 +143,18 @@ function confirmNew(url){
                         </h4>
                     </div>
                     <!--end baseline heading-->
-                    <!--record of follow up visits section-->
+                    <!--record of baseline section-->
                     <div id="collapseBase" class="panel-collapse collapse">
                         <div class="panel-body">
                             <apex:outputPanel layout="none" rendered="{!NOT(BaselineBtn)}"><!--cannot display expanded baseline section unless it has been started-->
                                 
-                                <!--print button functionality-->
+                                <!--Summary Report-->
                                 <a href="/apex/clientSummaryReport?cimi={!urlClientSummaryReport['0']}">
                                     <button type="button" class="btn btn-default pull-right">
                                         <i class="glyphicon glyphicon-list-alt"></i> &nbsp;Summary Report
                                     </button>
                                 </a>
-                                <!--end print button-->
+                                <!--end Summary Report-->
                                 
                                 <table class="table table-hover">
                                     <!--heading-->
@@ -347,7 +349,7 @@ function confirmNew(url){
                 <!--end trauma-->                
 
                 <!----------------------------------------------------------------------------------------------------------------------------------------------> 
-                <apex:form styleClass=" panel">
+                <apex:form styleClass="follow-up-form panel" rendered="{!NOT(BaselineBtn)}">
                     <!--Follow Up panel-->
                    <!-- <div id="FollowUp" class="panel panel-default">  -->
                                           
@@ -360,8 +362,7 @@ function confirmNew(url){
                                 <div  id="headingOne_followup_0">
                                     <h4 class="panel-title">
                                         <!--status indicator for baseline section-->    
-                                    <!--    <i class="fa fa-circle alert-sl-red"></i><!--{!if(FuBtn = FALSE, 'green', 'red')}"></i>-->
-                                        Follow-Up Visit
+                                        <strong>Follow-Up</strong>
                                     </h4>
                                 
                                     <p class="pull-right">
@@ -375,36 +376,49 @@ function confirmNew(url){
                                             
                                                 <!--background and foreground-->
                                                 <apex:outputPanel styleClass="popupBackground" layout="block" rendered="{!displayPopUp}">
-                                                    <apex:outputPanel styleClass="custPopup" layout="block" rendered="{!displayPopUp}" >                                            
-                                                        <!--message-->
-                                                        <p>You have selected "add new Follow-up". Do you wish to continue creating a Follow-up record? </p>
-                                                        <!--table containing buttons-->
-                                                        <table border="0" cellpadding="5" cellspacing="0" align="center">                       
-                                                            <tr >
+                                                    <apex:outputPanel styleClass="custPopup" layout="block" rendered="{!displayPopUp}" > 
+                                                    
+                                                        <apex:outputText rendered="{!early1}">
+                                                        <!--early message-->
+                                                        <p>Our records show that your CIMI baseline visit was less than 30 days ago. It is recommended that you update the previous visit before you create a new record.<br/>
+                                                        Please click 'No' to return to the Client Summary page.<br/>
+                                                        Select 'Yes' ONLY if you understand and wish to continue anyway.<br/>
+                                                        </p>
+                                                        <!--end early message-->
+                                                        </apex:outputText>
+                                                        
+                                                        <apex:outputText rendered="{!early2}">
+                                                        <!--early message-->
+                                                        <p>Our records show that your last CIMI follow-up visit was less than 30 days ago. It is recommended that you update the previous visit before you create a new record.<br/>
+                                                        Please click 'No' to return to the Client Summary page.<br/>
+                                                        Select 'Yes' ONLY if you understand and wish to continue anyway.<br/>
+                                                        </p>
+                                                        <!--end early message-->
+                                                        </apex:outputText>
+                                                        
+                                                        <apex:outputText rendered="{!ontime1}">
+                                                        <!-- message-->
+                                                        <p>You have selected "New Follow-up". Do you wish create the first Follow-up record? <br/>
+                                                        </p>
+                                                        <!--end  message-->
+                                                        </apex:outputText>
+                                                        
+                                                        <apex:outputText rendered="{!ontime2}">
+                                                        <!-- message-->
+                                                        <p>You have selected "New Follow-up". Do you wish to continue creating a Follow-up record? <br/>
+                                                        </p>
+                                                        <!--end  message-->
+                                                        </apex:outputText>
+                                                        
+                                                        <apex:outputPanel > 
+                                                        <p align="center">
                                                                 <!--no-->
-                                                                <td> 
-                                                                    <apex:outputPanel layout="none" >
-                                                                        <apex:commandButton styleClass="btn btn-primary btn-xs"  action="{!No}" value="No"/>
-                                                                    </apex:outputPanel>
-                                                                </td>
-                                                                <td/>
+                                                                        <apex:commandButton styleClass="btn btn-primary btn-xs "  action="{!No}" value="No"/>
+                                                                        &nbsp;
+                                                                        <apex:commandButton styleClass="btn btn-primary btn-xs"  action="{!Yes}" value="Yes"/>
                                                                 <!--yes-->
-                                                                <td>
-                                                                    <apex:outputPanel layout="none" >                                  
-                                                                        <a href="{!URLFOR('/apex/DS_INFO_F', null, ['cimi'=urlClientIDFollowInfo])}">
-                                                                            <apex:commandButton styleClass="btn btn-primary btn-xs"  action="{!Yes}" value="Yes"/>
-                                                                        </a>
-                                                                    </apex:outputPanel>
-                                                                </td>
-                                                                <!--later
-                                                                <td>
-                                                                    <apex:outputPanel layout="none" >
-                                                                        <apex:commandButton styleClass="btn btn-primary btn-xs"  action="{!Later}" value="Yes, but take me to the summary page first."/>
-                                                                    </apex:outputPanel>
-                                                                </td>-->
-                                                            </tr>
-                                                        </table>
-                                                        <!--end button table-->
+                                                        </p>
+                                                                </apex:outputPanel>          
                                                     </apex:outputPanel>
                                                 </apex:outputPanel>
                                             </apex:outputPanel>
@@ -418,11 +432,11 @@ function confirmNew(url){
                         <!--</div>-->
                         <!--end follow-up heading-->  
                         <!--record of follow up visits section-->
-                        <!--<div id="collapseFU" class="panel-collapse collapse" role="tabpanel" aria-labelledby="FollowUpHeading1">-->
+                       <!-- <div id="collapseFU" class="panel-collapse collapse" role="tabpanel" aria-labelledby="FollowUpHeading1">-->
                                 <!--<div class="panel-body">   -->                           
                                    <!-- <div class="panel-group" id="accordion_followup" role="tablist" aria-multiselectable="true">-->
 
-                                        <apex:repeat value="{!visits2}" var="visit" id="visitRepeat">
+                                        <apex:repeat value="{!visits}" var="visit" id="visitRepeat">
                                 
                                             <div class="panel panel-default">
                                             
@@ -433,14 +447,17 @@ function confirmNew(url){
                                                       <i class="fa fa-circle alert-sl-{!if(FuBtn = FALSE, 'green', 'red')}"></i>
                                                       <!--collapsable title-->
                                                       <a data-toggle="collapse" data-parent="#accordion_followup" href="#collapseOne_followup_{!visit.CurrentVisitNumber}" aria-expanded="false" aria-controls="collapseOne_followup_{!visit.CurrentVisitNumber}">
-                                                          Follow-Up Visit:{!visit.CurrentVisitNumber}
+                                                          Follow-Up Visit<!--:{!visit.CurrentVisitNumber}-->
                                                       </a>  
                                                       <!--end accordion heading-->
                                                       <!--keep right-->
                                                       <p class="pull-right">
+                                                      &nbsp;
+                                                          <apex:outputText value="{!visit.VisitType}"/>
+                                                      &nbsp;
                                                       
                                                       <!--visit date-->
-                                                      Date of Visit: &nbsp;
+                                                      DOV: &nbsp;
                                                           <apex:outputText value="{0,date,MM/dd/yyyy}">
                                                               <apex:param value="{!visit.visitDate}" id="followUpDate"/>
                                                           </apex:outputText>      
@@ -449,7 +466,7 @@ function confirmNew(url){
                                                   </h4>
                                                 </div>
                                                 
-                                                <div id="collapseOne_followup_{!visit.CurrentVisitNumber}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne_followup_{!visit.CurrentVisitNumber}">                                            
+                                                <div id="collapseOne_followup_{!visit.CurrentVisitNumber}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne_followup_{!visit.CurrentVisitNumber}">                                             
                                                     <!--individual record content-->
                                                     <div class="panel-body">
                                                         <!--Follow-up summary button-->
@@ -457,9 +474,12 @@ function confirmNew(url){
                                                         
                                                             <!--keep right-->
                                                             <p class="pull-right">
-                                                                <button type="button" class="btn btn-default pull-right">
-                                                                    <i class="glyphicon glyphicon-list-alt"></i> &nbsp;Follow-up Summary Report
-                                                                </button>
+                                                                <!--Summary Report-->
+                                                                <a href="/apex/clientSummaryReport?cimi={!visit.SummaryUrl}"><!--{!urlClientSummaryReportFU['1']}"><!--{!urlClientIDF} "><!--urlClientSummaryReportFU['1'] "><!--visit.SummaryUrl1"><!--urlClientSummaryReportFU['1']}" ><!--{!visit.CurrentVisitNumber}}">SummaryUrl{!visit.visitFormUrl[visitForm.id]}-->
+                                                                    <button type="button" class="btn btn-default pull-right">
+                                                                        <i class="glyphicon glyphicon-list-alt"></i> &nbsp;Follow-Up Summary Report
+                                                                    </button>
+                                                                </a>
                                                             </p>
                                                             <!--end keep right-->
                                                         </apex:outputPanel>
@@ -482,7 +502,7 @@ function confirmNew(url){
                                                                 <tbody>
                                                                     <!--Displays Follow-Up Information-->
                                                                     <apex:repeat value="{!visit.visitFormList}" var="visitForm" id="formRepeat"> 
-                                                                        <apex:outputPanel layout="none" >
+                                                                        <apex:outputPanel layout="none" rendered="{!NOT(AND(genderUnknown = true, visitForm.Page__r.Gender_Required__c = true))}" >
                                                                         <!--record of information about each form-->
                                                                             <tr>
                                                                                 <!--page title-->
@@ -495,20 +515,47 @@ function confirmNew(url){
                                                                                             {!CASE(visitForm.STATUS__c,'Complete', 'Complete', 'Incomplete', 'Incomplete', 'Not Started')}
                                                                                 </td>
                                                                                 <!--status indicator-->
-                                                                                
-                                                                                
+                                                                                                                                                                
                                                                                 <!--page action button-->    
                                                                                 <td>
-                                                                                             <a href="/apex/{!visitForm.Page__r.Page__c}?cimi={!visit.visitFormUrl[visitForm.id]}">
-                                                                                                <button type="button" class="btn btn-primary btn-xs btn-sl">
-                                                                                                    {!CASE(visitForm.STATUS__c,'Complete', 'Edit', 'Incomplete', 'Resume', 'Start')}
-                                                                                                </button>
-                                                                                            </a>
+                                                                                    <a href="/apex/{!visitForm.Page__r.Page__c}{!if( AND( visitForm.FORM_TYPE__c = 'Assessment', visitForm.STATUS__c = 'Complete' ), '_Report', '')}?cimi={!visit.visitFormUrl[visitForm.id]}">
+                                                                                        <button type="button" class="btn btn-primary btn-xs btn-sl">
+                                                                                            {!CASE(visitForm.STATUS__c,'Complete', if(visitForm.FORM_TYPE__c = 'Assessment', 'View', 'Edit'), 'Incomplete', 'Resume', 'Start')}
+                                                                                        </button>
+                                                                                    </a>
                                                                                 </td>
                                                                                 <!--end button-->
                                                                                 
                                                                             </tr>
+                                                
                                                                             <!--end record of information about each form-->                                                
+                                                                        </apex:outputPanel>                                                                      
+                                                                                                                        
+                                                                        <apex:outputPanel layout="none" rendered="{!AND(genderUnknown = true,visitForm.Page__r.Gender_Required__c = true)}">
+                                                                            <!--list of unavailable forms due to insufficient gender selection-->
+                                                                            <tr>
+                                                                                <!--page title-->
+                                                                                <td class="td-disable">{!visitForm.Page__r.Content__c}</td>
+                                                                                <!--end title-->
+                                                                                
+                                                                                <!--greyed out indicator-->
+                                                                                <td class="td-disable">
+                                                                                    <i class="fa fa-circle alert-sl-gray"></i> 
+                                                                                    Not Accessible
+                                                                                </td>
+                                                                                <!--end indicator-->
+                                                                                
+                                                                                <!--disabled button-->
+                                                                                <td class="td-disable">
+                                                                                    <a title="If the client’s sex is “declined” or “unknown”, assessments that rely on gender for scoring will not be accessible.                                                                                              ">
+                                                                                        <button type="button" class="btn btn-default btn-xs btn-sl" style="background-color:#DBD9D9;cursor: auto;">Start</button>
+                                                                                    </a>
+                                                                                </td>
+                                                                                <!--end button-->
+                                                                                
+                                                                            </tr>
+                                                                            <!--end disabled record-->
+                                                                                                
                                                                         </apex:outputPanel>
                                                                     </apex:repeat>
                                                                     <!--end list of follow up form information-->                                                                                                                        
@@ -521,7 +568,7 @@ function confirmNew(url){
                                             </div>
                                         </apex:repeat>           
 
-                                   <!-- </div>             -->
+                                    <!--</div>             -->
                                 <!--</div>   -->                       
                         <!--</div>-->
                         

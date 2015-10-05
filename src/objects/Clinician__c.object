@@ -51,7 +51,7 @@
         <relationshipLabel>Clinicians</relationshipLabel>
         <relationshipName>Clinicians</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -59,7 +59,7 @@
         <externalId>false</externalId>
         <label>Email</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Email</type>
         <unique>false</unique>
     </fields>
@@ -69,22 +69,27 @@
         <label>Name</label>
         <length>200</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Text</type>
         <unique>false</unique>
     </fields>
     <label>Clinician</label>
     <listViews>
-        <fullName>All</fullName>
+        <fullName>My_Center_Clinicians</fullName>
         <columns>NAME</columns>
         <columns>Name__c</columns>
+        <columns>Center__c</columns>
         <columns>CREATEDBY_USER</columns>
+        <columns>OBJECT_ID</columns>
+        <columns>Email__c</columns>
+        <columns>OWNER.ALIAS</columns>
+        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
-        <label>All</label>
+        <label>My Center Clinicians</label>
     </listViews>
     <nameField>
         <label>Clinician ID</label>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Text</type>
     </nameField>
     <pluralLabel>Clinicians</pluralLabel>

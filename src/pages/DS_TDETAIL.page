@@ -1,4 +1,4 @@
-<apex:page controller="DS_TDETAIL_Controller">
+<apex:page standardController="DS_TRDETAIL1__c" extensions="DS_TDETAIL_Controller">
     
     <!--JQuery -->
     <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.9.1.js')}"  /><!--allows for JQuery dependencies-->

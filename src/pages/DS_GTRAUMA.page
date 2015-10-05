@@ -183,7 +183,7 @@
       <div id="force">
           <!--instructions-->
           <br/><!--blankrow-->
-          <b>When were the questions on this form administered/updated?</b><apex:inputField styleClass="form-control auto-width" value="{!GTRAUMA.GTDATE__c}"/> <!--admin date-->
+          When were the questions on this form administered/updated?<apex:inputField styleClass="form-control auto-width" value="{!GTRAUMA.GTDATE__c}"/> <!--admin date-->
           <br/>
           <br/ >
           <strong>Please complete the following 24 questions based on the client's trauma history. This information should be maintained during treatment if trauma is experienced or new trauma is revealed.</strong>
@@ -214,7 +214,7 @@
                       
                       <!--displays trauma name and description-->
                       <td class="GT{!r.num}Q">
-                        <b><apex:outputText value="{!r.trauma}" escape="false"/></b><br/>
+                        <apex:outputText value="{!r.trauma}" escape="false"/><br/>
                         <small><apex:outputText value="{!r.subtitle}" escape="false"/></small>
                       </td>
                       <!--end name and description-->
@@ -251,7 +251,7 @@
               <!--24. Which trauma type is the primary focus of this treatment>-->
               <tr>
                 <td>24</td>
-                <td><b>Primary focus of current treatment?</b></td>
+                <td>Primary focus of current treatment?</td>
                 <td class="GT-primary" style="text-align:left !important; vertical-align: middle !important;" colspan="21">
                     <apex:selectList size="1" styleClass="form-control primarySelect" value="{!GTRAUMA.GTPRIMRY__c}" multiselect="false">
                         <apex:selectOptions value="{!PrimaryType}"/>
@@ -263,8 +263,7 @@
               <tr>  
                 <!--Completion status control-->              
                 <td style="text-align: right !important;" colspan="23">
-                <b>Complete?</b>&nbsp;&nbsp;
-                  
+                Complete?&nbsp;&nbsp;
                   <apex:selectList styleClass="form-control input-sm" style="width:130px; display: inherit;" value="{!GTRAUMA.STATUS_GTRAUMA__c}" size="1">
                       <apex:selectOption itemValue="Incomplete" itemLabel="Incomplete"/>
                       <apex:selectOption itemValue="Complete" itemLabel="Complete"/>

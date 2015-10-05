@@ -1,4 +1,4 @@
-<apex:page standardController="DS_Functioning_Forms_B__c" extensions="DS_CLINEVAL_Controller" tabStyle="DS_Functioning_Forms_F__c">
+<apex:page standardController="DS_Functioning_Forms_B__c" extensions="DS_CLINEVAL_Controller" ><!--tabStyle="DS_Functioning_Forms_F__c">-->
 
     <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
     
@@ -28,64 +28,41 @@
                 
                 <!--instructions -->
                 <div class="alert alert-info">
-                    Based on your clinical evaluation, for questions 1-30 please check each problem/symptom/disorder currently displayed by the child. For question 31, please indicate the <i>primary</i> problems/symptom/disorder currently displayed by the child.  Please note that some of the categories have changed to reflect the DSM-5. 
+                    <strong>Based on your clinical evaluation, for questions 1-31 please select each problem/symptom/disorder currently displayed by the child. For question 32, please indicate the <i>primary</i> problem/symptom/disorder currently displayed by the child.  Please note that some of the categories have changed to reflect the DSM-5. </strong>
                 </div>        
                 <!--end instructions--> 
                 
                 <!--Clinical Evaluation questionaire -->
                 <div>
-                    <table class="table table-bordered table-hover table-condensed Clinevaltable">
+                    <table class="table table-bordered table-hover table-striped table-condensed Clinevaltable">
                     
                         <thead>
                             <!--information sub-heading-->
                             <tr>
-                                <th class="text-center">Clinical Problems, Symptoms, and Disorders</th>
+                                <th>Clinical Problems, Symptoms, and Disorders</th>
                                 <th class="text-center" colspan="3">Child has/exhibits this problem?<br/>(Select all that apply.)</th>
                             </tr>
                             <!--end information-->
-                            
-                            <!-- answer indication sub-heading-->
-                            <tr>
-                                <td>
-                                    <div class="col-md-6 col-lg-6 " />
-                                </td>
-                                <td class="text-center" style="width:100px">   No   </td><!--child does not have or exhibit the problem-->
-                                <td class="text-center" style="width:100px">Probable</td><!--the child probably has or exhibits this problem-->
-                                <td class="text-center" style="width:100px">Definite</td><!--the child definitely has or exhibits this problem-->
-                            </tr>
-                            <!--end answers-->
                         </thead>
                         
                         <!--radiobutton indicator table-->
                         <tbody>
-                        <!-----FORMAT Example-->
-                        <!--
-                        <tr>
-                            <div class="form-group">
+                            <tr>
                                 <td>
-                                        <label class="control-label label-bold">
-                                            <span class="nmbr">Number.</span>
-                                            problem name 
-                                        </label> <br/>
-                                            problem example or definition  
                                 </td>
-                                <td>
-                                    radiobutton options
-                                    ...
-                                </td>
-                        </tr>
-                        -->
-                        <!--end of example-->
-                        
+                                <td class="text-center" style="width:75px">   No   </td><!--child does not have or exhibit the problem-->
+                                <td class="text-center" style="width:75px">Probable</td><!--the child probably has or exhibits this problem-->
+                                <td class="text-center" style="width:75px">Definite</td><!--the child definitely has or exhibits this problem-->
+                            </tr>
                             <!--1. ADHD-->
                             <tr >
                                 <td > 
                                     <!--<div class="col-md-6 col-lg-6 ">--> 
-                                    <label class="control-label label-bold">
+                                    <label class="control-label col-md-12 col-lg-12">
                                         <span class="nmbr">1.</span>
-                                        Attention-Deficit/Hyperactivity Disorder (ADHD)   
-                                    </label> <br/>
+                                        Attention-Deficit/ Hyperactivity Disorder (ADHD)<br />
                                         (persistent pattern of inattention and/or hyperactivity-impulsivity that interferes with functioning or development)  
+                                    </label>
                                 </td>
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-1-0" name="Clineval-1" value="0" title="{!form.obj[bfVariableMap['CEADHD']]}"/></td><!--No ADHD-->
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-1-1" name="Clineval-1" value="1" title="{!form.obj[bfVariableMap['CEADHD']]}"/></td><!--Probably ADHD-->
@@ -96,11 +73,11 @@
                             <tr>
                                 <td>
                                     <!--<div class="col-md-6 col-lg-6 ">--> 
-                                    <label class="control-label label-bold">
-                                    <span class="nmbr">2.</span>
-                                      Bipolar Disorder 
-                                    </label> <br/>
-                                      (presence of manic episode(s) and major depressive episode(s)) (e.g., Bipolar I, Bipolar II, or related disorders) 
+                                    <label class="control-label col-md-12 col-lg-12">
+                                        <span class="nmbr">2.</span>
+                                        Bipolar Disorder<br/>
+                                        (presence of manic episode(s) and major depressive episode(s)) (e.g., Bipolar I, Bipolar II, or related disorders) 
+                                    </label>
                                 </td>
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-2-0" name="Clineval-2" value="0" title="{!form.obj[bfVariableMap['CEBIPL']]}"/></td><!--No Bipolar-->
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-2-1" name="Clineval-2" value="1" title="{!form.obj[bfVariableMap['CEBIPL']]}"/></td><!--Probably Bipolar-->
@@ -111,11 +88,11 @@
                             <tr>
                                 <td>
                                     <!--<div class="col-md-6 col-lg-6 ">--> 
-                                    <label class="control-label label-bold">
-                                    <span class="nmbr">3.</span>  
-                                    Depressive Symptoms  
-                                    </label> <br/>
-                                    (e.g., depressed mood, diminished interest or pleasure in activities)
+                                    <label class="control-label col-md-12 col-lg-12">
+                                        <span class="nmbr">3.</span>  
+                                        Depressive Symptoms<br/>
+                                        (e.g., depressed mood, diminished interest or pleasure in activities)
+                                    </label> 
                                 </td>
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-3-0" name="Clineval-3" value="0" title="{!form.obj[bfVariableMap['CEDPS']]}"/></td><!--No Depressive Symptoms-->
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-3-1" name="Clineval-3" value="1" title="{!form.obj[bfVariableMap['CEDPS']]}"/></td><!--Probably Depressive Symptoms-->
@@ -126,11 +103,11 @@
                             <tr >
                                 <td>
                                     <!--<div class="col-md-6 col-lg-6 ">--> 
-                                    <label class="control-label label-bold">
-                                    <span class="nmbr">4.</span>  
-                                    Depressive Disorder  
-                                    </label> <br/>
-                                    Disruptive Mood Dysregulation Disorder, Major Depressive Disorder, or related disorders)
+                                    <label class="control-label col-md-12 col-lg-12">
+                                        <span class="nmbr">4.</span>  
+                                        Depressive Disorder<br/>
+                                        (Disruptive Mood Dysregulation Disorder, Major Depressive Disorder, or related disorders)
+                                    </label>
                                 </td>
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-4-0" name="Clineval-4" value="0" title="{!form.obj[bfVariableMap['CEDEP']]}"/></td><!--No Depressive Disorder-->
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-4-1" name="Clineval-4" value="1" title="{!form.obj[bfVariableMap['CEDEP']]}"/></td><!--Probably Depressive Disorder-->
@@ -141,11 +118,11 @@
                             <tr>
                                 <td>
                                     <!--<div class="col-md-6 col-lg-6 ">--> 
-                                    <label class="control-label label-bold">
-                                    <span class="nmbr">5.</span>  
-                                    Traumatic/Complicated Grief  
-                                    </label> <br/>
-                                    (response to significant loss; can include sadness, rumination about the loss, insomnia, poor appetite, etc.)
+                                    <label class="control-label col-md-12 col-lg-12">
+                                        <span class="nmbr">5.</span>  
+                                        Traumatic/Complicated Grief<br/>
+                                        (response to a significant loss; can include sadness, rumination about the loss, insomnia, poor appetite, etc.)
+                                    </label>
                                 </td>
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-5-0" name="Clineval-5" value="0" title="{!form.obj[bfVariableMap['CETG']]}"/></td><!--No Traumatic/Complicated Grief-->
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-5-1" name="Clineval-5" value="1" title="{!form.obj[bfVariableMap['CETG']]}"/></td><!--Probably Traumatic/Complicated Grief-->
@@ -156,11 +133,11 @@
                             <tr>
                                 <td>
                                     <!--<div class="col-md-6 col-lg-6 ">--> 
-                                    <label class="control-label label-bold">
-                                    <span class="nmbr">6.</span>  
-                                    Generalized Anxiety Disorder  
-                                    </label> <br/>
-                                    (excessive anxiety and worry about a number of events or activities, such as work or school performance; difficulty controlling worry)
+                                    <label class="control-label col-md-12 col-lg-12">
+                                        <span class="nmbr">6.</span>  
+                                        Generalized Anxiety Disorder <br />
+                                        (excessive anxiety and worry about a number of events or activities, such as work or school performance; difficulty controlling worry)
+                                    </label>
                                 </td>
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-6-0" name="Clineval-6" value="0" title="{!form.obj[bfVariableMap['CEGA']]}"/></td><!--No Generalized Anxiety Disorder-->
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-6-1" name="Clineval-6" value="1" title="{!form.obj[bfVariableMap['CEGA']]}"/></td><!--Probably Generalized Anxiety Disorder-->
@@ -171,11 +148,11 @@
                             <tr>
                                 <td>
                                     <!--<div class="col-md-6 col-lg-6 ">--> 
-                                    <label class="control-label label-bold">
-                                    <span class="nmbr">7.</span>  
-                                    Separation Anxiety Disorder 
-                                    </label> <br/>
-                                    (developmentally inappropriate and excessive fear or anxiety concerning separation from those to whom the individual is attached)
+                                    <label class="control-label col-md-12 col-lg-12">
+                                        <span class="nmbr">7.</span>  
+                                        Separation Anxiety Disorder<br />
+                                        (developmentally-inappropriate and excessive fear or anxiety concerning separation from those to whom the individual is attached)
+                                    </label>
                                 </td>
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-7-0" name="Clineval-7" value="0" title="{!form.obj[bfVariableMap['CESEPDS']]}"/></td><!--No Separation Anxiety-->
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-7-1" name="Clineval-7" value="1" title="{!form.obj[bfVariableMap['CESEPDS']]}"/></td><!--Probably Separation Anxiety-->
@@ -186,11 +163,11 @@
                             <tr>
                                 <td>
                                     <!--<div class="col-md-6 col-lg-6 ">--> 
-                                    <label class="control-label label-bold">
-                                    <span class="nmbr">8.</span>  
-                                    Social Anxiety Disorder (Social Phobia)  
-                                    </label> <br/>
-                                    (fear or anxiety about one or more social situations in which the individual is exposed to possible scrutiny by others)
+                                    <label class="control-label col-md-12 col-lg-12">
+                                        <span class="nmbr">8.</span>  
+                                        Social Anxiety Disorder (Social Phobia)<br />
+                                        (fear or anxiety about one or more social situations in which the individual is exposed to possible scrutiny by others)
+                                    </label>
                                 </td>
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-8-0" name="Clineval-8" value="0" title="{!form.obj[bfVariableMap['CESOCAD']]}"/></td><!--No Social Phobia-->
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-8-1" name="Clineval-8" value="1" title="{!form.obj[bfVariableMap['CESOCAD']]}"/></td><!--Probably Social Phobia-->
@@ -201,11 +178,11 @@
                             <tr>
                                 <td>
                                     <!--<div class="col-md-6 col-lg-6 ">--> 
-                                    <label class="control-label label-bold">
-                                    <span class="nmbr">9.</span>  
-                                    Panic Disorder  
-                                    </label> <br/>
-                                    (recurrent unexpected panic attacks)
+                                    <label class="control-label col-md-12 col-lg-12">
+                                        <span class="nmbr">9.</span>  
+                                        Panic Disorder <br />
+                                        (recurrent unexpected panic attacks)
+                                    </label>
                                 </td>
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-9-0" name="Clineval-9" value="0" title="{!form.obj[bfVariableMap['CEPANDS']]}"/></td><!--No Panic Disorder-->
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-9-1" name="Clineval-9" value="1" title="{!form.obj[bfVariableMap['CEPANDS']]}"/></td><!--Probably Panic Disorder-->
@@ -216,11 +193,11 @@
                             <tr>
                                 <td>
                                     <!--<div class="col-md-6 col-lg-6 ">--> 
-                                    <label class="control-label label-bold">
-                                    <span class="nmbr">10.</span> 
-                                    Specific Phobia  
-                                    </label> <br/>
-                                    (marked fear or anxiety about a specific object or situation)
+                                    <label class="control-label col-md-12 col-lg-12">
+                                        <span class="nmbr">10.</span> 
+                                        Specific Phobia<br />  
+                                        (marked fear or anxiety about a specific object or situation)
+                                    </label>
                                 </td>
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-10-0" name="Clineval-10" value="0" title="{!form.obj[bfVariableMap['CEPHODS']]}"/></td><!--No Specific Phobia-->
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-10-1" name="Clineval-10" value="1" title="{!form.obj[bfVariableMap['CEPHODS']]}"/></td><!--Probably Specific Phobia-->
@@ -240,11 +217,11 @@
                             <tr>
                                 <td>
                                     <!--<div class="col-md-6 col-lg-6 ">--> 
-                                    <label class="control-label label-bold">
-                                    <span class="nmbr">11.</span> 
-                                    Obsessive Compulsive and Related Disorders  
-                                    </label> <br/>
-                                    <p>(presence of obsessions, compulsions, or both) (e.g., trichotillomania [pulling out own hair], hoarding, body dysmorphic disorder, etc.)</p> 
+                                    <label class="control-label col-md-12 col-lg-12">
+                                        <span class="nmbr">11.</span> 
+                                        Obsessive Compulsive and Related Disorders<br />
+                                        (presence of obsessions, compulsions, or both) (e.g., trichotillomania [pulling out own hair], hoarding, body dysmorphic disorder, etc.)
+                                    </label>
                                 </td>
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-11-0" name="Clineval-11" value="0" title="{!form.obj[bfVariableMap['CEOCD']]}"/></td><!--No OCD-->
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-11-1" name="Clineval-11" value="1" title="{!form.obj[bfVariableMap['CEOCD']]}"/></td><!--Probably OCD-->
@@ -255,11 +232,11 @@
                             <tr>
                                 <td>
                                     <!--<div class="col-md-6 col-lg-6 ">--> 
-                                    <label class="control-label label-bold">
-                                    <span class="nmbr">12.</span> 
-                                    Acute Stress Disorder  
-                                    </label> <br/>
-                                    (exposure to actual or threatened death, serious injury, or sexual violation and presence of associated symptoms for up to one month after trauma exposure) 
+                                    <label class="control-label col-md-12 col-lg-12">
+                                        <span class="nmbr">12.</span> 
+                                        Acute Stress Disorder <br />
+                                        (exposure to actual or threatened death, serious injury, or sexual violation and presence of associated symptoms for up to one month after trauma exposure) 
+                                    </label>
                                 </td>
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-12-0" name="Clineval-12" value="0" title="{!form.obj[bfVariableMap['CEASD']]}"/></td><!--No Acute Stress Disorder-->
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-12-1" name="Clineval-12" value="1" title="{!form.obj[bfVariableMap['CEASD']]}"/></td><!--Probably Acute Stress Disorder-->
@@ -270,11 +247,11 @@
                             <tr>
                                 <td>
                                     <!--<div class="col-md-6 col-lg-6 ">--> 
-                                    <label class="control-label label-bold">
-                                    <span class="nmbr">13.</span> 
-                                    Post-Traumatic Stress Disorder 
-                                    </label> <br/>
-                                    (exposure to actual or threatened death, serious injury, or sexual violence and the presence of associated symptoms for more than one month)
+                                    <label class="control-label col-md-12 col-lg-12">
+                                        <span class="nmbr">13.</span> 
+                                        Post-Traumatic Stress Disorder 
+                                        (exposure to actual or threatened death, serious injury, or sexual violence and the presence of associated symptoms for more than one month)
+                                    </label>
                                 </td>
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-13-0" name="Clineval-13" value="0" title="{!form.obj[bfVariableMap['CEPTSD']]}"/></td><!--No PTSD-->
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-13-1" name="Clineval-13" value="1" title="{!form.obj[bfVariableMap['CEPTSD']]}"/></td><!--Probably PTSD-->
@@ -285,11 +262,11 @@
                             <tr>
                                 <td>
                                     <!--<div class="col-md-6 col-lg-6 ">--> 
-                                    <label class="control-label label-bold">
-                                    <span class="nmbr">14.</span> 
-                                    Adjustment Disorder 
-                                    </label> <br/>
-                                    (development of emotional or behavioral symptoms in response to an identifiable stressor(s) occurring within 3 months of the onset of the stressor(s))
+                                    <label class="control-label col-md-12 col-lg-12">
+                                        <span class="nmbr">14.</span> 
+                                        Adjustment Disorder<br />
+                                        (development of emotional or behavioral symptoms in response to an identifiable stressor(s) occurring within 3 months of the onset of the stressor(s))
+                                    </label>
                                 </td>
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-14-0" name="Clineval-14" value="0" title="{!form.obj[bfVariableMap['CEADJ']]}"/></td><!--No Adjustment Disorder-->
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-14-1" name="Clineval-14" value="1" title="{!form.obj[bfVariableMap['CEADJ']]}"/></td><!--Probably Adjustment Disorder-->
@@ -300,11 +277,11 @@
                             <tr>
                                 <td>
                                     <!--<div class="col-md-6 col-lg-6 ">--> 
-                                    <label class="control-label label-bold">
-                                    <span class="nmbr">15.</span> 
-                                    Attachment Problems/ Difficulties  
-                                    </label> <br/>
-                                    (difficulty forming and maintaining trusting relationships with other people)
+                                    <label class="control-label col-md-12 col-lg-12">
+                                        <span class="nmbr">15.</span> 
+                                        Attachment Problems/ Difficulties <br />
+                                        (difficulty forming and maintaining trusting relationships with other people)
+                                    </label>
                                 </td>
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-15-0" name="Clineval-15" value="0" title="{!form.obj[bfVariableMap['CEATTPR']]}"/></td><!--No Attachment Problems-->
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-15-1" name="Clineval-15" value="1" title="{!form.obj[bfVariableMap['CEATTPR']]}"/></td><!--Probably Attachment Problems-->
@@ -315,11 +292,11 @@
                             <tr>
                                 <td>
                                     <!--<div class="col-md-6 col-lg-6 ">--> 
-                                    <label class="control-label label-bold">
-                                    <span class="nmbr">16.</span> 
-                                    Dissociative Symptoms  
-                                    </label> <br/>
-                                    (disruption of and/or discontinuity in the normal integration of consciousness, memory, emotion, behavior, etc.)
+                                    <label class="control-label col-md-12 col-lg-12">
+                                        <span class="nmbr">16.</span> 
+                                        Dissociative Symptoms <br />
+                                        (disruption of and/or discontinuity in the normal integration of consciousness, memory, emotion, behavior, etc.)
+                                    </label>
                                 </td>
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-16-0" name="Clineval-16" value="0" title="{!form.obj[bfVariableMap['CEDISYMP']]}"/></td><!--No Dissociative Symptoms-->
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-16-1" name="Clineval-16" value="1" title="{!form.obj[bfVariableMap['CEDISYMP']]}"/></td><!--Probably Dissociative Symptoms-->
@@ -330,11 +307,11 @@
                             <tr>
                                 <td>
                                     <!--<div class="col-md-6 col-lg-6 ">--> 
-                                    <label class="control-label label-bold">
-                                    <span class="nmbr">17.</span> 
-                                    Dissociative Disorder  
-                                    </label> <br/>
-                                    (e.g., Dissociative Identity Disorder, Dissociative Amnesia, etc.) 
+                                    <label class="control-label col-md-12 col-lg-12">
+                                        <span class="nmbr">17.</span> 
+                                        Dissociative Disorder <br />
+                                        (e.g., Dissociative Identity Disorder, Dissociative Amnesia, etc.) 
+                                    </label>
                                 </td>
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-17-0" name="Clineval-17" value="0" title="{!form.obj[bfVariableMap['CEDISSO']]}"/></td><!--No Dissociative Disorder-->
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-17-1" name="Clineval-17" value="1" title="{!form.obj[bfVariableMap['CEDISSO']]}"/></td><!--Probably Dissociative Disorder-->
@@ -345,11 +322,11 @@
                             <tr>
                                 <td>
                                     <!--<div class="col-md-6 col-lg-6 ">--> 
-                                    <label class="control-label label-bold">
-                                    <span class="nmbr">18.</span> 
-                                    Somatization  
-                                    </label> <br/>
-                                    (one or more somatic symptoms that are distressing or result in significant disruption in daily life) <p>(e.g., abdominal pain, headache, fatigue, nausea, etc.)</p> 
+                                    <label class="control-label col-md-12 col-lg-12">
+                                        <span class="nmbr">18.</span> 
+                                        Somatization <br />
+                                        (one or more somatic symptoms that are distressing or result in significant disruption in daily life) (e.g., abdominal pain, headache, fatigue, nausea, etc.)
+                                    </label>
                                 </td>
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-18-0" name="Clineval-18" value="0" title="{!form.obj[bfVariableMap['CESOMAT']]}"/></td><!--No Somatization -->
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-18-1" name="Clineval-18" value="1" title="{!form.obj[bfVariableMap['CESOMAT']]}"/></td><!--Probably Somatization -->
@@ -360,11 +337,11 @@
                             <tr>
                                 <td>
                                     <!--<div class="col-md-6 col-lg-6 ">--> 
-                                    <label class="control-label label-bold">
-                                    <span class="nmbr">19.</span> 
-                                    Feeding and Eating Disorder  
-                                    </label> <br/>
-                                    <p>(persistent disturbance of eating or eating-related behavior that results in the altered consumption or absorption of food and that significantly impairs physical health or psychosocial functioning)(e.g., Pica, Anorexia Nervosa, Binge-Eating Disorder, etc.)</p>
+                                    <label class="control-label col-md-12 col-lg-12">
+                                        <span class="nmbr">19.</span> 
+                                        Feeding and Eating Disorder <br />
+                                        (persistent disturbance of eating or eating-related behavior that results in the altered consumption or absorption of food and that significantly impairs physical health or psychosocial functioning)(e.g., Pica, Anorexia Nervosa, Binge-Eating Disorder, etc.)
+                                    </label>
                                 </td>
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-19-0" name="Clineval-19" value="0" title="{!form.obj[bfVariableMap['CEEAT']]}"/></td><!--No Feeding/Eating Disorder-->
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-19-1" name="Clineval-19" value="1" title="{!form.obj[bfVariableMap['CEEAT']]}"/></td><!--Probably Feeding/Eating Disorder-->
@@ -375,11 +352,11 @@
                             <tr>
                                 <td>
                                     <!--<div class="col-md-6 col-lg-6 ">--> 
-                                    <label class="control-label label-bold">
-                                    <span class="nmbr">20.</span>  
-                                    Sleep-Wake Disorder  
-                                    </label> <br/>
-                                    (sleep-wake complaints regarding the quality, timing, and amount of sleep)<p>(e.g., narcolepsy, insomnia, etc.)</p>
+                                    <label class="control-label col-md-12 col-lg-12">
+                                        <span class="nmbr">20.</span>  
+                                        Sleep-Wake Disorder <br />
+                                        (sleep-wake complaints regarding the quality, timing, and amount of sleep) (e.g., narcolepsy, insomnia, etc.)
+                                    </label>
                                 </td>
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-20-0" name="Clineval-20" value="0" title="{!form.obj[bfVariableMap['CESLPDS']]}"/></td><!--No Sleep-Wake Disorder-->
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-20-1" name="Clineval-20" value="1" title="{!form.obj[bfVariableMap['CESLPDS']]}"/></td><!--Probably Sleep-Wake Disorder-->
@@ -399,11 +376,11 @@
                             <tr>
                                 <td>
                                     <!--<div class="col-md-6 col-lg-6 ">--> 
-                                    <label class="control-label label-bold">
-                                    <span class="nmbr">21.</span>  
-                                    Sexual Behavioral Problems  
-                                    </label> <br/>
-                                    (e.g., saying or doing things about sex that is age-inappropriate)
+                                    <label class="control-label col-md-12 col-lg-12">
+                                        <span class="nmbr">21.</span>  
+                                        Sexual Behavioral Problems <br />
+                                        (e.g., saying or doing things about sex that is age-inappropriate)
+                                    </label>
                                 </td>
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-21-0" name="Clineval-21" value="0" title="{!form.obj[bfVariableMap['CESEXPR']]}"/></td><!--No Sexual Behavioral Problems-->
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-21-1" name="Clineval-21" value="1" title="{!form.obj[bfVariableMap['CESEXPR']]}"/></td><!--Probably Sexual Behavioral Problems-->
@@ -414,11 +391,11 @@
                             <tr>
                                 <td>
                                     <!--<div class="col-md-6 col-lg-6 ">--> 
-                                    <label class="control-label label-bold">
-                                    <span class="nmbr">22.</span>  
-                                    Oppositional Defiant Disorder  
-                                    </label> <br/>
-                                    (e.g., pattern of angry/irritable mood, argumentative/defiant behavior, or vindictiveness)
+                                    <label class="control-label col-md-12 col-lg-12">
+                                        <span class="nmbr">22.</span>  
+                                        Oppositional Defiant Disorder <br />
+                                        (e.g., pattern of angry/irritable mood, argumentative/defiant behavior, or vindictiveness)
+                                    </label>
                                 </td>
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-22-0" name="Clineval-22" value="0" title="{!form.obj[bfVariableMap['CEODD']]}"/></td><!--No ODD-->
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-22-1" name="Clineval-22" value="1" title="{!form.obj[bfVariableMap['CEODD']]}"/></td><!--Probably ODD-->
@@ -429,11 +406,11 @@
                             <tr>
                                 <td>
                                     <!--<div class="col-md-6 col-lg-6 ">--> 
-                                    <label class="control-label label-bold">
-                                    <span class="nmbr">23.</span>  
-                                    Conduct Disorder  
-                                    </label> <br/>
-                                    (e.g., repetitive and persistent pattern of behavior in which the basic rights of others or major age-appropriate society norms or rules are violated)
+                                    <label class="control-label col-md-12 col-lg-12">
+                                        <span class="nmbr">23.</span>  
+                                        Conduct Disorder <br />
+                                        (e.g., repetitive and persistent pattern of behavior in which the basic rights of others or major age-appropriate society norms or rules are violated)
+                                    </label>
                                 </td>
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-23-0" name="Clineval-23" value="0" title="{!form.obj[bfVariableMap['CECD']]}"/></td><!--No Conduct Disorder-->
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-23-1" name="Clineval-23" value="1" title="{!form.obj[bfVariableMap['CECD']]}"/></td><!--Probably Conduct Disorder-->
@@ -444,11 +421,11 @@
                             <tr>
                                 <td>
                                     <!--<div class="col-md-6 col-lg-6 ">--> 
-                                    <label class="control-label label-bold">
-                                    <span class="nmbr">24.</span>  
-                                    Intermittent Explosive Disorder  
-                                    </label> <br/>
-                                    (e.g., recurrent behavioral outbursts representing a failure to control aggressive impulses)
+                                    <label class="control-label col-md-12 col-lg-12">
+                                        <span class="nmbr">24.</span>  
+                                        Intermittent Explosive Disorder <br />
+                                        (e.g., recurrent behavioral outbursts representing a failure to control aggressive impulses)
+                                    </label>
                                 </td>
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-24-0" name="Clineval-24" value="0" title="{!form.obj[bfVariableMap['CEEXPL']]}"/></td><!--No IED-->
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-24-1" name="Clineval-24" value="1" title="{!form.obj[bfVariableMap['CEEXPL']]}"/></td><!--Probably IED-->
@@ -459,11 +436,11 @@
                             <tr>
                                 <td>
                                     <!--<div class="col-md-6 col-lg-6 ">--> 
-                                    <label class="control-label label-bold">
-                                    <span class="nmbr">25.</span>  
-                                    General Behavioral Problems  
-                                    </label> <br/>
-                                    (e.g., violent or aggressive behavior, breaking rules, fighting, destroying property, or other dangerous or illegal behavior)
+                                    <label class="control-label col-md-12 col-lg-12">
+                                        <span class="nmbr">25.</span>  
+                                        General Behavioral Problems <br />
+                                        (e.g., violent or aggressive behavior, breaking rules, fighting, destroying property, or other dangerous or illegal behavior)
+                                    </label>
                                 </td>
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-25-0" name="Clineval-25" value="0" title="{!form.obj[bfVariableMap['CEGBP']]}"/></td><!--No General Behavioral Problems-->
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-25-1" name="Clineval-25" value="1" title="{!form.obj[bfVariableMap['CEGBP']]}"/></td><!--Probably General Behavioral Problems-->
@@ -474,11 +451,11 @@
                             <tr>
                                 <td>
                                     <!--<div class="col-md-6 col-lg-6 ">--> 
-                                    <label class="control-label label-bold">
-                                    <span class="nmbr">26.</span>  
-                                    Substance Abuse Problems  
-                                    </label> <br/>
-                                    (e.g., use of alcohol, illicit drugs, or misuse of prescription medication) 
+                                    <label class="control-label col-md-12 col-lg-12">
+                                        <span class="nmbr">26.</span>  
+                                        Substance Abuse Problems <br />
+                                        (e.g., use of alcohol, illicit drugs, or misuse of prescription medication) 
+                                    </label>
                                 </td>
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-26-0" name="Clineval-26" value="0" title="{!form.obj[bfVariableMap['CESA']]}"/></td><!--No Substance Abuse Problems-->
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-26-1" name="Clineval-26" value="1" title="{!form.obj[bfVariableMap['CESA']]}"/></td><!--Probably Substance Abuse Problems-->
@@ -489,11 +466,11 @@
                             <tr>
                                 <td>
                                     <!--<div class="col-md-6 col-lg-6 ">--> 
-                                    <label class="control-label label-bold">
-                                    <span class="nmbr">27.</span> 
-                                    Substance-Related and Addictive Disorders  
-                                    </label> <br/>
-                                    (e.g., Alcohol Use Disorder, Cannabis Use Disorder, Opioid Use Disorder, etc.) 
+                                    <label class="control-label col-md-12 col-lg-12">
+                                        <span class="nmbr">27.</span> 
+                                        Substance-Related and Addictive Disorders <br />
+                                        (e.g., Alcohol Use Disorder, Cannabis Use Disorder, Opioid Use Disorder, etc.) 
+                                    </label>
                                 </td>
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-27-0" name="Clineval-27" value="0" title="{!form.obj[bfVariableMap['CESUBST']]}"/></td><!--No Substance-Related and Addictive Disorders-->
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-27-1" name="Clineval-27" value="1" title="{!form.obj[bfVariableMap['CESUBST']]}"/></td><!--Probably Substance-Related and Addictive Disorders-->
@@ -504,31 +481,44 @@
                             <tr>
                                 <td>
                                     <!--<div class="col-md-6 col-lg-6 ">--> 
-                                    <label class="control-label label-bold">
-                                    <span class="nmbr">28.</span>  
-                                    Suicidality  
-                                    </label> <br/>
-                                    (e.g., thinking about killing himself/herself or attempting to do so)
+                                    <label class="control-label col-md-12 col-lg-12">
+                                        <span class="nmbr">28.</span>  
+                                        Suicidality <br />
+                                        (e.g., thinking about killing himself/herself or attempting to do so)
+                                    </label>
                                 </td>
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-28-0" name="Clineval-28" value="0" title="{!form.obj[bfVariableMap['CESUICD']]}"/></td><!--No Suicidality-->
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-28-1" name="Clineval-28" value="1" title="{!form.obj[bfVariableMap['CESUICD']]}"/></td><!--Probably Suicidality-->
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-28-2" name="Clineval-28" value="2" title="{!form.obj[bfVariableMap['CESUICD']]}"/></td><!--Definite Suicidality-->
-                            </tr>
-                            
+                            </tr> 
                             <!--29. Suicidal Behavior Disorder-->
                             <tr>
                                 <td>
                                     <!--<div class="col-md-6 col-lg-6 ">--> 
-                                    <label class="control-label label-bold">
-                                    <span class="nmbr">29.</span>  
-                                    Suicidal Behavior Disorder  
-                                    </label> <br/>
-                                    (individual has made a suicide attempt in the past 24 months)
+                                    <label class="control-label col-md-12 col-lg-12">
+                                        <span class="nmbr">29.</span>  
+                                        Suicidal Behavior Disorder <br />
+                                        (individual has made a suicide attempt in the past 24 months)
+                                    </label>
                                 </td>
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-29-0" name="Clineval-29" value="0" title="{!form.obj[bfVariableMap['CESBD']]}"/></td><!--No Suicidal Behavior Disorder-->
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-29-1" name="Clineval-29" value="1" title="{!form.obj[bfVariableMap['CESBD']]}"/></td><!--Probably Suicidal Behavior Disorder-->
                                 <td class="text-center"><input type="radio" class="Clineval" id="Clineval-29-2" name="Clineval-29" value="2" title="{!form.obj[bfVariableMap['CESBD']]}"/></td><!--Definite Suicidal Behavior Disorder-->
-                            </tr>                       
+                            </tr>                     
+                                  <!--30. Psychotic Disorder-->
+                            <tr>
+                                <td>
+                                    <!--<div class="col-md-6 col-lg-6 ">--> 
+                                    <label class="control-label col-md-12 col-lg-12">
+                                        <span class="nmbr">30.</span>  
+                                        Psychotic Disorder <br />
+                                        (e.g., Schizoaffective Disorder, Delusional Disorder, etc.)
+                                    </label>
+                                </td>
+                                <td class="text-center"><input type="radio" class="Clineval" id="Clineval-30-0" name="Clineval-30" value="0" title="{!form.obj[bfVariableMap['CEPSY']]}"/></td><!--No Psychotic Disorder-->
+                                <td class="text-center"><input type="radio" class="Clineval" id="Clineval-30-1" name="Clineval-30" value="1" title="{!form.obj[bfVariableMap['CEPSY']]}"/></td><!--Probably Psychotic Disorder-->
+                                <td class="text-center"><input type="radio" class="Clineval" id="Clineval-30-2" name="Clineval-30" value="2" title="{!form.obj[bfVariableMap['CEPSY']]}"/></td><!--Definite Psychotic Disorder-->
+                            </tr>                                 
                         </tbody>
                         <!--end radiobutton table-->
                     </table>
@@ -563,6 +553,7 @@
                     <apex:inputField value="{!form.obj[bfVariableMap['CESUBST']]}"  styleClass="hidden Clineval-27"  /><!--Substance-Related and Addictive Disorders -->
                     <apex:inputField value="{!form.obj[bfVariableMap['CESUICD']]}"  styleClass="hidden Clineval-28"  /><!-- Suicidality-->
                     <apex:inputField value="{!form.obj[bfVariableMap['CESBD']]}"  styleClass="hidden Clineval-29"  /><!--Suicidal Behavior Disorder -->
+                    <apex:inputField value="{!form.obj[bfVariableMap['CEPSY']]}"  styleClass="hidden Clineval-30"  /><!--Psychotic Disorder -->
                                         
                   <script>
                     $j('.Clineval').click(function(){
@@ -584,44 +575,47 @@
                     }                
                   </script>
                 </div> 
-                
-                <!--30. Additional problems?-->
-                <div class="form-group">
-                    <label class="col-md-6 col-lg-6 control-label  label-bold">
-                        <span class="nmbr">30.</span>  
+                <!--31. Additional problems?-->
+                <div class="form-group"> 
+                    <label class="col-md-8 col-lg-8 control-label">
+                        <span class="nmbr">31.</span>  
                         Are there any other additional problems/symptoms currently displayed by this child? 
                     </label> 
                     
-                    <div class="col-md-6 col-lg-6">
+                    <div class="col-md-4 col-lg-4">
                         <apex:selectRadio styleClass="radio-list" id="CEOTHY__c" value="{!form.obj[bfVariableMap['CEOTHY']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['CEOTHY']]}" onChange="skipLogic('CEOTHY',this.value)">
-                            <apex:selectOptions value="{!YNIems}"/>
+                            <apex:selectOptions value="{!NYOption}"/>
                         </apex:selectRadio>
                         <!--conditional, if additional problem is indicated as other-->
-                        <div class="skip-CEOTHER skipContent">
-                            Please Specify: 
-                            <apex:inputField styleClass="skip-element-CEOTHER  " id="CEOTHER__c" value="{!form.obj[bfVariableMap['CEOTHER']]}"/>
+                        <div class="skip-CEOTHER skipContent form-group no-border-bottom no-space-bottom">
+                            <label class="col-md-4 col-lg-4 control-label specify-label">Please specify:</label> 
+                            <div class="col-md-8 col-lg-8 specify-input">
+                                <apex:inputField styleClass="skip-element-CEOTHER form-control input-sm" id="CEOTHER__c" value="{!form.obj[bfVariableMap['CEOTHER']]}"/>
+                            </div>
                         </div>
                         <!--end conditional-->
                     </div>
                 </div>
                 <!--end additional problems-->
                                 
-                <!--31. primary problem-->
+                <!--32. primary problem-->
                 <div class="form-group">
-                    <label class="col-md-6 col-lg-6 control-label  label-bold">
-                        <span class="nmbr">31.</span>  
-                        Please indicate the <i>primary </i>problem/symptom/disorder currently displayed by this child. <b>(Select only one.)</b>
+                    <label class="col-md-8 col-lg-8 control-label">
+                        <span class="nmbr">32.</span>  
+                        Please indicate the <i>primary </i>problem/symptom/disorder currently displayed by this child. <strong>(Select only one.)</strong>
                     </label>
                     
-                    <div class="col-md-6 col-lg-6">
+                    <div class="col-md-4 col-lg-4">
                         <apex:selectRadio styleClass="radio-list" id="CEPRIM__c" value="{!form.obj[bfVariableMap['CEPRIM']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['CEPRIM']]}" onChange="skipLogic('CEPRIM',this.value)">
                             <apex:selectOptions value="{!PrimaryProbIems}"/>
                         </apex:selectRadio>   
                         
                         <!--conditional, if other is indicated as primary-->
-                        <div class="skip-CEPRIMSP skipContent">
-                            Please specify:
-                            <apex:inputField styleClass="skip-element-CEPRIMSP " id="CEPRIMSP__c" value="{!form.obj[bfVariableMap['CEPRIMSP']]}"/>
+                        <div class="skip-CEPRIMSP skipContent form-group no-border-bottom no-space-bottom">
+                            <label class="col-md-4 col-lg-4 control-label specify-label">Please specify:</label> 
+                            <div class="col-md-4 col-lg-4 specify-input">
+                                <apex:inputField styleClass="skip-element-CEPRIMSP form-control input-sm" id="CEPRIMSP__c" value="{!form.obj[bfVariableMap['CEPRIMSP']]}"/>
+                            </div>
                         </div>                        
                         <!--end conditional-->
                                                      
@@ -646,11 +640,8 @@
         </apex:form>
 <!--end form content-->
 
-    <!--citation information footer-->
-    <p style="class:footer; text-align:center ">
-        <i>This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - Baseline - CRF Version 6 2014
-        </i>
-    </p>
+    <!--citation information footer-->    
+    <c:cimiFormFooter formElement="{!form}"/>
     
     </div>    
 

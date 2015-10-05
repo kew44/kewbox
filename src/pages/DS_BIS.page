@@ -1,74 +1,49 @@
-<apex:page standardController="DS_Functioning_Forms_B__c" extensions="DS_BIS_Controller" tabStyle="DS_Functioning_Forms_F__c">
+<apex:page standardController="DS_Functioning_Forms_B__c" extensions="DS_BIS_Controller" >
     
     <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
     
-    <!--JQuery script for allowing de-selection of radiobuttons and use of dateModule-->
-    <script>
-        $j(document).ready(function(){
+   <script src="{!URLFOR($Resource.JS_DS_BIS)}"></script>
+    
+    <div class="{!HTMLENCODE(form.visitType)}">
+        <apex:sectionHeader title="{!HTMLENCODE(form.title)}" subtitle="{!HTMLENCODE(form.subtitle)}" />
+    </div>
 
-            dateModule({!dateModuleStatus});//dateModule declaritive
-
-                // date module criteria, test for treatment completion-
-                $j('input[name$="CBISCOMP__c"]').change(function(){
-                dateModule($j('input[name$="CBISCOMP__c"]:checked').val());
-                });
-
-            });
-
-    //date module
-    function dateModule(value){
-        console.log(value);
-            if( value == '0'){//client did not complete treatment, display date abandoned
-                $j('.skip-No').show();
-                $j('.skip-Yes').hide();
-                $j('.skip-element-CBISCODT').val('');
-            }
-            else if( value == '1' ){//client completed treatment, display completion date
-                $j('.skip-Yes').show();
-                $j('.skip-No').hide();
-                $j('.skip-element-CBISLFDT').val('');
-            }
-            else{//client completion of treatment not specified, do not display any date
-                $j('.skip-No').hide();
-                $j('.skip-element-CBISLFDT').val('');
-                $j('.skip-Yes').hide();
-                $j('.skip-element-CBISCODT').val('');
-            }
-    }
-    </script>  <!--End JQuery script block-->
-
-    <apex:sectionHeader title="{!form.title}" subtitle="{!form.subtitle}"/>
-
+    <!--date module criteria, test for treatment completion-->
+    <script> 
+    $j(document).ready(function(){ dateModule(); });
+    </script>
+        
     <div class="bootwrap">
         <!--Begin form content-->
         <apex:form id="DS_FORM" styleClass="form-horizontal">
-
+            
             <!-- pageblock to show ClientInformation header as described in Utility class-->
-            <apex:outputText value="{!form.ClientInfo}" escape="false"/>
+            <c:cimiClientInfo displayVisitType="true" formElement="{!form}"/>
             <!--end client info pageBlock-->
-
+                        
             <!-- primary content pageBlock container-->
-            <apex:pageBlock title="{!form.title}" >
-
+            <apex:pageBlock title="{!HTMLENCODE(form.title)}" >
+            
                 <!--save and cancel control buttons for pageBlock-->
                 <apex:pageBlockButtons >
-                    <apex:commandButton id="Save" styleClass="btn btn-sm btn-info" action="{!save}" value="Save"/>
-                    <apex:commandButton id="Cancel" styleClass="btn btn-sm btn-info" action="{!cancel}" value="Cancel" rendered="{!if(form.forceRedirect = '1', false, true)}"/>
-                </apex:pageBlockButtons>
-                <!--end buttons-->
-
+                    <apex:commandButton id="Save" action="{!save}" value="Save" styleClass="btn-info btn btn-sm"/>
+                    <apex:commandButton id="Cancel" action="{!cancel}" value="Cancel" rendered="{!if(form.forceRedirect = '1', false, true)}" styleClass="btn-info btn btn-sm"/>
+                </apex:pageBlockButtons><!--end buttons-->
+                
                 <!--placeholding structure that allows for system message display-->
                 <apex:pageMessages />
 
                 <!--Begin BIS questionnaire-->
 
-                <div class="alert alert-info">Brief Intervention refers to the number of sessions that a child/family may receive. If a child/family is only going to receive 3–6 sessions (e.g., crisis response/stabilization), then complete the following.</div>
+                <div class="alert alert-info">
+                    <strong>Brief Intervention refers to the number of sessions that a child/family may receive. If a child/family is only going to receive 3–6 sessions (e.g., crisis response/stabilization), then complete the following.</strong>
+                </div>
 
                 <!--1. Is child receiving service?-->           
                 <div class="form-group">
                 
                     <!--q1 question-->
-                    <label class="col-md-6 col-lg-6 control-label label-bold">
+                    <label class="col-md-6 col-lg-6 control-label">
                         <span class="nmbr">1.</span>
                         Is this child/family receiving brief intervention services?
                     </label>
@@ -86,9 +61,9 @@
                 <div class="form-group skip-CBISCREE"> <!--Conditional, if Q1 yes-->
                 
                     <!--q2 question-->
-                    <label class="col-md-6 col-lg-6 control-label label-bold">
+                    <label class="col-md-6 col-lg-6 control-label">
                         <span class="nmbr">2.</span>
-                        What treatment component(s) is the child/family receiving for this brief episode of care? (Select all that apply.)
+                        What treatment component(s) is the child/family receiving for this brief episode of care? <strong>(Select all that apply.)</strong>
                     </label>
 
                     <!--q2 answer choices-->
@@ -225,14 +200,14 @@
                                         Other <br />
                                     </label>
                                 </div>
-                                <!--Conditional, if Q2 other, Please specify-->
+                                <!--Conditional, if Q2 other, Please specify:-->
                                 <div class="form-group no-border-bottom no-space-bottom skip-CBISOTHS">
-                                    <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please Specify:" for="CBISOTHS__c"/>
+                                    <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please specify:" for="CBISOTHS__c"/>
                                     <div class="col-md-4 col-lg-4 specify-input">
                                         <apex:inputField styleClass="form-control skip-element-CBISOTHS input-sm"  id="CBISOTHS__c" value="{!form.obj[bfVariableMap['CBISOTHS']]}" />
                                     </div>
                                 </div>
-                                <!--end Please specify-->
+                                <!--end Please specify:-->
                             </div>
                         </div>
                         <!--end checkboxes-->
@@ -245,75 +220,52 @@
                 <div class="form-group skip-CBISCREE">
                 
                     <!--q3 question-->
-                    <label class="col-md-6 col-lg-6 control-label label-bold">
+                    <label class="col-md-6 col-lg-6 control-label">
                         <span class="nmbr">3.</span>
                         Date this brief episode of care began:
                     </label>
                     
                     <!--q3 answer field-->
                     <div class="col-md-2 col-lg-2">
-                        <apex:inputField id="CBISTCDT__c" showDatePicker="false" styleClass="form-control skip-element-CBISTCDT input-sm" value="{!form.obj[bfVariableMap['CBISTCDT']]}"/>
+                        <apex:inputField id="CBISTCDT__c" showDatePicker="true" styleClass="form-control skip-element-CBISTCDT input-sm" value="{!form.obj[bfVariableMap['CBISTCDT']]}"  html-placeholder="MM/DD/YYYY"/>
                     </div>
                     <!--end q3 answer-->
                 </div>
                 <!--end q3-->
-
-                <!--4. directions-->
-                <div class=" skip-CBISCREE control-label">
-                    <div class="alert alert-info">
-                        Answer question 4 after the child/family terminated the selected treatment component(s).
-                    </div>
-                </div>
                 
                 <!--4. Was treatment completed?-->
                 <div class="form-group skip-CBISCREE">
+                    <div class="alert alert-info">
+                        <strong>Answer question 4 <u>after</u> the child/family terminated the selected treatment component(s).</strong>
+                    </div>                  
                     <!--q4 question-->
-                    <label class="col-md-6 col-lg-6 control-label label-bold">
+                    <label class="col-md-6 col-lg-6 control-label">
                         <span class="nmbr">4.</span>
                         Did this child/family complete the treatment component(s) offered during this brief episode of care?
                     </label>
-                    
                     <!--q4 answer choices-->
-                    <div>
-                        <apex:selectRadio styleClass="radio-list skip-element-CBISCOMP " id="CBISCOMP__c" value="{!form.obj[bfVariableMap['CBISCOMP']]}" layout="pageDirection"  title="{!form.obj[bfVariableMap['CBISCOMP']]}"   >
+                    <div class="col-md-6 col-lg-6">
+                        <apex:selectRadio styleClass="radio-list skip-element-CBISCOMP " id="CBISCOMP__c" value="{!form.obj[bfVariableMap['CBISCOMP']]}" layout="pageDirection"  title="{!form.obj[bfVariableMap['CBISCOMP']]}"  onchange="dateModule()" >
                             <apex:selectOptions value="{!YNCompletedIems}"/>
                         </apex:selectRadio>
-                    </div>
-                    <div class="form-group no-border-bottom no-space-bottom">
-                        <div class="skipContent skip-Date ">
-                            <!--if treatment left/NOT completed-->
-                            <div class="skipContent skip-No" >
-                                <!--q4a left treatment-->
-                                <label class="col-md-offset-6 col-lg-offset-6 col-md-3 col-lg-3 control-label specify-label">
-                                Date left treatment:  
-                                </label>
-                                <!--q4a. left treatment datepicker-->
-                                <div class="col-md-2 col-lg-2 specify-input">
-                                    <apex:inputField id="CBISLFDT__c" showDatePicker="false"  styleClass="form-control skip-element-CBISLFDT input-sm" value="{!form.obj[bfVariableMap['CBISLFDT']]}" />
+                        <br/>
+                            <!--- Begin date module------------------>
+                            <div class="skipContent skip-Date input-date">
+                                <!--if treatment left/NOT completed-->
+                                <div class="  col-lg-4 specify-input input-date skipContent skip-No" >
+                                    Date left treatment:
+                                    <apex:inputField id="CBISLFDT__c" showDatePicker="true"  styleClass="form-control input-sm skip-element-CBISLFDT " value="{!form.obj[bfVariableMap['CBISLFDT']]}" html-placeholder="MM/DD/YYYY"/>
                                 </div>
-                                <!--end datepick-->
-                            </div>
-                            <!--end treatment was left before completion-->
-                                
-                            <!--if treatment completed-->
-                            <div class="skipContent skip-Yes" >
-                                <!--q4a. completed treatment-->
-                                <label class="col-md-offset-6 col-lg-offset-6 col-md-3 col-lg-3 control-label specify-label">
-                                    Date completed treatment: 
-                                </label>
-                                <!--q4a. completed treatment datepicker-->
-                                <div class="col-md-2 col-lg-2 specify-input">
-                                    <apex:inputField id="CBISCODT__c" showDatePicker="false" styleClass="form-control skip-element-CBISCODT input-sm" value="{!form.obj[bfVariableMap['CBISCODT']]}" /> 
+                                <!--treatment completion date-->
+                                <div class=" col-lg-4 specify-input input-date skipContent skip-Yes " >
+                                    Date completed treatment:
+                                    <apex:inputField id="CBISCODT__c" showDatePicker="true" styleClass="form-control input-sm skip-element-CBISCODT " value="{!form.obj[bfVariableMap['CBISCODT']]}" html-placeholder="MM/DD/YYYY" /> 
                                 </div>
-                                <!--end datepick-->
                             </div>
-                            <!--end treatment was completed--> 
+                        <!---End of date module---->
                         </div>
-                    <!---End of date module-->
-                    </div>
                 </div>
-                <!--end q4 answer-->
-
+                
                 <!--Completion status control-->
                 <div class="form-group no-border-bottom no-space-bottom">
                     <label class="control-label col-md-2 col-md-offset-8 text-right">Complete?</label>
@@ -331,12 +283,9 @@
         </apex:form>
 <!--end form content-->
 
-    <!--citation information footer-->
-    <p style="class:footer; text-align:center ">
-        <i>This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - Baseline - CRF Version 6 2014
-        </i>
-    </p>
-    
+    <!--citation information footer-->    
+    <c:cimiFormFooter formElement="{!form}"/>
+        
     </div>    
     
 </apex:page>
