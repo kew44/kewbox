@@ -47,44 +47,4 @@ public with sharing class ClientController {
         }
         
     }
-    
-    
-    
-    /*public Boolean getisClient() {
-        
-        Integer count = findRoleAdmin(UserInfo.getUserRoleId(), 0);
-        
-        System.debug(count);
-        
-        if(count < 3) return True;
-        else return False;
-    }
-    
-    public Integer findRoleAdmin(ID roleID, Integer count) {
-        
-        UserRole role = [SELECT Name, ParentRoleId FROM UserRole WHERE Id = :roleID];
-        
-        if(role.ParentRoleId == null) return count;
-        else {
-            count++;
-            return findRoleAdmin(role.ParentRoleId, count);
-        }
-    }*/
-    
-    /*public PageReference save() {
-        if(ID == null) {
-            insert client;
-        }
-        else {
-            update client;
-        }
-        
-        PageReference acctPage = new ApexPages.StandardController(client).view();
-        acctPage.setRedirect(true);
-        return acctPage;
-        
-    }*/
-
-    
-    
 }

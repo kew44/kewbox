@@ -343,11 +343,11 @@ public with sharing class DS_TDETAIL_Controller {
    
     if(TD.size() == 0) {
       TDObject.put('Client__c', cID);
-      TDObject.put('FORM__c', 'DS_'+formType);
+      ///TDObject.put('FORM__c', 'DS_'+formType);
     }
     else { 
       TDObject = TD.get(0);
-      TDObject.put('FORM__c', 'DS_'+formType);
+      //TDObject.put('FORM__c', 'DS_'+formType);
       edit = TRUE;
       
       for(String lKey : skip.skipList.keySet()) 

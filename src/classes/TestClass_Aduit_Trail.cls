@@ -1,7 +1,7 @@
 @isTest
 private class TestClass_Aduit_Trail {
 
-  static TestMethod void Test_Insert_Update() {
+  /*static TestMethod void Test_Insert_Update() {
   
     Utility ut = new Utility();
 
@@ -68,6 +68,6 @@ private class TestClass_Aduit_Trail {
     System.assertNotEquals(auditUpdate.UPDATED_VALUE__c, '1', 'Update value is wrong.');
     
 
-  }
+  }*/
 
 }

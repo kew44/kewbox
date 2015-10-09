@@ -2,30 +2,18 @@ trigger DS_Background_Family_Info_B_Trigger on DS_Background_Family_Info_B__c (b
 
   Utility ut = new Utility();
 
-  /*if(Trigger.isInsert && Trigger.isBefore){
-      MyObjectClass process = new MyObjectClass(Trigger.new, Trigger.old, triggerAction.beforeInsert);
-  }
-  if( Trigger.isAfter && Trigger.isInsert ){
-      MyObjectClass process = new MyObjectClass(Trigger.new, Trigger.old, triggerAction.afterInsert);
-  }
-  if(Trigger.isUpdate && Trigger.isBefore){
-      MyObjectClass process = new MyObjectClass(Trigger.new, Trigger.old, triggerAction.beforeUpdate);
-  }
-  if( Trigger.isAfter && Trigger.isUpdate ){
-      MyObjectClass process = new MyObjectClass(Trigger.new, Trigger.old, triggerAction.afterUpdate);
-  }*/     
-
   if(Trigger.isAfter) { 
 
     ut.updateSummaryStatusForMergedObject(Trigger.new);
   
-    FormBuilder.MilitaryRefugeHealthDisplayLogic(Trigger.new);
-
-    AuditTrail audit = new AuditTrail(Trigger.new, Trigger.old); 
-  
-    if(Trigger.isInsert) { audit.generateLog(Trigger.new, Trigger.old); }
-    if(Trigger.isUpdate) { audit.generateLog(Trigger.new, Trigger.old); }
-
+    //FormBuilder.MilitaryRefugeHealthDisplayLogic(Trigger.new);
+   // FormBuilder.ResponseDisplayLogic(Trigger.new);
+    
+    //FormBuilder.AgeDisplayLogic(Trigger.new);
+    if(Trigger.isInsert){
+        FormBuilder.FormDisplayLogic(Trigger.new);
+        System.debug(Trigger.new + ' B trigger');
+    }
   }
   
 }

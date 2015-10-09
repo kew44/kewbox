@@ -1,159 +1,240 @@
-/*
-Updated 11/20/14
-Print button functionality
-KW
-*/
-public with sharing class DS_SDQ_P_Y_B_Report_Controller {
-      
-  public String cimi { get; set; }
-
- Utility ut = new Utility();
-
-  Map<String, String> parameter = ut.urlDecode(Apexpages.currentPage().getParameters().get('cimi'));
-
-  public DS_SDQ_PSI_CDI_B__c obj { get; set; }
-  
-  public String cID { get; set; } 
-
-  String summaryID;
-  
-  public String forceRedirect { get; set; }//?  
-
-  Boolean edit = FALSE;//?
-
-  public String subtitle { get; set; }
-
-  public Client__c client { get; set; }
-  
-  public Client_Summary__c summaryInfo { get; set; }
-  
-  public Boolean printReport { get; set; }
-
-  public Map<String, String> bfVariableMap { get; set; }
-
-  public String BorF { get; set; }
-
-  public SkipLogic skip {get;set;} 
+public with sharing class DS_SDQ_P_Y_B_Report_Controller  extends DS_BasicForm_Controller  {
    
   public String clinicalRange{get; set; }
   public String borderlineRange{get; set; }
   public String missingRange{get; set; }
   
-  public void init() {
-      
-      printReport = (Apexpages.currentPage().getParameters().get('print') == '1') ? true : false;
-      
-  }
-  
+    //variables for displaying historical scores
+    public String cimi { get; set; }    //why are we bringing cimi back?
+    
+    public Boolean printReport { get; set; }    
+    
+    public Boolean displayHistory { get; set; }    
+    
+    public List<Visit> visits { get; set; }    
+    
+    Datetime currentVisitDate = null;    
+    
+    public class Visit {
+        
+        public String SECTION { get; set; }
+        public String currentVisit { get; set; }  
+        public String BorF {get;set;}
+        public Date DOASDYP {get;set;}
+        
+        //scores and types
+        //total
+        public Integer SDPTOT { get; set; }
+        public String SDPTYP { get; set; }
+        //emotional
+        public Integer SDPEMO { get; set; }
+        public String SDPETYP { get; set; }
+        //behavioral
+        public Integer SDPBEH { get; set; }
+        public String SDPBTYP { get; set; }
+        //hyperactivity
+        public Integer SDPHYP { get; set; }
+        public String SDPHTYP { get; set; }
+        //peer
+        public Integer SDPOTC { get; set; }
+        public String SDPOTYP { get; set; }
+        //prosocial
+        public Integer SDPKHB { get; set; }
+        public String SDPKTYP { get; set; }
+        //impact
+        public Integer SDPDCL { get; set; }
+        public String SDPITYP { get; set; }
+            
+        public visit() {
+            this.currentVisit = null;
+        }
+        
+    }
+    
+    //print report button
+    public void init() {
+        printReport = (Apexpages.currentPage().getParameters().get('print') == '1') ? true : false;
+    }
+            
     public DS_SDQ_P_Y_B_Report_Controller(ApexPages.StandardController controller) {
-  
-  parameter = ut.urlDecode(Apexpages.currentPage().getParameters().get('cimi'));
-    
+
+    // Initilize the DS_BasicForm_Controller
+    super(Apexpages.currentPage().getParameters().get('cimi'));
+        
+    //redundant cimi?
     cimi = Apexpages.currentPage().getParameters().get('cimi');
-
-    cID = parameter.get('c');
-
-    summaryID = parameter.get('summary');
+        
+    visits = new List<Visit>();
     
-    forceRedirect = (parameter.containsKey('f')) ? parameter.get('f') : '';//?
- 
-   client = [SELECT Name, INIT__c FROM Client__c WHERE id =: cID];
-
-   Client_Summary__c summary = [SELECT SECTION__c FROM Client_Summary__c WHERE ID =:summaryID];
-   // String BorF = 'B';
-    String BorF = (Integer.valueOf(summary.SECTION__c) > 0) ? 'F' : 'B';
-    subtitle = '(' + client.Name + ') ' + client.INIT__c;
-
-    String getFields = ut.getFields('DS_SDQ_PSI_CDI_'+BorF+'__c');
+    // Set the obj name 
+    form.setObjName('DS_SDQ_PSI_CDI_'+form.BorF+'__c');
     
-    skip = new SkipLogic();//?    
-     
-     obj= Database.query('SELECT ' + getFields + ', Client__r.Name, Client__r.INIT__c' +  
-                                               '  FROM DS_SDQ_PSI_CDI_'+BorF+'__c' +                              
-                                                ' WHERE Client__c = \''+ cID + '\''
-                                                );
+    // Get the object record into form.obj
+    form.getObjRecord();
+    
+    // Get field name from DS_DATA (variable)
+    bfVariableMap = form.getVariable('SDQ_P_04_10');//Source_Form);//'SDQ_SCORES_PARENT');            
+    //new DS_DATA__c.Variable__c for SDQ_SCORES ?
+    //SDQ_PARENT
+    
+    //add stray variables to map
+    bfVariableMap.put('DOASDYP',   form.BorF+'DOASDYP__c');    
+    bfVariableMap.put('SDPTYP',   form.BorF+'SDPTYP__c');  
+    bfVariableMap.put('SDPETYP',   form.BorF+'SDPETYP__c');  
+    bfVariableMap.put('SDPBTYP',   form.BorF+'SDPBTYP__c');  
+    bfVariableMap.put('SDPHTYP',   form.BorF+'SDPHTYP__c');
+    bfVariableMap.put('SDPOTYP',   form.BorF+'SDPOTYP__c');  
+    bfVariableMap.put('SDPKTYP',   form.BorF+'SDPKTYP__c'); 
+    bfVariableMap.put('SDPITYP',   form.BorF+'SDPITYP__c');
+                
+        //Date tempVisitDate
+        Date tempVisitDate = Date.valueOf(form.obj.get(form.BorF+'DOASDYP__c'));
+        
+        //currentVisitDate         
+        currentVisitDate = (form.BorF == 'F') ? Datetime.newInstance(tempVisitDate, time.newInstance(0,0,0,0)) : null;
+        
+        getAssesmentHistory();
+                
+        // Display history
+        displayHistory = (visits.size() > 1) ? true : false;
+       
+    //Lists display above chartand are used in conditional formatting
+       //list alerts for types of scoretypes   
+        List<String> clinicalRangeList = new List<String>();
+        List<String> borderlineList = new List<String>();
+        List<String> missingList = new List<String>();       
 
-List<String> clinicalRangeList = new List<String>();
-List<String> borderlineList = new List<String>();
-List<String> missingList = new List<String>();
-
-String OverAll = String.valueOf(obj.BSDPTYP__c);
-String EmoSym = String.valueOf(obj.BSDPETYP__c);
-String BehDif = String.valueOf(obj.BSDPBTYP__c);
-String Adhd = String.valueOf(obj.BSDPHTYP__c);
-String DiffChld = String.valueOf(obj.BSDPOTYP__c);
-String KindBeh = String.valueOf(obj.BSDPKTYP__c);
-String ImpLife = String.valueOf(obj.BSDPITYP__c);
-
-if (OverAll  == 'Clinical')
-clinicalRangeList.add('Total Difficulties');
-else if (OverAll  == 'Borderline')
-borderlineList.add('Total Difficulties'); 
-else if (OverAll  == 'Missing/Incomplete')
-missingList.add('Total Difficulties'); 
-
-if (EmoSym == 'Clinical')
-clinicalRangeList.add('Emotional Symptoms');
-else if (EmoSym == 'Borderline')
-borderlineList.add('Emotional Symptoms'); 
-else if (EmoSym == 'Missing/Incomplete')
-missingList.add('Emotional Symptoms'); 
-
-if (BehDif == 'Clinical')
-clinicalRangeList.add('Behavioral Difficulties');
-else if (BehDif == 'Borderline')
-borderlineList.add('Behavioral Difficulties'); 
-else if (BehDif == 'Missing/Incomplete')
-missingList.add('Behavioral Difficulties'); 
-
-if (Adhd == 'Clinical')
-clinicalRangeList.add('Hyperactivity-Inattention');
-else if (Adhd == 'Borderline')
-borderlineList.add('Hyperactivity-Inattention'); 
-else if (Adhd == 'Missing/Incomplete')
-missingList.add('Hyperactivity-Inattention'); 
-
-if (DiffChld == 'Clinical')
-clinicalRangeList.add('Peer Problems');
-else if (DiffChld == 'Borderline')
-borderlineList.add('Peer Problems'); 
-else if (DiffChld == 'Missing/Incomplete')
-missingList.add('Peer Problems'); 
-
-if (KindBeh == 'Clinical')
-clinicalRangeList.add('Prosocial Behavior');
-else if (KindBeh == 'Borderline')
-borderlineList.add('Prosocial Behavior'); 
-/*else if (KindBeh == 'Missing/Incomplete')
-missingList.add('Prosocial Behavior'); */
-
-if (ImpLife == 'Clinical')
-clinicalRangeList.add('Impact of Difficulties');
-else if (ImpLife == 'Borderline')
-borderlineList.add('Impact of Difficulties'); 
-else if (ImpLife == 'Missing/Incomplete')
-missingList.add('Impact of Difficulties'); 
-
-    clinicalRange = String.join(clinicalRangeList, ', ');
-    borderlineRange= String.join(borderlineList, ', ');
-    missingRange= String.join(missingList, ', ');
+        //strings of scoretypes
+        String OverAll = String.valueOf(form.obj.get(form.BorF+'SDPTYP__c'));
+        String EmoSym = String.valueOf(form.obj.get(form.BorF+'SDPETYP__c'));
+        String BehDif = String.valueOf(form.obj.get(form.BorF+'SDPBTYP__c'));
+        String Adhd = String.valueOf(form.obj.get(form.BorF+'SDPHTYP__c'));
+        String DiffChld = String.valueOf(form.obj.get(form.BorF+'SDPOTYP__c'));
+        String KindBeh = String.valueOf(form.obj.get(form.BorF+'SDPKTYP__c'));
+        String ImpLife = String.valueOf(form.obj.get(form.BorF+'SDPITYP__c'));
+    
+        //if scoretype = string value, add subtitle label to the correct list
+    
+        //Total
+        if (OverAll  == 'Clinical')
+        clinicalRangeList.add('Total Difficulties');
+        else if (OverAll  == 'Borderline')
+        borderlineList.add('Total Difficulties'); 
+        else if (OverAll  == 'Missing/Incomplete')
+        missingList.add('Total Difficulties'); 
+    
+        //Emotional
+        if (EmoSym == 'Clinical')
+        clinicalRangeList.add('Emotional Problems');
+        else if (EmoSym == 'Borderline')
+        borderlineList.add('Emotional Problems'); 
+        else if (EmoSym == 'Missing/Incomplete')
+        missingList.add('Emotional Problems'); 
+    
+        //Behavioral
+        if (BehDif == 'Clinical')
+        clinicalRangeList.add('Behavioral Difficulties');
+        else if (BehDif == 'Borderline')
+        borderlineList.add('Behavioral Difficulties'); 
+        else if (BehDif == 'Missing/Incomplete')
+        missingList.add('Behavioral Difficulties'); 
+    
+        //Hyperactivity
+        if (Adhd == 'Clinical')
+        clinicalRangeList.add('Hyperactivity');
+        else if (Adhd == 'Borderline')
+        borderlineList.add('Hyperactivity'); 
+        else if (Adhd == 'Missing/Incomplete')
+        missingList.add('Hyperactivity'); 
+        
+        //Peer Problems
+        if (DiffChld == 'Clinical')
+        clinicalRangeList.add('Peer Problems');
+        else if (DiffChld == 'Borderline')
+        borderlineList.add('Peer Problems'); 
+        else if (DiffChld == 'Missing/Incomplete')
+        missingList.add('Peer Problems'); 
+        
+        //Prosocial (formerly kind & helpful behaviors)
+        if (KindBeh == 'Clinical')
+        clinicalRangeList.add('Prosocial');
+        else if (KindBeh == 'Borderline')
+        borderlineList.add('Prosocial'); 
+        
+        //Impact on life
+        if (ImpLife == 'Clinical')
+        clinicalRangeList.add('Impact');
+        else if (ImpLife == 'Borderline')
+        borderlineList.add('Impact'); 
+        else if (ImpLife == 'Missing/Incomplete')
+        missingList.add('Impact'); 
+    
+        //rejoin the lists
+        clinicalRange = String.join(clinicalRangeList, ', ');
+        borderlineRange= String.join(borderlineList, ', ');
+        missingRange= String.join(missingList, ', ');
+        }
+        
+    //historical scores function
+    public void getAssesmentHistory() {
+   
+        //query baseline
+        List<SObject> baseline=
+            Database.query('SELECT ' + form.ut.getFields('DS_SDQ_PSI_CDI_B__c') + 
+                           '  FROM DS_SDQ_PSI_CDI_B__c' +                           
+                           ' WHERE Client__c =\''+ form.cID + '\'');
+        
+        addVisit(baseline, 'B');
+        
+    //query follow-ups
+        List<SObject> followup=
+            Database.query('SELECT ' + form.ut.getFields('DS_SDQ_PSI_CDI_F__c') +   
+                           '  FROM DS_SDQ_PSI_CDI_F__c' +                           
+                           ' WHERE Client__c = \''+ form.cID + '\''+
+                           'ORDER BY FDOASDYP__c, SECTION__c');
+        
+        if(followup.size() > 0) addVisit(followup, 'F');
+        
+    }
+    
+    //add visit function
+    public void addVisit(List<SObject> sdq, String BorF) {
+    
+        for(SObject s :sdq){
+            
+            Visit visit = new visit();
+            
+            visit.BorF    = BorF;
+            visit.SECTION = String.valueOf(s.get('SECTION__c'));
+            visit.DOASDYP= Date.valueOf(s.get(BorF+'DOASDYP__c'));
+            
+            visit.SDPTOT = Integer.valueOf(s.get(BorF+'SDPTOT__c'));
+            visit.SDPTYP = String.valueOf(s.get(BorF+'SDPTYP__c'));
+            visit.SDPEMO = Integer.valueOf(s.get(BorF+'SDPEMO__c'));
+            visit.SDPETYP = String.valueOf(s.get(BorF+'SDPETYP__c'));
+            visit.SDPBEH = Integer.valueOf(s.get(BorF+'SDPBEH__c'));
+            visit.SDPBTYP = String.valueOf(s.get(BorF+'SDPBTYP__c'));
+            visit.SDPHYP = Integer.valueOf(s.get(BorF+'SDPHYP__c'));
+            visit.SDPHTYP = String.valueOf(s.get(BorF+'SDPHTYP__c'));
+            visit.SDPOTC = Integer.valueOf(s.get(BorF+'SDPOTC__c'));
+            visit.SDPOTYP = String.valueOf(s.get(BorF+'SDPOTYP__c'));
+            visit.SDPKHB = Integer.valueOf(s.get(BorF+'SDPKHB__c'));
+            visit.SDPKTYP = String.valueOf(s.get(BorF+'SDPKTYP__c'));
+            visit.SDPDCL = Integer.valueOf(s.get(BorF+'SDPDCL__c'));
+            visit.SDPITYP = String.valueOf(s.get(BorF+'SDPITYP__c'));
+            
+            visits.add(visit);
+        }
+    //add all to visit
     }
 
-  public String getClientInfo() { return ut.clientSection(cID,SummaryID); }
-
-  public PageReference cancel() {
-
-    PageReference summaryPage = new PageReference('/apex/ClientSummary?id=' + cID);
-    summaryPage.setRedirect(true);
-    
-    return summaryPage;
-
-  }
-
-  public PageReference saveYoung() {
-    PageReference nextPage = new PageReference('/apex/DS_SDQ_P_04_10?cimi=' + Apexpages.currentPage().getParameters().get('cimi'));
-    nextPage.setRedirect(true);
-    return nextPage;
-      
-  }
+//edit button function
+    public PageReference editRecord() {
+        
+        PageReference sdqPage = new PageReference('/apex/DS_SDQ_P_04_10?cimi=' + Apexpages.currentPage().getParameters().get('cimi'));
+        sdqPage.setRedirect(true);
+        
+        return sdqPage;
+        
+    }
 }

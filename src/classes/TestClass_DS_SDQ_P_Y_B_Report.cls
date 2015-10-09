@@ -9,7 +9,7 @@ static TestMethod void controllerTest() {
       
      Client__c client = test_ut.createClientSDQY();     
     
-    
+  /*  
     List<Client_Summary__c> su = [Select id, section__c FROM Client_Summary__c WHERE client__c =: client.id];
 
 system.debug(su);
@@ -38,6 +38,6 @@ obj.Form__c = 'DS_SDQ_P_04_10';
     String clientInfo = YoungReportController.getClientInfo();
     
     YoungReportController.saveYoung();
-    YoungReportController.cancel();
+    YoungReportController.cancel();*/
     }
     }

@@ -47,12 +47,9 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>false</enableActivities>
-    <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableReports>false</enableReports>
-    <enableSharing>true</enableSharing>
-    <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>Client__c</fullName>
         <externalId>false</externalId>
@@ -155,7 +152,46 @@
         <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>assessments</fullName>
+        <columns>Client__c</columns>
+        <columns>NAME</columns>
+        <columns>Page__c</columns>
+        <columns>FORM_TYPE__c</columns>
+        <columns>STATUS__c</columns>
+        <columns>SECTION__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>FORM_TYPE__c</field>
+            <operation>equals</operation>
+            <value>Assessment</value>
+        </filters>
+        <filters>
+            <field>Page__c</field>
+            <operation>notEqual</operation>
+        </filters>
+        <label>assessments</label>
+    </listViews>
+    <listViews>
+        <fullName>test_cbcl</fullName>
+        <columns>Client__c</columns>
+        <columns>NAME</columns>
+        <columns>Page__c</columns>
+        <columns>FORM_TYPE__c</columns>
+        <columns>STATUS__c</columns>
+        <columns>SECTION__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Client__c</field>
+            <operation>greaterOrEqual</operation>
+            <value>6758-00-00226</value>
+        </filters>
+        <label>test cbcl</label>
     </listViews>
     <nameField>
         <displayFormat>summary-{000000}</displayFormat>

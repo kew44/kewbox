@@ -16,7 +16,7 @@ static TestMethod void controllerTest() {
 system.debug(su);
     system.debug(su);
     
-        Client_Summary__c summary = [SELECT id 
+  /*      Client_Summary__c summary = [SELECT id 
                                    FROM Client_Summary__c
                                   WHERE Page__r.Form__c = 'DS_SDQ_P_11_17'
                                     AND SECTION__c = '0'
@@ -43,6 +43,6 @@ obj.Form__c = 'DS_SDQ_P_11_17';
     system.debug(clientInfo);
   
 OldReportController.saveOld();
-OldReportController.cancel();
+OldReportController.cancel();*/
    }
       }

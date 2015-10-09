@@ -42,13 +42,19 @@ public class AuditTrail {
 
     for(String form : forms) formsWithDS.add('DS_'+form);
     
-    List<DS_DATA__c> formInfo = [SELECT Content__c, Page__c
+    List<DS_DATA__c> formInfo = [SELECT Content__c, Page__c, Form__C, Category__c
                                    FROM DS_DATA__c
                                   WHERE Data_Type__c = 'DS_Form_Info'
                                     AND Page__c IN : formsWithDS];
 
-    for(DS_DATA__c f : formInfo)
-      formList.put(f.Page__c, f);
+    for(DS_DATA__c f : formInfo) {
+
+      String category = (f.Category__c == 'GT' || f.Category__c == 'TD') ? 'TRAUMA' : f.Category__c.toUpperCase();
+
+      formList.put(category+'_'+f.Page__c, f);
+    }
+
+    System.debug(formList);
 
     List<client__c> clientInfo = [SELECT id, AGE__c, DOB1__c, GENDER__c, 
                                          INIT__c, Clinician__c
@@ -69,15 +75,16 @@ public class AuditTrail {
         
     for(DS_DATA__c var : variables) {
 
+      String visitType = var.FILE_NAME__c;
       String formID = var.SOURCE_FORM__c;
       List<DS_DATA__c> data = new List<DS_DATA__c>(); 
 
-      if(dataDictionaryForm.containsKey(formID)) 
-        data = dataDictionaryForm.get(formID);
+      if(dataDictionaryForm.containsKey(visitType+'-'+formID)) 
+        data = dataDictionaryForm.get(visitType+'-'+formID);
 
       data.add(var); 
 
-      dataDictionaryForm.put(formID, data);
+      dataDictionaryForm.put(visitType+'-'+formID, data);
 
       dataDictionaryField.put(var.VARIABLE_NAME__c, var);
 
@@ -144,6 +151,17 @@ public class AuditTrail {
 
   }
 
+  public String getVisitType(String sectionNum) {
+
+    String visitType = 'FOLLOWUP';
+
+    if(sectionNum == '-1') visitType = 'TRAUMA';
+    else if (sectionNum == '0') visitType = 'BASELINE';
+
+    return visitType;
+
+  }
+
   public void generateLog(List<SObject> newObj, List<SObject> oldObj) {
 
     Map<String, SObject> oldObjs = new Map<String, SObject>();
@@ -158,15 +176,17 @@ public class AuditTrail {
 
       Set<String> formIDs = getActivateForm(obj);
 
+      String visitType = getVisitType(String.valueof(obj.get('SECTION__c')));
+
       String section = String.valueOf(obj.get('SECTION__c'));
       String clientID = String.valueOf(obj.get('client__c'));
 
       for(String fID : formIDs) {
 
         if(!hasInitialEntry.contains(fID+'-'+clientID+'-'+section))
-          auditTrialList.addAll(initialEntry(fID, clientID, section));
+          auditTrialList.addAll(initialEntry(visitType, fID, clientID, section));
         else 
-          auditTrialList.addAll(updateEntry(fID, obj, oldObjs.get(String.valueOf(obj.get('id')))));
+          auditTrialList.addAll(updateEntry(visitType, fID, obj, oldObjs.get(String.valueOf(obj.get('id')))));
 
       }
 
@@ -176,7 +196,7 @@ public class AuditTrail {
 
   }
 
-  public List<Audit_Trail__c> initialEntry(String formID, String clientID, String section) {
+  public List<Audit_Trail__c> initialEntry(String visitType, String formID, String clientID, String section) {
 
     DateTime currentTime = System.now();
 
@@ -184,10 +204,14 @@ public class AuditTrail {
 
     Client__c client = clientList.get(clientID);
 
-    DS_DATA__c form = formList.get('DS_'+formID);
+    DS_DATA__c form = formList.get(visitType+'_DS_'+formID);
+
+    System.debug(visitType+'_DS_'+formID);
 
     System.debug(formList);
     System.debug(formID);
+
+    System.debug(form);
 
     Audit_Trail__c log = new Audit_Trail__c();
  
@@ -207,18 +231,18 @@ public class AuditTrail {
 
   }
 
-  public List<Audit_Trail__c> updateEntry(String formID, SObject newObj, SObject oldObj) {
+  public List<Audit_Trail__c> updateEntry(String visitType, String formID, SObject newObj, SObject oldObj) {
 
     List<Audit_Trail__c> auditTrialList = new List<Audit_Trail__c>();
 
     if(oldObj == null) return auditTrialList;
 
 
-    List<DS_DATA__c> fields = dataDictionaryForm.get(formID);
+    List<DS_DATA__c> fields = dataDictionaryForm.get(visitType+'-'+formID);
 
     Client__c client = clientList.get(String.valueOf(newObj.get('Client__c')));
 
-    DS_DATA__c form = formList.get('DS_'+formID);
+    DS_DATA__c form = formList.get(visitType+'_DS_'+formID);
 
     DateTime currentTime = System.now();
 

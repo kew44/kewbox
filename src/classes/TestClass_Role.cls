@@ -3,11 +3,9 @@ private class TestClass_Role {
 
   static TestMethod void controllerTest() {
 
-    // add for jenkin deployment
-
     Utility ut = new Utility();
 
-    TestClass_Utility test_ut = new TestClass_Utility();
+    TestClass_A_Utility test_ut = new TestClass_A_Utility();
 
     Center__c center = test_ut.createMainCenter();
 

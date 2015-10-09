@@ -46,20 +46,17 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <content>FollowUpSummary</content>
+        <content>ClientSummary</content>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Visualforce</type>
     </actionOverrides>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
-    <enableBulkApi>true</enableBulkApi>
     <enableEnhancedLookup>true</enableEnhancedLookup>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
-    <enableSharing>true</enableSharing>
-    <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>AGE__c</fullName>
         <externalId>false</externalId>
@@ -67,7 +64,7 @@
         <precision>2</precision>
         <required>true</required>
         <scale>0</scale>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -87,7 +84,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
@@ -106,7 +103,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
@@ -125,7 +122,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
@@ -144,15 +141,28 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>CENTER__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Center</label>
+        <referenceTo>Center__c</referenceTo>
+        <relationshipLabel>Clients</relationshipLabel>
+        <relationshipName>Clients</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>CURRENT_AGE__c</fullName>
         <description>Current age =( today&apos;s date - date of birth)/365 days</description>
         <externalId>false</externalId>
-        <formula>( (TODAY()  - ( DOB1__c )))/365</formula>
+        <formula>FLOOR((TODAY() - DOB1__c)/365.2425)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>CURRENT_AGE</label>
         <precision>18</precision>
@@ -172,7 +182,7 @@
         <relationshipLabel>Clients</relationshipLabel>
         <relationshipName>Clients</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -181,7 +191,7 @@
         <externalId>false</externalId>
         <label>Date of birth</label>
         <required>true</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
@@ -190,7 +200,7 @@
         <externalId>false</externalId>
         <label>DOB2</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
@@ -217,17 +227,17 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
         <fullName>INIT__c</fullName>
         <externalId>false</externalId>
-        <label>Initial</label>
+        <label>INITIALS</label>
         <length>3</length>
         <required>true</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -238,7 +248,7 @@
         <label>SITEID</label>
         <length>150</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -246,6 +256,8 @@
     <label>Client</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>CENTER__c</columns>
+        <columns>OBJECT_ID</columns>
         <columns>NAME</columns>
         <columns>Clinician__c</columns>
         <columns>INIT__c</columns>
@@ -253,15 +265,40 @@
         <columns>AGE__c</columns>
         <columns>CURRENT_AGE__c</columns>
         <columns>DOB1__c</columns>
+        <columns>DOB2__c</columns>
+        <columns>SITEID__c</columns>
         <columns>CREATEDBY_USER.ALIAS</columns>
         <columns>CREATED_DATE</columns>
         <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
+    <listViews>
+        <fullName>test_cbcl</fullName>
+        <columns>OBJECT_ID</columns>
+        <columns>NAME</columns>
+        <columns>Clinician__c</columns>
+        <columns>INIT__c</columns>
+        <columns>GENDER__c</columns>
+        <columns>AGE__c</columns>
+        <columns>CURRENT_AGE__c</columns>
+        <columns>DOB1__c</columns>
+        <columns>DOB2__c</columns>
+        <columns>SITEID__c</columns>
+        <columns>CREATEDBY_USER.ALIAS</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Clinician__c</field>
+            <operation>equals</operation>
+            <value>6758-00-04</value>
+        </filters>
+        <label>test cbcl</label>
+    </listViews>
     <nameField>
         <label>Client ID</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>Text</type>
     </nameField>
     <pluralLabel>Clients</pluralLabel>
@@ -283,10 +320,24 @@
     </validationRules>
     <validationRules>
         <fullName>Age_validation</fullName>
-        <active>false</active>
+        <active>true</active>
         <errorConditionFormula>AGE__c !=  FLOOR((TODAY() - DOB1__c)/365.2425)</errorConditionFormula>
         <errorDisplayField>AGE__c</errorDisplayField>
         <errorMessage>Age is wrong</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Date_of_birth_cannot_be_future_1</fullName>
+        <active>true</active>
+        <errorConditionFormula>DOB1__c  &gt;TODAY()</errorConditionFormula>
+        <errorDisplayField>DOB1__c</errorDisplayField>
+        <errorMessage>Date cannot be in the future.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Date_of_birth_cannot_be_future_2</fullName>
+        <active>true</active>
+        <errorConditionFormula>DOB2__c  &gt;TODAY()</errorConditionFormula>
+        <errorDisplayField>DOB2__c</errorDisplayField>
+        <errorMessage>Date cannot be in the future.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Double_entry_for_dob</fullName>

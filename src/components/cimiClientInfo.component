@@ -1,0 +1,38 @@
+<apex:component >
+  
+  <apex:attribute name="displayVisitType" description="This is the value to deicide whether we display the visit type." type="Boolean" required="true"/>
+      
+  <apex:attribute name="formElement" description="This is the value for form object." type="Form" required="true"/>
+  
+  <div class="header-info-table">
+      <table class="table table-bordered">
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>Initials</th>
+                  <th>Age</th>
+                  <th>Gender</th>
+                  
+                  <apex:outputPanel layout="none" rendered="{!displayVisitType}">
+                      <th>Visit Type</th>
+                  </apex:outputPanel>
+                  
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>{!HTMLENCODE(formElement.client.Name)}</td>
+                  <td>{!HTMLENCODE(formElement.client.INIT__c)}</td>
+                  <td>{!formElement.client.CURRENT_AGE__c}</td>
+                  <td>{!HTMLENCODE(formElement.client.GENDER__c)}</td>
+                  
+                  <apex:outputPanel layout="none" rendered="{!displayVisitType}">
+                      <td>{!HTMLENCODE(UPPER(LEFT(formElement.visitType, 1))&MID(formElement.visitType, 2, LEN(formElement.visitType)))}</td>
+                  </apex:outputPanel>
+                  
+              </tr>
+          </tbody>
+      </table>
+   </div>
+  
+</apex:component>

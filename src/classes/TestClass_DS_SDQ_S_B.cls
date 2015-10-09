@@ -5,7 +5,7 @@ static TestMethod void controllerTest() {
     TestClass_Utility test_ut = new TestClass_Utility();    
  
     TestClassData_DS_SDQ_PSI_CDI_Form_Info formInfo = new TestClassData_DS_SDQ_PSI_CDI_Form_Info();
-
+/*
     Client__c client = test_ut.createClientSDQO();
     
     List<Client_Summary__c> su = [Select id, section__c FROM Client_Summary__c WHERE client__c =: client.id];
@@ -91,6 +91,6 @@ obj.BSDSIMPL__c= '1';
 obj.BSDSDCL__c= 1;
 obj.BSDSTOT__c= 1; 
 insert obj;
-return client;
+return client;*/
 }   
 }

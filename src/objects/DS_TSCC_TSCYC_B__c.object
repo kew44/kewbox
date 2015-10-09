@@ -47,12 +47,9 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>InDevelopment</deploymentStatus>
     <enableActivities>true</enableActivities>
-    <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
-    <enableSharing>true</enableSharing>
-    <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>BANG_CLIN__c</fullName>
         <description>Anger Scale Clinical Significance</description>
@@ -388,6 +385,16 @@
         <description>TSCYC date of administration</description>
         <externalId>false</externalId>
         <label>BDOATSCYC</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>BDOV__c</fullName>
+        <externalId>false</externalId>
+        <formula>Background_ID__r.BDOV__c</formula>
+        <label>BDOV</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -5627,6 +5634,19 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Background_ID__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Background ID</label>
+        <referenceTo>DS_Background_Family_Info_B__c</referenceTo>
+        <relationshipLabel>DS TSCC TSCYC B</relationshipLabel>
+        <relationshipName>DS_TSCC_TSCYC_B</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>Client__c</fullName>

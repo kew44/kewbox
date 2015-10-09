@@ -45,14 +45,11 @@
         <type>Default</type>
     </actionOverrides>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
-    <deploymentStatus>InDevelopment</deploymentStatus>
+    <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>false</enableActivities>
-    <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableReports>true</enableReports>
-    <enableSharing>true</enableSharing>
-    <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>ACTION__c</fullName>
         <externalId>false</externalId>
@@ -222,6 +219,11 @@
         <columns>USER_ID__c</columns>
         <columns>USER_INITIAL__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>SUBJECT_ID__c</field>
+            <operation>equals</operation>
+            <value>0001-01-00150</value>
+        </filters>
         <label>All</label>
     </listViews>
     <listViews>

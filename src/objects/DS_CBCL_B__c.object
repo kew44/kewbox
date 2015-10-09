@@ -47,12 +47,9 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
-    <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
-    <enableSharing>true</enableSharing>
-    <enableStreamingApi>true</enableStreamingApi>
     <fieldSets>
         <fullName>STATUS</fullName>
         <description>STATUS</description>
@@ -1329,7 +1326,7 @@
         <description>Other1 specify</description>
         <externalId>false</externalId>
         <label>BCBO113S</label>
-        <length>25</length>
+        <length>50</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1369,7 +1366,7 @@
         <description>Other2 specify</description>
         <externalId>false</externalId>
         <label>BCBO114S</label>
-        <length>25</length>
+        <length>50</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1409,7 +1406,7 @@
         <description>Other3 specify</description>
         <externalId>false</externalId>
         <label>BCBO115S</label>
-        <length>25</length>
+        <length>50</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -4415,15 +4412,11 @@
         <label>BCBOMETH</label>
         <picklist>
             <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
                 <fullName>1</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>2</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>3</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -4672,55 +4665,6 @@
         <externalId>false</externalId>
         <label>BCBSCT</label>
         <length>50</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>BCBSECTIONNY__c</fullName>
-        <defaultValue>0</defaultValue>
-        <externalId>false</externalId>
-        <label>BCBSECTIONNY</label>
-        <precision>3</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>BCBSECTIONN__c</fullName>
-        <defaultValue>0</defaultValue>
-        <externalId>false</externalId>
-        <label>BCBSECTIONN</label>
-        <precision>3</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>BCBSECTIONY__c</fullName>
-        <externalId>false</externalId>
-        <formula>IF(BCBSECTIONNY__c = 0, &apos;Baseline&apos;, &apos;Follow-up &apos; &amp; TEXT(BCBSECTIONNY__c))</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>BCBSECTIONY</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>BCBSECTION__c</fullName>
-        <externalId>false</externalId>
-        <formula>IF(BCBSECTIONN__c = 0, &apos;Baseline&apos;, &apos;Follow-up &apos; &amp; TEXT(BCBSECTIONN__c))</formula>
-        <label>BCBSECTION</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -5250,7 +5194,7 @@
         <description>Other 1, description specified</description>
         <externalId>false</externalId>
         <label>BCBY100S</label>
-        <length>25</length>
+        <length>50</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -5290,7 +5234,7 @@
         <description>Other 2, description specified</description>
         <externalId>false</externalId>
         <label>BCBY101S</label>
-        <length>25</length>
+        <length>50</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -5330,7 +5274,7 @@
         <description>Other 3, description specified</description>
         <externalId>false</externalId>
         <label>BCBY102S</label>
-        <length>25</length>
+        <length>50</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -8144,15 +8088,11 @@
         <label>BCBYMETH</label>
         <picklist>
             <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
                 <fullName>1</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>2</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>3</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -8182,6 +8122,30 @@
         <type>Date</type>
     </fields>
     <fields>
+        <fullName>BDOV__c</fullName>
+        <externalId>false</externalId>
+        <formula>Background_ID__r.BDOV__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>BDOV</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Background_ID__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Background ID</label>
+        <referenceTo>DS_Background_Family_Info_B__c</referenceTo>
+        <relationshipLabel>DS CBCL B</relationshipLabel>
+        <relationshipName>DS_CBCL_B</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Client_ID__c</fullName>
         <externalId>false</externalId>
         <formula>Client__r.Name</formula>
@@ -8206,17 +8170,6 @@
         <trackTrending>false</trackTrending>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
-    </fields>
-    <fields>
-        <fullName>FORM__c</fullName>
-        <externalId>false</externalId>
-        <label>FORM</label>
-        <length>50</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <fields>
         <fullName>SECTION__c</fullName>
@@ -8322,6 +8275,11 @@
     </listViews>
     <listViews>
         <fullName>All5</fullName>
+        <columns>NAME</columns>
+        <columns>Background_ID__c</columns>
+        <columns>Client__c</columns>
+        <columns>STATUS_CBCL_0_5__c</columns>
+        <columns>STATUS_CBCL_6_18__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -8479,5 +8437,47 @@
         <description>How was this form (CBCL) administered? Either CBCL old or CBCL young must indicate the method administered.</description>
         <errorConditionFormula>ISPICKVAL(BCBOMETH__c,&apos;&apos;) &amp;&amp; ISPICKVAL(BCBYMETH__c, &apos;&apos;)</errorConditionFormula>
         <errorMessage>Please indicate how this form was administered.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Cbcl_O_date_cannot_be_before_BDOV</fullName>
+        <active>true</active>
+        <errorConditionFormula>BDOV__c &gt;  BDOACO__c</errorConditionFormula>
+        <errorDisplayField>BDOACO__c</errorDisplayField>
+        <errorMessage>Baseline CBCL date of administration cannot be before Baseline date of visit.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Cbcl_O_date_cannot_be_before_birth</fullName>
+        <active>true</active>
+        <errorConditionFormula>Client__r.DOB1__c &gt; BDOACO__c</errorConditionFormula>
+        <errorDisplayField>BDOACO__c</errorDisplayField>
+        <errorMessage>Baseline date of administration cannot be before birth.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Cbcl_O_date_cannot_be_future</fullName>
+        <active>true</active>
+        <errorConditionFormula>BDOACO__c &gt; TODAY()</errorConditionFormula>
+        <errorDisplayField>BDOACO__c</errorDisplayField>
+        <errorMessage>Enter a valid date.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Cbcl_Y_date_cannot_be_before_BDOV</fullName>
+        <active>true</active>
+        <errorConditionFormula>BDOV__c &gt;  BDOACY__c</errorConditionFormula>
+        <errorDisplayField>BDOACY__c</errorDisplayField>
+        <errorMessage>Baseline CBCL date of administration cannot be before Baseline date of visit.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Cbcl_Y_date_cannot_be_before_birth</fullName>
+        <active>true</active>
+        <errorConditionFormula>Client__r.DOB1__c &gt; BDOACY__c</errorConditionFormula>
+        <errorDisplayField>BDOACY__c</errorDisplayField>
+        <errorMessage>Baseline date of administration cannot be before birth.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Cbcl_Y_date_cannot_be_future</fullName>
+        <active>true</active>
+        <errorConditionFormula>BDOACY__c &gt; TODAY()</errorConditionFormula>
+        <errorDisplayField>BDOACY__c</errorDisplayField>
+        <errorMessage>Enter a valid date.</errorMessage>
     </validationRules>
 </CustomObject>

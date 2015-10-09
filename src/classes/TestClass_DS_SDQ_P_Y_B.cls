@@ -5,7 +5,7 @@ static TestMethod void controllerTest() {
     TestClass_Utility test_ut = new TestClass_Utility();    
  
     TestClassData_DS_SDQ_PSI_CDI_Form_Info formInfo = new TestClassData_DS_SDQ_PSI_CDI_Form_Info();
-
+/*
     Client__c client = new Client__c();
     
      Date dob = date.valueOf('2009-10-5 12:20:20');
@@ -100,6 +100,6 @@ obj.BSDPIMPL__c= '1';
 obj.BSDPDCL__c= 1;
 obj.BSDPTOT__c= 1; 
 insert obj;
-return client;
+return client;*/
 }   
 }

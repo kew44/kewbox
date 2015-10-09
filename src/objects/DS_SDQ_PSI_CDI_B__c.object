@@ -47,12 +47,9 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
-    <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
-    <enableSharing>true</enableSharing>
-    <enableStreamingApi>true</enableStreamingApi>
     <fieldSets>
         <fullName>STATUS</fullName>
         <description>SDQ</description>
@@ -73,6 +70,34 @@
         </displayedFields>
         <label>STATUS</label>
     </fieldSets>
+    <fields>
+        <fullName>BBEHNULLP__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Number of blank questions for behavioral section (parent)</description>
+        <externalId>false</externalId>
+        <label>BBEHNULLP</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BBEHNULLS__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Number of blank questions for behavioral section (self)</description>
+        <externalId>false</externalId>
+        <label>BBEHNULLS</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
     <fields>
         <fullName>BDOASDOP__c</fullName>
         <description>Parent 11-17: Date of Administration</description>
@@ -104,11 +129,22 @@
         <type>Date</type>
     </fields>
     <fields>
-        <fullName>BEHNULLP__c</fullName>
-        <defaultValue>0</defaultValue>
-        <description>Number of blank questions for behavioral section (parent)</description>
+        <fullName>BDOV__c</fullName>
         <externalId>false</externalId>
-        <label>BEHNULLP</label>
+        <formula>Background_ID__r.BDOV__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>BDOV</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>BEMONULLP__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Number of blank questions for emotional section (parent)</description>
+        <externalId>false</externalId>
+        <label>BEMONULLP</label>
         <precision>2</precision>
         <required>false</required>
         <scale>0</scale>
@@ -118,11 +154,78 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>BEHNULLS__c</fullName>
+        <fullName>BEMONULLS__c</fullName>
         <defaultValue>0</defaultValue>
-        <description>Number of blank questions for behavioral section (self)</description>
+        <description>Number of blank questions for emotional section (self)</description>
         <externalId>false</externalId>
-        <label>BEHNULLS</label>
+        <label>BEMONULLS</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BFORM__c</fullName>
+        <externalId>false</externalId>
+        <label>BFORM</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BHYPNULLP__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Number of blank questions for hyperactivity section (parent)</description>
+        <externalId>false</externalId>
+        <label>BHYPNULLP</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BHYPNULLS__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Number of blank questions for hyperactivity section (self)</description>
+        <externalId>false</externalId>
+        <label>BHYPNULLS</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BKHBNULLP__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Number of blank questions for kind and helpful behaviors section (parent)</description>
+        <externalId>false</externalId>
+        <label>BKHBNULLP</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BKHBNULLS__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Number of blank questions for kind and helpful behaviors section (self)</description>
+        <externalId>false</externalId>
+        <label>BKHBNULLS</label>
         <precision>2</precision>
         <required>false</required>
         <scale>0</scale>
@@ -190,6 +293,34 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>BOTCNULLP__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Number of blank questions for other children section (parent)</description>
+        <externalId>false</externalId>
+        <label>BOTCNULLP</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BOTCNULLS__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Number of blank questions for other children section (self)</description>
+        <externalId>false</externalId>
+        <label>BOTCNULLS</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>BSDPAFRA__c</fullName>
@@ -1231,7 +1362,7 @@
     </fields>
     <fields>
         <fullName>BSDPTYP__c</fullName>
-        <description>Significance</description>
+        <description>Significance total parent</description>
         <externalId>false</externalId>
         <label>BSDPTYP</label>
         <picklist>
@@ -2431,6 +2562,19 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>Background_ID__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Background ID</label>
+        <referenceTo>DS_Background_Family_Info_B__c</referenceTo>
+        <relationshipLabel>DS SDQ PSI CDI B</relationshipLabel>
+        <relationshipName>DS_SDQ_PSI_CDI_B</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Client_ID__c</fullName>
         <externalId>false</externalId>
         <formula>Client__r.Name</formula>
@@ -2455,129 +2599,6 @@
         <trackTrending>false</trackTrending>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
-    </fields>
-    <fields>
-        <fullName>EMONULLP__c</fullName>
-        <defaultValue>0</defaultValue>
-        <description>Number of blank questions for emotional section (parent)</description>
-        <externalId>false</externalId>
-        <label>EMONULLP</label>
-        <precision>2</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>EMONULLS__c</fullName>
-        <defaultValue>0</defaultValue>
-        <description>Number of blank questions for emotional section (self)</description>
-        <externalId>false</externalId>
-        <label>EMONULLS</label>
-        <precision>2</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>FORM__c</fullName>
-        <externalId>false</externalId>
-        <label>FORM</label>
-        <length>50</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>HYPNULLP__c</fullName>
-        <defaultValue>0</defaultValue>
-        <description>Number of blank questions for hyperactivity section (parent)</description>
-        <externalId>false</externalId>
-        <label>HYPNULLP</label>
-        <precision>2</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>HYPNULLS__c</fullName>
-        <defaultValue>0</defaultValue>
-        <description>Number of blank questions for hyperactivity section (self)</description>
-        <externalId>false</externalId>
-        <label>HYPNULLS</label>
-        <precision>2</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>KHBNULLP__c</fullName>
-        <defaultValue>0</defaultValue>
-        <description>Number of blank questions for kind and helpful behaviors section (parent)</description>
-        <externalId>false</externalId>
-        <label>KHBNULLP</label>
-        <precision>2</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>KHBNULLS__c</fullName>
-        <defaultValue>0</defaultValue>
-        <description>Number of blank questions for kind and helpful behaviors section (self)</description>
-        <externalId>false</externalId>
-        <label>KHBNULLS</label>
-        <precision>2</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>OTCNULLP__c</fullName>
-        <defaultValue>0</defaultValue>
-        <description>Number of blank questions for other children section (parent)</description>
-        <externalId>false</externalId>
-        <label>OTCNULLP</label>
-        <precision>2</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>OTCNULLS__c</fullName>
-        <defaultValue>0</defaultValue>
-        <description>Number of blank questions for other children section (self)</description>
-        <externalId>false</externalId>
-        <label>OTCNULLS</label>
-        <precision>2</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
     </fields>
     <fields>
         <fullName>SECTION__c</fullName>
@@ -2653,15 +2674,21 @@
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>Client__c</columns>
-        <columns>FORM__c</columns>
         <columns>STATUS_SDQ_P_04_10__c</columns>
         <columns>STATUS_SDQ_P_11_17__c</columns>
         <columns>STATUS_SDQ_S_11_17__c</columns>
-        <columns>CREATED_DATE</columns>
+        <columns>BSDPDCL__c</columns>
+        <columns>BSDSUPSET__c</columns>
+        <columns>BSDPIMPH__c</columns>
+        <columns>BSDPIMPF__c</columns>
+        <columns>BSDPIMPC__c</columns>
+        <columns>BSDPIMPL__c</columns>
+        <columns>BSDPITYP__c</columns>
+        <columns>BSDSTOT__c</columns>
+        <columns>BSDSTYP__c</columns>
         <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>All1</fullName>
@@ -2671,27 +2698,27 @@
     <listViews>
         <fullName>Allnull</fullName>
         <columns>Client__c</columns>
-        <columns>EMONULLP__c</columns>
-        <columns>EMONULLS__c</columns>
-        <columns>HYPNULLP__c</columns>
-        <columns>HYPNULLS__c</columns>
-        <columns>KHBNULLP__c</columns>
-        <columns>KHBNULLS__c</columns>
-        <columns>OTCNULLP__c</columns>
-        <columns>OTCNULLS__c</columns>
-        <columns>BEHNULLP__c</columns>
-        <columns>BEHNULLS__c</columns>
+        <columns>BEMONULLP__c</columns>
+        <columns>BEMONULLS__c</columns>
+        <columns>BHYPNULLP__c</columns>
+        <columns>BHYPNULLS__c</columns>
+        <columns>BKHBNULLP__c</columns>
+        <columns>BKHBNULLS__c</columns>
+        <columns>BOTCNULLP__c</columns>
+        <columns>BOTCNULLS__c</columns>
+        <columns>BBEHNULLP__c</columns>
+        <columns>BBEHNULLS__c</columns>
         <filterScope>Everything</filterScope>
         <label>Allnull</label>
     </listViews>
     <listViews>
         <fullName>Allnullparent</fullName>
         <columns>Client__c</columns>
-        <columns>EMONULLP__c</columns>
-        <columns>HYPNULLP__c</columns>
-        <columns>KHBNULLP__c</columns>
-        <columns>OTCNULLP__c</columns>
-        <columns>BEHNULLP__c</columns>
+        <columns>BEMONULLP__c</columns>
+        <columns>BHYPNULLP__c</columns>
+        <columns>BKHBNULLP__c</columns>
+        <columns>BOTCNULLP__c</columns>
+        <columns>BBEHNULLP__c</columns>
         <columns>BSDPBTYP__c</columns>
         <columns>BSDPETYP__c</columns>
         <columns>BSDPHTYP__c</columns>
@@ -2718,6 +2745,69 @@
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
     <validationRules>
+        <fullName>SDQ_OP_date_cannot_be_before_BDOV</fullName>
+        <active>true</active>
+        <errorConditionFormula>BDOV__c &gt; BDOASDOP__c</errorConditionFormula>
+        <errorDisplayField>BDOASDOP__c</errorDisplayField>
+        <errorMessage>Baseline SDQ date of administration cannot be before Baseline date of visit.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>SDQ_OP_date_cannot_be_before_birth</fullName>
+        <active>false</active>
+        <errorConditionFormula>Client__r.DOB1__c &gt; BDOASDOP__c</errorConditionFormula>
+        <errorDisplayField>BDOASDOP__c</errorDisplayField>
+        <errorMessage>Baseline date of administration cannot be before birth.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>SDQ_OP_date_cannot_be_future</fullName>
+        <active>true</active>
+        <errorConditionFormula>BDOASDOP__c &gt; TODAY()</errorConditionFormula>
+        <errorDisplayField>BDOASDOP__c</errorDisplayField>
+        <errorMessage>Enter a valid date.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>SDQ_OS_date_cannot_be_before_BDOV</fullName>
+        <active>true</active>
+        <errorConditionFormula>BDOV__c &gt; BDOASDOS__c</errorConditionFormula>
+        <errorDisplayField>BDOASDOS__c</errorDisplayField>
+        <errorMessage>Baseline SDQ date of administration cannot be before Baseline date of visit.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>SDQ_OS_date_cannot_be_before_birth</fullName>
+        <active>false</active>
+        <errorConditionFormula>Client__r.DOB1__c &gt; BDOASDOS__c</errorConditionFormula>
+        <errorDisplayField>BDOASDOS__c</errorDisplayField>
+        <errorMessage>Baseline date of administration cannot be before birth.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>SDQ_OS_date_cannot_be_future</fullName>
+        <active>true</active>
+        <errorConditionFormula>BDOASDOS__c &gt; TODAY()</errorConditionFormula>
+        <errorDisplayField>BDOASDOS__c</errorDisplayField>
+        <errorMessage>Enter a valid date.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>SDQ_YP_date_cannot_be_before_BDOV</fullName>
+        <active>true</active>
+        <errorConditionFormula>BDOV__c &gt; BDOASDYP__c</errorConditionFormula>
+        <errorDisplayField>BDOASDYP__c</errorDisplayField>
+        <errorMessage>Baseline SDQ date of administration cannot be before Baseline date of visit.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>SDQ_YP_date_cannot_be_before_birth</fullName>
+        <active>false</active>
+        <errorConditionFormula>Client__r.DOB1__c &gt; BDOASDYP__c</errorConditionFormula>
+        <errorDisplayField>BDOASDYP__c</errorDisplayField>
+        <errorMessage>Baseline date of administration cannot be before birth.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>SDQ_YP_date_cannot_be_future</fullName>
+        <active>true</active>
+        <errorConditionFormula>BDOASDYP__c &gt; TODAY()</errorConditionFormula>
+        <errorDisplayField>BDOASDYP__c</errorDisplayField>
+        <errorMessage>Enter a valid date.</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>SDQ_date_required</fullName>
         <active>true</active>
         <description>Date of administration is required</description>
@@ -2730,5 +2820,12 @@
         <description>Method of administration is required</description>
         <errorConditionFormula>ISPICKVAL( BMETSDOP__c , &apos;&apos;)&amp;&amp;ISPICKVAL( BMETSDOS__c , &apos;&apos;)&amp;&amp;ISPICKVAL( BMETSDYP__c , &apos;&apos;)</errorConditionFormula>
         <errorMessage>Please indicate the method of administration.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>SDQ_must_specify_informant</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISPICKVAL(BSDPINFOR__c ,&apos;2&apos;) &amp;&amp; ISBLANK (BSDPINFSP__c )</errorConditionFormula>
+        <errorDisplayField>BSDPINFSP__c</errorDisplayField>
+        <errorMessage>Please specify the informant</errorMessage>
     </validationRules>
 </CustomObject>

@@ -1,158 +1,237 @@
-/*
-Updated 11/20/14
-Print button functionality
-KW
-*/
-public with sharing class DS_SDQ_S_B_Report_Controller {
-      
-  public String cimi { get; set; }
-  
- Utility ut = new Utility();
- 
-  Map<String, String> parameter = ut.urlDecode(Apexpages.currentPage().getParameters().get('cimi'));
-
-  public DS_SDQ_PSI_CDI_B__c obj { get; set; } 
-  
-  public String cID { get; set; }
-  
-  String summaryID;
-  
-  public String forceRedirect { get; set; }  
-  
-  Boolean edit = FALSE;
-  
-  public String subtitle { get; set; }
-  
-  public Client__c client { get; set; }
-  
-  public Client_Summary__c summaryInfo { get; set; }
-  
-  public Boolean printReport { get; set; }
-
-  public Map<String, String> bfVariableMap { get; set; }
-
-  public String BorF { get; set; }
-  
-  public SkipLogic skip {get;set;}      
-  
+public with sharing class DS_SDQ_S_B_Report_Controller   extends DS_BasicForm_Controller  {
+   
   public String clinicalRange{get; set; }
   public String borderlineRange{get; set; }
-  public String missingRange{get; set; }  
+  public String missingRange{get; set; }
   
-  public void init() {
-      
-      printReport = (Apexpages.currentPage().getParameters().get('print') == '1') ? true : false;
-      
-  }
-
-    public DS_SDQ_S_B_Report_Controller(ApexPages.StandardController controller) {
-      
-    parameter = ut.urlDecode(Apexpages.currentPage().getParameters().get('cimi'));
+    //variables for displaying historical scores
+    public String cimi { get; set; }  
     
-    cimi = Apexpages.currentPage().getParameters().get('cimi');
+    public Boolean printReport { get; set; }    
     
-    cID = parameter.get('c');
+    public Boolean displayHistory { get; set; }    
     
-    summaryID = parameter.get('summary');
+    public List<Visit> visits { get; set; }    
     
-    forceRedirect = (parameter.containsKey('f')) ? parameter.get('f') : '';  
+    Datetime currentVisitDate = null;    
     
-    client = [SELECT Name, INIT__c FROM Client__c WHERE id =: cID];
-    
-    Client_Summary__c summary = [SELECT SECTION__c FROM Client_Summary__c WHERE ID =:summaryID];
-  //  String BorF = 'B';
-    String BorF = (Integer.valueOf(summary.SECTION__c) > 0) ? 'F' : 'B';
-    subtitle = '(' + client.Name + ') ' + client.INIT__c;
-
-    String getFields = ut.getFields('DS_SDQ_PSI_CDI_'+BorF+'__c'); 
-    
-    skip = new SkipLogic();      
-   // List<DS_SDQ_PSI_CDI_B__c> record
-     obj= Database.query('SELECT ' + getFields + ', Client__r.Name, Client__r.INIT__c' +  
-                                               '  FROM DS_SDQ_PSI_CDI_'+BorF+'__c' +                              
-                                                ' WHERE Client__c = \''+ cID + '\''
-                                                );                                           
-                                               
-List<String> clinicalRangeList = new List<String>();
-List<String> borderlineList = new List<String>();
-List<String> missingList = new List<String>();
-
-String OverAll = String.valueOf(obj.BSDSTYP__c);
-String EmoSym = String.valueOf(obj.BSDSETYP__c);
-String BehDif = String.valueOf(obj.BSDSBTYP__c);
-String Adhd = String.valueOf(obj.BSDSHTYP__c);
-String DiffChld = String.valueOf(obj.BSDSOTYP__c);
-String KindBeh = String.valueOf(obj.BSDSKTYP__c);
-String ImpLife = String.valueOf(obj.BSDSITYP__c);
-
-if (OverAll  == 'Clinical')
-clinicalRangeList.add('Total Difficulties');
-else if (OverAll  == 'Borderline')
-borderlineList.add('Total Difficulties'); 
-else if (OverAll  == 'Missing/Incomplete')
-missingList.add('Total Difficulties'); 
-
-if (EmoSym == 'Clinical')
-clinicalRangeList.add('Emotional Symptoms');
-else if (EmoSym == 'Borderline')
-borderlineList.add('Emotional Symptoms'); 
-else if (EmoSym == 'Missing/Incomplete')
-missingList.add('Emotional Symptoms'); 
-
-if (BehDif == 'Clinical')
-clinicalRangeList.add('Behavioral Difficulties');
-else if (BehDif == 'Borderline')
-borderlineList.add('Behavioral Difficulties'); 
-else if (BehDif == 'Missing/Incomplete')
-missingList.add('Behavioral Difficulties'); 
-
-if (Adhd == 'Clinical')
-clinicalRangeList.add('Hyperactivity-Inattention');
-else if (Adhd == 'Borderline')
-borderlineList.add('Hyperactivity-Inattention'); 
-else if (Adhd == 'Missing/Incomplete')
-missingList.add('Hyperactivity-Inattention'); 
-
-if (DiffChld == 'Clinical')
-clinicalRangeList.add('Peer Problems');
-else if (DiffChld == 'Borderline')
-borderlineList.add('Peer Problems'); 
-else if (DiffChld == 'Missing/Incomplete')
-missingList.add('Peer Problems'); 
-
-if (KindBeh == 'Clinical')
-clinicalRangeList.add('Prosocial Behavior');
-else if (KindBeh == 'Borderline')
-borderlineList.add('Prosocial Behavior'); 
-/*else if (KindBeh == 'Missing/Incomplete')
-missingList.add('Prosocial Behavior'); */
-
-if (ImpLife == 'Clinical')
-clinicalRangeList.add('Impact of Difficulties');
-else if (ImpLife == 'Borderline')
-borderlineList.add('Impact of Difficulties'); 
-else if (ImpLife == 'Missing/Incomplete')
-missingList.add('Impact of Difficulties'); 
-
-    clinicalRange = String.join(clinicalRangeList, ', ');
-    borderlineRange= String.join(borderlineList, ', ');
-    missingRange= String.join(missingList, ', ');
-            }
+    public class Visit {
+        
+        public String SECTION { get; set; }
+        public String currentVisit { get; set; }  
+        public String BorF {get;set;}
+        public Date DOASDOS {get;set;}
+        
+        //scores and types
+        //total
+        public Integer SDSTOT { get; set; }
+        public String SDSTYP { get; set; }
+        //emotional
+        public Integer SDSEMO { get; set; }
+        public String SDSETYP { get; set; }
+        //behavioral
+        public Integer SDSBEH { get; set; }
+        public String SDSBTYP { get; set; }
+        //hyperactivity
+        public Integer SDSHYP { get; set; }
+        public String SDSHTYP { get; set; }
+        //peer
+        public Integer SDSOTC { get; set; }
+        public String SDSOTYP { get; set; }
+        //prosocial
+        public Integer SDSKHB { get; set; }
+        public String SDSKTYP { get; set; }
+        //impact
+        public Integer SDSDCL { get; set; }
+        public String SDSITYP { get; set; }
             
-  public String getClientInfo() { return ut.clientSection(cID,SummaryID); }
-  
-  public PageReference cancel() {
-  
-    PageReference summaryPage = new PageReference('/apex/ClientSummary?id=' + cID);
-    summaryPage.setRedirect(true);
-    
-    return summaryPage;
-    
+        public visit() {
+            this.currentVisit = null;
+        }
+        
     }
     
-  public PageReference save() {
+    //print report button
+    public void init() {
+        printReport = (Apexpages.currentPage().getParameters().get('print') == '1') ? true : false;
+    }
+            
+    public DS_SDQ_S_B_Report_Controller(ApexPages.StandardController controller) {
+
+    // Initilize the DS_BasicForm_Controller
+    super(Apexpages.currentPage().getParameters().get('cimi'));
+        
+    //redundant cimi?
+    cimi = Apexpages.currentPage().getParameters().get('cimi');
+        
+    visits = new List<Visit>();
+    
+    // Set the obj name 
+    form.setObjName('DS_SDQ_PSI_CDI_'+form.BorF+'__c');
+    
+    // Get the object record into form.obj
+    form.getObjRecord();
+    
+    // Get field name from DS_DATA (variable)
+    bfVariableMap = form.getVariable('SDQ_S_11_17');//_SCORES_SELF');      
+    
+    //add stray variables to map
+    bfVariableMap.put('DOASDOS',   form.BorF+'DOASDOS__c');  
+    bfVariableMap.put('SDSTYP',   form.BorF+'SDSTYP__c');  
+    bfVariableMap.put('SDSETYP',   form.BorF+'SDSETYP__c');  
+    bfVariableMap.put('SDSBTYP',   form.BorF+'SDSBTYP__c');  
+    bfVariableMap.put('SDSHTYP',   form.BorF+'SDSHTYP__c');
+    bfVariableMap.put('SDSOTYP',   form.BorF+'SDSOTYP__c');  
+    bfVariableMap.put('SDSKTYP',   form.BorF+'SDSKTYP__c'); 
+    bfVariableMap.put('SDSITYP',   form.BorF+'SDSITYP__c');
+                
+        //Date tempVisitDate
+        Date tempVisitDate = Date.valueOf(form.obj.get(form.BorF+'DOASDOS__c'));
+        
+        //currentVisitDate         
+        currentVisitDate = (form.BorF == 'F') ? Datetime.newInstance(tempVisitDate, time.newInstance(0,0,0,0)) : null;
+        
+        getAssesmentHistory();
+                
+        // Display history
+        displayHistory = (visits.size() > 1) ? true : false;
+       
+    //Lists display above chart and are used in conditional formatting
+       //list alerts for types of scoretypes   
+        List<String> clinicalRangeList = new List<String>();
+        List<String> borderlineList = new List<String>();
+        List<String> missingList = new List<String>();       
+
+        //strings of scoretypes
+        String OverAll = String.valueOf(form.obj.get(form.BorF+'SDSTYP__c'));
+        String EmoSym = String.valueOf(form.obj.get(form.BorF+'SDSETYP__c'));
+        String BehDif = String.valueOf(form.obj.get(form.BorF+'SDSBTYP__c'));
+        String Adhd = String.valueOf(form.obj.get(form.BorF+'SDSHTYP__c'));
+        String DiffChld = String.valueOf(form.obj.get(form.BorF+'SDSOTYP__c'));
+        String KindBeh = String.valueOf(form.obj.get(form.BorF+'SDSKTYP__c'));
+        String ImpLife = String.valueOf(form.obj.get(form.BorF+'SDSITYP__c'));
+    
+        //if scoretype = string value, add subtitle label to the correct list
+    
+        //Total
+        if (OverAll  == 'Clinical')
+        clinicalRangeList.add('Total Difficulties');
+        else if (OverAll  == 'Borderline')
+        borderlineList.add('Total Difficulties'); 
+        else if (OverAll  == 'Missing/Incomplete')
+        missingList.add('Total Difficulties'); 
+            
+        //Emotional
+        if (EmoSym == 'Clinical')
+        clinicalRangeList.add('Emotional Symptoms');
+        else if (EmoSym == 'Borderline')
+        borderlineList.add('Emotional Symptoms'); 
+        else if (EmoSym == 'Missing/Incomplete')
+        missingList.add('Emotional Symptoms'); 
+
+        //Behavioral
+        if (BehDif == 'Clinical')
+        clinicalRangeList.add('Behavioral Difficulties');
+        else if (BehDif == 'Borderline')
+        borderlineList.add('Behavioral Difficulties'); 
+        else if (BehDif == 'Missing/Incomplete')
+        missingList.add('Behavioral Difficulties'); 
+
+        //Hyperactivity
+        if (Adhd == 'Clinical')
+        clinicalRangeList.add('Hyperactivity-Inattention');
+        else if (Adhd == 'Borderline')
+        borderlineList.add('Hyperactivity-Inattention'); 
+        else if (Adhd == 'Missing/Incomplete')
+        missingList.add('Hyperactivity-Inattention'); 
+
+        //Peer Problems
+        if (DiffChld == 'Clinical')
+        clinicalRangeList.add('Peer Problems');
+        else if (DiffChld == 'Borderline')
+        borderlineList.add('Peer Problems'); 
+        else if (DiffChld == 'Missing/Incomplete')
+        missingList.add('Peer Problems'); 
+
+        //Prosocial (formerly kind & helpful behaviors)
+        if (KindBeh == 'Clinical')
+        clinicalRangeList.add('Prosocial Behavior');
+        else if (KindBeh == 'Borderline')
+        borderlineList.add('Prosocial Behavior'); 
+
+        //Impact on life
+        if (ImpLife == 'Clinical')
+        clinicalRangeList.add('Impact of Difficulties');
+        else if (ImpLife == 'Borderline')
+        borderlineList.add('Impact of Difficulties'); 
+        else if (ImpLife == 'Missing/Incomplete')
+        missingList.add('Impact of Difficulties'); 
+    
+        //rejoin the lists
+        clinicalRange = String.join(clinicalRangeList, ', ');
+        borderlineRange= String.join(borderlineList, ', ');
+        missingRange= String.join(missingList, ', ');
+            }
+        
+    //historical scores function
+    public void getAssesmentHistory() {
+   
+        //query baseline
+        List<SObject> baseline=
+            Database.query('SELECT ' + form.ut.getFields('DS_SDQ_PSI_CDI_B__c') + 
+                           '  FROM DS_SDQ_PSI_CDI_B__c' +                           
+                           ' WHERE Client__c =\''+ form.cID + '\'');
+        
+        addVisit(baseline, 'B');
+        
+    //query follow-ups
+        List<SObject> followup=
+            Database.query('SELECT ' + form.ut.getFields('DS_SDQ_PSI_CDI_F__c') +   
+                           '  FROM DS_SDQ_PSI_CDI_F__c' +                           
+                           ' WHERE Client__c = \''+ form.cID + '\''+
+                           'ORDER BY FDOASDOS__c, SECTION__c');
+        
+        if(followup.size() > 0) addVisit(followup, 'F');
+        
+    }
+    
+    //add visit function
+    public void addVisit(List<SObject> sdq, String BorF) {
+    
+        for(SObject s :sdq){
+            
+            Visit visit = new visit();
+            
+            visit.BorF    = BorF;
+            visit.SECTION = String.valueOf(s.get('SECTION__c'));
+            visit.DOASDOS= Date.valueOf(s.get(BorF+'DOASDOS__c'));
+            
+            visit.SDSTOT = Integer.valueOf(s.get(BorF+'SDSTOT__c'));
+            visit.SDSTYP = String.valueOf(s.get(BorF+'SDSTYP__c'));
+            visit.SDSEMO = Integer.valueOf(s.get(BorF+'SDSEMO__c'));
+            visit.SDSETYP = String.valueOf(s.get(BorF+'SDSETYP__c'));
+            visit.SDSBEH = Integer.valueOf(s.get(BorF+'SDSBEH__c'));
+            visit.SDSBTYP = String.valueOf(s.get(BorF+'SDSBTYP__c'));
+            visit.SDSHYP = Integer.valueOf(s.get(BorF+'SDSHYP__c'));
+            visit.SDSHTYP = String.valueOf(s.get(BorF+'SDSHTYP__c'));
+            visit.SDSOTC = Integer.valueOf(s.get(BorF+'SDSOTC__c'));
+            visit.SDSOTYP = String.valueOf(s.get(BorF+'SDSOTYP__c'));
+            visit.SDSKHB = Integer.valueOf(s.get(BorF+'SDSKHB__c'));
+            visit.SDSKTYP = String.valueOf(s.get(BorF+'SDSKTYP__c'));
+            visit.SDSDCL = Integer.valueOf(s.get(BorF+'SDSDCL__c'));
+            visit.SDSITYP = String.valueOf(s.get(BorF+'SDSITYP__c'));
+            
+            visits.add(visit);
+        }
+    //add all to visit
+    }
+
+//edit button function
+    public PageReference editRecord() {
+    
     PageReference nextPage = new PageReference('/apex/DS_SDQ_S_11_17?cimi=' + Apexpages.currentPage().getParameters().get('cimi'));
     nextPage.setRedirect(true);
+    
     return nextPage;
     
   }

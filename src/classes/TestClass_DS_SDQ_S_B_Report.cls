@@ -2,7 +2,7 @@
 
 private class TestClass_DS_SDQ_S_B_Report{
 
-static TestMethod void controllerTest() {
+/*static TestMethod void controllerTest() {
 
     Utility ut = new Utility();
     TestClass_Utility test_ut = new TestClass_Utility(); 
@@ -43,5 +43,5 @@ obj.Form__c = 'DS_SDQ_S_11_17';
   
 SelfReportController.save();
 SelfReportController.cancel();
-   }
+   }*/
       }
