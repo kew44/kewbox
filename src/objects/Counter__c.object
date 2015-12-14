@@ -47,9 +47,12 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>Counter_2__c</fullName>
         <defaultValue>1</defaultValue>
@@ -143,11 +146,17 @@
     <label>Counter</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>Type__c</columns>
+        <columns>OBJECT_ID</columns>
         <columns>Item_Name__c</columns>
+        <columns>NAME</columns>
         <columns>Counter__c</columns>
         <columns>Counter_2__c</columns>
         <columns>Counter_3__c</columns>
+        <columns>Item_ID__c</columns>
+        <columns>Role_ID__c</columns>
+        <columns>Type__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

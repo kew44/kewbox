@@ -13,7 +13,7 @@ public with sharing class DS_SDQ_S_11_17_Report_Controller extends DS_BasicForm_
     
     public List<Visit> visits { get; set; }    
     
-    Datetime currentVisitDate = null;    
+   // Datetime currentVisitDate = null;    
     
     public class Visit {
         
@@ -73,10 +73,10 @@ public with sharing class DS_SDQ_S_11_17_Report_Controller extends DS_BasicForm_
         form.getObjRecord();
         
         // Get field name from DS_DATA (variable)
-        bfVariableMap = form.getVariable('SDQ_S_11_17');//_SCORES_SELF');      
+        bfVariableMap = form.getVariable('SDQ_S_11_17');     
         
         //add stray variables to map
-        bfVariableMap.put('DOASDOS',   form.BorF+'DOASDOS__c');  
+        bfVariableMap.put('DOASDOS',   form.BorF+'DOASDOS__c');  //there is no young version of self
         bfVariableMap.put('SDSTYP',   form.BorF+'SDSTYP__c');  
         bfVariableMap.put('SDSETYP',   form.BorF+'SDSETYP__c');  
         bfVariableMap.put('SDSBTYP',   form.BorF+'SDSBTYP__c');  
@@ -89,7 +89,7 @@ public with sharing class DS_SDQ_S_11_17_Report_Controller extends DS_BasicForm_
         Date tempVisitDate = Date.valueOf(form.obj.get(form.BorF+'DOASDOS__c'));
         
         //currentVisitDate         
-        currentVisitDate = (form.BorF == 'F') ? Datetime.newInstance(tempVisitDate, time.newInstance(0,0,0,0)) : null;
+       // currentVisitDate = (form.BorF == 'F') ? Datetime.newInstance(tempVisitDate, time.newInstance(0,0,0,0)) : null;
         
         getAssesmentHistory();
         
@@ -202,26 +202,30 @@ public with sharing class DS_SDQ_S_11_17_Report_Controller extends DS_BasicForm_
             
             Visit visit = new visit();
             
-            visit.BorF    = BorF;
-            visit.SECTION = String.valueOf(s.get('SECTION__c'));
-            visit.DOASDOS= Date.valueOf(s.get(BorF+'DOASDOS__c'));
+            //ignore any previous visits where the child did not have a self eval
+            if(Date.valueOf(s.get(BorF+'DOASDOS__c')) != null){
             
-            visit.SDSTOT = Integer.valueOf(s.get(BorF+'SDSTOT__c'));
-            visit.SDSTYP = String.valueOf(s.get(BorF+'SDSTYP__c'));
-            visit.SDSEMO = Integer.valueOf(s.get(BorF+'SDSEMO__c'));
-            visit.SDSETYP = String.valueOf(s.get(BorF+'SDSETYP__c'));
-            visit.SDSBEH = Integer.valueOf(s.get(BorF+'SDSBEH__c'));
-            visit.SDSBTYP = String.valueOf(s.get(BorF+'SDSBTYP__c'));
-            visit.SDSHYP = Integer.valueOf(s.get(BorF+'SDSHYP__c'));
-            visit.SDSHTYP = String.valueOf(s.get(BorF+'SDSHTYP__c'));
-            visit.SDSOTC = Integer.valueOf(s.get(BorF+'SDSOTC__c'));
-            visit.SDSOTYP = String.valueOf(s.get(BorF+'SDSOTYP__c'));
-            visit.SDSKHB = Integer.valueOf(s.get(BorF+'SDSKHB__c'));
-            visit.SDSKTYP = String.valueOf(s.get(BorF+'SDSKTYP__c'));
-            visit.SDSDCL = Integer.valueOf(s.get(BorF+'SDSDCL__c'));
-            visit.SDSITYP = String.valueOf(s.get(BorF+'SDSITYP__c'));
-            
-            visits.add(visit);
+                visit.BorF    = BorF;
+                visit.SECTION = String.valueOf(s.get('SECTION__c'));
+                visit.DOASDOS= Date.valueOf(s.get(BorF+'DOASDOS__c'));//there is no young version of self
+                
+                visit.SDSTOT = Integer.valueOf(s.get(BorF+'SDSTOT__c'));
+                visit.SDSTYP = String.valueOf(s.get(BorF+'SDSTYP__c'));
+                visit.SDSEMO = Integer.valueOf(s.get(BorF+'SDSEMO__c'));
+                visit.SDSETYP = String.valueOf(s.get(BorF+'SDSETYP__c'));
+                visit.SDSBEH = Integer.valueOf(s.get(BorF+'SDSBEH__c'));
+                visit.SDSBTYP = String.valueOf(s.get(BorF+'SDSBTYP__c'));
+                visit.SDSHYP = Integer.valueOf(s.get(BorF+'SDSHYP__c'));
+                visit.SDSHTYP = String.valueOf(s.get(BorF+'SDSHTYP__c'));
+                visit.SDSOTC = Integer.valueOf(s.get(BorF+'SDSOTC__c'));
+                visit.SDSOTYP = String.valueOf(s.get(BorF+'SDSOTYP__c'));
+                visit.SDSKHB = Integer.valueOf(s.get(BorF+'SDSKHB__c'));
+                visit.SDSKTYP = String.valueOf(s.get(BorF+'SDSKTYP__c'));
+                visit.SDSDCL = Integer.valueOf(s.get(BorF+'SDSDCL__c'));
+                visit.SDSITYP = String.valueOf(s.get(BorF+'SDSITYP__c'));
+                
+                visits.add(visit);
+            }
         }
         //add all to visit
     }

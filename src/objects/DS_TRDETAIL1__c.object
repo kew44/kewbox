@@ -47,9 +47,12 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fieldSets>
         <fullName>STATUS</fullName>
         <description>STATUS</description>
@@ -5621,26 +5624,6 @@
     <label>DS TRDETAIL1</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>Client__c</columns>
-        <columns>STATUS_TRABUSE__c</columns>
-        <columns>STATUS_TRACCIDENT__c</columns>
-        <columns>STATUS_TRCOMMEXP__c</columns>
-        <columns>STATUS_TRDOMVIO__c</columns>
-        <columns>STATUS_TRMEDICAL__c</columns>
-        <columns>STATUS_TRNATURALDIS__c</columns>
-        <columns>STATUS_TRNEGLECT__c</columns>
-        <columns>STATUS_TRPHYSASSAULT__c</columns>
-        <columns>STATUS_TRPSYCHABUSE__c</columns>
-        <columns>STATUS_TRSEX__c</columns>
-        <columns>STATUS_TRSEXASSAULT__c</columns>
-        <columns>STATUS_TRWAR__c</columns>
-        <columns>STATUS_TRWAROUTSIDEUS__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>All1</fullName>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

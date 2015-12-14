@@ -1,3 +1,9 @@
+/****
+*@description STATIC version of Controller Class for Roles
+*
+*@group System
+*@group-content /ApexDocContent/System/RoleControllerStatic.htm
+****/
 public class RoleControllerStatic {
     
   public static void sleep(Integer sleepSeconds) {

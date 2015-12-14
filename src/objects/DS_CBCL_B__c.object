@@ -47,9 +47,12 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fieldSets>
         <fullName>STATUS</fullName>
         <description>STATUS</description>
@@ -1326,7 +1329,7 @@
         <description>Other1 specify</description>
         <externalId>false</externalId>
         <label>BCBO113S</label>
-        <length>50</length>
+        <length>25</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1366,7 +1369,7 @@
         <description>Other2 specify</description>
         <externalId>false</externalId>
         <label>BCBO114S</label>
-        <length>50</length>
+        <length>25</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1406,7 +1409,7 @@
         <description>Other3 specify</description>
         <externalId>false</externalId>
         <label>BCBO115S</label>
-        <length>50</length>
+        <length>25</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -5194,7 +5197,7 @@
         <description>Other 1, description specified</description>
         <externalId>false</externalId>
         <label>BCBY100S</label>
-        <length>50</length>
+        <length>25</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -5234,7 +5237,7 @@
         <description>Other 2, description specified</description>
         <externalId>false</externalId>
         <label>BCBY101S</label>
-        <length>50</length>
+        <length>25</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -5274,7 +5277,7 @@
         <description>Other 3, description specified</description>
         <externalId>false</externalId>
         <label>BCBY102S</label>
-        <length>50</length>
+        <length>25</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -8222,199 +8225,6 @@
         <type>Picklist</type>
     </fields>
     <label>DS CBCL B</label>
-    <listViews>
-        <fullName>All</fullName>
-        <columns>LAST_UPDATE</columns>
-        <columns>NAME</columns>
-        <columns>Client__c</columns>
-        <columns>STATUS_CBCL_0_5__c</columns>
-        <columns>STATUS_CBCL_6_18__c</columns>
-        <columns>BDOACO__c</columns>
-        <columns>BDOACY__c</columns>
-        <columns>BCBOMETH__c</columns>
-        <columns>BCBYMETH__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>All2</fullName>
-        <columns>LAST_UPDATE</columns>
-        <columns>NAME</columns>
-        <columns>Client__c</columns>
-        <columns>BCBO56__c</columns>
-        <columns>BCBOMETH__c</columns>
-        <columns>BCBY100S__c</columns>
-        <columns>BCBY101S__c</columns>
-        <columns>BCBY102S__c</columns>
-        <columns>BCBY102__c</columns>
-        <columns>BCBYMETH__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>All2</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>All3</fullName>
-        <columns>LAST_UPDATE</columns>
-        <columns>NAME</columns>
-        <columns>Client__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>All3</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>All4</fullName>
-        <columns>LAST_UPDATE</columns>
-        <columns>NAME</columns>
-        <columns>Client__c</columns>
-        <columns>BCBOTPNY__c</columns>
-        <columns>BCBSPRNY__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>All4</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>All5</fullName>
-        <columns>NAME</columns>
-        <columns>Background_ID__c</columns>
-        <columns>Client__c</columns>
-        <columns>STATUS_CBCL_0_5__c</columns>
-        <columns>STATUS_CBCL_6_18__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>X2_10_old</fullName>
-        <columns>LAST_UPDATE</columns>
-        <columns>NAME</columns>
-        <columns>Client__c</columns>
-        <columns>STATUS_CBCL_0_5__c</columns>
-        <columns>STATUS_CBCL_6_18__c</columns>
-        <columns>BDOACO__c</columns>
-        <columns>BDOACY__c</columns>
-        <columns>BCBOMETH__c</columns>
-        <columns>BCBYMETH__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>LAST_UPDATE</field>
-            <operation>equals</operation>
-            <value>2/10/2015 12:00 AM</value>
-        </filters>
-        <filters>
-            <field>STATUS_CBCL_6_18__c</field>
-            <operation>equals</operation>
-            <value>Complete</value>
-        </filters>
-        <label>2/10 old</label>
-    </listViews>
-    <listViews>
-        <fullName>X2_10_young</fullName>
-        <columns>LAST_UPDATE</columns>
-        <columns>NAME</columns>
-        <columns>Client__c</columns>
-        <columns>STATUS_CBCL_0_5__c</columns>
-        <columns>STATUS_CBCL_6_18__c</columns>
-        <columns>BDOACO__c</columns>
-        <columns>BDOACY__c</columns>
-        <columns>BCBOMETH__c</columns>
-        <columns>BCBYMETH__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>LAST_UPDATE</field>
-            <operation>equals</operation>
-            <value>2/10/2015 12:00 AM</value>
-        </filters>
-        <filters>
-            <field>STATUS_CBCL_0_5__c</field>
-            <operation>equals</operation>
-            <value>Complete</value>
-        </filters>
-        <label>2/10 young</label>
-    </listViews>
-    <listViews>
-        <fullName>X2_6</fullName>
-        <columns>LAST_UPDATE</columns>
-        <columns>NAME</columns>
-        <columns>Client__c</columns>
-        <columns>STATUS_CBCL_0_5__c</columns>
-        <columns>STATUS_CBCL_6_18__c</columns>
-        <columns>BDOACO__c</columns>
-        <columns>BDOACY__c</columns>
-        <columns>BCBOMETH__c</columns>
-        <columns>BCBYMETH__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>LAST_UPDATE</field>
-            <operation>equals</operation>
-            <value>2/6/2015 12:00 AM</value>
-        </filters>
-        <label>2/6</label>
-    </listViews>
-    <listViews>
-        <fullName>X2_6_old</fullName>
-        <columns>LAST_UPDATE</columns>
-        <columns>NAME</columns>
-        <columns>Client__c</columns>
-        <columns>STATUS_CBCL_0_5__c</columns>
-        <columns>STATUS_CBCL_6_18__c</columns>
-        <columns>BDOACO__c</columns>
-        <columns>BDOACY__c</columns>
-        <columns>BCBOMETH__c</columns>
-        <columns>BCBYMETH__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>LAST_UPDATE</field>
-            <operation>equals</operation>
-            <value>2/6/2015 12:00 AM</value>
-        </filters>
-        <filters>
-            <field>STATUS_CBCL_6_18__c</field>
-            <operation>equals</operation>
-            <value>Complete</value>
-        </filters>
-        <label>2/6 old</label>
-    </listViews>
-    <listViews>
-        <fullName>X2_6_young</fullName>
-        <columns>LAST_UPDATE</columns>
-        <columns>NAME</columns>
-        <columns>Client__c</columns>
-        <columns>STATUS_CBCL_0_5__c</columns>
-        <columns>STATUS_CBCL_6_18__c</columns>
-        <columns>BDOACO__c</columns>
-        <columns>BDOACY__c</columns>
-        <columns>BCBOMETH__c</columns>
-        <columns>BCBYMETH__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>LAST_UPDATE</field>
-            <operation>equals</operation>
-            <value>2/6/2015 12:00 AM</value>
-        </filters>
-        <filters>
-            <field>STATUS_CBCL_0_5__c</field>
-            <operation>equals</operation>
-            <value>Complete</value>
-        </filters>
-        <label>2/6 young</label>
-    </listViews>
-    <listViews>
-        <fullName>reportVals</fullName>
-        <columns>NAME</columns>
-        <columns>Client__c</columns>
-        <columns>STATUS_CBCL_0_5__c</columns>
-        <columns>STATUS_CBCL_6_18__c</columns>
-        <columns>BCBTSP__c</columns>
-        <columns>BCBTSPY__c</columns>
-        <columns>BCBTSS__c</columns>
-        <columns>BCBTSSY__c</columns>
-        <columns>BCBTST__c</columns>
-        <columns>BCBTSTY__c</columns>
-        <columns>BCBTSTN__c</columns>
-        <columns>BCBTSTNY__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>reportVals</label>
-    </listViews>
     <nameField>
         <displayFormat>CBCL-B-{000000}</displayFormat>
         <label>DS CBCL B ID</label>

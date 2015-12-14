@@ -49,9 +49,12 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fieldSets>
         <fullName>STATUS</fullName>
         <description>STATUS</description>
@@ -5177,10 +5180,6 @@
     <label>DS GTRAUMA</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>Client__c</columns>
-        <columns>GTDATE__c</columns>
-        <columns>GT21R__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -5377,5 +5376,12 @@
         <description>Response (No, Yes, Suspected, or Unknown) is REQUIRED</description>
         <errorConditionFormula>ISPICKVAL(GT9R__c,&apos;&apos;)</errorConditionFormula>
         <errorMessage>Response (No, Yes, Suspected, or Unknown) is REQUIRED for War/Terrorism/PV inside the U.S.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Other_Textfield</fullName>
+        <active>true</active>
+        <errorConditionFormula>OR(GT23RSP__c = &quot;test&quot;, GT23RSP__c = &quot;oh&quot;)</errorConditionFormula>
+        <errorDisplayField>GT23RSP__c</errorDisplayField>
+        <errorMessage>This item is in the list.</errorMessage>
     </validationRules>
 </CustomObject>

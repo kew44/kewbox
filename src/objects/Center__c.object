@@ -55,10 +55,13 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
     <enableEnhancedLookup>true</enableEnhancedLookup>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>Input_ID__c</fullName>
         <caseSensitive>false</caseSensitive>
@@ -125,12 +128,13 @@
     </fields>
     <label>Center</label>
     <listViews>
-        <fullName>All</fullName>
+        <fullName>My_Centers</fullName>
         <columns>NAME</columns>
         <columns>Name__c</columns>
-        <columns>CREATEDBY_USER</columns>
+        <columns>Type__c</columns>
+        <columns>Main_center__c</columns>
         <filterScope>Everything</filterScope>
-        <label>All</label>
+        <label>My Centers</label>
     </listViews>
     <nameField>
         <label>Center ID</label>

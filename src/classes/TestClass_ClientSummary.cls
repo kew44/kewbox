@@ -1,17 +1,39 @@
+/****
+*@description This test provides code coverage for Client Summary
+*
+*@group Test Script 
+*@group-content /ApexDocContent/Test/ClientSummary.htm
+*
+*@author Kelsey Willett
+*@date 11/18/2015
+*@modified date
+****/
+
 @isTest (SeeAllData=false)
-private class TestClass_ClientSummary {
+private class TestClass_ClientSummary {    
     
+    /****
+    *@description Initialize reference to TestClass_A_Utility
+    ****/
+    public static TestClass_A_Utility test_ut = new TestClass_A_Utility();
+    
+    /****
+    *@description Initialize reference to Utility
+    ****/
+    public static Utility ut = new Utility();
+    
+    /****
+    *@description Load required data from TestClassData
+    ****/
     @testSetup 
     static void setup() {
-        // Load DS_DATA into system
-        TestClassData_DS_DATA importData = new TestClassData_DS_DATA();      
+        TestClassData_DS_DATA importData = new TestClassData_DS_DATA();   
     }
     
+    /****
+    *@description method to test ClientSummaryController
+    ****/
     static TestMethod void Test_ClientSummaryController() {
-        
-        Utility ut = new Utility();
-        
-        TestClass_A_Utility test_ut = new TestClass_A_Utility();
         
         Client__c client = test_ut.createClient();
         
@@ -32,14 +54,11 @@ private class TestClass_ClientSummary {
         PageReference no = summary.No();
         PageReference yes = summary.Yes();
         
-        //String clientInfo = summary.getClientInfo();
+        summary.showPopup();     
+        summary.closePopup();   
         
-        
-        // need client who has TD record
-        
-    }
-    
-    
-    
-    
+        String forceRedirect = summary.forceRedirect;
+        Decimal sectionNum = summary.sectionNum;
+        String visitType = summary.visitType;     
+    }      
 }

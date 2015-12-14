@@ -47,9 +47,12 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fieldSets>
         <fullName>STATUS</fullName>
         <description>SDQ</description>
@@ -2672,69 +2675,18 @@
     <label>DS SDQ PSI CDI B</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
+        <columns>OBJECT_ID</columns>
         <columns>Client__c</columns>
-        <columns>STATUS_SDQ_P_04_10__c</columns>
-        <columns>STATUS_SDQ_P_11_17__c</columns>
-        <columns>STATUS_SDQ_S_11_17__c</columns>
-        <columns>BSDPDCL__c</columns>
-        <columns>BSDSUPSET__c</columns>
-        <columns>BSDPIMPH__c</columns>
-        <columns>BSDPIMPF__c</columns>
-        <columns>BSDPIMPC__c</columns>
-        <columns>BSDPIMPL__c</columns>
-        <columns>BSDPITYP__c</columns>
-        <columns>BSDSTOT__c</columns>
-        <columns>BSDSTYP__c</columns>
-        <columns>LAST_UPDATE</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>All1</fullName>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>Allnull</fullName>
-        <columns>Client__c</columns>
-        <columns>BEMONULLP__c</columns>
-        <columns>BEMONULLS__c</columns>
-        <columns>BHYPNULLP__c</columns>
-        <columns>BHYPNULLS__c</columns>
-        <columns>BKHBNULLP__c</columns>
-        <columns>BKHBNULLS__c</columns>
-        <columns>BOTCNULLP__c</columns>
-        <columns>BOTCNULLS__c</columns>
-        <columns>BBEHNULLP__c</columns>
-        <columns>BBEHNULLS__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>Allnull</label>
-    </listViews>
-    <listViews>
-        <fullName>Allnullparent</fullName>
-        <columns>Client__c</columns>
-        <columns>BEMONULLP__c</columns>
-        <columns>BHYPNULLP__c</columns>
-        <columns>BKHBNULLP__c</columns>
-        <columns>BOTCNULLP__c</columns>
-        <columns>BBEHNULLP__c</columns>
-        <columns>BSDPBTYP__c</columns>
-        <columns>BSDPETYP__c</columns>
-        <columns>BSDPHTYP__c</columns>
-        <columns>BSDPKTYP__c</columns>
-        <columns>BSDPOTYP__c</columns>
-        <columns>BSDPTYP__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>Allnullparent</label>
-    </listViews>
-    <listViews>
-        <fullName>w_date_All</fullName>
+        <columns>BDOV__c</columns>
         <columns>BDOASDOP__c</columns>
         <columns>BDOASDOS__c</columns>
         <columns>BDOASDYP__c</columns>
+        <columns>STATUS_SDQ_P_04_10__c</columns>
+        <columns>STATUS_SDQ_P_11_17__c</columns>
+        <columns>STATUS_SDQ_S_11_17__c</columns>
+        <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
-        <label>w date All</label>
+        <label>All</label>
     </listViews>
     <nameField>
         <label>DS SDQ PSI CDI B Name</label>
@@ -2753,7 +2705,7 @@
     </validationRules>
     <validationRules>
         <fullName>SDQ_OP_date_cannot_be_before_birth</fullName>
-        <active>false</active>
+        <active>true</active>
         <errorConditionFormula>Client__r.DOB1__c &gt; BDOASDOP__c</errorConditionFormula>
         <errorDisplayField>BDOASDOP__c</errorDisplayField>
         <errorMessage>Baseline date of administration cannot be before birth.</errorMessage>
@@ -2774,7 +2726,7 @@
     </validationRules>
     <validationRules>
         <fullName>SDQ_OS_date_cannot_be_before_birth</fullName>
-        <active>false</active>
+        <active>true</active>
         <errorConditionFormula>Client__r.DOB1__c &gt; BDOASDOS__c</errorConditionFormula>
         <errorDisplayField>BDOASDOS__c</errorDisplayField>
         <errorMessage>Baseline date of administration cannot be before birth.</errorMessage>
@@ -2795,7 +2747,7 @@
     </validationRules>
     <validationRules>
         <fullName>SDQ_YP_date_cannot_be_before_birth</fullName>
-        <active>false</active>
+        <active>true</active>
         <errorConditionFormula>Client__r.DOB1__c &gt; BDOASDYP__c</errorConditionFormula>
         <errorDisplayField>BDOASDYP__c</errorDisplayField>
         <errorMessage>Baseline date of administration cannot be before birth.</errorMessage>

@@ -1,13 +1,10 @@
-/*Page Description:
- * An apex class that keeps updates of a portal user in sync with its corresponding contact.
-   Guest users are never able to access this page.
- * Last Updated on:
- *  7/17/2014
- * Update Purpose:
- *      
- * Programmer:
- *  
- */
+/****
+*@description An apex class that keeps updates of a portal user in sync with its corresponding contact.
+   *Guest users are never able to access this page.
+*
+*@group User handling
+*@group-content /ApexDocContent/User/MyProfilePageController.htm
+****/
 
 public with sharing class MyProfilePageController {
 

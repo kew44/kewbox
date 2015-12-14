@@ -13,14 +13,14 @@ public with sharing class DS_SDQ_P_04_10_Report_Controller extends DS_BasicForm_
     
     public List<Visit> visits { get; set; }    
     
-    Datetime currentVisitDate = null;    
+    //Datetime currentVisitDate = null;    
     
     public class Visit {
         
         public String SECTION { get; set; }
         public String currentVisit { get; set; }  
         public String BorF {get;set;}
-        public Date DOASDYP {get;set;}
+        public Date DOA {get;set;}
         
         //scores and types
         //total
@@ -72,12 +72,10 @@ public with sharing class DS_SDQ_P_04_10_Report_Controller extends DS_BasicForm_
         form.getObjRecord();
         
         // Get field name from DS_DATA (variable)
-        bfVariableMap = form.getVariable('SDQ_P_04_10');//Source_Form);//'SDQ_SCORES_PARENT');            
-        //new DS_DATA__c.Variable__c for SDQ_SCORES ?
-        //SDQ_PARENT
+        bfVariableMap = form.getVariable('SDQ_P_04_10');
         
         //add stray variables to map
-        bfVariableMap.put('DOASDYP',   form.BorF+'DOASDYP__c');    
+        bfVariableMap.put('DOA',   form.BorF+'DOASDYP__c');      //changed alias to DOA to allow for op dates, expecting YP, so it is the one mapped 
         bfVariableMap.put('SDPTYP',   form.BorF+'SDPTYP__c');  
         bfVariableMap.put('SDPETYP',   form.BorF+'SDPETYP__c');  
         bfVariableMap.put('SDPBTYP',   form.BorF+'SDPBTYP__c');  
@@ -90,7 +88,7 @@ public with sharing class DS_SDQ_P_04_10_Report_Controller extends DS_BasicForm_
         Date tempVisitDate = Date.valueOf(form.obj.get(form.BorF+'DOASDYP__c'));
         
         //currentVisitDate         
-        currentVisitDate = (form.BorF == 'F') ? Datetime.newInstance(tempVisitDate, time.newInstance(0,0,0,0)) : null;
+    //    currentVisitDate = (form.BorF == 'F') ? Datetime.newInstance(tempVisitDate, time.newInstance(0,0,0,0)) : null;
         
         getAssesmentHistory();
         
@@ -191,7 +189,7 @@ public with sharing class DS_SDQ_P_04_10_Report_Controller extends DS_BasicForm_
                            '  FROM DS_SDQ_PSI_CDI_F__c' +                           
                            ' WHERE Client__c = \''+ form.cID + '\''+
                            'ORDER BY FDOASDYP__c, SECTION__c');
-        
+                  
         if(followup.size() > 0) addVisit(followup, 'F');
         
     }
@@ -205,7 +203,14 @@ public with sharing class DS_SDQ_P_04_10_Report_Controller extends DS_BasicForm_
             
             visit.BorF    = BorF;
             visit.SECTION = String.valueOf(s.get('SECTION__c'));
-            visit.DOASDYP= Date.valueOf(s.get(BorF+'DOASDYP__c'));
+            
+            //determine if old or young parent is used for this visit
+            if (Date.valueOf(s.get(BorF+'DOASDYP__c')) != null){                
+                visit.DOA= Date.valueOf(s.get(BorF+'DOASDYP__c'));
+            }
+            else if((Date.valueOf(s.get(BorF+'DOASDOP__c'))) != null){              
+                visit.DOA= Date.valueOf(s.get(BorF+'DOASDOP__c'));  
+            }
             
             visit.SDPTOT = Integer.valueOf(s.get(BorF+'SDPTOT__c'));
             visit.SDPTYP = String.valueOf(s.get(BorF+'SDPTYP__c'));

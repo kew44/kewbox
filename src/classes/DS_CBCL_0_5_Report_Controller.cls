@@ -12,9 +12,7 @@ public with sharing class DS_CBCL_0_5_Report_Controller extends DS_BasicForm_Con
     public Boolean displayHistory { get; set; }
     
     public Map<String, Visit> visits { get; set; }
-    
-    //Datetime currentVisitDate = null;
-    
+        
     public String currentVisitDate { get; set; }
     
     public String clinicalRange { get; set; }
@@ -138,11 +136,8 @@ public with sharing class DS_CBCL_0_5_Report_Controller extends DS_BasicForm_Con
         List<SObject> baseline = 
             Database.query('SELECT ' + form.ut.getFields('DS_CBCL_B__c') +   
                            '  FROM DS_CBCL_B__c' +                           
-                           ' WHERE Client__c = \''+ form.cID + '\'');
-        
-        System.debug('SELECT ' + form.ut.getFields('DS_CBCL_B__c') +   
-                           '  FROM DS_CBCL_B__c' +                           
-                           ' WHERE Client__c = \''+ form.cID + '\'');
+                           ' WHERE Client__c = \''+ form.cID + '\'' + 
+                           '   AND STATUS_CBCL_0_5__c != null');
         
         addVisit(baseline, 'B');
         
@@ -150,6 +145,7 @@ public with sharing class DS_CBCL_0_5_Report_Controller extends DS_BasicForm_Con
             Database.query('SELECT ' + form.ut.getFields('DS_CBCL_F__c') +   
                            '  FROM DS_CBCL_F__c' +                           
                            ' WHERE Client__c = \''+ form.cID + '\'' +
+                           '   AND STATUS_CBCL_0_5__c != null' + 
                            //'   AND FDOAPTSD__c <= ' + currentVisitDate.format('yyyy-MM-dd') +  
                            ' ORDER BY FDOACY__c, SECTION__c');
         

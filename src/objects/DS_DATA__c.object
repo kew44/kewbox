@@ -47,9 +47,12 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>Age_Range__c</fullName>
         <externalId>false</externalId>
@@ -950,41 +953,7 @@
         <type>Number</type>
         <unique>false</unique>
     </fields>
-    <fields>
-        <fullName>sync__c</fullName>
-        <externalId>false</externalId>
-        <label>sync</label>
-        <length>5</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
     <label>DS DATA</label>
-    <listViews>
-        <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>Gender__c</columns>
-        <columns>Data_Type__c</columns>
-        <columns>Page__c</columns>
-        <columns>Object__c</columns>
-        <columns>VARIABLE_NAME__c</columns>
-        <columns>Variable__c</columns>
-        <columns>Category__c</columns>
-        <columns>Content__c</columns>
-        <columns>Field__c</columns>
-        <columns>Form__c</columns>
-        <columns>Number__c</columns>
-        <columns>Question_Field__c</columns>
-        <columns>LAST_UPDATE</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>All1</fullName>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
     <listViews>
         <fullName>AllBlank</fullName>
         <columns>NAME</columns>
@@ -1057,68 +1026,6 @@
         </filters>
         <label>CBCL Form Info</label>
         <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>CBCL_Scale</fullName>
-        <columns>NAME</columns>
-        <columns>Age_Range__c</columns>
-        <columns>Gender__c</columns>
-        <columns>Raw_Score__c</columns>
-        <columns>T_Score__c</columns>
-        <columns>Percentile__c</columns>
-        <columns>Sig_Range__c</columns>
-        <columns>Scale__c</columns>
-        <columns>Scale_Number__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Data_Type__c</field>
-            <operation>equals</operation>
-            <value>DS_CBCL_SCALES</value>
-        </filters>
-        <label>CBCL Scale</label>
-    </listViews>
-    <listViews>
-        <fullName>CBCL_Scale2</fullName>
-        <columns>NAME</columns>
-        <columns>Age_Range__c</columns>
-        <columns>Gender__c</columns>
-        <columns>Raw_Score__c</columns>
-        <columns>T_Score__c</columns>
-        <columns>Percentile__c</columns>
-        <columns>Sig_Range__c</columns>
-        <columns>Scale__c</columns>
-        <columns>Scale_Number__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Data_Type__c</field>
-            <operation>equals</operation>
-            <value>DS_CBCL_SCALES</value>
-        </filters>
-        <label>CBCL Scale2</label>
-    </listViews>
-    <listViews>
-        <fullName>DS_CODELIST</fullName>
-        <columns>NAME</columns>
-        <columns>CODE__c</columns>
-        <columns>CODELIST__c</columns>
-        <columns>LONGLABEL__c</columns>
-        <columns>Category__c</columns>
-        <columns>Data_Type__c</columns>
-        <columns>Form__c</columns>
-        <columns>Object__c</columns>
-        <columns>Page__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Data_Type__c</field>
-            <operation>equals</operation>
-            <value>DS_CODELIST</value>
-        </filters>
-        <filters>
-            <field>CODELIST__c</field>
-            <operation>equals</operation>
-            <value>STRGTH</value>
-        </filters>
-        <label>CODELIST</label>
     </listViews>
     <listViews>
         <fullName>Form_Info</fullName>
@@ -1261,36 +1168,6 @@
         <language>en_US</language>
     </listViews>
     <listViews>
-        <fullName>TD_form_Info</fullName>
-        <columns>NAME</columns>
-        <columns>OBJECT_ID</columns>
-        <columns>Data_Type__c</columns>
-        <columns>Weight__c</columns>
-        <columns>Category__c</columns>
-        <columns>Form__c</columns>
-        <columns>Page__c</columns>
-        <columns>Variable__c</columns>
-        <columns>Content__c</columns>
-        <columns>Field__c</columns>
-        <columns>Number__c</columns>
-        <columns>Question_Field__c</columns>
-        <columns>SOURCE_FORM__c</columns>
-        <columns>Symptom__c</columns>
-        <columns>LAST_UPDATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Data_Type__c</field>
-            <operation>equals</operation>
-            <value>DS_TD_Form_Info</value>
-        </filters>
-        <filters>
-            <field>Weight__c</field>
-            <operation>equals</operation>
-            <value>0</value>
-        </filters>
-        <label>TD form Info</label>
-    </listViews>
-    <listViews>
         <fullName>Trauma_detail</fullName>
         <columns>NAME</columns>
         <columns>Form__c</columns>
@@ -1327,11 +1204,78 @@
         </filters>
         <label>Trauma detail_instructions</label>
     </listViews>
+    <listViews>
+        <fullName>Variable_SDQ</fullName>
+        <booleanFilter>1 AND (2 OR 3) AND 4</booleanFilter>
+        <columns>NAME</columns>
+        <columns>Data_Type__c</columns>
+        <columns>FILE_NAME__c</columns>
+        <columns>SOURCE_FORM__c</columns>
+        <columns>Object__c</columns>
+        <columns>LONG_DESCRIPTION__c</columns>
+        <columns>VARIABLE_NUMBER__c</columns>
+        <columns>VARIABLE_LABEL__c</columns>
+        <columns>VARIABLE_NAME__c</columns>
+        <columns>VARIABLE_TYPE__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Data_Type__c</field>
+            <operation>equals</operation>
+            <value>DS_Variable</value>
+        </filters>
+        <filters>
+            <field>Object__c</field>
+            <operation>equals</operation>
+            <value>DS_SDQ_PSI_CDI_B</value>
+        </filters>
+        <filters>
+            <field>Object__c</field>
+            <operation>equals</operation>
+            <value>DS_SDQ_PSI_CDI_F</value>
+        </filters>
+        <filters>
+            <field>SOURCE_FORM__c</field>
+            <operation>contains</operation>
+            <value>SDQ</value>
+        </filters>
+        <label>Variable SDQ</label>
+    </listViews>
+    <listViews>
+        <fullName>formnum</fullName>
+        <columns>NAME</columns>
+        <columns>OBJECT_ID</columns>
+        <columns>Data_Type__c</columns>
+        <columns>Page__c</columns>
+        <columns>Variable__c</columns>
+        <columns>Category__c</columns>
+        <columns>Content__c</columns>
+        <columns>Field__c</columns>
+        <columns>Number__c</columns>
+        <columns>Question_Field__c</columns>
+        <columns>Scale_Number__c</columns>
+        <columns>SOURCE_FORM__c</columns>
+        <columns>VARIABLE_LABEL__c</columns>
+        <columns>VARIABLE_NAME__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Category__c</field>
+            <operation>equals</operation>
+            <value>TD</value>
+        </filters>
+        <filters>
+            <field>Data_Type__c</field>
+            <operation>equals</operation>
+            <value>DS_Form_Info</value>
+        </filters>
+        <label>formnum</label>
+    </listViews>
     <nameField>
+        <displayFormat>DS DATA - {000000}</displayFormat>
         <label>DS DATA ID</label>
-        <type>Text</type>
+        <type>AutoNumber</type>
     </nameField>
     <pluralLabel>DS DATA</pluralLabel>
     <searchLayouts/>
-    <sharingModel>ReadWrite</sharingModel>
+    <sharingModel>Read</sharingModel>
 </CustomObject>

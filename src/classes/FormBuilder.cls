@@ -1,6 +1,28 @@
+/**
+* @author Danny Fu, Kelsey Willett
+* @date 11/30/2014
+* @modified date 11/30/2015
+*
+* @group Form Builder
+* @group-content /ApexDocContent/FormBuilder.htm
+*
+* @description An apex class on objects that handles createing the forms in client summary object 
+* depended on some specific conditions. 
+*/
 public class Formbuilder{
     
-    // New Summary method 
+    /****
+    * @description Create new client summary record  
+    * @param clientID client id
+    * @param formID form id (DS_DATA id)
+    * @param formCategory form category
+    * @param sectionNum section number
+    * @param required the form is required or optional 
+    * @return client_aummary___c 
+    * @example
+    * List<Client_Summary__c> newSummaryList = new List<Client_Summary__c>();
+    * newSummaryList.add(newSummary(client.id, form.id, 'baseline', '0', true));
+    */ 
     public static Client_Summary__c newSummary(String clientID, ID formID, String formCategory, String sectionNum, Boolean required) {
         
         //create new record of page information on Client_Summary__c
@@ -65,8 +87,6 @@ public class Formbuilder{
                 }               
             }
         }
-        System.debug(newSummaryList);
-        System.debug(baselineformInfo );
         
         //insert list of client summary info list
         insert newSummaryList;                               
@@ -161,15 +181,11 @@ public class Formbuilder{
                 if(f.Age_Range__c == null) {
                     
                     //add client summary to list
-                    newSummaryList.add(newSummary(c, f.id, f.Category__c, sectionNum, true));
-                    
-                }
-                
+                    newSummaryList.add(newSummary(c, f.id, f.Category__c, sectionNum, true));                    
+                }               
             }
-            System.debug(newSummaryList);
-            System.debug(followformInfo );
             
-            //if the form is FOLLOWUPINFO, set form id. ?
+            //if the form is FOLLOWUPINFO, set form id. 
             if(f.Form__c == 'DS_FOLLOWUPINFO') 
                 followupDataFormId = f.id;
         }
@@ -182,198 +198,168 @@ public class Formbuilder{
             
             //if summaryList Page is form id, set summary id to summaryList id. 
             if(s.Page__c == followupDataFormId)
-                followupInfoSummaryID = s.id;
-            
-            System.debug(followupInfoSummaryID);
-            
+                followupInfoSummaryID = s.id;                       
         }
         
         //return Summary ID. 
         return followupInfoSummaryID;               
     }
     
-    //display based on age and/or responses
-    public static void FormDisplayLogic(List<SObject> obj) { 
+    /****
+    * @description Control form display on client summary page depened on the response and age    
+    * @param obj a list of the SObject
+    * @return null
+    * @example
+	* if(Trigger.isAfter) {
+	* 	FormBuilder.FormDisplayLogic(Trigger.new);
+	* }
+	*/
+    public static void FormDisplayLogic(List<SObject> obj) {
         
-        //get section
-        String section = String.valueOf(obj.get(0).get('SECTION__c'));
-        System.debug(section);
+        Set<String> sections = new Set<String>();
+        Set<String> clients = new Set<String>();
+        String BorF = '';
+        
+        for(SObject o : obj) {
+            sections.add(String.valueof(o.get('SECTION__c')));
+            clients.add(String.valueof(o.get('CLIENT__c')));
+        }
         
         //determine b/f based on section
-        String BorF = (Integer.valueOf(section) > 0) ? 'F' : 'B';
-        System.debug(BorF);
-        
-        //initialize category String (DS_DATA__c.Category__c = Client_Summary__c.FORM_TYPE__c)      
-        String category;
-        
+        if(sections.isEmpty() == false)
+            BorF = (Integer.valueOf((new list<string>(sections))[0]) > 0) ? 'F' : 'B';
+                       
         //string to represent DS_DATA__c.FILE_NAME__c based on section number. FILE_NAME__c is distinct from Category__c or FORM_TYPE__c b/c it is all caps and is either baseline or followup, does not distinguish assessments
-        String dataFileName = (Integer.valueOf(section) > 0) ? 'FOLLOWUP' : 'BASELINE';
-        System.debug(dataFileName);
-        
+        String formFileName = (BorF == 'F') ? 'FOLLOWUP' : 'BASELINE';
+                       
         //age range string
         List<String> range = new List<String>(); 
         
         //list of forms that use display logic
-        List<String> forms = new List<String>{'DS_HEALTH', 'DS_MILITARY', 'DS_REFIMM'};
-            System.debug(forms);
-        
+        Set<String> displayLogicForms = new Set<String>{'DS_HEALTH', 'DS_MILITARY', 'DS_REFIMM'};
+                       
         //get form info from DS_DATA__c for affected forms
-        List<DS_DATA__c> formInfo = [SELECT Content__c, Variable__c, Form__c, id, Age_Range__c, Category__c, FILE_NAME__c, SECTION__c
-                                     FROM DS_DATA__c 
-                                     WHERE Data_Type__c = 'DS_Form_Info'
-                                     AND FILE_NAME__c =: dataFileName
-                                     AND (Form__c IN : forms
-                                          OR Age_Range__c != null)];
-        
-        //list of client string
-        List<String> clients = new List<String>();
+        List<DS_DATA__c> formInfo = [SELECT Content__c, Variable__c, Form__c, id, Age_Range__c, Category__c, FILE_NAME__c
+                                       FROM DS_DATA__c 
+                                      WHERE Data_Type__c = 'DS_Form_Info'
+                                        AND FILE_NAME__c =: formFileName
+                                        AND Category__c != 'GT'];
         
         //lists the Client_Summary__c record(s) to be inserted
-        List<Client_Summary__c> insertClientSummary = new List<Client_Summary__c>();
+        List<Client_Summary__c> insertClientSummary = new List<Client_Summary__c>();               
+                       
+        List<Client_Summary__c> existingClientSummary = [SELECT Client__c, Page__c, Page__r.Form__c, SECTION__c, Page__r.Page__c
+                                                           FROM Client_Summary__c
+                                                          WHERE SECTION__c IN : sections
+                                                            AND Page__r.FILE_NAME__c =: formFileName
+                                                            AND Client__c IN : clients];
+                       
+        Map<String, Client_Summary__c> existingClientSummaryMap = new Map<String, Client_Summary__c>(); 
         
-        Set<String> existingPages= new Set<String>();
+        if(existingClientSummary.size() > 0){
+            
+            for(Client_Summary__c summary : existingClientSummary) {
+                
+                // key = 'clientID-FormForceID-SECTION'
+                String[] key = new List<String>{summary.client__c, summary.Page__c, summary.SECTION__c};
+                
+                existingClientSummaryMap.put(StringUtils.joinArray(key, '-'), summary);
+                
+            }    
+            
+        }   
+                
+        for(DS_DATA__c info : formInfo) {//info loop before object
         
-        //iterates over the object
-        for(SObject b : obj) {
-            
-            clients.add(String.valueOf(b.get('Client__c')));
-            
-            String formName;   
-            
-            //String for Client ID
-            String clientID = String.valueOf(b.get('Client__c'));
-            System.debug(clientID);
-            
-            //String for section number
-            String sectionNum = String.valueOf(b.get('SECTION__c'));
-            System.debug(sectionNum);
-            
-            //get visit age
-            Integer VisitAge = Integer.valueOf(b.get(BorF + '_VISIT_AGE__c'));
-            System.debug(VisitAge);
-            
-            //iterates over DS_DATA__c                             
-            for(DS_DATA__c info : formInfo) {
-                
-                System.debug(formInfo.size());
-                
-                System.debug(info.FILE_NAME__c);
-                
-                System.debug(info.Category__c);
-                category = info.Category__c;
-                
-                System.debug(info.Form__c + ' has range of ' + info.Age_Range__c);             
-                
-                formName = String.valueOf(info.Form__c);
-                System.debug(formName);                 
-                
-                String formId;
-                
-                System.debug(insertClientSummary.size());
-                
-                System.debug(existingPages);
-                
-                formId = String.valueOf(info.id);
-                
-                System.debug(formId);
-                
-                System.debug(forms);
-                
-                for (String c : clients){
-                    
-                    System.debug(insertClientSummary);
-                    System.debug(info);
-                    
-                    if (info.Age_Range__c != null){
+            String formName = info.Form__c;
+            ID formId = info.id;
+            String category = info.Category__c; 
                         
-                        range= info.Age_Range__c.split('_', 0); 
-                        System.debug(range);
-                        
-                        //age-specific          
-                        if((Double.valueOf(range.get(0)) <= Double.valueOf(VisitAge))&& (Double.valueOF(range.get(1)) >= Double.valueOf(VisitAge))){  
-                            
-                            insertClientSummary.add(newSummary(clientID, formId, category, sectionNum, true)); 
-                            existingPages.add(clientID+'-'+formId);
-                            System.debug(existingPages);  
-                            
-                            if(existingPages.contains(clientId+'-'+formId)){
-                                System.debug(formName+' exists in '+existingPages);
-                            }
-                            
-                            System.debug(formName + ' created for ' + VisitAge + ' in ' + range );
-                            System.debug(insertClientSummary);  
-                        }  
-                    }
-                    
-                    else{
-                        
-                        System.debug(info.id);
-                        if(!existingPages.contains(clientId+'-'+formId)){
-                            System.debug(formName+'should not be made again');
-                            
-                            //baseline case
-                            if (BorF ==  'B'){
-                                if (
-                                    (b.get(BorF+'USBORN__c') == '0' || b.get(BorF+'PUSBORN__c') == '0')       ||    //DS_REFIMM
-                                    ((b.get(BorF+'MILSELF__c') == '1' || b.get(BorF+'MILFAMILY__c') == '1' || b.get(BorF+'MILFAMILY__c') == '2') )   ||    //DS_MILITARY
-                                    ((b.get(BorF+'HOVERALL__c') == '4' || b.get(BorF+'HOVERALL__c') == '5' || b.get(BorF+'HTHSTAT__c') == '1' || b.get(BorF+'HTHSTAT__c') == '2' || b.get(BorF+'HTHSTAT__c') == '3') )   //DS_HEALTH
-                                )
-                                {
-                                    insertClientSummary.add(newSummary(clientID, formId, category, sectionNum, true));
-                                    existingPages.add(clientID+'-'+formId);
-                                    System.debug(existingPages);  
-                                    
-                                    if(existingPages.contains(clientId+'-'+formId)){
-                                        System.debug(formName+' exists in '+existingPages);
-                                    }
-                                    
-                                    System.debug(  insertClientSummary);
-                                    System.debug( 'I maked ' +formName);
-                                }
-                                System.debug(insertClientSummary.size()); 
-                                System.debug(insertClientSummary); 
-                                System.debug(existingPages);     
-                            }
-                            
-                            //followup case
-                            else if (BorF == 'F'){ 
-                                
-                                if (
-                                    ((b.get(BorF+'MSTAT__c') == '1' ) ) ||      // DS_MILITARY
-                                    ((b.get(BorF+'HOVERALL__c') == '4' || b.get(BorF+'HOVERALL__c') == '5') )  // DS_HEALTH
-                                )
-                                {
-                                    insertClientSummary.add(newSummary(clientID, formId, category, sectionNum, true));     
-                                    existingPages.add(clientID+'-'+formId);
-                                    System.debug(existingPages);  
-                                    
-                                    if(existingPages.contains(clientId+'-'+formId)){
-                                        System.debug(formName+' exists in '+existingPages);
-                                    }
-                                    
-                                    System.debug(  insertClientSummary);
-                                    System.debug( 'I maked ' +formName);
-                                }
-                                
-                            }            
-                            System.debug(insertClientSummary);
-                            System.debug(existingPages);  
-                        }
-                        System.debug(info);                
-                        System.debug(range);                                
-                        System.debug(clientID);   
-                        System.debug(insertClientSummary);  
-                        System.debug(existingPages);  
-                    }                   
-                }
+            List<String> ageRange = (info.Age_Range__c != null) ? info.Age_Range__c.split('_', 0) : new List<String>();
+            
+            Double minAgeRange, maxAgeRange = 0;
+            
+            if(ageRange.size() > 0) {
+                minAgeRange = Double.valueOf(ageRange.get(0));
+                maxAgeRange = Double.valueOf(ageRange.get(1));
             }
-            System.debug(existingPages);  
-            System.debug(insertClientSummary);    
-            System.debug(dataFileName);
-            System.debug(BorF);
-            System.debug(section);
             
-            insert insertClientSummary;   
-        }
+            for(SObject o : obj) {//object loop after info
+                
+                String clientID = String.valueOf(o.get('client__c'));
+                String section = String.valueOf(o.get('SECTION__c'));
+                
+                //get visit age
+                Double visitAge = Double.valueOf(o.get(BorF + '_VISIT_AGE__c'));
+                
+                String[] key = new List<String>{clientID, formId, section};
+                
+                // Skip the form if it exists in the client summary                    
+                if(existingClientSummaryMap.containsKey(StringUtils.joinArray(key, '-'))) { 
+                    continue; 
+                }
+                else {
+                                                            
+                    // if the form has display logic
+                    if (displayLogicForms.contains(info.Form__c)) {
+                        
+                        // Form has age requirement and client visit age is not in the range, skip this form
+                        if(info.Age_Range__c != null) {
+                            // Visit age < Age range < Visit age
+                            if(visitAge < minAgeRange && maxAgeRange < visitAge) {
+                                continue;
+                            }
+                        }
+                        
+                        // baseline case
+                        if (BorF ==  'B') {
+                            //DS_REFIMM
+                            if((o.get(BorF+'USBORN__c') == '0' || o.get(BorF+'PUSBORN__c') == '0') && (formName == 'DS_REFIMM')) {   
+                                insertClientSummary.add(newSummary(clientID, formId, category, section, true)); 
+                            }
+                            //DS_MILITARY
+                            if((o.get(BorF+'MILSELF__c') == '1' || o.get(BorF+'MILFAMILY__c') == '1' || o.get(BorF+'MILFAMILY__c') == '2') && formName == 'DS_MILITARY') {
+                                insertClientSummary.add(newSummary(clientID, formId, category, section, true));                                
+                            }
+                            //DS_HEALTH
+                            if(((o.get(BorF+'HOVERALL__c') == '4' || o.get(BorF+'HOVERALL__c') == '5' || o.get(BorF+'HTHSTAT__c') == '1' || 
+                                 o.get(BorF+'HTHSTAT__c') == '2'  || o.get(BorF+'HTHSTAT__c') == '3') ) && (formName == 'DS_HEALTH')) {
+                                insertClientSummary.add(newSummary(clientID, formId, category, section, true)); 
+                            }
+                        }                               
+                        // followup case
+                        else if(BorF == 'F') {
+                            // DS_MILITARY
+                            if (o.get(BorF+'MSTAT__c') == '1' && formName == 'DS_MILITARY') {  
+                                insertClientSummary.add(newSummary(clientID, formId, category, section, true)); 
+                            }
+                            // DS_HEALTH
+                            if((o.get(BorF+'HOVERALL__c') == '4' || o.get(BorF+'HOVERALL__c') == '5') && formName == 'DS_HEALTH') {  
+                                insertClientSummary.add(newSummary(clientID, formId, category, section, true)); 
+                            }
+                        }
+                                                                                
+                    }
+                    // Forms have age requirement
+                    else if(info.Age_Range__c != null) {
+                        // Min age range <= Visit age <= Max age range
+                        if(minAgeRange <= visitAge && visitAge <= maxAgeRange) { 
+                            insertClientSummary.add(newSummary(clientID, formId, category, section, true));     
+                        }
+                    }
+                    // Forms don't have any special requirement and need to be filled out (for data import)
+                    else {
+                        insertClientSummary.add(newSummary(clientID, formId, category, section, true));
+                    }
+                                                    
+                }                          
+            
+            }          
+        
+        }  
+        
+        insert insertClientSummary;
+        
     }
+    
 }

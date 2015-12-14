@@ -1,43 +1,62 @@
-/*Page Description:
-* An apex page controller that exposes the client summary functionality
+/****
+*@description An apex page controller that exposes the client summary functionality
 * 
-* Update History -----------------------
+*@date 8/1/14
+*@modified date
+*@author KW
+*Purpose: found and fixed reference to DS_Form_Info__c
 *
-8/1/14-found and fixed reference to DS_Form_Info__c-KW
-7/31/14-LINK TO DS_Background_Family_Info__c-KW
-
-* Updated on: 7/30/2014
-* Update Purpose: 
+*@date 7/31/14
+*@modified date
+*@author KW
+*Purpose: LINK TO DS_Background_Family_Info__c
+* 
+*@date 7/30/2014
+*@modified date
+*@author Danny
+*Purpose: 
 *  Reduce the number of query
 *  1.Move building client_summary__c data function to Datase_base_SSI trigger. 
 *  2.After creating the clients, it would create the baseline and 
 *    general trauma forms in Client_summary__c.
 *  Total query number reduced from 23 -> 6. 
-* Edited by: Danny
-*
-* Updated on: 7/25/2014
-* Update Purpose:
+* 
+*@date 7/25/2014
+*@modified date
+*@author Danny
+*Purpose: 
 *  Avoiding to use the query inside the loop in method traumaHistoryRowList()
 *  The total query number reduced from 51 -> 23 after modification.
-* Edited by: Danny
 *
-* Updated on: 7/17/2014
-* Update Purpose:
-*  Replace the DS_Form_Info__c object with the new structure object DS_Data__c 
-* Edited by: Danny
+* Edited by: 
+*@date 7/17/2014
+*@modified date
+*@author Danny
+*Purpose: Replace the DS_Form_Info__c object with the new structure object DS_Data__c 
 *
-5/6/15
-cleaned follow-up logic
-KW
-
-5/14
-changed from FollowUpFormBuilder class to FormBuilder
-
-7/16 
-Began modifying url for ClientSummaryReport to be usable for both baseline and followup
-
-10/2 visit type
-*/
+*@date 5/6/15
+*@modified date
+*@author KW
+*Purpose: cleaned follow-up logic
+* 
+*@date 5/14/15
+*@modified date
+*@author KW
+*Purpose: changed from FollowUpFormBuilder class to FormBuilder
+*
+*@date 7/16/15
+*@modified date
+*@author KW
+*Purpose: Began modifying url for ClientSummaryReport to be usable for both baseline and followup
+*
+*@date 10/2/15
+*@modified date
+*@author KW
+*Purpose: added display for followup visit type
+*
+*@group ClientSummary
+*@group-content /ApexDocContent/ClientSummary/ClientSummaryController.htm
+****/
 
 public with sharing class ClientSummaryController {
     

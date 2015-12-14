@@ -47,9 +47,12 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fieldSets>
         <fullName>STATUS</fullName>
         <description>status fields</description>
@@ -74,6 +77,18 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Client_ID__c</fullName>
+        <externalId>false</externalId>
+        <formula>Client__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Client ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Client__c</fullName>
         <externalId>false</externalId>
         <label>Client</label>
@@ -86,6 +101,16 @@
         <trackTrending>false</trackTrending>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>FDOAPTSDP__c</fullName>
+        <description>Date of administration? Parent</description>
+        <externalId>false</externalId>
+        <label>FDOAPTSDP</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
     </fields>
     <fields>
         <fullName>FDOAPTSD__c</fullName>
@@ -109,6 +134,26 @@
         <type>Date</type>
     </fields>
     <fields>
+        <fullName>FMETPTSDP__c</fullName>
+        <description>How was this form administered? Parent</description>
+        <externalId>false</externalId>
+        <label>FMETPTSDP</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>FMETPTSD__c</fullName>
         <description>3. How was this form administered?</description>
         <externalId>false</externalId>
@@ -129,10 +174,38 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>FPTSAB1P__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>PTSD RI Symptom B1 Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSAB1P</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>FPTSAB1__c</fullName>
         <description>PTSD RI Symptom B1</description>
         <externalId>false</externalId>
         <label>FPTSAB1</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSAB2P__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>PTSD RI Symptom B2 Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSAB2P</label>
         <precision>1</precision>
         <required>false</required>
         <scale>0</scale>
@@ -155,10 +228,38 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>FPTSAB3P__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>PTSD RI Symptom B3 Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSAB3P</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>FPTSAB3__c</fullName>
         <description>PTSD RI Symptom B3</description>
         <externalId>false</externalId>
         <label>FPTSAB3</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSAB4P__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>PTSD RI Symptom B4 Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSAB4P</label>
         <precision>1</precision>
         <required>false</required>
         <scale>0</scale>
@@ -181,10 +282,38 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>FPTSAB5P__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>PTSD RI Symptom B5 Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSAB5P</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>FPTSAB5__c</fullName>
         <description>PTSD RI Symptom B5</description>
         <externalId>false</externalId>
         <label>FPTSAB5</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSAC1P__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>PTSD RI Symptom C1 Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSAC1P</label>
         <precision>1</precision>
         <required>false</required>
         <scale>0</scale>
@@ -207,10 +336,38 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>FPTSAC2P__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>PTSD RI Symptom C2 Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSAC2P</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>FPTSAC2__c</fullName>
         <description>PTSD RI Symptom C2</description>
         <externalId>false</externalId>
         <label>FPTSAC2</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSAD1P__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>PTSD RI Symptom D1 Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSAD1P</label>
         <precision>1</precision>
         <required>false</required>
         <scale>0</scale>
@@ -233,10 +390,38 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>FPTSAD2P__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>PTSD RI Symptom D2 Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSAD2P</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>FPTSAD2__c</fullName>
         <description>PTSDRI Symptom D2</description>
         <externalId>false</externalId>
         <label>FPTSAD2</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSAD3P__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>PTSD RI Symptom D3 Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSAD3P</label>
         <precision>1</precision>
         <required>false</required>
         <scale>0</scale>
@@ -259,10 +444,38 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>FPTSAD4P__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>PTSD RI Symptom D4 Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSAD4P</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>FPTSAD4__c</fullName>
         <description>PTSDRI Symptom D4</description>
         <externalId>false</externalId>
         <label>FPTSAD4</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSAD5P__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>PTSD RI Symptom D5 Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSAD5P</label>
         <precision>1</precision>
         <required>false</required>
         <scale>0</scale>
@@ -285,10 +498,38 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>FPTSAD6P__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>PTSD RI Symptom D6 Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSAD6P</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>FPTSAD6__c</fullName>
         <description>PTSDRI Symptom D6</description>
         <externalId>false</externalId>
         <label>FPTSAD6</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSAD7P__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>PTSD RI Symptom D7 Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSAD7P</label>
         <precision>1</precision>
         <required>false</required>
         <scale>0</scale>
@@ -311,10 +552,38 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>FPTSAE1P__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>PTSD RI Symptom E1 Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSAE1P</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>FPTSAE1__c</fullName>
         <description>PTSDRI Symptom E1</description>
         <externalId>false</externalId>
         <label>FPTSAE1</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSAE2P__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>PTSD RI Symptom E2 Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSAE2P</label>
         <precision>1</precision>
         <required>false</required>
         <scale>0</scale>
@@ -337,10 +606,38 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>FPTSAE3P__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>PTSD RI Symptom E3 Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSAE3P</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>FPTSAE3__c</fullName>
         <description>PTSDRI Symptom E3</description>
         <externalId>false</externalId>
         <label>FPTSAE3</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSAE4P__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>PTSD RI Symptom E4 Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSAE4P</label>
         <precision>1</precision>
         <required>false</required>
         <scale>0</scale>
@@ -363,6 +660,20 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>FPTSAE5P__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>PTSD RI Symptom E5 Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSAE5P</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>FPTSAE5__c</fullName>
         <description>PTSDRI Symptom E5</description>
         <externalId>false</externalId>
@@ -376,10 +687,38 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>FPTSAE6P__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>PTSD RI Symptom E6 Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSAE6P</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>FPTSAE6__c</fullName>
         <description>PTSDRI Symptom E6</description>
         <externalId>false</externalId>
         <label>FPTSAE6</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSAPPCNP__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Record is Appropriate Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSAPPCNP</label>
         <precision>1</precision>
         <required>false</required>
         <scale>0</scale>
@@ -403,6 +742,19 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>FPTSAPPCP__c</fullName>
+        <description>Record is Appropriate Parent</description>
+        <externalId>false</externalId>
+        <formula>IF( FPTSAPPCNP__c =  1 , &apos;Yes&apos;, &apos;No&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>FPTSAPPCP</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>FPTSAPPC__c</fullName>
         <externalId>false</externalId>
         <formula>IF( FPTSAPPCN__c = 1 , &apos;Yes&apos;, &apos;No&apos;)</formula>
@@ -415,11 +767,40 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>FPTSBCNP__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>PTSD Crit B cutoff - Num Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSBCNP</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>FPTSBCN__c</fullName>
         <description>PTSD Crit B cutoff - Num</description>
         <externalId>false</externalId>
         <label>FPTSBCN</label>
         <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSBMNP__c</fullName>
+        <description>PTSD Crit B met - Num Parent</description>
+        <externalId>false</externalId>
+        <formula>IF( FPTSBCNP__c  &gt;=  1, 1, 0 )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>FPTSBMNP</label>
+        <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
@@ -442,6 +823,19 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>FPTSBMP__c</fullName>
+        <description>PTSD Crit B met Parent</description>
+        <externalId>false</externalId>
+        <formula>IF( FPTSBMNP__c  =  1, &quot;Yes&quot;, &quot;No&quot; )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>FPTSBMP</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>FPTSBM__c</fullName>
         <externalId>false</externalId>
         <formula>IF( FPTSBMN__c = 1, &quot;Yes&quot;, &quot;No&quot; )</formula>
@@ -451,6 +845,21 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSBRNP__c</fullName>
+        <description>PTSD Crit B raw score - Num Parent</description>
+        <externalId>false</externalId>
+        <formula>FPTSAB1P__c  +  FPTSAB2P__c  +  FPTSAB3P__c  +  FPTSAB4P__c  +  FPTSAB5P__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>FPTSBRNP</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
         <unique>false</unique>
     </fields>
     <fields>
@@ -468,11 +877,40 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>FPTSCCNP__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>PTSD Crit C cutoff - Num Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSCCNP</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>FPTSCCN__c</fullName>
         <description>PTSD Crit C cutoff - Num</description>
         <externalId>false</externalId>
         <label>FPTSCCN</label>
         <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSCMNP__c</fullName>
+        <description>PTSD Crit C met - Num Parent</description>
+        <externalId>false</externalId>
+        <formula>IF( FPTSCCNP__c  &gt;= 1, 1, 0 )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>FPTSCMNP</label>
+        <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
@@ -495,6 +933,19 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>FPTSCMP__c</fullName>
+        <description>PTSD Crit C met Parent</description>
+        <externalId>false</externalId>
+        <formula>IF( FPTSCMNP__c  =  1, &quot;Yes&quot;, &quot;No&quot; )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>FPTSCMP</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>FPTSCM__c</fullName>
         <externalId>false</externalId>
         <formula>IF( FPTSCMN__c = 1, &quot;Yes&quot;, &quot;No&quot; )</formula>
@@ -504,6 +955,21 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSCRNP__c</fullName>
+        <description>PTSD Crit C raw score - Num Parent</description>
+        <externalId>false</externalId>
+        <formula>FPTSAC1P__c  +  FPTSAC2P__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>FPTSCRNP</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
         <unique>false</unique>
     </fields>
     <fields>
@@ -518,6 +984,42 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSD1P__c</fullName>
+        <description>Do these reactions (thoughts and feelings) bother or upset your child a lot? Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSD1P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FPTSD1SPP__c</fullName>
+        <description>Describe distress Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSD1SPP</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
         <unique>false</unique>
     </fields>
     <fields>
@@ -541,6 +1043,20 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>FPTSDCNP__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>PTSD Crit D cutoff - Num Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSDCNP</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>FPTSDCN__c</fullName>
         <description>PTSD Crit D cutoff - Num</description>
         <externalId>false</externalId>
@@ -554,6 +1070,17 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>FPTSDCP__c</fullName>
+        <description>Significant Distress - FORMULA Parent</description>
+        <externalId>false</externalId>
+        <formula>VALUE(TEXT( FPTSD1P__c )) =  1</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>FPTSDCP</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>FPTSDC__c</fullName>
         <externalId>false</externalId>
         <formula>VALUE(TEXT( FPTSD1__c )) = 1</formula>
@@ -562,6 +1089,21 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FPTSDMNP__c</fullName>
+        <description>PTSD Crit D met - Num Parent</description>
+        <externalId>false</externalId>
+        <formula>IF( FPTSDCNP__c  &gt;=  2, 1, 0 )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>FPTSDMNP</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>FPTSDMN__c</fullName>
@@ -578,6 +1120,19 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>FPTSDMP__c</fullName>
+        <description>PTSD Crit D met Parent</description>
+        <externalId>false</externalId>
+        <formula>IF( FPTSDMNP__c  =  1, &quot;Yes&quot;, &quot;No&quot; )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>FPTSDMP</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>FPTSDM__c</fullName>
         <externalId>false</externalId>
         <formula>IF( FPTSDMN__c = 1, &quot;Yes&quot;, &quot;No&quot; )</formula>
@@ -587,6 +1142,21 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSDRNP__c</fullName>
+        <description>PTSD Crit D raw score - Num Parent</description>
+        <externalId>false</externalId>
+        <formula>FPTSAD1P__c  +  FPTSAD2P__c  + FPTSAD3P__c  +  FPTSAD4P__c  +  FPTSAD5P__c  +  FPTSAD6P__c  +  FPTSAD7P__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>FPTSDRNP</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
         <unique>false</unique>
     </fields>
     <fields>
@@ -602,6 +1172,26 @@
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSDURAP__c</fullName>
+        <description>Have some of these reactions lasted at least one month? Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSDURAP</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
     </fields>
     <fields>
         <fullName>FPTSDURA__c</fullName>
@@ -624,11 +1214,40 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>FPTSECNP__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>PTSD Crit E cutoff - Num Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSECNP</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>FPTSECN__c</fullName>
         <description>PTSD Crit E cutoff - Num</description>
         <externalId>false</externalId>
         <label>FPTSECN</label>
         <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSEMNP__c</fullName>
+        <description>PTSD Crit E met - Num Parent</description>
+        <externalId>false</externalId>
+        <formula>IF( FPTSECNP__c  &gt;=  2, 1, 0 )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>FPTSEMNP</label>
+        <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
@@ -651,6 +1270,19 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>FPTSEMP__c</fullName>
+        <description>PTSD Crit E met Parent</description>
+        <externalId>false</externalId>
+        <formula>IF( FPTSEMNP__c  =  1, &quot;Yes&quot;, &quot;No&quot; )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>FPTSEMP</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>FPTSEM__c</fullName>
         <externalId>false</externalId>
         <formula>IF( FPTSEMN__c = 1, &quot;Yes&quot;, &quot;No&quot; )</formula>
@@ -660,6 +1292,21 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSERNP__c</fullName>
+        <description>PTSD Crit E raw score - Num Parent</description>
+        <externalId>false</externalId>
+        <formula>FPTSAE1P__c  +  FPTSAE2P__c  +  FPTSAE3P__c  +  FPTSAE4P__c  +  FPTSAE5P__c  + FPTSAE6P__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>FPTSERNP</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
         <unique>false</unique>
     </fields>
     <fields>
@@ -677,6 +1324,17 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>FPTSFCP__c</fullName>
+        <description>Significant Functional Impairment - FORMULA Parent</description>
+        <externalId>false</externalId>
+        <formula>OR( FPTSFHCP__c, FPTSFSCP__c, FPTSFRCP__c, FPTSFPCP__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>FPTSFCP</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>FPTSFC__c</fullName>
         <externalId>false</externalId>
         <formula>OR( FPTSFHC__c, FPTSFSC__c, FPTSFRC__c, FPTSFPC__c )</formula>
@@ -685,6 +1343,30 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FPTSFH1P__c</fullName>
+        <description>Do these reactions (thoughts and feelings) make it harder for your child to get along with people at home? Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSFH1P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
     </fields>
     <fields>
         <fullName>FPTSFH1__c</fullName>
@@ -698,6 +1380,30 @@
             </picklistValues>
             <picklistValues>
                 <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FPTSFH2P__c</fullName>
+        <description>Do these reactions (thoughts and feelings) get your child into trouble at home? Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSFH2P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -727,6 +1433,30 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>FPTSFH3P__c</fullName>
+        <description>Do these reactions (thoughts and feelings) cause your child to have some other problem at home? Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSFH3P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>FPTSFH3__c</fullName>
         <description>3. Do these reactions (thoughts and feelings) cause some other problem at home?</description>
         <externalId>false</externalId>
@@ -747,6 +1477,17 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>FPTSFHCP__c</fullName>
+        <description>Significant Functional Impairment Home - FORMULA Parent</description>
+        <externalId>false</externalId>
+        <formula>MAX( VALUE(TEXT(FPTSFH1P__c)) , VALUE(TEXT(FPTSFH2P__c)) , VALUE(TEXT(FPTSFH3P__c)) ) =  1</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>FPTSFHCP</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>FPTSFHC__c</fullName>
         <externalId>false</externalId>
         <formula>MAX( VALUE(TEXT(FPTSFH1__c)) , VALUE(TEXT(FPTSFH2__c)) , VALUE(TEXT(FPTSFH3__c)) ) = 1</formula>
@@ -755,6 +1496,18 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FPTSFHSPP__c</fullName>
+        <description>Describe home Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSFHSPP</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>FPTSFHSP__c</fullName>
@@ -767,6 +1520,30 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSFP1P__c</fullName>
+        <description>Do these reactions (thoughts and feelings) make it harder for your child to do important things that other kids his/her age are doing? Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSFP1P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
     </fields>
     <fields>
         <fullName>FPTSFP1__c</fullName>
@@ -789,10 +1566,10 @@
         <type>Picklist</type>
     </fields>
     <fields>
-        <fullName>FPTSFP2__c</fullName>
-        <description>2. Other</description>
+        <fullName>FPTSFP2P__c</fullName>
+        <description>Do these reactions interfere with other areas of your child&apos;s development? Parent</description>
         <externalId>false</externalId>
-        <label>FPTSFP2</label>
+        <label>FPTSFP2P</label>
         <picklist>
             <picklistValues>
                 <fullName>0</fullName>
@@ -802,11 +1579,26 @@
                 <fullName>1</fullName>
                 <default>false</default>
             </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
+                <default>false</default>
+            </picklistValues>
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FPTSFPCP__c</fullName>
+        <description>Significant Functional Impairment Developmental - FORMULA Parent</description>
+        <externalId>false</externalId>
+        <formula>VALUE(TEXT(FPTSFP1P__c)) =  1</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>FPTSFPCP</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>FPTSFPC__c</fullName>
@@ -819,6 +1611,18 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>FPTSFPSPP__c</fullName>
+        <description>Developmental Progression Describe Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSFPSPP</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>FPTSFPSP__c</fullName>
         <description>2. Describe developmental progression</description>
         <externalId>false</externalId>
@@ -829,6 +1633,30 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSFR1P__c</fullName>
+        <description>Do these reactions (thoughts and feelings) make it harder for your child to get along with or make friends? Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSFR1P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
     </fields>
     <fields>
         <fullName>FPTSFR1__c</fullName>
@@ -851,6 +1679,17 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>FPTSFRCP__c</fullName>
+        <description>Significant Functional Impairment Peer - FORMULA Parent</description>
+        <externalId>false</externalId>
+        <formula>VALUE(TEXT(FPTSFR1P__c)) =  1</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>FPTSFRCP</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>FPTSFRC__c</fullName>
         <externalId>false</externalId>
         <formula>VALUE(TEXT(FPTSFR1__c)) = 1</formula>
@@ -859,6 +1698,18 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FPTSFRSPP__c</fullName>
+        <description>Describe Peer Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSFRSPP</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>FPTSFRSP__c</fullName>
@@ -873,6 +1724,30 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>FPTSFS1P__c</fullName>
+        <description>Do these reactions (thoughts and feelings) make it harder for your child to do well in school? Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSFS1P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>FPTSFS1__c</fullName>
         <description>1. Do these reactions (thoughts and feelings) make it harder for you to do well in school?</description>
         <externalId>false</externalId>
@@ -884,6 +1759,30 @@
             </picklistValues>
             <picklistValues>
                 <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FPTSFS2P__c</fullName>
+        <description>Do these reactions (thoughts and feelings) cause your child other problems at school? Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSFS2P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -913,6 +1812,17 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>FPTSFSCP__c</fullName>
+        <description>Significant Functional Impairment School - FORMULA Parent</description>
+        <externalId>false</externalId>
+        <formula>MAX( VALUE(TEXT(FPTSFS1P__c)) , VALUE(TEXT(FPTSFS2P__c)) ) =  1</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>FPTSFSCP</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>FPTSFSC__c</fullName>
         <externalId>false</externalId>
         <formula>MAX( VALUE(TEXT(FPTSFS1__c)) , VALUE(TEXT(FPTSFS2__c)) ) = 1</formula>
@@ -921,6 +1831,18 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FPTSFSSPP__c</fullName>
+        <description>Describe school Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSFSSPP</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>FPTSFSSP__c</fullName>
@@ -932,6 +1854,21 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSOCNP__c</fullName>
+        <description>PTSD score criteria - Num Parent</description>
+        <externalId>false</externalId>
+        <formula>IF( ( FPTSBMNP__c  +  FPTSCMN__c  +  FPTSDMNP__c  +  FPTSEMNP__c  +  if(OR(FPTSDCP__c  =  true, FPTSFCP__c  =  true), 1, 0) )  =  6 , 1, 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>FPTSOCNP</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
         <unique>false</unique>
     </fields>
     <fields>
@@ -949,6 +1886,19 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>FPTSOCP__c</fullName>
+        <description>PTSD score criteria Parent</description>
+        <externalId>false</externalId>
+        <formula>IF(FPTSOCNP__c  =  1, &apos;Yes&apos;, &apos;No&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>FPTSOCP</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>FPTSOC__c</fullName>
         <externalId>false</externalId>
         <formula>IF(FPTSOCN__c = 1, &apos;Yes&apos;, &apos;No&apos;)</formula>
@@ -958,6 +1908,21 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSORNP__c</fullName>
+        <description>PTSD overall raw - Num (PTSD Met) Parent</description>
+        <externalId>false</externalId>
+        <formula>FPTSBRNP__c  +  FPTSCRNP__c  +  FPTSDRNP__c  +  FPTSERNP__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>FPTSORNP</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
         <unique>false</unique>
     </fields>
     <fields>
@@ -973,6 +1938,42 @@
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSV10P__c</fullName>
+        <description>My child has bad dreams about what happened, or other bad dreams.</description>
+        <externalId>false</externalId>
+        <label>FPTSV10P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
     </fields>
     <fields>
         <fullName>FPTSV10__c</fullName>
@@ -998,6 +1999,42 @@
             </picklistValues>
             <picklistValues>
                 <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FPTSV11P__c</fullName>
+        <description>When something reminds my child of what happened, he/she gets very upset, afraid, or sad.</description>
+        <externalId>false</externalId>
+        <label>FPTSV11P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -1039,6 +2076,42 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>FPTSV12P__c</fullName>
+        <description>My child has trouble feeling happiness or love.</description>
+        <externalId>false</externalId>
+        <label>FPTSV12P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>FPTSV12__c</fullName>
         <description>12D7 I have trouble feeling happiness or love.</description>
         <externalId>false</externalId>
@@ -1062,6 +2135,42 @@
             </picklistValues>
             <picklistValues>
                 <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FPTSV13P__c</fullName>
+        <description>My child tries not to think about or have feelings about what happened.</description>
+        <externalId>false</externalId>
+        <label>FPTSV13P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -1103,6 +2212,42 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>FPTSV14P__c</fullName>
+        <description>When something reminds my child of what happened, he/she has strong feelings in his/her body, like heart beating fast, headaches, or stomach aches.</description>
+        <externalId>false</externalId>
+        <label>FPTSV14P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>FPTSV14__c</fullName>
         <description>14B5 When something reminds me of what happened, I have strong feelings in my body, like my heart beats fast, my head aches, or my stomach aches.</description>
         <externalId>false</externalId>
@@ -1126,6 +2271,42 @@
             </picklistValues>
             <picklistValues>
                 <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FPTSV15P__c</fullName>
+        <description>My child is mad with someone for making the bad thing happen, not doing more to stop it, or to help after.</description>
+        <externalId>false</externalId>
+        <label>FPTSV15P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -1167,6 +2348,42 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>FPTSV16P__c</fullName>
+        <description>My child has thoughts like &quot;I will never be able to trust other people.&quot;</description>
+        <externalId>false</externalId>
+        <label>FPTSV16P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>FPTSV16__c</fullName>
         <description>16D2 I have thoughts like &quot;I will never be able to trust other people.&quot;</description>
         <externalId>false</externalId>
@@ -1190,6 +2407,42 @@
             </picklistValues>
             <picklistValues>
                 <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FPTSV17P__c</fullName>
+        <description>My child feels alone even when he/she is around other people.</description>
+        <externalId>false</externalId>
+        <label>FPTSV17P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -1231,6 +2484,42 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>FPTSV18P__c</fullName>
+        <description>My child has upsetting thoughts, pictures, or sounds of what happened come to mind when he/she doesn’t want them to.</description>
+        <externalId>false</externalId>
+        <label>FPTSV18P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>FPTSV18__c</fullName>
         <description>18B1 I have upsetting thoughts, pictures, or sounds of what happened come into my mind when I don&apos;t want them to.</description>
         <externalId>false</externalId>
@@ -1254,6 +2543,42 @@
             </picklistValues>
             <picklistValues>
                 <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FPTSV19P__c</fullName>
+        <description>My child feels that part of what happened was his/her fault.</description>
+        <externalId>false</externalId>
+        <label>FPTSV19P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -1295,6 +2620,42 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>FPTSV1P__c</fullName>
+        <description>My child is on the lookout for danger or things that he/she is afraid of (like looking over his/her shoulder even when nothing is there).</description>
+        <externalId>false</externalId>
+        <label>FPTSV1P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>FPTSV1__c</fullName>
         <description>1E3 I am on the lookout for danger or things that I am afraid of (like looking over my shoulder even when nothing is there).</description>
         <externalId>false</externalId>
@@ -1318,6 +2679,42 @@
             </picklistValues>
             <picklistValues>
                 <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FPTSV20P__c</fullName>
+        <description>My child feels he/she hurt himself/herself on purpose.</description>
+        <externalId>false</externalId>
+        <label>FPTSV20P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -1359,6 +2756,42 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>FPTSV21P__c</fullName>
+        <description>My child has trouble going to sleep, wakes up often, or has trouble getting back to sleep.</description>
+        <externalId>false</externalId>
+        <label>FPTSV21P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>FPTSV21__c</fullName>
         <description>21E6 I have trouble going to sleep, wake up often, or have trouble getting back to sleep.</description>
         <externalId>false</externalId>
@@ -1382,6 +2815,42 @@
             </picklistValues>
             <picklistValues>
                 <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FPTSV22P__c</fullName>
+        <description>My child feels ashamed or embarrassed over what happened.</description>
+        <externalId>false</externalId>
+        <label>FPTSV22P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -1423,6 +2892,42 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>FPTSV23P__c</fullName>
+        <description>My child has trouble remembering important parts of what happened.</description>
+        <externalId>false</externalId>
+        <label>FPTSV23P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>FPTSV23__c</fullName>
         <description>23D1 I have trouble remembering important parts of what happened.</description>
         <externalId>false</externalId>
@@ -1446,6 +2951,42 @@
             </picklistValues>
             <picklistValues>
                 <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FPTSV24P__c</fullName>
+        <description>My child feels jumpy or startles easily, like when he/she hears a loud noise or when something surprises him/her.</description>
+        <externalId>false</externalId>
+        <label>FPTSV24P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -1487,6 +3028,42 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>FPTSV25P__c</fullName>
+        <description>My child feels afraid or scared.</description>
+        <externalId>false</externalId>
+        <label>FPTSV25P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>FPTSV25__c</fullName>
         <description>25D4 I feel afraid or scared.</description>
         <externalId>false</externalId>
@@ -1510,6 +3087,42 @@
             </picklistValues>
             <picklistValues>
                 <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FPTSV26P__c</fullName>
+        <description>My child does risky or unsafe things that could really hurt him/her or someone else.</description>
+        <externalId>false</externalId>
+        <label>FPTSV26P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -1551,6 +3164,42 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>FPTSV27P__c</fullName>
+        <description>My child wants to get back at someone for what happened.</description>
+        <externalId>false</externalId>
+        <label>FPTSV27P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>FPTSV27__c</fullName>
         <description>27D4 I want to get back at someone for what happened.</description>
         <externalId>false</externalId>
@@ -1574,6 +3223,42 @@
             </picklistValues>
             <picklistValues>
                 <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FPTSV28P__c</fullName>
+        <description>My child feels like he/she is seeing himself/herself or what he/she is doing from outside his/her body (like watching himself/herself in a movie).</description>
+        <externalId>false</externalId>
+        <label>FPTSV28P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -1615,6 +3300,42 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>FPTSV29P__c</fullName>
+        <description>My child feels not connected to his/her body, like he/she is not really there inside.</description>
+        <externalId>false</externalId>
+        <label>FPTSV29P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>FPTSV29__c</fullName>
         <description>29A1 I feel not connected to my body, like I&apos;m not really there inside.</description>
         <externalId>false</externalId>
@@ -1638,6 +3359,42 @@
             </picklistValues>
             <picklistValues>
                 <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FPTSV2P__c</fullName>
+        <description>My child has thoughts like &quot;I am bad.&quot;</description>
+        <externalId>false</externalId>
+        <label>FPTSV2P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -1679,6 +3436,42 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>FPTSV30P__c</fullName>
+        <description>My child feels like things around him/her look strange, different, or like he/she is in a fog.</description>
+        <externalId>false</externalId>
+        <label>FPTSV30P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>FPTSV30__c</fullName>
         <description>30A2 I feel like things around me look strange, different, or like I am in a fog.</description>
         <externalId>false</externalId>
@@ -1702,6 +3495,42 @@
             </picklistValues>
             <picklistValues>
                 <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FPTSV31P__c</fullName>
+        <description>My child feels like things around him/her are not real, like he/she is in a dream.</description>
+        <externalId>false</externalId>
+        <label>FPTSV31P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -1743,6 +3572,42 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>FPTSV3P__c</fullName>
+        <description>My child tries to stay away from people, places, or things that remind him/her about what happened.</description>
+        <externalId>false</externalId>
+        <label>FPTSV3P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>FPTSV3__c</fullName>
         <description>3C2 I try to stay away from people, places, or things that make me remember what happened.</description>
         <externalId>false</externalId>
@@ -1766,6 +3631,42 @@
             </picklistValues>
             <picklistValues>
                 <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FPTSV4P__c</fullName>
+        <description>My child gets upset easily or gets into arguments or physical fights.</description>
+        <externalId>false</externalId>
+        <label>FPTSV4P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -1807,6 +3708,42 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>FPTSV5P__c</fullName>
+        <description>My child feels like he/she is back at the time when the bad thing happened, like it&apos;s happening all over again.</description>
+        <externalId>false</externalId>
+        <label>FPTSV5P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>FPTSV5__c</fullName>
         <description>5B3 I feel like I am back at the time when the bad thing happened, like it&apos;s happening all over again.</description>
         <externalId>false</externalId>
@@ -1830,6 +3767,42 @@
             </picklistValues>
             <picklistValues>
                 <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FPTSV6P__c</fullName>
+        <description>My child feels like what happened was sickening or gross.</description>
+        <externalId>false</externalId>
+        <label>FPTSV6P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -1871,6 +3844,42 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>FPTSV7P__c</fullName>
+        <description>My child doesn&apos;t feel like doing things with family or friends or other things that he/she liked to do.</description>
+        <externalId>false</externalId>
+        <label>FPTSV7P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>FPTSV7__c</fullName>
         <description>7D5 I don&apos;t feel like doing things with my family or friends or other things that I liked to do.</description>
         <externalId>false</externalId>
@@ -1894,6 +3903,42 @@
             </picklistValues>
             <picklistValues>
                 <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FPTSV8P__c</fullName>
+        <description>My child has trouble concentrating or paying attention.</description>
+        <externalId>false</externalId>
+        <label>FPTSV8P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -1935,6 +3980,42 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>FPTSV9P__c</fullName>
+        <description>My child has thoughts like &quot;The world is really dangerous.&quot;</description>
+        <externalId>false</externalId>
+        <label>FPTSV9P</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>99</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>FPTSV9__c</fullName>
         <description>9D2 I have thoughts like &quot;The world is really dangerous.&quot;</description>
         <externalId>false</externalId>
@@ -1967,10 +4048,38 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>FPTSVDA1P__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Dissociative Symptoms A1 Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSVDA1P</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>FPTSVDA1__c</fullName>
         <description>PTSD Dissociative Symptoms Highest Score 28 and 29</description>
         <externalId>false</externalId>
         <label>FPTSVDA1</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSVDA2P__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Dissociative Symptoms A2 Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSVDA2P</label>
         <precision>1</precision>
         <required>false</required>
         <scale>0</scale>
@@ -1993,11 +4102,40 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>FPTSVDACNP__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Cut off number for symptom A Parent</description>
+        <externalId>false</externalId>
+        <label>FPTSVDACNP</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>FPTSVDACN__c</fullName>
         <description>Cut off number for symptom A</description>
         <externalId>false</externalId>
         <label>FPTSVDACN</label>
         <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSVDARNP__c</fullName>
+        <description>Dissociative Symptoms Sum A1 and A2 Parent</description>
+        <externalId>false</externalId>
+        <formula>FPTSVDA1P__c  +  FPTSVDA2P__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>FPTSVDARNP</label>
+        <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
@@ -2020,6 +4158,21 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>FPTSVDSNP__c</fullName>
+        <description>One or more of the Dissociative Symptoms are present Parent</description>
+        <externalId>false</externalId>
+        <formula>IF( FPTSVDACNP__c  &gt;=  1, 1, 0 )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>FPTSVDSNP</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>FPTSVDSN__c</fullName>
         <externalId>false</externalId>
         <formula>IF( FPTSVDACN__c &gt;= 1, 1, 0 )</formula>
@@ -2031,6 +4184,19 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSVDSP__c</fullName>
+        <description>DSM-5 PTSD Diagnosis Subtype Parent</description>
+        <externalId>false</externalId>
+        <formula>IF( FPTSVDSNP__c  =  1, &quot;Yes&quot;, &quot;No&quot; )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>FPTSVDSP</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
         <unique>false</unique>
     </fields>
     <fields>
@@ -2079,12 +4245,6 @@
     <label>DS PTSD CA F</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>Client__c</columns>
-        <columns>FDOAPTSD__c</columns>
-        <columns>SECTION__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>FDOV__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

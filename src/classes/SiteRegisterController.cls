@@ -1,12 +1,9 @@
-/*Page Description:
- * An apex class that creates a portal user
- * Last Updated on:
- *  7/17/2014
- * Update Purpose:
- *      
- * Programmer:
- *  
- */
+/****
+*@description  An apex class that creates a portal user
+*
+*@group User handling
+*@group-content /ApexDocContent/User/SiteRegisterController.htm
+****/
 public with sharing class SiteRegisterController {
     // PORTAL_ACCOUNT_ID is the account on which the contact will be created on and then enabled as a portal user.
     // you need to add the account owner into the role hierarchy before this will work - please see Customer Portal Setup help for more information.       

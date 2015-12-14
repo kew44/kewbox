@@ -263,7 +263,7 @@ function confirmNew(url){
                                 
                                 <!--visit date-->
                                 <apex:outputPanel layout="none" rendered="{!NOT(traumaBtn)}">
-                                    Last Visit: &nbsp;
+                                    Last Modified: &nbsp;
                                     <apex:outputText value="{0,date,MM/dd/yyyy}">
                                         <apex:param value="{!gtObj['GTDATE__c']}" />
                                     </apex:outputText> 

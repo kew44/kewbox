@@ -309,10 +309,10 @@ div.bootwrap .form-table .striped-question .form-group {
 
 /* Follow-up icon for the subtitle */ 
 
-.followup .bPageTitle .content img {
+/*.followup .bPageTitle .content img {
     content: url("/servlet/servlet.ImageServer?id=015e0000000MLxy&oid=00De0000005UKMn&lastMod=1431964832000");
 }
 
 .followup .bPageTitle .content:after { content: ''; display: block;
     background-image: url("/servlet/servlet.ImageServer?id=015e0000000MLxy&oid=00De0000005UKMn&lastMod=1431964832000");
-}
+}*/

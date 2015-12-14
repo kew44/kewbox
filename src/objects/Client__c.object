@@ -53,10 +53,13 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
     <enableEnhancedLookup>true</enableEnhancedLookup>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>AGE__c</fullName>
         <externalId>false</externalId>
@@ -255,46 +258,20 @@
     </fields>
     <label>Client</label>
     <listViews>
-        <fullName>All</fullName>
-        <columns>CENTER__c</columns>
-        <columns>OBJECT_ID</columns>
-        <columns>NAME</columns>
+        <fullName>My_Clients</fullName>
         <columns>Clinician__c</columns>
+        <columns>NAME</columns>
         <columns>INIT__c</columns>
         <columns>GENDER__c</columns>
+        <columns>DOB1__c</columns>
         <columns>AGE__c</columns>
         <columns>CURRENT_AGE__c</columns>
-        <columns>DOB1__c</columns>
-        <columns>DOB2__c</columns>
-        <columns>SITEID__c</columns>
-        <columns>CREATEDBY_USER.ALIAS</columns>
+        <columns>CREATEDBY_USER</columns>
         <columns>CREATED_DATE</columns>
         <columns>LAST_UPDATE</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>test_cbcl</fullName>
         <columns>OBJECT_ID</columns>
-        <columns>NAME</columns>
-        <columns>Clinician__c</columns>
-        <columns>INIT__c</columns>
-        <columns>GENDER__c</columns>
-        <columns>AGE__c</columns>
-        <columns>CURRENT_AGE__c</columns>
-        <columns>DOB1__c</columns>
-        <columns>DOB2__c</columns>
-        <columns>SITEID__c</columns>
-        <columns>CREATEDBY_USER.ALIAS</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>Clinician__c</field>
-            <operation>equals</operation>
-            <value>6758-00-04</value>
-        </filters>
-        <label>test cbcl</label>
+        <label>My Clients</label>
     </listViews>
     <nameField>
         <label>Client ID</label>
@@ -304,7 +281,7 @@
     <pluralLabel>Clients</pluralLabel>
     <searchLayouts>
         <customTabListAdditionalFields>INIT__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>AGE__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CURRENT_AGE__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>CREATEDBY_USER.ALIAS</customTabListAdditionalFields>
         <searchResultsAdditionalFields>INIT__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>DOB1__c</searchResultsAdditionalFields>

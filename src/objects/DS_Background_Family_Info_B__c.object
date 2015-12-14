@@ -47,9 +47,12 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fieldSets>
         <fullName>STATUS</fullName>
         <description>STATUS</description>
@@ -7392,57 +7395,22 @@
     <label>DS Background Family Info B</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
+        <columns>OBJECT_ID</columns>
         <columns>Client__c</columns>
+        <columns>Client_ID__c</columns>
         <columns>BDOV__c</columns>
-        <columns>B_VISIT_AGE__c</columns>
-        <columns>BMET__c</columns>
+        <columns>ETHNIC__c</columns>
+        <columns>SECTION__c</columns>
         <columns>STATUS_DEMO__c</columns>
         <columns>STATUS_DOMENV__c</columns>
         <columns>STATUS_HEALTH__c</columns>
         <columns>STATUS_INSDOMENV__c</columns>
         <columns>STATUS_MILITARY__c</columns>
         <columns>STATUS_REFIMM__c</columns>
-        <columns>SECTION__c</columns>
         <columns>CREATED_DATE</columns>
         <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>All1</fullName>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>test_cbcl</fullName>
-        <booleanFilter>1 OR 2</booleanFilter>
-        <columns>OBJECT_ID</columns>
-        <columns>NAME</columns>
-        <columns>Client__c</columns>
-        <columns>Client_ID__c</columns>
-        <columns>BDOV__c</columns>
-        <columns>BMET__c</columns>
-        <columns>RUNK__c</columns>
-        <columns>STATUS_DEMO__c</columns>
-        <columns>STATUS_DOMENV__c</columns>
-        <columns>STATUS_HEALTH__c</columns>
-        <columns>STATUS_INSDOMENV__c</columns>
-        <columns>STATUS_MILITARY__c</columns>
-        <columns>STATUS_REFIMM__c</columns>
-        <columns>LAST_UPDATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Client__c</field>
-            <operation>greaterOrEqual</operation>
-            <value>6758-00-00226</value>
-        </filters>
-        <filters>
-            <field>Client_ID__c</field>
-            <operation>greaterOrEqual</operation>
-            <value>6758-00-00226</value>
-        </filters>
-        <label>test cbcl</label>
     </listViews>
     <nameField>
         <label>DS Background Family Info B Name</label>
@@ -7532,6 +7500,14 @@
 (ETHNICHUK__c=false))</errorConditionFormula>
         <errorDisplayField>ETHNIC__c</errorDisplayField>
         <errorMessage>If child is Hispanic or Latino, ethnicity must be indicated</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Demo_method_administered</fullName>
+        <active>true</active>
+        <description>How was this form (DEMO) administered?</description>
+        <errorConditionFormula>NOT(ISPICKVAL(STATUS_DEMO__c, &apos;&apos;)) &amp;&amp; ISPICKVAL(BMET__c , &apos;&apos;)</errorConditionFormula>
+        <errorDisplayField>BMET__c</errorDisplayField>
+        <errorMessage>Please indicate how this form was administered.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Demo_must_specify_number_visits</fullName>
@@ -7811,22 +7787,20 @@ Nothing can be entered here if &quot;Unknown&quot; (99) is selected.</descriptio
         <errorMessage>Neither &apos;Refused&apos; nor &apos;Unknown&apos; can be selected if a number has been entered.</errorMessage>
     </validationRules>
     <validationRules>
-        <fullName>Insdomenv_must_indicate_if_insured_child</fullName>
+        <fullName>Insdomenv_must_indicate_priv_or_pub_chi</fullName>
         <active>true</active>
-        <description>If NO (BCINANY=0) or UNKNOWN (BCINANY=99) selected, skip to question 3; If YES (BCINANY=1), specify type in (BCINPUB, BCINPRIV)
-Required Field</description>
+        <description>If NO (BCINANY=0) or UNKNOWN (BCINANY=99) selected, skip to question 3; If YES (BCINANY=1), specify type in (BCINPUB, BCINPRIV)</description>
         <errorConditionFormula>ISPICKVAL(BCINANY__c, &apos;1&apos;)&amp;&amp;((BCINPUB__c = false)&amp;&amp;( BCINPRIV__c = false))</errorConditionFormula>
         <errorDisplayField>BCINANY__c</errorDisplayField>
-        <errorMessage>Indicate public or private insurance.</errorMessage>
+        <errorMessage>You must indicate if the child has private or public insurance.</errorMessage>
     </validationRules>
     <validationRules>
-        <fullName>Insdomenv_must_indicate_if_insured_paren</fullName>
+        <fullName>Insdomenv_must_indicate_priv_or_pub_par</fullName>
         <active>true</active>
-        <description>If NO (BPINANY=0) or UNKNOWN (BPINANY=99) selected, skip to question 3; If YES (BPINANY=1), specify type in (BPINPUB, BPINPRIV)
-Required Field</description>
+        <description>If NO (BPINANY=0) or UNKNOWN (BPINANY=99) or selected, skip to question 5;  If YES (BPINANY=1), must specify type in (BPINPUB, BPINPRIV)</description>
         <errorConditionFormula>ISPICKVAL(BPINANY__c, &apos;1&apos;)&amp;&amp;((BPINPUB__c = false)&amp;&amp;( BPINPRIV__c = false))</errorConditionFormula>
         <errorDisplayField>BPINANY__c</errorDisplayField>
-        <errorMessage>Indicate public or private insurance.</errorMessage>
+        <errorMessage>You must indicate if the parent has private or public insurance.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Insdomenv_must_specify_other_private_ch</fullName>
@@ -7866,6 +7840,64 @@ Required Field</description>
         <description>If OTHER selected (BNOMHOUSE=98), this must be completed</description>
         <errorConditionFormula>ISPICKVAL(BNOMHOUSE__c, &apos;98&apos;)  &amp;&amp;  ISBLANK(BNOMHOUSESP__c)</errorConditionFormula>
         <errorMessage>Please specify where you [your child] have been living.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Insdomenv_must_specify_private_child_ins</fullName>
+        <active>true</active>
+        <description>If YES selected (BCINPRIV = 1), must choose from the following: BCINHMO, BCINPPO, BCINFFS, BCINOPRI, BCINPRUK</description>
+        <errorConditionFormula>(BCINPRIV__c = true) &amp;&amp;(
+                             (BCINHMO__c = false)&amp;&amp;
+                             (BCINPPO__c = false)&amp;&amp;
+                             (BCINFFS__c = false)&amp;&amp;
+                             (BCINOPRI__c = false)&amp;&amp;
+                             (BCINPRUK__c = false)
+)</errorConditionFormula>
+        <errorDisplayField>BCINPRIV__c</errorDisplayField>
+        <errorMessage>You must specify the type of private insurance that the child is receiving.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Insdomenv_must_specify_private_parent_in</fullName>
+        <active>true</active>
+        <description>If YES selected (BPINPRIV = 1), must choose from the following: BPINHMO, BPINPPO, BPINFFS, BPINOPRI</description>
+        <errorConditionFormula>(BPINPRIV__c = true) &amp;&amp;(
+                             (BPINHMO__c = false)&amp;&amp;
+                             (BPINPPO__c = false)&amp;&amp;
+                             (BPINFFS__c = false)&amp;&amp;
+                             (BPINOPRI__c = false)
+)</errorConditionFormula>
+        <errorDisplayField>BPINPRIV__c</errorDisplayField>
+        <errorMessage>You must specify the type of private insurance that the parent is receiving.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Insdomenv_must_specify_public_child_ins</fullName>
+        <active>true</active>
+        <description>If YES selected (BCINPUB = 1), must choose from the following: BCINMEDR, BCINMEDD, BCINMHC, BCINIH, BCINCHIP, BCINOPUB, BCINPBUK</description>
+        <errorConditionFormula>(BCINPUB__c = true) &amp;&amp;(
+                             (BCINMEDR__c = false)&amp;&amp;
+                             (BCINMEDD__c = false)&amp;&amp;
+                             (BCINMHC__c = false)&amp;&amp;
+                             (BCINIH__c = false)&amp;&amp;
+                             (BCINCHIP__c = false)&amp;&amp;
+                             (BCINOPUB__c = false)&amp;&amp;
+                             (BCINPBUK__c = false)
+)</errorConditionFormula>
+        <errorDisplayField>BCINOPUB__c</errorDisplayField>
+        <errorMessage>You must specify the type of public insurance that the child is receiving.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Insdomenv_must_specify_public_parent_ins</fullName>
+        <active>true</active>
+        <description>If YES selected (BPINPUB = 1), must choose from the following: BPINMEDR, BPINMEDD, BPINMHC, BPINIH, BPINCHIP, BPINOPUB</description>
+        <errorConditionFormula>(BPINPUB__c = true) &amp;&amp;(
+                             (BPINMEDR__c = false)&amp;&amp;
+                             (BPINMEDD__c = false)&amp;&amp;
+                             (BPINMHC__c = false)&amp;&amp;
+                             (BPINIH__c = false)&amp;&amp;
+                             (BPINCHIP__c = false)&amp;&amp;
+                             (BPINOPUB__c = false)
+)</errorConditionFormula>
+        <errorDisplayField>BPINPUB__c</errorDisplayField>
+        <errorMessage>You must specify the type of public insurance that the parent is receiving.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Military_NO_National_Guard_branch</fullName>

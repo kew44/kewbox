@@ -47,9 +47,12 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fieldSets>
         <fullName>STATUS</fullName>
         <description>STATUS</description>
@@ -7171,7 +7174,22 @@
     </fields>
     <label>DS Functioning Forms B</label>
     <listViews>
-        <fullName>All1</fullName>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Client_ID__c</columns>
+        <columns>SECTION__c</columns>
+        <columns>BDOV__c</columns>
+        <columns>STATUS_BIS__c</columns>
+        <columns>STATUS_BSLC__c</columns>
+        <columns>STATUS_CANSTR__c</columns>
+        <columns>STATUS_CLINEVAL__c</columns>
+        <columns>STATUS_FAPGAR__c</columns>
+        <columns>STATUS_INDSEV__c</columns>
+        <columns>STATUS_NOMS__c</columns>
+        <columns>STATUS_SERVREC__c</columns>
+        <columns>STATUS_YCINDSEV__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -7195,35 +7213,6 @@
         <filterScope>Everything</filterScope>
         <label>Servrec</label>
     </listViews>
-    <listViews>
-        <fullName>bceprim</fullName>
-        <columns>OBJECT_ID</columns>
-        <columns>Client__c</columns>
-        <columns>BCEPRIM__c</columns>
-        <columns>STATUS_CLINEVAL__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>LAST_UPDATE</columns>
-        <filterScope>Everything</filterScope>
-        <label>bceprim</label>
-    </listViews>
-    <listViews>
-        <fullName>fg</fullName>
-        <columns>Client__c</columns>
-        <columns>SECTION__c</columns>
-        <columns>STATUS_FAPGAR__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>BFAPGAR_MET__c</columns>
-        <columns>BFAPGAR_RAW__c</columns>
-        <columns>BFAPGAR1__c</columns>
-        <columns>BFAPGAR2__c</columns>
-        <columns>BFAPGAR3__c</columns>
-        <columns>BFAPGAR4__c</columns>
-        <columns>BFAPGAR5__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>fg</label>
-        <language>en_US</language>
-    </listViews>
     <nameField>
         <label>DS Functioning Forms B Name</label>
         <trackHistory>false</trackHistory>
@@ -7243,7 +7232,7 @@
     <validationRules>
         <fullName>Bis_date_left_cannot_be_before_start_dt</fullName>
         <active>true</active>
-        <errorConditionFormula>BCBISLFDT__c &gt;  BCBISTCDT__c</errorConditionFormula>
+        <errorConditionFormula>BCBISTCDT__c &gt; BCBISLFDT__c</errorConditionFormula>
         <errorDisplayField>BCBISLFDT__c</errorDisplayField>
         <errorMessage>Date client left treatment cannot be before date treatment started.</errorMessage>
     </validationRules>
@@ -7271,7 +7260,7 @@
     <validationRules>
         <fullName>Bis_dt_completed_cannot_be_before_start</fullName>
         <active>true</active>
-        <errorConditionFormula>BCBISCODT__c  &gt; BCBISTCDT__c</errorConditionFormula>
+        <errorConditionFormula>BCBISTCDT__c &gt; BCBISCODT__c</errorConditionFormula>
         <errorDisplayField>BCBISCODT__c</errorDisplayField>
         <errorMessage>Date treatment completed cannot be before date treatment started.</errorMessage>
     </validationRules>
@@ -7353,9 +7342,9 @@ ISPICKVAL( BCBISRECV__c, &apos;1&apos;)&amp;&amp;
     </validationRules>
     <validationRules>
         <fullName>Clineval_must_indicate_primary</fullName>
-        <active>false</active>
-        <description>&quot;If OTHER selected BCEPRIM=1, this must be completed</description>
-        <errorConditionFormula>ISPICKVAL(BCEPRIM__c , &apos;1&apos;) &amp;&amp; ISBLANK(BCEPRIMSP__c)</errorConditionFormula>
+        <active>true</active>
+        <description>&quot;If OTHER selected BCEPRIM=98, this must be completed</description>
+        <errorConditionFormula>ISPICKVAL(BCEPRIM__c , &apos;98&apos;) &amp;&amp; ISBLANK(BCEPRIMSP__c)</errorConditionFormula>
         <errorDisplayField>BCEPRIMSP__c</errorDisplayField>
         <errorMessage>Please indicate the primary problem/symptom/disorder.</errorMessage>
     </validationRules>

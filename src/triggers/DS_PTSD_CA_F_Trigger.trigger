@@ -24,10 +24,9 @@ trigger DS_PTSD_CA_F_Trigger on DS_PTSD_CA_F__c (before insert, before update, a
         
         ut.updateSummaryStatusForMergedObject(Trigger.new);
         
-        /*AuditTrail audit = new AuditTrail(Trigger.new, Trigger.old); 
-
-if(Trigger.isInsert) { audit.generateLog(Trigger.new, Trigger.old); }
-if(Trigger.isUpdate) { audit.generateLog(Trigger.new, Trigger.old); }*/
+        AuditTrail audit = new AuditTrail(Trigger.new, Trigger.old); 
+        if(Trigger.isInsert) { audit.generateLog(); }
+        if(Trigger.isUpdate) { audit.generateLog(); } 
         
     }
     

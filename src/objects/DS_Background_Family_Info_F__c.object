@@ -47,9 +47,12 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fieldSets>
         <fullName>STATUS</fullName>
         <description>STATUS</description>
@@ -800,11 +803,12 @@
         <description>13. Height Feet</description>
         <externalId>false</externalId>
         <label>FHEIGHFT</label>
-        <length>3</length>
+        <precision>2</precision>
         <required>false</required>
+        <scale>0</scale>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Text</type>
+        <type>Number</type>
         <unique>false</unique>
     </fields>
     <fields>
@@ -812,11 +816,12 @@
         <description>13. Height Inches</description>
         <externalId>false</externalId>
         <label>FHEIGHIN</label>
-        <length>3</length>
+        <precision>2</precision>
         <required>false</required>
+        <scale>0</scale>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Text</type>
+        <type>Number</type>
         <unique>false</unique>
     </fields>
     <fields>
@@ -5856,11 +5861,12 @@
         <description>13. Weight in pounds</description>
         <externalId>false</externalId>
         <label>FWEIGHT</label>
-        <length>3</length>
+        <precision>3</precision>
         <required>false</required>
+        <scale>0</scale>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Text</type>
+        <type>Number</type>
         <unique>false</unique>
     </fields>
     <fields>
@@ -5977,25 +5983,6 @@
         <type>Picklist</type>
     </fields>
     <fields>
-        <fullName>STATUS_INFO_F__c</fullName>
-        <externalId>false</externalId>
-        <label>STATUS INFO F</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Incomplete</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-    </fields>
-    <fields>
         <fullName>STATUS_INSDOMENV__c</fullName>
         <externalId>false</externalId>
         <label>STATUS INSDOMENV</label>
@@ -6086,33 +6073,22 @@
     <label>DS Background Family Info F</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>Baseline_ID__c</columns>
-        <columns>Client__c</columns>
+        <columns>OBJECT_ID</columns>
         <columns>BDOV__c</columns>
-        <columns>FDOV__c</columns>
-        <columns>F_VISIT_AGE__c</columns>
-        <columns>SECTION__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>LAST_UPDATE</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>Followup_clear_variables</fullName>
-        <columns>NAME</columns>
         <columns>Client__c</columns>
         <columns>Client_ID__c</columns>
-        <columns>FUTIMESP__c</columns>
-        <columns>FETSTATSP__c</columns>
-        <columns>FUTYPESP__c</columns>
-        <columns>FUTIME__c</columns>
-        <columns>FETSTAT__c</columns>
-        <columns>FUTYPE__c</columns>
-        <columns>Visit_Number__c</columns>
+        <columns>FDOV__c</columns>
+        <columns>STATUS_FOLLOWUPINFO__c</columns>
+        <columns>STATUS_DOMENV__c</columns>
+        <columns>STATUS_HEALTH__c</columns>
+        <columns>STATUS_INSDOMENV__c</columns>
+        <columns>STATUS_MILITARY__c</columns>
+        <columns>STATUS_NCTSNTREAT__c</columns>
+        <columns>STATUS_REFIMM__c</columns>
         <columns>LAST_UPDATE</columns>
+        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
-        <label>Followup clear variables</label>
+        <label>All</label>
     </listViews>
     <nameField>
         <label>DS Background Family Info F Name</label>
@@ -6235,6 +6211,14 @@ ISPICKVAL( FABSENT__c , &apos;5&apos;)  ))
         <errorMessage>The total nights out of home can&apos;t be more than 30.</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Followup_11_inches</fullName>
+        <active>true</active>
+        <description>Do not allow greater than 11 Inches</description>
+        <errorConditionFormula>FHEIGHIN__c&gt;11</errorConditionFormula>
+        <errorDisplayField>FHEIGHIN__c</errorDisplayField>
+        <errorMessage>Cannot enter a number greater than 11 for inches.</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Followup_cannot_enter_visits_if_unknown</fullName>
         <active>true</active>
         <description># of visits cannot be entered if it is unknown.</description>
@@ -6258,6 +6242,13 @@ ISPICKVAL( FABSENT__c , &apos;5&apos;)  ))
         <errorConditionFormula>BDOV__c   &gt;  FDOV__c</errorConditionFormula>
         <errorDisplayField>FDOV__c</errorDisplayField>
         <errorMessage>Follow-up date cannot be before Baseline date. Please review the Baseline and/or Follow-up date of visit.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Followup_date_cannot_be_before_birth</fullName>
+        <active>true</active>
+        <errorConditionFormula>Client__r.DOB1__c &gt; FDOV__c</errorConditionFormula>
+        <errorDisplayField>FDOV__c</errorDisplayField>
+        <errorMessage>Follow-up date cannot be before Birth</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Followup_date_cannot_be_future</fullName>
@@ -6314,6 +6305,22 @@ ISPICKVAL(FGUARD__c, &quot;98&quot;)  &amp;&amp;  ISBLANK(FGUARDSP__c)</descript
         <errorConditionFormula>ISPICKVAL(FUTIME__c, &quot;98&quot;)  &amp;&amp;  ISBLANK(FUTIMESP__c)</errorConditionFormula>
         <errorDisplayField>FUTIMESP__c</errorDisplayField>
         <errorMessage>Please specify follow-up timeframe</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Followup_under_500_lbs</fullName>
+        <active>true</active>
+        <description>Do not allow greater than 500</description>
+        <errorConditionFormula>FWEIGHT__c &gt;500</errorConditionFormula>
+        <errorDisplayField>FWEIGHT__c</errorDisplayField>
+        <errorMessage>Client weight cannot exceed 500 pounds.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Followup_under_7_feet</fullName>
+        <active>true</active>
+        <description>Do not allow greater than 7 Feet</description>
+        <errorConditionFormula>FHEIGHFT__c &gt;7</errorConditionFormula>
+        <errorDisplayField>FHEIGHFT__c</errorDisplayField>
+        <errorMessage>Height must be under 7 feet</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Health_must_indicate_treatment</fullName>
@@ -6393,7 +6400,7 @@ ISPICKVAL(FGUARD__c, &quot;98&quot;)  &amp;&amp;  ISBLANK(FGUARDSP__c)</descript
         <description>If NO (FPINANY=0) or UNKNOWN (FPINANY=99) or selected, skip to question 5;  If YES (FPINANY=1), must specify type in (FPINPUB, FPINPRIV)</description>
         <errorConditionFormula>ISPICKVAL(FCINANY__c, &apos;1&apos;)&amp;&amp;((FCINPUB__c = false)&amp;&amp;( FCINPRIV__c = false))</errorConditionFormula>
         <errorDisplayField>FCINANY__c</errorDisplayField>
-        <errorMessage>Indicate public or private insurance.</errorMessage>
+        <errorMessage>You must indicate if the child has private or public insurance.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Insdomenv_must_indicate_if_insured_paren</fullName>
@@ -6401,7 +6408,7 @@ ISPICKVAL(FGUARD__c, &quot;98&quot;)  &amp;&amp;  ISBLANK(FGUARDSP__c)</descript
         <description>If NO (FPINANY=0) or UNKNOWN (FPINANY=99) or selected, skip to question 5;  If YES (FPINANY=1), must specify type in (FPINPUB, FPINPRIV)</description>
         <errorConditionFormula>ISPICKVAL(FPINANY__c, &apos;1&apos;)&amp;&amp;((FPINPUB__c = false)&amp;&amp;( FPINPRIV__c = false))</errorConditionFormula>
         <errorDisplayField>FPINANY__c</errorDisplayField>
-        <errorMessage>Indicate public or private insurance.</errorMessage>
+        <errorMessage>You must indicate if the parent has private or public insurance.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Insdomenv_must_specify_other_private_ch</fullName>
@@ -6538,7 +6545,7 @@ Q6 = FMDIFRI__c</description>
 (ISPICKVAL(FMFMR3__c, &quot;98&quot;)&amp;&amp;(ISBLANK(FMFMR3SP__c))),
 (ISPICKVAL(FMFMR4__c, &quot;98&quot;)&amp;&amp;(ISBLANK(FMFMR4SP__c)))
 )</errorConditionFormula>
-        <errorDisplayField>FMFM1B__c</errorDisplayField>
+        <errorDisplayField>FMFMR1SP__c</errorDisplayField>
         <errorMessage>Please specify the &apos;Other&apos; family member.</errorMessage>
     </validationRules>
     <validationRules>
@@ -6784,7 +6791,7 @@ Q6 = FMDIFRI__c</description>
         <fullName>Nctsntreat_other_must_complete_q5</fullName>
         <active>true</active>
         <description>FTXMODPRISP: If &quot;Other&quot; selected, this must be completed.</description>
-        <errorConditionFormula>FTXOT__c=true &amp;&amp; ISBLANK(FTXMODPRISP__c)</errorConditionFormula>
+        <errorConditionFormula>ISPICKVAL(FTXMODPRI__c, &apos;98&apos;)&amp;&amp; ISBLANK(FTXMODPRISP__c)</errorConditionFormula>
         <errorDisplayField>FTXMODPRISP__c</errorDisplayField>
         <errorMessage>Specify modality.</errorMessage>
     </validationRules>

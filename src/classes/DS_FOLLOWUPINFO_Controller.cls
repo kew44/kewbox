@@ -5,7 +5,7 @@ public with sharing class DS_FOLLOWUPINFO_Controller extends DS_BasicForm_Contro
     public String MilitaryModuleStatus { get; set; }
     public String NewTraumaModuleStatus { get; set; }
     public String OldTraumaModuleStatus { get; set; }    
-    public String TimeModuleStatus { get; set; }
+    //public String TimeModuleStatus { get; set; }
     
     public DS_FOLLOWUPINFO_Controller(ApexPages.StandardController controller) {
         

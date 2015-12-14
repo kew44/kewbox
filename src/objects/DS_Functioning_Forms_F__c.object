@@ -47,9 +47,12 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fieldSets>
         <fullName>STATUS</fullName>
         <description>for status fields</description>
@@ -3403,11 +3406,11 @@ eating, and/or Bulimia)</description>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>5</fullName>
+                <fullName>96</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>96</fullName>
+                <fullName>99</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -3439,11 +3442,11 @@ eating, and/or Bulimia)</description>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>5</fullName>
+                <fullName>96</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>96</fullName>
+                <fullName>99</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -3475,11 +3478,11 @@ eating, and/or Bulimia)</description>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>5</fullName>
+                <fullName>96</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>96</fullName>
+                <fullName>99</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -3511,11 +3514,11 @@ eating, and/or Bulimia)</description>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>5</fullName>
+                <fullName>96</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>96</fullName>
+                <fullName>99</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -3547,11 +3550,11 @@ eating, and/or Bulimia)</description>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>5</fullName>
+                <fullName>96</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>96</fullName>
+                <fullName>99</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -3583,11 +3586,11 @@ eating, and/or Bulimia)</description>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>5</fullName>
+                <fullName>96</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>96</fullName>
+                <fullName>99</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -3619,11 +3622,11 @@ eating, and/or Bulimia)</description>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>5</fullName>
+                <fullName>96</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>96</fullName>
+                <fullName>99</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -3655,11 +3658,11 @@ eating, and/or Bulimia)</description>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>5</fullName>
+                <fullName>96</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>96</fullName>
+                <fullName>99</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -3691,11 +3694,11 @@ eating, and/or Bulimia)</description>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>5</fullName>
+                <fullName>96</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>96</fullName>
+                <fullName>99</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -3727,11 +3730,11 @@ eating, and/or Bulimia)</description>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>5</fullName>
+                <fullName>96</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>96</fullName>
+                <fullName>99</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -3763,11 +3766,11 @@ eating, and/or Bulimia)</description>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>5</fullName>
+                <fullName>96</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>96</fullName>
+                <fullName>99</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -3799,11 +3802,11 @@ eating, and/or Bulimia)</description>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>5</fullName>
+                <fullName>96</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>96</fullName>
+                <fullName>99</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -3835,11 +3838,11 @@ eating, and/or Bulimia)</description>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>5</fullName>
+                <fullName>96</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>96</fullName>
+                <fullName>99</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -6107,6 +6110,26 @@ eating, and/or Bulimia)</description>
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>FTXCOMP__c</fullName>
+        <description>5. BSLC treatment completed</description>
+        <externalId>false</externalId>
+        <label>FTXCOMP</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>FTXCPDT__c</fullName>
         <description>5. BSLC date completed treatment</description>
         <externalId>false</externalId>
@@ -6386,20 +6409,6 @@ eating, and/or Bulimia)</description>
     <label>DS Functioning Forms F</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>OBJECT_ID</columns>
-        <columns>NAME</columns>
-        <columns>Client__c</columns>
-        <columns>Background_ID__c</columns>
-        <columns>FDOV__c</columns>
-        <columns>FFAPGAR_RAW__c</columns>
-        <columns>FFAPGAR1__c</columns>
-        <columns>FFAPGAR2__c</columns>
-        <columns>FFAPGAR3__c</columns>
-        <columns>FFAPGAR4__c</columns>
-        <columns>FFAPGAR5__c</columns>
-        <columns>SECTION__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -6421,7 +6430,7 @@ eating, and/or Bulimia)</description>
     <validationRules>
         <fullName>Bis_date_left_cannot_be_before_start_dt</fullName>
         <active>true</active>
-        <errorConditionFormula>FCBISLFDT__c &gt; FCBISTCDT__c</errorConditionFormula>
+        <errorConditionFormula>FCBISTCDT__c &gt; FCBISLFDT__c</errorConditionFormula>
         <errorDisplayField>FCBISLFDT__c</errorDisplayField>
         <errorMessage>Date client left treatment cannot be before date treatment started.</errorMessage>
     </validationRules>
@@ -6449,7 +6458,7 @@ eating, and/or Bulimia)</description>
     <validationRules>
         <fullName>Bis_dt_completed_cannot_be_before_start</fullName>
         <active>true</active>
-        <errorConditionFormula>FCBISCODT__c &gt; FCBISTCDT__c</errorConditionFormula>
+        <errorConditionFormula>FCBISTCDT__c &gt; FCBISCODT__c</errorConditionFormula>
         <errorDisplayField>FCBISCODT__c</errorDisplayField>
         <errorMessage>Date treatment completed cannot be before date treatment started.</errorMessage>
     </validationRules>
@@ -6531,9 +6540,9 @@ ISPICKVAL( FCBISRECV__c, &apos;1&apos;)&amp;&amp;
     </validationRules>
     <validationRules>
         <fullName>Clineval_must_indicate_primary</fullName>
-        <active>false</active>
-        <description>&quot;If OTHER selected FCEPRIM=1, this must be completed</description>
-        <errorConditionFormula>ISPICKVAL(FCEPRIM__c , &apos;1&apos;) &amp;&amp; ISBLANK(FCEPRIMSP__c)</errorConditionFormula>
+        <active>true</active>
+        <description>&quot;If OTHER selected FCEPRIM=98, this must be completed</description>
+        <errorConditionFormula>ISPICKVAL(FCEPRIM__c , &apos;98&apos;) &amp;&amp; ISBLANK(FCEPRIMSP__c)</errorConditionFormula>
         <errorDisplayField>FCEPRIMSP__c</errorDisplayField>
         <errorMessage>Please indicate the primary problem/symptom/disorder.</errorMessage>
     </validationRules>
@@ -6598,7 +6607,7 @@ ISPICKVAL( FCBISRECV__c, &apos;1&apos;)&amp;&amp;
         <active>true</active>
         <description>If &quot;Other&quot; selected, this must be completed. ErrorConditionFormula:FOSTOTH__c = true &amp;&amp;  ISBLANK(FOSTOSP__c)</description>
         <errorConditionFormula>FOSTOTH__c = true &amp;&amp;  ISBLANK(FOSTOSP__c)</errorConditionFormula>
-        <errorDisplayField>FOSTOTH__c</errorDisplayField>
+        <errorDisplayField>FOSTOSP__c</errorDisplayField>
         <errorMessage>Specify therapy/treatment.</errorMessage>
     </validationRules>
 </CustomObject>

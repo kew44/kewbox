@@ -1,12 +1,9 @@
-/*Page Description:
- *  Controller Class for Roles
- * Last Updated on:
- *  7/17/2014
- * Update Purpose:
- *      
- * Programmer:
- *  
- */
+/****
+*@description Controller Class for Roles
+*
+*@group System
+*@group-content /ApexDocContent/System/RoleController.htm
+****/
 public class RoleController {
 
   public Map<String, Counter__c> roleType = new Map<String, Counter__c>();

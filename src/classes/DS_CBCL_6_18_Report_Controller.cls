@@ -126,9 +126,7 @@ public with sharing class DS_CBCL_6_18_Report_Controller extends DS_BasicForm_Co
         
         clinicalRange = String.join(clinicalRangeList, ', ');
         borderlineRange = String.join(borderlineRangeList, ', ');
-        
-        System.debug(form.summary);
-        
+                
         currentVisitDate = String.valueOf(Date.valueOf(form.obj.get(form.BorF+'DOACO__c'))) + '-' + form.summary.SECTION__c;
     }
     
@@ -137,7 +135,8 @@ public with sharing class DS_CBCL_6_18_Report_Controller extends DS_BasicForm_Co
         List<SObject> baseline = 
             Database.query('SELECT ' + form.ut.getFields('DS_CBCL_B__c') +   
                            '  FROM DS_CBCL_B__c' +                           
-                           ' WHERE Client__c = \''+ form.cID + '\'');
+                           ' WHERE Client__c = \''+ form.cID + '\'' +
+                           '   AND STATUS_CBCL_6_18__c != null');
         
         addVisit(baseline, 'B');
         
@@ -146,11 +145,10 @@ public with sharing class DS_CBCL_6_18_Report_Controller extends DS_BasicForm_Co
                            '  FROM DS_CBCL_F__c' +                           
                            ' WHERE Client__c = \''+ form.cID + '\'' +
                            //'   AND FDOAPTSD__c <= ' + currentVisitDate.format('yyyy-MM-dd') +  
+                           '   AND STATUS_CBCL_6_18__c != null' + 
                            ' ORDER BY FDOACO__c, SECTION__c');
         
         if(followup.size() > 0) addVisit(followup, 'F');
-
-        System.debug(visits);
         
     }
     

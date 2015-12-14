@@ -47,9 +47,12 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fieldSets>
         <fullName>STATUS</fullName>
         <description>status fields</description>
@@ -79,6 +82,18 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Client_ID__c</fullName>
+        <externalId>false</externalId>
+        <formula>Client__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Client ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Client__c</fullName>
         <externalId>false</externalId>
         <label>Client</label>
@@ -91,18 +106,6 @@
         <trackTrending>false</trackTrending>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
-    </fields>
-    <fields>
-        <fullName>FBCO56__c</fullName>
-        <description>Placeholder variable to display FCBO #56 heading &quot;Physical problems without known medical cause:&quot;</description>
-        <externalId>false</externalId>
-        <label>FBCO56</label>
-        <length>1</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <fields>
         <fullName>FCBABPY__c</fullName>
@@ -1309,7 +1312,7 @@
         <description>113. Other 1 specify</description>
         <externalId>false</externalId>
         <label>FCBO113S</label>
-        <length>50</length>
+        <length>25</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1345,7 +1348,7 @@
         <description>114. Other 2 specify</description>
         <externalId>false</externalId>
         <label>FCBO114S</label>
-        <length>50</length>
+        <length>25</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1381,7 +1384,7 @@
         <description>115. Other 3 specify</description>
         <externalId>false</externalId>
         <label>FCBO115S</label>
-        <length>50</length>
+        <length>25</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -4747,7 +4750,7 @@
         <description>100. Other, description</description>
         <externalId>false</externalId>
         <label>FCBY100S</label>
-        <length>50</length>
+        <length>25</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -4783,7 +4786,7 @@
         <description>101. Other, description</description>
         <externalId>false</externalId>
         <label>FCBY101S</label>
-        <length>50</length>
+        <length>25</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -4819,7 +4822,7 @@
         <description>102. Other, description</description>
         <externalId>false</externalId>
         <label>FCBY102S</label>
-        <length>50</length>
+        <length>25</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -7329,131 +7332,9 @@
     </fields>
     <label>DS CBCL F</label>
     <listViews>
-        <fullName>ASEBA_Test_Young1</fullName>
-        <columns>Client__c</columns>
-        <columns>FCBABPY__c</columns>
-        <columns>FCBABRNY__c</columns>
-        <columns>FCBABTNY__c</columns>
-        <columns>FCBADPY__c</columns>
-        <columns>FCBADRNY__c</columns>
-        <columns>FCBADTNY__c</columns>
-        <columns>FCBAPPY__c</columns>
-        <columns>FCBAPRNY__c</columns>
-        <columns>FCBAPTNY__c</columns>
-        <columns>FCBEBPY__c</columns>
-        <columns>FCBEBRNY__c</columns>
-        <columns>FCBEBTNY__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Client__c</field>
-            <operation>greaterOrEqual</operation>
-            <value>6758-00-00226</value>
-        </filters>
-        <filters>
-            <field>LAST_UPDATE</field>
-            <operation>equals</operation>
-            <value>7/30/2015 12:00 AM</value>
-        </filters>
-        <label>ASEBA Test Young1</label>
-    </listViews>
-    <listViews>
         <fullName>All</fullName>
-        <columns>Client__c</columns>
-        <columns>FDOV__c</columns>
-        <columns>FDOACO__c</columns>
-        <columns>FDOACY__c</columns>
-        <columns>SECTION__c</columns>
-        <columns>STATUS_CBCL_0_5__c</columns>
-        <columns>STATUS_CBCL_6_18__c</columns>
-        <columns>FCBIBR__c</columns>
-        <columns>FCBIBS__c</columns>
-        <columns>FCBIBT__c</columns>
-        <columns>FCBIBTN__c</columns>
-        <columns>FCBIBP__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>Test_Old</fullName>
-        <columns>NAME</columns>
-        <columns>Client__c</columns>
-        <columns>FDOACO__c</columns>
-        <columns>FDOACY__c</columns>
-        <columns>SECTION__c</columns>
-        <columns>STATUS_CBCL_0_5__c</columns>
-        <columns>STATUS_CBCL_6_18__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>FCBAPTNY__c</columns>
-        <columns>FCBEBPY__c</columns>
-        <columns>FCBEBRNY__c</columns>
-        <columns>FCBEBS__c</columns>
-        <columns>FCBEBTY__c</columns>
-        <columns>FCBERTNY__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CREATED_DATE</field>
-            <operation>equals</operation>
-            <value>8/12/2015 12:00 AM</value>
-        </filters>
-        <label>Test Old</label>
-    </listViews>
-    <listViews>
-        <fullName>X817</fullName>
-        <columns>NAME</columns>
-        <columns>Client__c</columns>
-        <columns>STATUS_CBCL_6_18__c</columns>
-        <columns>FCBABP__c</columns>
-        <columns>FCBABR__c</columns>
-        <columns>FCBABRN__c</columns>
-        <columns>FCBABS__c</columns>
-        <columns>FCBABT__c</columns>
-        <columns>FCBABTN__c</columns>
-        <columns>FCBADP__c</columns>
-        <columns>FCBADR__c</columns>
-        <columns>FCBADRN__c</columns>
-        <columns>FCBADS__c</columns>
-        <columns>FCBADT__c</columns>
-        <columns>FCBADTN__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Client__c</field>
-            <operation>contains</operation>
-            <value>6758</value>
-        </filters>
-        <filters>
-            <field>CREATED_DATE</field>
-            <operation>equals</operation>
-            <value>8/17/2015 12:00 AM</value>
-        </filters>
-        <label>817</label>
-    </listViews>
-    <listViews>
-        <fullName>test_cbcl</fullName>
-        <columns>Client__c</columns>
-        <columns>FDOACO__c</columns>
-        <columns>FDOACY__c</columns>
-        <columns>FCBTST__c</columns>
-        <columns>FCBTSTY__c</columns>
-        <columns>FCBTSR__c</columns>
-        <columns>FCBRBT__c</columns>
-        <columns>SECTION__c</columns>
-        <columns>STATUS_CBCL_0_5__c</columns>
-        <columns>STATUS_CBCL_6_18__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>LAST_UPDATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Client__c</field>
-            <operation>greaterOrEqual</operation>
-            <value>6758-00-00226</value>
-        </filters>
-        <filters>
-            <field>LAST_UPDATE</field>
-            <operation>equals</operation>
-            <value>7/30/2015 12:00 AM</value>
-        </filters>
-        <label>test cbcl</label>
     </listViews>
     <nameField>
         <label>DS CBCL F Name</label>

@@ -1,3 +1,9 @@
+/****
+*@description Controller for the ClientSummaryReport Page
+*
+*@group ClientSummaryReport
+*@group-content /ApexDocContent/ClientSummaryReport/ClientSummaryReportController.htm
+****/
 public with sharing class ClientSummaryReportController {
 
   Utility ut = new Utility();

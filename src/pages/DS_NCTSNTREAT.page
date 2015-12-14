@@ -3,7 +3,7 @@
     <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
     
     <div class="{!HTMLENCODE(form.visitType)}">
-        <apex:sectionHeader title="{!HTMLENCODE(form.title)}" subtitle="{!HTMLENCODE(form.subtitle)}" />
+        <apex:sectionHeader title="{!HTMLENCODE(form.title)}" subtitle="{!HTMLENCODE(form.subtitle)}"/>
     </div>
     
     <style>
@@ -11,19 +11,18 @@
         .bootwrap .form-nctsntreat .num-of-day-div { padding-top:6.5px !important; }
         .bootwrap .form-nctsntreat .num-of-day-input { width:50px !important; height: 25px !important; }
         
-    </style>
-    
+    </style>    
     
     <div class="bootwrap">
 
-        <!---BEGIN DOMENV FORM Content-->
+        <!---BEGIN NCTSNTREAT FORM Content-->
         <apex:form id="DS_FORM" styleClass="form-horizontal form-nctsntreat">
     
             <!-- pageblock to show ClientInformation header as described in Utility class-->
-            <apex:outputText value="{!form.ClientInfo}" escape="false"/>
+            <c:cimiClientInfo displayVisitType="true" formElement="{!form}"/>
             <!--end header-->
             
-            <!-- domestic environment information pageBlock container-->
+            <!-- NCTSNTREAT information pageBlock container-->
             <apex:pageBlock title="{!HTMLENCODE(form.title)}" >
                 
                 <!--save and cancel control buttons for pageBlock-->

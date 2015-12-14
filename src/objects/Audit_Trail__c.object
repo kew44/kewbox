@@ -47,11 +47,14 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fields>
-        <fullName>ACTION__c</fullName>
+        <fullName>Action__c</fullName>
         <externalId>false</externalId>
         <label>Action</label>
         <length>233</length>
@@ -73,7 +76,7 @@
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>DATE__c</fullName>
+        <fullName>Date__c</fullName>
         <externalId>false</externalId>
         <label>Date</label>
         <required>false</required>
@@ -101,6 +104,15 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>LABEL__c</fullName>
+        <externalId>false</externalId>
+        <label>Label</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>2</visibleLines>
+    </fields>
+    <fields>
         <fullName>NUMBER__c</fullName>
         <externalId>false</externalId>
         <label>Number</label>
@@ -111,7 +123,7 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>PRIOR_VALUE__c</fullName>
+        <fullName>Prior_Value__c</fullName>
         <externalId>false</externalId>
         <label>Prior Value</label>
         <length>32768</length>
@@ -120,7 +132,7 @@
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
-        <fullName>QUESTION__c</fullName>
+        <fullName>Question__c</fullName>
         <externalId>false</externalId>
         <label>Question</label>
         <length>32768</length>
@@ -150,7 +162,7 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>TIME__c</fullName>
+        <fullName>Time__c</fullName>
         <externalId>false</externalId>
         <label>Time</label>
         <length>8</length>
@@ -160,7 +172,7 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>UPDATED_VALUE__c</fullName>
+        <fullName>Updated_Value__c</fullName>
         <externalId>false</externalId>
         <label>Updated Value</label>
         <length>32768</length>
@@ -169,7 +181,7 @@
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
-        <fullName>USER_ID__c</fullName>
+        <fullName>User_ID__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
         <label>User ID</label>
@@ -180,7 +192,7 @@
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>USER_INITIAL__c</fullName>
+        <fullName>User_Initial__c</fullName>
         <externalId>false</externalId>
         <label>User Initial</label>
         <length>233</length>
@@ -188,6 +200,24 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>VARIABLE__c</fullName>
+        <externalId>false</externalId>
+        <label>Variable</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>VISIT_DATE__c</fullName>
+        <externalId>false</externalId>
+        <label>Visit Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
     </fields>
     <fields>
         <fullName>Visit_Type__c</fullName>
@@ -203,46 +233,41 @@
     <label>Audit Trail</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>ACTION__c</columns>
+        <columns>Action__c</columns>
         <columns>CLIENT__c</columns>
         <columns>SUBJECT_ID__c</columns>
         <columns>Visit_Type__c</columns>
         <columns>FORM__c</columns>
         <columns>FORM_ID__c</columns>
         <columns>NUMBER__c</columns>
-        <columns>QUESTION__c</columns>
-        <columns>PRIOR_VALUE__c</columns>
-        <columns>UPDATED_VALUE__c</columns>
+        <columns>Question__c</columns>
+        <columns>Prior_Value__c</columns>
+        <columns>Updated_Value__c</columns>
         <columns>SECTION__c</columns>
-        <columns>DATE__c</columns>
-        <columns>TIME__c</columns>
-        <columns>USER_ID__c</columns>
-        <columns>USER_INITIAL__c</columns>
+        <columns>Date__c</columns>
+        <columns>Time__c</columns>
+        <columns>User_ID__c</columns>
+        <columns>User_Initial__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>SUBJECT_ID__c</field>
-            <operation>equals</operation>
-            <value>0001-01-00150</value>
-        </filters>
         <label>All</label>
     </listViews>
     <listViews>
         <fullName>CBCL_Y</fullName>
         <columns>NAME</columns>
         <columns>OBJECT_ID</columns>
-        <columns>ACTION__c</columns>
-        <columns>DATE__c</columns>
+        <columns>Action__c</columns>
+        <columns>Date__c</columns>
         <columns>CLIENT__c</columns>
         <columns>SUBJECT_ID__c</columns>
         <columns>Visit_Type__c</columns>
         <columns>FORM__c</columns>
         <columns>FORM_ID__c</columns>
         <columns>NUMBER__c</columns>
-        <columns>QUESTION__c</columns>
-        <columns>PRIOR_VALUE__c</columns>
-        <columns>UPDATED_VALUE__c</columns>
+        <columns>Question__c</columns>
+        <columns>Prior_Value__c</columns>
+        <columns>Updated_Value__c</columns>
         <columns>SECTION__c</columns>
-        <columns>USER_INITIAL__c</columns>
+        <columns>User_Initial__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>CREATED_DATE</field>
@@ -263,13 +288,13 @@
     </nameField>
     <pluralLabel>Audit Trail</pluralLabel>
     <searchLayouts>
-        <customTabListAdditionalFields>DATE__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>TIME__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>ACTION__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>QUESTION__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Time__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Action__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Question__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>NUMBER__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>FORM__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>PRIOR_VALUE__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Prior_Value__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>SECTION__c</customTabListAdditionalFields>
     </searchLayouts>
     <sharingModel>Private</sharingModel>

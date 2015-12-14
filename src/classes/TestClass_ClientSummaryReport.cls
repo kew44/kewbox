@@ -1,34 +1,56 @@
+/****
+*@description This test provides code coverage for Client Summary Report
+*
+*@group Test Script 
+*@group-content /ApexDocContent/Test/ClientSummaryReport.htm
+*
+*@author Kelsey Willett
+*@date 11/18/2015
+*@modified date
+****/
+
 @isTest (SeeAllData=false)
 public class TestClass_ClientSummaryReport {
+
+    /****
+    *@description Initialize reference to TestClass_A_Utility
+    ****/
+    public static TestClass_A_Utility test_ut = new TestClass_A_Utility();
     
+    /****
+    *@description Initialize reference to Utility
+    ****/
+    public static Utility ut = new Utility();
+    
+    /****
+    *@description Load required data from TestClassData
+    ****/
     @testSetup 
     static void setup() {
-        // Load DS_DATA into system
-        TestClassData_DS_DATA importData = new TestClassData_DS_DATA();      
+        TestClassData_DS_DATA importData = new TestClassData_DS_DATA();  
+        importData.variable(); 
+        importData.cbcl();       
     }
     
-    // Age < 6
+    /****
+    *@description method to test controller with data from baseline objects
+    *Young (<6) Child, Female test client 
+    ****/
     static TestMethod void Test_ClientSummaryReportBaselineYoung() {
         
-        Utility ut = new Utility();
-        
-        TestClass_A_Utility test_ut = new TestClass_A_Utility(); 
         TestClass_ClientSummaryReport clientSummary = new TestClass_ClientSummaryReport();
         
         Client__c client = test_ut.createClient(test_ut.getClient('Female', 4));
         
-        DS_Background_Family_Info_B__c background = new DS_Background_Family_Info_B__c();
+        DS_Background_Family_Info_B__c background = new DS_Background_Family_Info_B__c(Client__c = client.id);
         
-        background.Client__c = client.id;
         background.BMET__c = '1';
         background.BDOV__c = date.today();
         background.RWHITE__c = true;
         
         insert background;
         
-        DS_Functioning_Forms_B__c functioning = new DS_Functioning_Forms_B__c();
-        
-        functioning.Client__c = client.id;
+        DS_Functioning_Forms_B__c functioning = new DS_Functioning_Forms_B__c(Client__c = client.id);
         
         // Strengths
         functioning.BSTFAM__c = '2';
@@ -84,28 +106,27 @@ public class TestClass_ClientSummaryReport {
         trauma.GT1RA0__c = true;
         trauma.GT2RA0__c = true;
         
-        //insert trauma;
+        insert trauma;
         
         //CBCL Young
-        clientSummary.insertCBCLYoung(client);
-        
+        DS_CBCL_B__c cbcl = new DS_CBCL_B__c(client__c = client.id);
+                
         String cimi = ut.urlEncode('c='+client.id+'&section=0');
         
         ApexPages.currentPage().getParameters().put('cimi', cimi);
         
         ApexPages.StandardController sc= new ApexPages.StandardController(client);
         
-        ClientSummaryReportController controller= new ClientSummaryReportController(sc);
-        
+        ClientSummaryReportController controller= new ClientSummaryReportController(sc);        
         
     }
     
-    // Age > 6
+    /****
+    *@description method to test controller with data from baseline objects
+    *Old (>6) Child, Male test client 
+    ****/
     static TestMethod void Test_ClientSummaryReportBaselineOld() {
         
-        Utility ut = new Utility();
-        
-        TestClass_A_Utility test_ut = new TestClass_A_Utility(); 
         TestClass_ClientSummaryReport clientSummary = new TestClass_ClientSummaryReport();
         
         Client__c client = test_ut.createClient(test_ut.getClient('Male', 14));
@@ -147,8 +168,7 @@ public class TestClass_ClientSummaryReport {
         
         insert ptsd;
         
-        // CBCL Old
-        clientSummary.insertCBCLOld(client);
+        DS_CBCL_B__c cbcl = new DS_CBCL_B__c(client__c = client.id);
         
         String cimi = ut.urlEncode('c='+client.id+'&section=0');
         
@@ -160,6 +180,12 @@ public class TestClass_ClientSummaryReport {
         
     }
     
+    /****
+    *@description method to test a scored CBCL record
+    *Young Child
+    *@param client Client__c record
+    *@return null
+    ****/
     public void insertCBCLYoung(Client__c client) {
         
         Schema.SObjectType objType = Schema.getGlobalDescribe().get('DS_CBCL_B__c');
@@ -220,10 +246,15 @@ public class TestClass_ClientSummaryReport {
             obj.put('BCBY'+key+'__c', String.valueof(ans.get(key)));
         }
         
-        insert obj;
-        
+        insert obj;        
     }
     
+    /****
+    *@description method to test a scored CBCL record
+    *Old Child
+    *@param client Client__c record
+    *@return null
+    ****/
     public void insertCBCLOld(Client__c client) {
         
         Schema.SObjectType objType = Schema.getGlobalDescribe().get('DS_CBCL_B__c');
