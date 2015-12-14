@@ -17,6 +17,68 @@
         <name>ApexTrigger</name>
     </types>
     <types>
+        <members>Account</members>
+        <members>AccountContactRole</members>
+        <members>Activity</members>
+        <members>Asset</members>
+        <members>Audit_Trail__c</members>
+        <members>Campaign</members>
+        <members>CampaignMember</members>
+        <members>Case</members>
+        <members>CaseContactRole</members>
+        <members>Center__c</members>
+        <members>Client_Summary__c</members>
+        <members>Client__c</members>
+        <members>Clinician__c</members>
+        <members>Contact</members>
+        <members>ContentVersion</members>
+        <members>Contract</members>
+        <members>ContractContactRole</members>
+        <members>Counter__c</members>
+        <members>DS_Background_Family_Info_B__c</members>
+        <members>DS_Background_Family_Info_F__c</members>
+        <members>DS_CBCL_B__c</members>
+        <members>DS_CBCL_F__c</members>
+        <members>DS_DATA__c</members>
+        <members>DS_Functioning_Forms_B__c</members>
+        <members>DS_Functioning_Forms_F__c</members>
+        <members>DS_GTRAUMA__c</members>
+        <members>DS_PTSD_CA_B__c</members>
+        <members>DS_PTSD_CA_F__c</members>
+        <members>DS_SDQ_PSI_CDI_B__c</members>
+        <members>DS_SDQ_PSI_CDI_F__c</members>
+        <members>DS_TRDETAIL1__c</members>
+        <members>DS_TRDETAIL2__c</members>
+        <members>DS_TSCC_TSCYC_B__c</members>
+        <members>DS_TSCC_TSCYC_F__c</members>
+        <members>DuplicateRecordItem</members>
+        <members>DuplicateRecordSet</members>
+        <members>Event</members>
+        <members>FeedItem</members>
+        <members>ForecastingCategoryMapping</members>
+        <members>Foundation_Countries__c</members>
+        <members>Foundation_States__c</members>
+        <members>Idea</members>
+        <members>Lead</members>
+        <members>Opportunity</members>
+        <members>OpportunityCompetitor</members>
+        <members>OpportunityContactRole</members>
+        <members>OpportunityLineItem</members>
+        <members>PartnerRole</members>
+        <members>Pricebook2</members>
+        <members>PricebookEntry</members>
+        <members>Product2</members>
+        <members>Site</members>
+        <members>SocialPersona</members>
+        <members>Solution</members>
+        <members>StreamingChannel</members>
+        <members>Task</members>
+        <members>User</members>
+        <members>UserProvisioningRequest</members>
+        <members>User_Profile__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
         <members>*</members>
         <name>Profile</name>
     </types>
