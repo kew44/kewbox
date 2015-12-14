@@ -2,66 +2,33 @@
     
     <!--JQuery -->
     <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.9.1.js')}"  /><!--allows for JQuery dependencies-->
-    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-ui-1.10.3.custom.min.js')}"  />
-    <apex:stylesheet value="{!URLFOR($Resource.jQuery, '/css/redmond/jquery-ui-1.10.3.custom.min.css')}"  />    
     <script> $j = jQuery.noConflict(); </script><!--Reserves the '$' token for JQuery only-->
     
-    <!--supplementary styling information-->
-        <style>
-        .left20px { padding-left:20px !important; }
-    .bPageBlock .detailList .labelCol { text-align:left; vertical-align:middle; width:70%; padding-left:5px; }
-    /*.bPageTitle, .apexp { max-width: 900px; margin:0 auto; }*/
-    .pbButtonb, .pbButton { float:right; }
-    .formtd { padding-top:5px; }
-    #sidebarCell { display: none;}
-    @media only screen and (min-width : 1224px) {
-        #sidebarCell { display: table-cell;}
-    }    
-    </style>
-    <!--end styling-->
+    <!-- Bootstrap -->
+    <apex:stylesheet value="{!URLFOR($Resource.bootwrap, '/css/bootstrap.css')}" />
+    <apex:includeScript value="{!URLFOR($Resource.bootwrap, '/js/bootstrap.min.js')}"/> 
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
+
+    <!-- Custom CIMI Styles -->
+    <apex:stylesheet value="{!URLFOR($Resource.cimiStyles)}" />
+
+    <!--link to the CSS resource in Salesforce internal document-->
+    <apex:stylesheet value="{!$Resource.CustomCss}" />
         
-        <!--Begin form content-->
-            <apex:form >
-                <apex:sectionHeader title="Client Edit" subtitle="{!Title}"/><br/>
-                    
-                    <!-- primary content pageBlock container-->
-                        <apex:pageBlock title="Client Edit">
-                            <apex:pageMessages /><!--placeholding structure that allows for system message display-->
-                                
-                                <!--pageBlockSection container-->
-                                <apex:pageBlockSection title="General Information" columns="1">
-                                
-                                <p><b>Please complete the following.</b></p><br/>
-                                
-                                <!--Clinician-->
-                                <apex:inputField value="{!Client__c.Clinician__c}" rendered="{!isNotClinician}" label="<b>1.</b> Clinician ID" id="Clinician"/>
-                                
-                                <!--Client initials-->
-                                <apex:inputField value="{!Client__c.INIT__c}" label="<b>2.</b> Child's initials <b>(Enter a dash if no middle initial.)</b>" id="INIT"/>
-                                
-                                <!--Date of Birth-->
-                                <apex:inputField value="{!Client__c.DOB1__c}" label="<b>3.</b> Child's date of birth" id="DOB1"/>
-                                
-                                <!--Date of Birth re-entry-->
-                                <apex:inputField value="{!Client__c.DOB2__c}" label="<b>4.</b> Confirm child's date of birth" id="DOB2"/>
-                                
-                                <!--Child age in whole years-->
-                                <apex:inputField value="{!Client__c.AGE__c}" label="<b>5.</b> Child's age" id="AGE"/>
-                                
-                                <!--Client Gender-->
-                                <apex:inputField value="{!Client__c.GENDER__c}" label="<b>6.</b> What sex was the child assigned at birth (on their original birth certificate)?" id="GENDER" required="true"/>
-                                
-                                <!--Has child been seen by NCTSN before?-->
-                                <apex:inputField value="{!Client__c.BPREVCA__c}" label="<b>7.</b> Has this child been seen at another NCTSN center(s) for a previous episode(s) of care?" id="BPREVCA"/> 
-                                
-                                <!--Enrolled in Core Data Set/CIMI previously?--------- Conditional if seen by NCTSN previously-->
-                                <apex:inputField value="{!Client__c.BENRCDS__c}" label="<b>7a.</b> Was this child enrolled in the NCTSN Core Data Set or CIMI?" id="BENRCDS"/>
-                                
-                                <!--Has child been seen at site before?-->
-                                <apex:inputField value="{!Client__c.BPREVEPI__c}" label="<b>8.</b> Has this child been seen at this center for a previous episode(s) of care?" id="BPREVEPI"/>
-                                
-                                <!--Enrolled in Core Data Set/CIMI previously?--------- Conditional if seen by site previously-->
-                                <apex:inputField value="{!Client__c.BENRCDS1__c}" label="<b>8a.</b> Was this child already enrolled in the NCTSN Core Data Set or CIMI?" id="BENRCDS1"/>
+    <script>
+        $j(document).ready(function(){
+            
+            $j('.submitBtn').click(function(){
+                
+                $j('.submitBtn').addClass('btnDisabled');
+                $j('.submitBtn').toggleClass("btn-info");
+                $j('.submitBtn').val('Saving');
+                setTimeout(function(){$j('.submitBtn').attr("disabled","disabled");}, 20);
+                
+            });
+            
+        });
+    </script>
                                 
      <!--JQuery script block-->
      <script>
@@ -124,15 +91,77 @@
     <!--end gender-->
     </script>      
     <!--end JQuery block-->
+    
+    <!--supplementary styling information-->
+        <style>
+        .left20px { padding-left:20px !important; }
+    .bPageBlock .detailList .labelCol { text-align:left; vertical-align:middle; width:70%; padding-left:5px; }
+    /*.bPageTitle, .apexp { max-width: 900px; margin:0 auto; }*/
+    .pbButtonb, .pbButton { float:right; }
+    .formtd { padding-top:5px; }
+    #sidebarCell { display: none;}
+    @media only screen and (min-width : 1224px) {
+        #sidebarCell { display: table-cell;}
+    }    
+    </style>
+    <!--end styling-->
+        
+    <div class="bootwrap">
+    
+        <!--Begin form content-->
+            <apex:form >
+                <apex:sectionHeader title="Client"/><!-- subtitle="{!Title}"/><br/>-->
+                    
+                    <!-- primary content pageBlock container-->
+                        <apex:pageBlock title="Client Edit">
+                        
+                        <!--save and cancel control buttons for pageBlock-->
+                        <apex:pageBlockButtons >
+                            <apex:commandButton action="{!save}" value="Save" styleClass="submitBtn btn btn-info btn-sm"/>
+                            <apex:commandButton action="{!cancel}" value="Cancel" styleClass="btn-info btn btn-sm"/>
+                        </apex:pageBlockButtons>
+                        <!--end buttons-->
+
+                        <!--placeholding structure that allows for system message display-->
+                        <apex:pageMessages />
+                                
+                                <!--pageBlockSection container-->
+                                <apex:pageBlockSection title="General Information" columns="1">
+                                
+                                <p>Please complete the following.</p><br/>
+                                
+                                <!--Clinician-->
+                                <apex:inputField value="{!Client__c.Clinician__c}" rendered="{!isNotClinician}" label="1. Clinician ID" id="Clinician"/>
+                                
+                                <!--Client initials-->
+                                <apex:inputField value="{!Client__c.INIT__c}" label="2. Child's initials (Enter a dash if no middle initial.)" id="INIT"/>
+                                
+                                <!--Date of Birth-->
+                                <!--<apex:inputText value="{!Client__c.DOB1__c}" label="3. Child's date of birth (Please use the format: MM/DD/YYYY)" id="DOB1"/>-->
+                                <apex:inputField showDatePicker="false" value="{!Client__c.DOB1__c}" label="3. Child's date of birth" id="DOB1" html-placeholder="MM/DD/YYYY"/>
+                                
+                                <!--Date of Birth re-entry-->
+                                <apex:inputField showDatePicker="false" value="{!Client__c.DOB2__c}" label="4. Confirm child's date of birth" id="DOB2" html-placeholder="MM/DD/YYYY" />
+                                
+                                <!--Child age in whole years-->
+                                <apex:inputField value="{!Client__c.AGE__c}" label="5. Child's age" id="AGE"/>
+                                
+                                <!--Client Gender-->
+                                <apex:inputField value="{!Client__c.GENDER__c}" label="6. What sex was the child assigned at birth (on their original birth certificate)?" id="GENDER" required="true"/>
+                                
+                                <!--Has child been seen by NCTSN before?-->
+                                <apex:inputField value="{!Client__c.BPREVCA__c}" label="7. Has this child been seen at another NCTSN center(s) for a previous episode(s) of care?" id="BPREVCA"/> 
+                                
+                                <!--Enrolled in Core Data Set/CIMI previously?--------- Conditional if seen by NCTSN previously-->
+                                <apex:inputField value="{!Client__c.BENRCDS__c}" label="7a. Was this child enrolled in the NCTSN Core Data Set or CIMI?" id="BENRCDS"/>
+                                
+                                <!--Has child been seen at site before?-->
+                                <apex:inputField value="{!Client__c.BPREVEPI__c}" label="8. Has this child been seen at this center for a previous episode(s) of care?" id="BPREVEPI"/>
+                                
+                                <!--Enrolled in Core Data Set/CIMI previously?--------- Conditional if seen by site previously-->
+                                <apex:inputField value="{!Client__c.BENRCDS1__c}" label="8a. Was this child already enrolled in the NCTSN Core Data Set or CIMI?" id="BENRCDS1"/>
      
 </apex:pageBlockSection><!--end client info pageblock-->
-
-<!--save and cancel control buttons for pageBlock-->
-<apex:pageBlockButtons >
-    <apex:commandButton action="{!save}" value="Save"/>
-    <apex:commandButton action="{!cancel}" value="Cancel"/>
-</apex:pageBlockButtons>
-<!--end buttons-->
 
 </apex:pageBlock>
 </apex:form><!--end form content-->
@@ -146,10 +175,9 @@
                     <td><img alt="ERROR" class="msgIcon" src="/s.gif" title="ERROR"/></td>
                     <td class="messageCell">
                         <div id="j_id0:j_id5:j_id8:j_id9:j_id10:j_id11:0:j_id12:j_id13:j_id15" class="messageText">
-                            <span id="j_id0:j_id5:j_id8:j_id9:j_id10:j_id11:0:j_id12:j_id13:j_id16" style="color:#cc0000">
+                            <span id="j_id0:j_id5:j_id8:j_id9:j_id10:j_id11:0:j_id12:j_id13:j_id16"><!-- style="color:#cc0000">-->
                                 <h4>Warning</h4>
                             </span>
-                            <br/>
                         </div>
                     </td>
                 </tr>
@@ -169,6 +197,7 @@
             </tbody>
         </table>
     </div>
+</div>
 </div>
 <!--end warning setup-->
 </apex:page>

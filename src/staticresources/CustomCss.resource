@@ -58,6 +58,7 @@
 #force { font-size: 13px; }
 .form-checkbox label { display: inline !important; }
 .auto-width { width:auto !important; }
+.auto-width-inline { width:auto !important; display:inline !important; }
 #sidebarCell { display: none;}
 @media only screen and (min-width : 1224px) {
   #sidebarCell { display: table-cell;}

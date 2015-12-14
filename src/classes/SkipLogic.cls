@@ -95,11 +95,13 @@ public class SkipLogic {
 
     String urlClientIDF;
 
+    System.debug(clientID + '-' + section + '-' + forceRedirect);
+
     if(forceRedirect == '1') {
 
       if (section == '0')       formType = 'Baseline'; 
       else if(section == '-1')  formType = 'TD';
-      else                      formType = 'Follow-up';
+      else                      formType = 'FollowUp';
 
       // Old structure
       /*List<Client_Summary__c> nextForm = Database.query('SELECT FORM_ID__r.Variable__c, FORM_ID__r.Page__c' + 
@@ -121,8 +123,18 @@ public class SkipLogic {
                          '   AND FORM_TYPE__c = \'' + formType + '\'' +
                          '   AND STATUS__c = null ' +
                        'ORDER BY FORM_TYPE__c, Page__r.weight__c');
+        
+      System.debug('SELECT Page__r.Variable__c, Page__r.Page__c' + 
+                         '  FROM Client_Summary__c ' +
+                         ' WHERE Client__c = \'' + clientID + '\'' +
+                         '   AND SECTION__c = \'' + section + '\''+
+                         '   AND REQUIRED__c = TRUE ' +
+                         '   AND FORM_TYPE__c = \'' + formType + '\'' +
+                         '   AND STATUS__c = null ' +
+                       'ORDER BY FORM_TYPE__c, Page__r.weight__c');
 
-      url = 'ClientSummary?s='+section+'&id='+clientID;
+      url = 'ClientSummary?s='+section+'&id='+clientID+'&f=1';
+
 
       if(section != '-1') {
         //urlClientIDF = ;
@@ -131,6 +143,7 @@ public class SkipLogic {
           '?cimi=' + ut.urlEncode('c='+clientID+'&f=1&summary='+nextForm.get(0).id) : url;
 
       }
+      // Trauma detail forms
       else {
         //urlClientIDF = ;
         url = (nextForm.size() > 0) ? 

@@ -81,11 +81,9 @@ public with sharing class DS_GTRAUMA_Controller {
                                                                                     
     if(GT.size() == 0){
       GTRAUMA = new DS_GTRAUMA__c(client__c = cID);
-      GTRAUMA.FORM__c = 'DS_GTRAUMA';
     }
     else { 
       GTRAUMA = GT.get(0);
-      GTRAUMA.FORM__c = 'DS_GTRAUMA';
       edit = TRUE;
     }           
 

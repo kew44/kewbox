@@ -3,7 +3,7 @@ public class TestClass_Center {
 
   static TestMethod void Test_CenterController_CreateCenter() {
 
-    TestClass_Utility ut = new TestClass_Utility();
+    TestClass_A_Utility ut = new TestClass_A_Utility();
 
     ut.addAdminToCounter();
 
@@ -26,7 +26,7 @@ public class TestClass_Center {
 
   static TestMethod void Test_CenterController_EditCenter() {
 
-    TestClass_Utility ut = new TestClass_Utility();
+    TestClass_A_Utility ut = new TestClass_A_Utility();
 
     Center__c center = Test0_TestInsertMainCenter();
 
@@ -44,7 +44,7 @@ public class TestClass_Center {
 
   static TestMethod Center__c Test0_TestInsertMainCenter() {
 
-    TestClass_Utility ut = new TestClass_Utility();
+    TestClass_A_Utility ut = new TestClass_A_Utility();
 
     Center__c center = ut.createMainCenter();
 
@@ -54,7 +54,7 @@ public class TestClass_Center {
 
   static TestMethod Center__c Test1_TestInsertSubCenter() {
 
-    TestClass_Utility ut = new TestClass_Utility();
+    TestClass_A_Utility ut = new TestClass_A_Utility();
 
     Center__c subCenter = ut.createSubCenter();
 

@@ -1,0 +1,992 @@
+<apex:page standardController="DS_Background_Family_Info_F__c" extensions="DS_NCTSNTREAT_Controller">
+       
+    <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
+    
+    <div class="{!HTMLENCODE(form.visitType)}">
+        <apex:sectionHeader title="{!HTMLENCODE(form.title)}" subtitle="{!HTMLENCODE(form.subtitle)}" />
+    </div>
+    
+    <style>
+        
+        .bootwrap .form-nctsntreat .num-of-day-div { padding-top:6.5px !important; }
+        .bootwrap .form-nctsntreat .num-of-day-input { width:50px !important; height: 25px !important; }
+        
+    </style>
+    
+    
+    <div class="bootwrap">
+
+        <!---BEGIN DOMENV FORM Content-->
+        <apex:form id="DS_FORM" styleClass="form-horizontal form-nctsntreat">
+    
+            <!-- pageblock to show ClientInformation header as described in Utility class-->
+            <apex:outputText value="{!form.ClientInfo}" escape="false"/>
+            <!--end header-->
+            
+            <!-- domestic environment information pageBlock container-->
+            <apex:pageBlock title="{!HTMLENCODE(form.title)}" >
+                
+                <!--save and cancel control buttons for pageBlock-->
+                <apex:pageBlockButtons >
+                    <apex:commandButton action="{!save}"  value="Save" styleClass="btn btn-info btn-sm"/>
+                    <apex:commandButton action="{!cancel}"  value="Cancel"  styleClass="btn btn-info btn-sm" rendered="{!if(form.forceRedirect = '1', false, true)}"/>
+                </apex:pageBlockButtons><!--end buttons-->
+                
+                <!--placeholding structure that allows for system message display-->
+                <apex:pageMessages />
+
+                <div class="alert alert-info">
+                    <strong>In the period since the last assessment, please complete the following about services and treatment that your agency has provided for this child.</strong>
+                </div>
+                
+                <!--1. Received any inpatient -->
+                <div class="form-group">
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">1.</span>
+                        Has the child received any inpatient or residential treatment?  
+                    </label>
+                    <div class="col-md-4 col-lg-2">
+                        <apex:selectList size="1" styleClass="form-control input-sm " id="TXRES__c" value="{!form.obj[bfVariableMap['TXRES']]}" onChange="skipLogic('TXRES',this.value)">
+                            <apex:selectOptions value="{!NYOptionWithBlank}"/>
+                        </apex:selectList> 
+                    </div>
+                </div>     
+                
+                <div class="form-group skip-TXHOS">
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr"></span>
+                        Specify type. <strong>(Select all that apply.)</strong> 
+                    </label>
+                    <div class="col-md-6 col-lg-6">
+                        
+                        <!--Hospital-->
+                        <div class="row">
+                            <div class="checkbox col-md-6 col-lg-6">
+                                <label>
+                                    <apex:inputCheckbox styleClass="skip-element-TXHOS" id="TXHOS__c" value="{!form.obj[bfVariableMap['TXHOS']]}" label="Public" onChange="skipLogic('TXHOS',this.checked)"/>
+                                    Hospital
+                                </label> 
+                            </div>
+                            
+                            <div class="skip-TXHOSDAY col-md-6 col-lg-6 num-of-day-div">
+                                Please specify number of days: &nbsp;
+                                <apex:inputField styleClass="form-control skip-element-TXHOSDAY input-sm auto-width control-inline num-of-day-input"  id="TXHOSDAY__c" value="{!form.obj[bfVariableMap['TXHOSDAY']]}"/>
+                            </div>
+                        </div>
+                        
+                        <!--Residential treatment center-->
+                        <div class="row">
+                            <div class="checkbox col-md-6 col-lg-6">
+                                <label>
+                                    <apex:inputCheckbox styleClass="skip-element-TXRTC" id="TXRTC__c" value="{!form.obj[bfVariableMap['TXRTC']]}" label="Public" onChange="skipLogic('TXRTC',this.checked)"/>
+                                    Residential treatment center 
+                                </label> 
+                            </div>
+                            <div class="skip-TXRTCDAY col-md-6 col-lg-6 num-of-day-div">
+                                Please specify number of days: &nbsp;
+                                <apex:inputField styleClass="form-control skip-element-TXRTCDAY input-sm auto-width control-inline num-of-day-input"  id="TXRTCDAY__c" value="{!form.obj[bfVariableMap['TXRTCDAY']]}"/>
+                            </div>
+                        </div>
+                        
+                        <!--Group home-->
+                        <div class="row">
+                            <div class="checkbox col-md-6 col-lg-6">
+                                <label>
+                                    <apex:inputCheckbox styleClass="skip-element-TXGH" id="TXGH__c" value="{!form.obj[bfVariableMap['TXGH']]}" label="Public" onChange="skipLogic('TXGH',this.checked)"/>
+                                    Group home or other community-based treatment placement
+                                </label> 
+                            </div>
+                            <div class="skip-TXGHDAY col-md-6 col-lg-6 num-of-day-div">
+                                Please specify number of days: &nbsp;
+                                <apex:inputField styleClass="form-control skip-element-TXGHDAY input-sm auto-width control-inline num-of-day-input"  id="TXGHDAY__c" value="{!form.obj[bfVariableMap['TXGHDAY']]}"/>
+                            </div>
+                        </div>
+                        
+                        <!--Other-->
+                        <div class="row">
+                            <div class="checkbox col-md-6 col-lg-6">
+                                <label class="col-md-12 col-lg-12 control-label specify-label">
+                                        <apex:inputCheckbox styleClass="skip-element-TXOI" id="TXOI__c" value="{!form.obj[bfVariableMap['TXOI']]}" label="Public" onChange="skipLogic('TXOI',this.checked)"/>
+                                        Other, please specify: 
+                                        <apex:inputField styleClass="form-control input-sm auto-width control-inline skip-element-TXOITYP"  id="TXOITYP__c" value="{!form.obj[bfVariableMap['TXOITYP']]}"/>
+                                </label>
+                            </div>  
+                            <div class="col-md-6 col-lg-6 skip-TXOIDAY num-of-day-div">
+                                Please specify number of days: &nbsp;
+                               <apex:inputField styleClass="form-control skip-element-TXOIDAY input-sm auto-width control-inline num-of-day-input"  id="TXOIDAY__c" value="{!form.obj[bfVariableMap['TXOIDAY']]}"/>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>    
+                
+                <!--2. Received any outpatient therapy -->
+                <div class="form-group">
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">2.</span>
+                        Has the child received any outpatient therapy?   
+                    </label>
+                    <div class="col-md-4 col-lg-2">
+                        <apex:selectList size="1" styleClass="form-control input-sm" id="TXOP__c" value="{!form.obj[bfVariableMap['TXOP']]}" onChange="skipLogic('TXOP',this.value)">
+                            <apex:selectOptions value="{!NYOptionWithBlank}"/>
+                        </apex:selectList> 
+                    </div>
+                </div>     
+                
+                <div class="form-group skip-TXITC">
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr"></span>
+                        Specify type. <strong>(Select all that apply.)</strong> 
+                    </label>
+                    <div class="col-md-6 col-lg-6">
+                        <!--Individual therapy for child-->
+                        <div class="row">
+                            <div class="checkbox col-md-6 col-lg-6">
+                                <label>
+                                    <apex:inputCheckbox styleClass="skip-element-TXITC" id="TXITC__c" value="{!form.obj[bfVariableMap['TXITC']]}" label="Public" onChange="skipLogic('TXITC',this.checked)"/>
+                                    Individual therapy for child 
+                                </label> 
+                            </div>  
+                            <div class="skip-TXITCVIS col-md-6 col-lg-6 num-of-day-div">
+                                Please specify number of visits: &nbsp;
+                                    <apex:inputField styleClass="form-control skip-element-TXITCVIS input-sm auto-width control-inline num-of-day-input"  id="TXITCVIS__c" value="{!form.obj[bfVariableMap['TXITCVIS']]}"/>
+                            </div>
+                        </div>
+                        
+                        <!--Individual therapy for parent-->
+                        <div class="row">
+                            <div class="checkbox col-md-6 col-lg-6">
+                                <label>
+                                    <apex:inputCheckbox styleClass="skip-element-TXITP" id="TXITP__c" value="{!form.obj[bfVariableMap['TXITP']]}" label="Public" onChange="skipLogic('TXITP',this.checked)"/>
+                                    Individual therapy for parent     
+                                </label> 
+                            </div>  
+                            <div class="skip-TXITPVIS col-md-6 col-lg-6 num-of-day-div">
+                                Please specify number of visits: &nbsp;
+                                    <apex:inputField styleClass="form-control skip-element-TXITPVIS input-sm auto-width control-inline num-of-day-input"  id="TXITPVIS__c" value="{!form.obj[bfVariableMap['TXITPVIS']]}"/>
+                            </div>
+                        </div>
+                        
+                        <!--Family or Dyadic therapy-->
+                        <div class="row">
+                            <div class="checkbox col-md-6 col-lg-6">
+                                <label>
+                                    <apex:inputCheckbox styleClass="skip-element-TXFDT" id="TXFDT__c" value="{!form.obj[bfVariableMap['TXFDT']]}" label="Public" onChange="skipLogic('TXFDT',this.checked)"/>
+                                    Family or Dyadic therapy 
+                                </label> 
+                            </div>  
+                            <div class="skip-TXFDTVIS col-md-6 col-lg-6 num-of-day-div">
+                                Please specify number of visits: &nbsp;
+                                    <apex:inputField styleClass="form-control skip-element-TXFDTVIS input-sm auto-width control-inline num-of-day-input"  id="TXFDTVIS__c" value="{!form.obj[bfVariableMap['TXFDTVIS']]}"/>
+                            </div>
+                        </div>
+                        
+                        <!--Group therapy with other youth -->
+                        <div class="row">
+                            <div class="checkbox col-md-6 col-lg-6">
+                                <label>
+                                    <apex:inputCheckbox styleClass="skip-element-TXGT" id="TXGT__c" value="{!form.obj[bfVariableMap['TXGT']]}" label="Public" onChange="skipLogic('TXGT',this.checked)"/>
+                                    Group therapy with other youth 
+                                </label> 
+                            </div>  
+                            <div class="skip-TXGTVIS col-md-6 col-lg-6 num-of-day-div">
+                                Please specify number of visits: &nbsp;
+                                    <apex:inputField styleClass="form-control skip-element-TXGTVIS input-sm auto-width control-inline num-of-day-input"  id="TXGTVIS__c" value="{!form.obj[bfVariableMap['TXGTVIS']]}"/>
+                            </div>
+                        </div>
+                        
+                        <!--Multi-family group therapy -->
+                        <div class="row">
+                            <div class="checkbox col-md-6 col-lg-6">
+                                <label>
+                                    <apex:inputCheckbox styleClass="skip-element-TXMFG" id="TXMFG__c" value="{!form.obj[bfVariableMap['TXMFG']]}" label="Public" onChange="skipLogic('TXMFG',this.checked)"/>
+                                    Multi-family group therapy  
+                                </label> 
+                            </div>  
+                            <div class="skip-TXMFGVIS col-md-6 col-lg-6 num-of-day-div">
+                                Please specify number of visits: &nbsp;
+                                    <apex:inputField styleClass="form-control skip-element-TXMFGVIS input-sm auto-width control-inline num-of-day-input"  id="TXMFGVIS__c" value="{!form.obj[bfVariableMap['TXMFGVIS']]}"/>
+                            </div>
+                        </div>
+                        
+                        <!--Other-->
+                        <div class="row">
+                            <div class="checkbox col-md-6 col-lg-6">
+                                <label class="control-label specify-label">
+                                        <apex:inputCheckbox styleClass="skip-element-TXOT" id="TXOT__c" value="{!form.obj[bfVariableMap['TXOT']]}" label="Public" onChange="skipLogic('TXOT',this.checked)"/>
+                                        Other, please specify:  
+                                        <apex:inputField styleClass="form-control input-sm auto-width control-inline skip-element-TXOTTYP"  id="TXOTTYP__c" value="{!form.obj[bfVariableMap['TXOTTYP']]}"/>
+                                </label>
+                            </div>  
+                            <div class="no-border-bottom no-space-bottom skip-TXOTVIS col-md-6 col-lg-6 num-of-day-div">
+                                Please specify number of visits: &nbsp;
+                                <apex:inputField styleClass="form-control skip-element-TXOTVIS input-sm auto-width control-inline num-of-day-input"  id="TXOTVIS__c" value="{!form.obj[bfVariableMap['TXOTVIS']]}"/>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>   
+                
+                <!--3. Agency provided services  -->
+                <div class="form-group">
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">3.</span>
+                        In what setting(s) has your agency provided services for this child and/or family? <strong>(Select all that apply.)</strong>
+                    </label>
+                    <div class="col-md-6 col-lg-6">
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXCLINIC__c" value="{!form.obj[bfVariableMap['TXCLINIC']]}"/>
+                                Clinic 
+                            </label> 
+                        </div>   
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXHOME__c" value="{!form.obj[bfVariableMap['TXHOME']]}"/>
+                                Home 
+                            </label> 
+                        </div> 
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXSCHOOL__c" value="{!form.obj[bfVariableMap['TXSCHOOL']]}"/>
+                                School 
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXDAYPAR__c" value="{!form.obj[bfVariableMap['TXDAYPAR']]}"/>
+                                Day treatment/partial hospitalization   
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXSOTH__c" value="{!form.obj[bfVariableMap['TXSOTH']]}" onChange="skipLogic('TXSOTH',this.checked)"/>
+                                Other 
+                            </label> 
+                        </div>
+                        <div class="no-border-bottom no-space-bottom skip-TXSOTHSP">
+                            <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please specify:" for="TXSOTHSP__c"/> 
+                            <div class="col-md-4 col-lg-4 specify-input">
+                                <apex:inputField styleClass="form-control skip-element-TXSOTHSP input-sm"  id="TXSOTHSP__c" value="{!form.obj[bfVariableMap['TXSOTHSP']]}"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+                
+                <!--4. General modalities   -->
+                <div class="form-group">
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">4.</span>
+                        Please indicate <em>all general modalities</em> of treatment provided. <strong>(Select all that apply.)</strong>
+                    </label>
+                    <div class="col-md-6 col-lg-6">
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXATTACH__c" value="{!form.obj[bfVariableMap['TXATTACH']]}"/>
+                                Attachment-based therapy   
+                            </label> 
+                        </div>   
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXBEHATX__c" value="{!form.obj[bfVariableMap['TXBEHATX']]}"/>
+                                Behavioral therapy   
+                            </label> 
+                        </div> 
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXCOGTX__c" value="{!form.obj[bfVariableMap['TXCOGTX']]}"/>
+                                Cognitive therapy   
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXCOGBEH__c" value="{!form.obj[bfVariableMap['TXCOGBEH']]}"/>
+                                Cognitive behavioral therapy     
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXDAYTX__c" value="{!form.obj[bfVariableMap['TXDAYTX']]}"/>
+                                Day treatment or partial hospitalization      
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXEXTX__c" value="{!form.obj[bfVariableMap['TXEXTX']]}"/>
+                                Expressive therapies (Drawing, movement, theater)     
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXFAMTX__c" value="{!form.obj[bfVariableMap['TXFAMTX']]}"/>
+                                Family therapy    
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXIHS__c" value="{!form.obj[bfVariableMap['TXIHS']]}"/>
+                                Intensive in-home services    
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXNARTX__c" value="{!form.obj[bfVariableMap['TXNARTX']]}"/>
+                                Narrative therapy     
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXPARTR__c" value="{!form.obj[bfVariableMap['TXPARTR']]}"/>
+                                Parent training     
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXTPEER__c" value="{!form.obj[bfVariableMap['TXTPEER']]}"/>
+                                Peer therapy    
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXPHARM__c" value="{!form.obj[bfVariableMap['TXPHARM']]}"/>
+                                Pharmacotherapy/medication     
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXPOTT__c" value="{!form.obj[bfVariableMap['TXPOTT']]}"/>
+                                Phase-oriented trauma treatment     
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXPLAY__c" value="{!form.obj[bfVariableMap['TXPLAY']]}"/>
+                                Play therapy     
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXPSYANL__c" value="{!form.obj[bfVariableMap['TXPSYANL']]}"/>
+                                Psychoanalysis     
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXPDPT__c" value="{!form.obj[bfVariableMap['TXPDPT']]}"/>
+                                Psychodynamic psychotherapy     
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXSCHBAS__c" value="{!form.obj[bfVariableMap['TXSCHBAS']]}"/>
+                                School-based treatment    
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXSST__c" value="{!form.obj[bfVariableMap['TXSST']]}"/>
+                                Social skills training    
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXSOLFC__c" value="{!form.obj[bfVariableMap['TXSOLFC']]}"/>
+                                Solution-focused therapy     
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXSTRESS__c" value="{!form.obj[bfVariableMap['TXSTRESS']]}"/>
+                                Stress management/relaxation training     
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXSUPTX__c" value="{!form.obj[bfVariableMap['TXSUPTX']]}"/>
+                                Supportive therapy      
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXWAS__c" value="{!form.obj[bfVariableMap['TXWAS']]}"/>
+                                'Wrap around' services     
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXNONE__c" value="{!form.obj[bfVariableMap['TXNONE']]}"/>
+                                None/Not Applicable    
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXOTHMOD__c" value="{!form.obj[bfVariableMap['TXOTHMOD']]}" onChange="skipLogic('TXOTHMOD',this.checked)"/>
+                                Other 
+                            </label> 
+                        </div>
+                        <div class="no-border-bottom no-space-bottom skip-TXOTMOSP">
+                            <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please specify:" for="TXOTMOSP__c"/> 
+                            <div class="col-md-4 col-lg-4 specify-input">
+                                <apex:inputField styleClass="form-control skip-element-TXOTMOSP input-sm"  id="TXOTMOSP__c" value="{!form.obj[bfVariableMap['TXOTMOSP']]}"/>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+
+                <!--5. primary “general modality" -->
+                <div class="form-group">
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">5.</span>
+                        Please indicate the <em>primary</em> "general modality" of treatment provided. <strong>(Select only one.)</strong>     
+                    </label>
+                    <div class="col-md-6 col-lg-4">
+                        <apex:selectList size="1" styleClass="form-control input-sm" id="TXMODPRI__c" value="{!form.obj[bfVariableMap['TXMODPRI']]}" onChange="skipLogic('TXMODPRI',this.value)">
+                            <apex:selectOptions value="{!TXMODPRIOption}"/>
+                        </apex:selectList> 
+                    </div>
+                </div>
+                <div class="form-group skip-TXMODPRISP">
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr"></span>
+                        Please specify: 
+                    </label>
+                    <div class="col-md-6 col-lg-6">
+                        <div class="col-md-4 col-lg-4 specify-input">
+                                <apex:inputField styleClass="form-control skip-element-TXMODPRISP input-sm"  id="TXMODPRISP__c" value="{!form.obj[bfVariableMap['TXMODPRISP']]}"/>
+                            </div>
+                    </div>
+                </div>
+
+                <!--6. Specific intervention protocols -->
+                <div class="form-group">
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">6.</span>
+                        Please indicate all specific intervention protocols provided, if any.  Items should ONLY be checked if treating clinician has been formally trained in the specific intervention protocol. <strong>(Select all that apply.)</strong>
+                    </label>
+                    <div class="col-md-6 col-lg-6">
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXSIPNO__c" value="{!form.obj[bfVariableMap['TXSIPNO']]}"/>
+                                None   
+                            </label> 
+                        </div>   
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXAFCBT__c" value="{!form.obj[bfVariableMap['TXAFCBT']]}"/>
+                                Alternatives for Families: A Cognitive Behavioral Therapy (AF-CBT)   
+                            </label> 
+                        </div> 
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXDBTSP__c" value="{!form.obj[bfVariableMap['TXDBTSP']]}"/>
+                                Adapted Dialectical Behavior Therapy for Special Populations (DBT-SP)  
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXARC__c" value="{!form.obj[bfVariableMap['TXARC']]}"/>
+                                Attachment, Self-Regulation, and Competence (ARC): A Comprehensive Framework for Intervention with Complexly Traumatized Youth
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXCPP__c" value="{!form.obj[bfVariableMap['TXCPP']]}"/>
+                                Child-Parent Psychotherapy (CPP)       
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXPSB__c" value="{!form.obj[bfVariableMap['TXPSB']]}"/>
+                                Children with Problematic Sexual Behavior Cognitive-Behavioral Treatment Program: School-age Program (PSB-CBT)     
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXCBITS__c" value="{!form.obj[bfVariableMap['TXCBITS']]}"/>
+                                Cognitive-Behavioral Intervention for Trauma in Schools (CBITS)     
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXCPCGB__c" value="{!form.obj[bfVariableMap['TXCPCGB']]}"/>
+                                Combined Parent Child Cognitive-Behavioral Therapy: Empowering Families Who Are at Risk for Physical Abuse (CPC-CBT)      
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXCBTSRI__c" value="{!form.obj[bfVariableMap['TXCBTSRI']]}"/>
+                                Combined Trauma-Focused Cognitive Behavioral Therapy (TF-CBT) and Selective Serotonin Reuptake Inhibitors (SSRI) Treatment      
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXCMTFT__c" value="{!form.obj[bfVariableMap['TXCMTFT']]}"/>
+                                Culturally Modified Trauma-Focused Treatment (CM-TFT)      
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXEMDR__c" value="{!form.obj[bfVariableMap['TXEMDR']]}"/>
+                                Eye Movement Desensitization and Reprocessing (EMDR)    
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXGTADV__c" value="{!form.obj[bfVariableMap['TXGTADV']]}"/>
+                                Group Treatment for Children Affected by Domestic Violence      
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXITCT__c" value="{!form.obj[bfVariableMap['TXITCT']]}"/>
+                                Integrative Treatment of Complex Trauma (ITCT)      
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXLFSKLS__c" value="{!form.obj[bfVariableMap['TXLFSKLS']]}"/>
+                                Life Skills/Life Stories    
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXMST__c" value="{!form.obj[bfVariableMap['TXMST']]}"/>
+                                Multi-systemic Treatment (MST)      
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXPCIT__c" value="{!form.obj[bfVariableMap['TXPCIT']]}"/>
+                                Parent-Child Interaction Therapy (PCIT)     
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXRLH__c" value="{!form.obj[bfVariableMap['TXRLH']]}"/>
+                                Real Life Heroes (RLH)     
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXSMART__c" value="{!form.obj[bfVariableMap['TXSMART']]}"/>
+                                Safety, Mentoring, Advocacy, Recovery, and Treatment (SMART)    
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXSANCT__c" value="{!form.obj[bfVariableMap['TXSANCT']]}"/>
+                                Sanctuary Model      
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXSPARCS__c" value="{!form.obj[bfVariableMap['TXSPARCS']]}"/>
+                                Structured Psychotherapy for Adolescents Responding to Chronic Stress (SPARCS)     
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXTARGET__c" value="{!form.obj[bfVariableMap['TXTARGET']]}"/>
+                                Trauma Affect Regulation: Guidelines for Education and Therapy (TARGET)      
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXTFCBT__c" value="{!form.obj[bfVariableMap['TXTFCBT']]}"/>
+                                Trauma-Focused Cognitive Behavioral Therapy (TF-CBT)     
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXTGCBT__c" value="{!form.obj[bfVariableMap['TXTGCBT']]}"/>
+                                Trauma-Focused Cognitive Behavioral Therapy for Childhood Traumatic Grief (TG-CBT)    
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXMMTT__c" value="{!form.obj[bfVariableMap['TXMMTT']]}"/>
+                                Trauma-Focused Coping (TFC)/ Multimodality Trauma Treatment (MMTT)    
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXBIS__c" value="{!form.obj[bfVariableMap['TXBIS']]}"/>
+                                Trauma-Informed Brief Intervention Services (TIBIS)     
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXTST__c" value="{!form.obj[bfVariableMap['TXTST']]}"/>
+                                Trauma Systems Therapy (TST)     
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXCTTG__c" value="{!form.obj[bfVariableMap['TXCTTG']]}"/>
+                                Trauma and Grief Component Therapy for Adolescents (TGCT-A)     
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXTDBT__c" value="{!form.obj[bfVariableMap['TXTDBT']]}"/>
+                                Youth Dialectical Behavioral Therapy/ Dialectical Behavior Therapy for Adolescents (DBTA)    
+                            </label> 
+                        </div>
+
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXSIPOTH__c" value="{!form.obj[bfVariableMap['TXSIPOTH']]}" onChange="skipLogic('TXSIPOTH',this.checked)"/>
+                                Other 
+                            </label> 
+                        </div>
+                        <div class="no-border-bottom no-space-bottom skip-TXSIOTSP">
+                            <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please specify:" for="TXSIOTSP__c"/> 
+                            <div class="col-md-4 col-lg-4 specify-input">
+                                <apex:inputField styleClass="form-control skip-element-TXSIOTSP  input-sm"  id="TXSIOTSP__c" value="{!form.obj[bfVariableMap['TXSIOTSP']]}"/>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                
+                <!--7. primary “general modality" -->
+                <div class="form-group">
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">7.</span>
+                        Please indicate the <em>primary</em> specific intervention protocol provided, if any. Items should ONLY be checked if treating clinician has been formally trained in the specific intervention protocol. <strong>(Select only one.)</strong>
+                    </label>
+                    <div class="col-md-6 col-lg-4">
+                        <apex:selectList size="1" styleClass="form-control input-sm" id="TXPRISIP__c" value="{!form.obj[bfVariableMap['TXPRISIP']]}" onChange="skipLogic('TXPRISIP',this.value)">
+                            <apex:selectOptions value="{!TXPRISIPOption}"/>
+                        </apex:selectList> 
+                    </div>
+                </div>
+                <div class="form-group skip-TXPRISIPSP">
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr"></span>
+                        Please specify: 
+                    </label>
+                    <div class="col-md-6 col-lg-6">
+                        <div class="col-md-4 col-lg-4 specify-input">
+                                <apex:inputField styleClass="form-control skip-element-TXPRISIPSP input-sm"  id="TXPRISIPSP__c" value="{!form.obj[bfVariableMap['TXPRISIPSP']]}"/>
+                            </div>
+                    </div>
+                </div>
+
+                <!--8. Other psychosocial interventions -->
+                <div class="form-group">
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">8.</span>
+                        Please indicate <em>all</em> other psychosocial interventions, brief treatments, crisis stabilizations, educational services, auxiliary services, or prevention modalities provided. <strong>(Select all that apply.)</strong> 
+                    </label>
+                    <div class="col-md-6 col-lg-6">
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXACCUP__c" value="{!form.obj[bfVariableMap['TXACCUP']]}"/>
+                                Acupuncture     
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXADVOC__c" value="{!form.obj[bfVariableMap['TXADVOC']]}"/>
+                                Advocacy activities    
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXTAP__c" value="{!form.obj[bfVariableMap['TXTAP']]}"/>
+                                Assessment-Based Treatment for Traumatized Children: Trauma Assessment Pathway (TAP)    
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXCM__c" value="{!form.obj[bfVariableMap['TXCM']]}"/>
+                                Case management/case coordination    
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXCARE__c" value="{!form.obj[bfVariableMap['TXCARE']]}"/>
+                                Child Adult Relationship Enhancement (CARE)    
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXCDCP__c" value="{!form.obj[bfVariableMap['TXCDCP']]}"/>
+                                Child Development-Community Policing Program (CDCP)    
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXCOPE__c" value="{!form.obj[bfVariableMap['TXCOPE']]}"/>
+                                Community Outreach Program-Esperanza (COPE)   
+                            </label> 
+                        </div>
+                        
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXDEBR__c" value="{!form.obj[bfVariableMap['TXDEBR']]}"/>
+                                Debriefing    
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXHONMAK__c" value="{!form.obj[bfVariableMap['TXHONMAK']]}"/>
+                                Honoring Children, Making Relatives (HC-MR)    
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXHONMEN__c" value="{!form.obj[bfVariableMap['TXHONMEN']]}"/>
+                                Honoring Children, Mending the Circle (HC-MC)    
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXHONRES__c" value="{!form.obj[bfVariableMap['TXHONRES']]}"/>
+                                Honoring Children, Respectful Ways (HC-RW)    
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXIFACES__c" value="{!form.obj[bfVariableMap['TXIFACES']]}"/>
+                                International Family Adult and Child Enhancement Services (IFACES)    
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXYOGA__c" value="{!form.obj[bfVariableMap['TXYOGA']]}"/>
+                                Meditation/Yoga   
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXMENTOR__c" value="{!form.obj[bfVariableMap['TXMENTOR']]}"/>
+                                Mentoring    
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXPTSMGT__c" value="{!form.obj[bfVariableMap['TXPTSMGT']]}"/>
+                                Posttraumatic Stress Management (PTSM)    
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXPSYEDU__c" value="{!form.obj[bfVariableMap['TXPSYEDU']]}"/>
+                                Psycho-education     
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXPFA__c" value="{!form.obj[bfVariableMap['TXPFA']]}"/>
+                                Psychological First Aid (PFA)     
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXSAFHAR__c" value="{!form.obj[bfVariableMap['TXSAFHAR']]}"/>
+                                Safe Harbor Program     
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXSELF__c" value="{!form.obj[bfVariableMap['TXSELF']]}"/>
+                                Self-Management/Coaching     
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXSUPGRP__c" value="{!form.obj[bfVariableMap['TXSUPGRP']]}"/>
+                                Support groups     
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXSTREET__c" value="{!form.obj[bfVariableMap['TXSTREET']]}"/>
+                                Streetwork Project     
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXTHCAMP__c" value="{!form.obj[bfVariableMap['TXTHCAMP']]}"/>
+                                Therapeutic recreational activities including summer camp    
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXPSNONE__c" value="{!form.obj[bfVariableMap['TXPSNONE']]}"/>
+                                None     
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXPSIOTH__c" value="{!form.obj[bfVariableMap['TXPSIOTH']]}" onChange="skipLogic('TXPSIOTH',this.checked)"/>
+                                Other 
+                            </label> 
+                        </div>
+                        <div class="no-border-bottom no-space-bottom skip-TXPSOTSP">
+                            <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please specify:" for="TXPSOTSP__c"/> 
+                            <div class="col-md-4 col-lg-4 specify-input">
+                                <apex:inputField styleClass="form-control skip-element-TXPSOTSP  input-sm"  id="TXPSOTSP__c" value="{!form.obj[bfVariableMap['TXPSOTSP']]}"/>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--9. The types of clinicians/providers -->
+                <div class="form-group">
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">9.</span>
+                        Please indicate <em>all</em> of the types of clinicians/providers from your agency who have worked with this child. <strong>(Select all that apply.)</strong>  
+                    </label>
+                    <div class="col-md-6 col-lg-6">
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXPSYCHO__c" value="{!form.obj[bfVariableMap['TXPSYCHO']]}"/>
+                                Psychologist (Master’s or Ph.D.)  
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXSCLPSY__c" value="{!form.obj[bfVariableMap['TXSCLPSY']]}"/>
+                                School psychologist (Not recorded above)   
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXTSYTR__c" value="{!form.obj[bfVariableMap['TXTSYTR']]}"/>
+                                Psychology trainee/intern  
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXSW__c" value="{!form.obj[bfVariableMap['TXSW']]}"/>
+                                Social worker (MSW, LCSW)  
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXSCHSW__c" value="{!form.obj[bfVariableMap['TXSCHSW']]}"/>
+                                School social worker 
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXSWTR__c" value="{!form.obj[bfVariableMap['TXSWTR']]}"/>
+                                Social worker trainee/intern  
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXPSYCST__c" value="{!form.obj[bfVariableMap['TXPSYCST']]}"/>
+                                Psychiatrist  
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXOMD__c" value="{!form.obj[bfVariableMap['TXOMD']]}"/>
+                                Other physician not psychiatrist  
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXMDEXT__c" value="{!form.obj[bfVariableMap['TXMDEXT']]}"/>
+                                Physician extender: (NP, PA), advanced practice nurse (MSN, CNS)  
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXRN__c" value="{!form.obj[bfVariableMap['TXRN']]}"/>
+                                Nurse (RN, LPN)  
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXCOUNS__c" value="{!form.obj[bfVariableMap['TXCOUNS']]}"/>
+                                Therapist/counselor (Not recorded above)  
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXOCT__c" value="{!form.obj[bfVariableMap['TXOCT']]}"/>
+                                Occupational therapist/physical therapist 
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXPARAPR__c" value="{!form.obj[bfVariableMap['TXPARAPR']]}"/>
+                                Paraprofessional  
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXTRANL__c" value="{!form.obj[bfVariableMap['TXTRANL']]}"/>
+                                Translator/interpreter  
+                            </label> 
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXOCLIN__c" value="{!form.obj[bfVariableMap['TXOCLIN']]}" onChange="skipLogic('TXOCLIN',this.checked)"/>
+                                Other 
+                            </label> 
+                        </div>
+                        <div class="no-border-bottom no-space-bottom skip-TXOCLISP">
+                            <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please specify:" for="TXOCLISP__c"/> 
+                            <div class="col-md-4 col-lg-4 specify-input">
+                                <apex:inputField styleClass="form-control skip-element-TXOCLISP input-sm"  id="TXOCLISP__c" value="{!form.obj[bfVariableMap['TXOCLISP']]}"/>
+                            </div>
+                        </div>
+
+                        </div>
+                        </div>
+
+                <!--10. primary “general modality" -->
+                <div class="form-group">
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">10.</span>
+                        Please indicate the <em>primary</em> lead clinician/provider from your agency who worked with this child. <strong>(Select only one.)</strong>     
+                    </label>
+                    <div class="col-md-6 col-lg-4">
+                        <apex:selectList size="1" styleClass="form-control input-sm" id="TXLEADCL__c" value="{!form.obj[bfVariableMap['TXLEADCL']]}" onChange="skipLogic('TXLEADCL',this.value)">
+                            <apex:selectOptions value="{!TXLEADCLOption}"/>
+                        </apex:selectList> 
+                        
+                    </div>
+                </div>
+
+                <div class="form-group skip-TXLEADCLSP">
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr"></span>
+                        Please specify: 
+                    </label>
+                    <div class="col-md-6 col-lg-6">
+                        <div class="col-md-4 col-lg-4 specify-input">
+                                <apex:inputField styleClass="form-control skip-element-TXLEADCLSP input-sm"  id="TXLEADCLSP__c" value="{!form.obj[bfVariableMap['TXLEADCLSP']]}"/>
+                            </div>
+                    </div>
+                </div>
+                
+                <!--Completion status control-->
+                <div class="form-group no-border-bottom no-space-bottom">
+                    <label class="control-label col-md-2 col-md-offset-8 text-right">Complete?</label>
+                    <div class="col-md-2">
+                        <apex:selectList id="STATUS_INSDOMENV__c" styleClass="pull-right form-control input-sm" value="{!form.obj[bfVariableMap['STATUS']]}" size="1">
+                            <apex:selectOption itemValue="Incomplete" itemLabel="Incomplete"/>
+                            <apex:selectOption itemValue="Complete" itemLabel="Complete"/>
+                        </apex:selectList> 
+                    </div>
+                </div>
+                <!--end completion status-->
+            </apex:pageBlock>
+            
+        </apex:form>
+        
+    </div>
+    
+    <!--citation information footer-->    
+    <c:cimiFormFooter formElement="{!form}"/>
+    
+</apex:page>

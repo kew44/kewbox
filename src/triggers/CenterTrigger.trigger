@@ -132,7 +132,7 @@ trigger CenterTrigger on Center__c (before insert, after insert, after delete, a
                     c.Name = c.Input_ID__c + '-00';
                 
             }
-        
+            
         }
     
         if(Trigger.isAfter) {

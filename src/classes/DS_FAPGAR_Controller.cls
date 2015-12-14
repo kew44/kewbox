@@ -1,133 +1,114 @@
-/*Page Description:
- *  Controller for VisualForce page DS_FAPGAR
- * Last Updated on:
- *  7/24/2014
- * Update Purpose:
- *         fix redirect
- 7/31/14-Link to DS_Functioning_Forms__c
- 10/15-start implementing sum
- * Programmer:
- *  Kelsey
- */
-public with sharing class DS_FAPGAR_Controller{
+/**
+* The controller class for FAPGAR.  
+* 
+**/
 
-  Utility ut = new Utility();
-
-  Map<String, String> parameter = ut.urlDecode(Apexpages.currentPage().getParameters().get('cimi'));
-
-  public DS_Functioning_Forms_B__c obj { get; set; }
- // public DS_FAPGAR__c obj { get; set; }
-
-  String cID;
-  
-  public Client_Summary__c summary { get; set; }////?
-  
-  String summaryID;
-  
-  public String forceRedirect { get; set; } 
-
-  Boolean edit = FALSE;
-
-  public String subtitle {get; set;}
+public with sharing class DS_FAPGAR_Controller extends DS_BasicForm_Controller {
     
-  public Client__c client { get; set; }
-
-  public Client_Summary__c summaryInfo { get; set; }////?
-
-  public String triggerValue {get; set;}
-  public String skipTrigger {get; set;}
-
-  public SkipLogic skip {get;set;}
-
-  public String skipElementToJson { get; set; }
-
-  
-  public DS_FAPGAR_Controller(ApexPages.StandardController controller) {
+    // Variable for tracking the warning message for FFAPGARRAW
+    private Boolean displayWarningMessageFFAPGARRAW = false;
     
-    cID = parameter.get('c');
-
-    summaryID = parameter.get('summary');
-
-    forceRedirect = (parameter.containsKey('f')) ? parameter.get('f') : '';
-
-    skip = new SkipLogic();
+    Final String warningMessageContent = 'Please note that if one or more items are missing the score will not be provided.  Click Save if you wish to proceed without completing all questions.';
     
-    client = [SELECT Name, INIT__c FROM Client__c WHERE id =: cID];
-  //  Client_Summary__c summary = [SELECT SECTION__c FROM Client_Summary__c WHERE ID =:summaryID];
- //       summary = [SELECT SECTION__c FROM Client_Summary__c WHERE ID =:summaryID];
-    subtitle = '(' + client.Name + ') ' + client.INIT__c;
-
-
-  //  String getDEMOFields = ut.getFields('DS_FAPGAR__c');
-    String getDEMOFields = ut.getFields('DS_Functioning_Forms_B__c');
-
-   // List<DS_FAPGAR__c> record = Database.query('SELECT ' + getDEMOFields + ', Client__r.Name, Client__r.INIT__c' +  
-    List<DS_Functioning_Forms_B__c> record = Database.query('SELECT ' + getDEMOFields + ', Client__r.Name, Client__r.INIT__c' +  
-              //                                 '  FROM DS_FAPGAR__c' +
-                                               '  FROM DS_Functioning_Forms_B__c' +                              
-                                                 ' WHERE Client__c = \''+ cID + '\'');
-
-    if(record.size() == 0) { // New record
-      
-      obj = new DS_Functioning_Forms_B__c(CLIENT__c = cID, FORM__c = 'DS_FAPGAR');
-     // summary = new Client_Summary__c(FORM_ID__c=summaryID);//
-      
-      obj.put('Client__c', cID);///
+    public DS_FAPGAR_Controller(ApexPages.StandardController controller) {
+        
+        // Initilize the DS_BasicForm_Controller
+        super(Apexpages.currentPage().getParameters().get('cimi'));
+        
+        // Set the obj name 
+        form.setObjName('DS_Functioning_Forms_'+form.BorF+'__c');
+        
+        // Get the object record into form.obj
+        form.getObjRecord();
+        
+        // Get field name from DS_DATA (variable)
+        bfVariableMap = form.getVariable('FAPGAR');
+        
     }
-    else {   // Update record
-      
-      obj = record.get(0);
-      edit = TRUE;
-
-      obj.FORM__c = 'DS_FAPGAR';
+    
+    public List<SelectOption> getNSVUItems() {
         
-    } 
-   
-   }
-
-
-  public String getClientInfo() { return ut.clientSection(cID,SummaryID);}  
-
-
-   public List<SelectOption> getNSVUItems() {
-    
-    List<SelectOption> options = new List<SelectOption>(); 
-    
-    //options.add(new SelectOption('','')); 
-    options.add(new SelectOption('0','Hardly ever')); 
-    options.add(new SelectOption('1','Some of the time')); 
-    options.add(new SelectOption('2','Almost always')); 
-    options.add(new SelectOption('99','Unknown'));
-    
-    return options; 
+        List<SelectOption> options = new List<SelectOption>(); 
         
-  }
-  
-    
-  public PageReference cancel() {
-
-    PageReference summaryPage = new PageReference('/apex/ClientSummary?s=0&id=' + cID);
-    summaryPage.setRedirect(true);
-    
-    return summaryPage;
-
-  }
-
-  public PageReference save() {
-
-    PageReference nextPage;
+        //options.add(new SelectOption('','')); 
+        options.add(new SelectOption('0','Hardly ever')); 
+        options.add(new SelectOption('1','Some of the time')); 
+        options.add(new SelectOption('2','Almost always')); 
+        options.add(new SelectOption('99','Unknown'));
         
-    try {
-      if(edit == FALSE) insert obj;
-      else update obj;
-      nextPage = new PageReference(skip.formRedirct(cID, '0', forceRedirect));
-      nextPage.setRedirect(true);
+        return options; 
+        
     }
-    catch(DMLException e) { nextPage = null; }
     
-    return nextPage;
-          
-  }
- 
+    public Integer countBlankAnswer() {
+        
+        Integer blankCount = 0;       
+        
+        for(Integer i = 1; i <= 5; i++) {
+            
+            if(form.obj.get(bfVariableMap.get('FAPGAR'+String.valueOf(i))) == null) 
+                blankCount++;
+            
+        }
+        
+        return blankCount;
+        
+    }
+    
+    public Boolean showWarningMessageForBlank(Integer blankCount, String warningMessageContent) {
+        
+        if(blankCount >= 1 && displayWarningMessage == false) {
+            ApexPages.addmessage(new ApexPages.message(ApexPages.severity.WARNING, warningMessageContent));
+            displayWarningMessage = true;
+            return true;
+        }
+        
+        return false;
+    }
+    
+    public override PageReference save() {
+        
+        PageReference nextPage;
+        
+        // If there are some blank answers and this is the first time they click the save button
+        // , it would display the warning message
+        if(!showWarningMessageForBlank(countBlankAnswer(), warningMessageContent)) {
+            
+            if(form.saveObjRecord()) {
+                nextPage = new PageReference(skip.formRedirct(form.cID, form.summary.SECTION__c, form.forceRedirect));
+                nextPage.setRedirect(true);
+            }
+            else { nextPage = null; }
+            
+        }
+        
+        return nextPage;    
+        
+    }
 
+    
+    /*public override PageReference save() {
+        
+        Boolean warningMessage = false;
+                
+        if(checkBlankAnswer() == true && displayWarningMessageFFAPGARRAW == false) {
+            ApexPages.addmessage(new ApexPages.message(ApexPages.severity.WARNING,'Please note that if one or more items are missing the score will not be provided.  Click Save if you wish to proceed without completing all questions.'));
+            displayWarningMessageFFAPGARRAW = true;
+            warningMessage = true;
+        }
+        
+        
+        PageReference nextPage;
+        
+        if(form.saveObjRecord()) {
+            nextPage = new PageReference(skip.formRedirct(form.cID, form.summary.SECTION__c, form.forceRedirect));
+            nextPage.setRedirect(true);
+        }
+        else { nextPage = null; }
+        
+        return (warningMessage == false) ? nextPage : null;
+        
+    }*/
+    
+    
 }

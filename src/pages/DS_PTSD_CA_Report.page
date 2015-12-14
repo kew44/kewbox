@@ -1,180 +1,218 @@
-<apex:page standardController="DS_PTSD_CA_B__c" extensions="DS_PTSD_CA_Report_Controller" action="{!init}" showHeader="{!NOT(printReport)}">
-
-    <!--JQuery -->
-    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.9.1.js')}"  /><!--allows for JQuery dependencies-->
-    <script> $j = jQuery.noConflict(); </script><!--Reserves the '$' token for JQuery only-->
+<apex:page standardController="DS_PTSD_CA_B__c" extensions="DS_PTSD_CA_Report_Controller" action="{!init}" showHeader="{!NOT(printReport)}" id="ptsd-report">
     
-    <!-- Bootstrap -->
-        <link href="{!URLFOR($Resource.VFbootstrap3, '/css/VFbootstrap.css')}" rel="stylesheet" media="screen"/>
-            <apex:includeScript value="{!URLFOR($Resource.VFbootstrap3, '/js/bootstrap.min.js')}"/>
-                
-                <!--link to the CSS resource in Salesforce internal document-->
-                    <apex:stylesheet value="{!$Resource.CustomCss}" />
-                    
-    <script>function setFocusOnLoad() {}</script> 
-    
-    <!--supplementary styling information-->
     <style>
-        .pbTitle { width:390px !important; }
-        .pbButtonb, .pbButton { float:right; }
-        #force .form-control { display: inline; /*width:auto;*/ }
-        #force { font-size: 13px; }
-        /*.form-checkbox label { display: inline !important; }*/
-        .auto-width { width:auto !important; }
-        #sidebarCell { display: none;}
-        
-        @media only screen and (min-width : 1224px) {
-        #sidebarCell { display: table-cell;}
+        @media print {
+            @page { /*size: portrait;*/ margin:0.5cm; margin-top: 0.5cm; }
+            
+            .ptBreadcrumb { display:none; }
+            .pageTitleIcon {display: none; }
+            .pageType { font-size:20px !important; margin-left:5px !important; }
+            .pbBody {     margin: 7px 0px 7px !important; }
+            .ptsd-angle-noborder { display:none; }
+            .charts-div { margin-left: 3px !important; }
+            .overall-history { margin-top: 0px;  }
+            .page-break { height: 75px; page-break-before: always; }
+            .header-info-table-page2 { float: right; width: 50%; padding-top: 0px; }
+            .bPageTitle-page2 { float: left; width: 50%; }
+            <!--<apex:outputText value=".charts-div { page-break-before: always; }" rendered="{!displayHistory}"/>-->
         }
-        .complete-title { vertical-align: middle !important; }
-        .PTSD-table tbody th { text-align: center !important; }
-        .first-row td { text-align: center !important; }
-        .PTSD-table ul { padding: 0px; }
-    </style>
-    <!--end styling-->
         
-    <!-- "Breadcrumb" heading allows user to navigate to the ClientSummary page -->
-    <apex:outputPanel layout="none" rendered="{!not(printReport)}">
-        <script>
-        $j(document).ready(function() {
-            $j('.bPageTitle').append('<div class="ptBreadcrumb">&nbsp;«&nbsp;<a href="/apex/ClientSummary?id={!cID}&s=0">Back to Client Summary</a></div>');
-        });
-        </script>
-    </apex:outputPanel>
-    <!--end breadcrumb-->
+        @media print and (orientation: portrait) {
+            
+        }
+        @media print and (orientation: landscape) {
+            
+        }
+        
+    </style>
+    
+    <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
+    
+    
+    
+    <!-- script for rotating arrow on the left side of the table --> 
+    <script src="{!URLFOR($Resource.JS_DS_PTSD_Report)}"></script>
     
     <!--print report command for button-->  
     <apex:outputPanel layout="none" rendered="{!printReport}">
         <script>
         $j(document).ready(function() { 
-            $j('.bPageTitle .ptBody .content').prepend('<img style="display:inline;float:left;" src="{!URLFOR($Resource.images, 'cimiLogo.png')}"/>');
+            //$j('.bPageTitle .ptBody .content').prepend('<img style="display:inline;float:left;" src="{!URLFOR($Resource.images, 'cimiLogo2.png')}"/>');
+            //$j('.chart-total-score').removeClass('col-md-6 col-lg-6').addClass('col-md-3 col-lg-3');
+            //$j('.chart-symptom-score').removeClass('col-md-6 col-lg-6').addClass('col-md-5 col-lg-5 col-md-offset-1 col-lg-offset-1');
+            $j('.chart-total-score').removeClass('col-md-12 col-lg-6').css('width','1150px', 'height', '300px', 'margin-bottom', '10px');
+            $j('.chart-symptom-score').removeClass('col-md-12 col-lg-6').css('width','1150px', 'height', '300px');
+            $j('.bPageTitle-page2').html($j('.bPageTitle').html());
+            $j('.header-info-table-page2').html($j('.header-info-table').html());
             window.print(); 
         });
         </script>
     </apex:outputPanel>
     <!--end print command -->  
+
+    <div class="{!HTMLENCODE(form.visitType)}-assessment">
+        <apex:sectionHeader title="{!HTMLENCODE(form.title)}" subtitle="{!IF(NOT(printReport), HTMLENCODE(form.subtitle), null)}" />
+    </div>
+
+<div class="bootwrap">
     
-    <apex:form id="DS_PTSD_CA_REPORT">
-        
-        <apex:sectionHeader title=" UCLA PTSD Reaction Index for Children/Adolescents" subtitle="{!subtitle}" rendered="{!NOT(printReport)}"/>
-        <apex:sectionHeader title="UCLA PTSD Reaction Index for Children/Adolescents" rendered="{!printReport}"/><br/>
+    <!--Begin form content-->
+    <apex:form id="DS_FORM" styleClass="form-horizontal ptsd-report">
         
         <!-- pageblock to show ClientInformation header as described in Utility class-->
-        <apex:pageBlock title="Client Information">
-            <div id="force">
-                <apex:outputText value="{!ClientInfo}" escape="false"/>
-            </div>
-        </apex:pageBlock><!--end client info pageBlock-->  
+        <c:cimiClientInfo displayVisitType="true" formElement="{!form}"/>
+        <!--end client info pageBlock-->
         
         <!--begin report content-->
         <apex:pageBlock title="Symptom Analysis Report">
-            <apex:pageMessages /><!--placeholding structure that allows for system message display-->
             
-            <div id="force">
-                
-                <!--provides print button functionality and structure-->
-                <apex:outputPanel layout="none" rendered="{!NOT(printReport)}">
-                    <div>
-                        <a href="/apex/DS_PTSD_CA_Report?cimi={!cimi}&print=1" target="_blank">
-                            <button class="btn btn-default pull-right" type="button">
-                                <i class="glyphicon glyphicon-print"></i> &nbsp;Print
-                            </button>
-                        </a>
-                        <br/>
-                    </div>
-                </apex:outputPanel>
-                <!--end print button-->
-                
-                <!--information-->
-                <p>The UCLA PTSD Reaction Index for DSM-5 measures the child's experience of PTSD symptoms.This measure assesses the frequency with which the child experienced PTSD symptoms over the past month.</p>
+            <!--Save & view, save, and cancel control buttons for pageBlock-->
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!editRecord}" value="Edit" styleClass="btn-info btn btn-sm" rendered="{!not(printReport)}"/>
+            </apex:pageBlockButtons>
+            <!--end buttons-->
+            
+            <!--placeholding structure that allows for system message display-->
+            <apex:pageMessages />
+            
+            <!--provides print button functionality and structure-->
+            <apex:outputPanel layout="none" rendered="{!NOT(printReport)}">
+                <div>
+                    <a href="/apex/DS_PTSD_CA_Report?cimi={!HTMLENCODE(cimi)}&print=1" target="_blank">
+                        <button class="btn btn-default pull-right" type="button">
+                            <i class="glyphicon glyphicon-print"></i> &nbsp;Print
+                        </button>
+                    </a>
+                    <br/>
+                </div>
+            </apex:outputPanel>
+            <!--end print button-->
+            
+            <!--information and instructions-->
+            <div class="alert alert-info">
+                <p> The UCLA PTSD Reaction Index for DSM-5 measures the child's experience of PTSD symptoms.This measure assesses the frequency with which the child experienced PTSD symptoms over the past month.</p>
                 <p><b>This report provides a list of the symptoms that are present and some guidance on whether a child is likely to meet the DSM-5 diagosis of PTSD.</b></p>
-                <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAPPCN']] = 1, true, false)}"><!--conditional display--> 
-                <!--end information-->
-                
-                    <table class="table PTSD-table table-bordered">
-                        <tbody>
-                            <!--score table headings-->
-                            <tr>
-                                <th rowspan="2">Date</th>
-                                <th rowspan="2">Visit</th>
-                                <th rowspan="2">Meets<br/>UCLA PTSD<br/>Diagnostic<br/>Criteria DSM-5 </th>
-                                <th rowspan="2">UCLA PTSD-RI<br/>Total Scale<br/>Score</th>
-                                <th colspan="4">Symptom Category Score (Symptom Criteria Met)</th>
-                                
-                                <th rowspan="2">F<br/>Duration<br/>greater than<br/>on month</th>
-                                <th rowspan="2">G<br/>Clinically<br/>Significant<br/>Distress</th>
-                                <th rowspan="2">Clinician<br/>Assessment:<br/>Functional<br/>Impairment</th>
-                                <th rowspan="2">Presence of<br/>one or more<br/>Dissociative<br/>Symtoms</th>
-                            </tr>
-                            
-                            <!--condensed headings-->
-                            <tr>
-                                <th>B<br/>Intrusion</th>
-                                <th>C<br/>Avoidance</th>
-                                <th>D<br/>Negative<br/>Alterations in<br/>Cognitions/Mood</th>
-                                <th>E<br/>Alterations in<br/>Arousal/Reactivity</th>
-                            </tr>
-                            <!--end condensed heading format-->
-                            <!--end headings-->
-                            
-                            <!--response summary-->
-                            <tr class="first-row">
-                                <!--date field-->
-                                <td>
-                                    <apex:outputText value="{0,date,MM/dd/yyyy}">
-                                        <apex:param value="{!obj[bfVariableMap['DOAPTSD']]}" />
-                                    </apex:outputText>
+            </div>
+            <!--end info-->
+            
+            <table class="table ptsd-table table-bordered table-striped">
+                <thead>
+                    <!--score table headings-->
+                    <tr>
+                        <apex:outputPanel rendered="{!displayHistory}">
+                            <th rowspan="2" class="ptsd-angle-noborder" style="border:none !important;"></th>
+                        </apex:outputPanel>
+                        <th rowspan="2">Date</th>
+                        <th rowspan="2" class="ptsd-visit-cell-width">Visit</th>
+                        <th rowspan="2">Meets<br/>UCLA PTSD<br/>Diagnostic<br/>Criteria<br/>DSM-5 </th>
+                        <th rowspan="2">UCLA<br/>PTSD-RI<br/>Total Scale<br/>Score</th>
+                        <th colspan="4">Symptom Category Score (Symptom Criteria Met)</th>
+                        
+                        <th rowspan="2">F<br/>Duration<br/>greater than<br/>on month</th>
+                        <th rowspan="2">G<br/>Clinically<br/>Significant<br/>Distress</th>
+                        <th rowspan="2"  style="width:140px;">Clinician<br/>Assessment:<br/>Functional<br/>Impairment</th>
+                        <th rowspan="2" style="width:140px;">Presence of<br/>one or more<br/>Dissociative<br/>Symptoms</th>
+                    </tr>
+                    
+                    <!--condensed headings-->
+                    <tr>
+                        <th>B<br/>Intrusion</th>
+                        <th>C<br/>Avoidance</th>
+                        <th>D<br/>Negative<br/>Alterations in<br/>Cognitions/Mood</th>
+                        <th>E<br/>Alterations in<br/>Arousal/Reactivity</th>
+                    </tr>
+                    <!--end condensed heading format-->
+                    <!--end headings-->
+                </thead>
+                <tbody>
+                    
+                    <apex:repeat value="{!visits}" var="visit">
+                        
+                        <!--response summary-->
+                        <tr class="first-row" style="{!IF(AND(HTMLENCODE(form.summary.SECTION__c) = HTMLENCODE(visit.SECTION), displayHistory = true), 'background-color: rgba(173, 228, 255, 0.69);', '')}">
+                            <apex:outputPanel rendered="{!displayHistory}">
+                                <td class="ptsd-angle-noborder">
+                                    <!-- hide arrow if the record is Not Applicable -->
+                                    <apex:outputPanel layout="none" rendered="{!if(visit.PTSAPPCN = 1, true, false)}">
+                                        <i class="fa fa-angle-right fa-2x ptsd-angle-icon {!IF(HTMLENCODE(form.summary.SECTION__c) = HTMLENCODE(visit.SECTION), 'fa-rotate-90', '')}" data-section-number="{!HTMLENCODE(visit.SECTION)}"></i>
+                                    </apex:outputPanel>
                                 </td>
-                                <!--end date-->
-                                
-                                <!--visit type-->
-                                <td>{!IF(BorF = 'B', 'Baseline', 'Follow-up')}</td>
+                            </apex:outputPanel>
+                            <!--date field-->
+                            <td>
+                                <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                    <apex:param value="{!visit.DOAPTSD}" />
+                                </apex:outputText>
+                            </td>
+                            <!--end date-->
+                            
+                            <!--visit type-->
+                            <td>{!IF(HTMLENCODE(visit.BorF) = 'B', 'Baseline', 'Follow-up')}</td>
+                            
+                            <!--conditional, If 3 or more scores are missing, this panel is displayed instead of report-->
+                            <apex:outputPanel layout="none" rendered="{!if(visit.PTSAPPCN = 0, true, false)}">
+                                <td colspan="10">
+                                    <strong>This record is <u>Not</u> Applicable. Score can't be calculated, three(3) or more anwers to the UCLA PTSD-RI were left blank.</strong>
+                                </td>
+                            </apex:outputPanel>
+                            <!--end NaN message-->
+                            
+                            <apex:outputPanel layout="none" rendered="{!if(visit.PTSAPPCN = 1, true, false)}">
                                 
                                 <!--meets or doesn't meet criteria-->
-                                <td><b>{!if(obj[bfVariableMap['PTSOCN']] = 1, 'Meets', 'Does Not Meet')}</b></td>
+                                <td><b>{!if(visit.PTSOCN = 1, 'Meets', 'Does Not Meet')}</b></td>
                                 
                                 <!--total score-->
-                                <td><b>{!obj[bfVariableMap['PTSORN']]}</b></td>
+                                <td><b>{!visit.PTSORN}</b></td>
                                 
                                 <!--sub-category scores and if criteria was met/not met-->
                                 <!--B. Intrusion-->
-                                <td>{!obj[bfVariableMap['PTSBRN']]} <b>[{!if(obj[bfVariableMap['PTSBMN']] = 1, 'Met', 'Not Met')}]</b></td>
+                                <td>{!visit.PTSBRN} <b>[{!if(visit.PTSBMN = 1, 'Met', 'Not Met')}]</b></td>
                                 <!--C. Avoidance-->
-                                <td>{!obj[bfVariableMap['PTSCRN']]} <b>[{!if(obj[bfVariableMap['PTSCMN']] = 1, 'Met', 'Not Met')}]</b></td>
+                                <td>{!visit.PTSCRN} <b>[{!if(visit.PTSCMN = 1, 'Met', 'Not Met')}]</b></td>
                                 <!--D. Negative Alterations in Cognitions/Mood-->
-                                <td>{!obj[bfVariableMap['PTSDRN']]} <b>[{!if(obj[bfVariableMap['PTSDMN']] = 1, 'Met', 'Not Met')}]</b></td>
+                                <td>{!visit.PTSDRN} <b>[{!if(visit.PTSDMN = 1, 'Met', 'Not Met')}]</b></td>
                                 <!--E. Alterations in Arousal/Reactivity-->
-                                <td>{!obj[bfVariableMap['PTSERN']]} <b>[{!if(obj[bfVariableMap['PTSEMN']] = 1, 'Met', 'Not Met')}]</b></td>
+                                <td>{!visit.PTSERN} <b>[{!if(visit.PTSEMN = 1, 'Met', 'Not Met')}]</b></td>
                                 
                                 <!--duration > 1 month?-->
-                                <td><b>{!CASE(obj[bfVariableMap['PTSDURA']], '0', 'No', '1', 'Yes', '99', 'Unknown', '')}</b></td>
+                                <td><b>{!CASE(HTMLENCODE(visit.PTSDURA), '0', 'No', '1', 'Yes', '99', 'Unknown', '')}</b></td>
                                 <!--significant distress?-->
-                                <td><b>{!if(obj[bfVariableMap['PTSDC']] = true, 'Yes', 'No')}</b></td>
+                                <td><b>{!if(visit.PTSDC = true, 'Yes', 'No')}</b></td>
                                 <!--impairment?-->
-                                <td><b>{!if(obj[bfVariableMap['PTSFC']] = true, 'Yes', 'No')}</b></td>
+                                <td><b>{!if(visit.PTSFC = true, 'Yes', 'No')}</b></td>
                                 <!--dissociative symptoms present?-->
-                                <td><b>{!if(obj[bfVariableMap['PTSVDSN']] = 1, 'Yes', 'No')}</b></td>
-                            </tr>
-                            <!--end summary-->
-                            
+                                <td><b>{!if(visit.PTSVDSN = 1, 'Yes', 'No')}</b></td>
+                                
+                            </apex:outputPanel>
+                        </tr>
+                        <!--end summary-->
+                        
+                        <apex:outputPanel layout="none" rendered="{!if(visit.PTSAPPCN = 1, true, false)}">
                             <!--list of symptoms met in symptom categories-->
-                            <tr>
+                            <tr class="ptsd-detail-{!HTMLENCODE(visit.SECTION)} {!IF(HTMLENCODE(form.summary.SECTION__c) = HTMLENCODE(visit.SECTION), '', 'ptsd-detail-hide')}" style="{!IF(AND(HTMLENCODE(form.summary.SECTION__c) = HTMLENCODE(visit.SECTION), displayHistory = true), 'background-color: rgb(173, 228, 255);', '')}">
+                                <apex:outputPanel rendered="{!displayHistory}">
+                                    <td class="ptsd-angle-noborder"></td>
+                                </apex:outputPanel>
                                 <td colspan="4" class="text-right" style="vertical-align:top;"><b>Symptoms Present</b></td>
                                 
                                 <!--category B-->
                                 <td>
                                     <ul>
-                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAB1']] > 2, true, false)}">
+                                        <apex:outputPanel layout="none" rendered="{!if(visit.PTSAB1 > 2, true, false)}">
                                             <li>Intrusive Recollections</li>
                                         </apex:outputPanel>
-                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAB2']] > 2, true, false)}">
+                                        <apex:outputPanel layout="none" rendered="{!if(visit.PTSAB2 > 2, true, false)}">
                                             <li>Recurrent Dreams</li>
                                         </apex:outputPanel>
-                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAB3']] > 2, true, false)}">
+                                        <apex:outputPanel layout="none" rendered="{!if(visit.PTSAB3 > 2, true, false)}">
                                             <li>Flashbacks</li>
                                         </apex:outputPanel>
-                                        <apex:outputPanel layout="none" rendered="{!if(OR(obj[bfVariableMap['PTSAB4']] > 2, obj[bfVariableMap['PTSAB5']] > 2), true, false)}">
+                                        <apex:outputPanel layout="none" rendered="{!if(visit.PTSAB4 > 2, true, false)}">
                                             <li>Psychological Reactivity to Reminders</li>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel layout="none" rendered="{!if(visit.PTSAB5 > 2, true, false)}">
+                                            <li>Physiological Reactivity to Reminders</li>
                                         </apex:outputPanel>
                                     </ul>
                                 </td>
@@ -183,10 +221,10 @@
                                 <!--category C-->
                                 <td>
                                     <ul>
-                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAC1']] > 2, true, false)}">
+                                        <apex:outputPanel layout="none" rendered="{!if(visit.PTSAC1 > 2, true, false)}">
                                             <li>Avoidance of Thoughts or Feelings</li>
                                         </apex:outputPanel>
-                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAC2']] > 2, true, false)}">
+                                        <apex:outputPanel layout="none" rendered="{!if(visit.PTSAC2 > 2, true, false)}">
                                             <li>Avoidance of Reminders</li>
                                         </apex:outputPanel>
                                     </ul>
@@ -196,25 +234,25 @@
                                 <!--category D-->
                                 <td>
                                     <ul>
-                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAD1']] > 2, true, false)}">
+                                        <apex:outputPanel layout="none" rendered="{!if(visit.PTSAD1 > 2, true, false)}">
                                             <li>Trouble Remembering</li>
                                         </apex:outputPanel>
-                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAD2']] > 2, true, false)}">
+                                        <apex:outputPanel layout="none" rendered="{!if(visit.PTSAD2 > 2, true, false)}">
                                             <li>Negative Beliefs</li>
                                         </apex:outputPanel> 
-                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAD3']] > 2, true, false)}">
+                                        <apex:outputPanel layout="none" rendered="{!if(visit.PTSAD3 > 2, true, false)}">
                                             <li>Distorted Negative Cognitions</li>
                                         </apex:outputPanel>
-                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAD4']] > 2, true, false)}">
+                                        <apex:outputPanel layout="none" rendered="{!if(visit.PTSAD4 > 2, true, false)}">
                                             <li>Negative Emotional State</li>
                                         </apex:outputPanel>
-                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAD5']] > 2, true, false)}">
+                                        <apex:outputPanel layout="none" rendered="{!if(visit.PTSAD5 > 2, true, false)}">
                                             <li>Diminished Interest</li>
                                         </apex:outputPanel>
-                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAD6']] > 2, true, false)}">
+                                        <apex:outputPanel layout="none" rendered="{!if(visit.PTSAD6 > 2, true, false)}">
                                             <li>Detachment</li>
                                         </apex:outputPanel>
-                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAD7']] > 2, true, false)}">
+                                        <apex:outputPanel layout="none" rendered="{!if(visit.PTSAD7 > 2, true, false)}">
                                             <li>Inability for Positive Emotions</li>
                                         </apex:outputPanel>
                                     </ul>
@@ -224,22 +262,22 @@
                                 <!--category E-->
                                 <td>
                                     <ul>
-                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAE1']] > 2, true, false)}">
+                                        <apex:outputPanel layout="none" rendered="{!if(visit.PTSAE1 > 2, true, false)}">
                                             <li>Irritability and Anger</li>
                                         </apex:outputPanel>
-                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAE2']] > 2, true, false)}">
+                                        <apex:outputPanel layout="none" rendered="{!if(visit.PTSAE2 > 2, true, false)}">
                                             <li>Reckless/Self-Destructive Behavior</li>
                                         </apex:outputPanel>
-                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAE3']] > 2, true, false)}">
+                                        <apex:outputPanel layout="none" rendered="{!if(visit.PTSAE3 > 2, true, false)}">
                                             <li>Hypervigilance</li>
                                         </apex:outputPanel>
-                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAE4']] > 2, true, false)}">
+                                        <apex:outputPanel layout="none" rendered="{!if(visit.PTSAE4 > 2, true, false)}">
                                             <li>Exaggerated Startle</li>
                                         </apex:outputPanel>
-                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAE5']] > 2, true, false)}">
+                                        <apex:outputPanel layout="none" rendered="{!if(visit.PTSAE5 > 2, true, false)}">
                                             <li>Concentration Problems</li>
                                         </apex:outputPanel>
-                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAE6']] > 2, true, false)}">
+                                        <apex:outputPanel layout="none" rendered="{!if(visit.PTSAE6 > 2, true, false)}">
                                             <li>Sleep Disturbance</li>
                                         </apex:outputPanel>                 
                                     </ul>
@@ -252,16 +290,16 @@
                                 <!--category F-->
                                 <td>
                                     <ul>
-                                        <apex:outputPanel layout="none" rendered="{!obj[bfVariableMap['PTSFHC']] = true}">
+                                        <apex:outputPanel layout="none" rendered="{!visit.PTSFHC = true}">
                                             <li>Home</li>
                                         </apex:outputPanel> 
-                                        <apex:outputPanel layout="none" rendered="{!obj[bfVariableMap['PTSFSC']] = true}">
+                                        <apex:outputPanel layout="none" rendered="{!visit.PTSFSC = true}">
                                             <li>School</li>
                                         </apex:outputPanel> 
-                                        <apex:outputPanel layout="none" rendered="{!obj[bfVariableMap['PTSFRC']] = true}">
+                                        <apex:outputPanel layout="none" rendered="{!visit.PTSFRC = true}">
                                             <li>Peer Relationships</li>
                                         </apex:outputPanel> 
-                                        <apex:outputPanel layout="none" rendered="{!obj[bfVariableMap['PTSFPC']] = true}">
+                                        <apex:outputPanel layout="none" rendered="{!visit.PTSFPC = true}">
                                             <li>Developmental Progression</li>
                                         </apex:outputPanel> 
                                     </ul>
@@ -271,10 +309,10 @@
                                 <!--category G-->
                                 <td>
                                     <ul>
-                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSVDA1']] > 2, true, false)}">
+                                        <apex:outputPanel layout="none" rendered="{!if(visit.PTSVDA1 > 2, true, false)}">
                                             <li>Depersonalization</li>
                                         </apex:outputPanel>  
-                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSVDA2']] > 2, true, false)}">
+                                        <apex:outputPanel layout="none" rendered="{!if(visit.PTSVDA2 > 2, true, false)}">
                                             <li>Derealization</li>
                                         </apex:outputPanel>  
                                     </ul>
@@ -283,36 +321,157 @@
                             </tr>
                             <!--end symptom lists-->
                             
-                        </tbody>
-                    </table>
-                </apex:outputPanel>
-                <!--end report content-->
-                
-                <!--conditional, If 3 or more scores are missing, this panel is displayed instead of report-->
-                <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAPPCN']] = 0, true, false)}">
-                    <div class="well well-lg">
-                        <h4>This record is Not Applicable.</h4><br/><br/>
-                        <p>Score can't be calculated, three(3) or more anwers to the UCLA PTSD-RI were left blank.</p>
-                    </div>
-                </apex:outputPanel>
-                <!--end NaN message-->
-            </div>
+                        </apex:outputPanel>
+                        
+                    </apex:repeat>
+                    
+                </tbody>
+            </table>
             
-            <!--edit button-->
-            <apex:pageBlockButtons >
-                <apex:commandButton action="{!save}" value="Edit" rendered="{!not(printReport)}"/>
-            </apex:pageBlockButtons>
+            <apex:outputPanel layout="none" rendered="{!AND(displayHistory, NOT(printReport))}">
+                <div class="form-group charts-div no-border-bottom no-space-bottom">
+                    <div class="col-md-12 col-lg-6 chart-total-score">
+                        <div id="linechart_material"></div>
+                    </div>
+                    <div class="col-md-12 col-lg-6 chart-symptom-score">
+                        <div id="columnchart_material"></div>
+                        <!--<div id="columnchart_values"></div>-->
+                    </div>
+                </div>
+            </apex:outputPanel>
         </apex:pageBlock>
-        <!--end button-->
         
         <!--citation information footer-->
-    <p style="class:footer; text-align:center ">
-        <i>©2014: Robert S. Pynoos, M.D., M.P.H. and Alan M. Steinberg, Ph.D. All rights reserved.<br/>
-        This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - Baseline - CRF Version 6 2014
-        </i>
-    </p> 
+        <p class="footer" style="text-align:center ">
+            <i>©2014: Robert S. Pynoos, M.D., M.P.H. and Alan M. Steinberg, Ph.D. All rights reserved.<br/>
+                This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - {!CASE(HTMLENCODE(form.visitType), 'baseline', 'Baseline', 'Follow-Up')} - CRF Version 6 2014
+            </i>
+        </p> 
+        
+        <apex:outputPanel layout="none" rendered="{!AND(printReport, displayHistory)}">
+            
+            
+            <apex:outputPanel layout="block" styleClass="page-break"/>
+            
+            <apex:outputPanel layout="block" styleClass="row overall-history">
+                <div class="bPageTitle-page2 col-md-6 col-lg-6"></div>
+                <div class="header-info-table-page2 col-md-6 col-lg-6"></div>
+            </apex:outputPanel>
+            
+            <apex:pageBlock title="Overall History">
+                <apex:outputPanel layout="none" rendered="{!displayHistory}">
+                    <div class="form-group charts-div no-border-bottom no-space-bottom">
+                        <div class="col-md-12 col-lg-6 chart-total-score">
+                            <div id="linechart_material"></div>
+                        </div>
+                        <div class="col-md-12 col-lg-6 chart-symptom-score">
+                            <div id="columnchart_material"></div>
+                            <!--<div id="columnchart_values"></div>-->
+                        </div>
+                    </div>
+                </apex:outputPanel>
+            </apex:pageBlock>
+            
+            <!--citation information footer-->
+            <p class="footer" style="text-align:center ">
+                <i>©2014: Robert S. Pynoos, M.D., M.P.H. and Alan M. Steinberg, Ph.D. All rights reserved.<br/>
+                    This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - {!CASE(HTMLENCODE(form.visitType), 'baseline', 'Baseline', 'Follow-Up')} - CRF Version 6 2014
+                </i>
+            </p> 
+        </apex:outputPanel>
+        
         
     </apex:form>
-    <!--end report-->
     
+</div>
+
+<apex:outputPanel rendered="{!displayHistory}">
+    
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+        google.load("visualization", "1.1", {packages:['corechart', 'bar', 'line']});
+    google.setOnLoadCallback(drawLineChart);
+    google.setOnLoadCallback(drawAnnotations);
+    
+    var chartHeight = {!IF(printReport, 340, 500)};
+    
+    function drawAnnotations() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Symptom Category');
+        <apex:repeat value="{!visits}" var="visit">
+            data.addColumn('number', '<apex:outputText value="{0,date,MM/dd/yyyy}">
+                           <apex:param value="{!visit.DOAPTSD}" />
+                           </apex:outputText>');
+                           data.addColumn({type: 'string', role: 'annotation'});
+        </apex:repeat>
+        
+        
+        data.addRows([
+            ['Symptom B Intrusion' <apex:repeat value="{!visits}" var="vb">, {!vb.PTSBRN}, '{!if(vb.PTSBMN = 1, 'M', '')}'</apex:repeat>],
+             ['Symptom C  Avoidance' <apex:repeat value="{!visits}" var="vc">, {!vc.PTSCRN}, '{!if(vc.PTSCMN = 1, 'M', '')}'</apex:repeat>],
+             ['Symptom D  Neg. Alter. in Cog./mood' <apex:repeat value="{!visits}" var="vd">, {!vd.PTSDRN}, '{!if(vd.PTSDMN = 1, 'M', '')}'</apex:repeat>],
+             ['Symptom E  Alter. in Arous./React.' <apex:repeat value="{!visits}" var="ve">, {!ve.PTSERN}, '{!if(ve.PTSEMN = 1, 'M', '')}'</apex:repeat>],
+            ]);
+            
+            var options = {
+            title: 'UCLA PTSD RI Symptom Scores',
+            annotations: {
+            alwaysOutside: false,
+            textStyle: {
+            fontSize: 14,
+            color: '#000',
+            auraColor: 'none'
+            }
+            },
+            hAxis: {
+            title: 'Symptom Category',
+            },
+            vAxis: {
+            title: 'Score'
+            },
+            height: chartHeight
+            };
+            
+            var chart = new google.visualization.ColumnChart(document.getElementById('columnchart_material'));
+            chart.draw(data, options);
+            }
+            
+            function drawLineChart() {
+            
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Date of Assessment');
+            data.addColumn('number', 'Total Score');
+            
+            data.addRows([
+            <apex:repeat value="{!visits}" var="visit">
+            ['<apex:outputText value="{0,date,MM/dd/yyyy}">
+            <apex:param value="{!visit.DOAPTSD}" />
+            </apex:outputText>',  {!visit.PTSORN}],
+            </apex:repeat> 
+        ]);
+        
+        var options = {
+            title: 'UCLA PTSD RI Total Score',
+            series: {
+                0: { pointSize: 5 }
+            },
+            hAxis: {
+                title: 'Date of Assessment',
+                
+            },
+            vAxis: {
+                title: 'Total Score',
+                maxValue: 100, minValue: 30
+            },
+            height: chartHeight
+        };
+        
+        var chart2 = new google.visualization.LineChart(document.getElementById('linechart_material'));
+        
+        chart2.draw(data, options);
+    }
+    </script>
+    
+</apex:outputPanel>
+
 </apex:page>

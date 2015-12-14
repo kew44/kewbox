@@ -3,7 +3,7 @@ private class TestClass_Client {
 
   static TestMethod void Test_ClientController_CreateClient() {
 
-    TestClass_Utility ut = new TestClass_Utility();
+    TestClass_A_Utility ut = new TestClass_A_Utility();
 
     ut.addAdminToCounter();
 
@@ -16,11 +16,13 @@ private class TestClass_Client {
 
     ClientController controller = new ClientController(sc);
     
+    System.debug(client);
+    
   }
 
   static TestMethod void Test_ClientController_EditClient() {
 
-    TestClass_Utility ut = new TestClass_Utility();
+    TestClass_A_Utility ut = new TestClass_A_Utility();
 
     Client__c client = Test0_TestClientInsert();
 
@@ -30,16 +32,19 @@ private class TestClass_Client {
 
     ApexPages.StandardController sc = new ApexPages.StandardController(client);
 
-    ClientController controller = new ClientController(sc);
+    ClientController controller = new ClientController(sc);    
     
+    System.debug(client);
 
   }
 
   static TestMethod Client__c Test0_TestClientInsert() {
 
-    TestClass_Utility ut = new TestClass_Utility();
+    TestClass_A_Utility ut = new TestClass_A_Utility();
 
     Client__c client = ut.createClient();
+    
+    System.debug(client);
 
     return client;
 
@@ -48,6 +53,8 @@ private class TestClass_Client {
   static TestMethod void Test1_TestClientUpdate() {
 
     Client__c client = Test0_TestClientInsert();
+    
+    System.debug(client);
 
     update client;
 

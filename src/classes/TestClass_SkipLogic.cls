@@ -3,7 +3,7 @@ private class TestClass_SkipLogic {
 
   static TestMethod void controllerTest() {
 
-    TestClass_Utility ut = new TestClass_Utility();
+    TestClass_A_Utility ut = new TestClass_A_Utility();
 
     Client__c client = ut.createClient();
     
