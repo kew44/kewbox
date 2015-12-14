@@ -1,3 +1,9 @@
+/****
+*@description  Standardized controller template containing elements and logic to be extended to other forms
+*
+*@group System
+*@group-content /ApexDocContent/System/DS_BasicForm_Controller.htm
+****/
 public with sharing virtual class DS_BasicForm_Controller {
     
     public Form form { get; set; }

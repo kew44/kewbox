@@ -9,11 +9,15 @@
  *      http://www.apache.org/licenses/LICENSE-2.0
  * ============================================================
  */
-/**
- * Port of the StringUtils class from Java to Apex.  This
+ 
+/****
+*@description  Port of the StringUtils class from Java to Apex.  This
  * class is part of the Apache Commons Lang project available
- * at http://commons.apache.org/lang/.
- */
+ * at http://commons.apache.org/lang/. 
+*
+*@group System
+*@group-content /ApexDocContent/System/StringUtils.htm
+****/
 global class StringUtils {
 
     global static final String EMPTY = '';

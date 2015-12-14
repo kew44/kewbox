@@ -1,3 +1,9 @@
+/****
+*@description  Initialize strycture for basic forms
+*
+*@group System
+*@group-content /ApexDocContent/System/Form.htm
+****/
 global with sharing class Form {
 
     public Utility ut = new Utility();

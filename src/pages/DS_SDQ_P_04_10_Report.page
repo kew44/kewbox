@@ -1,5 +1,4 @@
-<apex:page standardController="DS_SDQ_PSI_CDI_B__c" extensions="DS_SDQ_P_04_10_Report_Controller" action="{!init}"  showHeader="{!NOT(printReport)}" id="sdq-yp-report">
-    
+<apex:page standardController="DS_SDQ_PSI_CDI_B__c" extensions="DS_SDQ_P_04_10_Report_Controller" action="{!init}"  showHeader="{!NOT(printReport)}" id="sdq-yp-report">    
     
     <link href="{!URLFOR($Resource.CSS_DS_Report)}" rel="stylesheet" media="screen, print"/>
     <link href="{!URLFOR($Resource.CSS_DS_SDQ_Report)}" rel="stylesheet" media="screen, print"/>
@@ -8,33 +7,23 @@
     
     <script src="{!URLFOR($Resource.Scripts, 'DS_SDQ.js')}"></script>
     
+    <div class="{!HTMLENCODE(form.visitType)}-assessment">
+        <apex:sectionHeader title="{!HTMLENCODE(form.title)}" subtitle="{!HTMLENCODE(form.subtitle)}" />
+    </div>
+    
     <!--print report command for button-->  
         <apex:outputPanel layout="none" rendered="{!printReport}">
             <script>
                 $j(document).ready(function() { 
                     $j('.history-total-score').removeClass('col-md-12 col-lg-6').addClass('print-chart-width');
                     $j('.history-subscale-score').removeClass('col-md-12 col-lg-6').addClass('print-chart-width');
-                    window.print(); });
+                    window.print(); 
+                });
             </script>
-		</apex:outputPanel>
-<!--end print command -->  
+        </apex:outputPanel>
+    <!--end print command -->  
 
-<div class="{!HTMLENCODE(form.visitType)}-assessment">
-    <apex:sectionHeader title="{!HTMLENCODE(form.title)}" subtitle="{!HTMLENCODE(form.subtitle)}" />
-</div>    
-
-<!--print report command for button-->
-<!-- <apex:outputPanel layout="none" rendered="{!printReport}">
-<script>        
-$j(document).ready(function() { 
-    $j('.bPageTitle .ptBody .content').prepend('<img style="display:inline;float:left;" src="{!URLFOR($Resource.images, 'cimiLogo.png')}"/>');
-    window.print(); 
-});
-</script>
-</apex:outputPanel>
-<!--end print command -->
-
-<div class="bootwrap">
+    <div class="bootwrap">
     <!--Begin SDQ Young Childrens' Parents' report content-->
     <apex:form id="DS_SDQ_P_4_10_REPORT"  styleClass="form-horizontal">
         
@@ -53,10 +42,7 @@ $j(document).ready(function() {
             
             <!--placeholding structure that allows for system message display-->
             <apex:pageMessages />
-            
-            <!--  <apex:sectionHeader title="Strengths and Difficulties Questionnaire Parent Scoring Report" rendered="{!NOT(printReport)}"/><br/>
-<apex:sectionHeader title="Strengths and Difficulties Questionnaire Parent Scoring Report"  rendered="{!printReport}"/><br/>-->
-            
+                        
             <!--start warning, conditional if any nulls present-->
             <apex:outputPanel styleClass="warning" layout="none" rendered="{!if(missingRange!= '', true, false)}"><!--  rendered="{!(form.obj[bfVariableMap['EMONULLP'>2]]) || (form.obj[bfVariableMap['BEHNULLP'>2]]) || (form.obj[bfVariableMap['HYPNULLP'>2]]) || (form.obj[bfVariableMap['OTCNULLP'>2]]) || (form.obj[bfVariableMap['KHBNULLP'>2]])}"-->
                 <div class="message warningM3" role="alert">
@@ -82,25 +68,26 @@ $j(document).ready(function() {
                 </div>
             </apex:outputPanel>
             <!--end print button-->
-            
-            <!--information-->
-            <div class="alert alert-info">
-                The Strengths and Difficulties Questionnaire (SDQ) is a screening measure for early detection of behavioral problems and strengths in children and adolescents. 
-                The SDQ subscales include:
-                <i>Emotional Problems, Behavioral Difficulties, Hyperactivity, Peer Problems, and Prosocial.</i><br/>
-                Total Difficulties and the Impact are also recorded.<br/>
-                The significance of each score is classified as 'Normal/Average', 'Clinical', or 'Borderline'.
-            </div>
-            <!--end information-->
-            
-            <!--administration date -->
-            <div >
+                
+            <div class="alert alert-info ">
+                <!--information-->
+                <p>
+                    The Strengths and Difficulties Questionnaire (SDQ) is a screening measure for early detection of behavioral problems and strengths in children and adolescents. 
+                    The SDQ subscales include:
+                    <i>Emotional Problems, Behavioral Difficulties, Hyperactivity, Peer Problems, and Prosocial.</i><br/>
+                    Total Difficulties and the Impact are also recorded.<br/>
+                    The significance of each score is classified as 'Normal/Average', 'Clinical', or 'Borderline'.
+                </p>
+                <!--end information-->
+                
+                <br/>
+                                
+               <!--administration date -->
                 <h5><strong><u>
                     Date of administration: &nbsp;
                     <apex:outputField id="DOASDYP__c" value="{!form.obj[bfVariableMap['DOASDYP']]}"/>
-                    </u></strong></h5>
-            </div>
-            <!--end administration date -->
+                </u></strong></h5>
+                <!--end administration date -->
             
             <!--specific reports of severity-->
             <!--displays a list of all symptoms that are rated as clinically significant, if any-->
@@ -127,6 +114,8 @@ $j(document).ready(function() {
             </apex:outputPanel>
             <!--end missing list-->
             
+            </div>
+            
             <table class="table" style="table-table table-bordered table-striped">
                 
                 <!--report information heading-->
@@ -143,7 +132,7 @@ $j(document).ready(function() {
                         <apex:repeat value="{!visits}" var="visit">
                             <th class="darkerTHBottom">
                                 <apex:outputText value="{0,date,MM/dd/yyyy}" >
-                                    <apex:param value="{!visit.DOASDYP}" />
+                                    <apex:param value="{!Visit.DOA}" />
                                 </apex:outputText>
                             </th>
                         </apex:repeat>
@@ -164,14 +153,14 @@ $j(document).ready(function() {
                         
                         <apex:repeat value="{!visits}" var="visit">
                             <apex:outputpanel rendered="{!if(visit.SDPTYP !='Missing/Incomplete', true, false)}">                                               
-                                <td class="{!CASE(form.obj[bfVariableMap['SDPTYP']], 'Missing/Incomplete',  '', 'warning')} {!CASE(visit.SDPTYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
+                                <td class="{!CASE(form.obj[bfVariableMap['SDPTYP']], 'Missing/Incomplete','warning',  '')} {!CASE(visit.SDPTYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
                                     {!visit.SDPTOT}
                                 </td>   
                             </apex:outputpanel>
                             
                             <apex:outputpanel rendered="{!if(visit.SDPTYP ='Missing/Incomplete', true, false)}">
                                 <!--Alternative message, conditional, if missing-->
-                                <td class="{!CASE(form.obj[bfVariableMap['SDPTYP']], 'Missing/Incomplete',  '', 'warning')} {!CASE(visit.SDPTYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
+                                <td class="{!CASE(form.obj[bfVariableMap['SDPTYP']],'Missing/Incomplete',  'warning','')} {!CASE(visit.SDPTYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
                                     <!--image-->
                                     <div class="message warningM3" role="alert">
                                         <img alt="ERROR" class="msgIcon" src="/s.gif" title="ERROR"/>
@@ -195,14 +184,14 @@ $j(document).ready(function() {
                         
                         <apex:repeat value="{!visits}" var="visit">
                             <apex:outputpanel rendered="{!if(visit.SDPETYP !='Missing/Incomplete', true, false)}">
-                                <td  class="{!CASE(form.obj[bfVariableMap['SDPETYP']], 'Missing/Incomplete',  '', 'warning')} {!CASE(visit.SDPETYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
+                                <td  class="{!CASE(form.obj[bfVariableMap['SDPETYP']], 'Missing/Incomplete',  'warning','')} {!CASE(visit.SDPETYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
                                     {!visit.SDPEMO}
                                 </td>   
                             </apex:outputpanel>
                             
                             <apex:outputpanel rendered="{!if(visit.SDPETYP ='Missing/Incomplete', true, false)}">
                                 <!--Alternative message, conditional, if missing-->
-                                <td class="{!CASE(form.obj[bfVariableMap['SDPETYP']], 'Missing/Incomplete',  '', 'warning')} {!CASE(visit.SDPETYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
+                                <td class="{!CASE(form.obj[bfVariableMap['SDPETYP']],'Missing/Incomplete',  'warning','')} {!CASE(visit.SDPETYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
                                     <!--image-->
                                     <div class="message warningM3" role="alert">
                                         <img alt="ERROR" class="msgIcon" src="/s.gif" title="ERROR"/>
@@ -226,14 +215,14 @@ $j(document).ready(function() {
                         
                         <apex:repeat value="{!visits}" var="visit">
                             <apex:outputpanel rendered="{!if(visit.SDPBTYP !='Missing/Incomplete', true, false)}">
-                                <td  class="{!CASE(form.obj[bfVariableMap['SDPBTYP']], 'Missing/Incomplete',  '', 'warning')} {!CASE(visit.SDPBTYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
+                                <td  class="{!CASE(form.obj[bfVariableMap['SDPBTYP']], 'Missing/Incomplete',  'warning','')} {!CASE(visit.SDPBTYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
                                     {!visit.SDPBEH}
                                 </td>   
                             </apex:outputpanel>
                             
                             <apex:outputpanel rendered="{!if(visit.SDPBTYP ='Missing/Incomplete', true, false)}">
                                 <!--Alternative message, conditional, if missing-->
-                                <td class="{!CASE(form.obj[bfVariableMap['SDPBTYP']], 'Missing/Incomplete',  '', 'warning')} {!CASE(visit.SDPBTYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
+                                <td class="{!CASE(form.obj[bfVariableMap['SDPBTYP']], 'Missing/Incomplete',  'warning','')} {!CASE(visit.SDPBTYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
                                     <!--image-->
                                     <div class="message warningM3" role="alert">
                                         <img alt="ERROR" class="msgIcon" src="/s.gif" title="ERROR"/>
@@ -257,14 +246,14 @@ $j(document).ready(function() {
                         
                         <apex:repeat value="{!visits}" var="visit">
                             <apex:outputpanel rendered="{!if(visit.SDPHTYP !='Missing/Incomplete', true, false)}">
-                                <td  class="{!CASE(form.obj[bfVariableMap['SDPHTYP']], 'Missing/Incomplete',  '', 'warning')} {!CASE(visit.SDPHTYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
+                                <td  class="{!CASE(form.obj[bfVariableMap['SDPHTYP']], 'Missing/Incomplete',  'warning','')} {!CASE(visit.SDPHTYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
                                     {!visit.SDPHYP}
                                 </td>            
                             </apex:outputpanel>
                             
                             <apex:outputpanel rendered="{!if(visit.SDPHTYP ='Missing/Incomplete', true, false)}">
                                 <!--Alternative message, conditional, if missing-->
-                                <td class="{!CASE(form.obj[bfVariableMap['SDPHTYP']], 'Missing/Incomplete',  '', 'warning')} {!CASE(visit.SDPHTYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
+                                <td class="{!CASE(form.obj[bfVariableMap['SDPHTYP']], 'Missing/Incomplete',  'warning','')} {!CASE(visit.SDPHTYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
                                     <!--image-->
                                     <div class="message warningM3" role="alert">
                                         <img alt="ERROR" class="msgIcon" src="/s.gif" title="ERROR"/>
@@ -288,14 +277,14 @@ $j(document).ready(function() {
                         
                         <apex:repeat value="{!visits}" var="visit">
                             <apex:outputpanel rendered="{!if(visit.SDPOTYP !='Missing/Incomplete', true, false)}">
-                                <td class="{!CASE(form.obj[bfVariableMap['SDPOTYP']], 'Missing/Incomplete',  '', 'warning')} {!CASE(visit.SDPOTYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
+                                <td class="{!CASE(form.obj[bfVariableMap['SDPOTYP']], 'Missing/Incomplete',  'warning','')} {!CASE(visit.SDPOTYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
                                     {!visit.SDPOTC}
                                 </td>   
                             </apex:outputpanel>         
                             
                             <apex:outputpanel rendered="{!if(visit.SDPOTYP ='Missing/Incomplete', true, false)}">
                                 <!--Alternative message, conditional, if missing-->    
-                                <td class="{!CASE(form.obj[bfVariableMap['SDPOTYP']], 'Missing/Incomplete',  '', 'warning')} {!CASE(visit.SDPOTYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
+                                <td class="{!CASE(form.obj[bfVariableMap['SDPOTYP']], 'Missing/Incomplete',  'warning','')} {!CASE(visit.SDPOTYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
                                     <!--image-->
                                     <div class="message warningM3" role="alert">
                                         <img alt="ERROR" class="msgIcon" src="/s.gif" title="ERROR"/>
@@ -319,14 +308,14 @@ $j(document).ready(function() {
                         
                         <apex:repeat value="{!visits}" var="visit">
                             <apex:outputpanel rendered="{!if(visit.SDPKTYP !='Missing/Incomplete', true, false)}">
-                                <td class="{!CASE(form.obj[bfVariableMap['SDPKTYP']], 'Missing/Incomplete',  '', 'warning')} {!CASE(visit.SDPKTYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
+                                <td class="{!CASE(form.obj[bfVariableMap['SDPKTYP']], 'Missing/Incomplete',  'warning','')} {!CASE(visit.SDPKTYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
                                     {!visit.SDPKHB}
                                 </td>        
                             </apex:outputpanel>
                             
                             <apex:outputpanel rendered="{!if(visit.SDPKTYP ='Missing/Incomplete', true, false)}">
                                 <!--Alternative message, conditional, if missing-->
-                                <td class="{!CASE(form.obj[bfVariableMap['SDPKTYP']], 'Missing/Incomplete',  '', 'warning')} {!CASE(visit.SDPKTYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
+                                <td class="{!CASE(form.obj[bfVariableMap['SDPKTYP']], 'Missing/Incomplete',  '','')} {!CASE(visit.SDPKTYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
                                     <!--image-->
                                     <div class="message warningM3" role="alert">
                                         <img alt="ERROR" class="msgIcon" src="/s.gif" title="ERROR"/>
@@ -349,14 +338,14 @@ $j(document).ready(function() {
                         
                         <apex:repeat value="{!visits}" var="visit">
                             <apex:outputpanel rendered="{!if(visit.SDPITYP !='Missing/Incomplete', true, false)}">
-                                <td class="{!CASE(form.obj[bfVariableMap['SDPITYP']], 'Missing/Incomplete',  '', 'warning')} {!CASE(visit.SDPITYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
+                                <td class="{!CASE(form.obj[bfVariableMap['SDPITYP']], 'Missing/Incomplete',  'warning','')} {!CASE(visit.SDPITYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
                                     {!visit.SDPDCL}
                                 </td>
                             </apex:outputpanel>
                             
                             <apex:outputpanel rendered="{!if(visit.SDPITYP ='Missing/Incomplete', true, false)}">
                                 <!--Alternative message, conditional, if missing-->
-                                <td class="{!CASE(form.obj[bfVariableMap['SDPITYP']], 'Missing/Incomplete',  '', 'warning')} {!CASE(visit.SDPITYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
+                                <td class="{!CASE(form.obj[bfVariableMap['SDPITYP']], 'Missing/Incomplete',  'warning','')} {!CASE(visit.SDPITYP,'Borderline', 'warning', 'Clinical', 'danger','')}" >
                                     <!--image-->
                                     <div class="message warningM3" role="alert">
                                         <img alt="ERROR" class="msgIcon" src="/s.gif" title="ERROR"/>
@@ -400,10 +389,9 @@ $j(document).ready(function() {
         
     </div>
 
-	<apex:outputPanel rendered="{!displayHistory}">
+    <apex:outputPanel rendered="{!displayHistory}">
     
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>    
     <script type="text/javascript">
             
     var chartHeight = {!IF(printReport, 350, 500)};
@@ -417,13 +405,13 @@ $j(document).ready(function() {
         data.addColumn('string', 'Subscale');
         <apex:repeat value="{!visits}" var="visit">
             data.addColumn('number', '<apex:outputText value="{0,date,MM/dd/yyyy}">
-                           <apex:param value="{!visit.DOASDYP}" />
+                           <apex:param value="{!visit.DOA}" />
                            </apex:outputText>');
                            data.addColumn({type: 'string', role: 'annotation'});
         </apex:repeat>
         
         data.addRows([
-            ['Emptional Symptoms' <apex:repeat value="{!visits}" var="ve">, {!ve.SDPEMO}, '{!CASE(ve.SDPETYP,'Borderline','B','Clinical','C','')}'</apex:repeat>],
+            ['Emotional Symptoms' <apex:repeat value="{!visits}" var="ve">, {!ve.SDPEMO}, '{!CASE(ve.SDPETYP,'Borderline','B','Clinical','C','')}'</apex:repeat>],
              ['Conduct Problems' <apex:repeat value="{!visits}" var="vb">, {!vb.SDPBEH}, '{!CASE(vb.SDPBTYP,'Borderline','B','Clinical','C','')}'</apex:repeat>],
              ['Hyperactivity' <apex:repeat value="{!visits}" var="vh">, {!vh.SDPHYP}, '{!CASE(vh.SDPHTYP,'Borderline','B','Clinical','C','')}'</apex:repeat>],
              ['Peer Problems' <apex:repeat value="{!visits}" var="vo">, {!vo.SDPOTC}, '{!CASE(vo.SDPOTYP,'Borderline','B','Clinical','C','')}'</apex:repeat>],
@@ -463,13 +451,13 @@ $j(document).ready(function() {
             data.addRows([
             <apex:repeat value="{!visits}" var="visit">
             ['<apex:outputText value="{0,date,MM/dd/yyyy}">
-            <apex:param value="{!visit.DOASDYP}" />
+            <apex:param value="{!visit.DOA}" />
             </apex:outputText>', {!visit.SDPTOT}],
             </apex:repeat> 
         ]);
         
         var options = {
-            title: 'SDQ Total Score',
+            title: 'SDQ Total Difficulties Score',
             series: {
                 0: { pointSize: 5 }
             },
@@ -478,7 +466,7 @@ $j(document).ready(function() {
                 
             },
             vAxis: {
-                title: 'Total Score',
+                title: 'Total Difficulties Score',
                 maxValue: 100, minValue: 30
             },
             height: chartHeight

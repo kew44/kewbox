@@ -1,11 +1,33 @@
+/****
+*@description This test provides code coverage for Clinician 
+*
+*@group Test Script 
+*@group-content /ApexDocContent/Test/Clinician.htm
+*
+*@author Kelsey Willett
+*@date 11/18/2015
+*@modified date
+****/
+
 @isTest (SeeAllData=false)
 private class TestClass_Clinician {
-
+    
+    /****
+    *@description Initialize reference to TestClass_A_Utility
+    ****/
+    public static TestClass_A_Utility test_ut = new TestClass_A_Utility();
+    
+    /****
+    *@description Initialize reference to Utility
+    ****/
+    public static Utility ut = new Utility();
+    
+    /****
+    *@description method to test creation of clinician record
+    ****/
   static TestMethod void Test_ClinicianController_CreateClinician() {
 
-    TestClass_A_Utility ut = new TestClass_A_Utility();
-
-    ut.addAdminToCounter();
+    test_ut.addAdminToCounter();
 
     // Create new clinician
 
@@ -20,9 +42,10 @@ private class TestClass_Clinician {
     
   }
 
+    /****
+    *@description method to test editing a record
+    ****/
   static TestMethod void Test_ClinicianController_EditClinician() {
-
-    TestClass_A_Utility ut = new TestClass_A_Utility();
 
     Clinician__c clinician = Test0_TestClinicianInsert();
 
@@ -36,16 +59,20 @@ private class TestClass_Clinician {
 
   }
 
+    /****
+    *@description method to test inserting a record
+    ****/
   static TestMethod Clinician__c Test0_TestClinicianInsert() {
 
-    TestClass_A_Utility ut = new TestClass_A_Utility();
-
-    Clinician__c clinician = ut.createClinician();
+    Clinician__c clinician = test_ut.createClinician();
 
     return clinician;
 
   }
 
+    /****
+    *@description method to test updating a record
+    ****/
   static TestMethod void Test1_TestClinicianUpdate() {
 
     Clinician__c clinician = Test0_TestClinicianInsert();
@@ -53,6 +80,9 @@ private class TestClass_Clinician {
 
   }
 
+    /****
+    *@description method to test deletion of a record
+    ****/
   static TestMethod void Test2_TestClinicianDelete() {
 
     Clinician__c clinician = Test0_TestClinicianInsert();

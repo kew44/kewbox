@@ -6884,6 +6884,21 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>B_VISIT_AGE__c</fullName>
+        <description>Age calculated using Baseline date of visit and date of birth.</description>
+        <externalId>false</externalId>
+        <formula>FLOOR(( BDOV__c -Client__r.DOB1__c )/365.2425)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>B_VISIT_AGE</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>CTYBORN__c</fullName>
         <description>Country child born</description>
         <externalId>false</externalId>
@@ -7383,6 +7398,7 @@
         <columns>OBJECT_ID</columns>
         <columns>Client__c</columns>
         <columns>Client_ID__c</columns>
+        <columns>BDOV__c</columns>
         <columns>ETHNIC__c</columns>
         <columns>SECTION__c</columns>
         <columns>STATUS_DEMO__c</columns>

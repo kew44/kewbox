@@ -17,10 +17,6 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>ChangePasswordControllerTest</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>ClientController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -201,23 +197,15 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>ForgotPasswordControllerTest</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>Form</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>FormBuilder</apexClass>
+        <apexClass>Formbuilder</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>MyProfilePageController</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>MyProfilePageControllerTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -237,15 +225,7 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>SiteLoginControllerTest</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>SiteRegisterController</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>SiteRegisterControllerTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -265,7 +245,7 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>TestClass_BAduit_Trail</apexClass>
+        <apexClass>TestClass_AuditTrail</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -273,7 +253,7 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>TestClass_CenterDeletion</apexClass>
+        <apexClass>TestClass_ChangePasswordController</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -305,51 +285,19 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>TestClass_DS_BIS</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TestClass_DS_BSLC</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>TestClass_DS_Background_Family_Info_B</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>TestClass_DS_BasicForm</apexClass>
+        <apexClass>TestClass_DS_Background_Family_Info_F</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>TestClass_DS_CANSTR</apexClass>
+        <apexClass>TestClass_DS_CBCL_B</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>TestClass_DS_CBCL</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TestClass_DS_CLINEVAL</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TestClass_DS_DEMO</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TestClass_DS_DEMO_Update</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TestClass_DS_DOMENV</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TestClass_DS_FAPGAR</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TestClass_DS_FOLLOWUPINFO</apexClass>
+        <apexClass>TestClass_DS_CBCL_F</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -357,39 +305,19 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>TestClass_DS_Functioning_Forms_F</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>TestClass_DS_GTRAUMA</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>TestClass_DS_HEALTH</apexClass>
+        <apexClass>TestClass_DS_PTSD_CA_B</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>TestClass_DS_INDSEV</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TestClass_DS_INSDOMENV</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TestClass_DS_MILITARY</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TestClass_DS_NOMS</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TestClass_DS_PTSD_CA</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TestClass_DS_PTSD_CA_Report</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TestClass_DS_REFIMM</apexClass>
+        <apexClass>TestClass_DS_PTSD_CA_F</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -397,31 +325,7 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>TestClass_DS_SDQ_P_04_10</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TestClass_DS_SDQ_P_04_10_Report</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TestClass_DS_SDQ_P_11_17</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TestClass_DS_SDQ_P_11_17_Report</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TestClass_DS_SDQ_S_11_17</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TestClass_DS_SDQ_S_11_17_Report</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TestClass_DS_SERVREC</apexClass>
+        <apexClass>TestClass_DS_SDQ_PSI_CDI_F</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -429,15 +333,11 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>TestClass_DS_YCINDSEV</apexClass>
+        <apexClass>TestClass_ForgotPasswordController</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>TestClass_Mock_HttpResponse_DS_DATA</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TestClass_Mock_HttpResponse_Oauth</apexClass>
+        <apexClass>TestClass_MyProfilePageController</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -449,7 +349,19 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>TestClass_SiteLoginController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TestClass_SiteRegisterController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>TestClass_SkipLogic</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TestClass_StringUtils</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -659,6 +571,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Audit_Trail__c.LABEL__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Audit_Trail__c.NUMBER__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -700,6 +617,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Audit_Trail__c.User_Initial__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Audit_Trail__c.VARIABLE__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Audit_Trail__c.VISIT_DATE__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2818,6 +2745,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_Background_Family_Info_B__c.B_VISIT_AGE__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>DS_Background_Family_Info_B__c.CTYBORN__c</field>
         <readable>true</readable>
@@ -4814,6 +4746,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_Background_Family_Info_F__c.F_VISIT_AGE__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_Background_Family_Info_F__c.SECTION__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -4835,11 +4772,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>DS_Background_Family_Info_F__c.STATUS_HEALTH__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>DS_Background_Family_Info_F__c.STATUS_INFO_F__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14088,13 +14020,28 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BDOAPTSDP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_B__c.BDOV__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BMETPTSDP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BMETPTSD__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSAB1P__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14104,7 +14051,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSAB2P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSAB2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSAB3P__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14114,7 +14071,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSAB4P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSAB4__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSAB5P__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14124,7 +14091,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSAC1P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSAC1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSAC2P__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14134,7 +14111,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSAD1P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSAD1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSAD2P__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14144,7 +14131,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSAD3P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSAD3__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSAD4P__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14154,7 +14151,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSAD5P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSAD5__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSAD6P__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14164,7 +14171,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSAD7P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSAD7__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSAE1P__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14174,7 +14191,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSAE2P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSAE2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSAE3P__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14184,7 +14211,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSAE4P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSAE4__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSAE5P__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14194,7 +14231,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSAE6P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSAE6__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSAPPCNP__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14204,7 +14251,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_B__c.BPTSAPPCP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_PTSD_CA_B__c.BPTSAPPC__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSBCNP__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14214,7 +14271,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_B__c.BPTSBMNP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_PTSD_CA_B__c.BPTSBMN__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_PTSD_CA_B__c.BPTSBMP__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14224,7 +14291,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_B__c.BPTSBRNP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_PTSD_CA_B__c.BPTSBRN__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSCCNP__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14234,7 +14311,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_B__c.BPTSCMNP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_PTSD_CA_B__c.BPTSCMN__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_PTSD_CA_B__c.BPTSCMP__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14244,7 +14331,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_B__c.BPTSCRNP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_PTSD_CA_B__c.BPTSCRN__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSD1P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSD1SPP__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14254,7 +14356,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSDCNP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSDCN__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_PTSD_CA_B__c.BPTSDCP__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14264,7 +14376,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_B__c.BPTSDMNP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_PTSD_CA_B__c.BPTSDMN__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_PTSD_CA_B__c.BPTSDMP__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14274,7 +14396,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_B__c.BPTSDRNP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_PTSD_CA_B__c.BPTSDRN__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSDURAP__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14284,7 +14416,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSECNP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSECN__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_PTSD_CA_B__c.BPTSEMNP__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14294,7 +14436,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_B__c.BPTSEMP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_PTSD_CA_B__c.BPTSEM__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_PTSD_CA_B__c.BPTSERNP__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14304,7 +14456,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_B__c.BPTSFCP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_PTSD_CA_B__c.BPTSFC__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSFH1P__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14314,7 +14476,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSFH2P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSFH2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSFH3P__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14324,7 +14496,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_B__c.BPTSFHCP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_PTSD_CA_B__c.BPTSFHC__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSFHSPP__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14334,7 +14516,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSFP1P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSFP1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSFP2P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_PTSD_CA_B__c.BPTSFPCP__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14344,7 +14541,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSFPSPP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSFPSP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSFR1P__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14354,7 +14561,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_B__c.BPTSFRCP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_PTSD_CA_B__c.BPTSFRC__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSFRSPP__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14364,7 +14581,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSFS1P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSFS1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSFS2P__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14374,7 +14601,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_B__c.BPTSFSCP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_PTSD_CA_B__c.BPTSFSC__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSFSSPP__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14384,7 +14621,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_B__c.BPTSOCNP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_PTSD_CA_B__c.BPTSOCN__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_PTSD_CA_B__c.BPTSOCP__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14394,7 +14641,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_B__c.BPTSORNP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_PTSD_CA_B__c.BPTSORN__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSV10P__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14404,7 +14661,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSV11P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSV11__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSV12P__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14414,7 +14681,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSV13P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSV13__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSV14P__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14424,7 +14701,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSV15P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSV15__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSV16P__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14434,7 +14721,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSV17P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSV17__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSV18P__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14444,7 +14741,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSV19P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSV19__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSV1P__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14454,7 +14761,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSV20P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSV20__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSV21P__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14464,7 +14781,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSV22P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSV22__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSV23P__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14474,7 +14801,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSV24P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSV24__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSV25P__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14484,7 +14821,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSV26P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSV26__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSV27P__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14494,7 +14841,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSV28P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSV28__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSV29P__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14504,7 +14861,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSV2P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSV2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSV30P__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14514,7 +14881,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSV31P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSV31__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSV3P__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14524,7 +14901,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSV4P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSV4__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSV5P__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14534,7 +14921,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSV6P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSV6__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSV7P__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14544,7 +14941,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSV8P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSV8__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSV9P__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14554,7 +14961,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSVDA1P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSVDA1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSVDA2P__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14564,7 +14981,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BPTSVDACNP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_PTSD_CA_B__c.BPTSVDACN__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_PTSD_CA_B__c.BPTSVDARNP__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14574,7 +15001,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_B__c.BPTSVDSNP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_PTSD_CA_B__c.BPTSVDSN__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_PTSD_CA_B__c.BPTSVDSP__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14613,6 +15050,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FDOAPTSDP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FDOAPTSD__c</field>
         <readable>false</readable>
@@ -14623,9 +15065,19 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FMETPTSDP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FMETPTSD__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSAB1P__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14633,9 +15085,19 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSAB2P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSAB2__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSAB3P__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14643,9 +15105,19 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSAB4P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSAB4__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSAB5P__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14653,9 +15125,19 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSAC1P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSAC1__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSAC2P__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14663,9 +15145,19 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSAD1P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSAD1__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSAD2P__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14673,9 +15165,19 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSAD3P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSAD3__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSAD4P__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14683,9 +15185,19 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSAD5P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSAD5__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSAD6P__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14693,9 +15205,19 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSAD7P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSAD7__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSAE1P__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14703,9 +15225,19 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSAE2P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSAE2__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSAE3P__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14713,9 +15245,19 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSAE4P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSAE4__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSAE5P__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14723,9 +15265,19 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSAE6P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSAE6__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSAPPCNP__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14734,8 +15286,18 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_F__c.FPTSAPPCP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSAPPC__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSBCNP__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14744,8 +15306,18 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_F__c.FPTSBMNP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSBMN__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_PTSD_CA_F__c.FPTSBMP__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14754,8 +15326,18 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_F__c.FPTSBRNP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSBRN__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSCCNP__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14764,8 +15346,18 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_F__c.FPTSCMNP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSCMN__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_PTSD_CA_F__c.FPTSCMP__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14774,13 +15366,33 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_F__c.FPTSCRNP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSCRN__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSD1P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSD1SPP__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSD1__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSDCNP__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14789,8 +15401,18 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_F__c.FPTSDCP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSDC__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_PTSD_CA_F__c.FPTSDMNP__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14799,8 +15421,18 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_F__c.FPTSDMP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSDM__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_PTSD_CA_F__c.FPTSDRNP__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14808,9 +15440,19 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSDURAP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSDURA__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSECNP__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14819,8 +15461,18 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_F__c.FPTSEMNP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSEMN__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_PTSD_CA_F__c.FPTSEMP__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14829,8 +15481,18 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_F__c.FPTSERNP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSERN__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_PTSD_CA_F__c.FPTSFCP__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14838,14 +15500,29 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSFH1P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSFH1__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSFH2P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSFH2__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSFH3P__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14854,8 +15531,18 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_F__c.FPTSFHCP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSFHC__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSFHSPP__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14863,9 +15550,24 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSFP1P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSFP1__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSFP2P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_PTSD_CA_F__c.FPTSFPCP__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14873,9 +15575,19 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSFPSPP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSFPSP__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSFR1P__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14884,8 +15596,18 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_F__c.FPTSFRCP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSFRC__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSFRSPP__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14893,9 +15615,19 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSFS1P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSFS1__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSFS2P__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14904,8 +15636,18 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_F__c.FPTSFSCP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSFSC__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSFSSPP__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14914,8 +15656,18 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_F__c.FPTSOCNP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSOCN__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_PTSD_CA_F__c.FPTSOCP__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14924,8 +15676,18 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_F__c.FPTSORNP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSORN__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSV10P__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14933,9 +15695,19 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSV11P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSV11__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSV12P__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14943,9 +15715,19 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSV13P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSV13__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSV14P__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14953,9 +15735,19 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSV15P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSV15__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSV16P__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14963,9 +15755,19 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSV17P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSV17__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSV18P__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14973,9 +15775,19 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSV19P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSV19__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSV1P__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14983,9 +15795,19 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSV20P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSV20__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSV21P__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -14993,9 +15815,19 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSV22P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSV22__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSV23P__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -15003,9 +15835,19 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSV24P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSV24__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSV25P__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -15013,9 +15855,19 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSV26P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSV26__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSV27P__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -15023,9 +15875,19 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSV28P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSV28__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSV29P__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -15033,9 +15895,19 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSV2P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSV2__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSV30P__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -15043,9 +15915,19 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSV31P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSV31__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSV3P__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -15053,9 +15935,19 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSV4P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSV4__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSV5P__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -15063,9 +15955,19 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSV6P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSV6__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSV7P__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -15073,9 +15975,19 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSV8P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSV8__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSV9P__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -15083,14 +15995,29 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSVDA1P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSVDA1__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSVDA2P__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSVDA2__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.FPTSVDACNP__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -15099,13 +16026,28 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_F__c.FPTSVDARNP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSVDARN__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>DS_PTSD_CA_F__c.FPTSVDSNP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>DS_PTSD_CA_F__c.FPTSVDSN__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_PTSD_CA_F__c.FPTSVDSP__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>

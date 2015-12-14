@@ -1,6 +1,9 @@
-/**
- * An apex page controller that supports self registration of users in communities that allow self registration
- */
+/****
+*@description An apex page controller that supports self registration of users in communities that allow self registration
+*
+*@group User handling 
+*@group-content /ApexDocContent/User/CommunitiesSelfRegController.htm
+****/
 public with sharing class CommunitiesSelfRegController {
 
     public String firstName {get; set;}
@@ -37,7 +40,7 @@ public with sharing class CommunitiesSelfRegController {
         u.FirstName = firstName;
         u.LastName = lastName;
         u.CommunityNickname = communityNickname;
-		u.ProfileId = profileId;
+        u.ProfileId = profileId;
         
         String userId = Site.createPortalUser(u, accountId, password);
       

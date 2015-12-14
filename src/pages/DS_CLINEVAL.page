@@ -589,7 +589,7 @@
                         <!--conditional, if additional problem is indicated as other-->
                         <div class="skip-CEOTHER skipContent form-group no-border-bottom no-space-bottom">
                             <label class="col-md-4 col-lg-4 control-label specify-label">Please specify:</label> 
-                            <div class="col-md-8 col-lg-8 specify-input">
+                            <div class="col-md-4 col-lg-4 specify-input">
                                 <apex:inputField styleClass="skip-element-CEOTHER form-control input-sm" id="CEOTHER__c" value="{!form.obj[bfVariableMap['CEOTHER']]}"/>
                             </div>
                         </div>
@@ -598,7 +598,7 @@
                 </div>
                 <!--end additional problems-->
                                 
-                <!--32. primary problem-->
+                <!--31. primary problem-->
                 <div class="form-group">
                     <label class="col-md-8 col-lg-8 control-label">
                         <span class="nmbr">32.</span>  

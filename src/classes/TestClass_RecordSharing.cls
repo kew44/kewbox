@@ -1,3 +1,9 @@
+/****
+*@description Tests Record Sharing capabilities
+*
+*@group Test Script 
+*@group-content /ApexDocContent/Test/RecordSharing.htm
+****/
 @isTest (SeeAllData=false)
 public Class TestClass_RecordSharing {
 
@@ -51,7 +57,6 @@ public Class TestClass_RecordSharing {
         client.GENDER__c = 'Female';
 
         insert client;
-
 
         roleShare.manualShare('Client__Share', client.id, roleGroup.Id, 'Read');
 

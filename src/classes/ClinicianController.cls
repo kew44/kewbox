@@ -1,12 +1,9 @@
-/*Page Description:
- *  Controller Class for Clinician
- * Last Updated on:
- *  7/17/2014
- * Update Purpose:
- *      
- * Programmer:
- *  
- */
+/****
+*@description Controller Class for Clinician
+*
+*@group Clinician 
+*@group-content /ApexDocContent/Clinician/ClinicianController.htm
+****/
 public with sharing class ClinicianController {
     
   String ID = Apexpages.currentPage().getParameters().get('id');
@@ -42,9 +39,6 @@ public with sharing class ClinicianController {
       edit = 1;
       title = 'Clinician Edit';
       subtitle = '(' + clinician.Name + ') ' + clinician.Name__c;
-        
-    }
-    
+    }    
   }
-
 }

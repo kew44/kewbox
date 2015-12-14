@@ -5880,6 +5880,21 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>F_VISIT_AGE__c</fullName>
+        <description>Age calculated using FollowUp date of visit and date of birth.</description>
+        <externalId>false</externalId>
+        <formula>FLOOR(( FDOV__c -Client__r.DOB1__c )/365.2425)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>F_VISIT_AGE</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>SECTION__c</fullName>
         <defaultValue>&apos;1&apos;</defaultValue>
         <externalId>false</externalId>
@@ -5952,25 +5967,6 @@
         <fullName>STATUS_HEALTH__c</fullName>
         <externalId>false</externalId>
         <label>STATUS HEALTH</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Incomplete</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-    </fields>
-    <fields>
-        <fullName>STATUS_INFO_F__c</fullName>
-        <externalId>false</externalId>
-        <label>STATUS INFO F</label>
         <picklist>
             <picklistValues>
                 <fullName>Incomplete</fullName>

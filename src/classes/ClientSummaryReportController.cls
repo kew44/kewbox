@@ -1,3 +1,9 @@
+/****
+*@description Controller for the ClientSummaryReport Page
+*
+*@group ClientSummaryReport
+*@group-content /ApexDocContent/ClientSummaryReport/ClientSummaryReportController.htm
+****/
 public with sharing class ClientSummaryReportController {
 
   Utility ut = new Utility();
@@ -328,7 +334,8 @@ public with sharing class ClientSummaryReportController {
                        
     Date dob = Date.valueOf(client.DOB1__c);
     Date visitDate = Date.valueOf(clientBackgroundInfo.get(BorF + 'DOV__c'));
-    visitAge = dob.daysBetween(visitDate)/365;
+    visitAge = Integer.valueOf(clientBackgroundInfo.get(BorF + '_VISIT_AGE__c'));//dob.daysBetween(visitDate)/365;
+    System.debug(visitAge);
 
     cansExisted = false;
     iosExisted = false;

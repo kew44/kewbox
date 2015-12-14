@@ -1,12 +1,9 @@
-/*Page Description:
- * An apex page controller that exposes the site forgot password functionality
- * Last Updated on:
- *  7/17/2014
- * Update Purpose:
- *      
- * Programmer:
- *  
- */
+/****
+*@description  An apex page controller that exposes the site forgot password functionality
+*
+*@group User handling
+*@group-content /ApexDocContent/User/ForgotPasswordController.htm
+****/
 
 public with sharing class ForgotPasswordController {
     public String username {get; set;}   

@@ -1028,31 +1028,6 @@
         <language>en_US</language>
     </listViews>
     <listViews>
-        <fullName>DS_Variable</fullName>
-        <columns>NAME</columns>
-        <columns>Data_Type__c</columns>
-        <columns>CODELIST__c</columns>
-        <columns>FILE_NAME__c</columns>
-        <columns>SOURCE_FORM__c</columns>
-        <columns>Object__c</columns>
-        <columns>VARIABLE_NAME__c</columns>
-        <columns>Page__c</columns>
-        <columns>Question_Field__c</columns>
-        <columns>LONG_DESCRIPTION__c</columns>
-        <columns>Weight__c</columns>
-        <columns>VARIABLE_NUMBER__c</columns>
-        <columns>VARIABLE_LABEL__c</columns>
-        <columns>VARIABLE_TYPE__c</columns>
-        <columns>VARIABLE_VALUE__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Data_Type__c</field>
-            <operation>equals</operation>
-            <value>DS_Variable</value>
-        </filters>
-        <label>Variable</label>
-    </listViews>
-    <listViews>
         <fullName>Form_Info</fullName>
         <columns>NAME</columns>
         <columns>Category__c</columns>
@@ -1302,5 +1277,5 @@
     </nameField>
     <pluralLabel>DS DATA</pluralLabel>
     <searchLayouts/>
-    <sharingModel>ReadWrite</sharingModel>
+    <sharingModel>Read</sharingModel>
 </CustomObject>

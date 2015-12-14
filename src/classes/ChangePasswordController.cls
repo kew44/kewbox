@@ -1,12 +1,9 @@
-/*Page Description:
- *  An apex page controller that exposes the change password functionality
- * Last Updated on:
- *  7/17/2014
- * Update Purpose:
- *      
- * Programmer:
- *  
- */
+/****
+*@description  An apex page controller that exposes the change password functionality
+*
+*@group User handling
+*@group-content /ApexDocContent/User/ChangePasswordController.htm
+****/
 
 public with sharing class ChangePasswordController {
     public String oldPassword {get; set;}

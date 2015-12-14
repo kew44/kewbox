@@ -13,14 +13,14 @@ public with sharing class DS_SDQ_P_11_17_Report_Controller extends DS_BasicForm_
     
     public List<Visit> visits { get; set; }    
     
-    Datetime currentVisitDate = null;    
+    //Datetime currentVisitDate = null;    
     
     public class Visit {
         
         public String SECTION { get; set; }
         public String currentVisit { get; set; }  
         public String BorF {get;set;}
-        public Date DOASDOP {get;set;}
+        public Date DOA {get;set;}
         
         //scores and types
         //total
@@ -65,6 +65,7 @@ public with sharing class DS_SDQ_P_11_17_Report_Controller extends DS_BasicForm_
         cimi = Apexpages.currentPage().getParameters().get('cimi');
         
         visits = new List<Visit>();
+        System.debug(visits);
         
         // Set the obj name 
         form.setObjName('DS_SDQ_PSI_CDI_'+form.BorF+'__c');
@@ -73,10 +74,10 @@ public with sharing class DS_SDQ_P_11_17_Report_Controller extends DS_BasicForm_
         form.getObjRecord();
         
         // Get field name from DS_DATA (variable)
-        bfVariableMap = form.getVariable('SDQ_P_11_17');//SCORES_PARENT'); 
+        bfVariableMap = form.getVariable('SDQ_P_11_17');
         
         //add stray variables to map
-        bfVariableMap.put('DOASDOP',   form.BorF+'DOASDOP__c');  
+        bfVariableMap.put('DOA',   form.BorF+'DOASDOP__c');   //changed alias to DOA to allow for yp dates, expecting OP, so it is the one mapped
         bfVariableMap.put('SDPTYP',   form.BorF+'SDPTYP__c');  
         bfVariableMap.put('SDPETYP',   form.BorF+'SDPETYP__c');  
         bfVariableMap.put('SDPBTYP',   form.BorF+'SDPBTYP__c');  
@@ -89,7 +90,7 @@ public with sharing class DS_SDQ_P_11_17_Report_Controller extends DS_BasicForm_
         Date tempVisitDate = Date.valueOf(form.obj.get(form.BorF+'DOASDOP__c'));
         
         //currentVisitDate         
-        currentVisitDate = (form.BorF == 'F') ? Datetime.newInstance(tempVisitDate, time.newInstance(0,0,0,0)) : null;
+      //  currentVisitDate = (form.BorF == 'F') ? Datetime.newInstance(tempVisitDate, time.newInstance(0,0,0,0)) : null;
         
         getAssesmentHistory();
         
@@ -181,7 +182,7 @@ public with sharing class DS_SDQ_P_11_17_Report_Controller extends DS_BasicForm_
             Database.query('SELECT ' + form.ut.getFields('DS_SDQ_PSI_CDI_B__c') + 
                            '  FROM DS_SDQ_PSI_CDI_B__c' +                           
                            ' WHERE Client__c =\''+ form.cID + '\'');
-        
+                                   
         addVisit(baseline, 'B');
         
         //query follow-ups
@@ -190,7 +191,7 @@ public with sharing class DS_SDQ_P_11_17_Report_Controller extends DS_BasicForm_
                            '  FROM DS_SDQ_PSI_CDI_F__c' +                           
                            ' WHERE Client__c = \''+ form.cID + '\''+
                            'ORDER BY FDOASDOP__c, SECTION__c');
-        
+                
         if(followup.size() > 0) addVisit(followup, 'F');
         
     }
@@ -204,7 +205,17 @@ public with sharing class DS_SDQ_P_11_17_Report_Controller extends DS_BasicForm_
             
             visit.BorF    = BorF;
             visit.SECTION = String.valueOf(s.get('SECTION__c'));
-            visit.DOASDOP= Date.valueOf(s.get(BorF+'DOASDOP__c'));
+            
+            System.debug(Date.valueOf(s.get(BorF+'DOASDOP__c')));
+            System.debug(Date.valueOf(s.get(BorF+'DOASDYP__c')));
+            
+            //determine if old or young parent is used for this visit
+            if (Date.valueOf(s.get(BorF+'DOASDYP__c')) != null){                
+                visit.DOA= Date.valueOf(s.get(BorF+'DOASDYP__c'));
+            }
+            else if((Date.valueOf(s.get(BorF+'DOASDOP__c'))) != null){              
+                visit.DOA= Date.valueOf(s.get(BorF+'DOASDOP__c'));  
+            }
             
             visit.SDPTOT = Integer.valueOf(s.get(BorF+'SDPTOT__c'));
             visit.SDPTYP = String.valueOf(s.get(BorF+'SDPTYP__c'));

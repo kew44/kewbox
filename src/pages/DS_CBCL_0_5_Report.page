@@ -47,10 +47,9 @@
                 <!--provides print button functionality and structure-->
                 <apex:outputPanel layout="none" rendered="{!NOT(printReport)}">
                     <div>
-                        <a href="/apex/DS_CBCL_0_5_Report?cimi={!HTMLENCODE(cimi)}&print=1" target="_blank">
-                            <button class="btn btn-default pull-right" type="button">
-                                <i class="glyphicon glyphicon-print"></i> &nbsp;Print
-                            </button>
+                        <a class="btn btn-default pull-right" href="/apex/DS_CBCL_0_5_Report?cimi={!HTMLENCODE(cimi)}&print=1" target="_blank">
+                                                            <i class="glyphicon glyphicon-print"></i> &nbsp;Print
+                            
                         </a>
                         <br/>
                     </div>
@@ -302,14 +301,14 @@
             var data = {
                 "rows": [
                     {"c": [{"v": "Emotion. React."}, {"v": {!ROUND(visits[currentVisitDate].CBERTNY, 0)}}, {"v": 69}, {"v": 65}, {"v": false}]},
-                    {"c": [{"v": "Anxious/Deprs."}, {"v": {!ROUND(visits[currentVisitDate].CBADTNY, 0)}}, {"v": 69}, {"v": 65}, {"v": false}]},
-                    {"c": [{"v": "Somatic Complnt."}, {"v": {!ROUND(visits[currentVisitDate].CBSCTNY, 0)}}, {"v": 69}, {"v": 65}, {"v": false}]},
+                    {"c": [{"v": "Anxious/Depres."}, {"v": {!ROUND(visits[currentVisitDate].CBADTNY, 0)}}, {"v": 69}, {"v": 65}, {"v": false}]},
+                    {"c": [{"v": "Somatic Compl."}, {"v": {!ROUND(visits[currentVisitDate].CBSCTNY, 0)}}, {"v": 69}, {"v": 65}, {"v": false}]},
                     {"c": [{"v": "Withdrawn"}, {"v": {!ROUND(visits[currentVisitDate].CBWTNY, 0)}}, {"v": 69}, {"v": 65}, {"v": false}]},
                     {"c": [{"v": "Sleep Prob."}, {"v": {!ROUND(visits[currentVisitDate].CBSPTNY, 0)}}, {"v": 69}, {"v": 65}, {"v": false}]},
                     {"c": [{"v": "Attention Prob."}, {"v": {!ROUND(visits[currentVisitDate].CBAPTNY, 0)}}, {"v": 69}, {"v": 65}, {"v": false}]},
                     {"c": [{"v": "Aggress. Beh."}, {"v": {!ROUND(visits[currentVisitDate].CBABTNY, 0)}}, {"v": 69}, {"v": 65}, {"v": false}]},
-                    {"c": [{"v": "Internal. Prob."}, {"v": {!ROUND(visits[currentVisitDate].CBIBTNY, 0)}}, {"v": 63}, {"v": 60}, {"v": false}]},
-                    {"c": [{"v": "External. Prob."}, {"v": {!ROUND(visits[currentVisitDate].CBEBTNY, 0)}}, {"v": 63}, {"v": 60}, {"v": false}]},
+                    {"c": [{"v": "Internalizing"}, {"v": {!ROUND(visits[currentVisitDate].CBIBTNY, 0)}}, {"v": 63}, {"v": 60}, {"v": false}]},
+                    {"c": [{"v": "Externalizing"}, {"v": {!ROUND(visits[currentVisitDate].CBEBTNY, 0)}}, {"v": 63}, {"v": 60}, {"v": false}]},
                     {"c": [{"v": "Total Score"}, {"v": {!ROUND(visits[currentVisitDate].CBTSTNY, 0)}}, {"v": 63}, {"v": 60}, {"v": false}]}],
                 
                 //Set chart options

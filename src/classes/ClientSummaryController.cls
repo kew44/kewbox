@@ -1,41 +1,62 @@
-/*Page Description:
-* An apex page controller that exposes the client summary functionality
+/****
+*@description An apex page controller that exposes the client summary functionality
 * 
-* Update History -----------------------
+*@date 8/1/14
+*@modified date
+*@author KW
+*Purpose: found and fixed reference to DS_Form_Info__c
 *
-8/1/14-found and fixed reference to DS_Form_Info__c-KW
-7/31/14-LINK TO DS_Background_Family_Info__c-KW
-
-* Updated on: 7/30/2014
-* Update Purpose: 
+*@date 7/31/14
+*@modified date
+*@author KW
+*Purpose: LINK TO DS_Background_Family_Info__c
+* 
+*@date 7/30/2014
+*@modified date
+*@author Danny
+*Purpose: 
 *  Reduce the number of query
 *  1.Move building client_summary__c data function to Datase_base_SSI trigger. 
 *  2.After creating the clients, it would create the baseline and 
 *    general trauma forms in Client_summary__c.
 *  Total query number reduced from 23 -> 6. 
-* Edited by: Danny
-*
-* Updated on: 7/25/2014
-* Update Purpose:
+* 
+*@date 7/25/2014
+*@modified date
+*@author Danny
+*Purpose: 
 *  Avoiding to use the query inside the loop in method traumaHistoryRowList()
 *  The total query number reduced from 51 -> 23 after modification.
-* Edited by: Danny
 *
-* Updated on: 7/17/2014
-* Update Purpose:
-*  Replace the DS_Form_Info__c object with the new structure object DS_Data__c 
-* Edited by: Danny
+* Edited by: 
+*@date 7/17/2014
+*@modified date
+*@author Danny
+*Purpose: Replace the DS_Form_Info__c object with the new structure object DS_Data__c 
 *
-5/6/15
-cleaned follow-up logic
-KW
-
-5/14
-changed from FollowUpFormBuilder class to FormBuilder
-
-7/16 
-Began modifying url for ClientSummaryReport to be usable for both baseline and followup
-*/
+*@date 5/6/15
+*@modified date
+*@author KW
+*Purpose: cleaned follow-up logic
+* 
+*@date 5/14/15
+*@modified date
+*@author KW
+*Purpose: changed from FollowUpFormBuilder class to FormBuilder
+*
+*@date 7/16/15
+*@modified date
+*@author KW
+*Purpose: Began modifying url for ClientSummaryReport to be usable for both baseline and followup
+*
+*@date 10/2/15
+*@modified date
+*@author KW
+*Purpose: added display for followup visit type
+*
+*@group ClientSummary
+*@group-content /ApexDocContent/ClientSummary/ClientSummaryController.htm
+****/
 
 public with sharing class ClientSummaryController {
     
@@ -81,6 +102,12 @@ public with sharing class ClientSummaryController {
     
     //list of follow-up records
     public List<DS_Background_Family_Info_F__c> backgroundFU {get;set;}
+    
+    //type of followup visit
+    public String visitType {get;set;}
+    
+    //type of followup visit timeframe
+    public String timeType {get;set;}
     
     //list of follow-up forms per visit
     public List<Client_Summary__c> visitFormList { get; set; }
@@ -160,13 +187,15 @@ public with sharing class ClientSummaryController {
         public Map<String, String> visitFormUrl { get; set; }
         public Date visitDate {get;set;}
         public String SummaryUrl {get;set;}
+        public String visitType {get;set;}
         
-        public Visit(List<Client_Summary__c> visitFormList, Date visitDate, String SummaryUrl ){
+        public Visit(List<Client_Summary__c> visitFormList, Date visitDate, String SummaryUrl, String visitType ){
             
             this.CurrentVisitNumber = Integer.valueOf(visitFormList.get(0).SECTION__c);
             this.visitFormList = visitFormList;
             this.visitDate = visitDate;
             this.SummaryUrl = SummaryUrl;
+            this.visitType = visitType;
             
             this.visitFormUrl = new Map<String, String>();
             //            this.SummaryUrl = new Map<String, String>();, urlClientSummaryReportFU.get(0).SECTION__c)
@@ -313,13 +342,19 @@ public with sharing class ClientSummaryController {
             fuObj.Visit_Number__c = 0;
             VisitNum = Integer.valueOf(fuObj.Visit_Number__c)+1;
             fuObj.Client__c =clientID;  
-      //         followDate = returnVis.get(0).FDOV__c;
+            
         }   
+        
+        //visit and time types
+  /*      visitType = String.valueOf(fuObj.FUTYPE__c);
+        timeType = String.valueOf(fuObj.FUTIME__c);
+        System.debug(visitType);
+        System.debug(timeType);*/
         
         //visit number and section number are equal across objects w/ local VisitNum
         fuObj.Visit_Number__c=VisitNum;
         fuObj.SECTION__c=String.valueOf(VisitNum);
-        
+                
         //Date is required for visit. Prevents cancelled/interrupted follow-ups from being recorded as a true visit
         if (followDate!=null){
             returnVis.add(fuObj);      
@@ -392,6 +427,8 @@ public with sharing class ClientSummaryController {
             
             String sectionNum = '0';
             
+            String visitType;
+            
             List<Client_Summary__c> followUpForms;
             
             Visits = new List<Visit>();
@@ -400,6 +437,8 @@ public with sharing class ClientSummaryController {
             
             Map<String, Date> visitDates = new Map<String, Date>();
             
+            Map<String, String> visitTypes = new Map<String, String>();
+            
             Map<String, String> urlClientSummaryReportFU = new Map<String, String>();
             
             for(Client_Summary__c fus: followUpSummary) {        
@@ -407,7 +446,7 @@ public with sharing class ClientSummaryController {
             }
             
             List<DS_Background_Family_Info_F__c> backgroundFollowInfo =
-                [SELECT SECTION__c, FDOV__c 
+                [SELECT SECTION__c, FDOV__c , FUTYPE__c, F_VISIT_AGE__c, FUTIME__c
                  FROM DS_Background_Family_Info_F__c 
                  WHERE Client__c = : clientID
                  AND SECTION__c IN :sectionList
@@ -417,9 +456,53 @@ public with sharing class ClientSummaryController {
             for(DS_Background_Family_Info_F__c bfInfo : backgroundFollowInfo){
                 visitDates.put(bfInfo.SECTION__c, bfInfo.FDOV__c);
                 
+                visitType = bfInfo.FUTYPE__c;
+                timeType= bfInfo.FUTIME__c;
+                
+                System.debug(visitType);
+                System.debug(timeType);
+                
+                    //visit types
+                    if(visitType == '1'){                    
+                        //timespans
+                        if(timeType == '0'){ visitType = '0-3 Month Visit';}
+                        else if(timeType == '1'){visitType = '3 Month Visit';}
+                        else if(timeType == '2'){visitType = '6 Month Visit';}
+                        else if(timeType == '3'){visitType = '9 Month Visit';}
+                        else if(timeType == '4'){visitType = '12 Month Visit';}
+                        else if(timeType == '5'){ visitType = '15 Month Visit';}
+                        else if(timeType == '6'){ visitType = '18 Month Visit'; }
+                        else if(timeType == '7'){visitType = '21 Month Visit';}
+                        else if(timeType == '8'){visitType = '24 Month Visit'; }
+                        else if(timeType == '98'){visitType = 'Other';}
+                    }
+                    if(visitType == '2'){visitType = 'End of Treatment';}
+                    else if(visitType == '3'){visitType = 'Re-Opening';}
+                    else if(visitType == '4'){ visitType = 'Post-treatment';}
+                    else if(visitType == '98'){visitType = 'Other';}
+                    
+                    System.debug(visitType);
+                
                 //urilfy            
                 urlClientSummaryReportFU.put(bfInfo.SECTION__c, ut.urlEncode('c='+clientID+'&section='+bfInfo.SECTION__c));
+                
+               // visitTypes.put(bfInfo.SECTION__c, bfInfo.FUTYPE__c);
+                visitTypes.put(bfInfo.SECTION__c, visitType);
+                System.debug(visitTypes); 
+                    
+                        System.debug(sectionNum);   
+                      //  System.debug(visitTypes.get(sectionNum));    
+                    //    visitType= (visitTypes.get(sectionNum));      
+                      //  System.debug(visitType);  
+                        System.debug(timeType);  
+                                                    
+                         //   System.debug(visitType);
+                            System.debug(timeType);                         
+                          //  System.debug(visitTypes.get(sectionNum)); 
             }
+            
+            System.debug(timeType);                
+            System.debug(visitType);  
             
             for(Client_Summary__c fus: followUpSummary) {          
                 
@@ -428,21 +511,32 @@ public with sharing class ClientSummaryController {
                 if(sectionNum != fus.SECTION__c) { 
                     
                     //not a baseline visit
-                    if(sectionNum != '0') { 
-                        //new visit
-                        Visits.add(new visit(followUpForms, visitDates.get(followUpForms.get(0).SECTION__c), urlClientSummaryReportFU.get(followUpForms.get(0).SECTION__c))); 
+                    if(sectionNum != '0') {   
+                        
+                          //new visit
+                          Visits.add(new visit(followUpForms, visitDates.get(followUpForms.get(0).SECTION__c), urlClientSummaryReportFU.get(followUpForms.get(0).SECTION__c), visitTypes.get(followUpForms.get(0).SECTION__c))); 
+                         // Visits.add(new visit(followUpForms, visitDates.get(followUpForms.get(0).SECTION__c), urlClientSummaryReportFU.get(followUpForms.get(0).SECTION__c), visitType)); 
+                          //  Visits.add(new visit(followUpForms, visitDates.get(followUpForms.get(0).SECTION__c), urlClientSummaryReportFU.get(followUpForms.get(0).SECTION__c), visitTypes.get(backgroundFollowInfo.get(0).FUTYPE__c))); 
+                            
+                        System.debug(Visits);
                     }
                     followUpForms = new List<Client_Summary__c>(); 
                 }
-                
+                        
                 //set sectionNum to SECTION__c (if there has been a cancellation, this will fix. If not, it will set)
                 sectionNum = fus.SECTION__c;
-                followUpForms.add(fus);                
-                
-            }                    
+                followUpForms.add(fus);     
+            }          
             followDate =visitDates.get(followUpForms.get(0).SECTION__c);
             
-            Visits.add(new visit(followUpForms, visitDates.get(followUpForms.get(0).SECTION__c), urlClientSummaryReportFU.get(followUpForms.get(0).SECTION__c) ));
+           // System.debug(followDate);
+            //System.debug(visitDates.get(followUpForms.get(0).SECTION__c));
+            //System.debug(visitTypes.get(backgroundFollowInfo.get(0).FUTYPE__c));
+            
+            Visits.add(new visit(followUpForms, visitDates.get(followUpForms.get(0).SECTION__c), urlClientSummaryReportFU.get(followUpForms.get(0).SECTION__c), visitTypes.get(followUpForms.get(0).SECTION__c)));
+            //Visits.add(new visit(followUpForms, visitDates.get(followUpForms.get(0).SECTION__c), urlClientSummaryReportFU.get(followUpForms.get(0).SECTION__c), visitTypes.get(backgroundFollowInfo.get(0).FUTYPE__c)));
+            //Visits.add(new visit(followUpForms, visitDates.get(followUpForms.get(0).SECTION__c), urlClientSummaryReportFU.get(followUpForms.get(0).SECTION__c), visitType ));
+            System.debug(Visits);
             
         }
         

@@ -7232,7 +7232,7 @@
     <validationRules>
         <fullName>Bis_date_left_cannot_be_before_start_dt</fullName>
         <active>true</active>
-        <errorConditionFormula>BCBISLFDT__c &gt;  BCBISTCDT__c</errorConditionFormula>
+        <errorConditionFormula>BCBISTCDT__c &gt; BCBISLFDT__c</errorConditionFormula>
         <errorDisplayField>BCBISLFDT__c</errorDisplayField>
         <errorMessage>Date client left treatment cannot be before date treatment started.</errorMessage>
     </validationRules>
@@ -7260,7 +7260,7 @@
     <validationRules>
         <fullName>Bis_dt_completed_cannot_be_before_start</fullName>
         <active>true</active>
-        <errorConditionFormula>BCBISCODT__c  &gt; BCBISTCDT__c</errorConditionFormula>
+        <errorConditionFormula>BCBISTCDT__c &gt; BCBISCODT__c</errorConditionFormula>
         <errorDisplayField>BCBISCODT__c</errorDisplayField>
         <errorMessage>Date treatment completed cannot be before date treatment started.</errorMessage>
     </validationRules>

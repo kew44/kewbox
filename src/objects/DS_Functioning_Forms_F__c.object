@@ -6430,7 +6430,7 @@ eating, and/or Bulimia)</description>
     <validationRules>
         <fullName>Bis_date_left_cannot_be_before_start_dt</fullName>
         <active>true</active>
-        <errorConditionFormula>FCBISLFDT__c &gt; FCBISTCDT__c</errorConditionFormula>
+        <errorConditionFormula>FCBISTCDT__c &gt; FCBISLFDT__c</errorConditionFormula>
         <errorDisplayField>FCBISLFDT__c</errorDisplayField>
         <errorMessage>Date client left treatment cannot be before date treatment started.</errorMessage>
     </validationRules>
@@ -6458,7 +6458,7 @@ eating, and/or Bulimia)</description>
     <validationRules>
         <fullName>Bis_dt_completed_cannot_be_before_start</fullName>
         <active>true</active>
-        <errorConditionFormula>FCBISCODT__c &gt; FCBISTCDT__c</errorConditionFormula>
+        <errorConditionFormula>FCBISTCDT__c &gt; FCBISCODT__c</errorConditionFormula>
         <errorDisplayField>FCBISCODT__c</errorDisplayField>
         <errorMessage>Date treatment completed cannot be before date treatment started.</errorMessage>
     </validationRules>

@@ -95,7 +95,7 @@
                             <th>ID#</th>
                             <th>Initials</th>
                             <th>Gender</th>
-                            <th>Age</th>
+                            <th>Visit Age</th>
                            <!-- <th>Race</th>-->
                             <th>Visit Type</th>
                             <th>Date of Visit</th>
@@ -367,7 +367,7 @@
                                 <tr>
                                     <th>{!IF(BorF = 'B', 'Last 30 Days', 'Since Last CIMI Assessment')}</th>
                                     <apex:outputPanel layout="none" rendered="{!if(BorF = 'B', true, false)}">
-                                    	<th>Lifetime</th>
+                                        <th>Lifetime</th>
                                     </apex:outputPanel>
                                 </tr>   
                             </thead>
