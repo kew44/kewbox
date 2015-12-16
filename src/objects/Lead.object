@@ -76,44 +76,8 @@
     <enableFeeds>true</enableFeeds>
     <enableHistory>false</enableHistory>
     <fields>
-        <fullName>Address</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-    </fields>
-    <fields>
-        <fullName>AnnualRevenue</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-    </fields>
-    <fields>
         <fullName>CampaignId</fullName>
         <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Company</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-    </fields>
-    <fields>
-        <fullName>Description</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-    </fields>
-    <fields>
-        <fullName>DoNotCall</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-    </fields>
-    <fields>
-        <fullName>Email</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-    </fields>
-    <fields>
-        <fullName>Fax</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-    </fields>
-    <fields>
-        <fullName>HasOptedOutOfEmail</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-    </fields>
-    <fields>
-        <fullName>HasOptedOutOfFax</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
     </fields>
     <fields>
         <fullName>Industry</fullName>
@@ -252,13 +216,6 @@
         <type>Picklist</type>
     </fields>
     <fields>
-        <fullName>Jigsaw</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-    </fields>
-    <fields>
-        <fullName>LastTransferDate</fullName>
-    </fields>
-    <fields>
         <fullName>LeadSource</fullName>
         <picklist>
             <picklistValues>
@@ -311,18 +268,6 @@
         <type>Picklist</type>
     </fields>
     <fields>
-        <fullName>MobilePhone</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-    </fields>
-    <fields>
-        <fullName>Name</fullName>
-        <trackFeedHistory>true</trackFeedHistory>
-    </fields>
-    <fields>
-        <fullName>NumberOfEmployees</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-    </fields>
-    <fields>
         <fullName>OwnerId</fullName>
         <trackFeedHistory>true</trackFeedHistory>
         <type>Lookup</type>
@@ -330,10 +275,6 @@
     <fields>
         <fullName>PartnerAccountId</fullName>
         <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Phone</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
     </fields>
     <fields>
         <fullName>Rating</fullName>
@@ -382,14 +323,6 @@
         </picklist>
         <trackFeedHistory>true</trackFeedHistory>
         <type>Picklist</type>
-    </fields>
-    <fields>
-        <fullName>Title</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
-    </fields>
-    <fields>
-        <fullName>Website</fullName>
-        <trackFeedHistory>false</trackFeedHistory>
     </fields>
     <listViews>
         <fullName>AllOpenLeads</fullName>

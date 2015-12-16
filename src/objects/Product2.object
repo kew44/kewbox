@@ -43,10 +43,6 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <enableFeeds>false</enableFeeds>
     <fields>
-        <fullName>Description</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
         <fullName>Family</fullName>
         <picklist>
             <picklistValues>
@@ -57,18 +53,6 @@
         </picklist>
         <trackHistory>false</trackHistory>
         <type>Picklist</type>
-    </fields>
-    <fields>
-        <fullName>IsActive</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>Name</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>ProductCode</fullName>
-        <trackHistory>false</trackHistory>
     </fields>
     <listViews>
         <fullName>AllProducts</fullName>

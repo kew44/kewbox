@@ -65,29 +65,9 @@
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>ActivatedDate</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>BillingAddress</fullName>
-        <trackHistory>true</trackHistory>
-    </fields>
-    <fields>
-        <fullName>CompanySignedDate</fullName>
-        <trackHistory>true</trackHistory>
-    </fields>
-    <fields>
         <fullName>CompanySignedId</fullName>
         <trackHistory>true</trackHistory>
         <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>ContractTerm</fullName>
-        <trackHistory>true</trackHistory>
-    </fields>
-    <fields>
-        <fullName>CustomerSignedDate</fullName>
-        <trackHistory>true</trackHistory>
     </fields>
     <fields>
         <fullName>CustomerSignedId</fullName>
@@ -95,41 +75,9 @@
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>CustomerSignedTitle</fullName>
-        <trackHistory>true</trackHistory>
-    </fields>
-    <fields>
-        <fullName>Description</fullName>
-        <trackHistory>true</trackHistory>
-    </fields>
-    <fields>
-        <fullName>EndDate</fullName>
-        <trackHistory>true</trackHistory>
-    </fields>
-    <fields>
-        <fullName>Name</fullName>
-        <trackHistory>true</trackHistory>
-    </fields>
-    <fields>
-        <fullName>OwnerExpirationNotice</fullName>
-        <trackHistory>true</trackHistory>
-    </fields>
-    <fields>
         <fullName>OwnerId</fullName>
         <trackHistory>true</trackHistory>
         <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>ShippingAddress</fullName>
-        <trackHistory>true</trackHistory>
-    </fields>
-    <fields>
-        <fullName>SpecialTerms</fullName>
-        <trackHistory>true</trackHistory>
-    </fields>
-    <fields>
-        <fullName>StartDate</fullName>
-        <trackHistory>true</trackHistory>
     </fields>
     <fields>
         <fullName>Status</fullName>

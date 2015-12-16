@@ -45,35 +45,9 @@
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>Description</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>InstallDate</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>IsCompetitorProduct</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>Name</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>Price</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
         <fullName>Product2Id</fullName>
         <trackHistory>false</trackHistory>
         <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>ProductCode</fullName>
-    </fields>
-    <fields>
-        <fullName>ProductDescription</fullName>
     </fields>
     <fields>
         <fullName>ProductFamily</fullName>
@@ -85,18 +59,6 @@
             <sorted>false</sorted>
         </picklist>
         <type>Picklist</type>
-    </fields>
-    <fields>
-        <fullName>PurchaseDate</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>Quantity</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>SerialNumber</fullName>
-        <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>Status</fullName>
@@ -125,10 +87,6 @@
         </picklist>
         <trackHistory>false</trackHistory>
         <type>Picklist</type>
-    </fields>
-    <fields>
-        <fullName>UsageEndDate</fullName>
-        <trackHistory>false</trackHistory>
     </fields>
     <listViews>
         <fullName>AllAssets</fullName>

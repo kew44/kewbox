@@ -9,7 +9,7 @@
 * @description An apex class on objects that handles createing the forms in client summary object 
 * depended on some specific conditions. 
 */
-public class Formbuilder{
+public class FormBuilder{
     
     /****
     * @description Create new client summary record  
@@ -210,10 +210,10 @@ public class Formbuilder{
     * @param obj a list of the SObject
     * @return null
     * @example
-	* if(Trigger.isAfter) {
-	* 	FormBuilder.FormDisplayLogic(Trigger.new);
-	* }
-	*/
+    * if(Trigger.isAfter) {
+    *   FormBuilder.FormDisplayLogic(Trigger.new);
+    * }
+    */
     public static void FormDisplayLogic(List<SObject> obj) {
         
         Set<String> sections = new Set<String>();

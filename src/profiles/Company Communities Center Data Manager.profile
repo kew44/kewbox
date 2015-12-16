@@ -201,7 +201,7 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>Formbuilder</apexClass>
+        <apexClass>FormBuilder</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>

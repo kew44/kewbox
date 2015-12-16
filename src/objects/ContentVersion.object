@@ -11,30 +11,8 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <enableFeeds>false</enableFeeds>
     <fields>
-        <fullName>Description</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>FileType</fullName>
-    </fields>
-    <fields>
-        <fullName>Language</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
         <fullName>OwnerId</fullName>
         <trackHistory>false</trackHistory>
         <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>SharingOption</fullName>
-        <trackHistory>true</trackHistory>
-    </fields>
-    <fields>
-        <fullName>TagCsv</fullName>
-    </fields>
-    <fields>
-        <fullName>Title</fullName>
-        <trackHistory>false</trackHistory>
     </fields>
 </CustomObject>
