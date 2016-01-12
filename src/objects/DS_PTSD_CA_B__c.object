@@ -4165,6 +4165,27 @@
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
     <validationRules>
+        <fullName>PTSD_CA_date_cannot_be_before_BDOV</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_CA__c, &apos;&apos;)) &amp;&amp; (BDOV__c &gt;  BDOAPTSD__c)</errorConditionFormula>
+        <errorDisplayField>BDOAPTSD__c</errorDisplayField>
+        <errorMessage>Baseline PTSD-RI date of administration cannot be before Baseline date of visit.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PTSD_CA_date_cannot_be_before_birth</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_CA__c, &quot;&quot;)) &amp;&amp; (Client__r.DOB1__c &gt;  BDOAPTSD__c)</errorConditionFormula>
+        <errorDisplayField>BDOAPTSD__c</errorDisplayField>
+        <errorMessage>Baseline date of administration cannot be before birth.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PTSD_CA_date_cannot_be_future</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_CA__c, &quot;&quot;)) &amp;&amp;  (BDOAPTSD__c &gt; TODAY())</errorConditionFormula>
+        <errorDisplayField>BDOAPTSD__c</errorDisplayField>
+        <errorMessage>Enter a valid date.</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>PTSD_CA_date_required</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_CA__c, &apos;&apos;)) &amp;&amp; ISNULL(BDOAPTSD__c )</errorConditionFormula>
@@ -4172,39 +4193,47 @@
         <errorMessage>Please indicate the date of administration.</errorMessage>
     </validationRules>
     <validationRules>
-        <fullName>PTSD_date_cannot_be_before_BDOV</fullName>
+        <fullName>PTSD_CA_must_indicate_method</fullName>
         <active>true</active>
-        <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_CA__c, &apos;&apos;)) &amp;&amp; (BDOV__c &gt;  BDOAPTSD__c)</errorConditionFormula>
-        <errorDisplayField>BDOAPTSD__c</errorDisplayField>
-        <errorMessage>Baseline PTSD-RI date of administration cannot be before Baseline date of visit.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PTSD_date_cannot_be_before_birth</fullName>
-        <active>true</active>
-        <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_CA__c, &quot;&quot;)) &amp;&amp; (Client__r.DOB1__c &gt;  BDOAPTSD__c)</errorConditionFormula>
-        <errorDisplayField>BDOAPTSD__c</errorDisplayField>
-        <errorMessage>Baseline date of administration cannot be before birth.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PTSD_date_cannot_be_future</fullName>
-        <active>true</active>
-        <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_CA__c, &quot;&quot;)) &amp;&amp;  (BDOAPTSD__c &gt; TODAY())</errorConditionFormula>
-        <errorDisplayField>BDOAPTSD__c</errorDisplayField>
-        <errorMessage>Enter a valid date.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PTSD_date_required</fullName>
-        <active>true</active>
-        <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_CA__c, &quot;&quot;)) &amp;&amp; ISNULL(BDOAPTSD__c )</errorConditionFormula>
-        <errorDisplayField>BDOAPTSD__c</errorDisplayField>
-        <errorMessage>Please indicate the date of administration.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PTSD_must_indicate_method</fullName>
-        <active>false</active>
         <description>Method of administration is required.</description>
         <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_CA__c, &quot;&quot;)) &amp;&amp; ISPICKVAL(BMETPTSD__c , &apos;&apos;)</errorConditionFormula>
         <errorDisplayField>BMETPTSD__c</errorDisplayField>
+        <errorMessage>Please indicate how this form was administered.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PTSD_PA_date_cannot_be_before_BDOV</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_PA__c, &apos;&apos;)) &amp;&amp; (BDOV__c &gt;  BDOAPTSDP__c)</errorConditionFormula>
+        <errorDisplayField>BDOAPTSDP__c</errorDisplayField>
+        <errorMessage>Baseline PTSD-RI date of administration cannot be before Baseline date of visit.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PTSD_PA_date_cannot_be_before_birth</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_PA__c, &quot;&quot;)) &amp;&amp; (Client__r.DOB1__c &gt; BDOAPTSDP__c)</errorConditionFormula>
+        <errorDisplayField>BDOAPTSDP__c</errorDisplayField>
+        <errorMessage>Baseline date of administration cannot be before birth.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PTSD_PA_date_cannot_be_future</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_PA__c, &quot;&quot;)) &amp;&amp;  (BDOAPTSDP__c &gt; TODAY())</errorConditionFormula>
+        <errorDisplayField>BDOAPTSDP__c</errorDisplayField>
+        <errorMessage>Enter a valid date.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PTSD_PA_date_required</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_PA__c, &apos;&apos;)) &amp;&amp; ISNULL(BDOAPTSDP__c )</errorConditionFormula>
+        <errorDisplayField>BDOAPTSDP__c</errorDisplayField>
+        <errorMessage>Please indicate the date of administration.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PTSD_PA_must_indicate_method</fullName>
+        <active>true</active>
+        <description>Method of administration is required.</description>
+        <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_PA__c, &quot;&quot;)) &amp;&amp; ISPICKVAL(BMETPTSDP__c , &apos;&apos;)</errorConditionFormula>
+        <errorDisplayField>BMETPTSDP__c</errorDisplayField>
         <errorMessage>Please indicate how this form was administered.</errorMessage>
     </validationRules>
 </CustomObject>

@@ -231,7 +231,7 @@ private class TestClass_DS_PTSD_PA_B  {
         obj.STATUS_PTSD_PA__c = 'Complete'; 
         
         obj.BPTSV1P__c  = obj.BPTSV2P__c  = obj.BPTSV3P__c  = obj.BPTSV4P__c  = '1';
-        obj.BPTSV6P__c  = obj.BPTSV7P__c  = obj.BPTSV8P__c  = obj.BPTSV9P__c  = obj.BPTSV10P__c = '4';
+        obj.BPTSV6P__c  = obj.BPTSV7P__c  = obj.BPTSV8P__c  = obj.BPTSV9P__c  = '4';
         obj.BPTSV11P__c = obj.BPTSV12P__c = obj.BPTSV13P__c = obj.BPTSV14P__c = obj.BPTSV15P__c = '4';
         obj.BPTSV16P__c = obj.BPTSV17P__c = obj.BPTSV18P__c = obj.BPTSV19P__c = obj.BPTSV20P__c = '2';
         obj.BPTSV21P__c = obj.BPTSV22P__c = obj.BPTSV23P__c = obj.BPTSV24P__c = obj.BPTSV25P__c = '3';

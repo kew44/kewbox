@@ -4210,39 +4210,74 @@
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
     <validationRules>
-        <fullName>PTSD_date_cannot_be_before_BDOV</fullName>
+        <fullName>PTSD_CA_date_cannot_be_before_BDOV</fullName>
         <active>true</active>
         <errorConditionFormula>FDOV__c &gt;  FDOAPTSD__c</errorConditionFormula>
         <errorDisplayField>FDOAPTSD__c</errorDisplayField>
         <errorMessage>Follow-up PTSD date of administration cannot be before follow-up date of visit.</errorMessage>
     </validationRules>
     <validationRules>
-        <fullName>PTSD_date_cannot_be_before_birth</fullName>
+        <fullName>PTSD_CA_date_cannot_be_before_birth</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_CA__c, &quot;&quot;)) &amp;&amp; (Client__r.DOB1__c &gt; FDOAPTSD__c)</errorConditionFormula>
         <errorDisplayField>FDOAPTSD__c</errorDisplayField>
         <errorMessage>Follow-up date of administration cannot be before birth.</errorMessage>
     </validationRules>
     <validationRules>
-        <fullName>PTSD_date_cannot_be_future</fullName>
+        <fullName>PTSD_CA_date_cannot_be_future</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_CA__c, &quot;&quot;)) &amp;&amp; (FDOAPTSD__c &gt; TODAY())</errorConditionFormula>
         <errorDisplayField>FDOAPTSD__c</errorDisplayField>
         <errorMessage>Enter a valid date.</errorMessage>
     </validationRules>
     <validationRules>
-        <fullName>PTSD_date_required</fullName>
+        <fullName>PTSD_CA_date_required</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_CA__c, &quot;&quot;)) &amp;&amp; ISNULL(FDOAPTSD__c )</errorConditionFormula>
         <errorDisplayField>FDOAPTSD__c</errorDisplayField>
         <errorMessage>Please indicate the date of administration.</errorMessage>
     </validationRules>
     <validationRules>
-        <fullName>PTSD_must_indicate_method</fullName>
+        <fullName>PTSD_CA_must_indicate_method</fullName>
         <active>true</active>
         <description>Method of administration is required.</description>
         <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_CA__c, &quot;&quot;)) &amp;&amp; ISPICKVAL(FMETPTSD__c , &apos;&apos;)</errorConditionFormula>
         <errorDisplayField>FMETPTSD__c</errorDisplayField>
+        <errorMessage>Please indicate how this form was administered.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PTSD_PA_date_cannot_be_before_BDOV</fullName>
+        <active>true</active>
+        <errorConditionFormula>FDOV__c &gt;  FDOAPTSDP__c</errorConditionFormula>
+        <errorDisplayField>FDOAPTSDP__c</errorDisplayField>
+        <errorMessage>Follow-up PTSD date of administration cannot be before follow-up date of visit.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PTSD_PA_date_cannot_be_before_birth</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_PA__c, &quot;&quot;)) &amp;&amp; (Client__r.DOB1__c &gt; FDOAPTSDP__c)</errorConditionFormula>
+        <errorDisplayField>FDOAPTSDP__c</errorDisplayField>
+        <errorMessage>Follow-up date of administration cannot be before birth.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PTSD_PA_date_cannot_be_future</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_PA__c, &quot;&quot;)) &amp;&amp; (FDOAPTSDP__c &gt; TODAY())</errorConditionFormula>
+        <errorDisplayField>FDOAPTSDP__c</errorDisplayField>
+        <errorMessage>Enter a valid date.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PTSD_PA_date_required</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_PA__c, &quot;&quot;)) &amp;&amp; ISNULL(FDOAPTSDP__c )</errorConditionFormula>
+        <errorDisplayField>FDOAPTSDP__c</errorDisplayField>
+        <errorMessage>Please indicate the date of administration.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PTSD_PA_must_indicate_method</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_PA__c, &quot;&quot;)) &amp;&amp; ISPICKVAL(FMETPTSDP__c , &apos;&apos;)</errorConditionFormula>
+        <errorDisplayField>FMETPTSDP__c</errorDisplayField>
         <errorMessage>Please indicate how this form was administered.</errorMessage>
     </validationRules>
 </CustomObject>
