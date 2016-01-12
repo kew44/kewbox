@@ -58,8 +58,8 @@ public class TestClass_DS_PTSD_PA_F {
         for (Integer i=0;i<200;i++){
             //add record with required values
             bulkObj.add(new DS_PTSD_CA_F__c(client__c = client.id,
-                                        FMETPTSD__c = '1',
-                                        FDOAPTSD__c = date.today(),
+                                        FMETPTSDP__c = '1',
+                                        FDOAPTSDP__c = date.today(),
                                         STATUS_PTSD_PA__c = 'Complete'));
         }
         
