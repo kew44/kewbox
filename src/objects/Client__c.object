@@ -53,10 +53,13 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
     <enableEnhancedLookup>true</enableEnhancedLookup>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>AGE__c</fullName>
         <externalId>false</externalId>
@@ -267,7 +270,7 @@
         <columns>CREATED_DATE</columns>
         <columns>LAST_UPDATE</columns>
         <columns>OBJECT_ID</columns>
-        <filterScope>Everything</filterScope>
+        <filterScope>Mine</filterScope>
         <label>My Clients</label>
     </listViews>
     <nameField>

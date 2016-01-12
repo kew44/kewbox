@@ -149,6 +149,18 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>DS_PTSD_PA_Controller</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>DS_PTSD_PA_Report_Controller</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>DS_PTSD_Scoring</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>DS_REFIMM_Controller</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -318,6 +330,14 @@
     </classAccesses>
     <classAccesses>
         <apexClass>TestClass_DS_PTSD_CA_F</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TestClass_DS_PTSD_PA_B</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TestClass_DS_PTSD_PA_F</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -13905,6 +13925,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.BDOAPTSD__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_PTSD_CA_B__c.BDOV__c</field>
         <readable>true</readable>
@@ -14917,6 +14942,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>DS_PTSD_CA_B__c.STATUS_PTSD_CA__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_B__c.STATUS_PTSD_PA__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -15942,6 +15972,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>DS_PTSD_CA_F__c.STATUS_PTSD_CA__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_PTSD_CA_F__c.STATUS_PTSD_PA__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -23286,6 +23321,14 @@
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>DS_PTSD_PA</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>DS_PTSD_PA_Report</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>DS_REFIMM</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
@@ -23473,6 +23516,10 @@
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
+        <name>ChatterFileLink</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
         <name>ConnectOrgToEnvironmentHub</name>
     </userPermissions>
     <userPermissions>
@@ -23586,6 +23633,10 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>ExportReport</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ImportCustomObjects</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
@@ -23725,6 +23776,10 @@
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
+        <name>ManagePvtRptsAndDashbds</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
         <name>ManageRemoteAccess</name>
     </userPermissions>
     <userPermissions>
@@ -23738,6 +23793,10 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>ManageSolutions</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ManageSynonyms</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
@@ -23782,6 +23841,10 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>ScheduleReports</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>SelectFilesFromSalesforce</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>

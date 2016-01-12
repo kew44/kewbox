@@ -41,7 +41,7 @@ private class TestClass_DS_PTSD_CA_B  {
     /****
     @description Initialize reference PTSD Scoring class 
     ****/
-    public static DS_PTSD_CA_Scoring ptsdScore = new DS_PTSD_CA_Scoring();
+    public static DS_PTSD_Scoring ptsdScore = new DS_PTSD_Scoring();
     
     /****
     *@description method to test a bulk creation of object
@@ -159,6 +159,8 @@ private class TestClass_DS_PTSD_CA_B  {
         
         obj.BMETPTSD__c = '1';
         obj.BDOAPTSD__c = date.today();  
+        
+        obj.STATUS_PTSD_CA__c = 'Complete';
         
         obj.BPTSV1__c  = obj.BPTSV2__c  = obj.BPTSV3__c  = obj.BPTSV4__c  = '1';
         obj.BPTSV6__c  = obj.BPTSV7__c  = obj.BPTSV8__c  = obj.BPTSV9__c  = obj.BPTSV10__c = '4';

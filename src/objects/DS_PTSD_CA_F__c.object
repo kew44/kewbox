@@ -47,14 +47,22 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fieldSets>
         <fullName>STATUS</fullName>
         <description>status fields</description>
         <displayedFields>
             <field>STATUS_PTSD_CA__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>STATUS_PTSD_PA__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
@@ -172,7 +180,6 @@
     </fields>
     <fields>
         <fullName>FPTSAB1P__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>PTSD RI Symptom B1 Parent</description>
         <externalId>false</externalId>
         <label>FPTSAB1P</label>
@@ -199,7 +206,6 @@
     </fields>
     <fields>
         <fullName>FPTSAB2P__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>PTSD RI Symptom B2 Parent</description>
         <externalId>false</externalId>
         <label>FPTSAB2P</label>
@@ -226,7 +232,6 @@
     </fields>
     <fields>
         <fullName>FPTSAB3P__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>PTSD RI Symptom B3 Parent</description>
         <externalId>false</externalId>
         <label>FPTSAB3P</label>
@@ -253,7 +258,6 @@
     </fields>
     <fields>
         <fullName>FPTSAB4P__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>PTSD RI Symptom B4 Parent</description>
         <externalId>false</externalId>
         <label>FPTSAB4P</label>
@@ -280,7 +284,6 @@
     </fields>
     <fields>
         <fullName>FPTSAB5P__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>PTSD RI Symptom B5 Parent</description>
         <externalId>false</externalId>
         <label>FPTSAB5P</label>
@@ -307,7 +310,6 @@
     </fields>
     <fields>
         <fullName>FPTSAC1P__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>PTSD RI Symptom C1 Parent</description>
         <externalId>false</externalId>
         <label>FPTSAC1P</label>
@@ -334,7 +336,6 @@
     </fields>
     <fields>
         <fullName>FPTSAC2P__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>PTSD RI Symptom C2 Parent</description>
         <externalId>false</externalId>
         <label>FPTSAC2P</label>
@@ -361,7 +362,6 @@
     </fields>
     <fields>
         <fullName>FPTSAD1P__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>PTSD RI Symptom D1 Parent</description>
         <externalId>false</externalId>
         <label>FPTSAD1P</label>
@@ -388,7 +388,6 @@
     </fields>
     <fields>
         <fullName>FPTSAD2P__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>PTSD RI Symptom D2 Parent</description>
         <externalId>false</externalId>
         <label>FPTSAD2P</label>
@@ -415,7 +414,6 @@
     </fields>
     <fields>
         <fullName>FPTSAD3P__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>PTSD RI Symptom D3 Parent</description>
         <externalId>false</externalId>
         <label>FPTSAD3P</label>
@@ -442,7 +440,6 @@
     </fields>
     <fields>
         <fullName>FPTSAD4P__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>PTSD RI Symptom D4 Parent</description>
         <externalId>false</externalId>
         <label>FPTSAD4P</label>
@@ -469,7 +466,6 @@
     </fields>
     <fields>
         <fullName>FPTSAD5P__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>PTSD RI Symptom D5 Parent</description>
         <externalId>false</externalId>
         <label>FPTSAD5P</label>
@@ -496,7 +492,6 @@
     </fields>
     <fields>
         <fullName>FPTSAD6P__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>PTSD RI Symptom D6 Parent</description>
         <externalId>false</externalId>
         <label>FPTSAD6P</label>
@@ -523,7 +518,6 @@
     </fields>
     <fields>
         <fullName>FPTSAD7P__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>PTSD RI Symptom D7 Parent</description>
         <externalId>false</externalId>
         <label>FPTSAD7P</label>
@@ -550,7 +544,6 @@
     </fields>
     <fields>
         <fullName>FPTSAE1P__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>PTSD RI Symptom E1 Parent</description>
         <externalId>false</externalId>
         <label>FPTSAE1P</label>
@@ -577,7 +570,6 @@
     </fields>
     <fields>
         <fullName>FPTSAE2P__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>PTSD RI Symptom E2 Parent</description>
         <externalId>false</externalId>
         <label>FPTSAE2P</label>
@@ -604,7 +596,6 @@
     </fields>
     <fields>
         <fullName>FPTSAE3P__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>PTSD RI Symptom E3 Parent</description>
         <externalId>false</externalId>
         <label>FPTSAE3P</label>
@@ -631,7 +622,6 @@
     </fields>
     <fields>
         <fullName>FPTSAE4P__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>PTSD RI Symptom E4 Parent</description>
         <externalId>false</externalId>
         <label>FPTSAE4P</label>
@@ -658,7 +648,6 @@
     </fields>
     <fields>
         <fullName>FPTSAE5P__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>PTSD RI Symptom E5 Parent</description>
         <externalId>false</externalId>
         <label>FPTSAE5P</label>
@@ -685,7 +674,6 @@
     </fields>
     <fields>
         <fullName>FPTSAE6P__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>PTSD RI Symptom E6 Parent</description>
         <externalId>false</externalId>
         <label>FPTSAE6P</label>
@@ -712,7 +700,6 @@
     </fields>
     <fields>
         <fullName>FPTSAPPCNP__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>Record is Appropriate Parent</description>
         <externalId>false</externalId>
         <label>FPTSAPPCNP</label>
@@ -726,7 +713,6 @@
     </fields>
     <fields>
         <fullName>FPTSAPPCN__c</fullName>
-        <defaultValue>1</defaultValue>
         <description>Record is Appropriate</description>
         <externalId>false</externalId>
         <label>FPTSAPPCN</label>
@@ -742,8 +728,7 @@
         <fullName>FPTSAPPCP__c</fullName>
         <description>Record is Appropriate Parent</description>
         <externalId>false</externalId>
-        <formula>IF( FPTSAPPCNP__c =  1 , &apos;Yes&apos;, &apos;No&apos;)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( ISNULL(FPTSAPPCNP__c), NULL, IF(FPTSAPPCNP__c =  1 , &apos;Yes&apos;, &apos;No&apos;))</formula>
         <label>FPTSAPPCP</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -754,7 +739,7 @@
     <fields>
         <fullName>FPTSAPPC__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( FPTSAPPCN__c = 1 , &apos;Yes&apos;, &apos;No&apos;)</formula>
+        <formula>IF( ISNULL(FPTSAPPCN__c), NULL, IF(FPTSAPPCN__c = 1 , &apos;Yes&apos;, &apos;No&apos;))</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>FPTSAPPC</label>
         <required>false</required>
@@ -765,7 +750,6 @@
     </fields>
     <fields>
         <fullName>FPTSBCNP__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>PTSD Crit B cutoff - Num Parent</description>
         <externalId>false</externalId>
         <label>FPTSBCNP</label>
@@ -794,8 +778,7 @@
         <fullName>FPTSBMNP__c</fullName>
         <description>PTSD Crit B met - Num Parent</description>
         <externalId>false</externalId>
-        <formula>IF( FPTSBCNP__c  &gt;=  1, 1, 0 )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( ISNULL(FPTSBCNP__c), NULL, IF(FPTSBCNP__c  &gt;=  1, 1, 0 ))</formula>
         <label>FPTSBMNP</label>
         <precision>18</precision>
         <required>false</required>
@@ -808,8 +791,7 @@
     <fields>
         <fullName>FPTSBMN__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( FPTSBCN__c &gt;= 1, 1, 0 )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( ISNULL(FPTSBCN__c), NULL, IF(FPTSBCN__c &gt;= 1, 1, 0 ))</formula>
         <label>FPTSBMN</label>
         <precision>18</precision>
         <required>false</required>
@@ -823,8 +805,7 @@
         <fullName>FPTSBMP__c</fullName>
         <description>PTSD Crit B met Parent</description>
         <externalId>false</externalId>
-        <formula>IF( FPTSBMNP__c  =  1, &quot;Yes&quot;, &quot;No&quot; )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( ISNULL(FPTSBMNP__c), NULL, IF(FPTSBMNP__c  =  1, &quot;Yes&quot;, &quot;No&quot; ))</formula>
         <label>FPTSBMP</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -835,8 +816,7 @@
     <fields>
         <fullName>FPTSBM__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( FPTSBMN__c = 1, &quot;Yes&quot;, &quot;No&quot; )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( ISNULL(FPTSBMN__c), NULL, IF(FPTSBMN__c = 1, &quot;Yes&quot;, &quot;No&quot; ))</formula>
         <label>FPTSBM</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -849,7 +829,6 @@
         <description>PTSD Crit B raw score - Num Parent</description>
         <externalId>false</externalId>
         <formula>FPTSAB1P__c  +  FPTSAB2P__c  +  FPTSAB3P__c  +  FPTSAB4P__c  +  FPTSAB5P__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>FPTSBRNP</label>
         <precision>18</precision>
         <required>false</required>
@@ -863,7 +842,6 @@
         <fullName>FPTSBRN__c</fullName>
         <externalId>false</externalId>
         <formula>FPTSAB1__c + FPTSAB2__c + FPTSAB3__c + FPTSAB4__c + FPTSAB5__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>FPTSBRN</label>
         <precision>18</precision>
         <required>false</required>
@@ -875,7 +853,6 @@
     </fields>
     <fields>
         <fullName>FPTSCCNP__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>PTSD Crit C cutoff - Num Parent</description>
         <externalId>false</externalId>
         <label>FPTSCCNP</label>
@@ -904,8 +881,7 @@
         <fullName>FPTSCMNP__c</fullName>
         <description>PTSD Crit C met - Num Parent</description>
         <externalId>false</externalId>
-        <formula>IF( FPTSCCNP__c  &gt;= 1, 1, 0 )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( ISNULL(FPTSCCNP__c), NULL, IF(FPTSCCNP__c  &gt;= 1, 1, 0 ))</formula>
         <label>FPTSCMNP</label>
         <precision>18</precision>
         <required>false</required>
@@ -918,8 +894,7 @@
     <fields>
         <fullName>FPTSCMN__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( FPTSCCN__c &gt;= 1, 1, 0 )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( ISNULL(FPTSCCN__c), NULL, IF(FPTSCCN__c &gt;= 1, 1, 0 ))</formula>
         <label>FPTSCMN</label>
         <precision>18</precision>
         <required>false</required>
@@ -933,8 +908,7 @@
         <fullName>FPTSCMP__c</fullName>
         <description>PTSD Crit C met Parent</description>
         <externalId>false</externalId>
-        <formula>IF( FPTSCMNP__c  =  1, &quot;Yes&quot;, &quot;No&quot; )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( ISNULL(FPTSCMNP__c), NULL, IF(FPTSCMNP__c  =  1, &quot;Yes&quot;, &quot;No&quot; ))</formula>
         <label>FPTSCMP</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -959,7 +933,6 @@
         <description>PTSD Crit C raw score - Num Parent</description>
         <externalId>false</externalId>
         <formula>FPTSAC1P__c  +  FPTSAC2P__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>FPTSCRNP</label>
         <precision>18</precision>
         <required>false</required>
@@ -973,7 +946,6 @@
         <fullName>FPTSCRN__c</fullName>
         <externalId>false</externalId>
         <formula>FPTSAC1__c + FPTSAC2__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>FPTSCRN</label>
         <precision>18</precision>
         <required>false</required>
@@ -1041,7 +1013,6 @@
     </fields>
     <fields>
         <fullName>FPTSDCNP__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>PTSD Crit D cutoff - Num Parent</description>
         <externalId>false</externalId>
         <label>FPTSDCNP</label>
@@ -1071,7 +1042,6 @@
         <description>Significant Distress - FORMULA Parent</description>
         <externalId>false</externalId>
         <formula>VALUE(TEXT( FPTSD1P__c )) =  1</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>FPTSDCP</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1081,7 +1051,6 @@
         <fullName>FPTSDC__c</fullName>
         <externalId>false</externalId>
         <formula>VALUE(TEXT( FPTSD1__c )) = 1</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>FPTSDC</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1091,8 +1060,7 @@
         <fullName>FPTSDMNP__c</fullName>
         <description>PTSD Crit D met - Num Parent</description>
         <externalId>false</externalId>
-        <formula>IF( FPTSDCNP__c  &gt;=  2, 1, 0 )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( ISNULL(FPTSDCNP__c), NULL, IF(FPTSDCNP__c  &gt;=  2, 1, 0 ))</formula>
         <label>FPTSDMNP</label>
         <precision>18</precision>
         <required>false</required>
@@ -1105,8 +1073,7 @@
     <fields>
         <fullName>FPTSDMN__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( FPTSDCN__c &gt;= 2, 1, 0 )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( ISNULL(FPTSDCN__c), NULL, IF(FPTSDCN__c &gt;= 2, 1, 0 ))</formula>
         <label>FPTSDMN</label>
         <precision>18</precision>
         <required>false</required>
@@ -1120,8 +1087,7 @@
         <fullName>FPTSDMP__c</fullName>
         <description>PTSD Crit D met Parent</description>
         <externalId>false</externalId>
-        <formula>IF( FPTSDMNP__c  =  1, &quot;Yes&quot;, &quot;No&quot; )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( ISNULL(FPTSDMNP__c), NULL, IF(FPTSDMNP__c  =  1, &quot;Yes&quot;, &quot;No&quot; ))</formula>
         <label>FPTSDMP</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -1132,8 +1098,7 @@
     <fields>
         <fullName>FPTSDM__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( FPTSDMN__c = 1, &quot;Yes&quot;, &quot;No&quot; )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( ISNULL(FPTSDMN__c), NULL, IF(FPTSDMN__c = 1, &quot;Yes&quot;, &quot;No&quot; ))</formula>
         <label>FPTSDM</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -1146,7 +1111,6 @@
         <description>PTSD Crit D raw score - Num Parent</description>
         <externalId>false</externalId>
         <formula>FPTSAD1P__c  +  FPTSAD2P__c  + FPTSAD3P__c  +  FPTSAD4P__c  +  FPTSAD5P__c  +  FPTSAD6P__c  +  FPTSAD7P__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>FPTSDRNP</label>
         <precision>18</precision>
         <required>false</required>
@@ -1160,7 +1124,6 @@
         <fullName>FPTSDRN__c</fullName>
         <externalId>false</externalId>
         <formula>FPTSAD1__c + FPTSAD2__c + FPTSAD3__c + FPTSAD4__c + FPTSAD5__c + FPTSAD6__c + FPTSAD7__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>FPTSDRN</label>
         <precision>18</precision>
         <required>false</required>
@@ -1212,7 +1175,6 @@
     </fields>
     <fields>
         <fullName>FPTSECNP__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>PTSD Crit E cutoff - Num Parent</description>
         <externalId>false</externalId>
         <label>FPTSECNP</label>
@@ -1241,8 +1203,7 @@
         <fullName>FPTSEMNP__c</fullName>
         <description>PTSD Crit E met - Num Parent</description>
         <externalId>false</externalId>
-        <formula>IF( FPTSECNP__c  &gt;=  2, 1, 0 )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( ISNULL(FPTSECNP__c), NULL, IF(FPTSECNP__c  &gt;=  2, 1, 0 ))</formula>
         <label>FPTSEMNP</label>
         <precision>18</precision>
         <required>false</required>
@@ -1255,8 +1216,7 @@
     <fields>
         <fullName>FPTSEMN__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( FPTSECN__c &gt;= 2, 1, 0 )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( ISNULL(FPTSECN__c), NULL, IF(FPTSECN__c &gt;= 2, 1, 0 ))</formula>
         <label>FPTSEMN</label>
         <precision>18</precision>
         <required>false</required>
@@ -1270,8 +1230,7 @@
         <fullName>FPTSEMP__c</fullName>
         <description>PTSD Crit E met Parent</description>
         <externalId>false</externalId>
-        <formula>IF( FPTSEMNP__c  =  1, &quot;Yes&quot;, &quot;No&quot; )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( ISNULL(FPTSEMNP__c), NULL, IF(FPTSEMNP__c  =  1, &quot;Yes&quot;, &quot;No&quot; ))</formula>
         <label>FPTSEMP</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -1296,7 +1255,6 @@
         <description>PTSD Crit E raw score - Num Parent</description>
         <externalId>false</externalId>
         <formula>FPTSAE1P__c  +  FPTSAE2P__c  +  FPTSAE3P__c  +  FPTSAE4P__c  +  FPTSAE5P__c  + FPTSAE6P__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>FPTSERNP</label>
         <precision>18</precision>
         <required>false</required>
@@ -1310,7 +1268,6 @@
         <fullName>FPTSERN__c</fullName>
         <externalId>false</externalId>
         <formula>FPTSAE1__c + FPTSAE2__c + FPTSAE3__c + FPTSAE4__c + FPTSAE5__c + FPTSAE6__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>FPTSERN</label>
         <precision>18</precision>
         <required>false</required>
@@ -1325,7 +1282,6 @@
         <description>Significant Functional Impairment - FORMULA Parent</description>
         <externalId>false</externalId>
         <formula>OR( FPTSFHCP__c, FPTSFSCP__c, FPTSFRCP__c, FPTSFPCP__c )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>FPTSFCP</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1335,7 +1291,6 @@
         <fullName>FPTSFC__c</fullName>
         <externalId>false</externalId>
         <formula>OR( FPTSFHC__c, FPTSFSC__c, FPTSFRC__c, FPTSFPC__c )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>FPTSFC</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1478,7 +1433,6 @@
         <description>Significant Functional Impairment Home - FORMULA Parent</description>
         <externalId>false</externalId>
         <formula>MAX( VALUE(TEXT(FPTSFH1P__c)) , VALUE(TEXT(FPTSFH2P__c)) , VALUE(TEXT(FPTSFH3P__c)) ) =  1</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>FPTSFHCP</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1488,7 +1442,6 @@
         <fullName>FPTSFHC__c</fullName>
         <externalId>false</externalId>
         <formula>MAX( VALUE(TEXT(FPTSFH1__c)) , VALUE(TEXT(FPTSFH2__c)) , VALUE(TEXT(FPTSFH3__c)) ) = 1</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>FPTSFHC</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1591,7 +1544,6 @@
         <description>Significant Functional Impairment Developmental - FORMULA Parent</description>
         <externalId>false</externalId>
         <formula>VALUE(TEXT(FPTSFP1P__c)) =  1</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>FPTSFPCP</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1601,7 +1553,6 @@
         <fullName>FPTSFPC__c</fullName>
         <externalId>false</externalId>
         <formula>MAX( VALUE(TEXT(FPTSFP1__c))  ) = 1</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>FPTSFPC</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1680,7 +1631,6 @@
         <description>Significant Functional Impairment Peer - FORMULA Parent</description>
         <externalId>false</externalId>
         <formula>VALUE(TEXT(FPTSFR1P__c)) =  1</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>FPTSFRCP</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1690,7 +1640,6 @@
         <fullName>FPTSFRC__c</fullName>
         <externalId>false</externalId>
         <formula>VALUE(TEXT(FPTSFR1__c)) = 1</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>FPTSFRC</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1813,7 +1762,6 @@
         <description>Significant Functional Impairment School - FORMULA Parent</description>
         <externalId>false</externalId>
         <formula>MAX( VALUE(TEXT(FPTSFS1P__c)) , VALUE(TEXT(FPTSFS2P__c)) ) =  1</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>FPTSFSCP</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1823,7 +1771,6 @@
         <fullName>FPTSFSC__c</fullName>
         <externalId>false</externalId>
         <formula>MAX( VALUE(TEXT(FPTSFS1__c)) , VALUE(TEXT(FPTSFS2__c)) ) = 1</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>FPTSFSC</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1858,7 +1805,6 @@
         <description>PTSD score criteria - Num Parent</description>
         <externalId>false</externalId>
         <formula>IF( ( FPTSBMNP__c  +  FPTSCMN__c  +  FPTSDMNP__c  +  FPTSEMNP__c  +  if(OR(FPTSDCP__c  =  true, FPTSFCP__c  =  true), 1, 0) )  =  6 , 1, 0)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>FPTSOCNP</label>
         <precision>18</precision>
         <required>false</required>
@@ -1872,7 +1818,6 @@
         <fullName>FPTSOCN__c</fullName>
         <externalId>false</externalId>
         <formula>IF( ( FPTSBMN__c + FPTSCMN__c + FPTSDMN__c + FPTSEMN__c + if(OR(FPTSDC__c = true, FPTSFC__c = true), 1, 0) + if(ISPICKVAL(FPTSDURA__c, &quot;1&quot;), 1, 0) ) = 6 , 1, 0)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>FPTSOCN</label>
         <precision>18</precision>
         <required>false</required>
@@ -1887,7 +1832,6 @@
         <description>PTSD score criteria Parent</description>
         <externalId>false</externalId>
         <formula>IF(FPTSOCNP__c  =  1, &apos;Yes&apos;, &apos;No&apos;)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>FPTSOCP</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -1899,7 +1843,6 @@
         <fullName>FPTSOC__c</fullName>
         <externalId>false</externalId>
         <formula>IF(FPTSOCN__c = 1, &apos;Yes&apos;, &apos;No&apos;)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>FPTSOC</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -1912,7 +1855,6 @@
         <description>PTSD overall raw - Num (PTSD Met) Parent</description>
         <externalId>false</externalId>
         <formula>FPTSBRNP__c  +  FPTSCRNP__c  +  FPTSDRNP__c  +  FPTSERNP__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>FPTSORNP</label>
         <precision>18</precision>
         <required>false</required>
@@ -1926,7 +1868,6 @@
         <fullName>FPTSORN__c</fullName>
         <externalId>false</externalId>
         <formula>FPTSBRN__c + FPTSCRN__c + FPTSDRN__c + FPTSERN__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>FPTSORN</label>
         <precision>18</precision>
         <required>false</required>
@@ -4046,7 +3987,6 @@
     </fields>
     <fields>
         <fullName>FPTSVDA1P__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>Dissociative Symptoms A1 Parent</description>
         <externalId>false</externalId>
         <label>FPTSVDA1P</label>
@@ -4073,7 +4013,6 @@
     </fields>
     <fields>
         <fullName>FPTSVDA2P__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>Dissociative Symptoms A2 Parent</description>
         <externalId>false</externalId>
         <label>FPTSVDA2P</label>
@@ -4100,7 +4039,6 @@
     </fields>
     <fields>
         <fullName>FPTSVDACNP__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>Cut off number for symptom A Parent</description>
         <externalId>false</externalId>
         <label>FPTSVDACNP</label>
@@ -4130,7 +4068,6 @@
         <description>Dissociative Symptoms Sum A1 and A2 Parent</description>
         <externalId>false</externalId>
         <formula>FPTSVDA1P__c  +  FPTSVDA2P__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>FPTSVDARNP</label>
         <precision>18</precision>
         <required>false</required>
@@ -4144,7 +4081,6 @@
         <fullName>FPTSVDARN__c</fullName>
         <externalId>false</externalId>
         <formula>FPTSVDA1__c + FPTSVDA2__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>FPTSVDARN</label>
         <precision>18</precision>
         <required>false</required>
@@ -4158,8 +4094,7 @@
         <fullName>FPTSVDSNP__c</fullName>
         <description>One or more of the Dissociative Symptoms are present Parent</description>
         <externalId>false</externalId>
-        <formula>IF( FPTSVDACNP__c  &gt;=  1, 1, 0 )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( ISNULL(FPTSVDACNP__c), NULL, IF(FPTSVDACNP__c  &gt;=  1, 1, 0 ))</formula>
         <label>FPTSVDSNP</label>
         <precision>18</precision>
         <required>false</required>
@@ -4172,8 +4107,7 @@
     <fields>
         <fullName>FPTSVDSN__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( FPTSVDACN__c &gt;= 1, 1, 0 )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( ISNULL(FPTSVDACN__c), NULL, IF(FPTSVDACN__c &gt;= 1, 1, 0 ))</formula>
         <label>FPTSVDSN</label>
         <precision>18</precision>
         <required>false</required>
@@ -4187,8 +4121,7 @@
         <fullName>FPTSVDSP__c</fullName>
         <description>DSM-5 PTSD Diagnosis Subtype Parent</description>
         <externalId>false</externalId>
-        <formula>IF( FPTSVDSNP__c  =  1, &quot;Yes&quot;, &quot;No&quot; )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( ISNULL(FPTSVDSNP__c), NULL, IF(FPTSVDSNP__c  =  1, &quot;Yes&quot;, &quot;No&quot; ))</formula>
         <label>FPTSVDSP</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -4199,8 +4132,7 @@
     <fields>
         <fullName>FPTSVDS__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( FPTSVDSN__c = 1, &quot;Yes&quot;, &quot;No&quot; )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( ISNULL(FPTSVDSN__c), NULL, IF(FPTSVDSN__c = 1, &quot;Yes&quot;, &quot;No&quot; ))</formula>
         <label>FPTSVDS</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -4239,9 +4171,33 @@
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
+    <fields>
+        <fullName>STATUS_PTSD_PA__c</fullName>
+        <externalId>false</externalId>
+        <label>STATUS PTSD PA</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Incomplete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Complete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
     <label>DS PTSD CA F</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Client__c</columns>
+        <columns>STATUS_PTSD_CA__c</columns>
+        <columns>STATUS_PTSD_PA__c</columns>
+        <columns>SECTION__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -4263,21 +4219,21 @@
     <validationRules>
         <fullName>PTSD_date_cannot_be_before_birth</fullName>
         <active>true</active>
-        <errorConditionFormula>Client__r.DOB1__c &gt; FDOAPTSD__c</errorConditionFormula>
+        <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_CA__c, &quot;&quot;)) &amp;&amp; (Client__r.DOB1__c &gt; FDOAPTSD__c)</errorConditionFormula>
         <errorDisplayField>FDOAPTSD__c</errorDisplayField>
         <errorMessage>Follow-up date of administration cannot be before birth.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>PTSD_date_cannot_be_future</fullName>
         <active>true</active>
-        <errorConditionFormula>FDOAPTSD__c &gt; TODAY()</errorConditionFormula>
+        <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_CA__c, &quot;&quot;)) &amp;&amp; (FDOAPTSD__c &gt; TODAY())</errorConditionFormula>
         <errorDisplayField>FDOAPTSD__c</errorDisplayField>
         <errorMessage>Enter a valid date.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>PTSD_date_required</fullName>
         <active>true</active>
-        <errorConditionFormula>ISNULL(FDOAPTSD__c )</errorConditionFormula>
+        <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_CA__c, &quot;&quot;)) &amp;&amp; ISNULL(FDOAPTSD__c )</errorConditionFormula>
         <errorDisplayField>FDOAPTSD__c</errorDisplayField>
         <errorMessage>Please indicate the date of administration.</errorMessage>
     </validationRules>
@@ -4285,7 +4241,7 @@
         <fullName>PTSD_must_indicate_method</fullName>
         <active>true</active>
         <description>Method of administration is required.</description>
-        <errorConditionFormula>ISPICKVAL(FMETPTSD__c , &apos;&apos;)</errorConditionFormula>
+        <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_CA__c, &quot;&quot;)) &amp;&amp; ISPICKVAL(FMETPTSD__c , &apos;&apos;)</errorConditionFormula>
         <errorDisplayField>FMETPTSD__c</errorDisplayField>
         <errorMessage>Please indicate how this form was administered.</errorMessage>
     </validationRules>

@@ -47,9 +47,12 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fieldSets>
         <fullName>STATUS</fullName>
         <description>STATUS</description>
@@ -7396,6 +7399,7 @@
         <columns>Client__c</columns>
         <columns>Client_ID__c</columns>
         <columns>BDOV__c</columns>
+        <columns>B_VISIT_AGE__c</columns>
         <columns>ETHNIC__c</columns>
         <columns>SECTION__c</columns>
         <columns>STATUS_DEMO__c</columns>

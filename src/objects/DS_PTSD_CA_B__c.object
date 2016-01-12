@@ -47,14 +47,22 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fieldSets>
         <fullName>STATUS</fullName>
         <description>status</description>
         <displayedFields>
             <field>STATUS_PTSD_CA__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>STATUS_PTSD_PA__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
@@ -75,7 +83,7 @@
         <description>PTSD date of administration</description>
         <externalId>false</externalId>
         <label>BDOAPTSD</label>
-        <required>true</required>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
@@ -146,7 +154,6 @@
     </fields>
     <fields>
         <fullName>BPTSAB1__c</fullName>
-        <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <label>BPTSAB1</label>
         <precision>1</precision>
@@ -173,7 +180,6 @@
     </fields>
     <fields>
         <fullName>BPTSAB2__c</fullName>
-        <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <label>BPTSAB2</label>
         <precision>1</precision>
@@ -200,7 +206,6 @@
     </fields>
     <fields>
         <fullName>BPTSAB3__c</fullName>
-        <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <label>BPTSAB3</label>
         <precision>1</precision>
@@ -227,7 +232,6 @@
     </fields>
     <fields>
         <fullName>BPTSAB4__c</fullName>
-        <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <label>BPTSAB4</label>
         <precision>1</precision>
@@ -254,7 +258,6 @@
     </fields>
     <fields>
         <fullName>BPTSAB5__c</fullName>
-        <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <label>BPTSAB5</label>
         <precision>1</precision>
@@ -281,7 +284,6 @@
     </fields>
     <fields>
         <fullName>BPTSAC1__c</fullName>
-        <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <label>BPTSAC1</label>
         <precision>1</precision>
@@ -308,7 +310,6 @@
     </fields>
     <fields>
         <fullName>BPTSAC2__c</fullName>
-        <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <label>BPTSAC2</label>
         <precision>1</precision>
@@ -335,7 +336,6 @@
     </fields>
     <fields>
         <fullName>BPTSAD1__c</fullName>
-        <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <label>BPTSAD1</label>
         <precision>1</precision>
@@ -362,7 +362,6 @@
     </fields>
     <fields>
         <fullName>BPTSAD2__c</fullName>
-        <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <label>BPTSAD2</label>
         <precision>1</precision>
@@ -389,7 +388,6 @@
     </fields>
     <fields>
         <fullName>BPTSAD3__c</fullName>
-        <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <label>BPTSAD3</label>
         <precision>1</precision>
@@ -416,7 +414,6 @@
     </fields>
     <fields>
         <fullName>BPTSAD4__c</fullName>
-        <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <label>BPTSAD4</label>
         <precision>1</precision>
@@ -443,7 +440,6 @@
     </fields>
     <fields>
         <fullName>BPTSAD5__c</fullName>
-        <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <label>BPTSAD5</label>
         <precision>1</precision>
@@ -470,7 +466,6 @@
     </fields>
     <fields>
         <fullName>BPTSAD6__c</fullName>
-        <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <label>BPTSAD6</label>
         <precision>1</precision>
@@ -497,7 +492,6 @@
     </fields>
     <fields>
         <fullName>BPTSAD7__c</fullName>
-        <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <label>BPTSAD7</label>
         <precision>1</precision>
@@ -524,7 +518,6 @@
     </fields>
     <fields>
         <fullName>BPTSAE1__c</fullName>
-        <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <label>BPTSAE1</label>
         <precision>1</precision>
@@ -551,7 +544,6 @@
     </fields>
     <fields>
         <fullName>BPTSAE2__c</fullName>
-        <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <label>BPTSAE2</label>
         <precision>1</precision>
@@ -578,7 +570,6 @@
     </fields>
     <fields>
         <fullName>BPTSAE3__c</fullName>
-        <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <label>BPTSAE3</label>
         <precision>1</precision>
@@ -605,7 +596,6 @@
     </fields>
     <fields>
         <fullName>BPTSAE4__c</fullName>
-        <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <label>BPTSAE4</label>
         <precision>1</precision>
@@ -632,7 +622,6 @@
     </fields>
     <fields>
         <fullName>BPTSAE5__c</fullName>
-        <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <label>BPTSAE5</label>
         <precision>1</precision>
@@ -659,7 +648,6 @@
     </fields>
     <fields>
         <fullName>BPTSAE6__c</fullName>
-        <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <label>BPTSAE6</label>
         <precision>1</precision>
@@ -672,7 +660,6 @@
     </fields>
     <fields>
         <fullName>BPTSAPPCNP__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>Record is Appropriate Parent</description>
         <externalId>false</externalId>
         <label>BPTSAPPCNP</label>
@@ -686,7 +673,6 @@
     </fields>
     <fields>
         <fullName>BPTSAPPCN__c</fullName>
-        <defaultValue>1</defaultValue>
         <externalId>false</externalId>
         <label>BPTSAPPCN</label>
         <precision>1</precision>
@@ -701,8 +687,7 @@
         <fullName>BPTSAPPCP__c</fullName>
         <description>Record is Appropriate Parent</description>
         <externalId>false</externalId>
-        <formula>IF( BPTSAPPCNP__c  =  1 , &apos;Yes&apos;, &apos;No&apos;)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( NOT(ISNULL(BPTSAPPCNP__c  )), IF(BPTSAPPCNP__c  =  1 , &apos;Yes&apos;, &apos;No&apos;), NULL)</formula>
         <label>BPTSAPPCP</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -713,7 +698,7 @@
     <fields>
         <fullName>BPTSAPPC__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( BPTSAPPCN__c = 1 , &apos;Yes&apos;, &apos;No&apos;)</formula>
+        <formula>IF( NOT(ISNULL(BPTSAPPCN__c )), IF(BPTSAPPCN__c = 1 , &apos;Yes&apos;, &apos;No&apos;), NULL)</formula>
         <label>BPTSAPPC</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -723,7 +708,6 @@
     </fields>
     <fields>
         <fullName>BPTSBCNP__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>PTSD Crit B cutoff - Num Parent</description>
         <externalId>false</externalId>
         <label>BPTSBCNP</label>
@@ -737,7 +721,6 @@
     </fields>
     <fields>
         <fullName>BPTSBCN__c</fullName>
-        <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <label>BPTSBCN</label>
         <precision>1</precision>
@@ -752,8 +735,7 @@
         <fullName>BPTSBMNP__c</fullName>
         <description>PTSD Crit B met - Num Parent</description>
         <externalId>false</externalId>
-        <formula>IF( BPTSBCNP__c   &gt;=  1, 1, 0 )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( NOT(ISNULL(BPTSBCNP__c)), IF(BPTSBCNP__c   &gt;=  1, 1, 0 ), NULL)</formula>
         <label>BPTSBMNP</label>
         <precision>18</precision>
         <required>false</required>
@@ -766,8 +748,7 @@
     <fields>
         <fullName>BPTSBMN__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( BPTSBCN__c &gt;= 1, 1, 0 )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF(NOT(ISNULL(BPTSBCN__c)), IF(BPTSBCN__c &gt;= 1, 1, 0 ), NULL)</formula>
         <label>BPTSBMN</label>
         <precision>18</precision>
         <required>false</required>
@@ -781,8 +762,7 @@
         <fullName>BPTSBMP__c</fullName>
         <description>PTSD Crit B met Parent</description>
         <externalId>false</externalId>
-        <formula>IF( BPTSBMNP__c  =  1, &quot;Yes&quot;, &quot;No&quot; )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( NOT(ISNULL(BPTSBMNP__c)), IF(BPTSBMNP__c  =  1, &quot;Yes&quot;, &quot;No&quot; ), NULL)</formula>
         <label>BPTSBMP</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -793,8 +773,7 @@
     <fields>
         <fullName>BPTSBM__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( BPTSBMN__c = 1, &quot;Yes&quot;, &quot;No&quot; )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF(NOT(ISNULL(BPTSBMN__c)), IF(BPTSBMN__c = 1, &quot;Yes&quot;, &quot;No&quot; ), NULL)</formula>
         <label>BPTSBM</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -807,7 +786,6 @@
         <description>PTSD Crit B raw score - Num Parent</description>
         <externalId>false</externalId>
         <formula>BPTSAB1P__c  +  BPTSAB2P__c  +  BPTSAB3P__c  +  BPTSAB4P__c  +  BPTSAB5P__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>BPTSBRNP</label>
         <precision>18</precision>
         <required>false</required>
@@ -821,7 +799,6 @@
         <fullName>BPTSBRN__c</fullName>
         <externalId>false</externalId>
         <formula>BPTSAB1__c  +  BPTSAB2__c  +  BPTSAB3__c  +  BPTSAB4__c  +  BPTSAB5__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>BPTSBRN</label>
         <precision>18</precision>
         <required>false</required>
@@ -833,7 +810,6 @@
     </fields>
     <fields>
         <fullName>BPTSCCNP__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>PTSD Crit C cutoff - Num Parent</description>
         <externalId>false</externalId>
         <label>BPTSCCNP</label>
@@ -847,7 +823,6 @@
     </fields>
     <fields>
         <fullName>BPTSCCN__c</fullName>
-        <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <label>BPTSCCN</label>
         <precision>1</precision>
@@ -862,8 +837,7 @@
         <fullName>BPTSCMNP__c</fullName>
         <description>PTSD Crit C met - Num Parent</description>
         <externalId>false</externalId>
-        <formula>IF( BPTSCCNP__c  &gt;=  1, 1, 0 )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( NOT(ISNULL(BPTSCCNP__c)), IF(BPTSCCNP__c  &gt;=  1, 1, 0 ), NULL)</formula>
         <label>BPTSCMNP</label>
         <precision>18</precision>
         <required>false</required>
@@ -876,8 +850,7 @@
     <fields>
         <fullName>BPTSCMN__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( BPTSCCN__c &gt;= 1, 1, 0 )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( NOT(ISNULL(BPTSCCN__c)), IF(BPTSCCN__c &gt;= 1, 1, 0 ), NULL)</formula>
         <label>BPTSCMN</label>
         <precision>18</precision>
         <required>false</required>
@@ -891,8 +864,7 @@
         <fullName>BPTSCMP__c</fullName>
         <description>PTSD Crit C met Parent</description>
         <externalId>false</externalId>
-        <formula>IF( BPTSCMNP__c  =  1, &quot;Yes&quot;, &quot;No&quot; )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( NOT(ISNULL(BPTSCMNP__c)), IF(BPTSCMNP__c  =  1, &quot;Yes&quot;, &quot;No&quot; ), NULL)</formula>
         <label>BPTSCMP</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -903,8 +875,7 @@
     <fields>
         <fullName>BPTSCM__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( BPTSCMN__c = 1, &quot;Yes&quot;, &quot;No&quot; )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( NOT(ISNULL(BPTSCMN__c)), IF(BPTSCMN__c = 1, &quot;Yes&quot;, &quot;No&quot; ), NULL)</formula>
         <label>BPTSCM</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -917,7 +888,6 @@
         <description>PTSD Crit C raw score - Num Parent</description>
         <externalId>false</externalId>
         <formula>BPTSAC1P__c  + BPTSAC2P__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>BPTSCRNP</label>
         <precision>18</precision>
         <required>false</required>
@@ -931,7 +901,6 @@
         <fullName>BPTSCRN__c</fullName>
         <externalId>false</externalId>
         <formula>BPTSAC1__c  +  BPTSAC2__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>BPTSCRN</label>
         <precision>18</precision>
         <required>false</required>
@@ -998,7 +967,6 @@
     </fields>
     <fields>
         <fullName>BPTSDCNP__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>PTSD Crit D cutoff - Num Parent</description>
         <externalId>false</externalId>
         <label>BPTSDCNP</label>
@@ -1047,8 +1015,7 @@
         <fullName>BPTSDMNP__c</fullName>
         <description>PTSD Crit D met - Num Parent</description>
         <externalId>false</externalId>
-        <formula>IF( BPTSDCNP__c  &gt;=  2, 1, 0 )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( NOT(ISNULL(BPTSDCNP__c)), IF(BPTSDCNP__c  &gt;=  2, 1, 0 ), NULL)</formula>
         <label>BPTSDMNP</label>
         <precision>18</precision>
         <required>false</required>
@@ -1061,8 +1028,7 @@
     <fields>
         <fullName>BPTSDMN__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( BPTSDCN__c &gt;= 2, 1, 0 )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( NOT(ISNULL(BPTSDCN__c)), IF(BPTSDCN__c &gt;= 2, 1, 0 ), NULL)</formula>
         <label>BPTSDMN</label>
         <precision>18</precision>
         <required>false</required>
@@ -1076,8 +1042,7 @@
         <fullName>BPTSDMP__c</fullName>
         <description>PTSD Crit D met Parent</description>
         <externalId>false</externalId>
-        <formula>IF( BPTSDMNP__c  =  1, &quot;Yes&quot;, &quot;No&quot; )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( NOT(ISNULL(BPTSDMNP__c)), IF(BPTSDMNP__c  =  1, &quot;Yes&quot;, &quot;No&quot; ), NULL)</formula>
         <label>BPTSDMP</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -1088,8 +1053,7 @@
     <fields>
         <fullName>BPTSDM__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( BPTSDMN__c = 1, &quot;Yes&quot;, &quot;No&quot; )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( NOT(ISNULL(BPTSDMN__c)), IF(BPTSDMN__c = 1, &quot;Yes&quot;, &quot;No&quot; ), NULL)</formula>
         <label>BPTSDM</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -1102,7 +1066,6 @@
         <description>PTSD Crit D raw score - Num Parent</description>
         <externalId>false</externalId>
         <formula>BPTSAD1P__c  +  BPTSAD2P__c  +  BPTSAD3P__c  +  BPTSAD4P__c  +  BPTSAD5P__c  +  BPTSAD6P__c  +  BPTSAD7P__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>BPTSDRNP</label>
         <precision>18</precision>
         <required>false</required>
@@ -1116,7 +1079,6 @@
         <fullName>BPTSDRN__c</fullName>
         <externalId>false</externalId>
         <formula>BPTSAD1__c  +  BPTSAD2__c  +  BPTSAD3__c  +  BPTSAD4__c  +  BPTSAD5__c  +  BPTSAD6__c  +  BPTSAD7__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>BPTSDRN</label>
         <precision>18</precision>
         <required>false</required>
@@ -1168,7 +1130,6 @@
     </fields>
     <fields>
         <fullName>BPTSECNP__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>PTSD Crit E cutoff - Num Parent</description>
         <externalId>false</externalId>
         <label>BPTSECNP</label>
@@ -1196,8 +1157,7 @@
         <fullName>BPTSEMNP__c</fullName>
         <description>PTSD Crit E met - Num Parent</description>
         <externalId>false</externalId>
-        <formula>IF( BPTSECNP__c  &gt;=  2, 1, 0 )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( NOT(ISNULL(BPTSECNP__c)), IF(BPTSECNP__c  &gt;=  2, 1, 0 ), NULL)</formula>
         <label>BPTSEMNP</label>
         <precision>18</precision>
         <required>false</required>
@@ -1210,8 +1170,7 @@
     <fields>
         <fullName>BPTSEMN__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( BPTSECN__c &gt;= 2, 1, 0 )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( NOT(ISNULL(BPTSECN__c)), IF(BPTSECN__c &gt;= 2, 1, 0 ), NULL)</formula>
         <label>BPTSEMN</label>
         <precision>18</precision>
         <required>false</required>
@@ -1225,8 +1184,7 @@
         <fullName>BPTSEMP__c</fullName>
         <description>PTSD Crit E met Parent</description>
         <externalId>false</externalId>
-        <formula>IF( BPTSEMNP__c  =  1, &quot;Yes&quot;, &quot;No&quot; )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( NOT(ISNULL(BPTSEMNP__c)), IF(BPTSEMNP__c  =  1, &quot;Yes&quot;, &quot;No&quot; ), NULL)</formula>
         <label>BPTSEMP</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -1237,8 +1195,7 @@
     <fields>
         <fullName>BPTSEM__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( BPTSEMN__c = 1, &quot;Yes&quot;, &quot;No&quot; )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( NOT(ISNULL(BPTSEMN__c)), IF(BPTSEMN__c = 1, &quot;Yes&quot;, &quot;No&quot; ), NULL)</formula>
         <label>BPTSEM</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -1251,7 +1208,6 @@
         <description>PTSD Crit E raw score - Num Parent</description>
         <externalId>false</externalId>
         <formula>BPTSAE1P__c  +  BPTSAE2P__c  +  BPTSAE3P__c  +  BPTSAE4P__c  +  BPTSAE5P__c  +  BPTSAE6P__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>BPTSERNP</label>
         <precision>18</precision>
         <required>false</required>
@@ -1265,7 +1221,6 @@
         <fullName>BPTSERN__c</fullName>
         <externalId>false</externalId>
         <formula>BPTSAE1__c  +  BPTSAE2__c  +  BPTSAE3__c  +  BPTSAE4__c  +  BPTSAE5__c  +  BPTSAE6__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>BPTSERN</label>
         <precision>18</precision>
         <required>false</required>
@@ -1794,7 +1749,6 @@
         <description>PTSD score criteria - Num Parent</description>
         <externalId>false</externalId>
         <formula>IF( ( BPTSBMNP__c  +  BPTSCMN__c  +  BPTSDMNP__c  +  BPTSEMNP__c  +  if(OR(BPTSDCP__c  =  true, BPTSFCP__c = true), 1, 0) )  =  6 , 1, 0)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>BPTSOCNP</label>
         <precision>18</precision>
         <required>false</required>
@@ -1808,7 +1762,6 @@
         <fullName>BPTSOCN__c</fullName>
         <externalId>false</externalId>
         <formula>IF( ( BPTSBMN__c +  BPTSCMN__c +  BPTSDMN__c +  BPTSEMN__c + if(OR(BPTSDC__c = true, BPTSFC__c = true), 1, 0) +  if(ISPICKVAL(BPTSDURA__c, &quot;1&quot;), 1, 0) ) = 6 , 1, 0)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>BPTSOCN</label>
         <precision>18</precision>
         <required>false</required>
@@ -1823,7 +1776,6 @@
         <description>PTSD score criteria Parent</description>
         <externalId>false</externalId>
         <formula>IF(BPTSOCNP__c  =  1, &apos;Yes&apos;, &apos;No&apos;)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>BPTSOCP</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -1834,8 +1786,7 @@
     <fields>
         <fullName>BPTSOC__c</fullName>
         <externalId>false</externalId>
-        <formula>IF(  BPTSOCN__c = 1, &apos;Yes&apos;, &apos;No&apos; )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF(BPTSOCN__c=1,&quot;Yes&quot;, &quot;No&quot;)</formula>
         <label>BPTSOC</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -1848,7 +1799,6 @@
         <description>PTSD overall raw - Num (PTSD Met) Parent</description>
         <externalId>false</externalId>
         <formula>BPTSBRNP__c  +  BPTSCRNP__c  +  BPTSDRNP__c  +  BPTSERNP__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>BPTSORNP</label>
         <precision>18</precision>
         <required>false</required>
@@ -1862,7 +1812,6 @@
         <fullName>BPTSORN__c</fullName>
         <externalId>false</externalId>
         <formula>BPTSBRN__c  +  BPTSCRN__c  +  BPTSDRN__c  +  BPTSERN__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>BPTSORN</label>
         <precision>18</precision>
         <required>false</required>
@@ -3951,7 +3900,6 @@
     </fields>
     <fields>
         <fullName>BPTSVDA1P__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>Dissociative Symptoms A1 Parent</description>
         <externalId>false</externalId>
         <label>BPTSVDA1P</label>
@@ -3965,7 +3913,6 @@
     </fields>
     <fields>
         <fullName>BPTSVDA1__c</fullName>
-        <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <label>BPTSVDA1</label>
         <precision>1</precision>
@@ -3978,7 +3925,6 @@
     </fields>
     <fields>
         <fullName>BPTSVDA2P__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>Dissociative Symptoms A2 Parent</description>
         <externalId>false</externalId>
         <label>BPTSVDA2P</label>
@@ -3992,7 +3938,6 @@
     </fields>
     <fields>
         <fullName>BPTSVDA2__c</fullName>
-        <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <label>BPTSVDA2</label>
         <precision>1</precision>
@@ -4005,7 +3950,6 @@
     </fields>
     <fields>
         <fullName>BPTSVDACNP__c</fullName>
-        <defaultValue>0</defaultValue>
         <description>Cut off number for symptom A Parent</description>
         <externalId>false</externalId>
         <label>BPTSVDACNP</label>
@@ -4034,7 +3978,6 @@
         <description>Dissociative Symptoms Sum A1 and A2 Parent</description>
         <externalId>false</externalId>
         <formula>BPTSVDA1P__c  +  BPTSVDA2P__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>BPTSVDARNP</label>
         <precision>18</precision>
         <required>false</required>
@@ -4048,7 +3991,6 @@
         <fullName>BPTSVDARN__c</fullName>
         <externalId>false</externalId>
         <formula>BPTSVDA1__c + BPTSVDA2__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>BPTSVDARN</label>
         <precision>18</precision>
         <required>false</required>
@@ -4062,8 +4004,7 @@
         <fullName>BPTSVDSNP__c</fullName>
         <description>One or more of the Dissociative Symptoms are present Parent</description>
         <externalId>false</externalId>
-        <formula>IF( BPTSVDACNP__c  &gt;=  1, 1, 0 )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( NOT(ISNULL(BPTSVDACNP__c)), IF(BPTSVDACNP__c  &gt;=  1, 1, 0 ), NULL)</formula>
         <label>BPTSVDSNP</label>
         <precision>18</precision>
         <required>false</required>
@@ -4076,8 +4017,7 @@
     <fields>
         <fullName>BPTSVDSN__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( BPTSVDACN__c &gt;= 1, 1, 0 )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( NOT(ISNULL(BPTSVDACN__c)), IF(BPTSVDACN__c &gt;= 1, 1, 0 ), NULL)</formula>
         <label>BPTSVDSN</label>
         <precision>18</precision>
         <required>false</required>
@@ -4091,8 +4031,7 @@
         <fullName>BPTSVDSP__c</fullName>
         <description>DSM-5 PTSD Diagnosis Subtype Parent</description>
         <externalId>false</externalId>
-        <formula>IF( BPTSVDSNP__c  =  1, &quot;Yes&quot;, &quot;No&quot; )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( NOT(ISNULL(BPTSVDSNP__c)), IF(BPTSVDSNP__c  =  1, &quot;Yes&quot;, &quot;No&quot; ), NULL)</formula>
         <label>BPTSVDSP</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -4103,8 +4042,7 @@
     <fields>
         <fullName>BPTSVDS__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( BPTSVDSN__c = 1, &quot;Yes&quot;, &quot;No&quot; )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <formula>IF( NOT(ISNULL(BPTSVDSN__c)), IF(BPTSVDSN__c = 1, &quot;Yes&quot;, &quot;No&quot; ), NULL)</formula>
         <label>BPTSVDS</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -4170,7 +4108,26 @@
         <picklist>
             <picklistValues>
                 <fullName>Incomplete</fullName>
-                <default>true</default>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Complete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>STATUS_PTSD_PA__c</fullName>
+        <externalId>false</externalId>
+        <label>STATUS PTSD PA</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Incomplete</fullName>
+                <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>Complete</fullName>
@@ -4192,6 +4149,7 @@
         <columns>Client__c</columns>
         <columns>Client_ID__c</columns>
         <columns>STATUS_PTSD_CA__c</columns>
+        <columns>STATUS_PTSD_PA__c</columns>
         <columns>SECTION__c</columns>
         <columns>CREATED_DATE</columns>
         <columns>LAST_UPDATE</columns>
@@ -4207,38 +4165,45 @@
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
     <validationRules>
+        <fullName>PTSD_CA_date_required</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_CA__c, &apos;&apos;)) &amp;&amp; ISNULL(BDOAPTSD__c )</errorConditionFormula>
+        <errorDisplayField>BDOAPTSD__c</errorDisplayField>
+        <errorMessage>Please indicate the date of administration.</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>PTSD_date_cannot_be_before_BDOV</fullName>
         <active>true</active>
-        <errorConditionFormula>BDOV__c &gt;  BDOAPTSD__c</errorConditionFormula>
+        <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_CA__c, &apos;&apos;)) &amp;&amp; (BDOV__c &gt;  BDOAPTSD__c)</errorConditionFormula>
         <errorDisplayField>BDOAPTSD__c</errorDisplayField>
         <errorMessage>Baseline PTSD-RI date of administration cannot be before Baseline date of visit.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>PTSD_date_cannot_be_before_birth</fullName>
         <active>true</active>
-        <errorConditionFormula>Client__r.DOB1__c &gt;  BDOAPTSD__c</errorConditionFormula>
+        <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_CA__c, &quot;&quot;)) &amp;&amp; (Client__r.DOB1__c &gt;  BDOAPTSD__c)</errorConditionFormula>
         <errorDisplayField>BDOAPTSD__c</errorDisplayField>
         <errorMessage>Baseline date of administration cannot be before birth.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>PTSD_date_cannot_be_future</fullName>
         <active>true</active>
-        <errorConditionFormula>BDOAPTSD__c &gt; TODAY()</errorConditionFormula>
+        <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_CA__c, &quot;&quot;)) &amp;&amp;  (BDOAPTSD__c &gt; TODAY())</errorConditionFormula>
         <errorDisplayField>BDOAPTSD__c</errorDisplayField>
         <errorMessage>Enter a valid date.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>PTSD_date_required</fullName>
         <active>true</active>
-        <errorConditionFormula>ISNULL(BDOAPTSD__c )</errorConditionFormula>
+        <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_CA__c, &quot;&quot;)) &amp;&amp; ISNULL(BDOAPTSD__c )</errorConditionFormula>
         <errorDisplayField>BDOAPTSD__c</errorDisplayField>
         <errorMessage>Please indicate the date of administration.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>PTSD_must_indicate_method</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>Method of administration is required.</description>
-        <errorConditionFormula>ISPICKVAL(BMETPTSD__c , &apos;&apos;)</errorConditionFormula>
+        <errorConditionFormula>NOT(ISPICKVAL(STATUS_PTSD_CA__c, &quot;&quot;)) &amp;&amp; ISPICKVAL(BMETPTSD__c , &apos;&apos;)</errorConditionFormula>
         <errorDisplayField>BMETPTSD__c</errorDisplayField>
         <errorMessage>Please indicate how this form was administered.</errorMessage>
     </validationRules>

@@ -47,9 +47,12 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>Age_Range__c</fullName>
         <externalId>false</externalId>
@@ -1110,6 +1113,7 @@
         <columns>Field__c</columns>
         <columns>Number__c</columns>
         <columns>Symptom__c</columns>
+        <columns>Type__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Data_Type__c</field>

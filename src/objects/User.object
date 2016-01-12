@@ -50,6 +50,7 @@
     </actionOverrides>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <enableFeeds>true</enableFeeds>
+    <externalSharingModel>Private</externalSharingModel>
     <fields>
         <fullName>ManagerId</fullName>
         <trackFeedHistory>true</trackFeedHistory>
@@ -228,7 +229,6 @@
         <searchResultsAdditionalFields>CORE.USERS.TITLE</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CORE.USERS.PHONE</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CORE.USERS.EMAIL</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>CORE.USER_ROLE.NAME</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Read</sharingModel>
 </CustomObject>

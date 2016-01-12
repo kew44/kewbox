@@ -132,7 +132,8 @@ public with sharing class DS_PTSD_CA_Report_Controller extends DS_BasicForm_Cont
         List<SObject> baseline = 
             Database.query('SELECT ' + form.ut.getFields('DS_PTSD_CA_B__c') +   
                            '  FROM DS_PTSD_CA_B__c' +                           
-                           ' WHERE Client__c = \''+ form.cID + '\'');
+                           ' WHERE Client__c = \''+ form.cID + '\'' +
+                           '   AND STATUS_PTSD_cA__c != null');
         
         addVisit(baseline, 'B');
         
@@ -140,6 +141,7 @@ public with sharing class DS_PTSD_CA_Report_Controller extends DS_BasicForm_Cont
             Database.query('SELECT ' + form.ut.getFields('DS_PTSD_CA_F__c') +   
                            '  FROM DS_PTSD_CA_F__c' +                           
                            ' WHERE Client__c = \''+ form.cID + '\'' +
+                           '   AND STATUS_PTSD_CA__c != null' +
                            //'   AND FDOAPTSD__c <= ' + currentVisitDate.format('yyyy-MM-dd') +  
                            ' ORDER BY FDOAPTSD__c, SECTION__c');
         

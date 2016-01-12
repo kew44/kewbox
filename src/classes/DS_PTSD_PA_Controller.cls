@@ -1,10 +1,10 @@
 /**
-* The controller class for PTSD Reaction Index for Children/Adolescents.  
+* The controller class for PTSD Reaction Index for Parent/Caregiver.  
 * 
 **/
 
-public with sharing class DS_PTSD_CA_Controller extends DS_BasicForm_Controller {
-    
+public with sharing class DS_PTSD_PA_Controller extends DS_BasicForm_Controller {
+	
     public List<Item> items { get; set; }
     
     Final String warningMessageContent = 'Please note that if three or more items are missing the score will not be provided. Click Save or Save & View report if you wish to proceed without completing all questions.';
@@ -27,18 +27,16 @@ public with sharing class DS_PTSD_CA_Controller extends DS_BasicForm_Controller 
         
     }
     
-    public DS_PTSD_CA_Controller(ApexPages.StandardController controller) {
+    public DS_PTSD_PA_Controller(ApexPages.StandardController controller) {
         
         // Initilize the DS_BasicForm_Controller
         super(Apexpages.currentPage().getParameters().get('cimi'));
-        
-        //displayWarningMessage = false;
         
         List<DS_DATA__c> formInfo = 
             Database.query('SELECT ' + form.ut.getFields('DS_DATA__c') +   
                            '  FROM DS_DATA__c ' +
                            ' WHERE Data_Type__c = \'DS_PTSD_Form_Info\'' +
-                           '   AND Type__c = \'Children / Adolescents\'' +
+                           '   AND Type__c = \'Parent / Caregiver\'' + 
                            ' ORDER BY Number__c');
         
         items = new List<Item>();
@@ -54,7 +52,7 @@ public with sharing class DS_PTSD_CA_Controller extends DS_BasicForm_Controller 
         form.getObjRecord();
         
         // Get field name from DS_DATA (variable)
-        bfVariableMap = form.getVariable('PTSD_CA');
+        bfVariableMap = form.getVariable('PTSD_PA');
         
     }
     
@@ -67,6 +65,7 @@ public with sharing class DS_PTSD_CA_Controller extends DS_BasicForm_Controller 
         options.add(new SelectOption('2','2 = Some')); 
         options.add(new SelectOption('3','3 = Much')); 
         options.add(new SelectOption('4','4 = Most')); 
+        options.add(new SelectOption('99','99 = Don\'t Know')); 
         
         return options; 
         
@@ -109,7 +108,7 @@ public with sharing class DS_PTSD_CA_Controller extends DS_BasicForm_Controller 
     
     public PageReference saveview() {
         
-        return (showWarningMessageForBlank(countBlankAnswer(), warningMessageContent)) ? null : save('/apex/DS_PTSD_CA_Report?cimi=' + Apexpages.currentPage().getParameters().get('cimi'));    
+        return (showWarningMessageForBlank(countBlankAnswer(), warningMessageContent)) ? null : save('/apex/DS_PTSD_PA_Report?cimi=' + Apexpages.currentPage().getParameters().get('cimi'));    
         
     } 
     
@@ -132,5 +131,6 @@ public with sharing class DS_PTSD_CA_Controller extends DS_BasicForm_Controller 
         return nextPage;    
         
     }
+
     
 }
