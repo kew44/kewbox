@@ -82,6 +82,7 @@ public class DS_PTSD_Scoring {
     
     public SObject scoreCalculator(SObject obj, String BorF, String version) {
         
+        // Map<Symptom__c, Map<Number__c, Value>>
         Map<String, Map<Integer, Integer>> Analysis = new Map<String, Map<Integer, Integer>>();
         
         String CorP = (version == 'Children') ? '' : 'P';
