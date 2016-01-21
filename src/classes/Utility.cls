@@ -74,7 +74,7 @@ public class Utility {
 
     return info;
 
-  }
+     }
     
     public String getFields(String objName) {
         
@@ -98,11 +98,6 @@ public class Utility {
         
         return fields; 
         
-    }
-    
-    public Integer getRandomInt (Integer lower, Integer upper)
-    {
-        return Math.round(Math.random() * (upper - lower)) + lower;
     }
     
     public String urlEncode(String param) {
@@ -407,7 +402,8 @@ system.debug('Type ====>' + fieldSetMemberObj.getType());   //type - STRING,PICK
             
         }
         
-        return obj;        
+        return obj;    
+        
     }
     
     public Map<String, String> getFieldsFromDD(String sourceForm) {
@@ -436,6 +432,24 @@ system.debug('Type ====>' + fieldSetMemberObj.getType());   //type - STRING,PICK
       return so.getSobjectType().getDescribe().fields.getMap().keySet().contains(fieldName);
     }
     
+    public Integer getRandomInt (Integer lower, Integer upper) {
+        return Math.round(Math.random() * (upper - lower)) + lower;
+    }
+    
+    public String getRandomString(Integer len, String chars) {
+          
+        String randStr = '';
+        
+        if(chars == null) { chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz'; }
+        
+        while (randStr.length() < len) {
+           Integer idx = Math.mod(Math.abs(Crypto.getRandomInteger()), chars.length());
+           randStr += chars.substring(idx, idx+1);
+        }
+    	
+        return randStr; 
+        
+    }
     
     
 }
