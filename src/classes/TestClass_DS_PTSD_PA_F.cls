@@ -47,20 +47,22 @@ public class TestClass_DS_PTSD_PA_F {
     *@description method to test a bulk creation of object
     ****/
     static TestMethod void bulkifyObj(){
-            
-        //init client
-        Client__c client = test_ut.createClientSummary();
+                    
+        //Get 200 random clients with age range 7 ~ 18
+        List<Client__c> clients = test_ut.createClient(test_ut.getClient(null, '7_18', 200));
         
         //init list of object
         List<DS_PTSD_CA_F__c> bulkObj = new List<DS_PTSD_CA_F__c>(); 
         
         ///begin bulk insert     
-        for (Integer i=0;i<200;i++){
+        for (Integer i = 0; i < clients.size(); i++){
+                                   
             //add record with required values
-            bulkObj.add(new DS_PTSD_CA_F__c(client__c = client.id,
+            bulkObj.add(new DS_PTSD_CA_F__c(client__c = clients.get(i).id,
                                         FMETPTSDP__c = '1',
                                         FDOAPTSDP__c = date.today(),
                                         STATUS_PTSD_PA__c = 'Complete'));
+            
         }
         
         //add list of records to object
