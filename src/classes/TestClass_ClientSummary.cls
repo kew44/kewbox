@@ -27,7 +27,8 @@ private class TestClass_ClientSummary {
     ****/
     @testSetup 
     static void setup() {
-        TestClassData_DS_DATA importData = new TestClassData_DS_DATA();   
+        TestClassData_DS_DATA importData = new TestClassData_DS_DATA();    
+        importData.variable();       
     }
     
     /****
@@ -36,6 +37,9 @@ private class TestClass_ClientSummary {
     static TestMethod void Test_ClientSummaryController() {
         
         Client__c client = test_ut.createClient();
+        //Client__c client = test_ut.createClientSummary();
+        
+        FormBuilder FB = new FormBuilder();
         
         // add a new follow-up visit
         String section = test_ut.addNewFollowupVisit(client);
@@ -46,6 +50,21 @@ private class TestClass_ClientSummary {
         
         ClientSummaryController summary = new ClientSummaryController(sc);
         
+        String summaryFields = ut.getFields('Client_Summary__c');
+        
+        String forceRedirect = summary.forceRedirect;
+        Decimal sectionNum = summary.sectionNum;
+        String visitType = summary.visitType;  
+        
+        summary.baseline = new List<Client_Summary__c>();
+        summary.followUp = new List<Client_Summary__c>();
+        
+        summary.visitFormList = new List<Client_Summary__c>();
+        
+        Boolean traumaBtn = summary.traumaBtn;
+        Boolean fuBtn = summary.fuBtn;
+        Boolean baselineBtn = summary.baselineBtn; 
+                    
         summary.SummaryInit();
         summary.traumaHistoryRowList();
         
@@ -57,8 +76,5 @@ private class TestClass_ClientSummary {
         summary.showPopup();     
         summary.closePopup();   
         
-        String forceRedirect = summary.forceRedirect;
-        Decimal sectionNum = summary.sectionNum;
-        String visitType = summary.visitType;     
     }      
 }
