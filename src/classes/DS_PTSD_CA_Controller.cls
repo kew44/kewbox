@@ -1,8 +1,14 @@
 /**
-* The controller class for PTSD Reaction Index for Children/Adolescents.  
+* @author Danny Fu
+* @date 02/23/2016
+* @modified date
+*
+* @group PTSD
+* @group-content /ApexDocContent/PTSD_children.htm
+*
+* @description An apex controller class for PTSD Reaction Index for Children/Adolescents.
 * 
-**/
-
+*/
 public with sharing class DS_PTSD_CA_Controller extends DS_BasicForm_Controller {
     
     public List<Item> items { get; set; }
@@ -27,6 +33,11 @@ public with sharing class DS_PTSD_CA_Controller extends DS_BasicForm_Controller 
         
     }
     
+    /****
+    * @description Constructor, gather form information, data dictionary. 
+    * @param controller ApexPages.StandardController
+    * @return null
+    */
     public DS_PTSD_CA_Controller(ApexPages.StandardController controller) {
         
         // Initilize the DS_BasicForm_Controller
@@ -58,6 +69,10 @@ public with sharing class DS_PTSD_CA_Controller extends DS_BasicForm_Controller 
         
     }
     
+    /****
+    * @description Assessment radio button options. 
+    * @return List<SelectOption>
+    */
     public List<SelectOption> getRadioItems() {
         
         List<SelectOption> options = new List<SelectOption>(); 
@@ -72,6 +87,10 @@ public with sharing class DS_PTSD_CA_Controller extends DS_BasicForm_Controller 
         
     }
     
+    /****
+    * @description Assessment radio button options. 
+    * @return List<SelectOption>
+    */
     public List<SelectOption> getRadioYesNo() {
         
         List<SelectOption> options = new List<SelectOption>(); 
@@ -83,6 +102,10 @@ public with sharing class DS_PTSD_CA_Controller extends DS_BasicForm_Controller 
         
     }
     
+    /****
+    * @description Method to count the blank answer. 
+    * @return blank answer counts
+    */
     public Integer countBlankAnswer() {
         
         Integer blankCount = 0; 
@@ -96,6 +119,12 @@ public with sharing class DS_PTSD_CA_Controller extends DS_BasicForm_Controller 
         
     }
     
+    /****
+    * @description Method to count the blank answer. 
+    * @param blankCount The count of the blank answer
+    * @param warningMessageContent The warning messsage
+    * @return boolean
+    */
     public Boolean showWarningMessageForBlank(Integer blankCount, String warningMessageContent) {
         
         if(blankCount >= 1 && displayWarningMessage == false) {
@@ -107,12 +136,20 @@ public with sharing class DS_PTSD_CA_Controller extends DS_BasicForm_Controller 
         return false;
     }
     
+    /****
+    * @description Action for the save and view report button 
+    * @return PageReference
+    */
     public PageReference saveview() {
         
         return (showWarningMessageForBlank(countBlankAnswer(), warningMessageContent)) ? null : save('/apex/DS_PTSD_CA_Report?cimi=' + Apexpages.currentPage().getParameters().get('cimi'));    
         
     } 
     
+    /****
+    * @description Action for the save button 
+    * @return PageReference
+    */
     public override PageReference save() {
         
         PageReference nextPage;

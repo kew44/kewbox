@@ -1,6 +1,25 @@
+/**
+* @author Danny Fu
+* @date 02/22/2016
+* @modified date
+*
+* @group PTSD
+* @group-content /ApexDocContent/PTSD_Scoring.htm
+*
+* @description An apex class that handles the score calculation 
+* for PTSD childrean and parent versions. It is used in PTSD triggers. 
+* e.g. :
+*	if(Trigger.isBefore) {
+*       DS_PTSD_Scoring score = new DS_PTSD_Scoring();
+*        
+*       for(DS_PTSD_CA_B__c obj : Trigger.new) {
+*           obj = (DS_PTSD_CA_B__c) score.scoreAnalyzer(obj);
+*	    }
+*   }
+*/
+
 public class DS_PTSD_Scoring {
     
-    //private List<DS_DATA__c> formInfo;
     private Map<String, List<DS_DATA__c>> formInfo = new Map<String, List<DS_DATA__c>>();
     
     private Utility ut = new Utility();
@@ -8,6 +27,12 @@ public class DS_PTSD_Scoring {
     private Map<String, String> resetFieldsCA = new Map<String, String>();
     private Map<String, String> resetFieldsPA = new Map<String, String>();
     
+    /****
+    * @description Constructor, gather PTSD form information reset all the scoring fields. 
+    * @return null
+    * @example
+    * 	DS_PTSD_Scoring score = new DS_PTSD_Scoring();
+    */
     public DS_PTSD_Scoring() {
         
         List<DS_DATA__c> ptsdData = [Select Symptom__c, Section__c, Number__c, Field__c, Type__c 
@@ -37,8 +62,8 @@ public class DS_PTSD_Scoring {
         resetFieldsCA.put('PTSDC', 'PTSDC__c');
         resetFieldsCA.put('PTSFC', 'PTSFC__c');
         resetFieldsCA.put('PTSVDSN', 'PTSVDSN__c');
-        resetFieldsPA.put('PTSVDA1', 'PTSVDA1__c');
-        resetFieldsPA.put('PTSVDA2', 'PTSVDA2__c');
+        resetFieldsCA.put('PTSVDA1', 'PTSVDA1__c');
+        resetFieldsCA.put('PTSVDA2', 'PTSVDA2__c');
         
         resetFieldsPA = ut.getFieldsFromDD('PTSD_SCORES_PA');
         
@@ -54,6 +79,15 @@ public class DS_PTSD_Scoring {
         
     }
     
+    /****
+    * @description Analyst the record depended on the value of status.  
+    * @param newObj new insert/update records
+    * @param oldObj existed records
+    * @return null
+    * @example
+    * 	DS_PTSD_Scoring score = new DS_PTSD_Scoring();
+    *   DS_PTSD_CA_B__c obj = (DS_PTSD_CA_B__c) score.scoreAnalyzer(obj);
+    */
     public SObject scoreAnalyzer(SObject obj) {
                 
         String BorF = (String.valueOf(obj.getsObjectType()) == 'DS_PTSD_CA_B__c') ? 'B' : 'F';

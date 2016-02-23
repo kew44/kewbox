@@ -1,10 +1,16 @@
 /**
-* The controller class for PTSD Reaction Index for Parent/Caregiver Report
+* @author Danny Fu
+* @date 02/23/2016
+* @modified date
+*
+* @group PTSD
+* @group-content /ApexDocContent/PTSD_parent_report.htm
+*
+* @description An apex controller class for PTSD Reaction Index for Parent/Caregivers Report.
 * 
-**/
-
+*/
 public with sharing class DS_PTSD_PA_Report_Controller extends DS_BasicForm_Controller {
-	
+        
     public String cimi { get; set; }
     
     public Boolean printReport { get; set; }
@@ -112,18 +118,12 @@ public with sharing class DS_PTSD_PA_Report_Controller extends DS_BasicForm_Cont
         bfVariableMap.put('PTSDCP',    form.BorF+'PTSDCP__c');
         bfVariableMap.put('PTSFCP',    form.BorF+'PTSFCP__c');
         bfVariableMap.put('PTSVDSNP',  form.BorF+'PTSVDSNP__c');
-        
-        System.debug(form);
-        
+                
         Date tempVisitDate = Date.valueOf(form.obj.get(form.BorF+'DOAPTSDP__c'));
-        
-        System.debug(form);
-        
+                
         currentVisitDate = (form.BorF == 'F') ? Datetime.newInstance(tempVisitDate, time.newInstance(0,0,0,0)) : null;
         
-        // Assessment history
-        //historyExisted = (currentVisitDate != null) ? true : false;
-        
+        // Assessment history       
         getAssesmentHistory();
         
         // Display history

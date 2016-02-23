@@ -1,8 +1,14 @@
 /**
-* The controller class for PTSD Reaction Index for Children/Adolescents Report
+* @author Danny Fu
+* @date 02/23/2016
+* @modified date
+*
+* @group PTSD
+* @group-content /ApexDocContent/PTSD_children_report.htm
+*
+* @description An apex controller class for PTSD Reaction Index for Children/Adolescents Report.
 * 
-**/
-
+*/
 public with sharing class DS_PTSD_CA_Report_Controller extends DS_BasicForm_Controller {
     
     public String cimi { get; set; }
@@ -117,9 +123,7 @@ public with sharing class DS_PTSD_CA_Report_Controller extends DS_BasicForm_Cont
         
         currentVisitDate = (form.BorF == 'F') ? Datetime.newInstance(tempVisitDate, time.newInstance(0,0,0,0)) : null;
         
-        // Assessment history
-        //historyExisted = (currentVisitDate != null) ? true : false;
-        
+        // Assessment history       
         getAssesmentHistory();
         
         // Display history
@@ -133,7 +137,7 @@ public with sharing class DS_PTSD_CA_Report_Controller extends DS_BasicForm_Cont
             Database.query('SELECT ' + form.ut.getFields('DS_PTSD_CA_B__c') +   
                            '  FROM DS_PTSD_CA_B__c' +                           
                            ' WHERE Client__c = \''+ form.cID + '\'' +
-                           '   AND STATUS_PTSD_cA__c != null');
+                           '   AND STATUS_PTSD_CA__c != null');
         
         addVisit(baseline, 'B');
         
