@@ -54,6 +54,16 @@
 *@author KW
 *Purpose: added display for followup visit type
 *
+*@date 1/14/16-1/29/16
+*@modified date
+*@author KW
+*Purpose: assessments outside of cimi
+*
+*@date 2/2/16
+*@modified date
+*@author
+*Purpose: assessments outside of CIMI abandoned--revert to previous
+*
 *@group ClientSummary
 *@group-content /ApexDocContent/ClientSummary/ClientSummaryController.htm
 ****/
@@ -198,15 +208,11 @@ public with sharing class ClientSummaryController {
             this.visitType = visitType;
             
             this.visitFormUrl = new Map<String, String>();
-            //            this.SummaryUrl = new Map<String, String>();, urlClientSummaryReportFU.get(0).SECTION__c)
             
             for(Client_Summary__c vfList : visitFormList) {
                 this.visitFormUrl.put(vfList.id, ut.urlEncode('c='+vflist.Client__c+'&summary='+vfList.Id));
-               // this.visitFormUrl.put(vfList.id, ut.urlEncode('c='+vflist.Client__c+'&f=1&summary='+vfList.Id));
-            }
-            
-        }
-        
+            }            
+        }        
     }
     
     //////////////////////////////////////////////////////////start popup class
@@ -341,15 +347,8 @@ public with sharing class ClientSummaryController {
             fuBtn = true;            
             fuObj.Visit_Number__c = 0;
             VisitNum = Integer.valueOf(fuObj.Visit_Number__c)+1;
-            fuObj.Client__c =clientID;  
-            
+            fuObj.Client__c =clientID;              
         }   
-        
-        //visit and time types
-  /*      visitType = String.valueOf(fuObj.FUTYPE__c);
-        timeType = String.valueOf(fuObj.FUTIME__c);
-        System.debug(visitType);
-        System.debug(timeType);*/
         
         //visit number and section number are equal across objects w/ local VisitNum
         fuObj.Visit_Number__c=VisitNum;
@@ -361,8 +360,7 @@ public with sharing class ClientSummaryController {
         }
         
         //add to list of background records
-        backgroundFU.addAll(returnVis);
-        
+        backgroundFU.addAll(returnVis);       
     }  
     
     public void SummaryInit() {
@@ -389,15 +387,14 @@ public with sharing class ClientSummaryController {
             //redirects first page to specific url
             if(s.Page__r.Variable__c == 'DS_DEMO')
                 urlClientIDBaseDEMO = ut.urlEncode('c='+s.Client__c+'&f=1&summary='+s.Id);
-            
+                
             urlSummary.put(s.Id, ut.urlEncode('c='+s.Client__c+'&summary='+s.Id+'&section='+s.Section__c));
             
         }   
         ///////////end baseline form info
         
         //urilfy
-        urlClientSummaryReport = new Map<String, String>();
-        
+        urlClientSummaryReport = new Map<String, String>();        
         urlClientSummaryReport.put('0', ut.urlEncode('c='+clientID+'&section=0'));
         
         ////////////trauma information, general
@@ -425,20 +422,13 @@ public with sharing class ClientSummaryController {
         
         if(followUpSummary.size() > 0) {
             
-            String sectionNum = '0';
-            
-            String visitType;
-            
-            List<Client_Summary__c> followUpForms;
-            
-            Visits = new List<Visit>();
-            
-            Set<String> sectionList = new Set<String>();
-            
-            Map<String, Date> visitDates = new Map<String, Date>();
-            
-            Map<String, String> visitTypes = new Map<String, String>();
-            
+            String sectionNum = '0';            
+            String visitType;            
+            List<Client_Summary__c> followUpForms;            
+            Visits = new List<Visit>();            
+            Set<String> sectionList = new Set<String>();            
+            Map<String, Date> visitDates = new Map<String, Date>();            
+            Map<String, String> visitTypes = new Map<String, String>();            
             Map<String, String> urlClientSummaryReportFU = new Map<String, String>();
             
             for(Client_Summary__c fus: followUpSummary) {        
@@ -459,9 +449,6 @@ public with sharing class ClientSummaryController {
                 visitType = bfInfo.FUTYPE__c;
                 timeType= bfInfo.FUTIME__c;
                 
-                System.debug(visitType);
-                System.debug(timeType);
-                
                     //visit types
                     if(visitType == '1'){                    
                         //timespans
@@ -480,29 +467,11 @@ public with sharing class ClientSummaryController {
                     else if(visitType == '3'){visitType = 'Re-Opening';}
                     else if(visitType == '4'){ visitType = 'Post-treatment';}
                     else if(visitType == '98'){visitType = 'Other';}
-                    
-                    System.debug(visitType);
-                
+                                    
                 //urilfy            
-                urlClientSummaryReportFU.put(bfInfo.SECTION__c, ut.urlEncode('c='+clientID+'&section='+bfInfo.SECTION__c));
-                
-               // visitTypes.put(bfInfo.SECTION__c, bfInfo.FUTYPE__c);
+                urlClientSummaryReportFU.put(bfInfo.SECTION__c, ut.urlEncode('c='+clientID+'&section='+bfInfo.SECTION__c));                
                 visitTypes.put(bfInfo.SECTION__c, visitType);
-                System.debug(visitTypes); 
-                    
-                        System.debug(sectionNum);   
-                      //  System.debug(visitTypes.get(sectionNum));    
-                    //    visitType= (visitTypes.get(sectionNum));      
-                      //  System.debug(visitType);  
-                        System.debug(timeType);  
-                                                    
-                         //   System.debug(visitType);
-                            System.debug(timeType);                         
-                          //  System.debug(visitTypes.get(sectionNum)); 
             }
-            
-            System.debug(timeType);                
-            System.debug(visitType);  
             
             for(Client_Summary__c fus: followUpSummary) {          
                 
@@ -515,10 +484,7 @@ public with sharing class ClientSummaryController {
                         
                           //new visit
                           Visits.add(new visit(followUpForms, visitDates.get(followUpForms.get(0).SECTION__c), urlClientSummaryReportFU.get(followUpForms.get(0).SECTION__c), visitTypes.get(followUpForms.get(0).SECTION__c))); 
-                         // Visits.add(new visit(followUpForms, visitDates.get(followUpForms.get(0).SECTION__c), urlClientSummaryReportFU.get(followUpForms.get(0).SECTION__c), visitType)); 
-                          //  Visits.add(new visit(followUpForms, visitDates.get(followUpForms.get(0).SECTION__c), urlClientSummaryReportFU.get(followUpForms.get(0).SECTION__c), visitTypes.get(backgroundFollowInfo.get(0).FUTYPE__c))); 
                             
-                        System.debug(Visits);
                     }
                     followUpForms = new List<Client_Summary__c>(); 
                 }
@@ -527,19 +493,9 @@ public with sharing class ClientSummaryController {
                 sectionNum = fus.SECTION__c;
                 followUpForms.add(fus);     
             }          
-            followDate =visitDates.get(followUpForms.get(0).SECTION__c);
-            
-           // System.debug(followDate);
-            //System.debug(visitDates.get(followUpForms.get(0).SECTION__c));
-            //System.debug(visitTypes.get(backgroundFollowInfo.get(0).FUTYPE__c));
-            
-            Visits.add(new visit(followUpForms, visitDates.get(followUpForms.get(0).SECTION__c), urlClientSummaryReportFU.get(followUpForms.get(0).SECTION__c), visitTypes.get(followUpForms.get(0).SECTION__c)));
-            //Visits.add(new visit(followUpForms, visitDates.get(followUpForms.get(0).SECTION__c), urlClientSummaryReportFU.get(followUpForms.get(0).SECTION__c), visitTypes.get(backgroundFollowInfo.get(0).FUTYPE__c)));
-            //Visits.add(new visit(followUpForms, visitDates.get(followUpForms.get(0).SECTION__c), urlClientSummaryReportFU.get(followUpForms.get(0).SECTION__c), visitType ));
-            System.debug(Visits);
-            
-        }
-        
+            followDate =visitDates.get(followUpForms.get(0).SECTION__c);            
+            Visits.add(new visit(followUpForms, visitDates.get(followUpForms.get(0).SECTION__c), urlClientSummaryReportFU.get(followUpForms.get(0).SECTION__c), visitTypes.get(followUpForms.get(0).SECTION__c)));            
+        }        
     }
     
     public void traumaHistoryRowList() {
@@ -593,14 +549,12 @@ public with sharing class ClientSummaryController {
                 
                 url = 'DS_TDETAIL?cimi=' + 
                     ut.urlEncode('c='+clientID+'&summary='+tdList.get(i.id).id+'&TDF='+i.Page__c.substringAfter('DS_'));        
-            }    
-            
+            }                
             rowsGTRAUMA.add(new Item(count, trauma, 'GT'+count+'R__c', ages, status, url));      
         }      
     }    
     
-    public String getClientInfo() {
-        
+    public String getClientInfo() {        
         return ut.clientSectionInfo(clientID);
     }
     
@@ -626,11 +580,5 @@ public with sharing class ClientSummaryController {
         followPage.setRedirect(true);
         
         return followPage;
-    }
-    
-    //public PageReference Later()
-    /*{
-closePopup();
-return null;
-}*/
+    }    
 }
