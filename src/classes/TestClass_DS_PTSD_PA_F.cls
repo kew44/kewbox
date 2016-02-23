@@ -16,7 +16,7 @@
 ****/
 
 @isTest (SeeAllData=false)
-public class TestClass_DS_PTSD_PA_F {
+private class TestClass_DS_PTSD_PA_F {
     
     /****
     *@description Initialize reference to TestClass_A_Utility
@@ -65,8 +65,12 @@ public class TestClass_DS_PTSD_PA_F {
             
         }
         
+        test.startTest();
+        
         //add list of records to object
         insert bulkObj;
+        
+        test.stopTest();
     }
     
     /****
@@ -184,7 +188,11 @@ public class TestClass_DS_PTSD_PA_F {
         obj.FPTSV21P__c = obj.FPTSV22P__c = obj.FPTSV23P__c = obj.FPTSV24P__c = obj.FPTSV25P__c = '3';
         obj.FPTSV26P__c = obj.FPTSV27P__c = obj.FPTSV28P__c = obj.FPTSV29P__c = obj.FPTSV30P__c = '1';
         
+        test.startTest();
+        
         insert obj;
+        
+        test.stopTest();
         
         DS_PTSD_CA_F__c ptsd = [SELECT FPTSAB1P__c, FPTSAB2P__c, FPTSAB3P__c, FPTSAB4P__c, FPTSAB5P__c, FPTSAC1P__c, FPTSAC2P__c,
                                		   FPTSAD1P__c, FPTSAD2P__c, FPTSAD3P__c, FPTSAD4P__c, FPTSAD5P__c, FPTSAD6P__c, FPTSAD7P__c,
@@ -251,7 +259,11 @@ public class TestClass_DS_PTSD_PA_F {
         obj.FPTSV21P__c = obj.FPTSV22P__c = obj.FPTSV23P__c = obj.FPTSV24P__c = obj.FPTSV25P__c = '3';
         obj.FPTSV26P__c = obj.FPTSV27P__c = obj.FPTSV28P__c = obj.FPTSV29P__c = obj.FPTSV30P__c = '1';
         
+        test.startTest();
+        
         insert obj;
+        
+        test.stopTest();
         
         DS_PTSD_CA_F__c ptsd = [SELECT FPTSAB1P__c, FPTSAB2P__c, FPTSAB3P__c, FPTSAB4P__c, FPTSAB5P__c, FPTSAC1P__c, FPTSAC2P__c,
                                		   FPTSAD1P__c, FPTSAD2P__c, FPTSAD3P__c, FPTSAD4P__c, FPTSAD5P__c, FPTSAD6P__c, FPTSAD7P__c,
@@ -290,7 +302,11 @@ public class TestClass_DS_PTSD_PA_F {
         obj.FPTSV26P__c = obj.FPTSV27P__c = obj.FPTSV28P__c = obj.FPTSV29P__c = obj.FPTSV30P__c = '1';
         obj.FPTSV31P__c = '1';
         
+        test.startTest();
+        
         insert obj;
+        
+        test.stopTest();
         
         DS_PTSD_CA_F__c ptsd = [SELECT FPTSAB1P__c, FPTSAB2P__c, FPTSAB3P__c, FPTSAB4P__c, FPTSAB5P__c, FPTSAC1P__c, FPTSAC2P__c,
                                		   FPTSAD1P__c, FPTSAD2P__c, FPTSAD3P__c, FPTSAD4P__c, FPTSAD5P__c, FPTSAD6P__c, FPTSAD7P__c,
@@ -326,6 +342,92 @@ public class TestClass_DS_PTSD_PA_F {
         System.assertEquals(1, ptsd.FPTSVDA2P__c, 'Symptom A2 is wrong.');
         
         System.assertEquals(1, ptsd.FPTSAPPCNP__c, 'FPTSAPPCNP__c ERROR');
+        
+        return client;
+        
+    }
+    
+    /****
+    *@description method to test a case where there is no blank
+    * 
+    ****/
+    static TestMethod Client__c Test_Scoring2() {
+               
+        Client__c client = test_ut.createClient(test_ut.getClient('Female', 8));
+        
+        DS_PTSD_CA_F__c obj = new DS_PTSD_CA_F__c();
+        
+        obj.client__c = client.id;
+        
+        obj.FMETPTSDP__c = '1';
+        obj.FDOAPTSDP__c = date.today();  
+        
+        obj.STATUS_PTSD_PA__c = 'Complete';
+                
+        obj.FPTSV1P__c  = obj.FPTSV2P__c  = obj.FPTSV3P__c  = obj.FPTSV4P__c  = obj.FPTSV5P__c  = '4';
+        obj.FPTSV6P__c  = obj.FPTSV7P__c  = obj.FPTSV8P__c  = obj.FPTSV9P__c  = obj.FPTSV10P__c = '4';
+        obj.FPTSV11P__c = obj.FPTSV12P__c = obj.FPTSV13P__c = obj.FPTSV14P__c = obj.FPTSV15P__c = '4';
+        obj.FPTSV16P__c = obj.FPTSV17P__c = obj.FPTSV18P__c = obj.FPTSV19P__c = obj.FPTSV20P__c = '4';
+        obj.FPTSV21P__c = obj.FPTSV22P__c = obj.FPTSV23P__c = obj.FPTSV24P__c = obj.FPTSV25P__c = '4';
+        obj.FPTSV26P__c = obj.FPTSV27P__c = obj.FPTSV28P__c = obj.FPTSV29P__c = obj.FPTSV30P__c = '4';
+        obj.FPTSV31P__c = '4';
+        
+        obj.FPTSDURAP__c = '1';
+        obj.FPTSD1P__c = '1';
+        
+        test.startTest();
+        
+        insert obj;
+        
+        test.stopTest();
+        
+        DS_PTSD_CA_F__c ptsd = [SELECT FPTSAB1P__c, FPTSAB2P__c, FPTSAB3P__c, FPTSAB4P__c, FPTSAB5P__c, FPTSAC1P__c, FPTSAC2P__c,
+                               		   FPTSAD1P__c, FPTSAD2P__c, FPTSAD3P__c, FPTSAD4P__c, FPTSAD5P__c, FPTSAD6P__c, FPTSAD7P__c,
+                               		   FPTSAE1P__c, FPTSAE2P__c, FPTSAE3P__c, FPTSAE4P__c, FPTSAE5P__c, FPTSAE6P__c, 
+                                       FPTSVDA1P__c,FPTSVDA2P__c, FPTSAPPCNP__c, FPTSOCNP__c, FPTSORNP__c, FPTSBRNP__c,
+                                	   FPTSCRNP__c, FPTSDRNP__c, FPTSERNP__c, FPTSBMNP__c, FPTSCMNP__c, FPTSDMNP__c,
+                                	   FPTSEMNP__c
+                                  FROM DS_PTSD_CA_F__c WHERE id =: obj.id];
+        
+        System.assertEquals(4, ptsd.FPTSAB1P__c, 'Symptom B1 is wrong.');
+        System.assertEquals(4, ptsd.FPTSAB2P__c, 'Symptom B2 is wrong.');
+        System.assertEquals(4, ptsd.FPTSAB3P__c, 'Symptom B3 is wrong.');
+        System.assertEquals(4, ptsd.FPTSAB4P__c, 'Symptom B4 is wrong.');
+        System.assertEquals(4, ptsd.FPTSAB5P__c, 'Symptom B5 is wrong.');
+        
+        System.assertEquals(4, ptsd.FPTSAC1P__c, 'Symptom C1 is wrong.');
+        System.assertEquals(4, ptsd.FPTSAC2P__c, 'Symptom C2 is wrong.');
+        
+        System.assertEquals(4, ptsd.FPTSAD1P__c, 'Symptom D1 is wrong.');
+        System.assertEquals(4, ptsd.FPTSAD2P__c, 'Symptom D2 is wrong.');
+        System.assertEquals(4, ptsd.FPTSAD3P__c, 'Symptom D3 is wrong.');
+        System.assertEquals(4, ptsd.FPTSAD4P__c, 'Symptom D4 is wrong.');
+        System.assertEquals(4, ptsd.FPTSAD5P__c, 'Symptom D5 is wrong.');
+        System.assertEquals(4, ptsd.FPTSAD6P__c, 'Symptom D6 is wrong.');
+        System.assertEquals(4, ptsd.FPTSAD7P__c, 'Symptom D7 is wrong.');
+        
+        System.assertEquals(4, ptsd.FPTSAE1P__c, 'Symptom E1 is wrong.');
+		System.assertEquals(4, ptsd.FPTSAE2P__c, 'Symptom E2 is wrong.');
+        System.assertEquals(4, ptsd.FPTSAE3P__c, 'Symptom E3 is wrong.');
+        System.assertEquals(4, ptsd.FPTSAE4P__c, 'Symptom E4 is wrong.');
+        System.assertEquals(4, ptsd.FPTSAE5P__c, 'Symptom E5 is wrong.');
+        System.assertEquals(4, ptsd.FPTSAE6P__c, 'Symptom E6 is wrong.');
+        
+        System.assertEquals(4, ptsd.FPTSVDA1P__c, 'Symptom A1 is wrong.');
+        System.assertEquals(4, ptsd.FPTSVDA2P__c, 'Symptom A2 is wrong.');
+        
+        System.assertEquals(1, ptsd.FPTSAPPCNP__c, 'FPTSAPPCNP__c ERROR');
+        
+        System.assertEquals(1, ptsd.FPTSOCNP__c, 'Meets UCLA PTSD Diagnostic Criteria DSM-5 is wrong.');
+        System.assertEquals(80, ptsd.FPTSORNP__c, 'Total Scale Score is wrong.');
+        System.assertEquals(20, ptsd.FPTSBRNP__c, 'Symptom B score is wrong.');
+        System.assertEquals(8, ptsd.FPTSCRNP__c, 'Symptom C score is wrong.');
+        System.assertEquals(28, ptsd.FPTSDRNP__c, 'Symptom D score is wrong.');
+        System.assertEquals(24, ptsd.FPTSERNP__c, 'Symptom E score is wrong.');
+        System.assertEquals(1, ptsd.FPTSBMNP__c, 'Meets Symptom B is wrong.');
+        System.assertEquals(1, ptsd.FPTSCMNP__c, 'Meets Symptom C is wrong.');
+        System.assertEquals(1, ptsd.FPTSDMNP__c, 'Meets Symptom D is wrong.');
+        System.assertEquals(1, ptsd.FPTSEMNP__c, 'Meets Symptom E is wrong.');
         
         return client;
         

@@ -63,8 +63,12 @@ private class TestClass_DS_PTSD_PA_B  {
                                         STATUS_PTSD_PA__c = 'Complete'));
         }
         
+        test.startTest();
+        
         //add list of records to object
         insert bulkObj;
+        
+        test.stopTest();
     }
     
     /****
@@ -173,7 +177,11 @@ private class TestClass_DS_PTSD_PA_B  {
         obj.BPTSV21P__c = obj.BPTSV22P__c = obj.BPTSV23P__c = obj.BPTSV24P__c = obj.BPTSV25P__c = '3';
         obj.BPTSV26P__c = obj.BPTSV27P__c = obj.BPTSV28P__c = obj.BPTSV29P__c = obj.BPTSV30P__c = '1';
         
+        test.startTest();
+        
         insert obj;
+        
+        test.stopTest();
         
         DS_PTSD_CA_B__c ptsd = [SELECT BPTSAB1P__c, BPTSAB2P__c, BPTSAB3P__c, BPTSAB4P__c, BPTSAB5P__c, BPTSAC1P__c, BPTSAC2P__c,
                                		   BPTSAD1P__c, BPTSAD2P__c, BPTSAD3P__c, BPTSAD4P__c, BPTSAD5P__c, BPTSAD6P__c, BPTSAD7P__c,
@@ -237,7 +245,11 @@ private class TestClass_DS_PTSD_PA_B  {
         obj.BPTSV21P__c = obj.BPTSV22P__c = obj.BPTSV23P__c = obj.BPTSV24P__c = obj.BPTSV25P__c = '3';
         obj.BPTSV26P__c = obj.BPTSV27P__c = obj.BPTSV28P__c = obj.BPTSV29P__c = obj.BPTSV30P__c = '1';
         
+        test.startTest();
+        
         insert obj;
+        
+        test.stopTest();
         
         DS_PTSD_CA_B__c ptsd = [SELECT BPTSAB1P__c, BPTSAB2P__c, BPTSAB3P__c, BPTSAB4P__c, BPTSAB5P__c, BPTSAC1P__c, BPTSAC2P__c,
                                		   BPTSAD1P__c, BPTSAD2P__c, BPTSAD3P__c, BPTSAD4P__c, BPTSAD5P__c, BPTSAD6P__c, BPTSAD7P__c,
@@ -276,7 +288,11 @@ private class TestClass_DS_PTSD_PA_B  {
         obj.BPTSV26P__c = obj.BPTSV27P__c = obj.BPTSV28P__c = obj.BPTSV29P__c = obj.BPTSV30P__c = '1';
         obj.BPTSV31P__c = '1';
         
+        test.startTest();
+        
         insert obj;
+        
+        test.stopTest();
         
         DS_PTSD_CA_B__c ptsd = [SELECT BPTSAB1P__c, BPTSAB2P__c, BPTSAB3P__c, BPTSAB4P__c, BPTSAB5P__c, BPTSAC1P__c, BPTSAC2P__c,
                                		   BPTSAD1P__c, BPTSAD2P__c, BPTSAD3P__c, BPTSAD4P__c, BPTSAD5P__c, BPTSAD6P__c, BPTSAD7P__c,
@@ -312,6 +328,92 @@ private class TestClass_DS_PTSD_PA_B  {
         System.assertEquals(1, ptsd.BPTSVDA2P__c, 'Symptom A2 is wrong.');
         
         System.assertEquals(1, ptsd.BPTSAPPCNP__c, 'BPTSAPPCNP__c ERROR');
+        
+        return client;
+        
+    }
+    
+    /****
+    *@description method to test a case where there is no blank
+    * 
+    ****/
+    static TestMethod Client__c Test_Scoring2() {
+               
+        Client__c client = test_ut.createClient(test_ut.getClient('Female', 8));
+        
+        DS_PTSD_CA_B__c obj = new DS_PTSD_CA_B__c();
+        
+        obj.client__c = client.id;
+        
+        obj.BMETPTSDP__c = '1';
+        obj.BDOAPTSDP__c = date.today();  
+        
+        obj.STATUS_PTSD_PA__c = 'Complete';
+                
+        obj.BPTSV1P__c  = obj.BPTSV2P__c  = obj.BPTSV3P__c  = obj.BPTSV4P__c  = obj.BPTSV5P__c  = '4';
+        obj.BPTSV6P__c  = obj.BPTSV7P__c  = obj.BPTSV8P__c  = obj.BPTSV9P__c  = obj.BPTSV10P__c = '4';
+        obj.BPTSV11P__c = obj.BPTSV12P__c = obj.BPTSV13P__c = obj.BPTSV14P__c = obj.BPTSV15P__c = '4';
+        obj.BPTSV16P__c = obj.BPTSV17P__c = obj.BPTSV18P__c = obj.BPTSV19P__c = obj.BPTSV20P__c = '4';
+        obj.BPTSV21P__c = obj.BPTSV22P__c = obj.BPTSV23P__c = obj.BPTSV24P__c = obj.BPTSV25P__c = '4';
+        obj.BPTSV26P__c = obj.BPTSV27P__c = obj.BPTSV28P__c = obj.BPTSV29P__c = obj.BPTSV30P__c = '4';
+        obj.BPTSV31P__c = '4';
+        
+        obj.BPTSDURAP__c = '1';
+        obj.BPTSD1P__c = '1';
+        
+        test.startTest();
+        
+        insert obj;
+        
+        test.stopTest();
+        
+        DS_PTSD_CA_B__c ptsd = [SELECT BPTSAB1P__c, BPTSAB2P__c, BPTSAB3P__c, BPTSAB4P__c, BPTSAB5P__c, BPTSAC1P__c, BPTSAC2P__c,
+                               		   BPTSAD1P__c, BPTSAD2P__c, BPTSAD3P__c, BPTSAD4P__c, BPTSAD5P__c, BPTSAD6P__c, BPTSAD7P__c,
+                               		   BPTSAE1P__c, BPTSAE2P__c, BPTSAE3P__c, BPTSAE4P__c, BPTSAE5P__c, BPTSAE6P__c, 
+                                       BPTSVDA1P__c,BPTSVDA2P__c, BPTSAPPCNP__c, BPTSOCNP__c, BPTSORNP__c, BPTSBRNP__c,
+                                	   BPTSCRNP__c, BPTSDRNP__c, BPTSERNP__c, BPTSBMNP__c, BPTSCMNP__c, BPTSDMNP__c,
+                                	   BPTSEMNP__c 
+                                  FROM DS_PTSD_CA_B__c WHERE id =: obj.id];
+        
+        System.assertEquals(4, ptsd.BPTSAB1P__c, 'Symptom B1 is wrong.');
+        System.assertEquals(4, ptsd.BPTSAB2P__c, 'Symptom B2 is wrong.');
+        System.assertEquals(4, ptsd.BPTSAB3P__c, 'Symptom B3 is wrong.');
+        System.assertEquals(4, ptsd.BPTSAB4P__c, 'Symptom B4 is wrong.');
+        System.assertEquals(4, ptsd.BPTSAB5P__c, 'Symptom B5 is wrong.');
+        
+        System.assertEquals(4, ptsd.BPTSAC1P__c, 'Symptom C1 is wrong.');
+        System.assertEquals(4, ptsd.BPTSAC2P__c, 'Symptom C2 is wrong.');
+        
+        System.assertEquals(4, ptsd.BPTSAD1P__c, 'Symptom D1 is wrong.');
+        System.assertEquals(4, ptsd.BPTSAD2P__c, 'Symptom D2 is wrong.');
+        System.assertEquals(4, ptsd.BPTSAD3P__c, 'Symptom D3 is wrong.');
+        System.assertEquals(4, ptsd.BPTSAD4P__c, 'Symptom D4 is wrong.');
+        System.assertEquals(4, ptsd.BPTSAD5P__c, 'Symptom D5 is wrong.');
+        System.assertEquals(4, ptsd.BPTSAD6P__c, 'Symptom D6 is wrong.');
+        System.assertEquals(4, ptsd.BPTSAD7P__c, 'Symptom D7 is wrong.');
+        
+        System.assertEquals(4, ptsd.BPTSAE1P__c, 'Symptom E1 is wrong.');
+		System.assertEquals(4, ptsd.BPTSAE2P__c, 'Symptom E2 is wrong.');
+        System.assertEquals(4, ptsd.BPTSAE3P__c, 'Symptom E3 is wrong.');
+        System.assertEquals(4, ptsd.BPTSAE4P__c, 'Symptom E4 is wrong.');
+        System.assertEquals(4, ptsd.BPTSAE5P__c, 'Symptom E5 is wrong.');
+        System.assertEquals(4, ptsd.BPTSAE6P__c, 'Symptom E6 is wrong.');
+       
+        System.assertEquals(4, ptsd.BPTSVDA1P__c, 'Symptom A1 is wrong.');
+        System.assertEquals(4, ptsd.BPTSVDA2P__c, 'Symptom A2 is wrong.');
+        
+        System.assertEquals(1, ptsd.BPTSAPPCNP__c, 'BPTSAPPCNP__c ERROR');
+        
+        System.assertEquals(1, ptsd.BPTSOCNP__c, 'Meets UCLA PTSD Diagnostic Criteria DSM-5 is wrong.');
+        System.assertEquals(80, ptsd.BPTSORNP__c, 'Total Scale Score is wrong.');
+        System.assertEquals(20, ptsd.BPTSBRNP__c, 'Symptom B score is wrong.');
+        System.assertEquals(8, ptsd.BPTSCRNP__c, 'Symptom C score is wrong.');
+        System.assertEquals(28, ptsd.BPTSDRNP__c, 'Symptom D score is wrong.');
+        System.assertEquals(24, ptsd.BPTSERNP__c, 'Symptom E score is wrong.');
+        System.assertEquals(1, ptsd.BPTSBMNP__c, 'Meets Symptom B is wrong.');
+        System.assertEquals(1, ptsd.BPTSCMNP__c, 'Meets Symptom C is wrong.');
+        System.assertEquals(1, ptsd.BPTSDMNP__c, 'Meets Symptom D is wrong.');
+        System.assertEquals(1, ptsd.BPTSEMNP__c, 'Meets Symptom E is wrong.');
         
         return client;
         
