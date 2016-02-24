@@ -137,6 +137,14 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>DS_PSI_Controller</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>DS_PSI_Report_Controller</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>DS_PTSD_CA_Controller</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -194,6 +202,22 @@
     </classAccesses>
     <classAccesses>
         <apexClass>DS_TDETAIL_Controller</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>DS_TSCC_A_Controller</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>DS_TSCC_A_Report_Controller</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>DS_TSCYC_Controller</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>DS_TSCYC_Report_Controller</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -346,6 +370,14 @@
     </classAccesses>
     <classAccesses>
         <apexClass>TestClass_DS_TDETAIL</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TestClass_DS_TSCC_TSCYC_B</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TestClass_DS_TSCC_TSCYC_F</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -15986,6 +16018,11 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_B__c.BDOAPSI__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>DS_SDQ_PSI_CDI_B__c.BDOASDOP__c</field>
         <readable>true</readable>
@@ -16063,6 +16100,106 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>DS_SDQ_PSI_CDI_B__c.BOTCNULLS__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_B__c.BPSIDC2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_B__c.BPSIDC_PTLE2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_B__c.BPSIDC_PTLE__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_B__c.BPSIDC__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_B__c.BPSIDR2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_B__c.BPSIDR_PTLE2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_B__c.BPSIDR_PTLE__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_B__c.BPSIDR__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_B__c.BPSIPCDI2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_B__c.BPSIPCDI_PTLE2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_B__c.BPSIPCDI_PTLE__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_B__c.BPSIPCDI__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_B__c.BPSIPD2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_B__c.BPSIPD_PTLE2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_B__c.BPSIPD_PTLE__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_B__c.BPSIPD__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_B__c.BPSITS2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_B__c.BPSITS_PTLE2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_B__c.BPSITS_PTLE__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_B__c.BPSITS__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -16571,6 +16708,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_B__c.STATUS_PSI__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>DS_SDQ_PSI_CDI_B__c.STATUS_SDQ_P_04_10__c</field>
         <readable>true</readable>
@@ -16603,6 +16745,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>DS_SDQ_PSI_CDI_F__c.FBEHNULLS__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_F__c.FDOAPSI__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -16683,6 +16830,106 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>DS_SDQ_PSI_CDI_F__c.FOTCNULLS__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_F__c.FPSIDC2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_F__c.FPSIDC_PTLE2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_F__c.FPSIDC_PTLE__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_F__c.FPSIDC__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_F__c.FPSIDR2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_F__c.FPSIDR_PTLE2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_F__c.FPSIDR_PTLE__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_F__c.FPSIDR__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_F__c.FPSIPCDI2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_F__c.FPSIPCDI_PTLE2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_F__c.FPSIPCDI_PTLE__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_F__c.FPSIPCDI__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_F__c.FPSIPD2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_F__c.FPSIPD_PTLE2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_F__c.FPSIPD_PTLE__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_F__c.FPSIPD__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_F__c.FPSITS2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_F__c.FPSITS_PTLE2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_F__c.FPSITS_PTLE__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_F__c.FPSITS__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -17208,6 +17455,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>DS_SDQ_PSI_CDI_F__c.SECTION__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_SDQ_PSI_CDI_F__c.STATUS_PSI__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -21346,14 +21598,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BANG_CLIN__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BANG_PTLE__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BANG_R2__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -21361,9 +21608,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BANG_SUBCLIN__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BANG_T2__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -21371,14 +21618,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BANX_CLIN__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BANX_PTLE__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BANX_R2__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -21386,9 +21628,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BANX_SUBCLIN__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BANX_T2__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -21396,14 +21638,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BATR_CLIN__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BATR_PTLE__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BATR_R2__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -21411,9 +21648,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BATR_SUBCLIN__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BATR_T2__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -21421,14 +21658,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BDEP_CLIN__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BDEP_PTLE__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BDEP_R2__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -21436,9 +21668,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BDEP_SUBCLIN__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BDEP_T2__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -21446,14 +21678,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BDIS_CLIN__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BDIS_PTLE__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BDIS_R2__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -21461,9 +21688,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BDIS_SUBCLIN__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BDIS_T2__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -21486,24 +21713,9 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BMETTSCC__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BMETTSCYC__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BPTSAR_CLIN__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BPTSAR_PTLE__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BPTSAR_R2__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -21511,9 +21723,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BPTSAR_SUBCLIN__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BPTSAR_T2__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -21521,14 +21733,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BPTSAV_CLIN__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BPTSAV_PTLE__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BPTSAV_R2__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -21536,9 +21743,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BPTSAV_SUBCLIN__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BPTSAV_T2__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -21546,14 +21753,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BPTSI_CLIN__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BPTSI_PTLE__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BPTSI_R2__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -21561,9 +21763,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BPTSI_SUBCLIN__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BPTSI_T2__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -21571,14 +21773,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BPTSTOT_CLIN__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BPTSTOT_PTLE__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BPTSTOT_R2__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -21586,9 +21783,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BPTSTOT_SUBCLIN__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BPTSTOT_T2__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -21596,14 +21793,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BRL_CLIN__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BRL_PTLE__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BRL_R2__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -21611,9 +21803,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BRL_SUBCLIN__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BRL_T2__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -21621,14 +21813,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BSC_CLIN__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BSC_PTLE__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BSC_R2__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -21636,9 +21823,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BSC_SUBCLIN__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BSC_T2__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -21646,224 +21833,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC10__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC11__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC12__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC13__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC14__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC15__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC16__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC17__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC18__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC19__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC1__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC20__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC21__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC22__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC23__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC24__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC25__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC26__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC27__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC28__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC29__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC2__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC30__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC31__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC32__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC33__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC34__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC35__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC36__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC37__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC38__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC39__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC3__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC40__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC41__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC42__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC43__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC44__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC4__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC5__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC6__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC7__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC8__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSC9__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BTSCAGG2__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -21871,19 +21843,19 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BTSCAGTN2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>DS_TSCC_TSCYC_B__c.BTSCAGTN__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCAGT__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCAG__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BTSCAXN2__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -21891,24 +21863,19 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BTSCAXTN2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>DS_TSCC_TSCYC_B__c.BTSCAXTN__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCAXT__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCAX__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCCMETH__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BTSCDPN2__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -21916,19 +21883,19 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BTSCDPTN2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>DS_TSCC_TSCYC_B__c.BTSCDPTN__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCDPT__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCDP__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BTSCDSN2__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -21936,19 +21903,19 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BTSCDSTN2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>DS_TSCC_TSCYC_B__c.BTSCDSTN__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCDST__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCDS__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BTSCFNN2__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -21956,19 +21923,19 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BTSCFNTN2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>DS_TSCC_TSCYC_B__c.BTSCFNTN__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCFNT__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCFN__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BTSCHYN2__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -21976,29 +21943,19 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BTSCHYTN2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>DS_TSCC_TSCYC_B__c.BTSCHYTN__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCHYT__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCHY__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCMSN__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCMS__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BTSCNTN2__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -22007,7 +21964,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCNT__c</field>
+        <field>DS_TSCC_TSCYC_B__c.BTSCODN2__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -22016,19 +21973,19 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BTSCODTN2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>DS_TSCC_TSCYC_B__c.BTSCODTN__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCODT__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCOD__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BTSCPTN2__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -22036,19 +21993,19 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BTSCPTTN2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>DS_TSCC_TSCYC_B__c.BTSCPTTN__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCPTT__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCPT__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.BTSCUNN2__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -22058,471 +22015,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>DS_TSCC_TSCYC_B__c.BTSCUNTN__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCUNT__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCUN__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC10__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC11__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC12__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC13__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC14__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC15__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC16__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC17__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC18__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC19__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC1__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC20__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC21__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC22__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC23__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC24__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC25__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC26__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC27__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC28__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC29__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC2__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC30__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC31__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC32__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC33__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC34__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC35__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC36__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC37__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC38__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC39__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC3__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC40__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC41__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC42__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC43__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC44__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC45__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC46__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC47__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC48__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC49__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC4__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC50__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC51__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC52__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC53__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC54__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC55__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC56__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC57__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC58__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC59__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC5__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC60__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC61__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC62__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC63__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC64__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC65__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC66__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC67__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC68__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC69__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC6__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC70__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC71__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC72__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC73__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC74__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC75__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC76__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC77__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC78__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC79__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC7__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC80__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC81__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC82__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC83__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC84__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC85__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC86__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC87__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC88__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC89__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC8__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC90__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYC9__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.BTSCYCMETH__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -22536,9 +22028,464 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_B__c.SECTION__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
-        <field>DS_TSCC_TSCYC_B__c.STATUS__c</field>
+        <field>DS_TSCC_TSCYC_B__c.STATUS_TSCC_A__c</field>
         <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_TSCC_TSCYC_B__c.STATUS_TSCYC__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.BDOV__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.Background_ID__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.Client__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FANG_R2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FANG_R__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FANG_T2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FANG_T__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FANX_R2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FANX_R__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FANX_T2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FANX_T__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FATR_R2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FATR_R__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FATR_T2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FATR_T__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FDEP_R2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FDEP_R__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FDEP_T2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FDEP_T__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FDIS_R2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FDIS_R__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FDIS_T2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FDIS_T__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FDOATSCC__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FDOATSCYC__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FDOV__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FPTSAR_R2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FPTSAR_R__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FPTSAR_T2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FPTSAR_T__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FPTSAV_R2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FPTSAV_R__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FPTSAV_T2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FPTSAV_T__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FPTSI_R2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FPTSI_R__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FPTSI_T2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FPTSI_T__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FPTSTOT_R2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FPTSTOT_R__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FPTSTOT_T2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FPTSTOT_T__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FRL_R2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FRL_R__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FRL_T2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FRL_T__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FSC_R2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FSC_R__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FSC_T2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FSC_T__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCAGG2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCAGG__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCAGTN2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCAGTN__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCAXN2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCAXN__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCAXTN2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCAXTN__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCDPN2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCDPN__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCDPTN2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCDPTN__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCDSN2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCDSN__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCDSTN2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCDSTN__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCFNN2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCFNN__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCFNTN2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCFNTN__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCHYN2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCHYN__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCHYTN2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCHYTN__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCNTN2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCNTN__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCODN2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCODN__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCODTN2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCODTN__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCPTN2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCPTN__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCPTTN2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCPTTN__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCUNN2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCUNN__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.SECTION__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.STATUS_TSCC_A__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.STATUS_TSCYC__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -23084,6 +23031,14 @@
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>DS_PSI</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>DS_PSI_Report</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>DS_PTSD_CA</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
@@ -23133,6 +23088,22 @@
     </pageAccesses>
     <pageAccesses>
         <apexPage>DS_TDETAIL</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>DS_TSCC_A</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>DS_TSCC_A_Report</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>DS_TSCYC</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>DS_TSCYC_Report</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
