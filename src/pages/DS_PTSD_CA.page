@@ -347,7 +347,7 @@
     <!--citation information footer-->
     <p class="footer" style="text-align:center">
         <i>©2014: Robert S. Pynoos, M.D., M.P.H. and Alan M. Steinberg, Ph.D. All rights reserved.<br/>
-            This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - {!CASE(form.visitType, 'baseline', 'Baseline', 'Follow-Up')} - CRF Version 6 2015
+            This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - {!CASE(form.visitType, 'baseline', 'Baseline', 'Follow-Up')} - CRF Version 6 2016
         </i>
     </p>
     

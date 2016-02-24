@@ -50,10 +50,8 @@
                 <!--provides print button functionality and structure-->
                 <apex:outputPanel layout="none" rendered="{!NOT(printReport)}">
                     <div>
-                        <a href="/apex/DS_PTSD_CA_Report?cimi={!HTMLENCODE(cimi)}&print=1" target="_blank">
-                            <button class="btn btn-default pull-right" type="button">
-                                <i class="glyphicon glyphicon-print"></i> &nbsp;Print
-                            </button>
+                        <a class="btn btn-default pull-right" href="/apex/DS_PTSD_CA_Report?cimi={!HTMLENCODE(cimi)}&print=1" target="_blank">
+                            <i class="glyphicon glyphicon-print"></i> &nbsp;Print
                         </a>
                         <br/>
                     </div>
@@ -316,7 +314,7 @@
             <!--citation information footer-->
             <p class="footer" style="text-align:center ">
                 <i>©2014: Robert S. Pynoos, M.D., M.P.H. and Alan M. Steinberg, Ph.D. All rights reserved.<br/>
-                    This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - {!CASE(HTMLENCODE(form.visitType), 'baseline', 'Baseline', 'Follow-Up')} - CRF Version 6 2014
+                    This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - {!CASE(HTMLENCODE(form.visitType), 'baseline', 'Baseline', 'Follow-Up')} - CRF Version 6 2016
                 </i>
             </p> 
             
@@ -347,7 +345,7 @@
                 <!--citation information footer-->
                 <p class="footer" style="text-align:center ">
                     <i>©2014: Robert S. Pynoos, M.D., M.P.H. and Alan M. Steinberg, Ph.D. All rights reserved.<br/>
-                        This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - {!CASE(HTMLENCODE(form.visitType), 'baseline', 'Baseline', 'Follow-Up')} - CRF Version 6 2014
+                        This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - {!CASE(HTMLENCODE(form.visitType), 'baseline', 'Baseline', 'Follow-Up')} - CRF Version 6 2016
                     </i>
                 </p> 
             </apex:outputPanel>
@@ -362,52 +360,52 @@
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
         <script type="text/javascript">
             google.load("visualization", "1.1", {packages:['corechart', 'bar', 'line']});
-        	google.setOnLoadCallback(drawLineChart);
-        	google.setOnLoadCallback(drawAnnotations);
+            google.setOnLoadCallback(drawLineChart);
+            google.setOnLoadCallback(drawAnnotations);
         
-        	var chartHeight = {!IF(printReport, 340, 500)};
+            var chartHeight = {!IF(printReport, 340, 500)};
         
-        	function drawAnnotations() {
-            	var data = new google.visualization.DataTable();
-            	data.addColumn('string', 'Symptom Category');
-            	<apex:repeat value="{!visits}" var="visit">
-                	data.addColumn('number', 
+            function drawAnnotations() {
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Symptom Category');
+                <apex:repeat value="{!visits}" var="visit">
+                    data.addColumn('number', 
                                    '<apex:outputText value="{0,date,MM/dd/yyyy}">
-                               			<apex:param value="{!visit.DOAPTSD}" />
-                               		</apex:outputText>');
-                 	data.addColumn({type: 'string', role: 'annotation'});
-            	</apex:repeat>
+                                        <apex:param value="{!visit.DOAPTSD}" />
+                                    </apex:outputText>');
+                    data.addColumn({type: 'string', role: 'annotation'});
+                </apex:repeat>
             
             
-            	data.addRows([
-                	['Symptom B Intrusion' <apex:repeat value="{!visits}" var="vb">, {!vb.PTSBRN}, '{!if(vb.PTSBMN = 1, 'M', '')}'</apex:repeat>],
-                 	['Symptom C  Avoidance' <apex:repeat value="{!visits}" var="vc">, {!vc.PTSCRN}, '{!if(vc.PTSCMN = 1, 'M', '')}'</apex:repeat>],
-                 	['Symptom D  Neg. Alter. in Cog./mood' <apex:repeat value="{!visits}" var="vd">, {!vd.PTSDRN}, '{!if(vd.PTSDMN = 1, 'M', '')}'</apex:repeat>],
-                 	['Symptom E  Alter. in Arous./React.' <apex:repeat value="{!visits}" var="ve">, {!ve.PTSERN}, '{!if(ve.PTSEMN = 1, 'M', '')}'</apex:repeat>],
+                data.addRows([
+                    ['Symptom B Intrusion' <apex:repeat value="{!visits}" var="vb">, {!vb.PTSBRN}, '{!if(vb.PTSBMN = 1, 'M', '')}'</apex:repeat>],
+                    ['Symptom C  Avoidance' <apex:repeat value="{!visits}" var="vc">, {!vc.PTSCRN}, '{!if(vc.PTSCMN = 1, 'M', '')}'</apex:repeat>],
+                    ['Symptom D  Neg. Alter. in Cog./mood' <apex:repeat value="{!visits}" var="vd">, {!vd.PTSDRN}, '{!if(vd.PTSDMN = 1, 'M', '')}'</apex:repeat>],
+                    ['Symptom E  Alter. in Arous./React.' <apex:repeat value="{!visits}" var="ve">, {!ve.PTSERN}, '{!if(ve.PTSEMN = 1, 'M', '')}'</apex:repeat>],
                 ]);
                 
                 var options = {
-                	title: 'UCLA PTSD RI Symptom Scores',
-                	annotations: {
-                		alwaysOutside: false,
-                		textStyle: {
-                			fontSize: 14,
-                			color: '#000',
-                			auraColor: 'none'
-                		}
-                	},
-                	hAxis: {
-                		title: 'Symptom Category',
-                	},
-                	vAxis: {
-                		title: 'Score'
-                	},
-                	height: chartHeight
+                    title: 'UCLA PTSD RI Symptom Scores',
+                    annotations: {
+                        alwaysOutside: false,
+                        textStyle: {
+                            fontSize: 14,
+                            color: '#000',
+                            auraColor: 'none'
+                        }
+                    },
+                    hAxis: {
+                        title: 'Symptom Category',
+                    },
+                    vAxis: {
+                        title: 'Score'
+                    },
+                    height: chartHeight
                 };
                 
                 var chart = new google.visualization.ColumnChart(document.getElementById('columnchart_material'));
                 chart.draw(data, options);
-			}
+            }
                 
             function drawLineChart() {
                 

@@ -32,14 +32,12 @@
                 <div class="alert alert-info">
                     <strong>
                         Here is a list of problems that children may have after bad things happen. 
-                        Please think about the bad thing that happened to your child that seems to bother your child the most now. 
-                        For each problem, <u>CIRCLE ONE</u> of the numbers (0, 1, 2, 3, 4 or 5) that tells how often the problem happened to your child in the past month, 
+                        Please think about the bad thing that happened to your child that seems to <u>bother your child the most now</u>. 
+                        For each problem, <strong>SELECT ONE</strong> of the numbers (0, 1, 2, 3, 4 or 5/99) that tells how often the problem happened to your child <strong>in the past month</strong>, 
                         even if the bad thing happened a long time ago. 
-                        Use the Frequency Rating Sheet to help you decide how often the problem happened in the past month. 
-                        Note: If you are unsure about how often your child has experienced a problem, 
-                        make your best estimation. 
-                        Only circle "<u>Don't Know</u>" if you absolutely cannot give an answer. 
-                        <u>PLEASE BE SURE TO ANSWER ALL QUESTIONS</u>.
+                        Use the <strong>Frequency Rating Sheet</strong> to help you decide how often the problem happened <strong>in the past month</strong>. 
+                        <u>Note</u>: If you are unsure about how often your child has experienced a problem, make your best estimation. 
+                        <strong>Only</strong> select <strong>"Don't Know"</strong> if you absolutely <strong>cannot</strong> give an answer. <strong>PLEASE BE SURE TO ANSWER ALL QUESTIONS</strong>.
                     </strong>
                 </div>
                 <!--end info-->
@@ -141,17 +139,17 @@
                 
                 <!--clinician instructions heading-->
                 <div class="alert alert-info">
-                    Clinician: Check whether the reactions above appear to cause clinically significant (1) distress or (2) functional impairment.   
+                    Clinician: Ask the parent/caregiver whether the reactions (thoughts and feelings) above cause significant <strong><i>distress</i></strong> or <strong><i>functional impairment</i></strong> to the child.  
                 </div>
                 <!--end clinician heading-->
                 
                 <!--distress section-->
-                <h4>(1) Clinically Significant Distress: (check if youth endorses #1 below)</h4>
+                <h4>(1) Significant Distress: (check if parent/caregiver endorses #1 below)</h4>
                 
                 <div class="form-group">
                     <label class="col-md-6 col-lg-6 control-label ">
                         <span class="nmbr">1.</span>
-                        Do these reactions bother or upset you a lot?
+                        Do these reactions (thoughts and feelings) bother or upset your child a lot?
                     </label>
                     <div class="col-md-2 col-lg-2">
                         <apex:selectRadio styleClass="radio-list radio-list-inline" id="PTSD1P__c" value="{!form.obj[bfVariableMap['PTSD1P']]}" title="{!form.obj[bfVariableMap['PTSD1P']]}">
@@ -162,7 +160,7 @@
                 <!--end distress-->
                 
                 <!--impairment section-->
-                <h4>(2) Clinically Significant Functional Impairment: (check if functional impairment at home, at school, in peer relationships, developmental progression)</h4>
+                <h4>(2) Significant Functional Impairment: (check if functional impairment at home, at school, in peer relationships, in developmental progression)</h4>
                 <!--home sub-section-->
                 <h5>Home: (check if youth endorses #1, #2 or #3 below)</h5>
                 
@@ -170,7 +168,7 @@
                 <div class="form-group">
                     <label class="col-md-6 col-lg-6 control-label ">
                         <span class="nmbr">1.</span>
-                        Do these reactions make it harder for you to get along with people at home?
+                        Do these reactions (thoughts and feelings) make it harder for your child to get along with people at home?
                     </label>
                     <div class="col-md-2 col-lg-2">
                         <apex:selectRadio styleClass="radio-list radio-list-inline" id="PTSFH1P__c" value="{!form.obj[bfVariableMap['PTSFH1P']]}" title="{!form.obj[bfVariableMap['PTSFH1P']]}">
@@ -184,7 +182,7 @@
                 <div class="form-group">
                     <label class="col-md-6 col-lg-6 control-label ">
                         <span class="nmbr">2.</span>
-                        Do these reactions get you into trouble at home?
+                        Do these reactions (thoughts and feelings) get your child into trouble at home?
                     </label>
                     <div class="col-md-6 col-lg-6">
                         <apex:selectRadio styleClass="radio-list radio-list-inline" id="PTSFH2P__c" value="{!form.obj[bfVariableMap['PTSFH2P']]}" title="{!form.obj[bfVariableMap['PTSFH2P']]}">
@@ -198,7 +196,7 @@
                 <div class="form-group">
                     <label class="col-md-6 col-lg-6 control-label ">
                         <span class="nmbr">3.</span>
-                        Do these reactions cause some other problem at home?
+                        Do these reactions (thoughts and feelings) cause your child to have some other problem at home?
                     </label>
                     <div class="col-md-6 col-lg-6">
                         <apex:selectRadio styleClass="radio-list radio-list-inline" id="PTSFH3P__c" value="{!form.obj[bfVariableMap['PTSFH3P']]}" title="{!form.obj[bfVariableMap['PTSFH3P']]}">
@@ -222,13 +220,13 @@
                 <!--end home-->
                 
                 <!--school sub-section-->
-                <h5>School: (check if youth endorses #1 or #2 below)</h5>
+                <h5>School: (check if parent/caregiver endorses #1 or #2 below)</h5>
                 
                 <!--1.performance in school?-->
                 <div class="form-group">
                     <label class="col-md-6 col-lg-6 control-label ">
                         <span class="nmbr">1.</span>
-                        Do these reactions make it harder for you to do well in school?
+                        Do these reactions (thoughts and feelings) make it harder for your child to do well in school?
                     </label>
                     <div class="col-md-6 col-lg-6">
                         <apex:selectRadio styleClass="radio-list radio-list-inline" id="PTSFS1__c" value="{!form.obj[bfVariableMap['PTSFS1P']]}" title="{!form.obj[bfVariableMap['PTSFS1P']]}">
@@ -242,7 +240,7 @@
                 <div class="form-group">
                     <label class="col-md-6 col-lg-6 control-label ">
                         <span class="nmbr">2.</span>
-                        Do these reactions cause other problems at school?
+                        Do these reactions (thoughts and feelings) cause your child other problems at school?
                     </label>
                     <div class="col-md-6 col-lg-6">
                         <apex:selectRadio styleClass="radio-list radio-list-inline" id="PTSFS2P__c" value="{!form.obj[bfVariableMap['PTSFS2P']]}" title="{!form.obj[bfVariableMap['PTSFS2P']]}">
@@ -267,13 +265,13 @@
                 <!--end school-->
                 
                 <!--Peer Relationships-->
-                <h5>Peer Relationships: (check if youth endorses #1 below)</h5>
+                <h5>Peer Relationships: (check if parent/caregiver endorses #1 below)</h5>
                 
                 <!--1.make nre friend?-->
                 <div class="form-group">
                     <label class="col-md-6 col-lg-6 control-label ">
                         <span class="nmbr">1.</span>
-                        Do these reactions make it harder for you to get along with your friends or to make new friends?
+                        Do these reactions (thoughts and feelings) make it hard for your child to get along with or make friends?
                     </label>
                     <div class="col-md-6 col-lg-6">
                         <apex:selectRadio styleClass="radio-list radio-list-inline" id="PTSFR1P__c" value="{!form.obj[bfVariableMap['PTSFR1P']]}" title="{!form.obj[bfVariableMap['PTSFR1P']]}">
@@ -298,13 +296,13 @@
                 <!--end peers-->
                 
                 <!--development sub-section-->
-                <h4>Developmental Progression: (check if youth endorses #1 below)</h4>
+                <h5>Developmental Progression: (check if parent/caregiver endorses #1 below)</h5>
                 
                 <!--1. hard to keep up w/ peers?-->
                 <div class="form-group">
                     <label class="col-md-6 col-lg-6 control-label ">
                         <span class="nmbr">1.</span>
-                        Do these reactions make it harder for you to do activities that other kids your age are doing?
+                        Do these reactions (thoughts and feelings) make it harder for your child to do important things that other kids his/her age are doing?
                     </label>
                     <div class="col-md-6 col-lg-6">
                         <apex:selectRadio styleClass="radio-list radio-list-inline" id="PTSFP1P__c" value="{!form.obj[bfVariableMap['PTSFP1P']]}" title="{!form.obj[bfVariableMap['PTSFP1P']]}">
@@ -312,7 +310,21 @@
                         </apex:selectRadio> 
                     </div>
                 </div>
-                <!--end keep up-->             
+                <!--end keep up-->   
+                
+                <!--2. interfere with other -->
+                <div class="form-group">
+                    <label class="col-md-6 col-lg-6 control-label ">
+                        <span class="nmbr">2.</span>
+                        Do these reactions interfere with other areas of your child’s development?
+                    </label>
+                    <div class="col-md-6 col-lg-6">
+                        <apex:selectRadio styleClass="radio-list radio-list-inline" id="PTSFP2P__c" value="{!form.obj[bfVariableMap['PTSFP2P']]}" title="{!form.obj[bfVariableMap['PTSFP2P']]}">
+                            <apex:selectOptions value="{!RadioYesNo}"/> 
+                        </apex:selectRadio> 
+                    </div>
+                </div>
+                <!--end keep up-->            
                                                 
                 <!--open-ended describe answer field-->
                 <div class="form-group">
@@ -352,7 +364,7 @@
     <!--citation information footer-->
     <p class="footer" style="text-align:center">
         <i>©2014: Robert S. Pynoos, M.D., M.P.H. and Alan M. Steinberg, Ph.D. All rights reserved.<br/>
-            This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - {!CASE(form.visitType, 'baseline', 'Baseline', 'Follow-Up')} - CRF Version 6 2015
+            This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - {!CASE(form.visitType, 'baseline', 'Baseline', 'Follow-Up')} - CRF Version 6 2016
         </i>
     </p>
     
