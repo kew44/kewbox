@@ -6,7 +6,7 @@
     <p style="class:footer; text-align:center ">
         <i>This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - 
         {!CASE(formElement.visitType, 'baseline', 'Baseline', 'Follow-Up')}
-        - CRF Version 6 2015
+        - CRF Version 6 2016
         </i>
     </p>   
     
