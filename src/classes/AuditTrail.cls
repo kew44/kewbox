@@ -323,7 +323,7 @@ public class AuditTrail {
                 // If the field of DD doesn't exist in force, skip this field and move to the next one. 
                 // Remove the comments after test is over. 
                 if(ut.hasSObjectField(f.VARIABLE_NAME__c+'__c', oldObj)) continue;
-                
+                                
                 String priorRawValue = String.valueOf(oldObj.get(f.VARIABLE_NAME__c+'__c'));
                 
                 String updateRawValue = String.valueOf(newObj.get(f.VARIABLE_NAME__c+'__c'));
