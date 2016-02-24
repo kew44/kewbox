@@ -1748,7 +1748,7 @@
         <fullName>BPTSOCNP__c</fullName>
         <description>PTSD score criteria - Num Parent</description>
         <externalId>false</externalId>
-        <formula>IF( ( BPTSBMNP__c  +  BPTSCMN__c  +  BPTSDMNP__c  +  BPTSEMNP__c  +  if(OR(BPTSDCP__c  =  true, BPTSFCP__c = true), 1, 0) )  =  6 , 1, 0)</formula>
+        <formula>IF( ( BPTSBMNP__c + BPTSCMNP__c + BPTSDMNP__c + BPTSEMNP__c + if(OR(BPTSDCP__c = true, BPTSFCP__c = true), 1, 0) + if(ISPICKVAL(BPTSDURAP__c, &quot;1&quot;), 1, 0) ) = 6 , 1, 0)</formula>
         <label>BPTSOCNP</label>
         <precision>18</precision>
         <required>false</required>
