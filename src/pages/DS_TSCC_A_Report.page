@@ -1,0 +1,226 @@
+<apex:page standardController="DS_TSCC_TSCYC_B__c" extensions="DS_TSCC_A_Report_Controller" action="{!init}"  showHeader="{!NOT(printReport)}" id="tscc-a-report">
+    
+    <link href="{!URLFOR($Resource.CSS_DS_Report)}" rel="stylesheet" media="screen, print"/>
+    
+    <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
+    
+    <!--print report command for button-->
+    <apex:outputPanel layout="none" rendered="{!printReport}">
+        <script>        
+        $j(document).ready(function() { 
+            $j('.chart-t-score').removeClass('col-md-12 col-lg-6').addClass('print-chart-width');
+            window.print(); 
+        });
+        </script>
+    </apex:outputPanel>
+    <!--end print command -->
+    
+    <div class="{!HTMLENCODE(form.visitType)}-assessment">
+        <apex:sectionHeader title="{!HTMLENCODE(form.title)}" subtitle="{!HTMLENCODE(form.subtitle)}" />
+    </div>    
+    
+    <div class="bootwrap">
+        <!--begin tscc-a report content-->
+        <apex:form id="DS_TSCC_A_REPORT"  styleClass="form-horizontal tscc-report">
+            
+            <!-- pageblock to show ClientInformation header as described in Utility class-->
+            <c:cimiClientInfo displayVisitType="true" formElement="{!form}"/>
+            <!--end client info pageBlock-->
+            
+            <!-- primary content pageBlock container-->
+            <apex:pageBlock title="Trauma Symptoms Checklist for Children-Alternate (TSCC-A) Report">
+                
+                <!--Save & view, save, and cancel control buttons for pageBlock-->
+                <apex:pageBlockButtons >
+                    <apex:commandButton action="{!editRecord}" value="Edit" styleClass="btn-info btn btn-sm" rendered="{!not(printReport)}"/>
+                </apex:pageBlockButtons>
+                <!--end buttons-->
+                
+                <!--placeholding structure that allows for system message display-->
+                <apex:pageMessages />                         
+                
+                <!--provides print button functionality and structure-->
+                <apex:outputPanel layout="none" rendered="{!NOT(printReport)}">
+                    <div>
+                        <a href="/apex/DS_TSCC_A_Report?cimi={!HTMLENCODE(cimi)}&print=1" target="_blank">
+                            <button class="btn btn-default pull-right" type="button">
+                                <i class="glyphicon glyphicon-print"></i> &nbsp;Print
+                            </button>
+                        </a>
+                        <br/>
+                    </div>
+                </apex:outputPanel>
+                <!--end print button-->
+                
+                <div class="alert alert-info ">
+                    <!--information-->
+                    <p> 
+                        The TSCC-A assesses children’s posttraumatic stress and associated symptoms and is reported by the child. This results in scores for 5 clinical subscales representing different emotional and behavioral domains: <em>Anxiety, Depression, Anger/Aggression, Posttraumatic Stress, Dissociation-Overt, and Dissociation-Fantasy</em>.
+                        <br/>
+                        <br/>
+                        The TSCC-A includes two validity scales that tap into the child’s style of answering questions. Does the child tend to underreport symptoms or does the child tend to over report symptoms? The child’s report on the symptom subscales should be considered in the context of these validity scales.
+                    </p>
+                    <!--end information-->
+                    
+                    <br/>
+                    
+                    <!--administration date -->
+                    <strong><u>
+                        Date of administration: &nbsp;
+                        <apex:outputField id="DOATSCC__c" value="{!form.obj[bfVariableMap['DOATSCC']]}"/>
+                        <br/>
+                        </u></strong>
+                    <!--end administration date -->
+                    
+                    <!--specific reports of severity-->
+                    <!--displays a list of all symptoms that are rated as clinically significant, if any-->
+                    <apex:outputPanel layout="none" rendered="{!if(clinicalRange != '', true, false)}">
+                        <p>
+                            <br/>
+                            <h4><u>Clinical Range </u></h4>
+                        <br/>
+                        The child’s symptoms on the following scales are clinically significant compared to other children their age: <b>{!clinicalRange}</b><br/>
+                    </p>  
+                </apex:outputPanel>
+                <!--end clinical list-->
+                
+                <p>
+                    <br/>
+                    <strong><u>Validity Scales </u></strong>
+                    <br/>
+                    The child’s score on the Underresponse scale is in the <u>{!Str_UND}</u> range and their score on the Hyperresponse scale is in the <!--{!visits[SectionNum].HYP}--><u>{!Str_HYP}</u> range.
+                </p>                
+            </div>
+            <!--end info-->
+            
+            <table class="table tscc-table table-bordered table-striped">
+                <thead>
+                    <!--score table headings-->
+                    <tr>
+                        <th rowspan="2"  >Date</th>
+                        <th rowspan="2" class="tscc-visit-cell-width">Visit</th>
+                        <th colspan="2"  class="text-center">Validity</th>            
+                        <th colspan="7"  class="text-center">Symptom Category T Score (Symptom Significance) </th>
+                     <!--   <th colspan="2"  class="text-center">Subscale Scores </th>         --> 
+                    </tr>
+                    <!--end headings-->
+                    
+                    <tr>
+                        <!--validity-->
+                        <th class="text-center">Underresponsive</th>
+                        <th class="text-center">Hyperresponsive</th>
+                        <!--subscale-->
+                        <th class="text-center">Anxiety</th>
+                        <th class="text-center">Depression</th>
+                        <th class="text-center">Anger</th>
+                        <th class="text-center">Post Traumatic Stress</th>
+                        <th class="text-center">Dissociation</th>
+                        <th class="text-center">Overt Dissociation</th>
+                        <th class="text-center">Fantasy</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <apex:repeat value="{!visits}" var="visit">
+                        
+                        <!--response summary-->
+                        <tr class="first-row">
+                            <!--date field-->
+                            <td>
+                                <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                    <apex:param value="{!visit.DOATSCC}" />
+                                </apex:outputText>
+                            </td>
+                            <!--end date-->
+                            
+                            <!--visit type-->
+                            <td>{!IF(HTMLENCODE(visit.BorF) = 'B', 'Baseline', 'Follow-up')}</td>                          
+                            
+                            <apex:outputPanel layout="none" >    
+                                <td class="text-center {!IF((visit.TSCNTN)  > 70, 'danger', (IF((visit.TSCNTN)  <= 64, '', 'warning')))}">{!visit.TSCNTN}  <br/> {!IF((visit.TSCNTN)  > 70, 'Invalid',  (IF((visit.TSCNTN)  <= 64, '', 'Borderline')))}</td><!--und-->      
+                                <td class="text-center {!IF((visit.TSCHYTN) > 90, 'danger', (IF((visit.TSCHYTN) <= 64, '', 'warning')))}">{!visit.TSCHYTN} <br/> {!IF((visit.TSCHYTN) > 90, 'Invalid',  (IF((visit.TSCHYTN) <= 64, '', 'Borderline')))}</td><!--hyp--> 
+                                <td class="text-center {!IF((visit.TSCAXTN) > 65, 'danger', (IF((visit.TSCAXTN) <= 59, '', 'warning')))}">{!visit.TSCAXTN} <br/> {!IF((visit.TSCAXTN) > 65, 'Clinical', (IF((visit.TSCAXTN) <= 59, '', 'Borderline')))}</td><!--anx-->      
+                                <td class="text-center {!IF((visit.TSCDPTN) > 65, 'danger', (IF((visit.TSCDPTN) <= 59, '', 'warning')))}">{!visit.TSCDPTN} <br/> {!IF((visit.TSCDPTN) > 65, 'Clinical', (IF((visit.TSCDPTN) <= 59, '', 'Borderline')))}</td><!--dep-->          
+                                <td class="text-center {!IF((visit.TSCAGTN) > 65, 'danger', (IF((visit.TSCAGTN) <= 59, '', 'warning')))}">{!visit.TSCAGTN} <br/> {!IF((visit.TSCAGTN) > 65, 'Clinical', (IF((visit.TSCAGTN) <= 59, '', 'Borderline')))}</td><!--ang-->      
+                                <td class="text-center {!IF((visit.TSCPTTN) > 65, 'danger', (IF((visit.TSCPTTN) <= 59, '', 'warning')))}">{!visit.TSCPTTN} <br/> {!IF((visit.TSCPTTN) > 65, 'Clinical', (IF((visit.TSCPTTN) <= 59, '', 'Borderline')))}</td><!--pts-->    
+                                <td class="text-center {!IF((visit.TSCDSTN) > 65, 'danger', (IF((visit.TSCDSTN) <= 59, '', 'warning')))}">{!visit.TSCDSTN} <br/> {!IF((visit.TSCDSTN) > 65, 'Clinical', (IF((visit.TSCDSTN) <= 59, '', 'Borderline')))}</td><!--dis-->    
+                                <td class="text-center {!IF((visit.TSCODTN) > 65, 'danger', (IF((visit.TSCODTN) <= 59, '', 'warning')))}">{!visit.TSCODTN} <br/> {!IF((visit.TSCODTN) > 65, 'Clinical', (IF((visit.TSCODTN) <= 59, '', 'Borderline')))}</td><!--diso-->       
+                                <td class="text-center {!IF((visit.TSCFNTN) > 65, 'danger', (IF((visit.TSCFNTN) <= 59, '', 'warning')))}">{!visit.TSCFNTN} <br/> {!IF((visit.TSCFNTN) > 65, 'Clinical', (IF((visit.TSCFNTN) <= 59, '', 'Borderline')))}</td><!--disf-->            
+                            </apex:outputPanel>
+                        </tr>                        
+                    </apex:repeat>                    
+                </tbody>
+            </table>    
+            
+            <apex:outputPanel layout="none" rendered="{!displayHistory}">
+                <div class="form-group charts-div">
+                    <div class="col-md-12 col-lg-12  chart-t-score">
+                        <div id="barchart_material"></div>
+                    </div>
+                </div>  
+            </apex:outputPanel>    
+        </apex:pageBlock>
+        
+        <!--citation information footer-->    
+        <c:cimiFormFooter formElement="{!form}"/>    
+    </apex:form>
+</div>
+
+<apex:outputPanel rendered="{!displayHistory}">
+    
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+        
+        var chartHeight = {!IF(printReport, 500, 500)};
+    
+    google.load("visualization", "1.1", {packages:['corechart', 'bar', 'line']});
+    google.setOnLoadCallback(drawLineChart);
+    google.setOnLoadCallback(drawAnnotations);
+    
+    function drawAnnotations() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Subscale');
+        <apex:repeat value="{!visits}" var="visit">
+            data.addColumn('number', '<apex:outputText value="{0,date,MM/dd/yyyy}">
+                           <apex:param value="{!visit.DOATSCC}" />
+                           </apex:outputText>');
+                           data.addColumn({type: 'string', role: 'annotation'});
+        </apex:repeat>
+        
+        data.addRows([    
+            ['Anxiety'              <apex:repeat value="{!visits}" var="vanx">,  {!vanx.TSCAXTN},  '{!IF((vanx.TSCAXTN)  > 65, 'C', (IF((vanx.TSCAXTN) <= 59, '', 'B')))}'  </apex:repeat>],
+             ['Depression'           <apex:repeat value="{!visits}" var="vdep">,  {!vdep.TSCDPTN},  '{!IF((vdep.TSCDPTN)  > 65, 'C', (IF((vdep.TSCDPTN) <= 59, '', 'B')))}'  </apex:repeat>],
+             ['Anger'                <apex:repeat value="{!visits}" var="vang">,  {!vang.TSCAGTN},  '{!IF((vang.TSCAGTN)  > 65, 'C', (IF((vang.TSCAGTN) <= 59, '', 'B')))}'  </apex:repeat>],
+             ['Posttraumatic Stress' <apex:repeat value="{!visits}" var="vpts">,  {!vpts.TSCPTTN},  '{!IF((vpts.TSCPTTN)  > 65, 'C', (IF((vpts.TSCPTTN) <= 59, '', 'B')))}'  </apex:repeat>],
+             ['Dissociation'         <apex:repeat value="{!visits}" var="vdis">,  {!vdis.TSCDSTN},  '{!IF((vdis.TSCDSTN)  > 65, 'C', (IF((vdis.TSCDSTN) <= 59, '', 'B')))}'  </apex:repeat>],
+             ['Overt Dissociation'   <apex:repeat value="{!visits}" var="vdiso">, {!vdiso.TSCODTN}, '{!IF((vdiso.TSCODTN) > 65, 'C', (IF((vdiso.TSCODTN)<= 59, '', 'B')))}'  </apex:repeat>],
+             ['Fantasy'              <apex:repeat value="{!visits}" var="vdisf">, {!vdisf.TSCFNTN}, '{!IF((vdisf.TSCFNTN) > 65, 'C', (IF((vdisf.TSCFNTN)<= 59, '', 'B')))}'  </apex:repeat>],
+            ]);
+            
+            var options = {
+            title: 'TSCC-A Scores',
+            annotations: {
+            alwaysOutside: false,
+            textStyle: {
+            fontSize: 14,
+            color: '#000',
+            auraColor: 'none'
+            }
+            },
+            hAxis: {
+            title: 'T-Score'
+            },
+            vAxis: {
+            title: 'Subscale',
+            },
+            height: chartHeight
+            };
+            
+            var barchart = new google.visualization.BarChart(document.getElementById('barchart_material'));
+            barchart.draw(data, options);
+            }
+            
+            function drawLineChart() {}
+            </script>        
+</apex:outputPanel>
+</apex:page>
