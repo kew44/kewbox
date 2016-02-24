@@ -5180,6 +5180,15 @@
     <label>DS GTRAUMA</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Client__c</columns>
+        <columns>GT21R__c</columns>
+        <columns>GT22R__c</columns>
+        <columns>GT23R__c</columns>
+        <columns>STATUS_GTRAUMA__c</columns>
+        <columns>GTDATE__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
