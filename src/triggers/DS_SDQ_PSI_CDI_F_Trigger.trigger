@@ -18,11 +18,11 @@ trigger DS_SDQ_PSI_CDI_F_Trigger on DS_SDQ_PSI_CDI_F__c (before insert, before u
         }
     } 
     
-    if(Trigger.isAfter) { 
+  /*  if(Trigger.isAfter) { 
         ut.updateSummaryStatusForMergedObject(Trigger.new);
         
         AuditTrail audit = new AuditTrail(Trigger.new, Trigger.old); 
         if(Trigger.isInsert) { audit.generateLog(); }
         if(Trigger.isUpdate) { audit.generateLog(); } 
-    }
+    }*/
 }

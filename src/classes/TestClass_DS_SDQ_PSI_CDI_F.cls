@@ -3,7 +3,7 @@
 *includes
 *Trigger 
 *Controllers:
-    *SDQ_P_04_10, SDQ_P_11_17, SDQ_S_11_17 
+    *SDQ_P_04_10, SDQ_P_11_17, SDQ_S_11_17, PSI
 *Bulkified testing
 *Asserted Variables
 *
@@ -13,6 +13,14 @@
 *@author Kelsey Willett
 *@date 11/18/2015
 *@modified date
+*
+*@date 1/27/2016
+*@modified date
+*Purpose: PSI coverage
+*
+*@date 2/8/16
+*@modified date
+*Purpose: PSI assert
 ****/
 
 @isTest (SeeAllData=false)
@@ -43,7 +51,7 @@ private class TestClass_DS_SDQ_PSI_CDI_F  {
     static TestMethod void bulkifyObj(){
     
         //init client
-        Client__c client = test_ut.createClient();
+        Client__c client = test_ut.createClientSummary();
         
         //init list of object
         List<DS_SDQ_PSI_CDI_F__c> bulkObj = new List<DS_SDQ_PSI_CDI_F__c>();
@@ -55,6 +63,17 @@ private class TestClass_DS_SDQ_PSI_CDI_F  {
                                                 FEMONULLS__c = 0, FBEHNULLS__c = 0, FHYPNULLS__c = 0, FOTCNULLS__c = 0, FKHBNULLS__c = 0,//null counts self
                                                 FDOASDYP__c = System.today(), FDOASDOP__c = System.today(), FDOASDOS__c = System.today(),
                                                 FMETSDYP__c = '1', FMETSDOP__c = '1', FMETSDOS__c = '1',
+                                                          FPSIPD__c = 13, FPSIPD_PTLE__c = 81, 
+                                                            FPSIPD2__c = 13, FPSIPD_PTLE2__c = 81,
+                                                          FPSIPCDI__c = 13, FPSIPCDI_PTLE__c = 81, 
+                                                            FPSIPCDI2__c = 13, FPSIPCDI_PTLE2__c = 81,
+                                                          FPSIDC__c = 13, FPSIDC_PTLE__c = 81, 
+                                                            FPSIDC2__c = 13, FPSIDC_PTLE2__c = 81,
+                                                          FPSITS__c = 38, FPSITS_PTLE__c = 81, 
+                                                            FPSITS2__c = 38, FPSITS_PTLE2__c = 81,
+                                                          FPSIDR__c = 9, FPSIDR_PTLE__c = 81, 
+                                                            FPSIDR2__c = 9, FPSIDR_PTLE2__c = 81,
+                                                          FDOAPSI__c = System.today(),
                                                 SECTION__c = '1'));      
         }
         
@@ -69,7 +88,7 @@ private class TestClass_DS_SDQ_PSI_CDI_F  {
     static TestMethod void assertControllerYP() {
     
         //create test client 
-        Client__c client = test_ut.createClient();        
+        Client__c client = test_ut.createClient(test_ut.getClient('Male', 6));         
         
         DS_DATA__c dataPage = [SELECT id FROM DS_DATA__c 
                                 WHERE Page__c = 'DS_SDQ_P_04_10'
@@ -167,7 +186,7 @@ private class TestClass_DS_SDQ_PSI_CDI_F  {
     static TestMethod void assertControllerOP() {
     
         //create test client 
-        Client__c client = test_ut.createClient();        
+        Client__c client = test_ut.createClient(test_ut.getClient('Female', 11));         
         
         DS_DATA__c dataPage = [SELECT id FROM DS_DATA__c 
                                 WHERE Page__c = 'DS_SDQ_P_11_17'
@@ -357,4 +376,88 @@ private class TestClass_DS_SDQ_PSI_CDI_F  {
 
     }
 
+    /****
+    *@description method to test controllers associated with object
+    *PSI
+    ****/
+    static TestMethod void assertControllerPSI(){
+    
+        //create test client 
+        Client__c client = test_ut.createClient(test_ut.getClient('Male', 12));         
+        
+        // add a new follow-up visit
+        String section = test_ut.addNewFollowupVisit(client);
+        
+        DS_DATA__c dataPage = [SELECT id FROM DS_DATA__c 
+                                WHERE Page__c = 'DS_PSI'
+                                AND File_name__c = 'FOLLOWUP'
+                                AND Category__c = 'Assessment'];
+        
+        String dpID = String.valueOf(dataPage.id);                      
+        
+        Client_Summary__c summary = new Client_Summary__c(Client__c = client.id,
+                                                            SECTION__c = section,
+                                                            Page__c = dpID,
+                                                            FORM_TYPE__c = 'FollowUp',
+                                                            STATUS__c = 'Complete');
+        
+        insert summary;  
+        
+        // Get summaryId for Url
+        String summaryId = test_ut.getClientSummaryId(client.id, 'DS_PSI', section);
+        
+        //encoded parameters        
+        String cimi= ut.urlEncode('c='+client.id+'&summary='+summaryId);
+        ApexPages.currentPage().getParameters().put('cimi',cimi);   
+        
+        //init list of object
+        List<DS_SDQ_PSI_CDI_F__c> ObjList = new List<DS_SDQ_PSI_CDI_F__c>();  
+        
+        DS_SDQ_PSI_CDI_F__c obj = new DS_SDQ_PSI_CDI_F__c(client__c = client.id,
+                                                          FPSIPD__c = 13, FPSIPD_PTLE__c = 90, 
+                                                            FPSIPD2__c = 13, FPSIPD_PTLE2__c = 90,
+                                                          FPSIPCDI__c = 13, FPSIPCDI_PTLE__c = 90, 
+                                                            FPSIPCDI2__c = 13, FPSIPCDI_PTLE2__c = 90,
+                                                          FPSIDC__c = 13, FPSIDC_PTLE__c = 90, 
+                                                            FPSIDC2__c = 13, FPSIDC_PTLE2__c = 90,
+                                                          FPSITS__c = 38, FPSITS_PTLE__c = 90, 
+                                                            FPSITS2__c = 38, FPSITS_PTLE2__c = 90,
+                                                          FPSIDR__c = 9, FPSIDR_PTLE__c = 90, 
+                                                            FPSIDR2__c = 9, FPSIDR_PTLE2__c = 90,
+                                                          FDOAPSI__c = System.today(),
+                                                          SECTION__c = '1');  
+                                                            
+        //set form's status    
+        obj.STATUS_PSI__c = 'Complete';
+        
+        //insert object
+        insert obj;
+        
+        //add obj to obj list
+        ObjList.add(obj);
+                        
+        //init controller for pages
+        ApexPages.StandardController sc = new ApexPages.StandardController(obj);  
+        
+        //controllers
+        DS_PSI_Controller controller = new DS_PSI_Controller(sc);    
+        DS_PSI_Report_Controller RC = new DS_PSI_Report_Controller(sc);    
+
+        //save/cancel    
+        controller.save();
+        controller.cancel();
+        controller.saveview();
+        
+        RC.init();
+        RC.editRecord();
+        
+        //init variable alias to be tested 
+        Decimal FPSIPD = 13;
+        Decimal FPSIDC_PTLE2 = 90;
+        Date today = System.today();
+        // assert statements 
+        System.assertEquals(obj.FPSIPD__c, FPSIPD,'Incorrect Parental distress raw score.');
+        System.assertEquals(obj.FPSIDC_PTLE2__c, FPSIDC_PTLE2,'Incorrect Difficult Child T-score double entry.');
+        System.assertEquals(obj.FDOAPSI__c, today,'Date incorrect.');
+    }
 }

@@ -3,7 +3,7 @@
 *includes
 *Trigger 
 *Controllers:
-    *SDQ_P_04_10, SDQ_P_11_17, SDQ_S_11_17, SDQ_P_04_10_Report, SDQ_P_11_17_Report, SDQ_S_11_17_Report
+    *SDQ_P_04_10, SDQ_P_11_17, SDQ_S_11_17, SDQ_P_04_10_Report, SDQ_P_11_17_Report, SDQ_S_11_17_Report, PSI, PSI_Report
 *Bulkified testing
 *Asserted Variables
 *
@@ -13,6 +13,14 @@
 *@author Kelsey Willett
 *@date 11/18/2015
 *@modified date
+*
+*@date 1/27/2016
+*@modified date
+*Purpose: PSI coverage
+*
+*@date 2/8/16
+*@modified date
+*Purpose: PSI assert
 ****/
 
 @isTest (SeeAllData=false)
@@ -43,7 +51,7 @@ private class TestClass_DS_SDQ_PSI_CDI_B  {
     static TestMethod void bulkifyObj(){
     
         //init client
-        Client__c client = test_ut.createClient();
+        Client__c client = test_ut.createClientSummary();
         
         //init list of object
         List<DS_SDQ_PSI_CDI_B__c> bulkObj = new List<DS_SDQ_PSI_CDI_B__c>();
@@ -55,6 +63,17 @@ private class TestClass_DS_SDQ_PSI_CDI_B  {
                                                 BEMONULLS__c = 0, BBEHNULLS__c = 0, BHYPNULLS__c = 0, BOTCNULLS__c = 0, BKHBNULLS__c = 0,//null counts self
                                                 BDOASDYP__c = System.today(), BDOASDOP__c = System.today(), BDOASDOS__c = System.today(),
                                                 BMETSDYP__c = '1', BMETSDOP__c = '1', BMETSDOS__c = '1',
+                                                          BPSIPD__c = 13, BPSIPD_PTLE__c = 81, 
+                                                            BPSIPD2__c = 13, BPSIPD_PTLE2__c = 81,
+                                                          BPSIPCDI__c = 13, BPSIPCDI_PTLE__c = 81, 
+                                                            BPSIPCDI2__c = 13, BPSIPCDI_PTLE2__c = 81,
+                                                          BPSIDC__c = 13, BPSIDC_PTLE__c = 81, 
+                                                            BPSIDC2__c = 13, BPSIDC_PTLE2__c = 81,
+                                                          BPSITS__c = 38, BPSITS_PTLE__c = 81, 
+                                                            BPSITS2__c = 38, BPSITS_PTLE2__c = 81,
+                                                          BPSIDR__c = 9, BPSIDR_PTLE__c = 81, 
+                                                            BPSIDR2__c = 9, BPSIDR_PTLE2__c = 81,
+                                                          BDOAPSI__c = System.today(),
                                                 SECTION__c = '0'));      
         }
         
@@ -69,7 +88,7 @@ private class TestClass_DS_SDQ_PSI_CDI_B  {
     static TestMethod void assertControllerYP() {    
     
         //create test client 
-        Client__c client = test_ut.createClient();        
+        Client__c client = test_ut.createClient(test_ut.getClient('Male', 6));  
         
         DS_DATA__c dataPage = [SELECT id FROM DS_DATA__c 
                                 WHERE Page__c = 'DS_SDQ_P_04_10'
@@ -367,4 +386,85 @@ private class TestClass_DS_SDQ_PSI_CDI_B  {
         System.assertEquals(obj.BSDSATTE__c,BSDSATTE,'I certainally do not have a good attention span. ');
     }
     
+    /****
+    *@description method to test controllers associated with object
+    *PSI
+    ****/
+    static TestMethod void assertControllerPSI(){
+    
+        //create test client 
+        Client__c client = test_ut.createClient();       
+        
+        DS_DATA__c dataPage = [SELECT id FROM DS_DATA__c 
+                                WHERE Page__c = 'DS_PSI'
+                                AND File_name__c = 'BASELINE'
+                                AND Category__c = 'Assessment'];
+        
+        String dpID = String.valueOf(dataPage.id);                      
+        
+        Client_Summary__c summary = new Client_Summary__c(Client__c = client.id,
+                                                            SECTION__c = '0',
+                                                            Page__c = dpID,
+                                                            FORM_TYPE__c = 'Baseline',
+                                                            STATUS__c = 'Complete');
+        
+        insert summary;  
+        
+        // Get summaryId for Url
+        String summaryId = test_ut.getClientSummaryId(client.id, 'DS_PSI', '0');
+        
+        //encoded parameters        
+        String cimi= ut.urlEncode('c='+client.id+'&summary='+summaryId);
+        ApexPages.currentPage().getParameters().put('cimi',cimi);   
+        
+        //init list of object
+        List<DS_SDQ_PSI_CDI_B__c> ObjList = new List<DS_SDQ_PSI_CDI_B__c>();  
+        
+        DS_SDQ_PSI_CDI_B__c obj = new DS_SDQ_PSI_CDI_B__c(client__c = client.id,
+                                                          BPSIPD__c = 13, BPSIPD_PTLE__c = 50, 
+                                                            BPSIPD2__c = 13, BPSIPD_PTLE2__c = 50,
+                                                          BPSIPCDI__c = 13, BPSIPCDI_PTLE__c = 50, 
+                                                            BPSIPCDI2__c = 13, BPSIPCDI_PTLE2__c = 50,
+                                                          BPSIDC__c = 13, BPSIDC_PTLE__c = 50, 
+                                                            BPSIDC2__c = 13, BPSIDC_PTLE2__c = 50,
+                                                          BPSITS__c = 38, BPSITS_PTLE__c = 50, 
+                                                            BPSITS2__c = 38, BPSITS_PTLE2__c = 50,
+                                                          BPSIDR__c = 9, BPSIDR_PTLE__c = 50, 
+                                                            BPSIDR2__c = 9, BPSIDR_PTLE2__c = 50,
+                                                          BDOAPSI__c = System.today(),
+                                                          SECTION__c = '0');  
+                                                            
+        //set form's status    
+        obj.STATUS_PSI__c = 'Complete';
+        
+        //insert object
+        insert obj;
+        
+        //add obj to obj list
+        ObjList.add(obj);
+                        
+        //init controller for pages
+        ApexPages.StandardController sc = new ApexPages.StandardController(obj);  
+        
+        //controllers
+        DS_PSI_Controller controller = new DS_PSI_Controller(sc);    
+        DS_PSI_Report_Controller RC = new DS_PSI_Report_Controller(sc);    
+
+        //save/cancel    
+        controller.save();
+        controller.cancel();
+        controller.saveview();
+        
+        RC.init();
+        RC.editRecord();
+        
+        //init variable alias to be tested 
+        Decimal BPSIPD = 13;
+        Decimal BPSIDC_PTLE2 = 50;
+        String section = '0';
+        // assert statements 
+        System.assertEquals(obj.BPSIPD__c, BPSIPD,'Incorrect Parental distress raw score.');
+        System.assertEquals(obj.BPSIDC_PTLE2__c, BPSIDC_PTLE2,'Incorrect Difficult Child T-score double entry.');
+        System.assertEquals(obj.SECTION__c, section,'Section incorrect: baseline.');
+    }
 }
