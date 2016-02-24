@@ -12,10 +12,10 @@ trigger DS_CBCL_B_Trigger on DS_CBCL_B__c (before insert, before update, after i
         DS_CBCL_Scoring score = new DS_CBCL_Scoring();
         
         for(DS_CBCL_B__c cbcl : Trigger.new) { clientIDs.add(cbcl.Client__c); }
-        
+                
         Map<Id, Client__c> clients = 
             new Map<Id, Client__c>([SELECT id, Gender__c, AGE__c, 
-                                    DOB1__c, CURRENT_AGE__c
+                                    	   DOB1__c, CURRENT_AGE__c
                                     FROM Client__c
                                     WHERE id IN : clientIDs]);
         
