@@ -946,7 +946,7 @@ Raw: 0-27</description>
 35-111</description>
         <externalId>false</externalId>
         <label>FTSCDSTN2</label>
-        <precision>2</precision>
+        <precision>3</precision>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
@@ -960,7 +960,7 @@ Raw: 0-27</description>
 35-111</description>
         <externalId>false</externalId>
         <label>FTSCDSTN</label>
-        <precision>2</precision>
+        <precision>3</precision>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
@@ -1239,6 +1239,19 @@ Raw: 0-27</description>
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>FTSCUNTN__c</fullName>
+        <description>Briere: Underresponsive T Score- Num</description>
+        <externalId>false</externalId>
+        <label>FTSCUNTN</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>SECTION__c</fullName>
         <externalId>false</externalId>
         <label>SECTION</label>
@@ -1256,7 +1269,7 @@ Raw: 0-27</description>
         <picklist>
             <picklistValues>
                 <fullName>Incomplete</fullName>
-                <default>true</default>
+                <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>Complete</fullName>
@@ -1275,7 +1288,7 @@ Raw: 0-27</description>
         <picklist>
             <picklistValues>
                 <fullName>Incomplete</fullName>
-                <default>true</default>
+                <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>Complete</fullName>
@@ -1326,13 +1339,13 @@ Raw: 0-27</description>
         <fullName>TSCC_A_ANG_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT( 
-(FTSCAGG__c&gt;=0)&amp;&amp;
-(FTSCAGG__c&lt;=27)
-)
-&amp;&amp;
-NOT(
-ISNULL(FTSCAGG__c)
- )</errorConditionFormula>
+            (FTSCAGG__c&gt;=0)&amp;&amp;
+            (FTSCAGG__c&lt;=27)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCAGG__c)
+             )</errorConditionFormula>
         <errorDisplayField>FTSCAGG__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Anger is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1347,13 +1360,13 @@ ISNULL(FTSCAGG__c)
         <fullName>TSCC_A_ANG_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-( FTSCAGTN__c &gt;= 35) &amp;&amp;
-(FTSCAGTN__c &lt;= 111)
-)
-&amp;&amp;
-NOT(
-ISNULL(FTSCAGTN__c)
-)</errorConditionFormula>
+            ( FTSCAGTN__c &gt;= 35) &amp;&amp;
+            (FTSCAGTN__c &lt;= 111)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCAGTN__c)
+            )</errorConditionFormula>
         <errorDisplayField>FTSCAGTN__c</errorDisplayField>
         <errorMessage>The T-Score entered for Anger is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1368,13 +1381,13 @@ ISNULL(FTSCAGTN__c)
         <fullName>TSCC_A_ANX_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FTSCAXN__c&gt;=0)&amp;&amp;
-(FTSCAXN__c &lt;= 27)
-)
-&amp;&amp;
-NOT(
-ISNULL(FTSCAXN__c)
-)</errorConditionFormula>
+            (FTSCAXN__c&gt;=0)&amp;&amp;
+            (FTSCAXN__c &lt;= 27)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCAXN__c)
+            )</errorConditionFormula>
         <errorDisplayField>FTSCAXN__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Anxiety is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1389,13 +1402,13 @@ ISNULL(FTSCAXN__c)
         <fullName>TSCC_A_ANX_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FTSCAXTN__c&gt;=35)&amp;&amp;
-(FTSCAXTN__c &lt;= 111)
-)
-&amp;&amp;
-NOT(
-ISNULL(FTSCAXTN__c)
-)</errorConditionFormula>
+            (FTSCAXTN__c&gt;=35)&amp;&amp;
+            (FTSCAXTN__c &lt;= 111)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCAXTN__c)
+            )</errorConditionFormula>
         <errorDisplayField>FTSCAXTN__c</errorDisplayField>
         <errorMessage>The T-Score entered for Anxiety is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1410,13 +1423,13 @@ ISNULL(FTSCAXTN__c)
         <fullName>TSCC_A_DEP_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FTSCDPN__c&gt;=0)&amp;&amp;
-(FTSCDPN__c &lt;= 27)
-)
-&amp;&amp;
-NOT(
-ISNULL(FTSCDPN__c)
-)</errorConditionFormula>
+            (FTSCDPN__c&gt;=0)&amp;&amp;
+            (FTSCDPN__c &lt;= 27)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCDPN__c)
+            )</errorConditionFormula>
         <errorDisplayField>FTSCDPN__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Depression is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1431,13 +1444,13 @@ ISNULL(FTSCDPN__c)
         <fullName>TSCC_A_DEP_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FTSCDPTN__c&gt;=35)&amp;&amp;
-(FTSCDPTN__c &lt;= 111)
-)
-&amp;&amp;
-NOT(
-ISNULL(FTSCDPTN__c)
-)</errorConditionFormula>
+            (FTSCDPTN__c&gt;=35)&amp;&amp;
+            (FTSCDPTN__c &lt;= 111)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCDPTN__c)
+            )</errorConditionFormula>
         <errorDisplayField>FTSCDPTN__c</errorDisplayField>
         <errorMessage>The T-Score entered for Depression is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1452,13 +1465,13 @@ ISNULL(FTSCDPTN__c)
         <fullName>TSCC_A_DIS_F_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FTSCFNN__c&gt;=0)&amp;&amp;
-(FTSCFNN__c &lt;= 9)
-)
-&amp;&amp;
-NOT(
-ISNULL(FTSCFNN__c)
-)</errorConditionFormula>
+            (FTSCFNN__c&gt;=0)&amp;&amp;
+            (FTSCFNN__c &lt;= 9)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCFNN__c)
+            )</errorConditionFormula>
         <errorDisplayField>FTSCFNN__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Fantasy is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1473,13 +1486,13 @@ ISNULL(FTSCFNN__c)
         <fullName>TSCC_A_DIS_F_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FTSCFNTN__c&gt;=35)&amp;&amp;
-(FTSCFNTN__c &lt;= 111)
-)
-&amp;&amp;
-NOT(
-ISNULL(FTSCFNTN__c)
-)</errorConditionFormula>
+            (FTSCFNTN__c&gt;=35)&amp;&amp;
+            (FTSCFNTN__c &lt;= 111)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCFNTN__c)
+            )</errorConditionFormula>
         <errorDisplayField>FTSCFNTN__c</errorDisplayField>
         <errorMessage>The T-Score entered for Fantasy is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1494,13 +1507,13 @@ ISNULL(FTSCFNTN__c)
         <fullName>TSCC_A_DIS_O_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FTSCODN__c&gt;=0)&amp;&amp;
-(FTSCODN__c &lt;= 21)
-)
-&amp;&amp;
-NOT(
-ISNULL(FTSCODN__c)
-)</errorConditionFormula>
+            (FTSCODN__c&gt;=0)&amp;&amp;
+            (FTSCODN__c &lt;= 21)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCODN__c)
+            )</errorConditionFormula>
         <errorDisplayField>FTSCODN__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Overt Dissociation is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1515,13 +1528,13 @@ ISNULL(FTSCODN__c)
         <fullName>TSCC_A_DIS_O_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FTSCODTN__c&gt;=35)&amp;&amp;
-(FTSCODTN__c &lt;= 111)
-)
-&amp;&amp;
-NOT(
-ISNULL(FTSCODTN__c)
-)</errorConditionFormula>
+            (FTSCODTN__c&gt;=35)&amp;&amp;
+            (FTSCODTN__c &lt;= 111)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCODTN__c)
+            )</errorConditionFormula>
         <errorDisplayField>FTSCODTN__c</errorDisplayField>
         <errorMessage>The T-Score entered for Overt Dissociation is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1536,13 +1549,13 @@ ISNULL(FTSCODTN__c)
         <fullName>TSCC_A_DIS_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FTSCDSN__c&gt;=0)&amp;&amp;
-(FTSCDSN__c &lt;= 30)
-)
-&amp;&amp;
-NOT(
-ISNULL(FTSCDSN__c)
-)</errorConditionFormula>
+            (FTSCDSN__c&gt;=0)&amp;&amp;
+            (FTSCDSN__c &lt;= 30)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCDSN__c)
+            )</errorConditionFormula>
         <errorDisplayField>FTSCDSN__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Dissociation is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1557,13 +1570,13 @@ ISNULL(FTSCDSN__c)
         <fullName>TSCC_A_DIS_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FTSCDSTN__c&gt;=35)&amp;&amp;
-(FTSCDSTN__c &lt;= 111)
-)
-&amp;&amp;
-NOT(
-ISNULL(FTSCDSTN__c)
-)</errorConditionFormula>
+            (FTSCDSTN__c&gt;=35)&amp;&amp;
+            (FTSCDSTN__c &lt;= 111)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCDSTN__c)
+            )</errorConditionFormula>
         <errorDisplayField>FTSCDSTN__c</errorDisplayField>
         <errorMessage>The T-Score entered for Dissociation is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1578,13 +1591,13 @@ ISNULL(FTSCDSTN__c)
         <fullName>TSCC_A_HYP_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FTSCHYN__c&gt;=0)&amp;&amp;
-(FTSCHYN__c &lt;= 8)
-)
-&amp;&amp;
-NOT(
-ISNULL(FTSCHYN__c)
-)</errorConditionFormula>
+            (FTSCHYN__c&gt;=0)&amp;&amp;
+            (FTSCHYN__c &lt;= 8)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCHYN__c)
+            )</errorConditionFormula>
         <errorDisplayField>FTSCHYN__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Hyperresponsive is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1599,13 +1612,13 @@ ISNULL(FTSCHYN__c)
         <fullName>TSCC_A_HYP_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FTSCHYTN__c&gt;=35)&amp;&amp;
-(FTSCHYTN__c &lt;= 111)
-)
-&amp;&amp;
-NOT(
-ISNULL(FTSCHYTN__c)
-)</errorConditionFormula>
+            (FTSCHYTN__c&gt;=35)&amp;&amp;
+            (FTSCHYTN__c &lt;= 111)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCHYTN__c)
+            )</errorConditionFormula>
         <errorDisplayField>FTSCHYTN__c</errorDisplayField>
         <errorMessage>The T-Score entered for Hyperresponsive is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1620,13 +1633,13 @@ ISNULL(FTSCHYTN__c)
         <fullName>TSCC_A_PTS_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FTSCPTN__c&gt;=0)&amp;&amp;
-(FTSCPTN__c &lt;= 30)
-)
-&amp;&amp;
-NOT(
-ISNULL(FTSCPTN__c)
-)</errorConditionFormula>
+            (FTSCPTN__c&gt;=0)&amp;&amp;
+            (FTSCPTN__c &lt;= 30)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCPTN__c)
+            )</errorConditionFormula>
         <errorDisplayField>FTSCPTN__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Posttraumatic Stress is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1641,13 +1654,13 @@ ISNULL(FTSCPTN__c)
         <fullName>TSCC_A_PTS_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FTSCPTTN__c&gt;=35)&amp;&amp;
-(FTSCPTTN__c &lt;= 111)
-)
-&amp;&amp;
-NOT(
-ISNULL(FTSCPTTN__c)
-)</errorConditionFormula>
+            (FTSCPTTN__c&gt;=35)&amp;&amp;
+            (FTSCPTTN__c &lt;= 111)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCPTTN__c)
+            )</errorConditionFormula>
         <errorDisplayField>FTSCPTTN__c</errorDisplayField>
         <errorMessage>The T-Score entered for Posttraumatic Stress is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1662,13 +1675,13 @@ ISNULL(FTSCPTTN__c)
         <fullName>TSCC_A_UND_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FTSCUNN__c&gt;=0)&amp;&amp;
-(FTSCUNN__c &lt;= 10)
-)
-&amp;&amp;
-NOT(
-ISNULL(FTSCUNN__c)
-)</errorConditionFormula>
+            (FTSCUNN__c&gt;=0)&amp;&amp;
+            (FTSCUNN__c &lt;= 10)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCUNN__c)
+            )</errorConditionFormula>
         <errorDisplayField>FTSCUNN__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Underresponsive is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1683,15 +1696,36 @@ ISNULL(FTSCUNN__c)
         <fullName>TSCC_A_UND_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FTSCNTN__c&gt;=35)&amp;&amp;
-(FTSCNTN__c &lt;= 111)
-)
-&amp;&amp;
-NOT(
-ISNULL(FTSCNTN__c)
-)</errorConditionFormula>
+            (FTSCNTN__c&gt;=35)&amp;&amp;
+            (FTSCNTN__c &lt;= 111)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCNTN__c)
+            )</errorConditionFormula>
         <errorDisplayField>FTSCNTN__c</errorDisplayField>
         <errorMessage>The T-Score entered for Underresponsive is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_date_cannot_be_before_FDOV</fullName>
+        <active>true</active>
+        <errorConditionFormula>FDOV__c &gt; FDOATSCC__c</errorConditionFormula>
+        <errorDisplayField>FDOATSCC__c</errorDisplayField>
+        <errorMessage>Follow-Up TSCC-A date of administration cannot be before Follow-Up date of visit.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_date_cannot_be_before_birth</fullName>
+        <active>true</active>
+        <errorConditionFormula>Client__r.DOB1__c &gt;FDOATSCC__c</errorConditionFormula>
+        <errorDisplayField>FDOATSCC__c</errorDisplayField>
+        <errorMessage>Follow-Up date of administration cannot be before birth.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_date_cannot_be_future</fullName>
+        <active>true</active>
+        <errorConditionFormula>FDOATSCC__c &gt; TODAY()</errorConditionFormula>
+        <errorDisplayField>FDOATSCC__c</errorDisplayField>
+        <errorMessage>Enter a valid date.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>TSCYC_ANG_Raw_double_entry_mismatch</fullName>
@@ -1704,13 +1738,13 @@ ISNULL(FTSCNTN__c)
         <fullName>TSCYC_ANG_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FANG_R__c&gt;=9)&amp;&amp;
-(FANG_R__c &lt;= 36)
-)
-&amp;&amp;
-NOT(
-ISNULL(FANG_R__c)
-)</errorConditionFormula>
+            (FANG_R__c&gt;=9)&amp;&amp;
+            (FANG_R__c &lt;= 36)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FANG_R__c)
+            )</errorConditionFormula>
         <errorDisplayField>FANG_R__c</errorDisplayField>
         <errorMessage>The RawScore entered for Anger is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1725,13 +1759,13 @@ ISNULL(FANG_R__c)
         <fullName>TSCYC_ANG_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FANG_T__c&gt;=35)&amp;&amp;
-(FANG_T__c &lt;= 110)
-)
-&amp;&amp;
-NOT(
-ISNULL(FANG_T__c)
-)</errorConditionFormula>
+            (FANG_T__c&gt;=35)&amp;&amp;
+            (FANG_T__c &lt;= 110)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FANG_T__c)
+            )</errorConditionFormula>
         <errorDisplayField>FANG_T__c</errorDisplayField>
         <errorMessage>The T-Score entered for Anger is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1746,13 +1780,13 @@ ISNULL(FANG_T__c)
         <fullName>TSCYC_ANX_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FANX_R__c&gt;=9)&amp;&amp;
-(FANX_R__c &lt;= 36)
-)
-&amp;&amp;
-NOT(
-ISNULL(FANX_R__c)
-)</errorConditionFormula>
+            (FANX_R__c&gt;=9)&amp;&amp;
+            (FANX_R__c &lt;= 36)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FANX_R__c)
+            )</errorConditionFormula>
         <errorDisplayField>FANX_R__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Anxiety is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1767,13 +1801,13 @@ ISNULL(FANX_R__c)
         <fullName>TSCYC_ANX_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FANX_T__c&gt;=35)&amp;&amp;
-(FANX_T__c &lt;= 110)
-)
-&amp;&amp;
-NOT(
-ISNULL(FANX_T__c)
-)</errorConditionFormula>
+            (FANX_T__c&gt;=35)&amp;&amp;
+            (FANX_T__c &lt;= 110)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FANX_T__c)
+            )</errorConditionFormula>
         <errorDisplayField>FANX_T__c</errorDisplayField>
         <errorMessage>The T-Score entered for Anxiety is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1788,13 +1822,13 @@ ISNULL(FANX_T__c)
         <fullName>TSCYC_ATR_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FATR_R__c&gt;=9)&amp;&amp;
-(FATR_R__c &lt;= 36)
-)
-&amp;&amp;
-NOT(
-ISNULL(FATR_R__c)
-)</errorConditionFormula>
+            (FATR_R__c&gt;=9)&amp;&amp;
+            (FATR_R__c &lt;= 36)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FATR_R__c)
+            )</errorConditionFormula>
         <errorDisplayField>FATR_R__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Atypical Response is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1809,13 +1843,13 @@ ISNULL(FATR_R__c)
         <fullName>TSCYC_ATR_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FATR_T__c&gt;=35)&amp;&amp;
-(FATR_T__c &lt;= 110)
-)
-&amp;&amp;
-NOT(
-ISNULL(FATR_T__c)
-)</errorConditionFormula>
+            (FATR_T__c&gt;=35)&amp;&amp;
+            (FATR_T__c &lt;= 110)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FATR_T__c)
+            )</errorConditionFormula>
         <errorDisplayField>FATR_T__c</errorDisplayField>
         <errorMessage>The T-Score entered for Atypical Response is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1830,13 +1864,13 @@ ISNULL(FATR_T__c)
         <fullName>TSCYC_DEP_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FDEP_R__c&gt;=9)&amp;&amp;
-(FDEP_R__c &lt;= 36)
-)
-&amp;&amp;
-NOT(
-ISNULL(FDEP_R__c)
-)</errorConditionFormula>
+            (FDEP_R__c&gt;=9)&amp;&amp;
+            (FDEP_R__c &lt;= 36)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FDEP_R__c)
+            )</errorConditionFormula>
         <errorDisplayField>FDEP_R__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Depression is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1851,13 +1885,13 @@ ISNULL(FDEP_R__c)
         <fullName>TSCYC_DEP_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FDEP_T__c&gt;=35)&amp;&amp;
-(FDEP_T__c &lt;= 110)
-)
-&amp;&amp;
-NOT(
-ISNULL(FDEP_T__c)
-)</errorConditionFormula>
+            (FDEP_T__c&gt;=35)&amp;&amp;
+            (FDEP_T__c &lt;= 110)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FDEP_T__c)
+            )</errorConditionFormula>
         <errorDisplayField>FDEP_T__c</errorDisplayField>
         <errorMessage>The T-Score entered for Depression is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1872,13 +1906,13 @@ ISNULL(FDEP_T__c)
         <fullName>TSCYC_DIS_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FDIS_R__c&gt;=9)&amp;&amp;
-(FDIS_R__c &lt;= 36)
-)
-&amp;&amp;
-NOT(
-ISNULL(FDIS_R__c)
-)</errorConditionFormula>
+            (FDIS_R__c&gt;=9)&amp;&amp;
+            (FDIS_R__c &lt;= 36)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FDIS_R__c)
+            )</errorConditionFormula>
         <errorDisplayField>FDIS_R__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Dissociation is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1893,13 +1927,13 @@ ISNULL(FDIS_R__c)
         <fullName>TSCYC_DIS_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FDIS_T__c&gt;=35)&amp;&amp;
-(FDIS_T__c &lt;= 110)
-)
-&amp;&amp;
-NOT(
-ISNULL(FDIS_T__c)
-)</errorConditionFormula>
+            (FDIS_T__c&gt;=35)&amp;&amp;
+            (FDIS_T__c &lt;= 110)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FDIS_T__c)
+            )</errorConditionFormula>
         <errorDisplayField>FDIS_T__c</errorDisplayField>
         <errorMessage>The T-Score entered for Dissociation is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1914,13 +1948,13 @@ ISNULL(FDIS_T__c)
         <fullName>TSCYC_PTS_AR_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FPTSAR_R__c&gt;=9)&amp;&amp;
-(FPTSAR_R__c &lt;= 36)
-)
-&amp;&amp;
-NOT(
-ISNULL(FPTSAR_R__c)
-)</errorConditionFormula>
+            (FPTSAR_R__c&gt;=9)&amp;&amp;
+            (FPTSAR_R__c &lt;= 36)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FPTSAR_R__c)
+            )</errorConditionFormula>
         <errorDisplayField>FPTSAR_R__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Posttraumatic Stress-Arousal is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1935,13 +1969,13 @@ ISNULL(FPTSAR_R__c)
         <fullName>TSCYC_PTS_AR_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FPTSAR_T__c&gt;=35)&amp;&amp;
-(FPTSAR_T__c &lt;= 110)
-)
-&amp;&amp;
-NOT(
-ISNULL(FPTSAR_T__c)
-)</errorConditionFormula>
+            (FPTSAR_T__c&gt;=35)&amp;&amp;
+            (FPTSAR_T__c &lt;= 110)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FPTSAR_T__c)
+            )</errorConditionFormula>
         <errorDisplayField>FPTSAR_T__c</errorDisplayField>
         <errorMessage>The T-Score entered for Posttraumatic Stress-Arousal is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1956,13 +1990,13 @@ ISNULL(FPTSAR_T__c)
         <fullName>TSCYC_PTS_AV_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FPTSAV_R__c&gt;=9)&amp;&amp;
-(FPTSAV_R__c &lt;= 36)
-)
-&amp;&amp;
-NOT(
-ISNULL(FPTSAV_R__c)
-)</errorConditionFormula>
+            (FPTSAV_R__c&gt;=9)&amp;&amp;
+            (FPTSAV_R__c &lt;= 36)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FPTSAV_R__c)
+            )</errorConditionFormula>
         <errorDisplayField>FPTSAV_R__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Posttraumatic Stress-Avoidance is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1977,13 +2011,13 @@ ISNULL(FPTSAV_R__c)
         <fullName>TSCYC_PTS_AV_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FPTSAV_T__c&gt;=35)&amp;&amp;
-(FPTSAV_T__c &lt;= 110)
-)
-&amp;&amp;
-NOT(
-ISNULL(FPTSAV_T__c)
-)</errorConditionFormula>
+            (FPTSAV_T__c&gt;=35)&amp;&amp;
+            (FPTSAV_T__c &lt;= 110)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FPTSAV_T__c)
+            )</errorConditionFormula>
         <errorDisplayField>FPTSAV_T__c</errorDisplayField>
         <errorMessage>The T-Score entered for Posttraumatic Stress-Avoidance is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1998,13 +2032,13 @@ ISNULL(FPTSAV_T__c)
         <fullName>TSCYC_PTS_I_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FPTSI_R__c&gt;=9)&amp;&amp;
-(FPTSI_R__c &lt;= 36)
-)
-&amp;&amp;
-NOT(
-ISNULL(FPTSI_R__c)
-)</errorConditionFormula>
+            (FPTSI_R__c&gt;=9)&amp;&amp;
+            (FPTSI_R__c &lt;= 36)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FPTSI_R__c)
+            )</errorConditionFormula>
         <errorDisplayField>FPTSI_R__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Posttraumatic Stress-Intrusion is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -2019,13 +2053,13 @@ ISNULL(FPTSI_R__c)
         <fullName>TSCYC_PTS_I_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FPTSI_T__c&gt;=35)&amp;&amp;
-(FPTSI_T__c &lt;= 110)
-)
-&amp;&amp;
-NOT(
-ISNULL(FPTSI_T__c)
-)</errorConditionFormula>
+            (FPTSI_T__c&gt;=35)&amp;&amp;
+            (FPTSI_T__c &lt;= 110)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FPTSI_T__c)
+            )</errorConditionFormula>
         <errorDisplayField>FPTSI_T__c</errorDisplayField>
         <errorMessage>The T-Score entered for Posttraumatic Stress-Intrusion is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -2040,13 +2074,13 @@ ISNULL(FPTSI_T__c)
         <fullName>TSCYC_PTS_TOT_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FPTSTOT_R__c&gt;=27)&amp;&amp;
-(FPTSTOT_R__c &lt;= 108)
-)
-&amp;&amp;
-NOT(
-ISNULL(FPTSTOT_R__c)
-)</errorConditionFormula>
+            (FPTSTOT_R__c&gt;=27)&amp;&amp;
+            (FPTSTOT_R__c &lt;= 108)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FPTSTOT_R__c)
+            )</errorConditionFormula>
         <errorDisplayField>FPTSTOT_R__c</errorDisplayField>
         <errorMessage>The  Raw Score entered for Posttraumatic Stress-Total is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -2061,13 +2095,13 @@ ISNULL(FPTSTOT_R__c)
         <fullName>TSCYC_PTS_TOT_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FPTSTOT_T__c &gt;= 35) &amp;&amp;
-(FPTSTOT_T__c &lt;= 110)
-)
-&amp;&amp; 
-NOT(
- ISNULL(FPTSTOT_T__c) 
-)</errorConditionFormula>
+            (FPTSTOT_T__c &gt;= 35) &amp;&amp;
+            (FPTSTOT_T__c &lt;= 110)
+            )
+            &amp;&amp; 
+            NOT(
+             ISNULL(FPTSTOT_T__c) 
+            )</errorConditionFormula>
         <errorDisplayField>FPTSTOT_T__c</errorDisplayField>
         <errorMessage>The T-Score entered for Posttraumatic Stress-Total is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -2082,13 +2116,13 @@ NOT(
         <fullName>TSCYC_RL_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FRL_R__c&gt;=0)&amp;&amp;
-(FRL_R__c &lt;= 9)
-)
-&amp;&amp;
-NOT(
-ISNULL(FRL_R__c)
-)</errorConditionFormula>
+            (FRL_R__c&gt;=0)&amp;&amp;
+            (FRL_R__c &lt;= 9)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FRL_R__c)
+            )</errorConditionFormula>
         <errorDisplayField>FRL_R__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Response Level is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -2103,13 +2137,13 @@ ISNULL(FRL_R__c)
         <fullName>TSCYC_RL_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FRL_T__c&gt;=35)&amp;&amp;
-(FRL_T__c &lt;= 110)
-)
-&amp;&amp;
-NOT(
-ISNULL(FRL_T__c)
-)</errorConditionFormula>
+            (FRL_T__c&gt;=35)&amp;&amp;
+            (FRL_T__c &lt;= 110)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FRL_T__c)
+            )</errorConditionFormula>
         <errorDisplayField>FRL_T__c</errorDisplayField>
         <errorMessage>The T-Score entered for Response Level is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -2124,13 +2158,13 @@ ISNULL(FRL_T__c)
         <fullName>TSCYC_SC_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FSC_R__c&gt;=9)&amp;&amp;
-(FSC_R__c &lt;= 36)
-)
-&amp;&amp;
-NOT(
-ISNULL(FSC_R__c)
-)</errorConditionFormula>
+            (FSC_R__c&gt;=9)&amp;&amp;
+            (FSC_R__c &lt;= 36)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FSC_R__c)
+            )</errorConditionFormula>
         <errorDisplayField>FSC_R__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Sexual Concerns is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -2145,14 +2179,35 @@ ISNULL(FSC_R__c)
         <fullName>TSCYC_SC_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(FSC_T__c&gt;=35)&amp;&amp;
-(FSC_T__c &lt;= 110)
-)
-&amp;&amp;
-NOT(
-ISNULL(FSC_T__c)
-)</errorConditionFormula>
+            (FSC_T__c&gt;=35)&amp;&amp;
+            (FSC_T__c &lt;= 110)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FSC_T__c)
+            )</errorConditionFormula>
         <errorDisplayField>FSC_T__c</errorDisplayField>
         <errorMessage>The T-Score entered for Sexual Concerns is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_date_cannot_be_before_FDOV</fullName>
+        <active>true</active>
+        <errorConditionFormula>FDOV__c &gt; FDOATSCYC__c</errorConditionFormula>
+        <errorDisplayField>FDOATSCYC__c</errorDisplayField>
+        <errorMessage>Follow-Up TSCYC date of administration cannot be before Follow-Up date of visit.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_date_cannot_be_before_birth</fullName>
+        <active>true</active>
+        <errorConditionFormula>Client__r.DOB1__c &gt;FDOATSCYC__c</errorConditionFormula>
+        <errorDisplayField>FDOATSCYC__c</errorDisplayField>
+        <errorMessage>Follow-Up date of administration cannot be before birth.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_date_cannot_be_future</fullName>
+        <active>true</active>
+        <errorConditionFormula>FDOATSCYC__c &gt; TODAY()</errorConditionFormula>
+        <errorDisplayField>FDOATSCYC__c</errorDisplayField>
+        <errorMessage>Enter a valid date.</errorMessage>
     </validationRules>
 </CustomObject>
