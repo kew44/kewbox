@@ -375,6 +375,228 @@ private class TestClass_DS_SDQ_PSI_CDI_F  {
         System.assertEquals(obj.FSDSATTE__c,FSDSATTE,'I certainally do not have a good attention span. ');
 
     }
+    
+    /****
+    *@description method to test a case for SDQ Parent 4 to 10
+    * 
+    ****/
+    static TestMethod void TestScoringSDQParent4_10() {
+        
+        Client__c client = test_ut.createClient(test_ut.getClient('Female', 8));
+        
+        DS_SDQ_PSI_CDI_F__c obj = new DS_SDQ_PSI_CDI_F__c(client__c = client.id);
+        
+        obj.FFORM__c = 'SDQ_P_04_10';
+        obj.STATUS_SDQ_P_04_10__c = 'Complete';
+       
+        obj.FSDPCONS__c = '1';  // 1
+        obj.FSDPREST__c = '0';  // 2
+        obj.FSDPSOMA__c = '0';  // 3
+        obj.FSDPSHAR__c = '1';  // 4
+        obj.FSDPTANT__c = '2';  // 5
+        obj.FSDPLONE__c = '1';  // 6
+        obj.FSDPOBEY__c = '2';  // 7
+        obj.FSDPWORR__c = '0';  // 8
+        obj.FSDPCARI__c = '1';  // 9
+        obj.FSDPFIDG__c = '0';  // 10
+        obj.FSDPFRIE__c = '1';  // 11
+        obj.FSDPFIGH__c = '2';  // 12
+        obj.FSDPUNHA__c = '2';  // 13
+        obj.FSDPPOPU__c = '1';  // 14
+        obj.FSDPDIST__c = '0';  // 15
+        obj.FSDPCLIN__c = '1';  // 16
+        obj.FSDPKIND__c = '0';  // 17
+        obj.FSDPLIES__c = '2';  // 18
+        obj.FSDPBULL__c = '0';  // 19
+        obj.FSDPHELP__c = '1';  // 20
+        obj.FSDPREFL__c = '1';  // 21
+        obj.FSDPSTEA__c = '2';  // 22
+        obj.FSDPOLDB__c = '0';  // 23
+        obj.FSDPAFRA__c = '0';  // 24
+        obj.FSDPATTE__c = '1';  // 25
+        
+        // How long have these difficulties been present?
+        obj.FSDPEBCD__c = '2';
+        
+        // Do the difficulties upset or distress your child?
+        obj.FSDPUPSET__c = '1';
+        
+        // Do the difficulties interfere with your child's everyday life in the following areas?
+        obj.FSDPIMPH__c = '2';
+        obj.FSDPIMPF__c = '3';
+        obj.FSDPIMPC__c = '2';
+        obj.FSDPIMPL__c = '0';
+        
+        // Do the difficulties put a burden on you or the family as a whole?
+        obj.FSDPFAM__c = '3';
+        
+        test.startTest();
+        insert obj;
+        test.stopTest();
+        
+        DS_SDQ_PSI_CDI_F__c sdq = [SELECT FSDPTOT__c, FSDPEMO__c, FSDPBEH__c, FSDPHYP__c,
+                                          FSDPOTC__c, FSDPKHB__c, FSDPDCL__c
+                                     FROM DS_SDQ_PSI_CDI_F__c
+                                    WHERE id =: obj.id];
+        
+        System.assertEquals(18, sdq.FSDPTOT__c, 'SDQ Parent 4-10 Total Difficulties is wrong.');
+        System.assertEquals(3, sdq.FSDPEMO__c, 'SDQ Parent 4-10 Emotional Problems is wrong.');
+        System.assertEquals(10, sdq.FSDPBEH__c, 'SDQ Parent 4-10 Behavioral Difficulties is wrong.');
+        System.assertEquals(2, sdq.FSDPHYP__c, 'SDQ Parent 4-10 Hyperactivity is wrong.');
+        System.assertEquals(3, sdq.FSDPOTC__c, 'SDQ Parent 4-10 Peer Problems is wrong.');
+        System.assertEquals(4, sdq.FSDPKHB__c, 'SDQ Parent 4-10 Prosocial is wrong.');
+        System.assertEquals(4, sdq.FSDPDCL__c, 'SDQ Parent 4-10 Impact is wrong.');
+        
+        
+    }
+    
+    /****
+    *@description method to test a case for SDQ Parent 11 to 17
+    * 
+    ****/
+    static TestMethod void TestScoringSDQParent11_17() {
+        
+        Client__c client = test_ut.createClient(test_ut.getClient('Female', 12));
+        
+        DS_SDQ_PSI_CDI_F__c obj = new DS_SDQ_PSI_CDI_F__c(client__c = client.id);
+        
+        obj.FFORM__c = 'SDQ_P_11_17';
+        obj.STATUS_SDQ_P_11_17__c = 'Complete';
+        
+        obj.FSDPCONS__c = '2';  // 1
+        obj.FSDPREST__c = '1';  // 2
+        obj.FSDPSOMA__c = '1';  // 3
+        obj.FSDPSHAR__c = '2';  // 4
+        obj.FSDPTANT__c = '0';  // 5
+        obj.FSDPLONE__c = '2';  // 6
+        obj.FSDPOBEY__c = '0';  // 7
+        obj.FSDPWORR__c = '2';  // 8
+        obj.FSDPCARI__c = '2';  // 9
+        obj.FSDPFIDG__c = '0';  // 10
+        obj.FSDPFRIE__c = '1';  // 11
+        obj.FSDPFIGH__c = '0';  // 12
+        obj.FSDPUNHA__c = '2';  // 13
+        obj.FSDPPOPU__c = '1';  // 14
+        obj.FSDPDIST__c = '0';  // 15
+        obj.FSDPCLIN__c = '2';  // 16
+        obj.FSDPKIND__c = '2';  // 17
+        obj.FSDPLIES__c = '0';  // 18
+        obj.FSDPBULL__c = '2';  // 19
+        obj.FSDPHELP__c = '2';  // 20
+        obj.FSDPREFL__c = '0';  // 21
+        obj.FSDPSTEA__c = '0';  // 22
+        obj.FSDPOLDB__c = '2';  // 23
+        obj.FSDPAFRA__c = '2';  // 24
+        obj.FSDPATTE__c = '0';  // 25
+        
+        // How long have these difficulties been present?
+        obj.FSDPEBCD__c = '1';
+        
+        // Do the difficulties upset or distress your child?
+        obj.FSDPUPSET__c = '2';
+        
+        // Do the difficulties interfere with your child's everyday life in the following areas?
+        obj.FSDPIMPH__c = '0';
+        obj.FSDPIMPF__c = '1';
+        obj.FSDPIMPC__c = '2';
+        obj.FSDPIMPL__c = '0';
+        
+        // Do the difficulties put a burden on you or the family as a whole?
+        obj.FSDPFAM__c = '1';
+        
+        test.startTest();
+        insert obj;
+        test.stopTest();
+        
+        DS_SDQ_PSI_CDI_F__c sdq = [SELECT FSDPTOT__c, FSDPEMO__c, FSDPBEH__c, FSDPHYP__c,
+                                          FSDPOTC__c, FSDPKHB__c, FSDPDCL__c
+                                     FROM DS_SDQ_PSI_CDI_F__c
+                                    WHERE id =: obj.id];
+        
+        System.assertEquals(18, sdq.FSDPTOT__c, 'SDQ Parent 11-17 Total Difficulties is wrong.');
+        System.assertEquals(9, sdq.FSDPEMO__c, 'SDQ Parent 11-17 Emotional Problems is wrong.');
+        System.assertEquals(0, sdq.FSDPBEH__c, 'SDQ Parent 11-17 Behavioral Difficulties is wrong.');
+        System.assertEquals(1, sdq.FSDPHYP__c, 'SDQ Parent 11-17 Hyperactivity is wrong.');
+        System.assertEquals(8, sdq.FSDPOTC__c, 'SDQ Parent 11-17 Peer Problems is wrong.');
+        System.assertEquals(10, sdq.FSDPKHB__c, 'SDQ Parent 11-17 Prosocial is wrong.');
+        System.assertEquals(2, sdq.FSDPDCL__c, 'SDQ Parent 11-17 Impact is wrong.');
+        
+        
+    }
+    
+    /****
+    *@description method to test a case for SDQ self 11 to 17
+    * 
+    ****/
+    static TestMethod void TestScoringSDQSelf11_17() {
+        
+        Client__c client = test_ut.createClient(test_ut.getClient('Female', 15));
+        
+        DS_SDQ_PSI_CDI_F__c obj = new DS_SDQ_PSI_CDI_F__c(client__c = client.id);
+        
+        obj.FFORM__c = 'SDQ_S_11_17';
+        obj.STATUS_SDQ_S_11_17__c = 'Complete';
+        
+        obj.FSDSCONS__c = '1';  // 1
+        obj.FSDSREST__c = '2';  // 2
+        obj.FSDSSOMA__c = '2';  // 3
+        obj.FSDSSHAR__c = '1';  // 4
+        obj.FSDSTANT__c = '0';  // 5
+        obj.FSDSLONE__c = '0';  // 6
+        obj.FSDSOBEY__c = '1';  // 7
+        obj.FSDSWORR__c = '2';  // 8
+        obj.FSDSCARI__c = '1';  // 9
+        obj.FSDSFIDG__c = '2';  // 10
+        obj.FSDSFRIE__c = '1';  // 11
+        obj.FSDSFIGH__c = '0';  // 12
+        obj.FSDSUNHA__c = '0';  // 13
+        obj.FSDSPOPU__c = '1';  // 14
+        obj.FSDSDIST__c = '2';  // 15
+        obj.FSDSCLIN__c = '0';  // 16
+        obj.FSDSKIND__c = '1';  // 17
+        obj.FSDSLIES__c = '0';  // 18
+        obj.FSDSBULL__c = '0';  // 19
+        obj.FSDSHELP__c = '1';  // 20
+        obj.FSDSREFL__c = '2';  // 21
+        obj.FSDSSTEA__c = '0';  // 22
+        obj.FSDSOLDB__c = '0';  // 23
+        obj.FSDSAFRA__c = '2';  // 24
+        obj.FSDSATTE__c = '2';  // 25
+       
+        //  Overall, do you think that you have had difficulties in one or more of the following areas: emotions, concentration, behavior or being able to get on with other people?
+        obj.FSDSEBCD__c = '1';
+        
+        // Do the difficulties upset or distress you?
+        obj.FSDSUPSET__c = '2';
+        
+        // Do the difficulties interfere with your child's everyday life in the following areas?
+        obj.FSDSIMPH__c = '2';
+        obj.FSDSIMPF__c = '1';
+        obj.FSDSIMPC__c = '3';
+        obj.FSDSIMPL__c = '3';
+        
+        // Do the difficulties put a burden on you or the family as a whole?
+        obj.FSDSFAM__c = '1';
+        
+        test.startTest();
+        insert obj;
+        test.stopTest();
+        
+        DS_SDQ_PSI_CDI_F__c sdq = [SELECT FSDSTOT__c, FSDSEMO__c, FSDSBEH__c, FSDSHYP__c,
+                                          FSDSOTC__c, FSDSKHB__c, FSDSDCL__c
+                                     FROM DS_SDQ_PSI_CDI_F__c
+                                    WHERE id =: obj.id];
+        
+        System.assertEquals(19, sdq.FSDSTOT__c, 'SDQ Self 11-17 Total Difficulties is wrong.');
+        System.assertEquals(6, sdq.FSDSEMO__c, 'SDQ Self 11-17 Emotional Problems is wrong.');
+        System.assertEquals(1, sdq.FSDSBEH__c, 'SDQ Self 11-17 Behavioral Difficulties is wrong.');
+        System.assertEquals(10, sdq.FSDSHYP__c, 'SDQ Self 11-17 Hyperactivity is wrong.');
+        System.assertEquals(2, sdq.FSDSOTC__c, 'SDQ Self 11-17 Peer Problems is wrong.');
+        System.assertEquals(5, sdq.FSDSKHB__c, 'SDQ Self 11-17 Prosocial is wrong.');
+        System.assertEquals(6, sdq.FSDSDCL__c, 'SDQ Self 11-17 Impact is wrong.');
+        
+        
+    }
 
     /****
     *@description method to test controllers associated with object

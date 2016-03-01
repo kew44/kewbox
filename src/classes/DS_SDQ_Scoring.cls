@@ -190,7 +190,7 @@ public class DS_SDQ_Scoring {
         HYP  = REST+FIDG+DIST+REFL+ATTE;
         OTC  = LONE+FRIE+POPU+BULL+OLDB;
         KHB  = CONS+SHAR+CARI+KIND+HELP;
-        
+                
         //parse subscale alias onto object variable
         obj.put(BorF+'SD'+PorS+'EMO__c', EMO);
         obj.put(BorF+'SD'+PorS+'BEH__c', BEH);
@@ -198,19 +198,13 @@ public class DS_SDQ_Scoring {
         obj.put(BorF+'SD'+PorS+'OTC__c', OTC);
         obj.put(BorF+'SD'+PorS+'KHB__c', KHB);
         
-        System.debug(EMO);
-        System.debug(BEH);
-        System.debug(HYP);
-        System.debug(OTC);
-        System.debug(KHB);
-        
         if ((obj.get(BorF+'SD'+PorS+'TIME__c')) == null){HOWLONG =0; }
         else {HOWLONG  = Integer.valueOf(obj.get(BorF+'SD'+PorS+'TIME__c'));}
         
         //add subscale score alias for total score alias and parse onto object variable
         TOT = EMO+BEH+HYP+OTC;//+KHB;
         obj.put(BorF+'SD'+PorS+'TOT__c', TOT);
-        System.debug(TOT);
+        System.debug('TOT: '+TOT);
         
         //impact
         //Hand-scoring values are 0,0,1,2.
