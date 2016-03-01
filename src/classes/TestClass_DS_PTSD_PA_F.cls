@@ -1,19 +1,19 @@
-/****
-*@description This test provides code coverage for DS_PTSD_PA_F
-*includes
-*Trigger 
-*Controllers:
-    *PTSD_PA, PTSD_PA_Report
-*Bulkified testing
-*Asserted Variables
-*
-*@group Test Script 
-*@group-content /ApexDocContent/Test/DS_PTSD_PA_F.htm
-*
-*@author Danny Fu
-*@date 01/08/2016
-*@modified date
-****/
+/**
+ * @author Danny Fu
+ * @date 01/08/2016
+ * @modified date
+ * 
+ * @group Test Script 
+ * @group-content /ApexDocContent/Test/DS_PTSD_PA_F.htm
+ *
+ * @description This test provides code coverage for DS_PTSD_PA_F includes
+ *  Trigger 
+ *  Controllers:
+ *   PTSD_PA, PTSD_PA_Report
+ *   Bulkified testing
+ *   Asserted Variables
+ *
+**/
 
 @isTest (SeeAllData=false)
 private class TestClass_DS_PTSD_PA_F {
@@ -100,9 +100,7 @@ private class TestClass_DS_PTSD_PA_F {
             summary.STATUS__c = 'Complete';
         
         insert summary;      
-        
-        System.debug(summary);
-        
+                
         // Get summaryId for Url
         String summaryId = test_ut.getClientSummaryId(client.id, 'DS_PTSD_PA', section);
         
