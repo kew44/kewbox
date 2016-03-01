@@ -4,7 +4,7 @@
 * @modified date
 *
 * @group PTSD
-* @group-content /ApexDocContent/PTSD_children.htm
+* @group-content /ApexDocContent/PTSD/PTSD_children.htm
 *
 * @description An apex controller class for PTSD Reaction Index for Children/Adolescents.
 * 

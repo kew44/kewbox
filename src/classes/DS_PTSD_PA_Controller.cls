@@ -4,7 +4,7 @@
 * @modified date
 *
 * @group PTSD
-* @group-content /ApexDocContent/PTSD_parent.htm
+* @group-content /ApexDocContent/PTSD/PTSD_parent.htm
 *
 * @description An apex controller class for PTSD Reaction Index for Parent/Caregiver.
 * 

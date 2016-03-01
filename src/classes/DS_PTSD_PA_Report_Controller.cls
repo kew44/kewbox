@@ -4,7 +4,7 @@
 * @modified date
 *
 * @group PTSD
-* @group-content /ApexDocContent/PTSD_parent_report.htm
+* @group-content /ApexDocContent/PTSD/PTSD_parent_report.htm
 *
 * @description An apex controller class for PTSD Reaction Index for Parent/Caregivers Report.
 * 
@@ -87,10 +87,19 @@ public with sharing class DS_PTSD_PA_Report_Controller extends DS_BasicForm_Cont
         
     }
     
+    /****
+    * @description Initilization for print button 
+    * @return null
+    */
     public void init() {
         printReport = (Apexpages.currentPage().getParameters().get('print') == '1') ? true : false;
     }
     
+    /****
+    * @description Constructor, gather form information, assessment history. 
+    * @param controller ApexPages.StandardController
+    * @return null
+    */
     public DS_PTSD_PA_Report_Controller(ApexPages.StandardController controller) {
         
         // Initilize the DS_BasicForm_Controller
@@ -131,6 +140,10 @@ public with sharing class DS_PTSD_PA_Report_Controller extends DS_BasicForm_Cont
         
     }
     
+    /****
+    * @description Get the baseline and follow-up assessment history. 
+    * @return null
+    */
     public void getAssesmentHistory() {
         
         List<SObject> baseline = 
@@ -146,13 +159,18 @@ public with sharing class DS_PTSD_PA_Report_Controller extends DS_BasicForm_Cont
                            '  FROM DS_PTSD_CA_F__c' +                           
                            ' WHERE Client__c = \''+ form.cID + '\'' +
                            '   AND STATUS_PTSD_PA__c != null' +
-                           //'   AND FDOAPTSD__c <= ' + currentVisitDate.format('yyyy-MM-dd') +  
                            ' ORDER BY FDOAPTSDP__c, SECTION__c');
         
         if(followup.size() > 0) addVisit(followup, 'F');
         
     }
     
+    /****
+    * @description Add the visit data into the visits list. 
+    * @param ptsd list of the ptsd SObject
+    * @param BorF baseline of follow-up
+    * @return null
+    */
     public void addVisit(List<SObject> ptsd, String BorF) {
         
         for(Sobject p : ptsd) {
@@ -222,6 +240,10 @@ public with sharing class DS_PTSD_PA_Report_Controller extends DS_BasicForm_Cont
         
     }
     
+    /****
+    * @description Redirect for the edit button 
+    * @return PageReference
+    */
     public PageReference editRecord() {
         
         PageReference ptsdPage = new PageReference('/apex/DS_PTSD_PA?cimi=' + Apexpages.currentPage().getParameters().get('cimi'));
