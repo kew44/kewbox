@@ -1,3 +1,9 @@
+/****
+*@description Tests Role functionality
+*
+*@group Test Script 
+*@group-content /ApexDocContent/Test/Role.htm
+****/
 @isTest (SeeAllData=false)
 private class TestClass_Role {
 

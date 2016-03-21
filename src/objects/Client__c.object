@@ -46,7 +46,6 @@
     <enableReports>true</enableReports>
     <fields>
         <fullName>AGE__c</fullName>
-        <description>Client&apos;s age as entered in the System Screening</description>
         <externalId>false</externalId>
         <label>Age</label>
         <precision>2</precision>
@@ -276,7 +275,7 @@
     <pluralLabel>Clients</pluralLabel>
     <searchLayouts>
         <customTabListAdditionalFields>INIT__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>AGE__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CURRENT_AGE__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>CREATEDBY_USER.ALIAS</customTabListAdditionalFields>
         <searchResultsAdditionalFields>INIT__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>DOB1__c</searchResultsAdditionalFields>
@@ -292,7 +291,7 @@
     </validationRules>
     <validationRules>
         <fullName>Age_validation</fullName>
-        <active>false</active>
+        <active>true</active>
         <errorConditionFormula>AGE__c !=  FLOOR((TODAY() - DOB1__c)/365.2425)</errorConditionFormula>
         <errorDisplayField>AGE__c</errorDisplayField>
         <errorMessage>Age is wrong</errorMessage>

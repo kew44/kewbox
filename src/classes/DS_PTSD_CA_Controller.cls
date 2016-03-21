@@ -38,6 +38,7 @@ public with sharing class DS_PTSD_CA_Controller extends DS_BasicForm_Controller 
             Database.query('SELECT ' + form.ut.getFields('DS_DATA__c') +   
                            '  FROM DS_DATA__c ' +
                            ' WHERE Data_Type__c = \'DS_PTSD_Form_Info\'' +
+                           '   AND Type__c = \'Children / Adolescents\'' +
                            ' ORDER BY Number__c');
         
         items = new List<Item>();

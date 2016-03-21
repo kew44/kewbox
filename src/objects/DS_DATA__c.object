@@ -47,7 +47,15 @@
                 <default>false</default>
             </picklistValues>
             <picklistValues>
+                <fullName>0_12</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
                 <fullName>1.5_5</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3_12</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
@@ -68,6 +76,10 @@
             </picklistValues>
             <picklistValues>
                 <fullName>7_18</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>8_16</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
@@ -248,6 +260,10 @@
                 <default>false</default>
             </picklistValues>
             <picklistValues>
+                <fullName>DS_PSI</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
                 <fullName>DS_PTSD_CA_B</fullName>
                 <default>false</default>
             </picklistValues>
@@ -273,6 +289,14 @@
             </picklistValues>
             <picklistValues>
                 <fullName>DS_SERVREC</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DS_TSCC_A</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DS_TSCYC</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
@@ -540,6 +564,10 @@
                 <default>false</default>
             </picklistValues>
             <picklistValues>
+                <fullName>FAPGAR_SCORES</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
                 <fullName>FOLLOWUPINFO</fullName>
                 <default>false</default>
             </picklistValues>
@@ -560,7 +588,15 @@
                 <default>false</default>
             </picklistValues>
             <picklistValues>
+                <fullName>NCTSNTREAT</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
                 <fullName>NOMS</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PSI</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
@@ -696,11 +732,15 @@
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>YCINDSEV</fullName>
+                <fullName>TSCC_A</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>NCTSNTREAT</fullName>
+                <fullName>TSCYC</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>YCINDSEV</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -897,15 +937,6 @@
         <type>Number</type>
         <unique>false</unique>
     </fields>
-    <fields>
-        <fullName>sync__c</fullName>
-        <externalId>false</externalId>
-        <label>sync</label>
-        <length>5</length>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
     <label>DS DATA</label>
     <listViews>
         <fullName>AllBlank</fullName>
@@ -981,31 +1012,6 @@
         <language>en_US</language>
     </listViews>
     <listViews>
-        <fullName>DS_Variable</fullName>
-        <columns>NAME</columns>
-        <columns>Data_Type__c</columns>
-        <columns>CODELIST__c</columns>
-        <columns>FILE_NAME__c</columns>
-        <columns>SOURCE_FORM__c</columns>
-        <columns>Object__c</columns>
-        <columns>VARIABLE_NAME__c</columns>
-        <columns>Page__c</columns>
-        <columns>Question_Field__c</columns>
-        <columns>LONG_DESCRIPTION__c</columns>
-        <columns>Weight__c</columns>
-        <columns>VARIABLE_NUMBER__c</columns>
-        <columns>VARIABLE_LABEL__c</columns>
-        <columns>VARIABLE_TYPE__c</columns>
-        <columns>VARIABLE_VALUE__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Data_Type__c</field>
-            <operation>equals</operation>
-            <value>DS_Variable</value>
-        </filters>
-        <label>Variable</label>
-    </listViews>
-    <listViews>
         <fullName>Form_Info</fullName>
         <columns>NAME</columns>
         <columns>Category__c</columns>
@@ -1016,11 +1022,7 @@
         <columns>Form__c</columns>
         <columns>Object__c</columns>
         <columns>Weight__c</columns>
-        <columns>Age_Range__c</columns>
-        <columns>Content__c</columns>
-        <columns>Section__c</columns>
-        <columns>Note__c</columns>
-        <columns>Gender_Required__c</columns>
+        <columns>Data_Type__c</columns>
         <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <filters>
@@ -1256,5 +1258,5 @@
     </nameField>
     <pluralLabel>DS DATA</pluralLabel>
     <searchLayouts/>
-    <sharingModel>ReadWrite</sharingModel>
+    <sharingModel>Read</sharingModel>
 </CustomObject>

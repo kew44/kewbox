@@ -1,12 +1,9 @@
-/*Page Description:
- *  Controller Class for Clients
- * Last Updated on:
- *  7/17/2014
- * Update Purpose:
- *      
- * Programmer:
- *  
- */
+/****
+*@description Controller Class for Clients
+*
+*@group Client
+*@group-content /ApexDocContent/Client/ClientController.htm
+****/
 public with sharing class ClientController {
     
     String ID = Apexpages.currentPage().getParameters().get('id');

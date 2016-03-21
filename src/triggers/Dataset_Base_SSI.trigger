@@ -67,7 +67,7 @@ trigger Dataset_Base_SSI on Client__c (before insert, after insert, after delete
                 c.Center__c = cl.Center__c;                
                 updateCounter.put(counter.id, counter);                
                 }       
-    System.debug(cl);     
+                
             update updateCounter.values();            
         }
         else if (Trigger.isAfter){            
@@ -80,10 +80,10 @@ trigger Dataset_Base_SSI on Client__c (before insert, after insert, after delete
                     }                    
                 clientList.add(c.id);                    
                 }            
-            FormBuilder.baseline(clientList);            
+            FormBuilder.baseline(clientList);   
+            System.debug(clientList + ' base ssi' );         
         }        
-    }  
-    
+    }      
     if(Trigger.isUpdate) {        
         Set<String> clinicianList = new Set<String>();        
             for(Client__c c: Trigger.new) {

@@ -47,12 +47,14 @@ public with sharing class DS_BSLC_Controller extends DS_BasicForm_Controller {
         options.add(new SelectOption('1','Trauma-Focused Cognitive Behavior Therapy (TF-CBT) ')); 
         options.add(new SelectOption('2','Life Skills/Life Stories ')); 
         options.add(new SelectOption('3','Structured Psychotherapy for Adolescents Responding to Chronic Stress (SPARCS)    ')); 
-        options.add(new SelectOption('4','Trauma Adaptive Recovery Group Education and Therapy (TARGET)')); 
+        options.add(new SelectOption('4','Trauma Affect Regulation: Guidelines for Education and Therapy (TARGET)')); 
         options.add(new SelectOption('5','Trauma Systems Therapy (TST) ')); 
-        options.add(new SelectOption('6','Child Parent Psychotherapy (CPP) ')); 
+        options.add(new SelectOption('6','Child-Parent Psychotherapy (CPP) ')); 
         options.add(new SelectOption('7','Cognitive-Behavioral Intervention for Trauma in Schools (CBITS) ')); 
-        options.add(new SelectOption('8','Children with Problematic Sexual Behavior Cognitive-Behavioral Treatment Program: School-age (PSB-CBT) ')); 
+        options.add(new SelectOption('8','Children with Problematic Sexual Behavior Cognitive-Behavioral Treatment Program: School-age Program (PSB-CBT) ')); 
         options.add(new SelectOption('9','Parent-Child Interaction Therapy (PCIT) ')); 
+        options.add(new SelectOption('10','Attachment, Self-Regulation, and Competence (ARC): A Comprehensive Framework for Intervention with Complexly Traumatized Youth '));
+        options.add(new SelectOption('11','Alternatives for Families: A Cognitive Behavioral Therapy (AF-CBT) '));
         options.add(new SelectOption('98','Other')); 
         
         return options; 

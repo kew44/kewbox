@@ -11,11 +11,11 @@
         <apex:form id="DS_SERVREC_FORM" styleClass="form-horizontal">
             
             <!-- pageblock to show ClientInformation header as described in Utility class-->
-            <apex:outputText value="{!form.ClientInfo}" escape="false"/>
-    
+            <c:cimiClientInfo displayVisitType="true" formElement="{!form}"/>
+            <!--end header-->
             
             <!-- primary content pageBlock container-->
-            <apex:pageBlock title="{!form.title}" >
+            <apex:pageBlock title="{!HTMLENCODE(form.title)}" >
 
                 <!--save and cancel control buttons for pageBlock-->
                 <apex:pageBlockButtons >

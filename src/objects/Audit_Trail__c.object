@@ -83,6 +83,14 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>LABEL__c</fullName>
+        <externalId>false</externalId>
+        <label>Label</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>2</visibleLines>
+    </fields>
+    <fields>
         <fullName>NUMBER__c</fullName>
         <externalId>false</externalId>
         <label>Number</label>
@@ -161,6 +169,22 @@
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>VARIABLE__c</fullName>
+        <externalId>false</externalId>
+        <label>Variable</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>VISIT_DATE__c</fullName>
+        <externalId>false</externalId>
+        <label>Visit Date</label>
+        <required>false</required>
+        <type>Date</type>
     </fields>
     <fields>
         <fullName>Visit_Type__c</fullName>

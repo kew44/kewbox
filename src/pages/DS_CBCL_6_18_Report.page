@@ -224,9 +224,9 @@
                         
                         <div class="row">
                             
-                            <div id="chart-total-score" class="col-md-12 col-lg-4 history-chart"></div>
-                            <div id="chart-internalizing" class="col-md-12 col-lg-4 history-chart"></div>
-                            <div id="chart-externalizing" class="col-md-12 col-lg-4 history-chart"></div>
+                            <div id="chart-internalizing" class="col-md-12 col-lg-6 history-chart"></div>
+                            <div id="chart-externalizing" class="col-md-12 col-lg-6 history-chart"></div>
+                            <div id="chart-total-score" class="col-md-12 col-lg-6 history-chart"></div>
                             
                         </div>
                     </apex:outputPanel>
@@ -259,9 +259,9 @@
                         
                         <div class="row">
                             
-                            <div id="chart-total-score" class="history-chart" style="width:1150px; "></div>
                             <div id="chart-internalizing" class="history-chart" style="width:1150px; "></div>
                             <div id="chart-externalizing" class=" history-chart" style="width:1150px; "></div>
+                            <div id="chart-total-score" class="history-chart" style="width:1150px; "></div>
                             
                         </div>
                         
@@ -297,7 +297,7 @@
             var displayHistory = {!displayhistory};
         
         var chartHeight = {!IF(printReport, 350, 500)};
-        var slantedText = {!IF(printReport, 'false' ,'true')};
+        var slantedText = {!IF(printReport, 'false' ,'false')};
         
         //Load the Visualization API and the piechart package.
         google.load("visualization", "1", {packages:["corechart"]});
@@ -349,7 +349,7 @@
                     1: { pointSize: 0 },
                     2: { pointSize: 0 }
                 },
-                vAxis: { maxValue: 100, minValue: 40},
+                vAxis: { maxValue: 100, minValue: 40, title: 'T-Score'},
                 hAxis: { showTextEvery: 1, slantedText: true, slantedTextAngle:30, title: 'Category' },//x-axis main label
                 
             };
@@ -376,7 +376,7 @@
                 //Set chart options
                 "cols": [
                     {"p": {"role": "domain"},"label": "Date of Administration","type": "string"},
-                    {"p": {"role": "data"},"label": "Total Score","type": "number"},
+                    {"p": {"role": "data"},"label": "T-Score","type": "number"},
                     {"p": {"role": "data"},"label": "Clinical Range","type": "number"},
                     {"p": {"role": "data"},"label": "Borderline Range","type": "number"},
                     {"p": {"role": "certainty"},"type": "boolean"}]
@@ -387,13 +387,13 @@
             var x = new google.visualization.DataTable(data);
             
             var options = {
-                title: 'CBCL Total Score',   
+                title: 'Total Problem Score',   
                 series: {
                     0: { pointSize: 5 },
                     1: { pointSize: 0 },
                     2: { pointSize: 0 }
                 },
-                vAxis: { maxValue: 100, minValue: 0},
+                vAxis: { maxValue: 100, minValue: 0, title: 'T-Score'},
                 hAxis: { showTextEvery: 1, slantedText: slantedText, slantedTextAngle:30, title: 'Date of administration' },//x-axis main label
                 height: chartHeight
             };
@@ -418,7 +418,7 @@
                 //Set chart options
                 "cols": [
                     {"p": {"role": "domain"},"label": "Date of Administration","type": "string"},
-                    {"p": {"role": "data"},"label": "Total Score","type": "number"},
+                    {"p": {"role": "data"},"label": "T-Score","type": "number"},
                     {"p": {"role": "data"},"label": "Clinical Range","type": "number"},
                     {"p": {"role": "data"},"label": "Borderline Range","type": "number"},
                     {"p": {"role": "certainty"},"type": "boolean"}]
@@ -435,7 +435,7 @@
                     1: { pointSize: 0 },
                     2: { pointSize: 0 }
                 },
-                vAxis: { maxValue: 100, minValue: 0},
+                vAxis: { maxValue: 100, minValue: 0, title: 'T-Score'},
                 hAxis: { showTextEvery: 1, slantedText: slantedText, slantedTextAngle:30, title: 'Date of administration' },//x-axis main label
                 height: chartHeight
             };
@@ -460,7 +460,7 @@
                 //Set chart options
                 "cols": [
                     {"p": {"role": "domain"},"label": "Date of Administration","type": "string"},
-                    {"p": {"role": "data"},"label": "Total Score","type": "number"},
+                    {"p": {"role": "data"},"label": "T-Score","type": "number"},
                     {"p": {"role": "data"},"label": "Clinical Range","type": "number"},
                     {"p": {"role": "data"},"label": "Borderline Range","type": "number"},
                     {"p": {"role": "certainty"},"type": "boolean"}]
@@ -477,7 +477,7 @@
                     1: { pointSize: 0 },
                     2: { pointSize: 0 }
                 },
-                vAxis: { maxValue: 100, minValue: 0},
+                vAxis: { maxValue: 100, minValue: 0, title: 'T-Score'},
                 hAxis: { showTextEvery: 1, slantedText: slantedText, slantedTextAngle:30, title: 'Date of administration' },//x-axis main label
                 height: chartHeight
             };

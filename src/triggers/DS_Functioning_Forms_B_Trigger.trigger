@@ -27,9 +27,9 @@ trigger DS_Functioning_Forms_B_Trigger on DS_Functioning_Forms_B__c  (before ins
         
         ut.updateSummaryStatusForMergedObject(Trigger.new);
         
-        /*AuditTrail audit = new AuditTrail(Trigger.new, Trigger.old); 
-        if(Trigger.isInsert) { audit.generateLog(Trigger.new, Trigger.old); }
-        if(Trigger.isUpdate) { audit.generateLog(Trigger.new, Trigger.old); }*/
+        AuditTrail audit = new AuditTrail(Trigger.new, Trigger.old); 
+        if(Trigger.isInsert) { audit.generateLog(); }
+        if(Trigger.isUpdate) { audit.generateLog(); } 
         
     }
 }

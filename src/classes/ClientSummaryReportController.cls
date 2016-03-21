@@ -1,32 +1,45 @@
+/****
+*@description Controller for the ClientSummaryReport Page
+* 
+*@date 1/5/16
+*@modified date
+*@author KW
+*
+*@date 1/6/16
+*@modified date
+*@author KW
+*
+*@group ClientSummaryReport
+*@group-content /ApexDocContent/ClientSummaryReport/ClientSummaryReportController.htm
+****/
 public with sharing class ClientSummaryReportController {
-
+    
   Utility ut = new Utility();
   Map<String, String> parameter = ut.urlDecode(Apexpages.currentPage().getParameters().get('cimi'));
 
+  //Functionality vars
   String cID;
-
+  String summaryID;
+  Boolean edit = FALSE;
+  
+  public String BorF { get; set; }
+  public String subtitle {get; set;} 
+  public String forceRedirect {get; set;} 
+  public String cimi { get; set; }
+  public Integer section { get; set; }
+  public String visitType { get; set; }
   public Decimal visitAge { get; set; }
 
-  public String cimi { get; set; }
-  
-  String summaryID;
-
-  public String forceRedirect {get; set;} 
-
-  Boolean edit = FALSE;
-
-  public String subtitle {get; set;}  
-    
   public Client__c client { get; set; }
-
-  public String visitType { get; set; }
-  public Integer section { get; set; }
-
+  
+  //Object vars
   public SObject clientBackgroundInfo {get; set;}
   public SObject clientFunctioningForm {get; set;}
   public SObject clientCBCL{get;set;}
-  public SObject clientPTSD{get;set;}
+  public SObject clientPTSDCA{get;set;}
+  public SObject clientPTSDPA{get;set;}
   public SObject clientSDQ{get;set;}
+  public SObject clientTSC{get;set;}//Tscc-a & Tscyc
   
   //Cans vars
   public List<String> cansOptions { get; set; }
@@ -43,7 +56,7 @@ public with sharing class ClientSummaryReportController {
   public DescElementList[] ios { get; set; }
   public List<String> iosCritical { get; set; }
 
-  //Gen Trauma vars
+  //Trauma vars
   public DS_GTRAUMA__c gtObj { get; set; }
   public List<gtItem> rowsGTRAUMA { get; set; }
   public List<String> ageNum { get; set; } 
@@ -63,13 +76,21 @@ public with sharing class ClientSummaryReportController {
   public Boolean CBCLExisted {get;set;}
   public List<CBCLElement> cbclList{get;set;}
   
-  //PTSD vars
-  public Boolean PTSDExisted{get;set;}
-  public List<PTSDElement> ptsdlist{get;set;}
-  public Integer IntrusionNum {get;set;}
-  public Integer AvoidNum {get;set;}
-  public Integer MoodNum {get;set;}
-  public Integer ReactNum {get;set;}
+  //PTSD CA vars
+  public Boolean PTSDCAExisted{get;set;}
+  public List<PTSDElement> PTSDCAList{get;set;}
+  public Integer IntrusionNumCA {get;set;}
+  public Integer AvoidNumCA {get;set;}
+  public Integer MoodNumCA {get;set;}
+  public Integer ReactNumCA {get;set;}
+    
+  //PTSD PA vars
+  public Boolean PTSDPAExisted{get;set;}
+  public List<PTSDElement> PTSDPAList{get;set;}
+  public Integer IntrusionNumPA {get;set;}
+  public Integer AvoidNumPA {get;set;}
+  public Integer MoodNumPA {get;set;}
+  public Integer ReactNumPA {get;set;}
   
   //SDQ vars
   public Boolean SDQExisted{get;set;}
@@ -77,14 +98,26 @@ public with sharing class ClientSummaryReportController {
   public Boolean SDQSelfExisted{get;set;}
   public List<SDQElement> sdqList {get;set;}
   
+  //TSCYC vars
+  public Boolean TSCYCExisted{get; set;}
+  public List<TSCYCElement> tscycList {get;set;}
+  public List<TSCYCElement> tscycValidList {get;set;}
+   
+  //TSCC vars
+  public Boolean TSCCExisted{get; set;}
+  public List<TSCCElement> tsccList {get;set;}
+  public List<TSCCElement> tsccSubList {get;set;}
+  public List<TSCCElement> tsccValidList {get;set;}
+  
+  //PSI vars
+  public Boolean PSIExisted{get; set;}
+  public List<PSIElement> psiList {get;set;}
+  public List<PSIElement> psiValidList {get;set;}
+  
   //FAPGAR vars
   public Boolean FAPGARExisted{get;set;}
   public Integer FAPGARTotal{get;set;}
   public Boolean FAPGARBlank{get;set;}
-
-  //Generic Standardized measures (PTSD+CBCL+SDQ) vars
-  public Boolean measureExisted { get; set; }
-  public Map<Integer, Element> measure { get; set; }
 
   //Clin Eval vars
   public Boolean evaluationExisted { get; set; }
@@ -94,8 +127,14 @@ public with sharing class ClientSummaryReportController {
   public DescElementList[] otherEvaluation { get; set; }
   public String evaluationPrimary { get; set; }
 
-  public String BorF { get; set; }
-  
+  //Generic Standardized measures (PTSD+CBCL+SDQ) vars
+  public Boolean measureExisted { get; set; }
+  public Map<Integer, Element> measure { get; set; }
+
+  //Generic external measures (TSCC+TSCYC+PSI) vars
+  public Boolean exmeasureExisted { get; set; }
+  public Map<Integer, Element> exmeasure { get; set; }
+    
   //print button var and method
   public Boolean printReport { get; set; }  
   public void init() { 
@@ -160,7 +199,7 @@ public with sharing class ClientSummaryReportController {
 
   }
 
-  //record
+  //General record
   public class Element {
 
     public String item { get; set; }
@@ -174,6 +213,28 @@ public with sharing class ClientSummaryReportController {
     }
 
   }
+  
+  //GT record
+  public class GTItem {
+      
+    public String num { get; set; }
+    public String trauma { get; set; }
+    public String field { get; set; }
+    public List<String> ages { get; set; }
+    public Integer value { get; set; }
+    public String exp { get; set; }
+        
+    public GTItem(String num, String trauma, String field, 
+                  List<String> ages, Integer value, String exp) {
+      this.num = num;
+      this.trauma = trauma;
+      this.field = field;
+      this.ages = ages;      
+      this.value = value;
+      this.exp = exp;
+    }
+  
+  }   
   
   //CBCL record
   public class CBCLElement{
@@ -200,9 +261,9 @@ public with sharing class ClientSummaryReportController {
         this.clusterName=clusterName;
         this.met=met;
     }
-    }
+   }
 
-//SDQ record
+  //SDQ record
     public class SDQElement{
     public String category {get;set;}
     public Integer score {get;set;}
@@ -214,6 +275,46 @@ public with sharing class ClientSummaryReportController {
         this.significance=significance;
         }
     }
+    
+  //TSCYC record
+    public class TSCYCElement{
+    public String category {get;set;}
+    public Integer tscore {get;set;}
+    public String significance {get;set;}
+    
+    public tscycelement (String category,Integer tscore,String significance){
+        this.category=category;
+        this.tscore=tscore;
+        this.significance=significance;
+        }
+    }
+    
+  //TSCC record
+    public class TSCCElement{
+    public String category {get;set;}
+    public Integer tscore {get;set;}
+    public String significance {get;set;}
+    
+    public tsccelement (String category,Integer tscore,String significance){
+        this.category=category;
+        this.tscore=tscore;
+        this.significance=significance;
+        }
+    }
+    
+  //PSI record
+    public class PSIElement{
+    public String category {get;set;}
+    public Integer tscore {get;set;}
+    public String significance {get;set;}
+    
+    public psielement (String category,Integer tscore,String significance){
+        this.category=category;
+        this.tscore=tscore;
+        this.significance=significance;
+        }
+    }
+    
   //sort ascending GT
   public class AscGTItemList implements Comparable {
 
@@ -236,53 +337,30 @@ public with sharing class ClientSummaryReportController {
       } else if (element.exp < compareToOppy.element.exp) {
           // Set return value to a negative value.
           returnValue = -1;
-      }
-      
+      }      
       return returnValue;       
     }
-
   }
-
-  //GT record
-  public class GTItem {
-      
-    public String num { get; set; }
-    public String trauma { get; set; }
-    public String field { get; set; }
-    public List<String> ages { get; set; }
-    public Integer value { get; set; }
-    public String exp { get; set; }
-        
-    public GTItem(String num, String trauma, String field, 
-                  List<String> ages, Integer value, String exp) {
-      this.num = num;
-      this.trauma = trauma;
-      this.field = field;
-      this.ages = ages;      
-      this.value = value;
-      this.exp = exp;
-    }
-  
-  } 
 
   public ClientSummaryReportController(ApexPages.StandardController controller) {
 
+    //vars used in url
     cID = parameter.get('c');
-
     cimi = Apexpages.currentPage().getParameters().get('cimi');
 
+    //visit information variables
     section = Integer.valueOf(parameter.get('section'));
-
     BorF = (section > 0) ? 'F' : 'B';
-    visitType = (section > 0) ? 'Follow-up' : 'Baseline';
+    visitType = (section > 0) ? 'Follow-up' : 'Baseline';    
     
+    //object queries
     client = Database.query('SELECT ' + ut.getFields('Client__c') +  
                             '  FROM Client__c ' +
-                            ' WHERE id = \'' + cID + '\'');
-
+                            ' WHERE id = \'' + cID + '\''); 
 
     subtitle = '(' + client.Name + ') ' + client.INIT__c;
-//background
+    
+    //background
     List<SObject> background = 
       Database.query('SELECT '+ut.getFields('DS_Background_Family_Info_'+BorF+'__c')+
                      '  FROM DS_Background_Family_Info_'+BorF+'__c' +
@@ -291,7 +369,7 @@ public with sharing class ClientSummaryReportController {
 
     if(background.size() > 0) clientBackgroundInfo = background.get(0);
 
-//functioning
+    //functioning
     List<SObject> functioning = 
       Database.query('SELECT '+ut.getFields('DS_Functioning_Forms_'+BorF+'__c')+  
                      '  FROM DS_Functioning_Forms_'+BorF+'__c' +
@@ -299,8 +377,9 @@ public with sharing class ClientSummaryReportController {
                      '   AND SECTION__c = \''+ section + '\'');
                      
     if(functioning.size() > 0) clientFunctioningForm = functioning.get(0);
-//CBCL
-  List<SObject> cbcl = 
+    
+    //CBCL
+    List<SObject> cbcl = 
         Database.query('SELECT ' + ut.getFields('DS_CBCL_'+BorF+'__c') +  
                        '  FROM DS_CBCL_' + BorF + '__c' +
                        ' WHERE client__c = \'' + cID + '\''+
@@ -308,16 +387,23 @@ public with sharing class ClientSummaryReportController {
                        
     if(cbcl.size() > 0) clientCBCL= cbcl.get(0);
 
-//PTSD 
+    //PTSD CA & PA
       List<SObject> ptsd = 
         Database.query('SELECT ' + ut.getFields('DS_PTSD_CA_'+BorF+'__c') +  
                      '  FROM DS_PTSD_CA_' + BorF + '__c' +
                      ' WHERE client__c = \'' + cID + '\''+
                      '   AND SECTION__c = \''+ section + '\''); 
                       
-    if(ptsd.size() > 0) clientPTSD= ptsd.get(0);
+      if(ptsd.size() > 0) {
+          if(ptsd.get(0).get('STATUS_PTSD_CA__c') != null) {
+                clientPTSDCA= ptsd.get(0);
+          }
+          if(ptsd.get(0).get('STATUS_PTSD_PA__c') != null) {
+                clientPTSDPA= ptsd.get(0);
+          }
+      }
     
-//SDQ
+    //SDQ
     List<Sobject> sdq = 
         Database.query('SELECT ' + ut.getFields('DS_SDQ_PSI_CDI_'+BorF+'__c') +  
                      '  FROM DS_SDQ_PSI_CDI_' + BorF + '__c' +
@@ -325,135 +411,101 @@ public with sharing class ClientSummaryReportController {
                      '   AND SECTION__c = \''+ section + '\'');
                       
     if(sdq.size() > 0) clientSDQ= sdq.get(0);
-                       
+    //sdq includes psi
+                    
+    //TSC (TSCC-A/TSCYC)
+    List<Sobject> tsc = 
+        Database.query('SELECT ' + ut.getFields('DS_TSCC_TSCYC_'+BorF+'__c') +  
+                     '  FROM DS_TSCC_TSCYC_' + BorF + '__c' +
+                     ' WHERE client__c = \'' + cID + '\''+
+                     '   AND SECTION__c = \''+ section + '\'');
+                      
+    if(tsc.size() > 0) clientTSC= tsc.get(0);
+    
     Date dob = Date.valueOf(client.DOB1__c);
     Date visitDate = Date.valueOf(clientBackgroundInfo.get(BorF + 'DOV__c'));
     visitAge = Integer.valueOf(clientBackgroundInfo.get(BorF + '_VISIT_AGE__c'));//dob.daysBetween(visitDate)/365;
-    System.debug(visitAge);
 
+    //existance vars
+    //CANS
     cansExisted = false;
+    //IOS
     iosExisted = false;
     iosCriticalExisted = false;
+    //Trauma
     traumaExisted = false;
+    //SERVREC
     serviceExisted = false;
     service30Existed = false;
     serviceLifeExisted = false;
-    measureExisted = false;
-    evaluationExisted = false;
-    evaluationPrimaryExisted = false;
-    evaluationOtherExisted = false;    
+    //Standardized measures
+    measureExisted = false;  
+    //CBCL
     CBCLExisted = false;
-    PTSDExisted = false;
+    //PTSD
+    PTSDCAExisted = false;
+    PTSDPAExisted = false;
+    //SDQ
     SDQParentExisted = false;
     SDQSelfExisted = false;
-    SDQExisted = false;
+    SDQExisted = false; 
+    //External measures
+    exmeasureExisted = false;
+    //TSYC 
+    TSCYCExisted = false;
+    //TSCC
+    TSCCExisted = false;
+    //PSI 
+    PSIExisted = false;
+    //FAPGAR
     FAPGARExisted = false;
+    //CLINEVAL
+    evaluationExisted = false;
+    evaluationPrimaryExisted = false;
+    evaluationOtherExisted = false;  
 
+    //method calls for objects
+    //functioning
     if(clientFunctioningForm != null) { 
       cans(); ios();  service(); measure(); evaluation(); fapgar();
     }
-    
+    //trauma
     trauma();
-   if(clientCBCL != null){
+    //cbcl
+    if(clientCBCL != null){
     CBCLrec();
     }
-   if(clientPTSD != null){
-    PTSDrec();
+    //ptsd CA
+    if(clientPTSDCA != null){
+    PTSDCArec();
     }
-   if(clientSDQ != null){
-    SDQrec();
+      
+    //ptsd PA
+    if(clientPTSDPA != null){
+    PTSDPArec();
+    }
+      
+    //sdq
+    if(clientSDQ != null){
+     if(clientSDQ.get('STATUS_PSI__c') != null){
+            PSIrec();
+        }
+        SDQrec();
+    }
+    //tsc
+    if(clientTSC != null){
+        if(clientTSC.get('STATUS_TSCYC__c') != null){
+            TSCYCrec();
+        }
+        if(clientTSC.get('STATUS_TSCC_A__c') != null){
+            TSCCrec();
+        }
     }
    } 
     
-  //CBCL
-  public void CBCLrec(){
-  cbclList = new List<CBCLElement>();
-  
-  CBCLOptions  =
-      new List<String>{'Borderline','Clinical'};//need normal?
-      
-     // CBCL 1.5 - 5
-     if(visitAge < 6) {
-      cbclList.add(new CBCLElement('Overall Score',
-      String.valueOf(clientCBCL.get(BorF+'CBTSTY__c')),
-      String.valueOf(clientCBCL.get(BorF+'CBTSPY__c')),
-      String.valueOf(clientCBCL.get(BorF+'CBTSSY__c'))));      
-      
-      cbclList.add(new CBCLElement('Internalizing Score',
-      String.valueOf(clientCBCL.get(BorF+'CBIBTY__c')),//
-      String.valueOf(clientCBCL.get(BorF+'CBIBPY__c')),//
-      String.valueOf(clientCBCL.get(BorF+'CBIBSY__c'))));//
-      
-      cbclList.add(new CBCLElement('Externalizing Score',
-      String.valueOf(clientCBCL.get(BorF+'CBEBTY__c')),////,
-      String.valueOf(clientCBCL.get(BorF+'CBEBPY__c')),////,
-      String.valueOf(clientCBCL.get(BorF+'CBEBSY__c'))));//
-        }
-     // CBCL 6 - 18
-      else {
-      cbclList.add(new CBCLElement('Overall Score',
-      String.valueOf(clientCBCL.get(BorF+'CBTST__c')),
-      String.valueOf(clientCBCL.get(BorF+'CBTSP__c')),
-      String.valueOf(clientCBCL.get(BorF+'CBTSS__c'))));      
-      
-      cbclList.add(new CBCLElement('Internalizing Score',
-      String.valueOf(clientCBCL.get(BorF+'CBIBT__c')),//
-      String.valueOf(clientCBCL.get(BorF+'CBIBP__c')),//
-      String.valueOf(clientCBCL.get(BorF+'CBIBS__c'))));//
-      
-      cbclList.add(new CBCLElement('Externalizing Score',
-      String.valueOf(clientCBCL.get(BorF+'CBEBT__c')),////,
-      String.valueOf(clientCBCL.get(BorF+'CBEBP__c')),////,
-      String.valueOf(clientCBCL.get(BorF+'CBEBS__c'))));//
-        }
-      
-    for(CBCLElement cbclelement : cbclList) {   
-    }
-    cbclExisted = true;//(CBCLrec.size() > 0) ? true : false;  
-  }
-  
-  //SDQ
-  public void SDQrec(){
-  sdqList = new List<SDQElement>();      
-    if (visitAge>10){
-    //Parent
-    sdqList.add(new SDQElement('SDQ Parent Overall Stress Score', Integer.valueOf(clientSDQ.get(BorF+'SDPTOT__c')), String.valueOf(clientSDQ.get(BorF+'SDPTYP__c'))));
-    //self
-    sdqList.add(new SDQElement('SDQ Self Overall Stress Score', Integer.valueOf(clientSDQ.get(BorF+'SDSTOT__c')), String.valueOf(clientSDQ.get(BorF+'SDSTYP__c'))));
-     }
-    else
-           //Parent
-    sdqList.add(new SDQElement('SDQ Parent Overall Stress Score', Integer.valueOf(clientSDQ.get(BorF+'SDPTOT__c')), String.valueOf(clientSDQ.get(BorF+'SDPTYP__c'))));
-           
-           sdqExisted=  true;
-           }
-           
-    
-  //PTSD
-  public void PTSDrec(){
-  ptsdList = new List<PTSDElement>();
-    if(visitAge >= 7) { 
-    IntrusionNum = Integer.valueOf(clientPTSD.get(BorF+'PTSBMN__c'));
-    AvoidNum = Integer.valueOf(clientPTSD.get(BorF+'PTSCMN__c'));
-    MoodNum = Integer.valueOf(clientPTSD.get(BorF+'PTSDMN__c'));
-    ReactNum = Integer.valueOf(clientPTSD.get(BorF+'PTSEMN__c'));
-        if (IntrusionNum  ==1){
-            ptsdList.add(new PTSDElement('Intrusion', String.valueOf(clientPTSD.get(BorF+'PTSBM__c'))));
-        }
-        if (AvoidNum ==1){
-            ptsdList.add(new PTSDElement('Avoidance', String.valueOf(clientPTSD.get(BorF+'PTSCM__c'))));
-        }
-        if (MoodNum ==1){
-            ptsdList.add(new PTSDElement('Negative Alterations in Cognitions/Mood', String.valueOf(clientPTSD.get(BorF+'PTSDM__c'))));
-        }
-        if (ReactNum ==1){
-            ptsdList.add(new PTSDElement('Alterations in Arousal/Reactivity', String.valueOf(clientPTSD.get(BorF+'PTSEM__c'))));
-        }  
-  ptsdExisted = true;
-  }
-  }
-
-  //Strengths
+    //methods
+         
+  //Cans Strengths
   public void cans() {
 
     cans = new List<AscElementList>();
@@ -494,7 +546,7 @@ public with sharing class ClientSummaryReportController {
     cansExisted = (cans.size() > 0) ? true : false;
 
   }
-
+ 
   // Indicators of Severity
   public void ios() {
 
@@ -588,6 +640,7 @@ public with sharing class ClientSummaryReportController {
 
   }
 
+  //Trauma
   public void trauma() {
 
     rowsGTRAUMA = new List<GTItem>();
@@ -703,46 +756,19 @@ public with sharing class ClientSummaryReportController {
       if (BorF =='B'){//No Followup equivalent, B only
           Integer valueLife = Integer.valueOf(clientFunctioningForm.get('BLT'+element.field+'__c'));
           if(valueLife == 1) serviceLife.add(element.item);
-    }
+      }
     }
 
     serviceExisted = (service30.size() > 0 || serviceLife.size() > 0) ? true : false;
 
     service30Existed = (service30.size() > 0) ? true : false;
     serviceLifeExisted = (serviceLife.size() > 0) ? true : false;
-  }
-  
-  //Fapgar
-    public void fapgar(){//there is a valid raw score
-        FAPGARTotal = Integer.valueOf(clientFunctioningForm.get(BorF+'FAPGAR_RAW__c'));
-        FAPGARExisted = (FAPGARTotal >= 0) ? true : false;  
-        FAPGARBlank= false;    
-        
-        for(Integer i = 1; i <= 5; i++) {
-            
-            if(clientFunctioningForm.get(BorF+'FAPGAR'+String.valueOf(i)+'__c') == null) 
-                FAPGARBlank = true;
-            
-        }
-
-    }
-
-  //Standardized Measures
-  
+  }   
+     
+  //Standardized Measures  
   public void measure() {
 
-    measure = new Map<Integer, Element>();    
-    
-    // PTSD
-    if(visitAge >= 7) {
-      List<SObject> ptsd = 
-        Database.query('SELECT ' + ut.getFields('DS_PTSD_CA_'+BorF+'__c') +  
-                     '  FROM DS_PTSD_CA_' + BorF + '__c' +
-                     ' WHERE client__c = \'' + cID + '\''); 
-
-      if(ptsd.size() > 0)
-        measure.put(0, new Element('UCLA PTSD-RI Overall Raw Score', null, Integer.valueOf(ptsd.get(0).get(BorF+'PTSORN__c'))));
-    }
+    measure = new Map<Integer, Element>();      
     
     // CBCL
     if(visitAge >= 1.5 && visitAge < 19) {
@@ -756,49 +782,312 @@ public with sharing class ClientSummaryReportController {
       if(cbcl.size() > 0) {
         // CBCL 1.5 - 5
         if(visitAge < 6) {
-          measure.put(1, new Element('CBCL Internalizing Behavior Raw Score', null, Integer.valueOf(cbcl.get(0).get(BorF+'CBIBRNY__c'))));
+          measure.put(2, new Element('CBCL Internalizing Behavior Raw Score', null, Integer.valueOf(cbcl.get(0).get(BorF+'CBIBRNY__c'))));
         }
         // CBCL 6 - 18
         else {
-          measure.put(1, new Element('CBCL Internalizing Behavior Raw Score', null, Integer.valueOf(cbcl.get(0).get(BorF+'CBIBRN__c'))));
+          measure.put(2, new Element('CBCL Internalizing Behavior Raw Score', null, Integer.valueOf(cbcl.get(0).get(BorF+'CBIBRN__c'))));
         }
       }
 }
     
+    // PTSD
+    if(visitAge >= 7) {
+      List<SObject> ptsd = 
+        Database.query('SELECT ' + ut.getFields('DS_PTSD_CA_'+BorF+'__c') +  
+                     '  FROM DS_PTSD_CA_' + BorF + '__c' +
+                     ' WHERE client__c = \'' + cID + '\''); 
 
+        if(ptsd.size() > 0) {
+            if(ptsd.get(0).get('STATUS_PTSD_CA__c') != null) {
+                measure.put(0, new Element('UCLA PTSD-RI Child/Adolescent Overall Raw Score', null, Integer.valueOf(ptsd.get(0).get(BorF+'PTSORN__c'))));
+            }
+            if(ptsd.get(0).get('STATUS_PTSD_PA__c') != null) {
+                measure.put(1, new Element('UCLA PTSD-RI Parent/Caregiver Overall Raw Score', null, Integer.valueOf(ptsd.get(0).get(BorF+'PTSORNP__c'))));
+            }
+        }
+        
+    }
+    
     //SDQ
     if(visitAge >= 4 && visitAge < 18){
     
     List<SObject> sdq =     
                 Database.query('SELECT ' + ut.getFields('DS_SDQ_PSI_CDI_'+BorF+'__c') +   
                                '  FROM DS_SDQ_PSI_CDI_'+BorF+'__c' +                              
-                               ' WHERE Client__c = \''+ cID + '\'' );
-               
+                               ' WHERE Client__c = \''+ cID + '\'' );               
                      
        if (sdq.size() >0){
            if (visitAge>10)
            {
            
            //Self
-           measure.put(2, new Element('SDQ Self Overall Stress Score', null, Integer.valueOf(sdq.get(0).get(BorF+'SDSTOT__c'))));
+           measure.put(3, new Element('SDQ Self Overall Stress Score', null, Integer.valueOf(sdq.get(0).get(BorF+'SDSTOT__c'))));
            
            //Parent
-           measure.put(3, new Element('SDQ Parent Overall Stress Score', null, Integer.valueOf(sdq.get(0).get(BorF+'SDPTOT__c'))));
+           measure.put(4, new Element('SDQ Parent Overall Stress Score', null, Integer.valueOf(sdq.get(0).get(BorF+'SDPTOT__c'))));
            }
            else
            //Parent
-           measure.put(3, new Element('SDQ Parent Overall Stress Score', null, Integer.valueOf(sdq.get(0).get(BorF+'SDPTOT__c'))));
-       
-    }
-    }
-    
-
-    // TSCC
-
-
+           measure.put(4, new Element('SDQ Parent Overall Stress Score', null, Integer.valueOf(sdq.get(0).get(BorF+'SDPTOT__c'))));
+         }
+    }    
     if(measure.size() > 0) measureExisted = true;
     
   }
+   
+   //CBCL
+   public void CBCLrec(){
+   cbclList = new List<CBCLElement>();
+  
+   CBCLOptions  =
+      new List<String>{'Borderline','Clinical'};//need normal?
+      
+     // CBCL 1.5 - 5
+     if(visitAge < 6) {
+      cbclList.add(new CBCLElement('Overall Score',
+      String.valueOf(clientCBCL.get(BorF+'CBTSTY__c')),
+      String.valueOf(clientCBCL.get(BorF+'CBTSPY__c')),
+      String.valueOf(clientCBCL.get(BorF+'CBTSSY__c'))));      
+      
+      cbclList.add(new CBCLElement('Internalizing Score',
+      String.valueOf(clientCBCL.get(BorF+'CBIBTY__c')),//
+      String.valueOf(clientCBCL.get(BorF+'CBIBPY__c')),//
+      String.valueOf(clientCBCL.get(BorF+'CBIBSY__c'))));//
+      
+      cbclList.add(new CBCLElement('Externalizing Score',
+      String.valueOf(clientCBCL.get(BorF+'CBEBTY__c')),////,
+      String.valueOf(clientCBCL.get(BorF+'CBEBPY__c')),////,
+      String.valueOf(clientCBCL.get(BorF+'CBEBSY__c'))));//
+        }
+     // CBCL 6 - 18
+      else {
+      cbclList.add(new CBCLElement('Overall Score',
+      String.valueOf(clientCBCL.get(BorF+'CBTST__c')),
+      String.valueOf(clientCBCL.get(BorF+'CBTSP__c')),
+      String.valueOf(clientCBCL.get(BorF+'CBTSS__c'))));      
+      
+      cbclList.add(new CBCLElement('Internalizing Score',
+      String.valueOf(clientCBCL.get(BorF+'CBIBT__c')),//
+      String.valueOf(clientCBCL.get(BorF+'CBIBP__c')),//
+      String.valueOf(clientCBCL.get(BorF+'CBIBS__c'))));//
+      
+      cbclList.add(new CBCLElement('Externalizing Score',
+      String.valueOf(clientCBCL.get(BorF+'CBEBT__c')),////,
+      String.valueOf(clientCBCL.get(BorF+'CBEBP__c')),////,
+      String.valueOf(clientCBCL.get(BorF+'CBEBS__c'))));//
+        }
+      
+    for(CBCLElement cbclelement : cbclList) {   
+    }
+    cbclExisted = true;//(CBCLrec.size() > 0) ? true : false;  
+  }
+       
+  //PTSD CA
+  public void PTSDCArec(){
+  PTSDCAList = new List<PTSDElement>();
+    if(visitAge >= 7) { 
+        IntrusionNumCA = Integer.valueOf(clientPTSDCA.get(BorF+'PTSBMN__c'));
+        AvoidNumCA = Integer.valueOf(clientPTSDCA.get(BorF+'PTSCMN__c'));
+        MoodNumCA = Integer.valueOf(clientPTSDCA.get(BorF+'PTSDMN__c'));
+        ReactNumCA = Integer.valueOf(clientPTSDCA.get(BorF+'PTSEMN__c'));
+            if (IntrusionNumCA  == 1){
+                PTSDCAList.add(new PTSDElement('Intrusion', String.valueOf(clientPTSDCA.get(BorF+'PTSBM__c'))));
+            }
+            if (AvoidNumCA == 1){
+                PTSDCAList.add(new PTSDElement('Avoidance', String.valueOf(clientPTSDCA.get(BorF+'PTSCM__c'))));
+            }
+            if (MoodNumCA == 1){
+                PTSDCAList.add(new PTSDElement('Negative Alterations in Cognitions/Mood', String.valueOf(clientPTSDCA.get(BorF+'PTSDM__c'))));
+            }
+            if (ReactNumCA ==1){
+                PTSDCAList.add(new PTSDElement('Alterations in Arousal/Reactivity', String.valueOf(clientPTSDCA.get(BorF+'PTSEM__c'))));
+            }  
+        PTSDCAExisted = true;
+        }
+  }
+    
+  //PTSD PA
+  public void PTSDPArec(){
+  PTSDPAList = new List<PTSDElement>();
+    if(visitAge >= 7) { 
+        IntrusionNumPA = Integer.valueOf(clientPTSDPA.get(BorF+'PTSBMNP__c'));
+        AvoidNumPA = Integer.valueOf(clientPTSDPA.get(BorF+'PTSCMNP__c'));
+        MoodNumPA = Integer.valueOf(clientPTSDPA.get(BorF+'PTSDMNP__c'));
+        ReactNumPA = Integer.valueOf(clientPTSDPA.get(BorF+'PTSEMNP__c'));
+            if (IntrusionNumPA  == 1){
+                PTSDPAList.add(new PTSDElement('Intrusion', String.valueOf(clientPTSDCA.get(BorF+'PTSBMP__c'))));
+            }
+            if (AvoidNumPA == 1){
+                PTSDPAList.add(new PTSDElement('Avoidance', String.valueOf(clientPTSDCA.get(BorF+'PTSCMP__c'))));
+            }
+            if (MoodNumPA == 1){
+                PTSDPAList.add(new PTSDElement('Negative Alterations in Cognitions/Mood', String.valueOf(clientPTSDCA.get(BorF+'PTSDMP__c'))));
+            }
+            if (ReactNumPA ==1){
+                PTSDPAList.add(new PTSDElement('Alterations in Arousal/Reactivity', String.valueOf(clientPTSDCA.get(BorF+'PTSEMP__c'))));
+            }  
+        PTSDPAExisted = true;
+        }
+  }
+  
+  //SDQ
+  public void SDQrec(){
+  sdqList = new List<SDQElement>();      
+    if (visitAge>10){
+        //Parent
+        sdqList.add(new SDQElement('SDQ Parent Overall Stress Score', Integer.valueOf(clientSDQ.get(BorF+'SDPTOT__c')), String.valueOf(clientSDQ.get(BorF+'SDPTYP__c'))));
+        //self
+        sdqList.add(new SDQElement('SDQ Self Overall Stress Score', Integer.valueOf(clientSDQ.get(BorF+'SDSTOT__c')), String.valueOf(clientSDQ.get(BorF+'SDSTYP__c'))));
+     }
+    else
+           //Parent
+    sdqList.add(new SDQElement('SDQ Parent Overall Stress Score', Integer.valueOf(clientSDQ.get(BorF+'SDPTOT__c')), String.valueOf(clientSDQ.get(BorF+'SDPTYP__c'))));
+           
+           sdqExisted=  true;
+   }
+   
+ 
+  //External Measures  
+  public void exmeasure() {
+  }
+  
+   //Tscyc
+   public void TSCYCrec(){
+   tscycList = new List<TSCYCElement>();
+   tscycValidList = new List<TSCYCElement>();
+   
+    //symptoms
+        tscycList.add(new TSCYCElement(' Posttraumatic Stress-Total (PTS-TOT)',  Integer.valueOf(clientTSC.get(BorF+'PTSTOT_T__c')), 
+            ((Integer.valueOf(clientTSC.get(BorF+'PTSTOT_T__c'))) > 70) ? 'Clinical' :
+                (((Integer.valueOf(clientTSC.get(BorF+'PTSTOT_T__c'))) <= 64 ) ? 'Normal': 'Borderline')) );
+        tscycList.add(new TSCYCElement(' Anxiety (ANX)',  Integer.valueOf(clientTSC.get(BorF+'ANX_T__c')),  
+            ((Integer.valueOf(clientTSC.get(BorF+'ANX_T__c'))) > 70) ? 'Clinical' :
+                (((Integer.valueOf(clientTSC.get(BorF+'ANX_T__c'))) <= 64 ) ? 'Normal': 'Borderline')) );       
+        tscycList.add(new TSCYCElement(' Depression (DEP)',  Integer.valueOf(clientTSC.get(BorF+'DEP_T__c')), 
+            ((Integer.valueOf(clientTSC.get(BorF+'DEP_T__c'))) > 70) ? 'Clinical' :
+                (((Integer.valueOf(clientTSC.get(BorF+'DEP_T__c'))) <= 64 ) ? 'Normal': 'Borderline')) );
+        tscycList.add(new TSCYCElement(' Anger (ANG)',  Integer.valueOf(clientTSC.get(BorF+'ANG_T__c')), 
+            ((Integer.valueOf(clientTSC.get(BorF+'ANG_T__c'))) > 70) ? 'Clinical' :
+                (((Integer.valueOf(clientTSC.get(BorF+'ANG_T__c'))) <= 64 ) ? 'Normal': 'Borderline')) );
+        //sc not included in mock-up
+        tscycList.add(new TSCYCElement(' Sexual Concerns(SC)',   Integer.valueOf(clientTSC.get(BorF+'SC_T__c')), 
+            ((Integer.valueOf(clientTSC.get(BorF+'SC_T__c'))) > 70) ? 'Clinical' :
+                (((Integer.valueOf(clientTSC.get(BorF+'SC_T__c'))) <= 64 ) ? 'Normal': 'Borderline')) );
+        //tscycList.add(new TSCYCElement(' Posttraumatic Stress (PTS)',  Integer.valueOf(clientTSC.get(BorF+'__c')), ''));//no correlating variable exists
+        tscycList.add(new TSCYCElement(' Dissociation (DIS)',  Integer.valueOf(clientTSC.get(BorF+'DIS_T__c')), 
+            ((Integer.valueOf(clientTSC.get(BorF+'DIS_T__c'))) > 70) ? 'Clinical' :
+                (((Integer.valueOf(clientTSC.get(BorF+'DIS_T__c'))) <= 64 ) ? 'Normal': 'Borderline')) );
+        tscycList.add(new TSCYCElement(' Posttraumatic Stress-Intrusion (PTS-I)',  Integer.valueOf(clientTSC.get(BorF+'PTSI_T__c')), 
+            ((Integer.valueOf(clientTSC.get(BorF+'PTSI_T__c'))) > 70) ? 'Clinical' :
+                (((Integer.valueOf(clientTSC.get(BorF+'PTSI_T__c'))) <= 64 ) ? 'Normal': 'Borderline')) );
+        tscycList.add(new TSCYCElement(' Posttraumatic Stress-Avoidance (PTS-AV)',  Integer.valueOf(clientTSC.get(BorF+'PTSAV_T__c')), 
+            ((Integer.valueOf(clientTSC.get(BorF+'PTSAV_T__c'))) > 70) ? 'Clinical' :
+                (((Integer.valueOf(clientTSC.get(BorF+'PTSAV_T__c'))) <= 64 ) ? 'Normal': 'Borderline')) );
+        tscycList.add(new TSCYCElement(' Posttraumatic Stress-Arousal (PTS-AR)',  Integer.valueOf(clientTSC.get(BorF+'PTSAR_T__c')),
+            ((Integer.valueOf(clientTSC.get(BorF+'PTSAR_T__c'))) > 70) ? 'Clinical' :
+                (((Integer.valueOf(clientTSC.get(BorF+'PTSAR_T__c'))) <= 64 ) ? 'Normal': 'Borderline')) );
+   
+    //validity
+        tscycValidList.add(new TSCYCElement('Response Level (RL)',  Integer.valueOf(clientTSC.get(BorF+'RL_T__c')),     
+            ((Integer.valueOf(clientTSC.get(BorF+'RL_T__c'))) > 70) ? 'Clinical' :
+                (((Integer.valueOf(clientTSC.get(BorF+'RL_T__c'))) <= 64 ) ? 'Normal': 'Borderline')) );    
+        tscycValidList.add(new TSCYCElement('Atypical Response (ATR)',  Integer.valueOf(clientTSC.get(BorF+'ATR_T__c')),    
+            ((Integer.valueOf(clientTSC.get(BorF+'ATR_T__c'))) > 70) ? 'Clinical' :
+                (((Integer.valueOf(clientTSC.get(BorF+'ATR_T__c'))) <= 64 ) ? 'Normal': 'Borderline')) );
+   
+        TSCYCExisted = true;
+        
+   }
+   
+   //TSCC
+   public void TSCCrec(){
+   tsccList = new List<TSCCElement>();//symptoms
+   tsccSubList = new List<TSCCElement>();//subscale
+   tsccValidList = new List<TSCCElement>();//validity
+    
+        //symptoms
+        tsccList.add(new TSCCElement('Anxiety (ANX)',  Integer.valueOf(clientTSC.get(BorF+'TSCAXTN__c')), 
+            ((Integer.valueOf(clientTSC.get(BorF+'TSCAXTN__c'))) > 65) ? 'Clinical' :
+                (((Integer.valueOf(clientTSC.get(BorF+'TSCAXTN__c'))) <= 59 ) ? 'Normal': 'Borderline')) );
+        tsccList.add(new TSCCElement('Depression (DEP)',  Integer.valueOf(clientTSC.get(BorF+'TSCDPTN__c')), 
+            ((Integer.valueOf(clientTSC.get(BorF+'TSCDPTN__c'))) > 65) ? 'Clinical' :
+                (((Integer.valueOf(clientTSC.get(BorF+'TSCDPTN__c'))) <= 59 ) ? 'Normal': 'Borderline')) );
+        tsccList.add(new TSCCElement('Anger (ANG)',  Integer.valueOf(clientTSC.get(BorF+'TSCAGTN__c')), 
+            ((Integer.valueOf(clientTSC.get(BorF+'TSCAGTN__c'))) > 65) ? 'Clinical' :
+                (((Integer.valueOf(clientTSC.get(BorF+'TSCAGTN__c'))) <= 59 ) ? 'Normal': 'Borderline')) );
+        tsccList.add(new TSCCElement('Posttraumatic Stress (PTS)',  Integer.valueOf(clientTSC.get(BorF+'TSCPTTN__c')), 
+            ((Integer.valueOf(clientTSC.get(BorF+'TSCPTTN__c'))) > 65) ? 'Clinical' :
+                (((Integer.valueOf(clientTSC.get(BorF+'TSCPTTN__c'))) <= 59 ) ? 'Normal': 'Borderline')) );
+        tsccList.add(new TSCCElement('Dissociation (DIS)',  Integer.valueOf(clientTSC.get(BorF+'TSCDSTN__c')), 
+            ((Integer.valueOf(clientTSC.get(BorF+'TSCDSTN__c'))) > 65) ? 'Clinical' :
+                (((Integer.valueOf(clientTSC.get(BorF+'TSCDSTN__c'))) <= 59 ) ? 'Normal': 'Borderline')) );        
+        
+        //subscale
+        tsccSubList.add(new TSCCElement('Overt Dissociation (DIS-O)',  Integer.valueOf(clientTSC.get(BorF+'TSCODTN__c')), 
+            ((Integer.valueOf(clientTSC.get(BorF+'TSCODTN__c'))) > 65) ? 'Clinical' :
+                (((Integer.valueOf(clientTSC.get(BorF+'TSCODTN__c'))) <= 59 ) ? 'Normal': 'Borderline')) );
+        tsccSubList.add(new TSCCElement('Fantasy (DIS-F)',  Integer.valueOf(clientTSC.get(BorF+'TSCFNTN__c')), 
+            ((Integer.valueOf(clientTSC.get(BorF+'TSCFNTN__c'))) > 65) ? 'Clinical' :
+                (((Integer.valueOf(clientTSC.get(BorF+'TSCFNTN__c'))) <= 59 ) ? 'Normal': 'Borderline')) );
+        
+        //validity
+        tsccValidList.add(new TSCCElement('Underresponse (UND)',  Integer.valueOf(clientTSC.get(BorF+'TSCNTN__c')), 
+            ((Integer.valueOf(clientTSC.get(BorF+'TSCNTN__c'))) > 70) ? 'Clinical' :
+                (((Integer.valueOf(clientTSC.get(BorF+'TSCNTN__c'))) <=  64) ? 'Normal': 'Borderline')) );
+        tsccValidList.add(new TSCCElement('Hyperresponse (HYP)',  Integer.valueOf(clientTSC.get(BorF+'TSCHYTN__c')), 
+            ((Integer.valueOf(clientTSC.get(BorF+'TSCHYTN__c'))) > 90) ? 'Clinical' :
+                (((Integer.valueOf(clientTSC.get(BorF+'TSCHYTN__c'))) <=  88) ? 'Normal': 'Borderline')) );
+        
+        TSCCExisted = true;
+   }
+   
+   //PSI
+   public void PSIrec(){
+   psiList = new List<PSIElement>();
+   psiValidList = new List<PSIElement>();
+   
+    if(visitAge<=12){
+        psiList.add(new PSIElement('Total Score',Integer.valueOf(clientSDQ.get(BorF+'PSITS_PTLE__c')),
+            ((Integer.valueOf(clientSDQ.get(BorF+'PSITS_PTLE__c'))) > 85) ? 'Clinical' :
+                (((Integer.valueOf(clientSDQ.get(BorF+'PSITS_PTLE__c'))) <= 80 ) ? 'Normal': 'Borderline')) );    
+        psiList.add(new PSIElement('Parent-Child Dysfunctional Interaction (PCDI)',Integer.valueOf(clientSDQ.get(BorF+'PSIPCDI_PTLE__c')),
+            ((Integer.valueOf(clientSDQ.get(BorF+'PSIPCDI_PTLE__c'))) > 85) ? 'Clinical' :
+                (((Integer.valueOf(clientSDQ.get(BorF+'PSIPCDI_PTLE__c'))) <= 80 ) ? 'Normal': 'Borderline')) );    
+        psiList.add(new PSIElement('Difficult Child (DC)',Integer.valueOf(clientSDQ.get(BorF+'PSIDC_PTLE__c')),
+            ((Integer.valueOf(clientSDQ.get(BorF+'PSIDC_PTLE__c'))) > 85) ? 'Clinical' :
+                (((Integer.valueOf(clientSDQ.get(BorF+'PSIDC_PTLE__c'))) <= 80 ) ? 'Normal': 'Borderline')) );    
+        psiList.add(new PSIElement('Parental Distress (PD)',Integer.valueOf(clientSDQ.get(BorF+'PSIPD_PTLE__c')),
+            ((Integer.valueOf(clientSDQ.get(BorF+'PSIPD_PTLE__c'))) > 85) ? 'Clinical' :
+                (((Integer.valueOf(clientSDQ.get(BorF+'PSIPD_PTLE__c'))) <= 80 ) ? 'Normal': 'Borderline')) );    
+        psiList.add(new PSIElement('Defensive Responding (DR)',Integer.valueOf(clientSDQ.get(BorF+'PSIDR_PTLE__c')),
+            ((Integer.valueOf(clientSDQ.get(BorF+'PSIDR_PTLE__c'))) > 85) ? 'Clinical' :
+                (((Integer.valueOf(clientSDQ.get(BorF+'PSIDR_PTLE__c'))) <= 80 ) ? 'Normal': 'Borderline')) );    
+        
+        //validity 
+        psiValidList.add(new PSIElement('Defensive Responding',Integer.valueOf(clientSDQ.get(BorF+'PSIDR_PTLE__c')),
+            ((Integer.valueOf(clientSDQ.get(BorF+'PSIDR_PTLE__c'))) > 85) ? 'Clinical' :
+                (((Integer.valueOf(clientSDQ.get(BorF+'PSIDR_PTLE__c'))) <= 80 ) ? 'Normal': 'Borderline')) );  
+                
+       // if(clientSDQ.get('STATUS_PSI__c') != null){
+            PSIExisted = true;
+       // }
+    }
+   }
+     
+  //Fapgar
+    public void fapgar(){//there is a valid raw score
+        FAPGARTotal = Integer.valueOf(clientFunctioningForm.get(BorF+'FAPGAR_RAW__c'));
+        FAPGARExisted = (FAPGARTotal >= 0) ? true : false;  
+        FAPGARBlank= false;    
+        
+        for(Integer i = 1; i <= 5; i++) {
+            
+            if(clientFunctioningForm.get(BorF+'FAPGAR'+String.valueOf(i)+'__c') == null) 
+                FAPGARBlank = true;
+            
+        }
+    }
 
   // Clinical Evaluation
   public void evaluation() {
@@ -818,7 +1107,7 @@ public with sharing class ClientSummaryReportController {
     otherEvaluationList.put(7,  new Element('Separation Anxiety Disorder','CESEPDS', null)); 
     otherEvaluationList.put(8,  new Element('Social Anxiety Disorder','CESOCAD', null));
     otherEvaluationList.put(9,  new Element('Panic Disorder','CEPANDS', null)); 
-    otherEvaluationList.put(10,  new Element('Specific Phobia','CEPHODS', null)); 
+    otherEvaluationList.put(10, new Element('Specific Phobia','CEPHODS', null)); 
     otherEvaluationList.put(11, new Element('Obsessive Compulsive and Related Disorders','CEOCD', null));
     otherEvaluationList.put(12, new Element('Acute Stress Disorder','CEASD', null));
     otherEvaluationList.put(13, new Element('Post-Traumatic Stress Disorder','CEPTSD', null));
@@ -870,7 +1159,6 @@ public with sharing class ClientSummaryReportController {
     evaluationOtherExisted = (otherEvaluation.size() > 0) ? true : false;
     
     evaluationExisted = (evaluationOtherExisted == true || evaluationPrimaryExisted == true) ? true : false;
-
 
   }
 

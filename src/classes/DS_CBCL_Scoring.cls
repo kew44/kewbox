@@ -78,7 +78,7 @@ public class DS_CBCL_Scoring {
             List<String> scaleField = new List<String>{'AD', 'WD', 'SC', 'SO', 
                 'TP', 'AP', 'RB', 'AB'};
                     
-                    obj.put(BorF+'CBAPPCN__c', 1);  // Record defalut to applicable. 
+            obj.put(BorF+'CBAPPCN__c', 1);  // Record defalut to applicable. 
             
             Set<String> notCountForBlank = new Set<String> {'CBO56', 'CBO56H', 'CBO113', 'CBO114', 'CBO115'};
                 
@@ -121,8 +121,9 @@ public class DS_CBCL_Scoring {
                     
                 }
             
-            if(Integer.valueOf(obj.get(BorF+'CBAPPCN__c')) == 0) return obj;
             
+            if(Integer.valueOf(obj.get(BorF+'CBAPPCN__c')) == 0) return obj;
+                        
             for(Integer i = 0; i < scaleField.size(); i++) {
                 
                 Integer index = i + 1;
@@ -131,8 +132,8 @@ public class DS_CBCL_Scoring {
                 obj.put(BorF+'CB'+scaleField.get(i)+'RN__c', Analysis.get(index));
                 
                 Integer rawScore = Analysis.get(index);
-                
-                DS_DATA__c scale = scaleInfo.get(age+'-'+index+'-'+gender+'-'+rawScore+'-'+scaleType.get(index));
+                                
+                DS_DATA__c scale = scaleInfo.get(age+'-'+index+'-'+gender+'-'+rawScore+'-'+scaleType.get(index));               
                 
                 // T-Score
                 obj.put(BorF+'CB'+scaleField.get(i)+'T__c', string.valueof(scale.T_Score__c));
@@ -245,18 +246,18 @@ public class DS_CBCL_Scoring {
                 }
             
             if(Integer.valueOf(obj.get(BorF+'CBAPPCNY__c')) == 0) return obj;
-            
+                        
             for(Integer i = 0; i < scaleField.size(); i++) {
                 
                 Integer index = i + 1;
-                
+                                
                 obj.put(BorF+'CB'+scaleField.get(i)+'RY__c', String.valueof(Analysis.get(index)));
                 obj.put(BorF+'CB'+scaleField.get(i)+'RNY__c', Analysis.get(index));
                 
                 Integer rawScore = Analysis.get(index);
-                
+                                
                 DS_DATA__c scale = scaleInfo.get(age+'-'+index+'-'+gender+'-'+rawScore+'-'+scaleType.get(index));
-                
+                                
                 // T-Score
                 obj.put(BorF+'CB'+scaleField.get(i)+'TY__c', string.valueof(scale.T_Score__c));
                 obj.put(BorF+'CB'+scaleField.get(i)+'TNY__c', scale.T_Score__c);

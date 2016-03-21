@@ -5600,24 +5600,6 @@
         <type>Picklist</type>
     </fields>
     <fields>
-        <fullName>STATUS_INFO_F__c</fullName>
-        <externalId>false</externalId>
-        <label>STATUS INFO F</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Incomplete</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
-        <trackHistory>false</trackHistory>
-        <type>Picklist</type>
-    </fields>
-    <fields>
         <fullName>STATUS_INSDOMENV__c</fullName>
         <externalId>false</externalId>
         <label>STATUS INSDOMENV</label>
@@ -5703,21 +5685,21 @@
     <label>DS Background Family Info F</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>OBJECT_ID</columns>
+        <columns>BDOV__c</columns>
         <columns>Client__c</columns>
-        <columns>NAME</columns>
+        <columns>Client_ID__c</columns>
+        <columns>FDOV__c</columns>
         <columns>F_VISIT_AGE__c</columns>
-        <columns>SECTION__c</columns>
-        <columns>STATUS_DEMO__c</columns>
-        <columns>STATUS_DOMENV__c</columns>
         <columns>STATUS_FOLLOWUPINFO__c</columns>
+        <columns>STATUS_DOMENV__c</columns>
         <columns>STATUS_HEALTH__c</columns>
-        <columns>STATUS_INFO_F__c</columns>
         <columns>STATUS_INSDOMENV__c</columns>
         <columns>STATUS_MILITARY__c</columns>
         <columns>STATUS_NCTSNTREAT__c</columns>
         <columns>STATUS_REFIMM__c</columns>
-        <columns>CREATED_DATE</columns>
         <columns>LAST_UPDATE</columns>
+        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

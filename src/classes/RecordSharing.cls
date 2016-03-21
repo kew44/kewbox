@@ -1,12 +1,9 @@
-/*Page Description:
- *  Controlls access to records based on roles
- * Last Updated on:
- *  7/17/2014
- * Update Purpose:
- *      
- * Programmer:
- *  
- */
+/****
+*@description Controlls access to records based on roles 
+*
+*@group System
+*@group-content /ApexDocContent/System/RecordSharing.htm
+****/
 public class RecordSharing {
    
   public SObject manualShare(String ObjectType, Id recordId, Id userOrGroupId, String acclevel){

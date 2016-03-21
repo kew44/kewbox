@@ -7029,9 +7029,11 @@
     <label>DS Background Family Info B</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>OBJECT_ID</columns>
         <columns>Client__c</columns>
-        <columns>NAME</columns>
-        <columns>B_VISIT_AGE__c</columns>
+        <columns>Client_ID__c</columns>
+        <columns>BDOV__c</columns>
+        <columns>ETHNIC__c</columns>
         <columns>SECTION__c</columns>
         <columns>STATUS_DEMO__c</columns>
         <columns>STATUS_DOMENV__c</columns>

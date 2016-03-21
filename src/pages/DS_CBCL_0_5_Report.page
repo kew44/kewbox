@@ -47,10 +47,9 @@
                 <!--provides print button functionality and structure-->
                 <apex:outputPanel layout="none" rendered="{!NOT(printReport)}">
                     <div>
-                        <a href="/apex/DS_CBCL_0_5_Report?cimi={!HTMLENCODE(cimi)}&print=1" target="_blank">
-                            <button class="btn btn-default pull-right" type="button">
-                                <i class="glyphicon glyphicon-print"></i> &nbsp;Print
-                            </button>
+                        <a class="btn btn-default pull-right" href="/apex/DS_CBCL_0_5_Report?cimi={!HTMLENCODE(cimi)}&print=1" target="_blank">
+                                                            <i class="glyphicon glyphicon-print"></i> &nbsp;Print
+                            
                         </a>
                         <br/>
                     </div>
@@ -214,9 +213,9 @@
                     
                     <div class="row">
                         
-                        <div id="chart-total-score" class="col-md-12 col-lg-4 history-chart"></div>
-                        <div id="chart-internalizing" class="col-md-12 col-lg-4 history-chart"></div>
-                        <div id="chart-externalizing" class="col-md-12 col-lg-4 history-chart"></div>
+                        <div id="chart-internalizing" class="col-md-12 col-lg-6 history-chart"></div>
+                        <div id="chart-externalizing" class="col-md-12 col-lg-6 history-chart"></div>
+                        <div id="chart-total-score" class="col-md-12 col-lg-6 history-chart"></div>
                         
                     </div>
                     
@@ -247,10 +246,10 @@
                     <apex:pageBlock title="Overall History">
                         
                         <div class="row">
-                            	
+                                
+                            <div id="chart-internalizing" class="history-chart print-history-chart"></div>
+                            <div id="chart-externalizing" class="history-chart print-history-chart"></div>
                             <div id="chart-total-score" class="history-chart print-history-chart"></div>
-                        	<div id="chart-internalizing" class="history-chart print-history-chart"></div>
-                        	<div id="chart-externalizing" class="history-chart print-history-chart"></div>
                             
                         </div>
                     </apex:pageBlock>
@@ -284,7 +283,7 @@
             var displayHistory = {!displayhistory};
         
             var chartHeight = {!IF(printReport, 365, 500)};
-            var slantedText = {!IF(printReport, 'false' ,'true')};
+            var slantedText = {!IF(printReport, 'false' ,'false')};
             
             //Load the Visualization API and the piechart package
             google.load("visualization", "1", {packages:["corechart"]});
@@ -302,14 +301,14 @@
             var data = {
                 "rows": [
                     {"c": [{"v": "Emotion. React."}, {"v": {!ROUND(visits[currentVisitDate].CBERTNY, 0)}}, {"v": 69}, {"v": 65}, {"v": false}]},
-                    {"c": [{"v": "Anxious/Deprs."}, {"v": {!ROUND(visits[currentVisitDate].CBADTNY, 0)}}, {"v": 69}, {"v": 65}, {"v": false}]},
-                    {"c": [{"v": "Somatic Complnt."}, {"v": {!ROUND(visits[currentVisitDate].CBSCTNY, 0)}}, {"v": 69}, {"v": 65}, {"v": false}]},
+                    {"c": [{"v": "Anxious/Depres."}, {"v": {!ROUND(visits[currentVisitDate].CBADTNY, 0)}}, {"v": 69}, {"v": 65}, {"v": false}]},
+                    {"c": [{"v": "Somatic Compl."}, {"v": {!ROUND(visits[currentVisitDate].CBSCTNY, 0)}}, {"v": 69}, {"v": 65}, {"v": false}]},
                     {"c": [{"v": "Withdrawn"}, {"v": {!ROUND(visits[currentVisitDate].CBWTNY, 0)}}, {"v": 69}, {"v": 65}, {"v": false}]},
                     {"c": [{"v": "Sleep Prob."}, {"v": {!ROUND(visits[currentVisitDate].CBSPTNY, 0)}}, {"v": 69}, {"v": 65}, {"v": false}]},
                     {"c": [{"v": "Attention Prob."}, {"v": {!ROUND(visits[currentVisitDate].CBAPTNY, 0)}}, {"v": 69}, {"v": 65}, {"v": false}]},
                     {"c": [{"v": "Aggress. Beh."}, {"v": {!ROUND(visits[currentVisitDate].CBABTNY, 0)}}, {"v": 69}, {"v": 65}, {"v": false}]},
-                    {"c": [{"v": "Internal. Prob."}, {"v": {!ROUND(visits[currentVisitDate].CBIBTNY, 0)}}, {"v": 63}, {"v": 60}, {"v": false}]},
-                    {"c": [{"v": "External. Prob."}, {"v": {!ROUND(visits[currentVisitDate].CBEBTNY, 0)}}, {"v": 63}, {"v": 60}, {"v": false}]},
+                    {"c": [{"v": "Internalizing"}, {"v": {!ROUND(visits[currentVisitDate].CBIBTNY, 0)}}, {"v": 63}, {"v": 60}, {"v": false}]},
+                    {"c": [{"v": "Externalizing"}, {"v": {!ROUND(visits[currentVisitDate].CBEBTNY, 0)}}, {"v": 63}, {"v": 60}, {"v": false}]},
                     {"c": [{"v": "Total Score"}, {"v": {!ROUND(visits[currentVisitDate].CBTSTNY, 0)}}, {"v": 63}, {"v": 60}, {"v": false}]}],
                 
                 //Set chart options
@@ -332,9 +331,9 @@
                     1: { pointSize: 0 },
                     2: { pointSize: 0 }
                 },
-                vAxis: { maxValue: 100, minValue: 40},
+                vAxis: { maxValue: 100, minValue: 40, title: 'T-Score'},
                 hAxis: { showTextEvery: 1, slantedText: true, slantedTextAngle:30, title: 'Category' },//x-axis main label
-            	height: chartHeight
+                height: chartHeight
             };
             
             var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
@@ -358,7 +357,7 @@
                 //Set chart options
                 "cols": [
                     {"p": {"role": "domain"},"label": "Date of Administration","type": "string"},
-                    {"p": {"role": "data"},"label": "Total Score","type": "number"},
+                    {"p": {"role": "data"},"label": "T-Score","type": "number"},
                     {"p": {"role": "data"},"label": "Clinical Range","type": "number"},
                     {"p": {"role": "data"},"label": "Borderline Range","type": "number"},
                     {"p": {"role": "certainty"},"type": "boolean"}]
@@ -369,13 +368,13 @@
             var x = new google.visualization.DataTable(data);
             
             var options = {
-                title: 'CBCL Total Score',   
+                title: 'Total Problem Score',   
                 series: {
                     0: { pointSize: 5 },
                     1: { pointSize: 0 },
                     2: { pointSize: 0 }
                 },
-                vAxis: { maxValue: 100, minValue: 0},
+                vAxis: { maxValue: 100, minValue: 0, title: 'T-Score'},
                 hAxis: { showTextEvery: 1, slantedText: slantedText, slantedTextAngle:30, title: 'Date of administration' },//x-axis main label
                 height: chartHeight
             };
@@ -400,7 +399,7 @@
                 //Set chart options
                 "cols": [
                     {"p": {"role": "domain"},"label": "Date of Administration","type": "string"},
-                    {"p": {"role": "data"},"label": "Total Score","type": "number"},
+                    {"p": {"role": "data"},"label": "T-Score","type": "number"},
                     {"p": {"role": "data"},"label": "Clinical Range","type": "number"},
                     {"p": {"role": "data"},"label": "Borderline Range","type": "number"},
                     {"p": {"role": "certainty"},"type": "boolean"}]
@@ -417,7 +416,7 @@
                     1: { pointSize: 0 },
                     2: { pointSize: 0 }
                 },
-                vAxis: { maxValue: 100, minValue: 0},
+                vAxis: { maxValue: 100, minValue: 0, title: 'T-Score'},
                 hAxis: { showTextEvery: 1, slantedText: slantedText, slantedTextAngle:30, title: 'Date of administration' },//x-axis main label
                 height: chartHeight
             };
@@ -442,7 +441,7 @@
                 //Set chart options
                 "cols": [
                     {"p": {"role": "domain"},"label": "Date of Administration","type": "string"},
-                    {"p": {"role": "data"},"label": "Total Score","type": "number"},
+                    {"p": {"role": "data"},"label": "T-Score","type": "number"},
                     {"p": {"role": "data"},"label": "Clinical Range","type": "number"},
                     {"p": {"role": "data"},"label": "Borderline Range","type": "number"},
                     {"p": {"role": "certainty"},"type": "boolean"}]
@@ -459,7 +458,7 @@
                     1: { pointSize: 0 },
                     2: { pointSize: 0 }
                 },
-                vAxis: { maxValue: 100, minValue: 0},
+                vAxis: { maxValue: 100, minValue: 0, title: 'T-Score'},
                 hAxis: { showTextEvery: 1, slantedText: slantedText, slantedTextAngle:30, title: 'Date of administration' },//x-axis main label
                 height: chartHeight
             };

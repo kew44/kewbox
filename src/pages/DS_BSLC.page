@@ -100,8 +100,8 @@
                         </label>
                         
                         <!--q4 answer field-->
-                        <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TXSTDT__c" html-placeholder="MM/DD/YYYY"  showDatePicker="true" styleClass="form-control skip-element-TXLFTDT input-sm" value="{!form.obj[bfVariableMap['TXSTDT']]}"/>
+                        <div class="col-md-2 col-lg-2 specify-input">
+                                <apex:inputField id="TXSTDT__c" html-placeholder="MM/DD/YYYY"  showDatePicker="true" styleClass="form-control input-sm" value="{!form.obj[bfVariableMap['TXSTDT']]}"/>
                         </div>
                     </div>
                         

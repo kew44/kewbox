@@ -1,3 +1,9 @@
+/****
+*@description Tests Community Self Register Controller & Community Self Register Confirm Controller
+*
+*@group Test Script 
+*@group-content /ApexDocContent/Test/CommunitiesSelfRegController.htm
+****/
 @isTest (SeeAllData=false)
 public class TestClass_CommunitiesSelfRegController {
     
@@ -5,7 +11,7 @@ public class TestClass_CommunitiesSelfRegController {
         
         CommunitiesSelfRegController selfReg = new CommunitiesSelfRegController();
         
-        selfReg.registerUser();
+        selfReg.registerUser();        
         
         CommunitiesSelfRegConfirmController confirm = new CommunitiesSelfRegConfirmController();
         

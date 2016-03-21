@@ -1,12 +1,9 @@
-/*Page Description:
- *  Class to delete Center Information
- * Last Updated on:
- *  7/17/2014
- * Update Purpose:
- *      
- * Programmer:
- *  
- */
+/****
+*@description  Class to delete Center Information
+*
+*@group Center
+*@group-content /ApexDocContent/Center/CenterDeletion.htm
+****/
 public with sharing class CenterDeletion {
     
     String ID = Apexpages.currentPage().getParameters().get('id');
@@ -55,8 +52,7 @@ public with sharing class CenterDeletion {
         subcenter = ((Center__c) controller.getRecord()).Subcenters__r.size(); 
         clinician = ((Center__c) controller.getRecord()).Clinicians__r.size(); 
 
-        total = subcenter + clinician;
-       
+        total = subcenter + clinician;       
     
     }
     
@@ -71,8 +67,7 @@ public with sharing class CenterDeletion {
             return pageRef; 
         } 
 
-        return null;
-        
+        return null;        
         
     }
 

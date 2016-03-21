@@ -10,7 +10,7 @@
               <tr>
                   <th>ID</th>
                   <th>Initials</th>
-                  <th>Age</th>
+                  <th>Current Age</th>
                   <th>Gender</th>
                   
                   <apex:outputPanel layout="none" rendered="{!displayVisitType}">

@@ -1,12 +1,10 @@
-/*Page Description:
- *  Controller Class for Centers
- * Last Updated on:
- *  7/17/2014
- * Update Purpose:
- *      
- * Programmer:
- *  
- */
+/****
+*@description Controller Class for Centers
+*
+*@group Center 
+*@group-content /ApexDocContent/Center/CenterController.htm
+****/
+
  public with sharing class CenterController {
 
     String ID = Apexpages.currentPage().getParameters().get('id');
@@ -33,21 +31,11 @@
         
         title = 'Create Center';
         subtitle = 'Center';
-        
-        //String userRole = UserInfo.getUserRoleId();
-        
-        /*Counter__c counter = [SELECT Type__c 
-                                FROM Counter__c 
-                               WHERE Role_ID__c = :UserInfo.getUserRoleId()];*/
-        
-        //System.debug(UserInfo.getUserRoleId());
-        
+                
         Counter__c roleInfo = roleManager.RoleType(UserInfo.getUserRoleId());
         
         isAdmin = (roleInfo.Type__c == 0) ? TRUE : FALSE;
-        
-        //if(createSub) mainSub = 1;
-    
+            
         if(ID != null) {
             
             newEdit = FALSE;
@@ -59,16 +47,12 @@
                          AND IsDeleted = false]; 
         
             mainSub = (center.Type__c == 'Main') ? 1 : 2;
-            
-            //if(isAdmin == TRUE) mainSub = 0;
-            
+                        
             title = 'Cetner Edit';
             subtitle = '(' + center.Name + ') ' + center.Name__c;
             
         }
     }
-    
-    
        
     public List<SelectOption> getItems() {
     
@@ -79,8 +63,5 @@
                 
         return options; 
     }
-    
-    
-    
-    
+        
 }

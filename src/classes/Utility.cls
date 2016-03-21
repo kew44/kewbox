@@ -1,19 +1,16 @@
-/*Page Description:
-*  Class for necessary background utility functions
-* Last Updated on:
-*  7/17/2014
-* Update Purpose:
-*      
-* Programmer:
-*  
-*/
+/****
+*@description  Class for necessary background utility functions
+*
+*@group System
+*@group-content /ApexDocContent/System/Utility.htm
+****/
 public class Utility {
     
     public Utility() {}
     
     public String clientSectionInfo(ID clientID) {///heading specific to client info page, no section column
         
-        Client__c c = [SELECT name, INIT__c, AGE__c, GENDER__c, DOB1__c
+        Client__c c = [SELECT name, INIT__c, AGE__c, CURRENT_AGE__c, GENDER__c, DOB1__c
                        FROM Client__c
                        WHERE id = :clientID ];
         
@@ -23,7 +20,7 @@ public class Utility {
         String info = '<div class="header-info-table"><table class="table table-bordered">' +
             '<thead>'+
             '<th>Client ID</th><th>Initials</th>'+
-            '<th>Age</th><th>Gender</th>'+
+            '<th>Current Age</th><th>Gender</th>'+
             '</thead>'+
             '<tbody>'+
             '<td>' + c.name + '</td><td>' + c.INIT__c + '</td>'+
@@ -34,55 +31,50 @@ public class Utility {
         return info;
         
     }////////////////////////////////////////end
+   
+     public String clientSection(ID clientID, ID SummaryID ) {//heading used on form pages?
+  
+    String SectionType;
+   
+    Client__c c = [SELECT name, INIT__c, AGE__c, GENDER__c, DOB1__c
+                     FROM Client__c
+                    WHERE id = :clientID];  
+
+    Client_Summary__c summary = [SELECT SECTION__c, Client__r.DOB1__c, 
+                                        Client__r.INIT__c, Client__r.AGE__c,
+                                        Client__r.GENDER__c, Client__r.name
+                                   FROM Client_Summary__c 
+                                  WHERE ID =:summaryID];
+
+    Integer year = Integer.valueOf(date.valueof(summary.Client__r.DOB1__c).daysBetween(Date.today()) / 365);
     
-    //  public String summaryID;    
-    
-    public String clientSection(ID clientID, ID SummaryID ) {
-        
-        String SectionType;
-        
-        // Loading data from the summary query, no need to run one more query 
-        // Comment out by Danny 07/02/2014 
-        
-        Client__c c = [SELECT name, INIT__c, AGE__c, GENDER__c, DOB1__c
-                       FROM Client__c
-                       WHERE id = :clientID];  
-        
-        Client_Summary__c summary = [SELECT SECTION__c, Client__r.DOB1__c, 
-                                     Client__r.INIT__c, Client__r.AGE__c,
-                                     Client__r.GENDER__c, Client__r.name
-                                     FROM Client_Summary__c 
-                                     WHERE ID =:summaryID];
-        
-        //System.debug('>>>>>>>> the value of summary is ' + summary);
-        Integer year = Integer.valueOf(date.valueof(summary.Client__r.DOB1__c).daysBetween(Date.today()) / 365);
-        
-        if(summary.SECTION__c == '0'){
-            SectionType='Baseline';
-        }
-        else if(summary.SECTION__c == '-1'){
-            SectionType='Trauma';
-        }
-        else {//if(summary.SECTION__c == '1')
-            SectionType='FollowUp';
-        }
-        
-        String info = '<div class="header-info-table"><table class="table table-bordered">' +
-            '<thead>'+
-            '<th>ID</th><th>Initials</th>'+
-            '<th>Age</th><th>Gender</th>'+
-            '<th>Visit Type</th>'+
-            '</thead>'+
-            '<tbody>'+
-            '<td>' + summary.Client__r.name + '</td><td>' + summary.Client__r.INIT__c + '</td>'+
-            '<td>' + year + '</td><td>' + summary.Client__r.GENDER__c + '</td>'+
-            '<td>' + SectionType+ '</td>'+//Section.Category__c
-            '</tbody>'+
-            '</table></div>';
-        
-        return info;
-        
+    if(summary.SECTION__c == '0'){
+        SectionType='Baseline';
     }
+    else if(summary.SECTION__c == '-1'){
+        SectionType='Trauma';
+    }
+    else {//if(summary.SECTION__c == '1')
+        SectionType='FollowUp';
+    }
+            
+    
+    String info = '<table class="table">' +
+                    '<thead>'+
+                      '<th>ID</th><th>Initials</th>'+
+                      '<th>Current Age</th><th>Gender</th>'+
+                      '<th>Visit Type</th>'+
+                    '</thead>'+
+                    '<tbody>'+
+                      '<td>' + summary.Client__r.name + '</td><td>' + summary.Client__r.INIT__c + '</td>'+
+                      '<td>' + year + '</td><td>' + summary.Client__r.GENDER__c + '</td>'+
+                      '<td>' + SectionType+ '</td>'+//Section.Category__c
+                    '</tbody>'+
+                  '</table>';
+
+    return info;
+
+  }
     
     public String getFields(String objName) {
         
@@ -405,16 +397,11 @@ system.debug('Type ====>' + fieldSetMemberObj.getType());   //type - STRING,PICK
         Map<String,Schema.SObjectField> mfields = objType.getDescribe().fields.getMap();
         
         for(String key : fields.keyset()) {
-            
-            //System.debug('in - ' + BorF+key+'__c');
-            
+                        
             Schema.SObjectField field = mfields.get(BorF+key+'__c');
             Boolean isUpdateable = field.getDescribe().isUpdateable();
-            
-           // System.debug(isUpdateable);
-            
+                        
             if(isUpdateable == true) {
-              //  System.debug(BorF+key+'__c');
                 obj.put(BorF+key+'__c', null);
             }
             
@@ -445,12 +432,10 @@ system.debug('Type ====>' + fieldSetMemberObj.getType());   //type - STRING,PICK
 
     }
     
-    //public boolean hasSObjectField(String fieldName, SObject so){
-    //  return so.getSobjectType().getDescribe().fields.getMap().keySet().contains(fieldName);
-    //}
+    public boolean hasSObjectField(String fieldName, SObject so){
+      return so.getSobjectType().getDescribe().fields.getMap().keySet().contains(fieldName);
+    }
     
-    /*Map<String, Schema.SObjectType> sobjectSchemaMap = Schema.getGlobalDescribe();
-Schema.DescribeSObjectResult objDescribe = sobjectSchemaMap.get('DS_TRSEX__c').getDescribe();
-Map<String, Schema.SObjectField> fieldMap = objDescribe.fields.getMap();*/
+    
     
 }

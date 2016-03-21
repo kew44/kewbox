@@ -55,6 +55,11 @@
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
+        <displayedFields>
+            <field>STATUS_PSI__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
         <label>STATUS</label>
     </fieldSets>
     <fields>
@@ -116,6 +121,14 @@
         <trackHistory>false</trackHistory>
         <type>Number</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FDOAPSI__c</fullName>
+        <externalId>false</externalId>
+        <label>FDOAPSI</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
     </fields>
     <fields>
         <fullName>FDOASDOP__c</fullName>
@@ -311,6 +324,246 @@
         <externalId>false</externalId>
         <label>FOTCNULLS</label>
         <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPSIDC2__c</fullName>
+        <description>Difficult Child (DC)</description>
+        <externalId>false</externalId>
+        <label>FPSIDC2</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPSIDC_PTLE2__c</fullName>
+        <description>Difficult Child (DC) T</description>
+        <externalId>false</externalId>
+        <label>FPSIDC_PTLE2</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPSIDC_PTLE__c</fullName>
+        <description>Difficult Child (DC) T</description>
+        <externalId>false</externalId>
+        <label>FPSIDC_PTLE</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPSIDC__c</fullName>
+        <description>Difficult Child (DC)</description>
+        <externalId>false</externalId>
+        <label>FPSIDC</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPSIDR2__c</fullName>
+        <description>Defensive Responding</description>
+        <externalId>false</externalId>
+        <label>FPSIDR2</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPSIDR_PTLE2__c</fullName>
+        <description>Defensive Responding T</description>
+        <externalId>false</externalId>
+        <label>FPSIDR_PTLE2</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPSIDR_PTLE__c</fullName>
+        <description>Defensive Responding T</description>
+        <externalId>false</externalId>
+        <label>FPSIDR_PTLE</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPSIDR__c</fullName>
+        <description>Defensive Responding</description>
+        <externalId>false</externalId>
+        <label>FPSIDR</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPSIPCDI2__c</fullName>
+        <description>Parent-Child Dysfunctional Interaction (P-CDI)</description>
+        <externalId>false</externalId>
+        <label>FPSIPCDI2</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPSIPCDI_PTLE2__c</fullName>
+        <description>Parent-Child Dysfunctional Interaction (P-CDI) T</description>
+        <externalId>false</externalId>
+        <label>FPSIPCDI_PTLE2</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPSIPCDI_PTLE__c</fullName>
+        <description>Parent-Child Dysfunctional Interaction (P-CDI) T</description>
+        <externalId>false</externalId>
+        <label>FPSIPCDI_PTLE</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPSIPCDI__c</fullName>
+        <description>Parent-Child Dysfunctional Interaction (P-CDI)</description>
+        <externalId>false</externalId>
+        <label>FPSIPCDI</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPSIPD2__c</fullName>
+        <description>Parental Distress (PD)</description>
+        <externalId>false</externalId>
+        <label>FPSIPD2</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPSIPD_PTLE2__c</fullName>
+        <description>Parental Distress (PD) T</description>
+        <externalId>false</externalId>
+        <label>FPSIPD_PTLE2</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPSIPD_PTLE__c</fullName>
+        <description>Parental Distress (PD) T</description>
+        <externalId>false</externalId>
+        <label>FPSIPD_PTLE</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPSIPD__c</fullName>
+        <description>Parental Distress (PD)</description>
+        <externalId>false</externalId>
+        <label>FPSIPD</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPSITS2__c</fullName>
+        <description>Total Stress</description>
+        <externalId>false</externalId>
+        <label>FPSITS2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPSITS_PTLE2__c</fullName>
+        <description>Total Stress T</description>
+        <externalId>false</externalId>
+        <label>FPSITS_PTLE2</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPSITS_PTLE__c</fullName>
+        <description>Total Stress T</description>
+        <externalId>false</externalId>
+        <label>FPSITS_PTLE</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPSITS__c</fullName>
+        <description>Total Stress</description>
+        <externalId>false</externalId>
+        <label>FPSITS</label>
+        <precision>3</precision>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
@@ -2625,6 +2878,24 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>STATUS_PSI__c</fullName>
+        <externalId>false</externalId>
+        <label>STATUS PSI</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Incomplete</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Complete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>STATUS_SDQ_P_04_10__c</fullName>
         <externalId>false</externalId>
         <label>STATUS SDQ P 04 10</label>
@@ -2703,6 +2974,216 @@
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
     <validationRules>
+        <fullName>PSI_DC_Raw_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FPSIDC__c &lt;&gt; FPSIDC2__c</errorConditionFormula>
+        <errorDisplayField>FPSIDC2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Difficult Child Raw</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PSI_DC_Raw_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+(FPSIDC__c&gt;=12)&amp;&amp;
+(FPSIDC__c &lt;= 60)
+)
+&amp;&amp;
+NOT(
+ISNULL(FPSIDC__c)
+)</errorConditionFormula>
+        <errorDisplayField>FPSIDC__c</errorDisplayField>
+        <errorMessage>The Raw Score entered for Difficult Child is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PSI_DC_T_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FPSIDC_PTLE__c &lt;&gt; FPSIDC_PTLE2__c</errorConditionFormula>
+        <errorDisplayField>FPSIDC_PTLE2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Difficult Child T-Score</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PSI_DC_T_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+(FPSIDC_PTLE__c&gt;=1)&amp;&amp;
+(FPSIDC_PTLE__c &lt;= 99)
+)
+&amp;&amp;
+NOT(
+ISNULL(FPSIDC_PTLE__c)
+)</errorConditionFormula>
+        <errorDisplayField>FPSIDC_PTLE__c</errorDisplayField>
+        <errorMessage>The T-Score entered for Difficult Child is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PSI_DR_Raw_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FPSIDR__c &lt;&gt; FPSIDR2__c</errorConditionFormula>
+        <errorDisplayField>FPSIDR2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Defensive Responding Raw</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PSI_DR_Raw_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+(FPSIDR__c&gt;=7)&amp;&amp;
+(FPSIDR__c &lt;= 35)
+)
+&amp;&amp;
+NOT(
+ISNULL(FPSIDR__c)
+)</errorConditionFormula>
+        <errorDisplayField>FPSIDR__c</errorDisplayField>
+        <errorMessage>The Raw Score entered for Defensive Responding is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PSI_DR_T_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FPSIDR_PTLE__c &lt;&gt; FPSIDR_PTLE2__c</errorConditionFormula>
+        <errorDisplayField>FPSIDR_PTLE2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Defensive Responding T-Score</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PSI_DR_T_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+(FPSIDR_PTLE__c&gt;=1)&amp;&amp;
+(FPSIDR_PTLE__c &lt;= 99)
+)
+&amp;&amp;
+NOT(
+ISNULL(FPSIDR_PTLE__c)
+)</errorConditionFormula>
+        <errorDisplayField>FPSIDR_PTLE__c</errorDisplayField>
+        <errorMessage>The T-Score entered for Defensive Responding is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PSI_PCDI_Raw_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FPSIPCDI__c &lt;&gt; FPSIPCDI2__c</errorConditionFormula>
+        <errorDisplayField>FPSIPCDI2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Parent-Child Dysfunctional Interaction Raw</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PSI_PCDI_Raw_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+(FPSIPCDI__c&gt;=12)&amp;&amp;
+(FPSIPCDI__c &lt;= 60)
+)
+&amp;&amp;
+NOT(
+ISNULL(FPSIPCDI__c)
+)</errorConditionFormula>
+        <errorDisplayField>FPSIPCDI__c</errorDisplayField>
+        <errorMessage>The Raw Score entered for Parent-Child Dysfunctional Interaction  is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PSI_PCDI_T_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FPSIPCDI_PTLE__c &lt;&gt; FPSIPCDI_PTLE2__c</errorConditionFormula>
+        <errorDisplayField>FPSIPCDI_PTLE2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Parent-Child Dysfunctional Interaction T-Score</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PSI_PCDI_T_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+(FPSIPCDI_PTLE__c&gt;=1)&amp;&amp;
+(FPSIPCDI_PTLE__c &lt;= 99)
+)
+&amp;&amp;
+NOT(
+ISNULL(FPSIPCDI_PTLE__c)
+)</errorConditionFormula>
+        <errorDisplayField>FPSIPCDI_PTLE__c</errorDisplayField>
+        <errorMessage>The T-Score entered for Parent-Child Dysfunctional Interaction  is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PSI_PD_Raw_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FPSIPD__c &lt;&gt; FPSIPD2__c</errorConditionFormula>
+        <errorDisplayField>FPSIPD2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Parental Distress Raw</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PSI_PD_Raw_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+(FPSIPD__c&gt;=12)&amp;&amp;
+(FPSIPD__c &lt;= 60)
+)
+&amp;&amp;
+NOT(
+ISNULL(FPSIPD__c)
+)</errorConditionFormula>
+        <errorDisplayField>FPSIPD__c</errorDisplayField>
+        <errorMessage>The Raw Score entered for Parental Distress is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PSI_PD_T_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FPSIPD_PTLE__c &lt;&gt; FPSIPD_PTLE2__c</errorConditionFormula>
+        <errorDisplayField>FPSIPD_PTLE2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Parental Distress T-Score</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PSI_PD_T_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+(FPSIPD_PTLE__c&gt;=1)&amp;&amp;
+(FPSIPD_PTLE__c &lt;= 99)
+)
+&amp;&amp;
+NOT(
+ISNULL(FPSIPD_PTLE__c)
+)</errorConditionFormula>
+        <errorDisplayField>FPSIPD_PTLE__c</errorDisplayField>
+        <errorMessage>The T-Score entered for Parental Distress is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PSI_TS_Raw_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FPSITS__c &lt;&gt; FPSITS2__c</errorConditionFormula>
+        <errorDisplayField>FPSITS2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Total Stress Raw</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PSI_TS_Raw_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+(FPSITS__c&gt;=36)&amp;&amp;
+(FPSITS__c &lt;= 180)
+)
+&amp;&amp;
+NOT(
+ISNULL(FPSITS__c)
+)</errorConditionFormula>
+        <errorDisplayField>FPSITS__c</errorDisplayField>
+        <errorMessage>The Raw Score entered for Total Stress is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PSI_TS_T_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FPSITS_PTLE__c &lt;&gt; FPSITS_PTLE2__c</errorConditionFormula>
+        <errorDisplayField>FPSITS_PTLE2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Total Stress T-Score</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PSI_TS_T_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+(FPSITS_PTLE__c&gt;=1)&amp;&amp;
+(FPSITS_PTLE__c &lt;= 99)
+)
+&amp;&amp;
+NOT(
+ISNULL(FPSITS_PTLE__c)
+)</errorConditionFormula>
+        <errorDisplayField>FPSITS_PTLE__c</errorDisplayField>
+        <errorMessage>The T-Score entered for Total Stress is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>SDQ_OP_date_cannot_be_before_FDOV</fullName>
         <active>true</active>
         <errorConditionFormula>FDOV__c &gt; FDOASDOP__c</errorConditionFormula>
@@ -2767,14 +3248,14 @@
     </validationRules>
     <validationRules>
         <fullName>SDQ_date_required</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>Date of administration is required</description>
         <errorConditionFormula>ISBLANK( FDOASDYP__c )&amp;&amp;ISBLANK( FDOASDOS__c )&amp;&amp;ISBLANK( FDOASDOP__c )</errorConditionFormula>
         <errorMessage>Please indicate the date of administration.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>SDQ_must_indicate_method</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>Method of administration is required</description>
         <errorConditionFormula>ISPICKVAL( FMETSDOP__c , &apos;&apos;)&amp;&amp;ISPICKVAL( FMETSDOS__c , &apos;&apos;)&amp;&amp;ISPICKVAL( FMETSDYP__c , &apos;&apos;)</errorConditionFormula>
         <errorMessage>Please indicate the method of administration.</errorMessage>

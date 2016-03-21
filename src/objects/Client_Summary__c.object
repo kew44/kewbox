@@ -121,8 +121,9 @@
     <label>Client Summary</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
+        <columns>OBJECT_ID</columns>
         <columns>Client__c</columns>
+        <columns>NAME</columns>
         <columns>Page__c</columns>
         <columns>FORM_TYPE__c</columns>
         <columns>SECTION__c</columns>

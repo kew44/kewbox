@@ -1,252 +1,127 @@
+/****
+*@description This test provides code coverage for DS_GTRAUMA
+*includes:
+*Trigger 
+*GTRAUMA Controller
+*Bulkified testing
+*Asserted Variables
+*
+*@group Test Script 
+*@group-content /ApexDocContent/Test/GTRAUMA.htm
+*
+*@author Kelsey Willett
+*@date 11/18/2015
+*@modified date
+****/
+
 @isTest (SeeAllData=false)
-private class TestClass_DS_GTRAUMA {
+private class TestClass_DS_GTRAUMA  {
     
+    /****
+    *@description Initialize reference to TestClass_A_Utility
+    ****/
+    public static TestClass_A_Utility test_ut = new TestClass_A_Utility();
+    
+    /****
+    *@description Initialize reference to Utility
+    ****/
+    public static Utility ut = new Utility();
+    
+    /****
+    *@description Load required data from TestClassData
+    ****/
     @testSetup 
     static void setup() {
-        // Load DS_DATA into system
         TestClassData_DS_DATA importData = new TestClassData_DS_DATA();      
     }
     
-    
-    static TestMethod void controllerTest() {
+    /****
+    *@description method to test a bulk creation of object
+    ****/
+    static TestMethod void bulkifyObj(){
         
-        Utility ut = new Utility();
-        TestClass_A_Utility test_ut = new TestClass_A_Utility();
-        
+        //init client
         Client__c client = test_ut.createClient();
-        String cimi = ut.urlEncode('c='+client.id);//+'&summary='+summary.id);
-        ApexPages.currentPage().getParameters().put('cimi', cimi);
-        
-        DS_GTRAUMA__c obj = new DS_GTRAUMA__c();    
-        obj.client__c = client.id;
-        obj.GT1R__c = '1';
-        obj.GT2R__c = '1';
-        obj.GT3R__c = '1';
-        obj.GT4R__c = '1';
-        obj.GT5R__c = '1';
-        obj.GT6R__c = '1';
-        obj.GT7R__c = '1';
-        obj.GT8R__c = '1';
-        obj.GT9R__c = '1';
-        obj.GT10R__c = '1';
-        obj.GT11R__c = '1';
-        obj.GT12R__c = '1';
-        obj.GT13R__c = '1';
-        obj.GT14R__c = '1';
-        obj.GT15R__c = '1';
-        obj.GT16R__c = '1';
-        obj.GT17R__c = '1';
-        obj.GT18R__c = '1';
-        obj.GT19R__c = '1';
-        obj.GT20R__c = '1';
-        obj.GT21R__c = '1';
-        obj.GT22R__c = '1';
-        obj.GT23R__c = '1';
-        obj.GT8RA0__c = true;
-        obj.GT20RA0__c = false;
-        ApexPages.StandardController sc = new ApexPages.StandardController(obj);
-        DS_GTRAUMA_Controller controller = new DS_GTRAUMA_Controller(sc);
-        
-        List<SelectOption> radio = controller.getTraumaType();
-        List<SelectOption> radioYesNo = controller.getPrimaryType();
-        //String clientInfo = controller.getClientInfo();
-        
-        
-        System.assertEquals(obj.client__c, client.id, 'There is a problem with the clieni id.');
-        System.assertEquals(obj.GT8R__c, '1', 'There is a problem with the variable GT8R.');
-        System.assertEquals(obj.GT20R__c, '1', 'There is a problem with the variable GT20R.');
-        System.assertEquals(obj.GT8RA0__c, true, 'There is a problem with the variable GT8RA0.');
-        System.assertEquals(obj.GT20RA0__c, false, 'There is a problem with the variable GT20RA0.');
-        
-        controller.rowList();
-        
-        
-        
-        controller.save();
-        controller.cancel();
-        
-        insert obj;
-        // Update general trauma
-        obj = [SELECT id FROM DS_GTRAUMA__c WHERE client__c =: client.id Limit 1];
-        /* obj.client__c = client.id;//?
-obj.GT8R__c = '1';
-obj.GT20R__c = '1';
-obj.GT8RA0__c = true;*/
-        obj.GT20RA0__c = true;
-        sc = new ApexPages.StandardController(obj);
-        controller = new DS_GTRAUMA_Controller(sc);    
-        ApexPages.currentPage().getParameters().put('cimi', cimi);
-        
-        
-        controller.save();
-        //String nextPage = controller.save().getUrl();
-        
-    }
+         
+        //init list of object
+        List<DS_GTRAUMA__c> bulkObj = new List<DS_GTRAUMA__c>();     
     
-    static TestMethod DS_GTRAUMA__c Test0_insertUpdateGeneralTrauma() {
-        
-        TestClass_A_Utility test_ut = new TestClass_A_Utility();
-        
-        Client__c client = test_ut.createClient();
-        
-        DS_GTRAUMA__c obj = new DS_GTRAUMA__c();
-        
-        obj.client__c = client.id;
-        
-        obj.GT1R__c = '1';
-        obj.GT2R__c = '1';
-        obj.GT3R__c = '1';
-        obj.GT4R__c = '1';
-        obj.GT5R__c = '1';
-        obj.GT6R__c = '1';
-        obj.GT7R__c = '1';
-        obj.GT8R__c = '1';
-        obj.GT9R__c = '1';
-        obj.GT10R__c = '1';
-        obj.GT11R__c = '1';
-        obj.GT12R__c = '1';
-        obj.GT13R__c = '1';
-        obj.GT14R__c = '1';
-        obj.GT15R__c = '1';
-        obj.GT16R__c = '1';
-        obj.GT17R__c = '1';
-        obj.GT18R__c = '1';
-        obj.GT19R__c = '1';
-        obj.GT20R__c = '0';
-        obj.GT21R__c = '1';
-        obj.GT22R__c = '1';
-        obj.GT23R__c = '1';
-        
-        obj.GT8RA0__c = true;
-        obj.GT20RA0__c = true;
-        
-        obj.GT8RA1__c = false;
-        
-        obj.GT8RAU__c = false;
-        
-        insert obj;
-        
-        return obj;
-    }
-    
-    static TestMethod void Test1_updateGeneralTrauma() {
-        
-        DS_GTRAUMA__c obj = Test0_insertUpdateGeneralTrauma();
-        
-        obj.GT1R__c = '1';
-        obj.GT2R__c = '1';
-        obj.GT3R__c = '1';
-        obj.GT4R__c = '1';
-        obj.GT5R__c = '1';
-        obj.GT6R__c = '1';
-        obj.GT7R__c = '1';
-        obj.GT8R__c = '1';
-        obj.GT9R__c = '1';
-        obj.GT10R__c = '1';
-        obj.GT11R__c = '1';
-        obj.GT12R__c = '1';
-        obj.GT13R__c = '1';
-        obj.GT14R__c = '1';
-        obj.GT15R__c = '1';
-        obj.GT16R__c = '1';
-        obj.GT17R__c = '1';
-        obj.GT18R__c = '1';
-        obj.GT19R__c = '1';
-        obj.GT20R__c = '0';
-        obj.GT21R__c = '1';
-        obj.GT22R__c = '1';
-        obj.GT23R__c = '1';
-        
-        obj.GT8RA0__c = true;
-        obj.GT20RA0__c = true;
-        
-        obj.GT8RA1__c = true;
-        obj.GT20RA1__c = true;
-        
-        obj.GT8RAU__c = true;
-        
-        update obj;
-        
-    }
-    
-  /*  static TestMethod List<DS_GTRAUMA__c> Test3_bulkInsertGeneralTrauma() {
-        
-        TestClass_A_Utility test_ut = new TestClass_A_Utility();
-        
-        Client__c client = test_ut.createClient();
-        
-        ///begin bulk insert
-        System.debug('Inserting 200 records... (bulk validation)');
-        
-        List<DS_GTRAUMA__c> bulkObj = new List<DS_GTRAUMA__c>();
-        
-        for (Integer i=0;i<200;i++) {
-            
+        ///begin bulk insert     
+        for (Integer i=0;i<200;i++){
+            //add record with required values
             bulkObj.add(new DS_GTRAUMA__c(client__c = client.id,
                                           GT1R__c = '1',GT2R__c = '1',GT3R__c = '1',GT4R__c = '1',
                                           GT5R__c = '1',GT6R__c = '1',GT7R__c = '1',GT8R__c = '1',
                                           GT9R__c = '1',GT10R__c = '1',GT11R__c = '1',GT12R__c = '1',
                                           GT13R__c = '1',GT14R__c = '1',GT15R__c = '1',GT16R__c = '1',
                                           GT17R__c = '1',GT18R__c = '1',GT19R__c = '1',GT20R__c = '1',
-                                          GT21R__c = '1',GT22R__c = '1',GT23R__c = '1'
-                                         ));
-            
+                                          GT21R__c = '1',GT22R__c = '1',GT23R__c = '1'));
         }
         
+        //add list of records to object
         insert bulkObj;
-        
-        return bulkobj;
-        
     }
     
-    static TestMethod void Test4_bulkUpdateGeneralTrauma() {
+    /****
+    *@description method to test controller associated with object
+    *assert methods represent data types from each controller 
+    *some variables asserted may represent required values for certain logic
+    ****/
+    static TestMethod void assertControllers(){
+            
+        //create test client 
+        Client__c client = test_ut.createClientSummary();//
+                
+        DS_DATA__c dataPage = [SELECT id FROM DS_DATA__c WHERE Page__c = 'DS_GTRAUMA'AND File_name__c = 'BASELINE'AND Category__c = 'GT'];
         
-        List<DS_GTRAUMA__c> bulkObj = Test3_bulkInsertGeneralTrauma();
+        String dpID = String.valueOf(dataPage.id);      
         
-        List<DS_GTRAUMA__c> updateBulkObj = new List<DS_GTRAUMA__c>();
+        Client_Summary__c summary = new Client_Summary__c(Client__c = client.id,
+                                                            SECTION__c = '-1',
+                                                            Page__c = dpID,
+                                                            FORM_TYPE__c = 'GT',
+                                                            STATUS__c = 'Complete');
         
-        for(DS_GTRAUMA__c obj : bulkobj) {
-            
-            obj.GT1R__c = '1';
-            obj.GT2R__c = '1';
-            obj.GT3R__c = '1';
-            obj.GT4R__c = '1';
-            obj.GT5R__c = '1';
-            obj.GT6R__c = '1';
-            obj.GT7R__c = '1';
-            obj.GT8R__c = '1';
-            obj.GT9R__c = '1';
-            obj.GT10R__c = '1';
-            obj.GT11R__c = '1';
-            obj.GT12R__c = '1';
-            obj.GT13R__c = '1';
-            obj.GT14R__c = '1';
-            obj.GT15R__c = '1';
-            obj.GT16R__c = '1';
-            obj.GT17R__c = '1';
-            obj.GT18R__c = '1';
-            obj.GT19R__c = '1';
-            obj.GT20R__c = '0';
-            obj.GT21R__c = '1';
-            obj.GT22R__c = '1';
-            obj.GT23R__c = '1';
-            
-            obj.GT8RA0__c = true;
-            obj.GT20RA0__c = true;
-            
-            obj.GT8RA1__c = true;
-            obj.GT20RA1__c = true;
-            
-            obj.GT8RAU__c = true;
-            
-            updateBulkObj.add(obj);
-            
-        }
+        insert summary;                   
         
-        update updateBulkObj;
+        //summaryId     
+        String summaryId = summary.id;//test_ut.getClientSummaryId(client.id, 'DS_GTRAUMA','-1');
         
-    }*/
-    
-    
-    
+        //init object w/ required variables
+        DS_GTRAUMA__c obj = new DS_GTRAUMA__c(client__c = client.id, 
+                                              GT1R__c = '1',GT2R__c = '1',GT3R__c = '1',GT4R__c = '1',
+                                              GT5R__c = '1',GT6R__c = '1',GT7R__c = '1',GT8R__c = '1',
+                                              GT9R__c = '1',GT10R__c = '1',GT11R__c = '1',GT12R__c = '1',
+                                              GT13R__c = '1',GT14R__c = '1',GT15R__c = '1',GT16R__c = '1',
+                                              GT17R__c = '1',GT18R__c = '1',GT19R__c = '1',GT20R__c = '1',
+                                              GT21R__c = '1',GT22R__c = '1',GT23R__c = '1');
+        
+        insert obj;
+        update obj;
+                
+        //encoded parameters
+        String cimi= ut.urlEncode('c='+client.id+'&summary='+summaryId);
+        ApexPages.currentPage().getParameters().put('cimi',cimi);     
+                
+        //init controller for pages
+        ApexPages.StandardController sc = new ApexPages.StandardController(obj);   
+                
+        DS_GTRAUMA_Controller controller = new DS_GTRAUMA_Controller(sc);
+        
+        //non-standard list options 
+        List<SelectOption> radio = controller.getTraumaType();
+        List<SelectOption> radioYesNo = controller.getPrimaryType();
+        
+        controller.rowList();
+        
+        //save/cancel
+        controller.save();
+        controller.cancel();
+        
+        //assert*positive
+        System.assertEquals(obj.GT8R__c, '1', 'There is a problem with the variable GT8R.');
+        System.assertEquals(obj.GT20R__c, '1', 'There is a problem with the variable GT20R.');
+        System.assertEquals(obj.GT8RA0__c, false, 'There is a problem with the variable GT8RA0.');
+    }
+
 }

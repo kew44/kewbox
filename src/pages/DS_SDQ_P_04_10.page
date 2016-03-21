@@ -464,7 +464,7 @@
                                 
                                 <!--friendships-->
                                 <tr class="skip-difficult">
-                                    <td class="text-right" style="width:100px" colspan="2">Friendshps</td>
+                                    <td class="text-right" style="width:100px" colspan="2">Friendships</td>
                                     <td class="text-center" style="width:100px"><input type="radio" class="SDQI" id="SDQI-2-0" name="SDQI-2" value="0" title="{!form.obj[bfVariableMap['SDPIMPF']]}" /></td><!--no-->
                                     <td class="text-center" style="width:100px"><input type="radio" class="SDQI" id="SDQI-2-1" name="SDQI-2" value="1" title="{!form.obj[bfVariableMap['SDPIMPF']]}" /></td><!--a little-->
                                     <td class="text-center" style="width:100px"><input type="radio" class="SDQI" id="SDQI-2-2" name="SDQI-2" value="2" title="{!form.obj[bfVariableMap['SDPIMPF']]}" /></td><!--medium-->
