@@ -54,12 +54,12 @@
                 
                 <!--heading-->
                 <div class="row ">
-                    <div class="col-sm-2 col-md-2 col-lg-2"  ><h4>Validity Scale Scores</h4></div>
-                    <div class="col-sm-2 col-md-2 col-lg-2"  ><h4>Raw Score</h4></div>
-                    <div class="col-sm-2 col-md-2 col-lg-2"   ><h4>T-Score</h4></div>
-                    <div class="col-sm-2 col-md-2 col-lg-2 text-center"  ><h4>Double Entry</h4></div>
-                    <div class="col-sm-2 col-md-2 col-lg-2"  ><h4>Raw Score</h4></div>
-                    <div class="col-sm-2 col-md-2 col-lg-2"  ><h4>T-Score</h4></div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"  ><h4>Validity Scale Scores</h4></div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"  ><h4>Raw Score</h4></div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"   ><h4>T-Score</h4></div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center"  ><h4>Double Entry</h4></div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"  ><h4>Raw Score</h4></div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"  ><h4>T-Score</h4></div>
                 </div>
                 <!--end heading-->
                 
@@ -70,27 +70,27 @@
                         <!--Response Level-->
                         <div class="form-group">
                             <!--label-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <label class=" control-label ">     
                                     Response Level (RL)
                                 </label>
                             </div>                          
                             <!--raw 1-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="RL_R__c" value="{!form.obj[bfVariableMap['RL_R']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--t 1-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="RL_T__c" value="{!form.obj[bfVariableMap['RL_T']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--double entry space-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
                             <!--raw 2-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="RL_R2__c" value="{!form.obj[bfVariableMap['RL_R2']]}" required="true"   styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--t 2-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="RL_T2__c" value="{!form.obj[bfVariableMap['RL_T2']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                         </div>
@@ -98,27 +98,27 @@
                         <!--Atypical Response-->
                         <div class="form-group">
                             <!--label-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <label class=" control-label "> 
                                     Atypical Response (ATR)
                                 </label>
                             </div>                          
                             <!--raw 1-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="ATR_R__c" value="{!form.obj[bfVariableMap['ATR_R']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--t 1-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="ATR_T__c" value="{!form.obj[bfVariableMap['ATR_T']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--double entry space-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
                             <!--raw 2-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="ATR_R2__c" value="{!form.obj[bfVariableMap['ATR_R2']]}" required="true"   styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--t 2-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="ART_T2__c" value="{!form.obj[bfVariableMap['ATR_T2']]}" required="true"   styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                         </div>
@@ -130,12 +130,12 @@
                 
                 <!--heading-->
                 <div class="row ">
-                    <div class="col-sm-2 col-md-2 col-lg-2"  ><h4>Clinical Scale Scores</h4></div>
-                    <div class="col-sm-2 col-md-2 col-lg-2" ><h4>Raw Score</h4></div>
-                    <div class="col-sm-2 col-md-2 col-lg-2" ><h4>T-Score</h4></div>
-                    <div class="col-sm-2 col-md-2 col-lg-2 text-center" ><h4>Double Entry</h4></div>
-                    <div class="col-sm-2 col-md-2 col-lg-2" ><h4>Raw Score</h4></div>
-                    <div class="col-sm-2 col-md-2 col-lg-2" ><h4>T-Score</h4></div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"  ><h4>Clinical Scale Scores</h4></div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" ><h4>Raw Score</h4></div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" ><h4>T-Score</h4></div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center" ><h4>Double Entry</h4></div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" ><h4>Raw Score</h4></div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" ><h4>T-Score</h4></div>
                 </div>
                 <!--end heading-->
                 
@@ -146,27 +146,27 @@
                         <!--Anxiety-->              
                         <div class="form-group">        
                             <!--label-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <label class=" control-label ">
                                     Anxiety (ANX)
                                 </label>
                             </div>                          
                             <!--raw 1-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
-                                <apex:inputField id="ANX_R__c" value="{!form.obj[bfVariableMap['ANX_R']]}"  required="true"  styleClass="form-control input-sm control-inline auto-width" />
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                                <apex:inputField id="ANX_R__c" value="{!form.obj[bfVariableMap['ANX_R']]}"  required="true"  styleClass="form-control input-sm control-inline " />
                             </div>
                             <!--t 1-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="ANX_T__c" value="{!form.obj[bfVariableMap['ANX_T']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--double entry space-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
                             <!--raw 2-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="ANX_R2__c" value="{!form.obj[bfVariableMap['ANX_R2']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--t 2-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="ANX_T2__c" value="{!form.obj[bfVariableMap['ANX_T2']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                         </div>
@@ -174,27 +174,27 @@
                         <!--Depression-->
                         <div class="form-group">
                             <!--label-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <label class=" control-label ">
                                     Depression (DEP)
                                 </label>
                             </div>                          
                             <!--raw 1-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="DEP_R__c" value="{!form.obj[bfVariableMap['DEP_R']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--t 1-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="DEP_T__c" value="{!form.obj[bfVariableMap['DEP_T']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--double entry space-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
                             <!--raw 2-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="DEP_R2__c" value="{!form.obj[bfVariableMap['DEP_R2']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--t 2-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="DEP_T2__c" value="{!form.obj[bfVariableMap['DEP_T2']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                         </div>
@@ -202,27 +202,27 @@
                         <!--Anger-->
                         <div class="form-group">
                             <!--label-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <label class=" control-label ">
                                     Anger (ANG)
                                 </label>
                             </div>                          
                             <!--raw 1-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="ANG_R__c" value="{!form.obj[bfVariableMap['ANG_R']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--t 1-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="ANG_T__c" value="{!form.obj[bfVariableMap['ANG_T']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--double entry space-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
                             <!--raw 2-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="ANG_R2__c" value="{!form.obj[bfVariableMap['ANG_R2']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--t 2-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="ANG_T2__c" value="{!form.obj[bfVariableMap['ANG_T2']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                         </div>
@@ -230,27 +230,27 @@
                         <!--Intrusion-->
                         <div class="form-group">
                             <!--label-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <label class=" control-label ">     
                                     Posttraumatic Stress-Intrusion (PTS-I)
                                 </label>
                             </div>                          
                             <!--raw 1-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="PSTI_R__c" value="{!form.obj[bfVariableMap['PTSI_R']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--t 1-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="PTSI_T__c" value="{!form.obj[bfVariableMap['PTSI_T']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--double entry space-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
                             <!--raw 2-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="PSTI_R2__c" value="{!form.obj[bfVariableMap['PTSI_R2']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--t 2-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="PTSI_T2__c" value="{!form.obj[bfVariableMap['PTSI_T2']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                         </div>
@@ -258,27 +258,27 @@
                         <!--Avoidance-->
                         <div class="form-group">
                             <!--label-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <label class=" control-label "> 
                                     Posttraumatic Stress-Avoidance (PTS-AV)
                                 </label>
                             </div>                          
                             <!--raw 1-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="PTSAV_R__c" value="{!form.obj[bfVariableMap['PTSAV_R']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--t 1-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="PTSAV_T__c" value="{!form.obj[bfVariableMap['PTSAV_T']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--double entry space-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
                             <!--raw 2-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="PTSAV_R2__c" value="{!form.obj[bfVariableMap['PTSAV_R2']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--t 2-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="PTSAV_T2__c" value="{!form.obj[bfVariableMap['PTSAV_T2']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                         </div>
@@ -286,27 +286,27 @@
                         <!--Arousal-->
                         <div class="form-group">
                             <!--label-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <label class=" control-label "> 
                                     Posttraumatic Stress-Arousal (PTS-AR)
                                 </label>
                             </div>                          
                             <!--raw 1-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="PTSAR_R__c" value="{!form.obj[bfVariableMap['PTSAR_R']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--t 1-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="PTSAR_T__c" value="{!form.obj[bfVariableMap['PTSAR_T']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--double entry space-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
                             <!--raw 2-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="PTSAR_R2__c" value="{!form.obj[bfVariableMap['PTSAR_R2']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--t 2-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="PTSAR_T2__c" value="{!form.obj[bfVariableMap['PTSAR_T2']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                         </div>
@@ -314,27 +314,27 @@
                         <!--Total-->
                         <div class="form-group">
                             <!--label-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <label class=" control-label "> 
                                     Posttraumatic Stress-Total (PTS-TOT)
                                 </label>
                             </div>                          
                             <!--raw 1-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="PTSTOT_R__c" value="{!form.obj[bfVariableMap['PTSTOT_R']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--t 1-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="PTSTOT_T__c" value="{!form.obj[bfVariableMap['PTSTOT_T']]}"  required="true"    styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--double entry space-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
                             <!--raw 2-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="PTSTOT_R2__c" value="{!form.obj[bfVariableMap['PTSTOT_R2']]}" required="true"   styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--t 2-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="PTSTOT_T2__c" value="{!form.obj[bfVariableMap['PTSTOT_T2']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                         </div>
@@ -342,27 +342,27 @@
                         <!--Dissociation-->
                         <div class="form-group">
                             <!--label-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <label class=" control-label ">     
                                     Dissociation (DIS)
                                 </label>
                             </div>                          
                             <!--raw 1-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="DIS_R__c" value="{!form.obj[bfVariableMap['DIS_R']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--t 1-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="DIS_T__c" value="{!form.obj[bfVariableMap['DIS_T']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--double entry space-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
                             <!--raw 2-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="DIS_R2__c" value="{!form.obj[bfVariableMap['DIS_R2']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--t 2-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="DIS_T2__c" value="{!form.obj[bfVariableMap['DIS_T2']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                         </div>
@@ -370,27 +370,27 @@
                         <!--Sexual Concerns-->
                         <div class="form-group">
                             <!--label-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <label class=" control-label ">
                                     Sexual Concerns (SC)
                                 </label>
                             </div>                          
                             <!--raw 1-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="SC_R__c" value="{!form.obj[bfVariableMap['SC_R']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--t 1-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="SC_T__c" value="{!form.obj[bfVariableMap['SC_T']]}" required="true"   styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--double entry space-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
                             <!--raw 2-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="SC_R2__c" value="{!form.obj[bfVariableMap['SC_R2']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--t 2-->
-                            <div class="col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="SC_T2__c" value="{!form.obj[bfVariableMap['SC_T2']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                         </div>
