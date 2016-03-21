@@ -30,12 +30,20 @@
                 <!--administration date indication-->
                 <div class="form-group">
                     <!--question-->
+<<<<<<< HEAD
                     <label class="col-md-6 col-lg-6 control-label ">
+=======
+                    <label class="col-sm-4 col-md-4 col-lg-4 control-label ">
+>>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                         <span class="nmbr">1.</span>
                         Date of administration
                     </label>
                     <!--answer -->
+<<<<<<< HEAD
                     <div class="col-md-4 col-lg-2 input-date">
+=======
+                    <div class="col-sm-6 col-md-6 col-lg-4 input-date">
+>>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                         <apex:inputField id="DOAPSI__c" styleClass="form-control input-date input-sm" required="true" showDatePicker="true" html-placeholder="MM/DD/YYYY" value="{!form.obj[bfVariableMap['DOAPSI']]}" />
                     </div>
                 </div>
@@ -43,9 +51,15 @@
                 
                 <div class="form-group ">
                     <!--question-->
+<<<<<<< HEAD
                     <label class="col-md-4 col-lg-8 control-label ">
                         <span class="nmbr">2.</span>
                         Please enter a valid raw score and percentile for each of the Clinical Scale Scores, Subscale Scores, and Validity Scale Score.  <br/>
+=======
+                    <label class="col-lg-8 control-label ">
+                        <span class="nmbr">2.</span>
+                        Please enter a valid raw score and percentile score for each of the Clinical Scale Scores, Subscale Scores, and Validity Scale Scores.  <br/> &nbsp; &nbsp;
+>>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                         You are required to enter each of these twice as a way to decrease the likelihood of entry errors.
                     </label>
                 </div>
@@ -53,12 +67,21 @@
                 <!--validity score responses-->
                 <!--heading-->
                 <div class="row ">
+<<<<<<< HEAD
                     <div class="col-md-2 col-lg-2" ><h4>Validity Scores</h4></div>
                     <div class="col-md-2 col-lg-2" ><h4>Raw Score</h4></div>
                     <div class="col-md-2 col-lg-2" ><h4>Percentile</h4></div>
                     <div class="col-md-2 col-lg-2" ><h4>Double Entry</h4></div>
                     <div class="col-md-2 col-lg-2" ><h4>Raw Score</h4></div>
                     <div class="col-md-2 col-lg-2" ><h4>Percentile</h4></div>
+=======
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" ><h4>Validity Scale Scores</h4></div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" ><h4>Raw Score</h4></div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" ><h4>Percentile</h4></div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center" ><h4>Double Entry</h4></div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" ><h4>Raw Score</h4></div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" ><h4>Percentile</h4></div>
+>>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                 </div>
                 <!--end heading-->                
                 
@@ -69,12 +92,17 @@
                         <!--Defensive Responding-->          
                         <div class="form-group">        
                             <!--label-->
+<<<<<<< HEAD
                             <div class="col-md-2 col-lg-2">
+=======
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+>>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                                 <label class=" control-label ">
                                     Defensive Responding
                                 </label>
                             </div>                          
                             <!--raw 1-->
+<<<<<<< HEAD
                             <div class="col-md-2 col-lg-2">
                                 <apex:inputField id="PSIDR__c" value="{!form.obj[bfVariableMap['PSIDR']]}"  required="true"  styleClass="form-control input-sm control-inline auto-width"/>
                             </div>
@@ -91,6 +119,24 @@
                             <!--% 2-->
                             <div class="col-md-2 col-lg-2">
                                 <apex:inputField id="PSIDR_PTLE2__c" value="{!form.obj[bfVariableMap['PSIDR_PTLE2']]}"  required="true"  styleClass="form-control input-sm control-inline auto-width"/>
+=======
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                                <apex:inputField id="PSIDR__c" value="{!form.obj[bfVariableMap['PSIDR']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                            </div>
+                            <!--% 1-->
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                                <apex:inputField id="PSIDR_PTLE__c" value="{!form.obj[bfVariableMap['PSIDR_PTLE']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                            </div>
+                            <!--double entry space-->
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
+                            <!--raw 2-->
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                                <apex:inputField id="PSIDR2__c" value="{!form.obj[bfVariableMap['PSIDR2']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                            </div>
+                            <!--% 2-->
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                                <apex:inputField id="PSIDR_PTLE2__c" value="{!form.obj[bfVariableMap['PSIDR_PTLE2']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+>>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                             </div>
                         </div>
                         
@@ -102,12 +148,21 @@
                 
                 <!--heading-->
                 <div class="row ">
+<<<<<<< HEAD
                     <div class="col-md-2 col-lg-2" ><h4>Clinical Scale Scores</h4></div>
                     <div class="col-md-2 col-lg-2" ><h4>Raw Score</h4></div>
                     <div class="col-md-2 col-lg-2" ><h4>Percentile</h4></div>
                     <div class="col-md-2 col-lg-2" ><h4>Double Entry</h4></div>
                     <div class="col-md-2 col-lg-2" ><h4>Raw Score</h4></div>
                     <div class="col-md-2 col-lg-2" ><h4>Percentile</h4></div>
+=======
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" ><h4>Clinical Scale Scores</h4></div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" ><h4>Raw Score</h4></div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" ><h4>Percentile</h4></div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center" ><h4>Double Entry</h4></div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" ><h4>Raw Score</h4></div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" ><h4>Percentile</h4></div>
+>>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                 </div>
                 <!--end heading-->
                 
@@ -118,12 +173,17 @@
                         <!--Total Stress-->          
                         <div class="form-group">        
                             <!--label-->
+<<<<<<< HEAD
                             <div class="col-md-2 col-lg-2">
+=======
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+>>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                                 <label class=" control-label ">
                                     Total Stress
                                 </label>
                             </div>                          
                             <!--raw 1-->
+<<<<<<< HEAD
                             <div class="col-md-2 col-lg-2">
                                 <apex:inputField id="PSITS__c" value="{!form.obj[bfVariableMap['PSITS']]}"  required="true"  styleClass="form-control input-sm control-inline auto-width"/>
                             </div>
@@ -140,18 +200,41 @@
                             <!--% 2-->
                             <div class="col-md-2 col-lg-2">
                                 <apex:inputField id="PSITS_PTLE2__c" value="{!form.obj[bfVariableMap['PSITS_PTLE2']]}"  required="true"  styleClass="form-control input-sm control-inline auto-width"/>
+=======
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                                <apex:inputField id="PSITS__c" value="{!form.obj[bfVariableMap['PSITS']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                            </div>
+                            <!--% 1-->
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                                <apex:inputField id="PSITS_PTLE__c" value="{!form.obj[bfVariableMap['PSITS_PTLE']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                            </div>
+                            <!--double entry space-->
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
+                            <!--raw 2-->
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                                <apex:inputField id="PSITS2__c" value="{!form.obj[bfVariableMap['PSITS2']]}" required="true"   styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                            </div>
+                            <!--% 2-->
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                                <apex:inputField id="PSITS_PTLE2__c" value="{!form.obj[bfVariableMap['PSITS_PTLE2']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+>>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                             </div>
                         </div>
                         
                         <!--Parental Distress-->          
                         <div class="form-group">        
                             <!--label-->
+<<<<<<< HEAD
                             <div class="col-md-2 col-lg-2">
+=======
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+>>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                                 <label class=" control-label ">
                                     Parental Distress (PD)
                                 </label>
                             </div>                          
                             <!--raw 1-->
+<<<<<<< HEAD
                             <div class="col-md-2 col-lg-2">
                                 <apex:inputField id="PSIPD__c" value="{!form.obj[bfVariableMap['PSIPD']]}"  required="true"   styleClass="form-control input-sm control-inline auto-width"/>
                             </div>
@@ -168,18 +251,41 @@
                             <!--% 2-->
                             <div class="col-md-2 col-lg-2">
                                 <apex:inputField id="PSIPD_PTLE2__c" value="{!form.obj[bfVariableMap['PSIPD_PTLE2']]}" required="true"   styleClass="form-control input-sm control-inline auto-width"/>
+=======
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                                <apex:inputField id="PSIPD__c" value="{!form.obj[bfVariableMap['PSIPD']]}"  required="true"   styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                            </div>
+                            <!--% 1-->
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                                <apex:inputField id="PSIPD_PTLE__c" value="{!form.obj[bfVariableMap['PSIPD_PTLE']]}" required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                            </div>
+                            <!--double entry space-->
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
+                            <!--raw 2-->
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                                <apex:inputField id="PSIPD2__c" value="{!form.obj[bfVariableMap['PSIPD2']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                            </div>
+                            <!--% 2-->
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                                <apex:inputField id="PSIPD_PTLE2__c" value="{!form.obj[bfVariableMap['PSIPD_PTLE2']]}" required="true"   styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+>>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                             </div>
                         </div>
                         
                         <!--Parent/Child Dysfunctional Interaction-->          
                         <div class="form-group">        
                             <!--label-->
+<<<<<<< HEAD
                             <div class="col-md-2 col-lg-2">
+=======
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+>>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                                 <label class=" control-label ">
                                     Parent-Child Dysfunctional Interaction (P-CDI)
                                 </label>
                             </div>                          
                             <!--raw 1-->
+<<<<<<< HEAD
                             <div class="col-md-2 col-lg-2">
                                 <apex:inputField id="PSIPCDI__c" value="{!form.obj[bfVariableMap['PSIPCDI']]}"  required="true"  styleClass="form-control input-sm control-inline auto-width"/>
                             </div>
@@ -196,18 +302,41 @@
                             <!--% 2-->
                             <div class="col-md-2 col-lg-2">
                                 <apex:inputField id="PSIPCDI_PTLE2__c" value="{!form.obj[bfVariableMap['PSIPCDI_PTLE2']]}"  required="true"  styleClass="form-control input-sm control-inline auto-width"/>
+=======
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                                <apex:inputField id="PSIPCDI__c" value="{!form.obj[bfVariableMap['PSIPCDI']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                            </div>
+                            <!--% 1-->
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                                <apex:inputField id="PSIPCDI_PTLE__c" value="{!form.obj[bfVariableMap['PSIPCDI_PTLE']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                            </div>
+                            <!--double entry space-->
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
+                            <!--raw 2-->
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                                <apex:inputField id="PSIPCDI2__c" value="{!form.obj[bfVariableMap['PSIPCDI2']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                            </div>
+                            <!--% 2-->
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                                <apex:inputField id="PSIPCDI_PTLE2__c" value="{!form.obj[bfVariableMap['PSIPCDI_PTLE2']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+>>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                             </div>
                         </div>
                         
                         <!--Difficult Child-->          
                         <div class="form-group">        
                             <!--label-->
+<<<<<<< HEAD
                             <div class="col-md-2 col-lg-2">
+=======
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+>>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                                 <label class=" control-label ">
                                     Difficult Child (DC)
                                 </label>
                             </div>                          
                             <!--raw 1-->
+<<<<<<< HEAD
                             <div class="col-md-2 col-lg-2">
                                 <apex:inputField id="PSIDC__c" value="{!form.obj[bfVariableMap['PSIDC']]}"  required="true"  styleClass="form-control input-sm control-inline auto-width"/>
                             </div>
@@ -224,6 +353,24 @@
                             <!--% 2-->
                             <div class="col-md-2 col-lg-2">
                                 <apex:inputField id="PSIDC_PTLE2__c" value="{!form.obj[bfVariableMap['PSIDC_PTLE2']]}"  required="true"  styleClass="form-control input-sm control-inline auto-width"/>
+=======
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                                <apex:inputField id="PSIDC__c" value="{!form.obj[bfVariableMap['PSIDC']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                            </div>
+                            <!--% 1-->
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                                <apex:inputField id="PSIDC_PTLE__c" value="{!form.obj[bfVariableMap['PSIDC_PTLE']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                            </div>
+                            <!--double entry space-->
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
+                            <!--raw 2-->
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                                <apex:inputField id="PSIDC2__c" value="{!form.obj[bfVariableMap['PSIDC2']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                            </div>
+                            <!--% 2-->
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                                <apex:inputField id="PSIDC_PTLE2__c" value="{!form.obj[bfVariableMap['PSIDC_PTLE2']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+>>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                             </div>
                         </div>
                         
@@ -233,8 +380,13 @@
                 
                 <!--Completion status control-->
                 <div class="form-group no-border-bottom no-space-bottom">
+<<<<<<< HEAD
                     <label class="control-label col-md-2 col-md-offset-8 text-right">Complete?</label>
                     <div class="col-md-2">
+=======
+                    <label class="control-label col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4 text-right">Complete?</label>
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+>>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                         <apex:selectList id="STATUS_PSI__c" styleClass="pull-right form-control input-sm"  size="1" value="{!form.obj[bfVariableMap['STATUS']]}" >
                             <apex:selectOption itemValue="Incomplete" itemLabel="Incomplete"/>
                             <apex:selectOption itemValue="Complete" itemLabel="Complete"/>
