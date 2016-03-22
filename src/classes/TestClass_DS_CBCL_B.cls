@@ -63,8 +63,12 @@ private class TestClass_DS_CBCL_B  {
                                         BCBAPPCN__c = 0 ));
         }
         
+        test.startTest();
         //add list of records to object
-        insert bulkObj;        
+        insert bulkObj;  
+        
+        test.stopTest();
+        
     }
         
     /****
@@ -253,7 +257,7 @@ private class TestClass_DS_CBCL_B  {
     *Young Child
     *Female 
     ****/
-    static TestMethod Client__c ScoreY(){
+    static TestMethod Client__c ScoreYoungFemale(){
                
         Client__c client = test_ut.createClient(test_ut.getClient('Female', 4));
            
@@ -317,17 +321,67 @@ private class TestClass_DS_CBCL_B  {
         
         insert obj;
         
+        String objFields = ut.getFields('DS_CBCL_B__c');
+        
+        DS_CBCL_B__c cbcl = 
+          Database.query('SELECT ' + objFields + ',' +
+                                 'Client__r.Name, Client__r.INIT__c' +  
+                         '  FROM DS_CBCL_B__c ' +                          
+                         ' WHERE id = \''+ obj.id + '\'');
+        
+        System.assertEquals(1, cbcl.BCBAPPCNY__c, 'BCBAPPCNY is wrong.');
+        
+        // Internalizaing problem score
+        System.assertEquals(68, cbcl.BCBIBTNY__c, 'Internalizaing problem T-score BCBIBTNY is wrong.');
+        System.assertEquals('97', cbcl.BCBIBPY__c, 'Internalizaing problem Percentile BCBIBTNY is wrong.');
+        
+        // Emotionally Reactive
+        System.assertEquals(62, cbcl.BCBERTNY__c, 'Emotionally Reactive T-score BCBERTNY is wrong.');
+        System.assertEquals('89', cbcl.BCBERPY__c, 'Emotionally Reactive Percentile BCBERPY is wrong.');
+        
+        // Anxious/Depressed
+        System.assertEquals(74, cbcl.BCBADTNY__c, 'Anxious/Depressed T-score BCBADTNY is wrong.');
+        System.assertEquals('98+', cbcl.BCBADPY__c, 'Anxious/Depressed Percentile BCBADPY is wrong.');
+        
+        // Somatic Complaints
+        System.assertEquals(62, cbcl.BCBSCTNY__c, 'Somatic Complaints T-score BCBSCTNY is wrong.');
+        System.assertEquals('89', cbcl.BCBSCPY__c, 'Somatic Complaints Percentile BCBSCPY is wrong.');
+        
+        // Withdrawn
+        System.assertEquals(63, cbcl.BCBWTNY__c, 'Withdrawn T-score BCBWTNY is wrong.');
+        System.assertEquals('90', cbcl.BCBWPY__c, 'Withdrawn Percentile BCBWPY is wrong.');
+        
+        // Extenalizing Problems Score
+        System.assertEquals(39, cbcl.BCBEBTNY__c, 'Extenalizing Problems T-score BCBEBTNY is wrong.');
+        System.assertEquals('<50', cbcl.BCBEBPY__c, 'Extenalizing Problems Percentile BCBEBPY is wrong.');
+        
+        // Attention Problems
+        System.assertEquals(50, cbcl.BCBAPTNY__c, 'Attention Problems T-score BCBAPTNY is wrong.');
+        System.assertEquals('50', cbcl.BCBAPPY__c, 'Attention Problems Percentile BCBAPPY is wrong.');
+        
+        // Aggressive Behavior
+        System.assertEquals(50, cbcl.BCBABTNY__c, 'Aggressive Behavior T-score BCBABTNY is wrong.');
+        System.assertEquals('50', cbcl.BCBABPY__c, 'Aggressive Behavior Percentile BCBABPY is wrong.');
+        
+        // Sleep Problems
+        System.assertEquals(76, cbcl.BCBSPTNY__c, 'Sleep Problems T-score BCBSPTNY is wrong.');
+        System.assertEquals('98+', cbcl.BCBSPPY__c, 'Sleep Problems Percentile BCBSPPY is wrong.');
+        
+        // Total Problems Score
+        System.assertEquals(59, cbcl.BCBTSTNY__c, 'Total Problems T-score BCBTSTNY is wrong.');
+        System.assertEquals('81', cbcl.BCBTSPY__c, 'Total Problems Percentile BCBTSPY is wrong.');
+        
         return client;
-     }
+    }
           
     /****
     *@description method to test a scored record
     *Old Child
     *Female 
     ****/
-    static TestMethod Client__c ScoreO(){
+    static TestMethod Client__c ScoreOldFemale(){
                
-        Client__c client = test_ut.createClient(test_ut.getClient('Female', 10));
+        Client__c client = test_ut.createClient(test_ut.getClient('Female', 11));
            
         Schema.SObjectType objType = Schema.getGlobalDescribe().get('DS_CBCL_B__c');
         SObject obj = objType.newSObject();
@@ -396,6 +450,194 @@ private class TestClass_DS_CBCL_B  {
         }
         
         insert obj;
+        
+        String objFields = ut.getFields('DS_CBCL_B__c');
+        
+        DS_CBCL_B__c cbcl = 
+          Database.query('SELECT ' + objFields + ',' +
+                                 'Client__r.Name, Client__r.INIT__c' +  
+                         '  FROM DS_CBCL_B__c ' +                          
+                         ' WHERE id = \''+ obj.id + '\'');
+        
+        System.assertEquals(1, cbcl.BCBAPPCN__c, 'BCBAPPCN is wrong.');
+                
+        // Internalizaing problem score
+        System.assertEquals(63, cbcl.BCBIBTN__c, 'Internalizaing problem T-score BCBIBTN is wrong.');
+        System.assertEquals('90', cbcl.BCBIBP__c, 'Internalizaing problem Percentile BCBIBTN is wrong.');
+        
+        // Anxious/Depressed
+        System.assertEquals(51, cbcl.BCBADTN__c, 'Anxious/Depressed T-score BCBADTN is wrong.');
+        System.assertEquals('54', cbcl.BCBADP__c, 'Anxious/Depressed Percentile BCBADP is wrong.');
+        
+        // Withdrawn/Depressed
+        System.assertEquals(80, cbcl.BCBWDTN__c, 'Withdrawn/Depressed T-score BCBWDTN is wrong.');
+        System.assertEquals('98+', cbcl.BCBWDP__c, 'Withdrawn/Depressed Percentile BCBWDP is wrong.');
+        
+        // Somatic Complaints
+        System.assertEquals(53, cbcl.BCBSCTN__c, 'Somatic Complaints T-score BCBSCTN is wrong.');
+        System.assertEquals('62', cbcl.BCBSCP__c, 'Somatic Complaints Percentile BCBSCP is wrong.');
+        
+        // Extenalizing Problems Score
+        System.assertEquals(60, cbcl.BCBEBTN__c, 'Extenalizing Problems T-score BCBEBTN is wrong.');
+        System.assertEquals('84', cbcl.BCBEBP__c, 'Extenalizing Problems Percentile BCBEBP is wrong.');
+        
+        // Rule Braking Behavior
+        System.assertEquals(52, cbcl.BCBRBTN__c, 'Rule Braking Behavior T-score BCBRBTN is wrong.');
+        System.assertEquals('58', cbcl.BCBRBP__c, 'Rule Braking Behavior Percentile BCBRBP is wrong.');
+        
+        // Aggressive Behavior
+        System.assertEquals(63, cbcl.BCBABTN__c, 'Aggressive Behavior T-score BCBABTN is wrong.');
+        System.assertEquals('90', cbcl.BCBABP__c, 'Aggressive Behavior Percentile BCBABP is wrong.');
+        
+        // Social Problems
+        System.assertEquals(59, cbcl.BCBSOTN__c, 'Social Problems T-score BCBSOTN is wrong.');
+        System.assertEquals('81', cbcl.BCBSOP__c, 'Social Problems Percentile BCBSOP is wrong.');
+        
+		// Thought Problems
+        System.assertEquals(66, cbcl.BCBTPTN__c, 'Social Problems T-score BCBTPTN is wrong.');
+        System.assertEquals('95', cbcl.BCBTPP__c, 'Social Problems Percentile BCBTPP is wrong.');        
+        
+        // Attention Problems
+        System.assertEquals(62, cbcl.BCBAPTN__c, 'Attention Problems T-score BCBAPTN is wrong.');
+        System.assertEquals('89', cbcl.BCBAPP__c, 'Attention Problems Percentile BCBAPP is wrong.');    
+        
+        // Total Problems Score
+        System.assertEquals(63, cbcl.BCBTSTN__c, 'Total Problems T-score BCBTSTN is wrong.');
+        System.assertEquals('90', cbcl.BCBTSP__c, 'Total Problems Percentile BCBTSP is wrong.');
+        
+        return client;
+    }
+    
+    /****
+    *@description method to test a scored record
+    *Old Child
+    *Male 
+    ****/
+    static TestMethod Client__c ScoreOldMale(){
+               
+        Client__c client = test_ut.createClient(test_ut.getClient('Male', 15));
+           
+        Schema.SObjectType objType = Schema.getGlobalDescribe().get('DS_CBCL_B__c');
+        SObject obj = objType.newSObject();
+        
+        obj.put('Client__c', client.id);
+        obj.put('BCBOMETH__c', '1');
+        obj.put('STATUS_CBCL_6_18__c', 'Complete');
+        obj.put('BDOACO__c', date.today());
+        
+        Map<String, Integer> ans = new Map<String, Integer>(); 
+        
+        // Anxious/Depressed
+        ans.put('14', 0); ans.put('29', 1); ans.put('30', 0); ans.put('31', 0); 
+        ans.put('32', 0); ans.put('33', 2); ans.put('35', 2); ans.put('45', 2);
+        ans.put('50', 0); ans.put('52', 0); ans.put('71', 2); ans.put('91', 0);
+        ans.put('112', 2); 
+        
+        // Withdrawn/Depressed
+        ans.put('5', 1); ans.put('42', 1); ans.put('65', 1); ans.put('69', 1); 
+        ans.put('75', 0); ans.put('102', 1); ans.put('103', 2); ans.put('111', 1);
+        
+        // Somatic Complaints
+        ans.put('47', 0); ans.put('49', 0); ans.put('51', 1); ans.put('54', 2);
+        ans.put('56a', 0); ans.put('56b', 0); ans.put('56c', 0); ans.put('56d', 0);
+        ans.put('56e', 0); ans.put('56f', 0); ans.put('56g', 0); 
+        
+        // Social Problems
+        ans.put('11', 2); ans.put('12', 0); ans.put('25', 1); ans.put('27', 1);
+        ans.put('34', 1); ans.put('36', 2); ans.put('38', 0); ans.put('48', 1);
+        ans.put('62', 0); ans.put('64', 0); ans.put('79', 0); 
+        
+        // Tought Problems
+        ans.put('9', 1); ans.put('18', 0); ans.put('40', 0); ans.put('46', 0);
+        ans.put('58', 0); ans.put('59', 0); ans.put('60', 0); ans.put('66', 1);
+        ans.put('70', 0); ans.put('76', 0); ans.put('83', 1); ans.put('84', 0);
+        ans.put('85', 1); ans.put('92', 1); ans.put('100', 0); 
+        
+        // Attention Problems
+        ans.put('1', 2); ans.put('4', 0); ans.put('8', 2); ans.put('10', 2);
+        ans.put('13', 2); ans.put('17', 1); ans.put('41', 2); ans.put('61', 1);
+        ans.put('78', 2); ans.put('80', 1); 
+        
+        // Rule-breaking Behavior
+        ans.put('2', 0); ans.put('26', 2); ans.put('28', 2); ans.put('39', 0);
+        ans.put('43', 0); ans.put('63', 0); ans.put('67', 0); ans.put('72', 0);
+        ans.put('73', 0); ans.put('81', 0); ans.put('82', 0); ans.put('90', 2);
+        ans.put('96', 0); ans.put('99', 0); ans.put('101', 0); ans.put('105', 0);
+        ans.put('106', 0); 
+        
+        // Aggressive Behavior
+        ans.put('3', 1); ans.put('16', 1); ans.put('19', 1); ans.put('20', 0);
+        ans.put('21', 0); ans.put('22', 1); ans.put('23', 2); ans.put('37', 2);
+        ans.put('57', 0); ans.put('68', 2); ans.put('86', 2); ans.put('87', 1);
+        ans.put('88', 1); ans.put('89', 1); ans.put('94', 0); ans.put('95', 2);
+        ans.put('97', 2); ans.put('104', 0); 
+        
+        // Other Problems
+        ans.put('6', 0); ans.put('7', 1); ans.put('15', 0); ans.put('24', 0);
+        ans.put('44', 0); ans.put('53', 0); ans.put('55', 0); ans.put('56h', 2);
+        ans.put('74', 1); ans.put('77', 0); ans.put('93', 1); ans.put('98', 0);
+        ans.put('107', 0); ans.put('108', 0); ans.put('109', 1); ans.put('110', 0);
+        ans.put('113', 0); 
+        
+        for(String key : ans.keySet()) {
+            obj.put('BCBO'+key+'__c', String.valueof(ans.get(key)));
+        }
+        
+        insert obj;
+        
+        String objFields = ut.getFields('DS_CBCL_B__c');
+        
+        DS_CBCL_B__c cbcl = 
+          Database.query('SELECT ' + objFields + ',' +
+                                 'Client__r.Name, Client__r.INIT__c' +  
+                         '  FROM DS_CBCL_B__c ' +                          
+                         ' WHERE id = \''+ obj.id + '\'');
+        
+        System.assertEquals(1, cbcl.BCBAPPCN__c, 'BCBAPPCN is wrong.');
+                
+        // Internalizaing problem score
+        System.assertEquals(70, cbcl.BCBIBTN__c, 'Internalizaing problem T-score BCBIBTN is wrong.');
+        System.assertEquals('98', cbcl.BCBIBP__c, 'Internalizaing problem Percentile BCBIBTN is wrong.');
+        
+        // Anxious/Depressed
+        System.assertEquals(72, cbcl.BCBADTN__c, 'Anxious/Depressed T-score BCBADTN is wrong.');
+        System.assertEquals('98+', cbcl.BCBADP__c, 'Anxious/Depressed Percentile BCBADP is wrong.');
+        
+        // Withdrawn/Depressed
+        System.assertEquals(70, cbcl.BCBWDTN__c, 'Withdrawn/Depressed T-score BCBWDTN is wrong.');
+        System.assertEquals('98', cbcl.BCBWDP__c, 'Withdrawn/Depressed Percentile BCBWDP is wrong.');
+        
+        // Somatic Complaints
+        System.assertEquals(61, cbcl.BCBSCTN__c, 'Somatic Complaints T-score BCBSCTN is wrong.');
+        System.assertEquals('87', cbcl.BCBSCP__c, 'Somatic Complaints Percentile BCBSCP is wrong.');
+        
+        // Extenalizing Problems Score
+        System.assertEquals(69, cbcl.BCBEBTN__c, 'Extenalizing Problems T-score BCBEBTN is wrong.');
+        System.assertEquals('97', cbcl.BCBEBP__c, 'Extenalizing Problems Percentile BCBEBP is wrong.');
+        
+        // Rule Braking Behavior
+        System.assertEquals(62, cbcl.BCBRBTN__c, 'Rule Braking Behavior T-score BCBRBTN is wrong.');
+        System.assertEquals('89', cbcl.BCBRBP__c, 'Rule Braking Behavior Percentile BCBRBP is wrong.');
+        
+        // Aggressive Behavior
+        System.assertEquals(73, cbcl.BCBABTN__c, 'Aggressive Behavior T-score BCBABTN is wrong.');
+        System.assertEquals('98+', cbcl.BCBABP__c, 'Aggressive Behavior Percentile BCBABP is wrong.');
+        
+        // Social Problems
+        System.assertEquals(69, cbcl.BCBSOTN__c, 'Social Problems T-score BCBSOTN is wrong.');
+        System.assertEquals('97', cbcl.BCBSOP__c, 'Social Problems Percentile BCBSOP is wrong.');
+        
+		// Thought Problems
+        System.assertEquals(66, cbcl.BCBTPTN__c, 'Social Problems T-score BCBTPTN is wrong.');
+        System.assertEquals('95', cbcl.BCBTPP__c, 'Social Problems Percentile BCBTPP is wrong.');        
+        
+        // Attention Problems
+        System.assertEquals(76, cbcl.BCBAPTN__c, 'Attention Problems T-score BCBAPTN is wrong.');
+        System.assertEquals('98+', cbcl.BCBAPP__c, 'Attention Problems Percentile BCBAPP is wrong.');    
+        
+        // Total Problems Score
+        System.assertEquals(71, cbcl.BCBTSTN__c, 'Total Problems T-score BCBTSTN is wrong.');
+        System.assertEquals('98+', cbcl.BCBTSP__c, 'Total Problems Percentile BCBTSP is wrong.');
         
         return client;
      }

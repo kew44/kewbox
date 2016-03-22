@@ -5,6 +5,10 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
         <actionName>Clone</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -19,6 +23,10 @@
         <type>Visualforce</type>
     </actionOverrides>
     <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
         <actionName>List</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -27,6 +35,10 @@
         <content>DS_Base_SSI</content>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>Tab</actionName>
@@ -38,12 +50,16 @@
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Visualforce</type>
     </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
     <enableEnhancedLookup>true</enableEnhancedLookup>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>AGE__c</fullName>
         <externalId>false</externalId>
@@ -52,6 +68,7 @@
         <required>true</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -71,6 +88,7 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -89,6 +107,7 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -107,6 +126,7 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -125,6 +145,7 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -137,6 +158,7 @@
         <relationshipName>Clients</relationshipName>
         <required>false</required>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -150,6 +172,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -163,6 +186,7 @@
         <relationshipName>Clients</relationshipName>
         <required>false</required>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -171,6 +195,7 @@
         <label>Date of birth</label>
         <required>true</required>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
     <fields>
@@ -179,6 +204,7 @@
         <label>DOB2</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
     <fields>
@@ -205,6 +231,7 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -214,6 +241,7 @@
         <length>3</length>
         <required>true</required>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -224,49 +252,11 @@
         <length>150</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
     <label>Client</label>
-    <listViews>
-        <fullName>My_Clients</fullName>
-        <columns>Clinician__c</columns>
-        <columns>NAME</columns>
-        <columns>INIT__c</columns>
-        <columns>GENDER__c</columns>
-        <columns>DOB1__c</columns>
-        <columns>AGE__c</columns>
-        <columns>CURRENT_AGE__c</columns>
-        <columns>CREATEDBY_USER</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>OBJECT_ID</columns>
-        <filterScope>Everything</filterScope>
-        <label>My Clients</label>
-    </listViews>
-    <listViews>
-        <fullName>test_cbcl</fullName>
-        <columns>OBJECT_ID</columns>
-        <columns>NAME</columns>
-        <columns>Clinician__c</columns>
-        <columns>INIT__c</columns>
-        <columns>GENDER__c</columns>
-        <columns>AGE__c</columns>
-        <columns>CURRENT_AGE__c</columns>
-        <columns>DOB1__c</columns>
-        <columns>DOB2__c</columns>
-        <columns>SITEID__c</columns>
-        <columns>CREATEDBY_USER.ALIAS</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>LAST_UPDATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Clinician__c</field>
-            <operation>equals</operation>
-            <value>6758-00-04</value>
-        </filters>
-        <label>test cbcl</label>
-    </listViews>
     <nameField>
         <label>Client ID</label>
         <trackHistory>false</trackHistory>

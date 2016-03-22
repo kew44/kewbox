@@ -17,6 +17,10 @@
 *@date 1/27/2016
 *@modified date
 *Purpose: PSI coverage
+*
+*@date 2/8/16
+*@modified date
+*Purpose: PSI assert
 ****/
 
 @isTest (SeeAllData=false)
@@ -57,8 +61,8 @@ private class TestClass_DS_SDQ_PSI_CDI_B  {
             bulkObj.add(new DS_SDQ_PSI_CDI_B__c(client__c = client.id,
                                                 BEMONULLP__c = 0, BBEHNULLP__c = 0, BHYPNULLP__c = 0, BOTCNULLP__c = 0, BKHBNULLP__c = 0,//null counts parent
                                                 BEMONULLS__c = 0, BBEHNULLS__c = 0, BHYPNULLS__c = 0, BOTCNULLS__c = 0, BKHBNULLS__c = 0,//null counts self
-                                                BDOASDYP__c = System.today(), BDOASDOP__c = System.today(), BDOASDOS__c = System.today(),
-                                                BMETSDYP__c = '1', BMETSDOP__c = '1', BMETSDOS__c = '1',
+                                                BDOASDYP__c = System.today(), BDOASDOP__c = System.today(), BDOASDOS__c = System.today(),BDOAPSI__c = System.today(),//dates
+                                                BMETSDYP__c = '1', BMETSDOP__c = '1', BMETSDOS__c = '1',//methods
                                                           BPSIPD__c = 13, BPSIPD_PTLE__c = 81, 
                                                             BPSIPD2__c = 13, BPSIPD_PTLE2__c = 81,
                                                           BPSIPCDI__c = 13, BPSIPCDI_PTLE__c = 81, 
@@ -69,9 +73,17 @@ private class TestClass_DS_SDQ_PSI_CDI_B  {
                                                             BPSITS2__c = 38, BPSITS_PTLE2__c = 81,
                                                           BPSIDR__c = 9, BPSIDR_PTLE__c = 81, 
                                                             BPSIDR2__c = 9, BPSIDR_PTLE2__c = 81,
-                                                          BDOAPSI__c = System.today(),
-                                                SECTION__c = '0'));      
+                                                STATUS_SDQ_P_04_10__c = 'Complete', STATUS_SDQ_P_11_17__c = 'Complete', //parent status
+                                                STATUS_SDQ_S_11_17__c = 'Complete',//self status
+                                                STATUS_PSI__c = 'Complete', //psi status         
+                                                SECTION__c = '0'));   
         }
+        
+     //   test.startTest();
+        //add list of records to object
+   //     insert bulkObj;  
+        
+       // test.stopTest();
         
     }
     
@@ -168,16 +180,17 @@ private class TestClass_DS_SDQ_PSI_CDI_B  {
         RC.editRecord();
         RC.addVisit(ObjList, 'B'); 
         
-        //init variable alias to be tested    
-        String BSDPINFOR= '0';
-        String BSDPFIDG= '2';
-        String BSDPFIGH = '1';
-        Date BDOASDYP=system.today();
+        //init test query 
+        DS_SDQ_PSI_CDI_B__c sdq = [SELECT  BSDPINFOR__c, BSDPFIDG__c,BSDPFIGH__c, BDOASDYP__c
+                                    FROM DS_SDQ_PSI_CDI_B__c
+                                    WHERE id =: obj.id];
+                                    
         //Negative assert statements
-        System.assertNotEquals(obj.BSDPINFOR__c,BSDPINFOR,'Mother was NOT informant ');
-        System.assertNotEquals(obj.BSDPFIDG__c,BSDPFIDG,'Child is certainally NOT fidgety. ');
-        System.assertEquals(obj.BDOASDYP__c,BDOASDYP,'Administered  today,  '+obj.BDOASDYP__c+'. ');
-        System.assertEquals(obj.BSDPFIGH__c, BSDPFIGH, 'Child sometimes fights with or bullies other children.');
+        System.assertNotEquals(obj.BSDPINFOR__c,'0','Mother was NOT informant ');
+        System.assertNotEquals(obj.BSDPFIDG__c,'2','Child is certainally NOT fidgety. ');
+        //positive asserts
+        System.assertEquals(obj.BDOASDYP__c,system.today(),'Administered  today,  '+obj.BDOASDYP__c+'. ');
+        System.assertEquals(obj.BSDPFIGH__c, '1', 'Child sometimes fights with or bullies other children.');
     }
     
     /****
@@ -270,15 +283,17 @@ private class TestClass_DS_SDQ_PSI_CDI_B  {
         RC.init();
         RC.editRecord();
         RC.addVisit(ObjList, 'B');
+        
+        //init test query 
+        DS_SDQ_PSI_CDI_B__c sdq = [SELECT  BSDPCLIN__c, BSDPCOMM__c,BSDPKIND__c
+                                    FROM DS_SDQ_PSI_CDI_B__c
+                                    WHERE id =: obj.id];     
      
-        //init variable alias to be tested 
-        String BSDPCLIN= '1' ; 
-        String BSDPCOMM= 'null';
-        String BSDPKIND = '0';
-        //Negative assert statements 
-        System.assertEquals(obj.BSDPCLIN__c,BSDPCLIN,'Child is somewhat nervous or clingy. ');
-        System.assertNotEquals(obj.BSDPCOMM__c,BSDPCOMM,'Parent comments have been filled in. ');
-        System.assertEquals(obj.BSDPKIND__c, BSDPKIND, 'Child is NOT kind to younger children. ');
+        //Negative assert statement 
+        System.assertNotEquals(obj.BSDPCOMM__c,'','Parent comments have been filled in. ');
+        //positive asserts
+        System.assertEquals(obj.BSDPCLIN__c,'1','Child is somewhat nervous or clingy. ');
+        System.assertEquals(obj.BSDPKIND__c, '0', 'Child is NOT kind to younger children. ');
     }
     
     /****
@@ -371,15 +386,238 @@ private class TestClass_DS_SDQ_PSI_CDI_B  {
         RC.init();
         RC.editRecord();
         RC.addVisit(ObjList, 'B');
+        
+        //init test query 
+        DS_SDQ_PSI_CDI_B__c sdq = [SELECT  BSDSPOPU__c,BSDSSOMA__c,BSDSATTE__c
+                                    FROM DS_SDQ_PSI_CDI_B__c
+                                    WHERE id =: obj.id];                                    
      
-        //init variable alias to be tested  
-        String BSDSPOPU= '0';
-        String BSDSSOMA= '1';
-        String BSDSATTE= '2';
         // assert statements 
-        System.assertEquals(obj.BSDSPOPU__c,BSDSPOPU,'I am certainally popular. ');
-        System.assertEquals(obj.BSDSSOMA__c,BSDSSOMA,'I feel sick sometimes. ');
-        System.assertEquals(obj.BSDSATTE__c,BSDSATTE,'I certainally do not have a good attention span. ');
+        System.assertEquals(obj.BSDSPOPU__c,'0','I am certainally popular. ');
+        System.assertEquals(obj.BSDSSOMA__c,'1','I feel sick sometimes. ');
+        System.assertEquals(obj.BSDSATTE__c,'2','I certainally do not have a good attention span. ');
+    }
+    
+    /****
+    *@description method to test a case for SDQ Parent 4 to 10
+    * 
+    ****/
+    static TestMethod void TestScoringSDQParent4_10() {
+        
+        Client__c client = test_ut.createClient(test_ut.getClient('Female', 8));
+        
+        DS_SDQ_PSI_CDI_B__c obj = new DS_SDQ_PSI_CDI_B__c(client__c = client.id);
+        
+        obj.BFORM__c = 'SDQ_P_04_10';
+        obj.STATUS_SDQ_P_04_10__c = 'Complete';
+        
+        obj.BSDPCONS__c = '1';  // 1
+        obj.BSDPREST__c = '0';  // 2
+        obj.BSDPSOMA__c = '0';  // 3
+        obj.BSDPSHAR__c = '1';  // 4
+        obj.BSDPTANT__c = '2';  // 5
+        obj.BSDPLONE__c = '1';  // 6
+        obj.BSDPOBEY__c = '2';  // 7
+        obj.BSDPWORR__c = '0';  // 8
+        obj.BSDPCARI__c = '1';  // 9
+        obj.BSDPFIDG__c = '0';  // 10
+        obj.BSDPFRIE__c = '1';  // 11
+        obj.BSDPFIGH__c = '2';  // 12
+        obj.BSDPUNHA__c = '2';  // 13
+        obj.BSDPPOPU__c = '1';  // 14
+        obj.BSDPDIST__c = '0';  // 15
+        obj.BSDPCLIN__c = '1';  // 16
+        obj.BSDPKIND__c = '0';  // 17
+        obj.BSDPLIES__c = '2';  // 18
+        obj.BSDPBULL__c = '0';  // 19
+        obj.BSDPHELP__c = '1';  // 20
+        obj.BSDPREFL__c = '1';  // 21
+        obj.BSDPSTEA__c = '2';  // 22
+        obj.BSDPOLDB__c = '0';  // 23
+        obj.BSDPAFRA__c = '0';  // 24
+        obj.BSDPATTE__c = '1';  // 25
+        
+        // How long have these difficulties been present?
+        obj.BSDPEBCD__c = '2';
+        
+        // Do the difficulties upset or distress your child?
+        obj.BSDPUPSET__c = '1';
+        
+        // Do the difficulties interfere with your child's everyday life in the following areas?
+        obj.BSDPIMPH__c = '2';
+        obj.BSDPIMPF__c = '3';
+        obj.BSDPIMPC__c = '2';
+        obj.BSDPIMPL__c = '0';
+        
+        // Do the difficulties put a burden on you or the family as a whole?
+        obj.BSDPFAM__c = '3';
+        
+        test.startTest();
+        insert obj;
+        test.stopTest();
+        
+        DS_SDQ_PSI_CDI_B__c sdq = [SELECT BSDPTOT__c, BSDPEMO__c, BSDPBEH__c, BSDPHYP__c,
+                                          BSDPOTC__c, BSDPKHB__c, BSDPDCL__c
+                                     FROM DS_SDQ_PSI_CDI_B__c
+                                    WHERE id =: obj.id];
+        
+        System.assertEquals(18, sdq.BSDPTOT__c, 'SDQ Parent 4-10 Total Difficulties is wrong.');
+        System.assertEquals(3, sdq.BSDPEMO__c, 'SDQ Parent 4-10 Emotional Problems is wrong.');
+        System.assertEquals(10, sdq.BSDPBEH__c, 'SDQ Parent 4-10 Behavioral Difficulties is wrong.');
+        System.assertEquals(2, sdq.BSDPHYP__c, 'SDQ Parent 4-10 Hyperactivity is wrong.');
+        System.assertEquals(3, sdq.BSDPOTC__c, 'SDQ Parent 4-10 Peer Problems is wrong.');
+        System.assertEquals(4, sdq.BSDPKHB__c, 'SDQ Parent 4-10 Prosocial is wrong.');
+        System.assertEquals(4, sdq.BSDPDCL__c, 'SDQ Parent 4-10 Impact is wrong.');
+        
+        
+    }
+    
+    /****
+    *@description method to test a case for SDQ Parent 11 to 17
+    * 
+    ****/
+    static TestMethod void TestScoringSDQParent11_17() {
+        
+        Client__c client = test_ut.createClient(test_ut.getClient('Female', 12));
+        
+        DS_SDQ_PSI_CDI_B__c obj = new DS_SDQ_PSI_CDI_B__c(client__c = client.id);
+        
+        obj.BFORM__c = 'SDQ_P_11_17';
+        obj.STATUS_SDQ_P_11_17__c = 'Complete';
+        
+        obj.BSDPCONS__c = '2';  // 1
+        obj.BSDPREST__c = '1';  // 2
+        obj.BSDPSOMA__c = '1';  // 3
+        obj.BSDPSHAR__c = '2';  // 4
+        obj.BSDPTANT__c = '0';  // 5
+        obj.BSDPLONE__c = '2';  // 6
+        obj.BSDPOBEY__c = '0';  // 7
+        obj.BSDPWORR__c = '2';  // 8
+        obj.BSDPCARI__c = '2';  // 9
+        obj.BSDPFIDG__c = '0';  // 10
+        obj.BSDPFRIE__c = '1';  // 11
+        obj.BSDPFIGH__c = '0';  // 12
+        obj.BSDPUNHA__c = '2';  // 13
+        obj.BSDPPOPU__c = '1';  // 14
+        obj.BSDPDIST__c = '0';  // 15
+        obj.BSDPCLIN__c = '2';  // 16
+        obj.BSDPKIND__c = '2';  // 17
+        obj.BSDPLIES__c = '0';  // 18
+        obj.BSDPBULL__c = '2';  // 19
+        obj.BSDPHELP__c = '2';  // 20
+        obj.BSDPREFL__c = '0';  // 21
+        obj.BSDPSTEA__c = '0';  // 22
+        obj.BSDPOLDB__c = '2';  // 23
+        obj.BSDPAFRA__c = '2';  // 24
+        obj.BSDPATTE__c = '0';  // 25
+        
+        // How long have these difficulties been present?
+        obj.BSDPEBCD__c = '1';
+        
+        // Do the difficulties upset or distress your child?
+        obj.BSDPUPSET__c = '2';
+        
+        // Do the difficulties interfere with your child's everyday life in the following areas?
+        obj.BSDPIMPH__c = '0';
+        obj.BSDPIMPF__c = '1';
+        obj.BSDPIMPC__c = '2';
+        obj.BSDPIMPL__c = '0';
+        
+        // Do the difficulties put a burden on you or the family as a whole?
+        obj.BSDPFAM__c = '1';
+        
+        test.startTest();
+        insert obj;
+        test.stopTest();
+        
+        DS_SDQ_PSI_CDI_B__c sdq = [SELECT BSDPTOT__c, BSDPEMO__c, BSDPBEH__c, BSDPHYP__c,
+                                          BSDPOTC__c, BSDPKHB__c, BSDPDCL__c
+                                     FROM DS_SDQ_PSI_CDI_B__c
+                                    WHERE id =: obj.id];
+        
+        System.assertEquals(18, sdq.BSDPTOT__c, 'SDQ Parent 11-17 Total Difficulties is wrong.');
+        System.assertEquals(9, sdq.BSDPEMO__c, 'SDQ Parent 11-17 Emotional Problems is wrong.');
+        System.assertEquals(0, sdq.BSDPBEH__c, 'SDQ Parent 11-17 Behavioral Difficulties is wrong.');
+        System.assertEquals(1, sdq.BSDPHYP__c, 'SDQ Parent 11-17 Hyperactivity is wrong.');
+        System.assertEquals(8, sdq.BSDPOTC__c, 'SDQ Parent 11-17 Peer Problems is wrong.');
+        System.assertEquals(10, sdq.BSDPKHB__c, 'SDQ Parent 11-17 Prosocial is wrong.');
+        System.assertEquals(2, sdq.BSDPDCL__c, 'SDQ Parent 11-17 Impact is wrong.');
+        
+        
+    }
+    
+    /****
+    *@description method to test a case for SDQ self 11 to 17
+    * 
+    ****/
+    static TestMethod void TestScoringSDQSelf11_17() {
+        
+        Client__c client = test_ut.createClient(test_ut.getClient('Female', 15));
+        
+        DS_SDQ_PSI_CDI_B__c obj = new DS_SDQ_PSI_CDI_B__c(client__c = client.id);
+        
+        obj.BFORM__c = 'SDQ_S_11_17';
+        obj.STATUS_SDQ_S_11_17__c = 'Complete';
+        
+        obj.BSDSCONS__c = '1';  // 1
+        obj.BSDSREST__c = '2';  // 2
+        obj.BSDSSOMA__c = '2';  // 3
+        obj.BSDSSHAR__c = '1';  // 4
+        obj.BSDSTANT__c = '0';  // 5
+        obj.BSDSLONE__c = '0';  // 6
+        obj.BSDSOBEY__c = '1';  // 7
+        obj.BSDSWORR__c = '2';  // 8
+        obj.BSDSCARI__c = '1';  // 9
+        obj.BSDSFIDG__c = '2';  // 10
+        obj.BSDSFRIE__c = '1';  // 11
+        obj.BSDSFIGH__c = '0';  // 12
+        obj.BSDSUNHA__c = '0';  // 13
+        obj.BSDSPOPU__c = '1';  // 14
+        obj.BSDSDIST__c = '2';  // 15
+        obj.BSDSCLIN__c = '0';  // 16
+        obj.BSDSKIND__c = '1';  // 17
+        obj.BSDSLIES__c = '0';  // 18
+        obj.BSDSBULL__c = '0';  // 19
+        obj.BSDSHELP__c = '1';  // 20
+        obj.BSDSREFL__c = '2';  // 21
+        obj.BSDSSTEA__c = '0';  // 22
+        obj.BSDSOLDB__c = '0';  // 23
+        obj.BSDSAFRA__c = '2';  // 24
+        obj.BSDSATTE__c = '2';  // 25
+        
+        //  Overall, do you think that you have had difficulties in one or more of the following areas: emotions, concentration, behavior or being able to get on with other people?
+        obj.BSDSEBCD__c = '1';
+        
+        // Do the difficulties upset or distress you?
+        obj.BSDSUPSET__c = '2';
+        
+        // Do the difficulties interfere with your child's everyday life in the following areas?
+        obj.BSDSIMPH__c = '2';
+        obj.BSDSIMPF__c = '1';
+        obj.BSDSIMPC__c = '3';
+        obj.BSDSIMPL__c = '3';
+        
+        // Do the difficulties put a burden on you or the family as a whole?
+        obj.BSDSFAM__c = '1';
+        
+        test.startTest();
+        insert obj;
+        test.stopTest();
+        
+        DS_SDQ_PSI_CDI_B__c sdq = [SELECT BSDSTOT__c, BSDSEMO__c, BSDSBEH__c, BSDSHYP__c,
+                                          BSDSOTC__c, BSDSKHB__c, BSDSDCL__c
+                                     FROM DS_SDQ_PSI_CDI_B__c
+                                    WHERE id =: obj.id];
+        
+        System.assertEquals(19, sdq.BSDSTOT__c, 'SDQ Self 11-17 Total Difficulties is wrong.');
+        System.assertEquals(6, sdq.BSDSEMO__c, 'SDQ Self 11-17 Emotional Problems is wrong.');
+        System.assertEquals(1, sdq.BSDSBEH__c, 'SDQ Self 11-17 Behavioral Difficulties is wrong.');
+        System.assertEquals(10, sdq.BSDSHYP__c, 'SDQ Self 11-17 Hyperactivity is wrong.');
+        System.assertEquals(2, sdq.BSDSOTC__c, 'SDQ Self 11-17 Peer Problems is wrong.');
+        System.assertEquals(5, sdq.BSDSKHB__c, 'SDQ Self 11-17 Prosocial is wrong.');
+        System.assertEquals(6, sdq.BSDSDCL__c, 'SDQ Self 11-17 Impact is wrong.');
+        
+        
     }
     
     /****
@@ -454,8 +692,14 @@ private class TestClass_DS_SDQ_PSI_CDI_B  {
         RC.init();
         RC.editRecord();
         
-        //init variable alias to be tested  
+        //init test query 
+        DS_SDQ_PSI_CDI_B__c sdq = [SELECT  BPSIPD__c,BPSIDC_PTLE2__c,SECTION__c
+                                    FROM DS_SDQ_PSI_CDI_B__c
+                                    WHERE id =: obj.id];
+                                    
         // assert statements 
-            
+        System.assertEquals(obj.BPSIPD__c, 13,'Incorrect Parental distress raw score.');
+        System.assertEquals(obj.BPSIDC_PTLE2__c, 50,'Incorrect Difficult Child T-score double entry.');
+        System.assertEquals(obj.SECTION__c, '0','Section incorrect: baseline.');
     }
 }

@@ -9,6 +9,17 @@
 *@modified date
 *@author KW
 *
+*@date 2/18/16
+*@modified date
+*@author KW
+*Purpose: Change PSI "T-Score" to "Percentile"
+*update validity to use 'Invalid' instead of 'Clinical' on TSCC/YC &PSI
+*
+*@date 2/23/16
+*@modified date
+*@author KW
+*Purpose: Change order of TSCC/TC &PSI
+*
 *@group ClientSummaryReport
 *@group-content /ApexDocContent/ClientSummaryReport/ClientSummaryReportController.htm
 ****/
@@ -130,10 +141,6 @@ public with sharing class ClientSummaryReportController {
   //Generic Standardized measures (PTSD+CBCL+SDQ) vars
   public Boolean measureExisted { get; set; }
   public Map<Integer, Element> measure { get; set; }
-
-  //Generic external measures (TSCC+TSCYC+PSI) vars
-  public Boolean exmeasureExisted { get; set; }
-  public Map<Integer, Element> exmeasure { get; set; }
     
   //print button var and method
   public Boolean printReport { get; set; }  
@@ -305,12 +312,12 @@ public with sharing class ClientSummaryReportController {
   //PSI record
     public class PSIElement{
     public String category {get;set;}
-    public Integer tscore {get;set;}
+    public Integer percentile {get;set;}
     public String significance {get;set;}
     
-    public psielement (String category,Integer tscore,String significance){
+    public psielement (String category,Integer percentile ,String significance){
         this.category=category;
-        this.tscore=tscore;
+        this.percentile =percentile ;
         this.significance=significance;
         }
     }
@@ -449,8 +456,7 @@ public with sharing class ClientSummaryReportController {
     SDQParentExisted = false;
     SDQSelfExisted = false;
     SDQExisted = false; 
-    //External measures
-    exmeasureExisted = false;
+
     //TSYC 
     TSCYCExisted = false;
     //TSCC
@@ -916,16 +922,16 @@ public with sharing class ClientSummaryReportController {
         MoodNumPA = Integer.valueOf(clientPTSDPA.get(BorF+'PTSDMNP__c'));
         ReactNumPA = Integer.valueOf(clientPTSDPA.get(BorF+'PTSEMNP__c'));
             if (IntrusionNumPA  == 1){
-                PTSDPAList.add(new PTSDElement('Intrusion', String.valueOf(clientPTSDCA.get(BorF+'PTSBMP__c'))));
+                PTSDPAList.add(new PTSDElement('Intrusion', String.valueOf(clientPTSDPA.get(BorF+'PTSBMP__c'))));
             }
             if (AvoidNumPA == 1){
-                PTSDPAList.add(new PTSDElement('Avoidance', String.valueOf(clientPTSDCA.get(BorF+'PTSCMP__c'))));
+                PTSDPAList.add(new PTSDElement('Avoidance', String.valueOf(clientPTSDPA.get(BorF+'PTSCMP__c'))));
             }
             if (MoodNumPA == 1){
-                PTSDPAList.add(new PTSDElement('Negative Alterations in Cognitions/Mood', String.valueOf(clientPTSDCA.get(BorF+'PTSDMP__c'))));
+                PTSDPAList.add(new PTSDElement('Negative Alterations in Cognitions/Mood', String.valueOf(clientPTSDPA.get(BorF+'PTSDMP__c'))));
             }
             if (ReactNumPA ==1){
-                PTSDPAList.add(new PTSDElement('Alterations in Arousal/Reactivity', String.valueOf(clientPTSDCA.get(BorF+'PTSEMP__c'))));
+                PTSDPAList.add(new PTSDElement('Alterations in Arousal/Reactivity', String.valueOf(clientPTSDPA.get(BorF+'PTSEMP__c'))));
             }  
         PTSDPAExisted = true;
         }
@@ -946,21 +952,21 @@ public with sharing class ClientSummaryReportController {
            
            sdqExisted=  true;
    }
-   
- 
-  //External Measures  
-  public void exmeasure() {
-  }
-  
+     
    //Tscyc
    public void TSCYCrec(){
    tscycList = new List<TSCYCElement>();
    tscycValidList = new List<TSCYCElement>();
    
+    //validity
+        tscycValidList.add(new TSCYCElement('Response Level (RL)',  Integer.valueOf(clientTSC.get(BorF+'RL_T__c')),     
+            ((Integer.valueOf(clientTSC.get(BorF+'RL_T__c'))) > 70) ? 'Invalid' :
+                (((Integer.valueOf(clientTSC.get(BorF+'RL_T__c'))) <= 64 ) ? 'Normal': 'Borderline')) );    
+        tscycValidList.add(new TSCYCElement('Atypical Response (ATR)',  Integer.valueOf(clientTSC.get(BorF+'ATR_T__c')),    
+            ((Integer.valueOf(clientTSC.get(BorF+'ATR_T__c'))) > 70) ? 'Invalid' :
+                (((Integer.valueOf(clientTSC.get(BorF+'ATR_T__c'))) <= 64 ) ? 'Normal': 'Borderline')) );
+   
     //symptoms
-        tscycList.add(new TSCYCElement(' Posttraumatic Stress-Total (PTS-TOT)',  Integer.valueOf(clientTSC.get(BorF+'PTSTOT_T__c')), 
-            ((Integer.valueOf(clientTSC.get(BorF+'PTSTOT_T__c'))) > 70) ? 'Clinical' :
-                (((Integer.valueOf(clientTSC.get(BorF+'PTSTOT_T__c'))) <= 64 ) ? 'Normal': 'Borderline')) );
         tscycList.add(new TSCYCElement(' Anxiety (ANX)',  Integer.valueOf(clientTSC.get(BorF+'ANX_T__c')),  
             ((Integer.valueOf(clientTSC.get(BorF+'ANX_T__c'))) > 70) ? 'Clinical' :
                 (((Integer.valueOf(clientTSC.get(BorF+'ANX_T__c'))) <= 64 ) ? 'Normal': 'Borderline')) );       
@@ -970,14 +976,6 @@ public with sharing class ClientSummaryReportController {
         tscycList.add(new TSCYCElement(' Anger (ANG)',  Integer.valueOf(clientTSC.get(BorF+'ANG_T__c')), 
             ((Integer.valueOf(clientTSC.get(BorF+'ANG_T__c'))) > 70) ? 'Clinical' :
                 (((Integer.valueOf(clientTSC.get(BorF+'ANG_T__c'))) <= 64 ) ? 'Normal': 'Borderline')) );
-        //sc not included in mock-up
-        tscycList.add(new TSCYCElement(' Sexual Concerns(SC)',   Integer.valueOf(clientTSC.get(BorF+'SC_T__c')), 
-            ((Integer.valueOf(clientTSC.get(BorF+'SC_T__c'))) > 70) ? 'Clinical' :
-                (((Integer.valueOf(clientTSC.get(BorF+'SC_T__c'))) <= 64 ) ? 'Normal': 'Borderline')) );
-        //tscycList.add(new TSCYCElement(' Posttraumatic Stress (PTS)',  Integer.valueOf(clientTSC.get(BorF+'__c')), ''));//no correlating variable exists
-        tscycList.add(new TSCYCElement(' Dissociation (DIS)',  Integer.valueOf(clientTSC.get(BorF+'DIS_T__c')), 
-            ((Integer.valueOf(clientTSC.get(BorF+'DIS_T__c'))) > 70) ? 'Clinical' :
-                (((Integer.valueOf(clientTSC.get(BorF+'DIS_T__c'))) <= 64 ) ? 'Normal': 'Borderline')) );
         tscycList.add(new TSCYCElement(' Posttraumatic Stress-Intrusion (PTS-I)',  Integer.valueOf(clientTSC.get(BorF+'PTSI_T__c')), 
             ((Integer.valueOf(clientTSC.get(BorF+'PTSI_T__c'))) > 70) ? 'Clinical' :
                 (((Integer.valueOf(clientTSC.get(BorF+'PTSI_T__c'))) <= 64 ) ? 'Normal': 'Borderline')) );
@@ -986,15 +984,16 @@ public with sharing class ClientSummaryReportController {
                 (((Integer.valueOf(clientTSC.get(BorF+'PTSAV_T__c'))) <= 64 ) ? 'Normal': 'Borderline')) );
         tscycList.add(new TSCYCElement(' Posttraumatic Stress-Arousal (PTS-AR)',  Integer.valueOf(clientTSC.get(BorF+'PTSAR_T__c')),
             ((Integer.valueOf(clientTSC.get(BorF+'PTSAR_T__c'))) > 70) ? 'Clinical' :
-                (((Integer.valueOf(clientTSC.get(BorF+'PTSAR_T__c'))) <= 64 ) ? 'Normal': 'Borderline')) );
-   
-    //validity
-        tscycValidList.add(new TSCYCElement('Response Level (RL)',  Integer.valueOf(clientTSC.get(BorF+'RL_T__c')),     
-            ((Integer.valueOf(clientTSC.get(BorF+'RL_T__c'))) > 70) ? 'Clinical' :
-                (((Integer.valueOf(clientTSC.get(BorF+'RL_T__c'))) <= 64 ) ? 'Normal': 'Borderline')) );    
-        tscycValidList.add(new TSCYCElement('Atypical Response (ATR)',  Integer.valueOf(clientTSC.get(BorF+'ATR_T__c')),    
-            ((Integer.valueOf(clientTSC.get(BorF+'ATR_T__c'))) > 70) ? 'Clinical' :
-                (((Integer.valueOf(clientTSC.get(BorF+'ATR_T__c'))) <= 64 ) ? 'Normal': 'Borderline')) );
+                (((Integer.valueOf(clientTSC.get(BorF+'PTSAR_T__c'))) <= 64 ) ? 'Normal': 'Borderline')) );   
+        tscycList.add(new TSCYCElement(' Posttraumatic Stress-Total (PTS-TOT)',  Integer.valueOf(clientTSC.get(BorF+'PTSTOT_T__c')), 
+            ((Integer.valueOf(clientTSC.get(BorF+'PTSTOT_T__c'))) > 70) ? 'Clinical' :
+                (((Integer.valueOf(clientTSC.get(BorF+'PTSTOT_T__c'))) <= 64 ) ? 'Normal': 'Borderline')) );
+        tscycList.add(new TSCYCElement(' Dissociation (DIS)',  Integer.valueOf(clientTSC.get(BorF+'DIS_T__c')), 
+            ((Integer.valueOf(clientTSC.get(BorF+'DIS_T__c'))) > 70) ? 'Clinical' :
+                (((Integer.valueOf(clientTSC.get(BorF+'DIS_T__c'))) <= 64 ) ? 'Normal': 'Borderline')) );
+        tscycList.add(new TSCYCElement(' Sexual Concerns(SC)',   Integer.valueOf(clientTSC.get(BorF+'SC_T__c')), 
+            ((Integer.valueOf(clientTSC.get(BorF+'SC_T__c'))) > 70) ? 'Clinical' :
+                (((Integer.valueOf(clientTSC.get(BorF+'SC_T__c'))) <= 64 ) ? 'Normal': 'Borderline')) );
    
         TSCYCExisted = true;
         
@@ -1006,6 +1005,14 @@ public with sharing class ClientSummaryReportController {
    tsccSubList = new List<TSCCElement>();//subscale
    tsccValidList = new List<TSCCElement>();//validity
     
+        //validity
+        tsccValidList.add(new TSCCElement('Underresponse (UND)',  Integer.valueOf(clientTSC.get(BorF+'TSCNTN__c')), 
+            ((Integer.valueOf(clientTSC.get(BorF+'TSCNTN__c'))) > 70) ? 'Invalid' :
+                (((Integer.valueOf(clientTSC.get(BorF+'TSCNTN__c'))) <=  64) ? 'Normal': 'Borderline')) );
+        tsccValidList.add(new TSCCElement('Hyperresponse (HYP)',  Integer.valueOf(clientTSC.get(BorF+'TSCHYTN__c')), 
+            ((Integer.valueOf(clientTSC.get(BorF+'TSCHYTN__c'))) > 90) ? 'Invalid' :
+                (((Integer.valueOf(clientTSC.get(BorF+'TSCHYTN__c'))) <=  64) ? 'Normal': 'Borderline')) );
+                
         //symptoms
         tsccList.add(new TSCCElement('Anxiety (ANX)',  Integer.valueOf(clientTSC.get(BorF+'TSCAXTN__c')), 
             ((Integer.valueOf(clientTSC.get(BorF+'TSCAXTN__c'))) > 65) ? 'Clinical' :
@@ -1029,15 +1036,7 @@ public with sharing class ClientSummaryReportController {
                 (((Integer.valueOf(clientTSC.get(BorF+'TSCODTN__c'))) <= 59 ) ? 'Normal': 'Borderline')) );
         tsccSubList.add(new TSCCElement('Fantasy (DIS-F)',  Integer.valueOf(clientTSC.get(BorF+'TSCFNTN__c')), 
             ((Integer.valueOf(clientTSC.get(BorF+'TSCFNTN__c'))) > 65) ? 'Clinical' :
-                (((Integer.valueOf(clientTSC.get(BorF+'TSCFNTN__c'))) <= 59 ) ? 'Normal': 'Borderline')) );
-        
-        //validity
-        tsccValidList.add(new TSCCElement('Underresponse (UND)',  Integer.valueOf(clientTSC.get(BorF+'TSCNTN__c')), 
-            ((Integer.valueOf(clientTSC.get(BorF+'TSCNTN__c'))) > 70) ? 'Clinical' :
-                (((Integer.valueOf(clientTSC.get(BorF+'TSCNTN__c'))) <=  64) ? 'Normal': 'Borderline')) );
-        tsccValidList.add(new TSCCElement('Hyperresponse (HYP)',  Integer.valueOf(clientTSC.get(BorF+'TSCHYTN__c')), 
-            ((Integer.valueOf(clientTSC.get(BorF+'TSCHYTN__c'))) > 90) ? 'Clinical' :
-                (((Integer.valueOf(clientTSC.get(BorF+'TSCHYTN__c'))) <=  88) ? 'Normal': 'Borderline')) );
+                (((Integer.valueOf(clientTSC.get(BorF+'TSCFNTN__c'))) <= 59 ) ? 'Normal': 'Borderline')) );        
         
         TSCCExisted = true;
    }
@@ -1048,26 +1047,26 @@ public with sharing class ClientSummaryReportController {
    psiValidList = new List<PSIElement>();
    
     if(visitAge<=12){
+    
+        //validity 
+        psiValidList.add(new PSIElement('Defensive Responding (DR)',Integer.valueOf(clientSDQ.get(BorF+'PSIDR_PTLE__c')),
+            ((Integer.valueOf(clientSDQ.get(BorF+'PSIDR_PTLE__c'))) > 85) ? 'Invalid' :
+                (((Integer.valueOf(clientSDQ.get(BorF+'PSIDR_PTLE__c'))) <= 80 ) ? 'Normal': 'Borderline')) );   
+        
+        //Scale
         psiList.add(new PSIElement('Total Score',Integer.valueOf(clientSDQ.get(BorF+'PSITS_PTLE__c')),
             ((Integer.valueOf(clientSDQ.get(BorF+'PSITS_PTLE__c'))) > 85) ? 'Clinical' :
                 (((Integer.valueOf(clientSDQ.get(BorF+'PSITS_PTLE__c'))) <= 80 ) ? 'Normal': 'Borderline')) );    
+        psiList.add(new PSIElement('Parental Distress (PD)',Integer.valueOf(clientSDQ.get(BorF+'PSIPD_PTLE__c')),
+            ((Integer.valueOf(clientSDQ.get(BorF+'PSIPD_PTLE__c'))) > 85) ? 'Clinical' :
+                (((Integer.valueOf(clientSDQ.get(BorF+'PSIPD_PTLE__c'))) <= 80 ) ? 'Normal': 'Borderline')) );   
         psiList.add(new PSIElement('Parent-Child Dysfunctional Interaction (PCDI)',Integer.valueOf(clientSDQ.get(BorF+'PSIPCDI_PTLE__c')),
             ((Integer.valueOf(clientSDQ.get(BorF+'PSIPCDI_PTLE__c'))) > 85) ? 'Clinical' :
                 (((Integer.valueOf(clientSDQ.get(BorF+'PSIPCDI_PTLE__c'))) <= 80 ) ? 'Normal': 'Borderline')) );    
         psiList.add(new PSIElement('Difficult Child (DC)',Integer.valueOf(clientSDQ.get(BorF+'PSIDC_PTLE__c')),
             ((Integer.valueOf(clientSDQ.get(BorF+'PSIDC_PTLE__c'))) > 85) ? 'Clinical' :
                 (((Integer.valueOf(clientSDQ.get(BorF+'PSIDC_PTLE__c'))) <= 80 ) ? 'Normal': 'Borderline')) );    
-        psiList.add(new PSIElement('Parental Distress (PD)',Integer.valueOf(clientSDQ.get(BorF+'PSIPD_PTLE__c')),
-            ((Integer.valueOf(clientSDQ.get(BorF+'PSIPD_PTLE__c'))) > 85) ? 'Clinical' :
-                (((Integer.valueOf(clientSDQ.get(BorF+'PSIPD_PTLE__c'))) <= 80 ) ? 'Normal': 'Borderline')) );    
-        psiList.add(new PSIElement('Defensive Responding (DR)',Integer.valueOf(clientSDQ.get(BorF+'PSIDR_PTLE__c')),
-            ((Integer.valueOf(clientSDQ.get(BorF+'PSIDR_PTLE__c'))) > 85) ? 'Clinical' :
-                (((Integer.valueOf(clientSDQ.get(BorF+'PSIDR_PTLE__c'))) <= 80 ) ? 'Normal': 'Borderline')) );    
         
-        //validity 
-        psiValidList.add(new PSIElement('Defensive Responding',Integer.valueOf(clientSDQ.get(BorF+'PSIDR_PTLE__c')),
-            ((Integer.valueOf(clientSDQ.get(BorF+'PSIDR_PTLE__c'))) > 85) ? 'Clinical' :
-                (((Integer.valueOf(clientSDQ.get(BorF+'PSIDR_PTLE__c'))) <= 80 ) ? 'Normal': 'Borderline')) );  
                 
        // if(clientSDQ.get('STATUS_PSI__c') != null){
             PSIExisted = true;

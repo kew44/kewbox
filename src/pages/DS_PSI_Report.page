@@ -42,8 +42,10 @@
                 <!--provides print button functionality and structure-->
                 <apex:outputPanel layout="none" rendered="{!NOT(printReport)}">
                     <div>
-                        <a class="btn btn-default pull-right" href="/apex/DS_PSI_Report?cimi={!HTMLENCODE(cimi)}&print=1" target="_blank">
-                            <i class="glyphicon glyphicon-print"></i> &nbsp;Print
+                        <a href="/apex/DS_PSI_Report?cimi={!HTMLENCODE(cimi)}&print=1" target="_blank">
+                            <button class="btn btn-default pull-right" type="button">
+                                <i class="glyphicon glyphicon-print"></i> &nbsp;Print
+                            </button>
                         </a>
                         <br/>
                     </div>
@@ -64,6 +66,7 @@
                     
                     <!--administration date -->
                     <strong><u>
+                        <br/>
                         Date of administration: &nbsp;
                         <apex:outputField id="DOAPSI__c" value="{!form.obj[bfVariableMap['DOAPSI']]}"/>
                         <br/>
@@ -98,7 +101,7 @@
                             <th rowspan="2">Date</th>
                             <th rowspan="2" class="psi-visit-cell-width">Visit</th>
                             <th colspan="1"  class="text-center">Validity</th>                      
-                            <th colspan="4"  class="text-center">Symptom Category Percentile (Symptom Significance) </th>
+                            <th colspan="4"  class="text-center">Symptom Category T Score (Symptom Significance) </th>
                         </tr>
                         <!--condensed headings-->
                         <tr>
@@ -128,12 +131,11 @@
                                 <td>{!IF(HTMLENCODE(visit.BorF) = 'B', 'Baseline', 'Follow-up')}</td>                          
                                 
                                 <apex:outputPanel layout="none" >
-                                    <td  class="text-center {!IF((visit.PSIDR)        <= 10,  'danger','')}"> {!visit.PSIDR} <br />{!IF((visit.PSIDR <=10), 'Clinically Significant','')}</td>
-                                    <!--<td  class="text-center {!IF((visit.PSIDR_PTLE)   > 85, 'danger', (IF((visit.PSIDR_PTLE)   <= 80, '', 'warning')))}">{!visit.PSIDR_PTLE}<br/>{!IF((visit.PSIDR_PTLE)   > 85, 'Invalid',  (IF((visit.PSIDR_PTLE)   <= 80, '', 'Borderline')))}</td>--><!--dr-->   
-                                    <td  class="text-center {!IF((visit.PSITS_PTLE)   >= 85, 'danger', (IF((visit.PSITS_PTLE)   <= 80, '', 'warning')))}">{!visit.PSITS_PTLE}<br/>   {!IF((visit.PSITS_PTLE)   >= 85, 'Clinical', (IF((visit.PSITS_PTLE)   <= 80, '', 'Borderline')))}</td><!--ts-->    
-                                    <td  class="text-center {!IF((visit.PSIPD_PTLE)   >= 85, 'danger', (IF((visit.PSIPD_PTLE)   <= 80, '', 'warning')))}">{!visit.PSIPD_PTLE}<br/>   {!IF((visit.PSIPD_PTLE)   >= 85, 'Clinical', (IF((visit.PSIPD_PTLE)   <= 80, '', 'Borderline')))}</td><!--pd-->    
-                                    <td  class="text-center {!IF((visit.PSIPCDI_PTLE) >= 85, 'danger', (IF((visit.PSIPCDI_PTLE) <= 80, '', 'warning')))}">{!visit.PSIPCDI_PTLE}<br/> {!IF((visit.PSIPCDI_PTLE) >= 85, 'Clinical', (IF((visit.PSIPCDI_PTLE) <= 80, '', 'Borderline')))}</td><!--p_cdi-->    
-                                    <td  class="text-center {!IF((visit.PSIDC_PTLE)   >= 85, 'danger', (IF((visit.PSIDC_PTLE)   <= 80, '', 'warning')))}">{!visit.PSIDC_PTLE}<br/>   {!IF((visit.PSIDC_PTLE)   >= 85, 'Clinical', (IF((visit.PSIDC_PTLE)   <= 80, '', 'Borderline')))}</td><!--dc-->                                     
+                                    <td  class="text-center {!IF((visit.PSIDR_PTLE)   > 85, 'danger', (IF((visit.PSIDR_PTLE)   <= 80, '', 'warning')))}">{!visit.PSIDR_PTLE}<br/>   {!IF((visit.PSIDR_PTLE)   > 85, 'Invalid',  (IF((visit.PSIDR_PTLE)   <= 80, '', 'Borderline')))}</td><!--dr-->   
+                                    <td  class="text-center {!IF((visit.PSITS_PTLE)   > 85, 'danger', (IF((visit.PSITS_PTLE)   <= 80, '', 'warning')))}">{!visit.PSITS_PTLE}<br/>   {!IF((visit.PSITS_PTLE)   > 85, 'Clinical', (IF((visit.PSITS_PTLE)   <= 80, '', 'Borderline')))}</td><!--ts-->    
+                                    <td  class="text-center {!IF((visit.PSIPD_PTLE)   > 85, 'danger', (IF((visit.PSIPD_PTLE)   <= 80, '', 'warning')))}">{!visit.PSIPD_PTLE}<br/>   {!IF((visit.PSIPD_PTLE)   > 85, 'Clinical', (IF((visit.PSIPD_PTLE)   <= 80, '', 'Borderline')))}</td><!--pd-->    
+                                    <td  class="text-center {!IF((visit.PSIPCDI_PTLE) > 85, 'danger', (IF((visit.PSIPCDI_PTLE) <= 80, '', 'warning')))}">{!visit.PSIPCDI_PTLE}<br/> {!IF((visit.PSIPCDI_PTLE) > 85, 'Clinical', (IF((visit.PSIPCDI_PTLE) <= 80, '', 'Borderline')))}</td><!--p_cdi-->    
+                                    <td  class="text-center {!IF((visit.PSIDC_PTLE)   > 85, 'danger', (IF((visit.PSIDC_PTLE)   <= 80, '', 'warning')))}">{!visit.PSIDC_PTLE}<br/>   {!IF((visit.PSIDC_PTLE)   > 85, 'Clinical', (IF((visit.PSIDC_PTLE)   <= 80, '', 'Borderline')))}</td><!--dc-->                                     
                                 </apex:outputPanel>
                             </tr>                        
                         </apex:repeat>                    
@@ -179,28 +181,26 @@
         </apex:repeat>
         
         data.addRows([
-             ['Parental Distress'                      <apex:repeat value="{!visits}" var="vpd">,    {!vpd.PSIPD_PTLE},    '{!IF((vpd.PSIPD_PTLE)     >= 85, 'C', (IF((vpd.PSIPD_PTLE)    <= 80, '', 'B')))}'</apex:repeat>],
-             ['Parent-Child Dysfunctional Interaction' <apex:repeat value="{!visits}" var="vcdi">,   {!vcdi.PSIPCDI_PTLE}, '{!IF((vcdi.PSIPCDI_PTLE)  >= 85, 'C', (IF((vcdi.PSIPCDI_PTLE) <= 80, '', 'B')))}'</apex:repeat>],
-             ['Difficult Child'                        <apex:repeat value="{!visits}" var="vdc">,    {!vdc.PSIDC_PTLE},    '{!IF((vdc.PSIDC_PTLE)     >= 85, 'C', (IF((vdc.PSIDC_PTLE)    <= 80, '', 'B')))}'</apex:repeat>],
+            ['Parental Distress'                      <apex:repeat value="{!visits}" var="vpd">,    {!vpd.PSIPD_PTLE},    '{!IF((vpd.PSIPD_PTLE)     > 85, 'C', (IF((vpd.PSIPD_PTLE)    <= 80, '', 'B')))}'</apex:repeat>],
+             ['Parent-Child Dysfunctional Interaction' <apex:repeat value="{!visits}" var="vcdi">,   {!vcdi.PSIPCDI_PTLE}, '{!IF((vcdi.PSIPCDI_PTLE)  > 85, 'C', (IF((vcdi.PSIPCDI_PTLE) <= 80, '', 'B')))}'</apex:repeat>],
+             ['Difficult Child'                        <apex:repeat value="{!visits}" var="vdc">,    {!vdc.PSIDC_PTLE},    '{!IF((vdc.PSIDC_PTLE)     > 85, 'C', (IF((vdc.PSIDC_PTLE)    <= 80, '', 'B')))}'</apex:repeat>],
             ]);
             
             var options = {
             title: 'PSI Scores',
             annotations: {
-                alwaysOutside: false,
-                textStyle: {
-                    fontSize: 14,
-                    color: '#000',
-                    auraColor: 'none'
-                }
+            alwaysOutside: false,
+            textStyle: {
+            fontSize: 14,
+            color: '#000',
+            auraColor: 'none'
+            }
             },
             hAxis: {
-                title: 'Subscale'
+            title: 'Subscale'
             },
             vAxis: {
-                title: 'Percentile',
-                minValue:0,
-                maxValue:100,
+            title: 'T-Score',
             },
             height: chartHeight
             };
@@ -229,7 +229,7 @@
             </apex:outputText>',  
             {!visit.PSITS_PTLE}, 
             85, //clinical val
-            81],//borderline val
+            80],//borderline val
                      </apex:repeat> 
                      ]);
         
@@ -247,7 +247,7 @@
             vAxis: {
                 title: 'T-Score Value',
                 maxValue: 100,
-                minValue: 0,
+                minValue: 30,
                 showTextEvery: 1,  
             },
             height: chartHeight,

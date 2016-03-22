@@ -8,10 +8,7 @@
     <apex:outputPanel layout="none" rendered="{!printReport}">
         <script>        
         $j(document).ready(function() { 
-            $j('.total-score').removeClass('col-md-12 col-lg-6').css('width','1150px', 'height', '300px', 'margin-bottom', '10px');
-            $j('.chart-t-score').removeClass('col-md-12 col-lg-6').css('width','1150px', 'height', '300px');
-            $j('.bPageTitle-page2').html($j('.bPageTitle').html());
-            $j('.header-info-table-page2').html($j('.header-info-table').html());
+            $j('.chart-t-score').removeClass('col-md-12 col-lg-6').addClass('print-chart-width');
             window.print(); 
         });
         </script>
@@ -19,7 +16,7 @@
     <!--end print command -->
     
     <div class="{!HTMLENCODE(form.visitType)}-assessment">
-        <apex:sectionHeader title="{!HTMLENCODE(form.title)}" subtitle="{!IF(NOT(printReport), HTMLENCODE(form.subtitle), null)}" />
+        <apex:sectionHeader title="{!HTMLENCODE(form.title)}" subtitle="{!HTMLENCODE(form.subtitle)}" />
     </div>    
     
     <div class="bootwrap">
@@ -45,8 +42,10 @@
                 <!--provides print button functionality and structure-->
                 <apex:outputPanel layout="none" rendered="{!NOT(printReport)}">
                     <div>
-                        <a class="btn btn-default pull-right" href="/apex/DS_TSCYC_Report?cimi={!HTMLENCODE(cimi)}&print=1" target="_blank">
-                            <i class="glyphicon glyphicon-print"></i> &nbsp;Print
+                        <a href="/apex/DS_TSCYC_Report?cimi={!HTMLENCODE(cimi)}&print=1" target="_blank">
+                            <button class="btn btn-default pull-right" type="button">
+                                <i class="glyphicon glyphicon-print"></i> &nbsp;Print
+                            </button>
                         </a>
                         <br/>
                     </div>
@@ -135,18 +134,18 @@
                             <!--visit type-->
                             <td>{!IF(HTMLENCODE(visit.BorF) = 'B', 'Baseline', 'Follow-up')}</td>                          
                             
-                            <apex:outputPanel layout="none" >    
-                                <td  class="text-center {!IF((visit.RL_T)       >= 70, 'danger', (IF((visit.RL_T)     <= 64, '', 'warning')))}">{!visit.RL_T}     <br/> {!IF((visit.RL_T)     >= 70, 'Invalid',  (IF((visit.RL_T)     <= 64, '', 'Borderline')))}</td><!--rl-->
-                                <td  class="text-center {!IF((visit.ATR_T)      >= 90, 'danger', (IF((visit.ATR_T)    <= 69, '', 'warning')))}">{!visit.ATR_T}    <br/> {!IF((visit.ATR_T)    >= 90, 'Invalid',  (IF((visit.ATR_T)    <= 69, '', 'Borderline')))} </td><!--atr-->    
-                                <td  class="text-center {!IF((visit.ANX_T)      >= 70, 'danger', (IF((visit.ANX_T)    <= 64, '', 'warning')))}">{!visit.ANX_T}    <br/> {!IF((visit.ANX_T)    >= 70, 'Clinical', (IF((visit.ANX_T)    <= 64, '', 'Borderline')))} </td><!--anx-->
-                                <td  class="text-center {!IF((visit.DEP_T)      >= 70, 'danger', (IF((visit.DEP_T)    <= 64, '', 'warning')))}">{!visit.DEP_T}    <br/> {!IF((visit.DEP_T)    >= 70, 'Clinical', (IF((visit.DEP_T)    <= 64, '', 'Borderline')))} </td><!--dep-->
-                                <td  class="text-center {!IF((visit.ANG_T)      >= 70, 'danger', (IF((visit.ANG_T)    <= 64, '', 'warning')))}">{!visit.ANG_T}    <br/> {!IF((visit.ANG_T)    >= 70, 'Clinical', (IF((visit.ANG_T)    <= 64, '', 'Borderline')))} </td><!--ang-->
-                                <td  class="text-center {!IF((visit.PTSI_T)     >= 70, 'danger', (IF((visit.PTSI_T)   <= 64, '', 'warning')))}">{!visit.PTSI_T}   <br/> {!IF((visit.PTSI_T)   >= 70, 'Clinical', (IF((visit.PTSI_T)   <= 64, '', 'Borderline')))} </td><!--ptsi-->
-                                <td  class="text-center {!IF((visit.PTSAV_T)    >= 70, 'danger', (IF((visit.PTSAV_T)  <= 64, '', 'warning')))}">{!visit.PTSAV_T}  <br/> {!IF((visit.PTSAV_T)  >= 70, 'Clinical', (IF((visit.PTSAV_T)  <= 64, '', 'Borderline')))} </td><!--ptsav-->
-                                <td  class="text-center {!IF((visit.PTSAR_T)    >= 70, 'danger', (IF((visit.PTSAR_T)  <= 64, '', 'warning')))}">{!visit.PTSAR_T}  <br/> {!IF((visit.PTSAR_T)  >= 70, 'Clinical', (IF((visit.PTSAR_T)  <= 64, '', 'Borderline')))} </td><!--ptsar-->   
-                                <td  class="text-center {!IF((visit.PTSTOT_T)   >= 70, 'danger', (IF((visit.PTSTOT_T) <= 64, '', 'warning')))}">{!visit.PTSTOT_T} <br/> {!IF((visit.PTSTOT_T) >= 70, 'Clinical', (IF((visit.PTSTOT_T) <= 64, '', 'Borderline')))} </td><!--ptstot-->  
-                                <td  class="text-center {!IF((visit.DIS_T)      >= 70, 'danger', (IF((visit.DIS_T)    <= 64, '', 'warning')))}">{!visit.DIS_T}    <br/> {!IF((visit.DIS_T)    >= 70, 'Clinical', (IF((visit.DIS_T)    <= 64, '', 'Borderline')))} </td><!--dis-->    
-                                <td  class="text-center {!IF((visit.SC_T)       >= 70, 'danger', (IF((visit.SC_T)     <= 64, '', 'warning')))}">{!visit.SC_T}     <br/> {!IF((visit.SC_T)     >= 70, 'Clinical', (IF((visit.SC_T)     <= 64, '', 'Borderline')))} </td><!--sc-->     
+                            <apex:outputPanel layout="none">
+                                <td  class="text-center {!IF((visit.RL_T)       > 70, 'danger', (IF((visit.RL_T)     <= 64, '', 'warning')))}">{!visit.RL_T}     <br/> {!IF((visit.RL_T)     > 70, 'Invalid', (IF((visit.RL_T)     <= 64, '', 'Borderline')))} </td><!--rl-->
+                                <td  class="text-center {!IF((visit.ATR_T)      > 70, 'danger', (IF((visit.ATR_T)    <= 64, '', 'warning')))}">{!visit.ATR_T}    <br/> {!IF((visit.ATR_T)    > 70, 'Invalid', (IF((visit.ATR_T)    <= 64, '', 'Borderline')))} </td><!--atr-->    
+                                <td  class="text-center {!IF((visit.ANX_T)      > 70, 'danger', (IF((visit.ANX_T)    <= 64, '', 'warning')))}">{!visit.ANX_T}    <br/> {!IF((visit.ANX_T)    > 70, 'Clinical', (IF((visit.ANX_T)    <= 64, '', 'Borderline')))} </td><!--anx-->
+                                <td  class="text-center {!IF((visit.DEP_T)      > 70, 'danger', (IF((visit.DEP_T)    <= 64, '', 'warning')))}">{!visit.DEP_T}    <br/> {!IF((visit.DEP_T)    > 70, 'Clinical', (IF((visit.DEP_T)    <= 64, '', 'Borderline')))} </td><!--dep-->
+                                <td  class="text-center {!IF((visit.ANG_T)      > 70, 'danger', (IF((visit.ANG_T)    <= 64, '', 'warning')))}">{!visit.ANG_T}    <br/> {!IF((visit.ANG_T)    > 70, 'Clinical', (IF((visit.ANG_T)    <= 64, '', 'Borderline')))} </td><!--ang-->
+                                <td  class="text-center {!IF((visit.PTSI_T)     > 70, 'danger', (IF((visit.PTSI_T)   <= 64, '', 'warning')))}">{!visit.PTSI_T}   <br/> {!IF((visit.PTSI_T)   > 70, 'Clinical', (IF((visit.PTSI_T)   <= 64, '', 'Borderline')))} </td><!--ptsi-->
+                                <td  class="text-center {!IF((visit.PTSAV_T)    > 70, 'danger', (IF((visit.PTSAV_T)  <= 64, '', 'warning')))}">{!visit.PTSAV_T}  <br/> {!IF((visit.PTSAV_T)  > 70, 'Clinical', (IF((visit.PTSAV_T)  <= 64, '', 'Borderline')))} </td><!--ptsav-->
+                                <td  class="text-center {!IF((visit.PTSAR_T)    > 70, 'danger', (IF((visit.PTSAR_T)  <= 64, '', 'warning')))}">{!visit.PTSAR_T}  <br/> {!IF((visit.PTSAR_T)  > 70, 'Clinical', (IF((visit.PTSAR_T)  <= 64, '', 'Borderline')))} </td><!--ptsar-->   
+                                <td  class="text-center {!IF((visit.PTSTOT_T)   > 70, 'danger', (IF((visit.PTSTOT_T) <= 64, '', 'warning')))}">{!visit.PTSTOT_T} <br/> {!IF((visit.PTSTOT_T) > 70, 'Clinical', (IF((visit.PTSTOT_T) <= 64, '', 'Borderline')))} </td><!--ptstot-->  
+                                <td  class="text-center {!IF((visit.DIS_T)      > 70, 'danger', (IF((visit.DIS_T)    <= 64, '', 'warning')))}">{!visit.DIS_T}    <br/> {!IF((visit.DIS_T)    > 70, 'Clinical', (IF((visit.DIS_T)    <= 64, '', 'Borderline')))} </td><!--dis-->    
+                                <td  class="text-center {!IF((visit.SC_T)       > 70, 'danger', (IF((visit.SC_T)     <= 64, '', 'warning')))}">{!visit.SC_T}     <br/> {!IF((visit.SC_T)     > 70, 'Clinical', (IF((visit.SC_T)     <= 64, '', 'Borderline')))} </td><!--sc-->     
                             </apex:outputPanel>
                         </tr>                        
                     </apex:repeat>                    
@@ -192,33 +191,31 @@
         </apex:repeat>
         
         data.addRows([    
-             ['Anxiety'            <apex:repeat value="{!visits}" var="vanx">,       {!vanx.ANX_T},        '{!IF((vanx.ANX_T)     >= 70, 'C', (IF((vanx.ANX_T)     <= 64, '', 'B')))}'  </apex:repeat>], 
-             ['Depression'         <apex:repeat value="{!visits}" var="vdep">,       {!vdep.DEP_T},        '{!IF((vdep.DEP_T)     >= 70, 'C', (IF((vdep.DEP_T)     <= 64, '', 'B')))}'  </apex:repeat>], 
-             ['Anger'              <apex:repeat value="{!visits}" var="vang">,       {!vang.ANG_T},        '{!IF((vang.ANG_T)     >= 70, 'C', (IF((vang.ANG_T)     <= 64, '', 'B')))}'  </apex:repeat>], 
-             ['PTS-Intrusions'     <apex:repeat value="{!visits}" var="vptsi">,      {!vptsi.PTSI_T},      '{!IF((vptsi.PTSI_T)   >= 70, 'C', (IF((vptsi.PTSI_T)   <= 64, '', 'B')))}'  </apex:repeat>], 
-             ['PTS-Avoidance'      <apex:repeat value="{!visits}" var="vptsav">,     {!vptsav.PTSAV_T},    '{!IF((vptsav.PTSAV_T) >= 70, 'C', (IF((vptsav.PTSAV_T) <= 64, '', 'B')))}'  </apex:repeat>], 
-             ['PTS-Arousal'        <apex:repeat value="{!visits}" var="vptsar">,     {!vptsar.PTSAR_T},    '{!IF((vptsar.PTSAR_T) >= 70, 'C', (IF((vptsar.PTSAR_T) <= 64, '', 'B')))}'  </apex:repeat>], 
-             ['Dissociation'       <apex:repeat value="{!visits}" var="vdis">,       {!vdis.DIS_T},        '{!IF((vdis.DIS_T)     >= 70, 'C', (IF((vdis.DIS_T)     <= 64, '', 'B')))}'  </apex:repeat>], 
-             ['Sexual Concerns'    <apex:repeat value="{!visits}" var="vsc">,        {!vsc.SC_T},          '{!IF((vsc.SC_T)       >= 70, 'C', (IF((vsc.SC_T)       <= 64, '', 'B')))}'  </apex:repeat>], 
+            ['Anxiety'            <apex:repeat value="{!visits}" var="vanx">,       {!vanx.ANX_T},        '{!IF((vanx.ANX_T)     > 70, 'C', (IF((vanx.ANX_T)     <= 64, '', 'B')))}'  </apex:repeat>], 
+             ['Depression'         <apex:repeat value="{!visits}" var="vdep">,       {!vdep.DEP_T},        '{!IF((vdep.DEP_T)     > 70, 'C', (IF((vdep.DEP_T)     <= 64, '', 'B')))}'  </apex:repeat>], 
+             ['Anger'              <apex:repeat value="{!visits}" var="vang">,       {!vang.ANG_T},        '{!IF((vang.ANG_T)     > 70, 'C', (IF((vang.ANG_T)     <= 64, '', 'B')))}'  </apex:repeat>], 
+             ['Sexual Concerns'    <apex:repeat value="{!visits}" var="vsc">,        {!vsc.SC_T},          '{!IF((vsc.SC_T)       > 70, 'C', (IF((vsc.SC_T)       <= 64, '', 'B')))}'  </apex:repeat>], 
+             ['Dissociation'       <apex:repeat value="{!visits}" var="vdis">,       {!vdis.DIS_T},        '{!IF((vdis.DIS_T)     > 70, 'C', (IF((vdis.DIS_T)     <= 64, '', 'B')))}'  </apex:repeat>], 
+             ['PTS-Intrusions'     <apex:repeat value="{!visits}" var="vptsi">,      {!vptsi.PTSI_T},      '{!IF((vptsi.PTSI_T)   > 70, 'C', (IF((vptsi.PTSI_T)   <= 64, '', 'B')))}'  </apex:repeat>], 
+             ['PTS-Avoidance'      <apex:repeat value="{!visits}" var="vptsav">,     {!vptsav.PTSAV_T},    '{!IF((vptsav.PTSAV_T) > 70, 'C', (IF((vptsav.PTSAV_T) <= 64, '', 'B')))}'  </apex:repeat>], 
+             ['PTS-Arousal'        <apex:repeat value="{!visits}" var="vptsar">,     {!vptsar.PTSAR_T},    '{!IF((vptsar.PTSAR_T) > 70, 'C', (IF((vptsar.PTSAR_T) <= 64, '', 'B')))}'  </apex:repeat>], 
             ]);
             
             var options = {
             title: 'TSCYC Subscale Scores',
             annotations: {
-                alwaysOutside: false,
-                textStyle: {
-                fontSize: 14,
-                color: '#000',
-                auraColor: 'none'
-                }
+            alwaysOutside: false,
+            textStyle: {
+            fontSize: 14,
+            color: '#000',
+            auraColor: 'none'
+            }
             },
             hAxis: {
-                title: 'T-Score',
-                minValue:0,
-                maxValue:110,
+            title: 'T-Score'
             },
             vAxis: {
-                title: 'Subscale',
+            title: 'Subscale',
             },
             height: chartHeight
             };
@@ -265,7 +262,7 @@
             },
             vAxis: {
                 title: 'T-Score Value',
-                minValue: 0,
+                minValue: 35,
                 maxValue: 110,  
                 showTextEvery: 1,       
             },

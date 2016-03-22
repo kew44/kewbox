@@ -1,8 +1,14 @@
 /**
-* The controller class for PTSD Reaction Index for Children/Adolescents Report
+* @author Danny Fu
+* @date 02/23/2016
+* @modified date
+*
+* @group PTSD
+* @group-content /ApexDocContent/PTSD/PTSD_children_report.htm
+*
+* @description An apex controller class for PTSD Reaction Index for Children/Adolescents Report.
 * 
-**/
-
+*/
 public with sharing class DS_PTSD_CA_Report_Controller extends DS_BasicForm_Controller {
     
     public String cimi { get; set; }
@@ -81,10 +87,19 @@ public with sharing class DS_PTSD_CA_Report_Controller extends DS_BasicForm_Cont
         
     }
     
+    /****
+    * @description Initilization for print button 
+    * @return null
+    */
     public void init() {
         printReport = (Apexpages.currentPage().getParameters().get('print') == '1') ? true : false;
     }
     
+    /****
+    * @description Constructor, gather form information, assessment history. 
+    * @param controller ApexPages.StandardController
+    * @return null
+    */
     public DS_PTSD_CA_Report_Controller(ApexPages.StandardController controller) {
         
         // Initilize the DS_BasicForm_Controller
@@ -117,9 +132,7 @@ public with sharing class DS_PTSD_CA_Report_Controller extends DS_BasicForm_Cont
         
         currentVisitDate = (form.BorF == 'F') ? Datetime.newInstance(tempVisitDate, time.newInstance(0,0,0,0)) : null;
         
-        // Assessment history
-        //historyExisted = (currentVisitDate != null) ? true : false;
-        
+        // Assessment history       
         getAssesmentHistory();
         
         // Display history
@@ -127,6 +140,10 @@ public with sharing class DS_PTSD_CA_Report_Controller extends DS_BasicForm_Cont
         
     }
     
+    /****
+    * @description Get the baseline and follow-up assessment history. 
+    * @return null
+    */
     public void getAssesmentHistory() {
         
         List<SObject> baseline = 
@@ -149,6 +166,12 @@ public with sharing class DS_PTSD_CA_Report_Controller extends DS_BasicForm_Cont
         
     }
     
+    /****
+    * @description Add the visit data into the visits list. 
+    * @param ptsd list of the ptsd SObject
+    * @param BorF baseline of follow-up
+    * @return null
+    */
     public void addVisit(List<SObject> ptsd, String BorF) {
         
         for(Sobject p : ptsd) {
@@ -218,6 +241,10 @@ public with sharing class DS_PTSD_CA_Report_Controller extends DS_BasicForm_Cont
         
     }
     
+    /****
+    * @description Redirect for the edit button 
+    * @return PageReference
+    */
     public PageReference editRecord() {
         
         PageReference ptsdPage = new PageReference('/apex/DS_PTSD_CA?cimi=' + Apexpages.currentPage().getParameters().get('cimi'));

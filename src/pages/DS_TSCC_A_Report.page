@@ -42,8 +42,10 @@
                 <!--provides print button functionality and structure-->
                 <apex:outputPanel layout="none" rendered="{!NOT(printReport)}">
                     <div>
-                        <a class="btn btn-default pull-right" href="/apex/DS_TSCC_A_Report?cimi={!HTMLENCODE(cimi)}&print=1" target="_blank">
-                            <i class="glyphicon glyphicon-print"></i> &nbsp;Print
+                        <a href="/apex/DS_TSCC_A_Report?cimi={!HTMLENCODE(cimi)}&print=1" target="_blank">
+                            <button class="btn btn-default pull-right" type="button">
+                                <i class="glyphicon glyphicon-print"></i> &nbsp;Print
+                            </button>
                         </a>
                         <br/>
                     </div>
@@ -86,7 +88,7 @@
                     <br/>
                     <strong><u>Validity Scales </u></strong>
                     <br/>
-                    The child’s score on the Underresponse scale is in the <u>{!Str_UND}</u> range and their score on the Hyperresponse scale is in the <u>{!Str_HYP}</u> range.
+                    The child’s score on the Underresponse scale is in the <u>{!Str_UND}</u> range and their score on the Hyperresponse scale is in the <!--{!visits[SectionNum].HYP}--><u>{!Str_HYP}</u> range.
                 </p>                
             </div>
             <!--end info-->
@@ -111,7 +113,7 @@
                         <th class="text-center">Anxiety</th>
                         <th class="text-center">Depression</th>
                         <th class="text-center">Anger</th>
-                        <th class="text-center">Post-Traumatic Stress</th>
+                        <th class="text-center">Post Traumatic Stress</th>
                         <th class="text-center">Dissociation</th>
                         <th class="text-center">Overt Dissociation</th>
                         <th class="text-center">Fantasy</th>
@@ -135,15 +137,15 @@
                             <td>{!IF(HTMLENCODE(visit.BorF) = 'B', 'Baseline', 'Follow-up')}</td>                          
                             
                             <apex:outputPanel layout="none" >    
-                                <td class="text-center {!IF((visit.TSCNTN)  >= 70, 'danger', (IF((visit.TSCNTN)  <= 64, '', 'warning')))}">{!visit.TSCNTN}  <br/> {!IF((visit.TSCNTN)  >= 70, 'Invalid',  (IF((visit.TSCNTN)  <= 64, '', 'Borderline')))}</td><!--und-->      
-                                <td class="text-center {!IF((visit.TSCHYTN) >= 90, 'danger', (IF((visit.TSCHYTN) <= 64, '', 'warning')))}">{!visit.TSCHYTN} <br/> {!IF((visit.TSCHYTN) >= 90, 'Invalid',  (IF((visit.TSCHYTN) <= 64, '', 'Borderline')))}</td><!--hyp--> 
-                                <td class="text-center {!IF((visit.TSCAXTN) >= 65, 'danger', (IF((visit.TSCAXTN) <= 59, '', 'warning')))}">{!visit.TSCAXTN} <br/> {!IF((visit.TSCAXTN) >= 65, 'Clinical', (IF((visit.TSCAXTN) <= 59, '', 'Borderline')))}</td><!--anx-->      
-                                <td class="text-center {!IF((visit.TSCDPTN) >= 65, 'danger', (IF((visit.TSCDPTN) <= 59, '', 'warning')))}">{!visit.TSCDPTN} <br/> {!IF((visit.TSCDPTN) >= 65, 'Clinical', (IF((visit.TSCDPTN) <= 59, '', 'Borderline')))}</td><!--dep-->          
-                                <td class="text-center {!IF((visit.TSCAGTN) >= 65, 'danger', (IF((visit.TSCAGTN) <= 59, '', 'warning')))}">{!visit.TSCAGTN} <br/> {!IF((visit.TSCAGTN) >= 65, 'Clinical', (IF((visit.TSCAGTN) <= 59, '', 'Borderline')))}</td><!--ang-->      
-                                <td class="text-center {!IF((visit.TSCPTTN) >= 65, 'danger', (IF((visit.TSCPTTN) <= 59, '', 'warning')))}">{!visit.TSCPTTN} <br/> {!IF((visit.TSCPTTN) >= 65, 'Clinical', (IF((visit.TSCPTTN) <= 59, '', 'Borderline')))}</td><!--pts-->    
-                                <td class="text-center {!IF((visit.TSCDSTN) >= 65, 'danger', (IF((visit.TSCDSTN) <= 59, '', 'warning')))}">{!visit.TSCDSTN} <br/> {!IF((visit.TSCDSTN) >= 65, 'Clinical', (IF((visit.TSCDSTN) <= 59, '', 'Borderline')))}</td><!--dis-->    
-                                <td class="text-center {!IF((visit.TSCODTN) >= 65, 'danger', (IF((visit.TSCODTN) <= 59, '', 'warning')))}">{!visit.TSCODTN} <br/> {!IF((visit.TSCODTN) >= 65, 'Clinical', (IF((visit.TSCODTN) <= 59, '', 'Borderline')))}</td><!--diso-->       
-                                <td class="text-center {!IF((visit.TSCFNTN) >= 65, 'danger', (IF((visit.TSCFNTN) <= 59, '', 'warning')))}">{!visit.TSCFNTN} <br/> {!IF((visit.TSCFNTN) >= 65, 'Clinical', (IF((visit.TSCFNTN) <= 59, '', 'Borderline')))}</td><!--disf-->            
+                                <td class="text-center {!IF((visit.TSCNTN)  > 70, 'danger', (IF((visit.TSCNTN)  <= 64, '', 'warning')))}">{!visit.TSCNTN}  <br/> {!IF((visit.TSCNTN)  > 70, 'Invalid',  (IF((visit.TSCNTN)  <= 64, '', 'Borderline')))}</td><!--und-->      
+                                <td class="text-center {!IF((visit.TSCHYTN) > 90, 'danger', (IF((visit.TSCHYTN) <= 64, '', 'warning')))}">{!visit.TSCHYTN} <br/> {!IF((visit.TSCHYTN) > 90, 'Invalid',  (IF((visit.TSCHYTN) <= 64, '', 'Borderline')))}</td><!--hyp--> 
+                                <td class="text-center {!IF((visit.TSCAXTN) > 65, 'danger', (IF((visit.TSCAXTN) <= 59, '', 'warning')))}">{!visit.TSCAXTN} <br/> {!IF((visit.TSCAXTN) > 65, 'Clinical', (IF((visit.TSCAXTN) <= 59, '', 'Borderline')))}</td><!--anx-->      
+                                <td class="text-center {!IF((visit.TSCDPTN) > 65, 'danger', (IF((visit.TSCDPTN) <= 59, '', 'warning')))}">{!visit.TSCDPTN} <br/> {!IF((visit.TSCDPTN) > 65, 'Clinical', (IF((visit.TSCDPTN) <= 59, '', 'Borderline')))}</td><!--dep-->          
+                                <td class="text-center {!IF((visit.TSCAGTN) > 65, 'danger', (IF((visit.TSCAGTN) <= 59, '', 'warning')))}">{!visit.TSCAGTN} <br/> {!IF((visit.TSCAGTN) > 65, 'Clinical', (IF((visit.TSCAGTN) <= 59, '', 'Borderline')))}</td><!--ang-->      
+                                <td class="text-center {!IF((visit.TSCPTTN) > 65, 'danger', (IF((visit.TSCPTTN) <= 59, '', 'warning')))}">{!visit.TSCPTTN} <br/> {!IF((visit.TSCPTTN) > 65, 'Clinical', (IF((visit.TSCPTTN) <= 59, '', 'Borderline')))}</td><!--pts-->    
+                                <td class="text-center {!IF((visit.TSCDSTN) > 65, 'danger', (IF((visit.TSCDSTN) <= 59, '', 'warning')))}">{!visit.TSCDSTN} <br/> {!IF((visit.TSCDSTN) > 65, 'Clinical', (IF((visit.TSCDSTN) <= 59, '', 'Borderline')))}</td><!--dis-->    
+                                <td class="text-center {!IF((visit.TSCODTN) > 65, 'danger', (IF((visit.TSCODTN) <= 59, '', 'warning')))}">{!visit.TSCODTN} <br/> {!IF((visit.TSCODTN) > 65, 'Clinical', (IF((visit.TSCODTN) <= 59, '', 'Borderline')))}</td><!--diso-->       
+                                <td class="text-center {!IF((visit.TSCFNTN) > 65, 'danger', (IF((visit.TSCFNTN) <= 59, '', 'warning')))}">{!visit.TSCFNTN} <br/> {!IF((visit.TSCFNTN) > 65, 'Clinical', (IF((visit.TSCFNTN) <= 59, '', 'Borderline')))}</td><!--disf-->            
                             </apex:outputPanel>
                         </tr>                        
                     </apex:repeat>                    
@@ -186,32 +188,30 @@
         </apex:repeat>
         
         data.addRows([    
-             ['Anxiety'              <apex:repeat value="{!visits}" var="vanx">,  {!vanx.TSCAXTN},  '{!IF((vanx.TSCAXTN)  >= 65, 'C', (IF((vanx.TSCAXTN) <= 59, '', 'B')))}'  </apex:repeat>],
-             ['Depression'           <apex:repeat value="{!visits}" var="vdep">,  {!vdep.TSCDPTN},  '{!IF((vdep.TSCDPTN)  >= 65, 'C', (IF((vdep.TSCDPTN) <= 59, '', 'B')))}'  </apex:repeat>],
-             ['Anger'                <apex:repeat value="{!visits}" var="vang">,  {!vang.TSCAGTN},  '{!IF((vang.TSCAGTN)  >= 65, 'C', (IF((vang.TSCAGTN) <= 59, '', 'B')))}'  </apex:repeat>],
-             ['Posttraumatic Stress' <apex:repeat value="{!visits}" var="vpts">,  {!vpts.TSCPTTN},  '{!IF((vpts.TSCPTTN)  >= 65, 'C', (IF((vpts.TSCPTTN) <= 59, '', 'B')))}'  </apex:repeat>],
-             ['Dissociation'         <apex:repeat value="{!visits}" var="vdis">,  {!vdis.TSCDSTN},  '{!IF((vdis.TSCDSTN)  >= 65, 'C', (IF((vdis.TSCDSTN) <= 59, '', 'B')))}'  </apex:repeat>],
-             ['Overt Dissociation'   <apex:repeat value="{!visits}" var="vdiso">, {!vdiso.TSCODTN}, '{!IF((vdiso.TSCODTN) >= 65, 'C', (IF((vdiso.TSCODTN)<= 59, '', 'B')))}'  </apex:repeat>],
-             ['Fantasy'              <apex:repeat value="{!visits}" var="vdisf">, {!vdisf.TSCFNTN}, '{!IF((vdisf.TSCFNTN) >= 65, 'C', (IF((vdisf.TSCFNTN)<= 59, '', 'B')))}'  </apex:repeat>],
+            ['Anxiety'              <apex:repeat value="{!visits}" var="vanx">,  {!vanx.TSCAXTN},  '{!IF((vanx.TSCAXTN)  > 65, 'C', (IF((vanx.TSCAXTN) <= 59, '', 'B')))}'  </apex:repeat>],
+             ['Depression'           <apex:repeat value="{!visits}" var="vdep">,  {!vdep.TSCDPTN},  '{!IF((vdep.TSCDPTN)  > 65, 'C', (IF((vdep.TSCDPTN) <= 59, '', 'B')))}'  </apex:repeat>],
+             ['Anger'                <apex:repeat value="{!visits}" var="vang">,  {!vang.TSCAGTN},  '{!IF((vang.TSCAGTN)  > 65, 'C', (IF((vang.TSCAGTN) <= 59, '', 'B')))}'  </apex:repeat>],
+             ['Posttraumatic Stress' <apex:repeat value="{!visits}" var="vpts">,  {!vpts.TSCPTTN},  '{!IF((vpts.TSCPTTN)  > 65, 'C', (IF((vpts.TSCPTTN) <= 59, '', 'B')))}'  </apex:repeat>],
+             ['Dissociation'         <apex:repeat value="{!visits}" var="vdis">,  {!vdis.TSCDSTN},  '{!IF((vdis.TSCDSTN)  > 65, 'C', (IF((vdis.TSCDSTN) <= 59, '', 'B')))}'  </apex:repeat>],
+             ['Overt Dissociation'   <apex:repeat value="{!visits}" var="vdiso">, {!vdiso.TSCODTN}, '{!IF((vdiso.TSCODTN) > 65, 'C', (IF((vdiso.TSCODTN)<= 59, '', 'B')))}'  </apex:repeat>],
+             ['Fantasy'              <apex:repeat value="{!visits}" var="vdisf">, {!vdisf.TSCFNTN}, '{!IF((vdisf.TSCFNTN) > 65, 'C', (IF((vdisf.TSCFNTN)<= 59, '', 'B')))}'  </apex:repeat>],
             ]);
             
             var options = {
             title: 'TSCC-A Scores',
             annotations: {
-                alwaysOutside: false,
-                textStyle: {
-                    fontSize: 14,
-                    color: '#000',
-                    auraColor: 'none'
-                }
+            alwaysOutside: false,
+            textStyle: {
+            fontSize: 14,
+            color: '#000',
+            auraColor: 'none'
+            }
             },
             hAxis: {
-                title: 'T-Score',
-                minValue:0,
-                maxValue:111,
+            title: 'T-Score'
             },
             vAxis: {
-                title: 'Subscale',
+            title: 'Subscale',
             },
             height: chartHeight
             };

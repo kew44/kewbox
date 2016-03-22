@@ -56,15 +56,11 @@ private class TestClass_ClientSummary {
         Decimal sectionNum = summary.sectionNum;
         String visitType = summary.visitType;  
         
-        summary.outsideB = new List<Client_Summary__c>();
-        summary.outsideF = new List<Client_Summary__c>();
         summary.baseline = new List<Client_Summary__c>();
         summary.followUp = new List<Client_Summary__c>();
         
         summary.visitFormList = new List<Client_Summary__c>();
         
-        Boolean outsideBBtn = summary.outsideBBtn;
-        Boolean outsideFBtn = summary.outsideFBtn;
         Boolean traumaBtn = summary.traumaBtn;
         Boolean fuBtn = summary.fuBtn;
         Boolean baselineBtn = summary.baselineBtn; 

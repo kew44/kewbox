@@ -13,6 +13,11 @@
 *@author Kelsey Willett
 *@date 1/27/2016
 *@modified date
+*Tscc/YC coverage
+*
+*@date 2/8/16
+*@modified date
+*Purpose: TSCC/YC assert
 ****/
 
 @isTest (SeeAllData=false)
@@ -76,6 +81,8 @@ private class TestClass_DS_TSCC_TSCYC_F {
                                                 FTSCHYN__c  = 7,   FTSCHYN2__c   =  7,  FTSCHYTN__c = 99, FTSCHYTN2__c = 99     //A hyp
                                                 ));    
         }
+        
+        
         
     }
     
@@ -153,6 +160,15 @@ private class TestClass_DS_TSCC_TSCYC_F {
         
         RC.init();
         RC.editRecord();
+        
+        //init variable alias to be tested 
+        Decimal FDEP_R = 20;
+        Decimal FPTSAV_T2 = 40;
+        Date today = System.today();
+        // assert statements 
+        System.assertEquals(obj.FDEP_R__c, FDEP_R,'Incorrect Depression raw score.');
+        System.assertEquals(obj.FPTSAV_T2__c, FPTSAV_T2,'Incorrect Avoidance T-score double entry.');
+        System.assertEquals(obj.FDOATSCYC__c, today,'Date incorrect.');
         }
         
     /****
@@ -227,5 +243,14 @@ private class TestClass_DS_TSCC_TSCYC_F {
         
         RC.init();
         RC.editRecord();
+        
+        //init variable alias to be tested 
+        Decimal FTSCAXN = 8;
+        Decimal FTSCAGTN2 = 40;
+        Date today = System.today();
+        // assert statements 
+        System.assertEquals(obj.FTSCAXN__c, FTSCAXN,'Incorrect Anxiety raw score.');
+        System.assertEquals(obj.FTSCAGTN2__c, FTSCAGTN2,'Incorrect Anger T-score double entry.');
+        System.assertEquals(obj.FDOATSCC__c, today,'Date incorrect.');
     }
 }

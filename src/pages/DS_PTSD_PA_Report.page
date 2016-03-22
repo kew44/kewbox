@@ -26,7 +26,7 @@
         <apex:sectionHeader title="{!HTMLENCODE(form.title)}" subtitle="{!IF(NOT(printReport), HTMLENCODE(form.subtitle), null)}" />
     </div>
 
-	<div class="bootwrap">
+    <div class="bootwrap">
     
         <!--Begin form content-->
         <apex:form id="DS_FORM" styleClass="form-horizontal ptsd-report">
@@ -50,10 +50,8 @@
                 <!--provides print button functionality and structure-->
                 <apex:outputPanel layout="none" rendered="{!NOT(printReport)}">
                     <div>
-                        <a href="/apex/DS_PTSD_PA_Report?cimi={!HTMLENCODE(cimi)}&print=1" target="_blank">
-                            <button class="btn btn-default pull-right" type="button">
-                                <i class="glyphicon glyphicon-print"></i> &nbsp;Print
-                            </button>
+                        <a class="btn btn-default pull-right" href="/apex/DS_PTSD_PA_Report?cimi={!HTMLENCODE(cimi)}&print=1" target="_blank">
+                            <i class="glyphicon glyphicon-print"></i> &nbsp;Print
                         </a>
                         <br/>
                     </div>
@@ -316,7 +314,7 @@
             <!--citation information footer-->
             <p class="footer" style="text-align:center ">
                 <i>©2014: Robert S. Pynoos, M.D., M.P.H. and Alan M. Steinberg, Ph.D. All rights reserved.<br/>
-                    This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - {!CASE(HTMLENCODE(form.visitType), 'baseline', 'Baseline', 'Follow-Up')} - CRF Version 6 2014
+                    This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - {!CASE(HTMLENCODE(form.visitType), 'baseline', 'Baseline', 'Follow-Up')} - CRF Version 6 2016
                 </i>
             </p> 
             
@@ -347,7 +345,7 @@
                 <!--citation information footer-->
                 <p class="footer" style="text-align:center ">
                     <i>©2014: Robert S. Pynoos, M.D., M.P.H. and Alan M. Steinberg, Ph.D. All rights reserved.<br/>
-                        This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - {!CASE(HTMLENCODE(form.visitType), 'baseline', 'Baseline', 'Follow-Up')} - CRF Version 6 2014
+                        This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - {!CASE(HTMLENCODE(form.visitType), 'baseline', 'Baseline', 'Follow-Up')} - CRF Version 6 2016
                     </i>
                 </p> 
             </apex:outputPanel>
@@ -357,7 +355,7 @@
         
     </div>
 
-	<apex:outputPanel rendered="{!displayHistory}">
+    <apex:outputPanel rendered="{!displayHistory}">
     
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
         <script type="text/javascript">

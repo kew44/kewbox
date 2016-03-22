@@ -7,20 +7,6 @@
 *Purpose: Remove validity scores from clinical/normal/borderline range lists
 *update validity to use 'Invalid' instead of 'Clinical'
 *
-*@date 2/25-26/16
-*@modified date
-*@author KW
-*Purpose: Condense logic
-*
-*@date 3/4/16
-*@modified date
-*@author KW
-*Purpose: fix ranges
-*
-*@date 3/11/16
-*@author KW
-*Purpose: add subscale scores to map of clinical scores
-*
 *@group Assessment
 *@group-content /ApexDocContent/Assessment/DS_TSCC_A_Report_Controller.htm
 ****/
@@ -81,7 +67,9 @@ public with sharing class DS_TSCC_A_Report_Controller extends DS_BasicForm_Contr
     public DS_TSCC_A_Report_Controller(ApexPages.StandardController controller) {
             
         // Initilize the DS_BasicForm_Controller
-        super(Apexpages.currentPage().getParameters().get('cimi'));        
+        super(Apexpages.currentPage().getParameters().get('cimi'));
+        
+        //redundant cimi?
         cimi = Apexpages.currentPage().getParameters().get('cimi');
 
         visits = new List<Visit>();
@@ -115,79 +103,121 @@ public with sharing class DS_TSCC_A_Report_Controller extends DS_BasicForm_Contr
     
     public SObject getScoreType(SObject obj){
             
-        //Map types and text
-        Map<String, String> C_Scale_Text = new Map<String,String>();
-        
-        //map text
-        C_Scale_Text.put('AX','Anxiety');
-        C_Scale_Text.put('DP','Depression');
-        C_Scale_Text.put('AG','Anger');
-        C_Scale_Text.put('PT','Post-Traumatic Stress');
-        C_Scale_Text.put('DS','Dissociation');
-        C_Scale_Text.put('OD','Overt Dissociation');
-        C_Scale_Text.put('FN','Fantasy');
-                
         //list alerts for types of scoretypes   
         List<String> clinicalList = new List<String>();
         List<String> borderlineList = new List<String>();
-        List<String> normalList = new List<String>();  
-        
-        //init var for scores
-        Integer C_Value; 
-        
-        //init var for text
-        String C_Text;         
-        
-        for(String t : C_Scale_Text.keySet()){
-                    
-            //set value
-            C_Value =Integer.valueOf(form.obj.get(form.BorF+'TSC'+t+'TN__c'));
-            
-            //set text
-            C_Text = String.valueOf(C_Scale_Text.get(t));
-            
-            //assign text to range lists
-            if(C_Value <= 59){
-                normalList.add(C_Text);
-            }
-            else if(C_Value >= 65){
-                clinicalList.add(C_Text);
-            }
-            else{
-                borderlineList.add(C_Text);
-            }                      
+        List<String> normalList = new List<String>(); 
+                                  
+        //Anxiety (ANX)            
+        if(Integer.valueOf(form.obj.get(form.BorF+'TSCAXTN__c')) <= 59){
+            normalList.add('Anxiety');
+        }
+        else if(Integer.valueOf(form.obj.get(form.BorF+'TSCAXTN__c')) >65){
+            clinicalList.add('Anxiety');
+        }
+        else{
+            borderlineList.add('Anxiety');
         }
         
+        //Depression (DEP)            
+        if(Integer.valueOf(form.obj.get(form.BorF+'TSCDPTN__c'))<= 59){
+            normalList.add('Depression');
+        }
+        else if(Integer.valueOf(form.obj.get(form.BorF+'TSCDPTN__c')) >65){
+            clinicalList.add('Depression');
+        }
+        else{
+            borderlineList.add('Depression');
+        }   
+
+        //Anger (ANG)               
+        if(Integer.valueOf(form.obj.get(form.BorF+'TSCAGTN__c'))<= 59){
+            normalList.add('Anger');
+        }
+        else if(Integer.valueOf(form.obj.get(form.BorF+'TSCAGTN__c')) >65){
+            clinicalList.add('Anger');
+        }
+        else{
+            borderlineList.add('Anger');
+        }
+
+        //Posttraumatic Stress (PTS)     
+        if(Integer.valueOf(form.obj.get(form.BorF+'TSCPTTN__c'))<= 59){
+            normalList.add('Posttraumatic Stress');
+        }
+        else if(Integer.valueOf(form.obj.get(form.BorF+'TSCPTTN__c')) >65){
+            clinicalList.add('Posttraumatic Stress');
+        }
+        else{
+            borderlineList.add('Posttraumatic Stress');
+        }
+        
+        //Dissociation (DIS)            
+        if(Integer.valueOf(form.obj.get(form.BorF+'TSCDSTN__c'))<= 59){
+            normalList.add('Dissociation');
+        }
+        else if(Integer.valueOf(form.obj.get(form.BorF+'TSCDSTN__c')) >65){
+            clinicalList.add('Dissociation');
+        }
+        else{
+            borderlineList.add('Dissociation');
+        }  
+
+        //Overt Dissociation (DIS-O)    
+        if(Integer.valueOf(form.obj.get(form.BorF+'TSCODTN__c'))<= 59){
+            normalList.add('Overt Dissociation');
+        }
+        else if(Integer.valueOf(form.obj.get(form.BorF+'TSCODTN__c')) >65){
+            clinicalList.add('Overt Dissociation');
+        }
+        else{
+            borderlineList.add('Overt Dissociation');
+        }
+
+        //Fantasy (DIS-F)             
+       if(Integer.valueOf(form.obj.get(form.BorF+'TSCFNTN__c')) <= 59){
+            normalList.add('Fantasy');
+        }
+        else if(Integer.valueOf(form.obj.get(form.BorF+'TSCFNTN__c')) >65){
+            clinicalList.add('Fantasy');
+        }
+        else{
+            borderlineList.add('Fantasy');
+        }
+
+        //Underresponse (UND)           
+        if(Integer.valueOf(form.obj.get(form.BorF+'TSCNTN__c')) <= 64){
+            Str_UND = 'Normal';
+           // normalList.add('Underresponse');
+        }
+        else if(Integer.valueOf(form.obj.get(form.BorF+'TSCNTN__c')) >70){
+            Str_UND = 'Invalid';
+           // clinicalList.add('Underresponse');
+        }
+        else{
+            Str_UND = 'Borderline';
+           // borderlineList.add('Underresponse');
+        }
+
+        //Hyperresponse (HYP)           
+        if(Integer.valueOf(form.obj.get(form.BorF+'TSCHYTN__c')) <= 88){
+            Str_HYP = 'Normal';
+           // normalList.add('Hyperresponse');
+        }
+        else if(Integer.valueOf(form.obj.get(form.BorF+'TSCHYTN__c')) >90){
+            Str_HYP = 'Invalid';
+           // clinicalList.add('Hyperresponse');
+        }
+        else{
+            Str_HYP = 'Borderline';
+          //  borderlineList.add('Hyperresponse');
+        }
+    
         //rejoin the lists
         clinicalRange = String.join(clinicalList, ', ');
         borderlineRange= String.join(borderlineList, ', ');
         normalRange= String.join(normalList, ', ');
         
-        //Validity scores have unique ranges and are set to strings, not lists
-            //negligable LOC difference b/w iterative and mapped
-            
-        //Underresponse (UND)           
-        if(Integer.valueOf(form.obj.get(form.BorF+'TSCNTN__c')) <= 64){
-            Str_UND = 'Normal';
-        }
-        else if(Integer.valueOf(form.obj.get(form.BorF+'TSCNTN__c')) >= 70){
-            Str_UND = 'Invalid';
-        }
-        else{
-            Str_UND = 'Borderline';
-        }
-
-        //Hyperresponse (HYP)           
-        if(Integer.valueOf(form.obj.get(form.BorF+'TSCHYTN__c')) <= 64){
-            Str_HYP = 'Normal';
-        }
-        else if(Integer.valueOf(form.obj.get(form.BorF+'TSCHYTN__c')) >=90){
-            Str_HYP = 'Invalid';
-        }
-        else{
-            Str_HYP = 'Borderline';
-        }
-            
         return obj;
     }
       
@@ -200,7 +230,7 @@ public with sharing class DS_TSCC_A_Report_Controller extends DS_BasicForm_Contr
                            ' WHERE Client__c = \''+ form.cID + '\'');
         
         addVisit(baseline, 'B', Str_UND, Str_HYP);
-        
+           
         //query follow-ups  
         List<SObject> followup= 
             Database.query('SELECT ' + form.ut.getFields('DS_TSCC_TSCYC_F__c') +   
@@ -208,9 +238,8 @@ public with sharing class DS_TSCC_A_Report_Controller extends DS_BasicForm_Contr
                            ' WHERE Client__c = \''+ form.cID + '\''+
                            'ORDER BY FDOATSCC__c, SECTION__c');
                 
-        if(followup.size() > 0){
-            addVisit(followup, 'F', Str_UND, Str_HYP);
-        }
+        if(followup.size() > 0) addVisit(followup, 'F', Str_UND, Str_HYP);
+           
     }
     
     public void addVisit(List<SObject> tscc, String BorF, String Str_UND, String Str_HYP) {
@@ -236,10 +265,8 @@ public with sharing class DS_TSCC_A_Report_Controller extends DS_BasicForm_Contr
             visit.UND   = Str_UND;              
             visit.HYP   = Str_HYP;
             
-                if(visit.DOATSCC != null){
-                    visits.add(visit);        
-                }
-            }        
+            visits.add(visit);            
+            }            
      }       
 
     //edit button function

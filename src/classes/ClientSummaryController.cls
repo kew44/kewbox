@@ -54,16 +54,15 @@
 *@author KW
 *Purpose: added display for followup visit type
 *
-*@date 1/14/16
-*@date 1/26/16
+*@date 1/14/16-1/29/16
 *@modified date
 *@author KW
 *Purpose: assessments outside of cimi
 *
-*@date 1/29/16
+*@date 2/2/16
 *@modified date
-*@author KW
-*Purpose: backwards compatibility for followup assessments w/ and w/o outside assessments
+*@author
+*Purpose: assessments outside of CIMI abandoned--revert to previous
 *
 *@group ClientSummary
 *@group-content /ApexDocContent/ClientSummary/ClientSummaryController.htm
@@ -99,19 +98,12 @@ public with sharing class ClientSummaryController {
     public Boolean baselineBtn { get; set; }
     public Boolean traumaBtn { get; set; }
     public Boolean fuBtn {get;set;}
-    public Boolean outsideBBtn {get;set;}
-    public Boolean outsideFBtn {get;set;}
     
     //list of baseline forms
     public List<Client_Summary__c> baseline { get; set; }
     
-    //list of forms scored outside of cimi
-    public List<Client_Summary__c> outsideB { get; set; }
-    public List<Client_Summary__c> outsideF { get; set; }
-    
     //trauma types
     public List<Item> rowsGTRAUMA {get; set;}
-    
     //trauma ages
     public List<String> ageNum { get; set; } 
     
@@ -168,7 +160,6 @@ public with sharing class ClientSummaryController {
     public Map<String, String> urlSummary { get; set;}
     public Map<String, String> urlClientSummaryReport { get; set; }
     public Map<String, String> urlClientSummaryReportFU { get; set; }
-    public Map<String, String> urlClientSummaryReportO { get; set; }//outside of CIMI
     
     //display logic
     public SkipLogic skip {get;set;}
@@ -206,35 +197,21 @@ public with sharing class ClientSummaryController {
         public Map<String, String> visitFormUrl { get; set; }
         public Date visitDate {get;set;}
         public String SummaryUrl {get;set;}
-        public String outsideUrl {get;set;}
         public String visitType {get;set;}
-        public List<Client_Summary__c> OutsideList {get;set;}
-        public Map<String, String> outsideFormUrl { get; set; }
         
-        public Visit(List<Client_Summary__c> visitFormList, Date visitDate, String SummaryUrl, String visitType, List<Client_Summary__c> OutsideList, String outsideUrl){
+        public Visit(List<Client_Summary__c> visitFormList, Date visitDate, String SummaryUrl, String visitType ){
             
             this.CurrentVisitNumber = Integer.valueOf(visitFormList.get(0).SECTION__c);
             this.visitFormList = visitFormList;
             this.visitDate = visitDate;
             this.SummaryUrl = SummaryUrl;
             this.visitType = visitType;
-            this.OutsideList = OutsideList;
-            this.outsideUrl = outsideUrl; 
             
             this.visitFormUrl = new Map<String, String>();
-            this.outsideFormUrl = new Map<String, String>();
             
             for(Client_Summary__c vfList : visitFormList) {
                 this.visitFormUrl.put(vfList.id, ut.urlEncode('c='+vflist.Client__c+'&summary='+vfList.Id));
-            }
-            if(OutsideList.size() > 0){
-                for(Client_Summary__c oList : OutsideList){
-                    this.outsideFormUrl.put(oList.id, ut.urlEncode('c='+oList.Client__c+'&summary='+oList.Id));
-                }
-            }
-            else{
-                this.outsideFormUrl.put('X', ut.urlEncode('c=noClient&summary=noSummary'));
-            }
+            }            
         }        
     }
     
@@ -372,7 +349,7 @@ public with sharing class ClientSummaryController {
             VisitNum = Integer.valueOf(fuObj.Visit_Number__c)+1;
             fuObj.Client__c =clientID;              
         }   
-                
+        
         //visit number and section number are equal across objects w/ local VisitNum
         fuObj.Visit_Number__c=VisitNum;
         fuObj.SECTION__c=String.valueOf(VisitNum);
@@ -383,16 +360,12 @@ public with sharing class ClientSummaryController {
         }
         
         //add to list of background records
-        backgroundFU.addAll(returnVis);
-        
+        backgroundFU.addAll(returnVis);       
     }  
     
     public void SummaryInit() {
         
         String summaryFields = ut.getFields('Client_Summary__c');
-        
-        //construct outside
-        outsideB = new List<Client_Summary__c>();
         
         ////////////form information for baseline pages
         List<Client_Summary__c> base = 
@@ -406,35 +379,22 @@ public with sharing class ClientSummaryController {
         //construct 
         baseline = new List<Client_Summary__c>();
         
-        for(Client_Summary__c i : base){       
+        //add
+        baseline.addAll(base);
         
-            //redirects first page to specific url
-            if(i.Page__r.Variable__c == 'DS_DEMO')
-                urlClientIDBaseDEMO = ut.urlEncode('c='+i.Client__c+'&f=1&summary='+i.Id);
+        for(Client_Summary__c s : baseline) {
             
-            urlSummary.put(i.Id, ut.urlEncode('c='+i.Client__c+'&summary='+i.Id+'&section='+i.Section__c));
-                        
-            //outside of cimi
-            if(i.Page__r.Variable__c == 'DS_TSCYC' || i.Page__r.Variable__c == 'DS_TSCC_A' || i.Page__r.Variable__c == 'DS_PSI'){
-                outsideB.add(i);
-            }
-            else{
-                baseline.add(i);
-            }
-         }         
-        
+            //redirects first page to specific url
+            if(s.Page__r.Variable__c == 'DS_DEMO')
+                urlClientIDBaseDEMO = ut.urlEncode('c='+s.Client__c+'&f=1&summary='+s.Id);
+                
+            urlSummary.put(s.Id, ut.urlEncode('c='+s.Client__c+'&summary='+s.Id+'&section='+s.Section__c));
+            
+        }   
         ///////////end baseline form info
         
-        if(outsideB.size() != 0){
-            outsideBBtn = false;
-        }
-        else{
-            outsideBBtn = true;
-        }
-                        
         //urilfy
-        urlClientSummaryReport = new Map<String, String>();
-        
+        urlClientSummaryReport = new Map<String, String>();        
         urlClientSummaryReport.put('0', ut.urlEncode('c='+clientID+'&section=0'));
         
         ////////////trauma information, general
@@ -459,26 +419,17 @@ public with sharing class ClientSummaryController {
                            '   AND SECTION__c != \'-1\'' +
                            '   AND SECTION__c != \'0\'' +
                            'ORDER BY SECTION__c DESC, FORM_TYPE__c DESC, Page__r.weight__c');
-                
+        
         if(followUpSummary.size() > 0) {
             
-            String sectionNum = '0';
-            
-            String visitType;
-            
-            List<Client_Summary__c> followUpForms;
-            List<Client_Summary__c> outsideF;
-            
-            Visits = new List<Visit>();
-            
-            Set<String> sectionList = new Set<String>();
-            
-            Map<String, Date> visitDates = new Map<String, Date>();
-            
-            Map<String, String> visitTypes = new Map<String, String>();
-            
+            String sectionNum = '0';            
+            String visitType;            
+            List<Client_Summary__c> followUpForms;            
+            Visits = new List<Visit>();            
+            Set<String> sectionList = new Set<String>();            
+            Map<String, Date> visitDates = new Map<String, Date>();            
+            Map<String, String> visitTypes = new Map<String, String>();            
             Map<String, String> urlClientSummaryReportFU = new Map<String, String>();
-            Map<String, String> urlClientSummaryReportO = new Map<String, String>();
             
             for(Client_Summary__c fus: followUpSummary) {        
                 sectionList.add(fus.SECTION__c);
@@ -516,16 +467,14 @@ public with sharing class ClientSummaryController {
                     else if(visitType == '3'){visitType = 'Re-Opening';}
                     else if(visitType == '4'){ visitType = 'Post-treatment';}
                     else if(visitType == '98'){visitType = 'Other';}
-                    
-                
+                                    
                 //urilfy            
-                urlClientSummaryReportFU.put(bfInfo.SECTION__c, ut.urlEncode('c='+clientID+'&section='+bfInfo.SECTION__c));
-                
+                urlClientSummaryReportFU.put(bfInfo.SECTION__c, ut.urlEncode('c='+clientID+'&section='+bfInfo.SECTION__c));                
                 visitTypes.put(bfInfo.SECTION__c, visitType);
             }
             
-            for(Client_Summary__c fus: followUpSummary) {    
-                                
+            for(Client_Summary__c fus: followUpSummary) {          
+                
                 //sectionNum is set to 0 initially (also = baseline), incremented through trigger
                 //if there is a discrepency b/w sectionNum and the SECTION__c on Client_Summary__c (such as in a cancelled follow-up)
                 if(sectionNum != fus.SECTION__c) { 
@@ -533,46 +482,19 @@ public with sharing class ClientSummaryController {
                     //not a baseline visit
                     if(sectionNum != '0') {   
                         
-                        if(outsideF.size() > 0){
                           //new visit
-                          Visits.add(new visit(followUpForms, visitDates.get(followUpForms.get(0).SECTION__c), urlClientSummaryReportFU.get(followUpForms.get(0).SECTION__c), visitTypes.get(followUpForms.get(0).SECTION__c),outsideF,urlClientSummaryReportO.get(outsideF.get(0).SECTION__c))); 
-                        }        
-                        else{
-                            Visits.add(new visit(followUpForms, visitDates.get(followUpForms.get(0).SECTION__c), urlClientSummaryReportFU.get(followUpForms.get(0).SECTION__c), visitTypes.get(followUpForms.get(0).SECTION__c), outsideF,''));
-                        }
+                          Visits.add(new visit(followUpForms, visitDates.get(followUpForms.get(0).SECTION__c), urlClientSummaryReportFU.get(followUpForms.get(0).SECTION__c), visitTypes.get(followUpForms.get(0).SECTION__c))); 
+                            
                     }
-                    //construct followup list
                     followUpForms = new List<Client_Summary__c>(); 
-                    //construct outside forms list
-                    outsideF= new List<Client_Summary__c>();
                 }
-                //outside of cimi                
-                if(fus.Page__r.Variable__c == 'DS_TSCYC' || fus.Page__r.Variable__c == 'DS_TSCC_A' || fus.Page__r.Variable__c == 'DS_PSI'){
-                    outsideF.add(fus);
-                    urlClientSummaryReportO.put(fus.SECTION__c, ut.urlEncode('c='+clientID+'&section='+fus.SECTION__c));
-                }
-                else{               
-                    followUpForms.add(fus);
-                    urlSummary.put(fus.Id, ut.urlEncode('c='+fus.Client__c+'&summary='+fus.Id+'&section='+sectionNum));  
-                }
-                                        
-                //set sectionNum to SECTION__c (if there has been a cancellation, this will fix. If not, it will set)
-                sectionNum = fus.SECTION__c;                
-                
-            }      
-
-            if(outsideF.size() > 0){
-                for(Client_Summary__c o: outsideF){
-                    urlClientSummaryReportO.put(o.SECTION__c, ut.urlEncode('c='+clientID+'&section='+o.SECTION__c));
-                }
-                
-            followDate =visitDates.get(followUpForms.get(0).SECTION__c);
                         
-            Visits.add(new visit(followUpForms, visitDates.get(followUpForms.get(0).SECTION__c), urlClientSummaryReportFU.get(followUpForms.get(0).SECTION__c), visitTypes.get(followUpForms.get(0).SECTION__c),outsideF,urlClientSummaryReportO.get(outsideF.get(0).SECTION__c)));
-            }
-            else{
-                Visits.add(new visit(followUpForms, visitDates.get(followUpForms.get(0).SECTION__c), urlClientSummaryReportFU.get(followUpForms.get(0).SECTION__c), visitTypes.get(followUpForms.get(0).SECTION__c),outsideF,''));
-            }
+                //set sectionNum to SECTION__c (if there has been a cancellation, this will fix. If not, it will set)
+                sectionNum = fus.SECTION__c;
+                followUpForms.add(fus);     
+            }          
+            followDate =visitDates.get(followUpForms.get(0).SECTION__c);            
+            Visits.add(new visit(followUpForms, visitDates.get(followUpForms.get(0).SECTION__c), urlClientSummaryReportFU.get(followUpForms.get(0).SECTION__c), visitTypes.get(followUpForms.get(0).SECTION__c)));            
         }        
     }
     
@@ -627,14 +549,12 @@ public with sharing class ClientSummaryController {
                 
                 url = 'DS_TDETAIL?cimi=' + 
                     ut.urlEncode('c='+clientID+'&summary='+tdList.get(i.id).id+'&TDF='+i.Page__c.substringAfter('DS_'));        
-            }    
-            
+            }                
             rowsGTRAUMA.add(new Item(count, trauma, 'GT'+count+'R__c', ages, status, url));      
         }      
     }    
     
-    public String getClientInfo() {
-        
+    public String getClientInfo() {        
         return ut.clientSectionInfo(clientID);
     }
     
@@ -660,6 +580,5 @@ public with sharing class ClientSummaryController {
         followPage.setRedirect(true);
         
         return followPage;
-    }
-    
+    }    
 }

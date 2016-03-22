@@ -5,6 +5,10 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
         <actionName>Clone</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -17,11 +21,19 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
         <actionName>List</actionName>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -32,11 +44,15 @@
         <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fieldSets>
         <fullName>STATUS</fullName>
         <description>STATUS</description>
@@ -62,6 +78,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -75,6 +92,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -88,6 +106,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -101,6 +120,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -114,6 +134,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -127,6 +148,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -140,6 +162,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -153,6 +176,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -166,6 +190,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -179,6 +204,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -192,6 +218,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -205,6 +232,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -218,6 +246,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -231,6 +260,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -244,6 +274,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -257,6 +288,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -270,6 +302,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -283,6 +316,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -296,6 +330,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -309,6 +344,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -319,6 +355,7 @@
         <label>BDOATSCC</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
     <fields>
@@ -328,6 +365,7 @@
         <label>BDOATSCYC</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
     <fields>
@@ -337,6 +375,7 @@
         <label>BDOV</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
     <fields>
@@ -349,6 +388,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -362,6 +402,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -375,6 +416,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -388,6 +430,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -401,6 +444,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -414,6 +458,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -427,6 +472,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -440,6 +486,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -453,6 +500,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -466,6 +514,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -479,6 +528,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -492,6 +542,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -504,6 +555,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -516,6 +568,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -528,6 +581,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -540,6 +594,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -553,6 +608,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -566,6 +622,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -579,6 +636,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -592,6 +650,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -605,6 +664,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -618,6 +678,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -631,6 +692,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -644,6 +706,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -657,6 +720,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -670,6 +734,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -683,6 +748,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -696,6 +762,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -709,6 +776,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -722,6 +790,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -735,6 +804,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -748,6 +818,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -761,6 +832,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -774,6 +846,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -787,6 +860,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -800,6 +874,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -812,6 +887,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -824,6 +900,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -833,10 +910,11 @@ Raw: 0-27</description>
 35-111</description>
         <externalId>false</externalId>
         <label>BTSCDSTN2</label>
-        <precision>2</precision>
+        <precision>3</precision>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -846,10 +924,11 @@ Raw: 0-27</description>
 35-111</description>
         <externalId>false</externalId>
         <label>BTSCDSTN</label>
-        <precision>2</precision>
+        <precision>3</precision>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -862,6 +941,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -874,6 +954,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -887,6 +968,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -900,6 +982,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -912,6 +995,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -924,6 +1008,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -937,6 +1022,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -950,6 +1036,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -963,6 +1050,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -976,6 +1064,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -988,6 +1077,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -1000,6 +1090,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -1013,6 +1104,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -1026,6 +1118,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -1038,6 +1131,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -1050,6 +1144,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -1063,6 +1158,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -1076,6 +1172,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -1088,6 +1185,7 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -1100,6 +1198,20 @@ Raw: 0-27</description>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BTSCUNTN__c</fullName>
+        <description>Briere: Underresponsive T Score- Num</description>
+        <externalId>false</externalId>
+        <label>BTSCUNTN</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -1113,6 +1225,7 @@ Raw: 0-27</description>
         <relationshipName>DS_TSCC_TSCYC_B</relationshipName>
         <required>false</required>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -1125,6 +1238,7 @@ Raw: 0-27</description>
         <relationshipName>DS_TSCC_TSCYC_B</relationshipName>
         <required>false</required>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -1134,6 +1248,7 @@ Raw: 0-27</description>
         <length>3</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -1153,6 +1268,7 @@ Raw: 0-27</description>
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -1171,6 +1287,7 @@ Raw: 0-27</description>
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <label>DS TSCC TSCYC B</label>
@@ -1185,6 +1302,11 @@ Raw: 0-27</description>
         <columns>SECTION__c</columns>
         <columns>STATUS_TSCYC__c</columns>
         <columns>STATUS_TSCC_A__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>All1</fullName>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -1207,13 +1329,13 @@ Raw: 0-27</description>
         <fullName>TSCC_A_ANG_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT( 
-(BTSCAGG__c&gt;=0)&amp;&amp;
-(BTSCAGG__c&lt;=27)
-)
-&amp;&amp;
-NOT(
-ISNULL(BTSCAGG__c)
- )</errorConditionFormula>
+            (BTSCAGG__c&gt;=0)&amp;&amp;
+            (BTSCAGG__c&lt;=27)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BTSCAGG__c)
+             )</errorConditionFormula>
         <errorDisplayField>BTSCAGG__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Anger is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1228,13 +1350,13 @@ ISNULL(BTSCAGG__c)
         <fullName>TSCC_A_ANG_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-( BTSCAGTN__c &gt;= 35) &amp;&amp;
-(BTSCAGTN__c &lt;= 111)
-)
-&amp;&amp;
-NOT(
-ISNULL(BTSCAGTN__c)
-)</errorConditionFormula>
+            ( BTSCAGTN__c &gt;= 35) &amp;&amp;
+            (BTSCAGTN__c &lt;= 111)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BTSCAGTN__c)
+            )</errorConditionFormula>
         <errorDisplayField>BTSCAGTN__c</errorDisplayField>
         <errorMessage>The T-Score entered for Anger is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1249,13 +1371,13 @@ ISNULL(BTSCAGTN__c)
         <fullName>TSCC_A_ANX_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BTSCAXN__c&gt;=0)&amp;&amp;
-(BTSCAXN__c &lt;= 27)
-)
-&amp;&amp;
-NOT(
-ISNULL(BTSCAXN__c)
-)</errorConditionFormula>
+            (BTSCAXN__c&gt;=0)&amp;&amp;
+            (BTSCAXN__c &lt;= 27)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BTSCAXN__c)
+            )</errorConditionFormula>
         <errorDisplayField>BTSCAXN__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Anxiety is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1270,13 +1392,13 @@ ISNULL(BTSCAXN__c)
         <fullName>TSCC_A_ANX_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BTSCAXTN__c&gt;=35)&amp;&amp;
-(BTSCAXTN__c &lt;= 111)
-)
-&amp;&amp;
-NOT(
-ISNULL(BTSCAXTN__c)
-)</errorConditionFormula>
+            (BTSCAXTN__c&gt;=35)&amp;&amp;
+            (BTSCAXTN__c &lt;= 111)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BTSCAXTN__c)
+            )</errorConditionFormula>
         <errorDisplayField>BTSCAXTN__c</errorDisplayField>
         <errorMessage>The T-Score entered for Anxiety is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1291,13 +1413,13 @@ ISNULL(BTSCAXTN__c)
         <fullName>TSCC_A_DEP_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BTSCDPN__c&gt;=0)&amp;&amp;
-(BTSCDPN__c &lt;= 27)
-)
-&amp;&amp;
-NOT(
-ISNULL(BTSCDPN__c)
-)</errorConditionFormula>
+            (BTSCDPN__c&gt;=0)&amp;&amp;
+            (BTSCDPN__c &lt;= 27)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BTSCDPN__c)
+            )</errorConditionFormula>
         <errorDisplayField>BTSCDPN__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Depression is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1312,13 +1434,13 @@ ISNULL(BTSCDPN__c)
         <fullName>TSCC_A_DEP_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BTSCDPTN__c&gt;=35)&amp;&amp;
-(BTSCDPTN__c &lt;= 111)
-)
-&amp;&amp;
-NOT(
-ISNULL(BTSCDPTN__c)
-)</errorConditionFormula>
+            (BTSCDPTN__c&gt;=35)&amp;&amp;
+            (BTSCDPTN__c &lt;= 111)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BTSCDPTN__c)
+            )</errorConditionFormula>
         <errorDisplayField>BTSCDPTN__c</errorDisplayField>
         <errorMessage>The T-Score entered for Depression is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1333,13 +1455,13 @@ ISNULL(BTSCDPTN__c)
         <fullName>TSCC_A_DIS_F_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BTSCFNN__c&gt;=0)&amp;&amp;
-(BTSCFNN__c &lt;= 9)
-)
-&amp;&amp;
-NOT(
-ISNULL(BTSCFNN__c)
-)</errorConditionFormula>
+            (BTSCFNN__c&gt;=0)&amp;&amp;
+            (BTSCFNN__c &lt;= 9)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BTSCFNN__c)
+            )</errorConditionFormula>
         <errorDisplayField>BTSCFNN__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Fantasy is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1354,13 +1476,13 @@ ISNULL(BTSCFNN__c)
         <fullName>TSCC_A_DIS_F_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BTSCFNTN__c&gt;=35)&amp;&amp;
-(BTSCFNTN__c &lt;= 111)
-)
-&amp;&amp;
-NOT(
-ISNULL(BTSCFNTN__c)
-)</errorConditionFormula>
+            (BTSCFNTN__c&gt;=35)&amp;&amp;
+            (BTSCFNTN__c &lt;= 111)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BTSCFNTN__c)
+            )</errorConditionFormula>
         <errorDisplayField>BTSCFNTN__c</errorDisplayField>
         <errorMessage>The T-Score entered for Fantasy is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1375,13 +1497,13 @@ ISNULL(BTSCFNTN__c)
         <fullName>TSCC_A_DIS_O_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BTSCODN__c&gt;=0)&amp;&amp;
-(BTSCODN__c &lt;= 21)
-)
-&amp;&amp;
-NOT(
-ISNULL(BTSCODN__c)
-)</errorConditionFormula>
+            (BTSCODN__c&gt;=0)&amp;&amp;
+            (BTSCODN__c &lt;= 21)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BTSCODN__c)
+            )</errorConditionFormula>
         <errorDisplayField>BTSCODN__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Overt Dissociation is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1396,13 +1518,13 @@ ISNULL(BTSCODN__c)
         <fullName>TSCC_A_DIS_O_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BTSCODTN__c&gt;=35)&amp;&amp;
-(BTSCODTN__c &lt;= 111)
-)
-&amp;&amp;
-NOT(
-ISNULL(BTSCODTN__c)
-)</errorConditionFormula>
+            (BTSCODTN__c&gt;=35)&amp;&amp;
+            (BTSCODTN__c &lt;= 111)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BTSCODTN__c)
+            )</errorConditionFormula>
         <errorDisplayField>BTSCODTN__c</errorDisplayField>
         <errorMessage>The T-Score entered for Overt Dissociation is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1417,13 +1539,13 @@ ISNULL(BTSCODTN__c)
         <fullName>TSCC_A_DIS_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BTSCDSN__c&gt;=0)&amp;&amp;
-(BTSCDSN__c &lt;= 30)
-)
-&amp;&amp;
-NOT(
-ISNULL(BTSCDSN__c)
-)</errorConditionFormula>
+            (BTSCDSN__c&gt;=0)&amp;&amp;
+            (BTSCDSN__c &lt;= 30)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BTSCDSN__c)
+            )</errorConditionFormula>
         <errorDisplayField>BTSCDSN__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Dissociation is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1438,13 +1560,13 @@ ISNULL(BTSCDSN__c)
         <fullName>TSCC_A_DIS_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BTSCDSTN__c&gt;=35)&amp;&amp;
-(BTSCDSTN__c &lt;= 111)
-)
-&amp;&amp;
-NOT(
-ISNULL(BTSCDSTN__c)
-)</errorConditionFormula>
+            (BTSCDSTN__c&gt;=35)&amp;&amp;
+            (BTSCDSTN__c &lt;= 111)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BTSCDSTN__c)
+            )</errorConditionFormula>
         <errorDisplayField>BTSCDSTN__c</errorDisplayField>
         <errorMessage>The T-Score entered for Dissociation is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1459,13 +1581,13 @@ ISNULL(BTSCDSTN__c)
         <fullName>TSCC_A_HYP_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BTSCHYN__c&gt;=0)&amp;&amp;
-(BTSCHYN__c &lt;= 8)
-)
-&amp;&amp;
-NOT(
-ISNULL(BTSCHYN__c)
-)</errorConditionFormula>
+            (BTSCHYN__c&gt;=0)&amp;&amp;
+            (BTSCHYN__c &lt;= 8)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BTSCHYN__c)
+            )</errorConditionFormula>
         <errorDisplayField>BTSCHYN__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Hyperresponsive is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1480,13 +1602,13 @@ ISNULL(BTSCHYN__c)
         <fullName>TSCC_A_HYP_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BTSCHYTN__c&gt;=35)&amp;&amp;
-(BTSCHYTN__c &lt;= 111)
-)
-&amp;&amp;
-NOT(
-ISNULL(BTSCHYTN__c)
-)</errorConditionFormula>
+            (BTSCHYTN__c&gt;=35)&amp;&amp;
+            (BTSCHYTN__c &lt;= 111)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BTSCHYTN__c)
+            )</errorConditionFormula>
         <errorDisplayField>BTSCHYTN__c</errorDisplayField>
         <errorMessage>The T-Score entered for Hyperresponsive is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1501,13 +1623,13 @@ ISNULL(BTSCHYTN__c)
         <fullName>TSCC_A_PTS_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BTSCPTN__c&gt;=0)&amp;&amp;
-(BTSCPTN__c &lt;= 30)
-)
-&amp;&amp;
-NOT(
-ISNULL(BTSCPTN__c)
-)</errorConditionFormula>
+            (BTSCPTN__c&gt;=0)&amp;&amp;
+            (BTSCPTN__c &lt;= 30)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BTSCPTN__c)
+            )</errorConditionFormula>
         <errorDisplayField>BTSCPTN__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Posttraumatic Stress is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1522,13 +1644,13 @@ ISNULL(BTSCPTN__c)
         <fullName>TSCC_A_PTS_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BTSCPTTN__c&gt;=35)&amp;&amp;
-(BTSCPTTN__c &lt;= 111)
-)
-&amp;&amp;
-NOT(
-ISNULL(BTSCPTTN__c)
-)</errorConditionFormula>
+            (BTSCPTTN__c&gt;=35)&amp;&amp;
+            (BTSCPTTN__c &lt;= 111)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BTSCPTTN__c)
+            )</errorConditionFormula>
         <errorDisplayField>BTSCPTTN__c</errorDisplayField>
         <errorMessage>The T-Score entered for Posttraumatic Stress is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1543,13 +1665,13 @@ ISNULL(BTSCPTTN__c)
         <fullName>TSCC_A_UND_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BTSCUNN__c&gt;=0)&amp;&amp;
-(BTSCUNN__c &lt;= 10)
-)
-&amp;&amp;
-NOT(
-ISNULL(BTSCUNN__c)
-)</errorConditionFormula>
+            (BTSCUNN__c&gt;=0)&amp;&amp;
+            (BTSCUNN__c &lt;= 10)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BTSCUNN__c)
+            )</errorConditionFormula>
         <errorDisplayField>BTSCUNN__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Underresponsive is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1564,15 +1686,36 @@ ISNULL(BTSCUNN__c)
         <fullName>TSCC_A_UND_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BTSCNTN__c&gt;=35)&amp;&amp;
-(BTSCNTN__c &lt;= 111)
-)
-&amp;&amp;
-NOT(
-ISNULL(BTSCNTN__c)
-)</errorConditionFormula>
+            (BTSCNTN__c&gt;=35)&amp;&amp;
+            (BTSCNTN__c &lt;= 111)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BTSCNTN__c)
+            )</errorConditionFormula>
         <errorDisplayField>BTSCNTN__c</errorDisplayField>
         <errorMessage>The T-Score entered for Underresponsive is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_date_cannot_be_before_BDOV</fullName>
+        <active>true</active>
+        <errorConditionFormula>BDOV__c &gt; BDOATSCC__c</errorConditionFormula>
+        <errorDisplayField>BDOATSCC__c</errorDisplayField>
+        <errorMessage>Baseline TSCC-A date of administration cannot be before Baseline date of visit.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_date_cannot_be_before_birth</fullName>
+        <active>true</active>
+        <errorConditionFormula>Client__r.DOB1__c &gt;BDOATSCC__c</errorConditionFormula>
+        <errorDisplayField>BDOATSCC__c</errorDisplayField>
+        <errorMessage>Baseline date of administration cannot be before birth.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_date_cannot_be_future</fullName>
+        <active>true</active>
+        <errorConditionFormula>BDOATSCC__c &gt; TODAY()</errorConditionFormula>
+        <errorDisplayField>BDOATSCC__c</errorDisplayField>
+        <errorMessage>Enter a valid date.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>TSCYC_ANG_Raw_double_entry_mismatch</fullName>
@@ -1585,13 +1728,13 @@ ISNULL(BTSCNTN__c)
         <fullName>TSCYC_ANG_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BANG_R__c&gt;=9)&amp;&amp;
-(BANG_R__c &lt;= 36)
-)
-&amp;&amp;
-NOT(
-ISNULL(BANG_R__c)
-)</errorConditionFormula>
+            (BANG_R__c&gt;=9)&amp;&amp;
+            (BANG_R__c &lt;= 36)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BANG_R__c)
+            )</errorConditionFormula>
         <errorDisplayField>BANG_R__c</errorDisplayField>
         <errorMessage>The RawScore entered for Anger is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1606,13 +1749,13 @@ ISNULL(BANG_R__c)
         <fullName>TSCYC_ANG_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BANG_T__c&gt;=35)&amp;&amp;
-(BANG_T__c &lt;= 110)
-)
-&amp;&amp;
-NOT(
-ISNULL(BANG_T__c)
-)</errorConditionFormula>
+            (BANG_T__c&gt;=35)&amp;&amp;
+            (BANG_T__c &lt;= 110)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BANG_T__c)
+            )</errorConditionFormula>
         <errorDisplayField>BANG_T__c</errorDisplayField>
         <errorMessage>The T-Score entered for Anger is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1627,13 +1770,13 @@ ISNULL(BANG_T__c)
         <fullName>TSCYC_ANX_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BANX_R__c&gt;=9)&amp;&amp;
-(BANX_R__c &lt;= 36)
-)
-&amp;&amp;
-NOT(
-ISNULL(BANX_R__c)
-)</errorConditionFormula>
+            (BANX_R__c&gt;=9)&amp;&amp;
+            (BANX_R__c &lt;= 36)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BANX_R__c)
+            )</errorConditionFormula>
         <errorDisplayField>BANX_R__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Anxiety is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1648,13 +1791,13 @@ ISNULL(BANX_R__c)
         <fullName>TSCYC_ANX_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BANX_T__c&gt;=35)&amp;&amp;
-(BANX_T__c &lt;= 110)
-)
-&amp;&amp;
-NOT(
-ISNULL(BANX_T__c)
-)</errorConditionFormula>
+            (BANX_T__c&gt;=35)&amp;&amp;
+            (BANX_T__c &lt;= 110)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BANX_T__c)
+            )</errorConditionFormula>
         <errorDisplayField>BANX_T__c</errorDisplayField>
         <errorMessage>The T-Score entered for Anxiety is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1669,13 +1812,13 @@ ISNULL(BANX_T__c)
         <fullName>TSCYC_ATR_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BATR_R__c&gt;=9)&amp;&amp;
-(BATR_R__c &lt;= 36)
-)
-&amp;&amp;
-NOT(
-ISNULL(BATR_R__c)
-)</errorConditionFormula>
+            (BATR_R__c&gt;=9)&amp;&amp;
+            (BATR_R__c &lt;= 36)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BATR_R__c)
+            )</errorConditionFormula>
         <errorDisplayField>BATR_R__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Atypical Response is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1690,13 +1833,13 @@ ISNULL(BATR_R__c)
         <fullName>TSCYC_ATR_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BATR_T__c&gt;=35)&amp;&amp;
-(BATR_T__c &lt;= 110)
-)
-&amp;&amp;
-NOT(
-ISNULL(BATR_T__c)
-)</errorConditionFormula>
+            (BATR_T__c&gt;=35)&amp;&amp;
+            (BATR_T__c &lt;= 110)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BATR_T__c)
+            )</errorConditionFormula>
         <errorDisplayField>BATR_T__c</errorDisplayField>
         <errorMessage>The T-Score entered for Atypical Response is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1711,13 +1854,13 @@ ISNULL(BATR_T__c)
         <fullName>TSCYC_DEP_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BDEP_R__c&gt;=9)&amp;&amp;
-(BDEP_R__c &lt;= 36)
-)
-&amp;&amp;
-NOT(
-ISNULL(BDEP_R__c)
-)</errorConditionFormula>
+            (BDEP_R__c&gt;=9)&amp;&amp;
+            (BDEP_R__c &lt;= 36)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BDEP_R__c)
+            )</errorConditionFormula>
         <errorDisplayField>BDEP_R__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Depression is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1732,13 +1875,13 @@ ISNULL(BDEP_R__c)
         <fullName>TSCYC_DEP_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BDEP_T__c&gt;=35)&amp;&amp;
-(BDEP_T__c &lt;= 110)
-)
-&amp;&amp;
-NOT(
-ISNULL(BDEP_T__c)
-)</errorConditionFormula>
+            (BDEP_T__c&gt;=35)&amp;&amp;
+            (BDEP_T__c &lt;= 110)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BDEP_T__c)
+            )</errorConditionFormula>
         <errorDisplayField>BDEP_T__c</errorDisplayField>
         <errorMessage>The T-Score entered for Depression is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1753,13 +1896,13 @@ ISNULL(BDEP_T__c)
         <fullName>TSCYC_DIS_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BDIS_R__c&gt;=9)&amp;&amp;
-(BDIS_R__c &lt;= 36)
-)
-&amp;&amp;
-NOT(
-ISNULL(BDIS_R__c)
-)</errorConditionFormula>
+            (BDIS_R__c&gt;=9)&amp;&amp;
+            (BDIS_R__c &lt;= 36)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BDIS_R__c)
+            )</errorConditionFormula>
         <errorDisplayField>BDIS_R__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Dissociation is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1774,13 +1917,13 @@ ISNULL(BDIS_R__c)
         <fullName>TSCYC_DIS_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BDIS_T__c&gt;=35)&amp;&amp;
-(BDIS_T__c &lt;= 110)
-)
-&amp;&amp;
-NOT(
-ISNULL(BDIS_T__c)
-)</errorConditionFormula>
+            (BDIS_T__c&gt;=35)&amp;&amp;
+            (BDIS_T__c &lt;= 110)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BDIS_T__c)
+            )</errorConditionFormula>
         <errorDisplayField>BDIS_T__c</errorDisplayField>
         <errorMessage>The T-Score entered for Dissociation is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1795,13 +1938,13 @@ ISNULL(BDIS_T__c)
         <fullName>TSCYC_PTS_AR_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BPTSAR_R__c&gt;=9)&amp;&amp;
-(BPTSAR_R__c &lt;= 36)
-)
-&amp;&amp;
-NOT(
-ISNULL(BPTSAR_R__c)
-)</errorConditionFormula>
+            (BPTSAR_R__c&gt;=9)&amp;&amp;
+            (BPTSAR_R__c &lt;= 36)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BPTSAR_R__c)
+            )</errorConditionFormula>
         <errorDisplayField>BPTSAR_R__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Posttraumatic Stress-Arousal is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1816,13 +1959,13 @@ ISNULL(BPTSAR_R__c)
         <fullName>TSCYC_PTS_AR_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BPTSAR_T__c&gt;=35)&amp;&amp;
-(BPTSAR_T__c &lt;= 110)
-)
-&amp;&amp;
-NOT(
-ISNULL(BPTSAR_T__c)
-)</errorConditionFormula>
+            (BPTSAR_T__c&gt;=35)&amp;&amp;
+            (BPTSAR_T__c &lt;= 110)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BPTSAR_T__c)
+            )</errorConditionFormula>
         <errorDisplayField>BPTSAR_T__c</errorDisplayField>
         <errorMessage>The T-Score entered for Posttraumatic Stress-Arousal is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1837,13 +1980,13 @@ ISNULL(BPTSAR_T__c)
         <fullName>TSCYC_PTS_AV_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BPTSAV_R__c&gt;=9)&amp;&amp;
-(BPTSAV_R__c &lt;= 36)
-)
-&amp;&amp;
-NOT(
-ISNULL(BPTSAV_R__c)
-)</errorConditionFormula>
+            (BPTSAV_R__c&gt;=9)&amp;&amp;
+            (BPTSAV_R__c &lt;= 36)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BPTSAV_R__c)
+            )</errorConditionFormula>
         <errorDisplayField>BPTSAV_R__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Posttraumatic Stress-Avoidance is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1858,13 +2001,13 @@ ISNULL(BPTSAV_R__c)
         <fullName>TSCYC_PTS_AV_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BPTSAV_T__c&gt;=35)&amp;&amp;
-(BPTSAV_T__c &lt;= 110)
-)
-&amp;&amp;
-NOT(
-ISNULL(BPTSAV_T__c)
-)</errorConditionFormula>
+            (BPTSAV_T__c&gt;=35)&amp;&amp;
+            (BPTSAV_T__c &lt;= 110)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BPTSAV_T__c)
+            )</errorConditionFormula>
         <errorDisplayField>BPTSAV_T__c</errorDisplayField>
         <errorMessage>The T-Score entered for Posttraumatic Stress-Avoidance is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1879,13 +2022,13 @@ ISNULL(BPTSAV_T__c)
         <fullName>TSCYC_PTS_I_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BPTSI_R__c&gt;=9)&amp;&amp;
-(BPTSI_R__c &lt;= 36)
-)
-&amp;&amp;
-NOT(
-ISNULL(BPTSI_R__c)
-)</errorConditionFormula>
+            (BPTSI_R__c&gt;=9)&amp;&amp;
+            (BPTSI_R__c &lt;= 36)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BPTSI_R__c)
+            )</errorConditionFormula>
         <errorDisplayField>BPTSI_R__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Posttraumatic Stress-Intrusion is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1900,13 +2043,13 @@ ISNULL(BPTSI_R__c)
         <fullName>TSCYC_PTS_I_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BPTSI_T__c&gt;=35)&amp;&amp;
-(BPTSI_T__c &lt;= 110)
-)
-&amp;&amp;
-NOT(
-ISNULL(BPTSI_T__c)
-)</errorConditionFormula>
+            (BPTSI_T__c&gt;=35)&amp;&amp;
+            (BPTSI_T__c &lt;= 110)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BPTSI_T__c)
+            )</errorConditionFormula>
         <errorDisplayField>BPTSI_T__c</errorDisplayField>
         <errorMessage>The T-Score entered for Posttraumatic Stress-Intrusion is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1921,13 +2064,13 @@ ISNULL(BPTSI_T__c)
         <fullName>TSCYC_PTS_TOT_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BPTSTOT_R__c&gt;=27)&amp;&amp;
-(BPTSTOT_R__c &lt;= 108)
-)
-&amp;&amp;
-NOT(
-ISNULL(BPTSTOT_R__c)
-)</errorConditionFormula>
+            (BPTSTOT_R__c&gt;=27)&amp;&amp;
+            (BPTSTOT_R__c &lt;= 108)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BPTSTOT_R__c)
+            )</errorConditionFormula>
         <errorDisplayField>BPTSTOT_R__c</errorDisplayField>
         <errorMessage>The  Raw Score entered for Posttraumatic Stress-Total is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1942,13 +2085,13 @@ ISNULL(BPTSTOT_R__c)
         <fullName>TSCYC_PTS_TOT_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BPTSTOT_T__c &gt;= 35) &amp;&amp;
-(BPTSTOT_T__c &lt;= 110)
-)
-&amp;&amp; 
-NOT(
- ISNULL(BPTSTOT_T__c) 
-)</errorConditionFormula>
+            (BPTSTOT_T__c &gt;= 35) &amp;&amp;
+            (BPTSTOT_T__c &lt;= 110)
+            )
+            &amp;&amp; 
+            NOT(
+             ISNULL(BPTSTOT_T__c) 
+            )</errorConditionFormula>
         <errorDisplayField>BPTSTOT_T__c</errorDisplayField>
         <errorMessage>The T-Score entered for Posttraumatic Stress-Total is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1963,13 +2106,13 @@ NOT(
         <fullName>TSCYC_RL_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BRL_R__c&gt;=0)&amp;&amp;
-(BRL_R__c &lt;= 9)
-)
-&amp;&amp;
-NOT(
-ISNULL(BRL_R__c)
-)</errorConditionFormula>
+            (BRL_R__c&gt;=0)&amp;&amp;
+            (BRL_R__c &lt;= 9)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BRL_R__c)
+            )</errorConditionFormula>
         <errorDisplayField>BRL_R__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Response Level is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -1984,13 +2127,13 @@ ISNULL(BRL_R__c)
         <fullName>TSCYC_RL_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BRL_T__c&gt;=35)&amp;&amp;
-(BRL_T__c &lt;= 110)
-)
-&amp;&amp;
-NOT(
-ISNULL(BRL_T__c)
-)</errorConditionFormula>
+            (BRL_T__c&gt;=35)&amp;&amp;
+            (BRL_T__c &lt;= 110)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BRL_T__c)
+            )</errorConditionFormula>
         <errorDisplayField>BRL_T__c</errorDisplayField>
         <errorMessage>The T-Score entered for Response Level is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -2005,13 +2148,13 @@ ISNULL(BRL_T__c)
         <fullName>TSCYC_SC_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BSC_R__c&gt;=9)&amp;&amp;
-(BSC_R__c &lt;= 36)
-)
-&amp;&amp;
-NOT(
-ISNULL(BSC_R__c)
-)</errorConditionFormula>
+            (BSC_R__c&gt;=9)&amp;&amp;
+            (BSC_R__c &lt;= 36)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BSC_R__c)
+            )</errorConditionFormula>
         <errorDisplayField>BSC_R__c</errorDisplayField>
         <errorMessage>The Raw Score entered for Sexual Concerns is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
@@ -2026,14 +2169,35 @@ ISNULL(BSC_R__c)
         <fullName>TSCYC_SC_T_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-(BSC_T__c&gt;=35)&amp;&amp;
-(BSC_T__c &lt;= 110)
-)
-&amp;&amp;
-NOT(
-ISNULL(BSC_T__c)
-)</errorConditionFormula>
+            (BSC_T__c&gt;=35)&amp;&amp;
+            (BSC_T__c &lt;= 110)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(BSC_T__c)
+            )</errorConditionFormula>
         <errorDisplayField>BSC_T__c</errorDisplayField>
         <errorMessage>The T-Score entered for Sexual Concerns is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_date_cannot_be_before_BDOV</fullName>
+        <active>true</active>
+        <errorConditionFormula>BDOV__c &gt; BDOATSCYC__c</errorConditionFormula>
+        <errorDisplayField>BDOATSCYC__c</errorDisplayField>
+        <errorMessage>Baseline TSCYC date of administration cannot be before Baseline date of visit.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_date_cannot_be_before_birth</fullName>
+        <active>true</active>
+        <errorConditionFormula>Client__r.DOB1__c &gt;BDOATSCYC__c</errorConditionFormula>
+        <errorDisplayField>BDOATSCYC__c</errorDisplayField>
+        <errorMessage>Baseline date of administration cannot be before birth.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_date_cannot_be_future</fullName>
+        <active>true</active>
+        <errorConditionFormula>BDOATSCYC__c &gt; TODAY()</errorConditionFormula>
+        <errorDisplayField>BDOATSCYC__c</errorDisplayField>
+        <errorMessage>Enter a valid date.</errorMessage>
     </validationRules>
 </CustomObject>

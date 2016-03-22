@@ -13,6 +13,11 @@
 *@author Kelsey Willett
 *@date 1/27/2016
 *@modified date
+*Tscc/YC coverage
+*
+*@date 2/8/16
+*@modified date
+*Purpose: TSCC/YC assert
 ****/
 
 @isTest (SeeAllData=false)
@@ -153,6 +158,15 @@ private class TestClass_DS_TSCC_TSCYC_B {
         
         RC.init();
         RC.editRecord();
+        
+        //init variable alias to be tested 
+        Decimal BDEP_R = 30;
+        Decimal BPTSAV_T2 = 67;
+        String section = '0';
+        // assert statements 
+        System.assertEquals(obj.BDEP_R__c, BDEP_R,'Incorrect Depression raw score.');
+        System.assertEquals(obj.BPTSAV_T2__c, BPTSAV_T2,'Incorrect Avoidance T-score double entry.');
+        System.assertEquals(obj.SECTION__c, section,'Section incorrect: baseline.');
         }
     
     /****
@@ -227,5 +241,14 @@ private class TestClass_DS_TSCC_TSCYC_B {
         
         RC.init();
         RC.editRecord();
+        
+        //init variable alias to be tested 
+        Decimal BTSCAXN = 20;
+        Decimal BTSCAGTN2 = 62;
+        String section = '0';
+        // assert statements 
+        System.assertEquals(obj.BTSCAXN__c, BTSCAXN,'Incorrect Anxiety raw score.');
+        System.assertEquals(obj.BTSCAGTN2__c, BTSCAGTN2,'Incorrect Anger T-score double entry.');
+        System.assertEquals(obj.SECTION__c, section,'Section incorrect: baseline.');
     }
 }

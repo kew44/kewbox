@@ -5,6 +5,10 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
         <actionName>Clone</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -21,6 +25,10 @@
         <type>Visualforce</type>
     </actionOverrides>
     <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
         <actionName>List</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -29,6 +37,10 @@
         <content>CenterForm</content>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>Tab</actionName>
@@ -40,12 +52,16 @@
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Visualforce</type>
     </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
     <enableEnhancedLookup>true</enableEnhancedLookup>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>Input_ID__c</fullName>
         <caseSensitive>false</caseSensitive>
@@ -54,6 +70,7 @@
         <length>4</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>true</unique>
     </fields>
@@ -62,11 +79,21 @@
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
         <label>Main Center</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Center__c.Type__c</field>
+                <operation>equals</operation>
+                <value>Main</value>
+            </filterItems>
+            <isOptional>true</isOptional>
+        </lookupFilter>
         <referenceTo>Center__c</referenceTo>
         <relationshipLabel>Sub-Centers</relationshipLabel>
         <relationshipName>Subcenters</relationshipName>
         <required>false</required>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -76,6 +103,7 @@
         <length>150</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -95,6 +123,7 @@
             <sorted>false</sorted>
         </picklist>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <label>Center</label>
@@ -112,18 +141,6 @@
         <trackHistory>false</trackHistory>
         <type>Text</type>
     </nameField>
-    <namedFilters>
-        <fullName>nf_01Ii0000000sQanEAE_00Ni000000Bk39LEAR</fullName>
-        <active>true</active>
-        <field>Center__c.Main_center__c</field>
-        <filterItems>
-            <field>Center__c.Type__c</field>
-            <operation>equals</operation>
-            <value>Main</value>
-        </filterItems>
-        <isOptional>true</isOptional>
-        <name>Center_Center</name>
-    </namedFilters>
     <pluralLabel>Centers</pluralLabel>
     <searchLayouts>
         <customTabListAdditionalFields>Name__c</customTabListAdditionalFields>
