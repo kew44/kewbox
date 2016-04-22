@@ -7,9 +7,6 @@
 *Bulkified testing
 *Asserted Variables
 *
-*@group Test Script 
-*@group-content /ApexDocContent/Test/DS_TSCC_TSCYC_F.htm
-*
 *@author Kelsey Willett
 *@date 1/27/2016
 *@modified date
@@ -18,6 +15,14 @@
 *@date 2/8/16
 *@modified date
 *Purpose: TSCC/YC assert
+*
+*@date 3/2-3/16
+*@modified date
+*@author KW
+*Purpose: update bulk insert,asserts
+*
+*@group Test Script 
+*@group-content /ApexDocContent/Test/DS_TSCC_TSCYC_F.htm
 ****/
 
 @isTest (SeeAllData=false)
@@ -81,9 +86,9 @@ private class TestClass_DS_TSCC_TSCYC_F {
                                                 FTSCHYN__c  = 7,   FTSCHYN2__c   =  7,  FTSCHYTN__c = 99, FTSCHYTN2__c = 99     //A hyp
                                                 ));    
         }
-        
-        
-        
+
+        //add list of records to object
+        insert bulkObj;          
     }
     
     /****
@@ -161,14 +166,14 @@ private class TestClass_DS_TSCC_TSCYC_F {
         RC.init();
         RC.editRecord();
         
-        //init variable alias to be tested 
-        Decimal FDEP_R = 20;
-        Decimal FPTSAV_T2 = 40;
-        Date today = System.today();
+        DS_TSCC_TSCYC_F__c tsc = [SELECT FDEP_R__c, FPTSAV_T2__c, FDOATSCYC__c
+                                    FROM DS_TSCC_TSCYC_F__c
+                                    WHERE id =: obj.id];
+        
         // assert statements 
-        System.assertEquals(obj.FDEP_R__c, FDEP_R,'Incorrect Depression raw score.');
-        System.assertEquals(obj.FPTSAV_T2__c, FPTSAV_T2,'Incorrect Avoidance T-score double entry.');
-        System.assertEquals(obj.FDOATSCYC__c, today,'Date incorrect.');
+        System.assertEquals(tsc.FDEP_R__c, 20,'Incorrect Depression raw score.');
+        System.assertEquals(tsc.FPTSAV_T2__c, 40,'Incorrect Avoidance T-score double entry.');
+        System.assertEquals(tsc.FDOATSCYC__c, System.today(),'Date incorrect.');
         }
         
     /****
@@ -244,13 +249,13 @@ private class TestClass_DS_TSCC_TSCYC_F {
         RC.init();
         RC.editRecord();
         
-        //init variable alias to be tested 
-        Decimal FTSCAXN = 8;
-        Decimal FTSCAGTN2 = 40;
-        Date today = System.today();
+        DS_TSCC_TSCYC_F__c tsc = [SELECT FTSCAXN__c, FTSCAGTN2__c, FDOATSCC__c
+                                    FROM DS_TSCC_TSCYC_F__c
+                                    WHERE id =: obj.id];
+        
         // assert statements 
-        System.assertEquals(obj.FTSCAXN__c, FTSCAXN,'Incorrect Anxiety raw score.');
-        System.assertEquals(obj.FTSCAGTN2__c, FTSCAGTN2,'Incorrect Anger T-score double entry.');
-        System.assertEquals(obj.FDOATSCC__c, today,'Date incorrect.');
+        System.assertEquals(tsc.FTSCAXN__c, 8,'Incorrect Anxiety raw score.');
+        System.assertEquals(tsc.FTSCAGTN2__c, 40,'Incorrect Anger T-score double entry.');
+        System.assertEquals(tsc.FDOATSCC__c, System.today(),'Date incorrect.');
     }
 }

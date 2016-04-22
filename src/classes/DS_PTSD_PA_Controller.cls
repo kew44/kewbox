@@ -13,7 +13,7 @@ public with sharing class DS_PTSD_PA_Controller extends DS_BasicForm_Controller 
         
     public List<Item> items { get; set; }
     
-    Final String warningMessageContent = 'Please note that if three or more items are missing the score will not be provided. Click Save or Save & View report if you wish to proceed without completing all questions.';
+    Final String warningMessageContent = 'Please note that if three or more items are missing, or marked don\'t know the score will not be provided. Click Save or Save & View report if you wish to proceed without completing all questions.';
     
     public class Item {
         
@@ -102,32 +102,32 @@ public with sharing class DS_PTSD_PA_Controller extends DS_BasicForm_Controller 
     }
     
     /****
-    * @description Method to count the blank answer. 
+    * @description Method to count the blank or unknown answer. 
     * @return blank answer counts
     */
     public Integer countBlankAnswer() {
         
-        Integer blankCount = 0; 
+        Integer blankUnknownCount = 0; 
         
         for(Item info : items) {
-            if(info.section == false && form.obj.get(info.field) == null) 
-                blankCount++;
+            if(info.section == false && (form.obj.get(info.field) == null || form.obj.get(info.field) == '99')) 
+                blankUnknownCount ++;
         }
         
-        return blankCount;
+        return blankUnknownCount ;
         
     }
     
     /****
     * @description Method to count the blank answer. 
-    * @param blankCount The count of the blank answer
+    * @param blankUnknownCount The count of the blank and unknown answer
     * @param warningMessageContent The warning messsage
     * @return boolean
     */
 
-    public Boolean showWarningMessageForBlank(Integer blankCount, String warningMessageContent) {
+    public Boolean showWarningMessageForBlank(Integer blankUnknownCount , String warningMessageContent) {
         
-        if(blankCount >= 1 && displayWarningMessage == false) {
+        if(blankUnknownCount >= 1 && displayWarningMessage == false) {
             ApexPages.addmessage(new ApexPages.message(ApexPages.severity.WARNING, warningMessageContent));
             displayWarningMessage = true;
             return true;

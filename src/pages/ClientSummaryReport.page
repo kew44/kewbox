@@ -146,10 +146,8 @@
                 <!--provides print button functionality and structure-->
                 <apex:outputPanel layout="none" rendered="{!NOT(printReport)}">
                     <div>
-                        <a href="/apex/clientSummaryReport?cimi={!cimi}&print=1" target="_blank">
-                            <button class="btn btn-default pull-right" type="button">
-                                <i class="glyphicon glyphicon-print"></i> &nbsp;Print
-                            </button>
+                        <a class="btn btn-default pull-right" href="/apex/clientSummaryReport?cimi={!cimi}&print=1" target="_blank">
+                            <i class="glyphicon glyphicon-print"></i> &nbsp;Print
                         </a>
                         <br/><br/><br/>
                     </div>
@@ -725,14 +723,14 @@
                     <!--TSCC-->
                     <div class="report-content">
                         <!--No record message-->
-                        <apex:outputPanel layout="none" rendered="{!if(TSCCExisted = false, true, false)}">
+                        <apex:outputPanel layout="none" rendered="{!if(TSCCAExisted = false, true, false)}">
                             <div class="well well-lg" style="max-width:500px;">
                                 <p>There is no TSCC-A record.</p>
                             </div>
                         </apex:outputPanel>
                         <!--End message-->
                         <!--Content-->
-                        <apex:outputPanel layout="none" rendered="{!TSCCExisted}">
+                        <apex:outputPanel layout="none" rendered="{!TSCCAExisted}">
                             
                             <!--validity-->
                             <table class="table content-table">
@@ -752,7 +750,7 @@
                                 </thead>
                                 
                                 <tbody>   
-                                    <apex:repeat value="{!tsccValidList}" var="validdisplay">
+                                    <apex:repeat value="{!tsccaValidList}" var="validdisplay">
                                         <tr class="{!IF((validdisplay.significance) = 'Invalid', 'danger', (IF((validdisplay.significance) = 'Normal' , '', 'warning')))}">
                                             <!--Category-->
                                             <td class="content-table-col-A">
@@ -790,7 +788,7 @@
                                 
                                 <!--tscc scores-->
                                 <tbody>   
-                                    <apex:repeat value="{!tsccList}" var="tsccdisplay">
+                                    <apex:repeat value="{!tsccaList}" var="tsccdisplay">
                                         <tr class="{!IF((tsccdisplay.significance) = 'Clinical', 'danger', (IF((tsccdisplay.significance) = 'Normal' , '', 'warning')))}">
                                             <!--Category-->
                                             <td class="content-table-col-A">
@@ -809,41 +807,8 @@
                                 </tbody>
                                 <!--end tscc scores-->
                             </table>
-                            <!--end symptom category-->
-                            
-                            <!--subscale scores-->
-                            <table class="table content-table">
-                                <!--subscale heading-->
-                                <thead>
-                                    <tr>
-                                        <th>Subscale Scores</th>
-                                    </tr>
-                                </thead>
-                                <!--end subscale heading-->
-                                
-                                <!--subscale scores-->
-                                <tbody>   
-                                    <apex:repeat value="{!tsccSubList}" var="subdisplay">
-                                        <tr  class="{!IF((subdisplay.significance) = 'Clinical', 'danger', (IF((subdisplay.significance) = 'Normal' , '', 'warning')))}">
-                                            <!--Category-->
-                                            <td class="content-table-col-A">
-                                                {!subdisplay.category}
-                                            </td>
-                                            <!--T-Score-->
-                                            <td >
-                                                {!subdisplay.tscore}
-                                            </td>
-                                            <!--significance-->
-                                            <td class="content-table-col-Z">
-                                                {!subdisplay.significance}
-                                            </td>
-                                        </tr>
-                                    </apex:repeat>
-                                </tbody>
-                                <!--end subscale scores-->
-                            </table>
-                            <!--end subscale scores-->
-                            
+                            <!--end symptom category-->                          
+                                                      
                         </apex:outputPanel>   
                         <!--End content-->
                     </div>
@@ -873,14 +838,14 @@
                                     </tr>
                                     <tr>
                                         <th class="content-table-col-A"><u>Category</u></th>
-                                        <th><u>Percentile</u></th>
+                                        <th><u>Raw Score</u></th>
                                         <th class="content-table-col-Z"><u>Significance</u></th>
                                     </tr>
                                 </thead>
                                 
                                 <tbody>   
                                     <apex:repeat value="{!psiValidList}" var="validdisplay">
-                                        <tr class="{!IF((validdisplay.significance) = 'Invalid', 'danger', (IF((validdisplay.significance) = 'Normal' , '', 'warning')))}">
+                                        <tr class="{!IF((validdisplay.significance) = 'Clinically Significant', 'danger', (IF((validdisplay.significance) = 'Normal' , '', 'warning')))}">
                                             <!--Category-->
                                             <td class="content-table-col-A">
                                                 {!validdisplay.category}
@@ -917,7 +882,7 @@
                                 <!--psi scores-->
                                 <tbody>   
                                     <apex:repeat value="{!psiList}" var="psidisplay">
-                                        <tr class="{!IF((psidisplay.significance) = 'Clinical', 'danger', (IF((psidisplay.significance) = 'Normal' , '', 'warning')))}">
+                                        <tr class="{!IF((psidisplay.significance) = 'Clinical', 'danger', (IF((psidisplay.significance) = 'Borderline', 'warning', '')))}">
                                             <!--Category-->
                                             <td class="content-table-col-A">
                                                 {!psidisplay.category}

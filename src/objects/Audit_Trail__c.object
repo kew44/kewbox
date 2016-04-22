@@ -243,43 +243,13 @@
         <columns>Question__c</columns>
         <columns>Prior_Value__c</columns>
         <columns>Updated_Value__c</columns>
-        <columns>SECTION__c</columns>
+        <columns>VARIABLE__c</columns>
         <columns>Date__c</columns>
         <columns>Time__c</columns>
         <columns>User_ID__c</columns>
         <columns>User_Initial__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>CBCL_Y</fullName>
-        <columns>NAME</columns>
-        <columns>OBJECT_ID</columns>
-        <columns>Action__c</columns>
-        <columns>Date__c</columns>
-        <columns>CLIENT__c</columns>
-        <columns>SUBJECT_ID__c</columns>
-        <columns>Visit_Type__c</columns>
-        <columns>FORM__c</columns>
-        <columns>FORM_ID__c</columns>
-        <columns>NUMBER__c</columns>
-        <columns>Question__c</columns>
-        <columns>Prior_Value__c</columns>
-        <columns>Updated_Value__c</columns>
-        <columns>SECTION__c</columns>
-        <columns>User_Initial__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CREATED_DATE</field>
-            <operation>equals</operation>
-            <value>2/10/2015 12:00 AM</value>
-        </filters>
-        <filters>
-            <field>FORM_ID__c</field>
-            <operation>equals</operation>
-            <value>CBCL_0_5</value>
-        </filters>
-        <label>CBCL Y</label>
     </listViews>
     <nameField>
         <displayFormat>AT-{0000000000}</displayFormat>

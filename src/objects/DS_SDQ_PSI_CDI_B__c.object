@@ -47,12 +47,9 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
-    <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
-    <enableSharing>true</enableSharing>
-    <enableStreamingApi>true</enableStreamingApi>
     <fieldSets>
         <fullName>STATUS</fullName>
         <description>SDQ</description>
@@ -344,7 +341,7 @@
         <description>Difficult Child (DC)</description>
         <externalId>false</externalId>
         <label>BPSIDC2</label>
-        <precision>2</precision>
+        <precision>3</precision>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
@@ -383,7 +380,7 @@
         <description>Difficult Child (DC)</description>
         <externalId>false</externalId>
         <label>BPSIDC</label>
-        <precision>2</precision>
+        <precision>3</precision>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
@@ -396,7 +393,7 @@
         <description>Defensive Responding</description>
         <externalId>false</externalId>
         <label>BPSIDR2</label>
-        <precision>2</precision>
+        <precision>3</precision>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
@@ -435,7 +432,7 @@
         <description>Defensive Responding</description>
         <externalId>false</externalId>
         <label>BPSIDR</label>
-        <precision>2</precision>
+        <precision>3</precision>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
@@ -448,7 +445,7 @@
         <description>Parent-Child Dysfunctional Interaction (P-CDI)</description>
         <externalId>false</externalId>
         <label>BPSIPCDI2</label>
-        <precision>2</precision>
+        <precision>3</precision>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
@@ -487,7 +484,7 @@
         <description>Parent-Child Dysfunctional Interaction (P-CDI)</description>
         <externalId>false</externalId>
         <label>BPSIPCDI</label>
-        <precision>2</precision>
+        <precision>3</precision>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
@@ -500,7 +497,7 @@
         <description>Parental Distress (PD)</description>
         <externalId>false</externalId>
         <label>BPSIPD2</label>
-        <precision>2</precision>
+        <precision>3</precision>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
@@ -539,7 +536,7 @@
         <description>Parental Distress (PD)</description>
         <externalId>false</externalId>
         <label>BPSIPD</label>
-        <precision>2</precision>
+        <precision>3</precision>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
@@ -3003,7 +3000,7 @@
         <fullName>PSI_DC_P_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-            (BPSIDC_PTLE__c&gt;=1)&amp;&amp;
+            (BPSIDC_PTLE__c&gt;=0)&amp;&amp;
             (BPSIDC_PTLE__c &lt;= 99)
             )
             &amp;&amp;
@@ -3024,15 +3021,18 @@
         <fullName>PSI_DC_Raw_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-            (BPSIDC__c&gt;=12)&amp;&amp;
-            (BPSIDC__c &lt;= 60)
-            )
-            &amp;&amp;
-            NOT(
-            ISNULL(BPSIDC__c)
-            )</errorConditionFormula>
+(BPSIDC__c&gt;=12)&amp;&amp;
+(BPSIDC__c &lt;= 60)
+)
+&amp;&amp;
+NOT(
+ISNULL(BPSIDC__c)
+)
+&amp;&amp;
+NOT(
+BPSIDC__c = 999)</errorConditionFormula>
         <errorDisplayField>BPSIDC__c</errorDisplayField>
-        <errorMessage>The Raw Score entered for Difficult Child is out of range. Please enter a valid score.</errorMessage>
+        <errorMessage>The Raw Score entered for Difficult Child is out of range. Please enter a valid score. If this score is unavailable, enter 999.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>PSI_DR_P_double_entry_mismatch</fullName>
@@ -3045,12 +3045,8 @@
         <fullName>PSI_DR_P_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-            (BPSIDR_PTLE__c&gt;=1)&amp;&amp;
+            (BPSIDR_PTLE__c&gt;=0)&amp;&amp;
             (BPSIDR_PTLE__c &lt;= 99)
-            )
-            &amp;&amp;
-            NOT(
-            ISNULL(BPSIDR_PTLE__c)
             )</errorConditionFormula>
         <errorDisplayField>BPSIDR_PTLE__c</errorDisplayField>
         <errorMessage>The Percentile entered for Defensive Responding is out of range. Please enter a valid score.</errorMessage>
@@ -3072,9 +3068,12 @@
             &amp;&amp;
             NOT(
             ISNULL(BPSIDR__c)
-            )</errorConditionFormula>
+            )
+&amp;&amp;
+NOT(
+BPSIDR__c = 999)</errorConditionFormula>
         <errorDisplayField>BPSIDR__c</errorDisplayField>
-        <errorMessage>The Raw Score entered for Defensive Responding is out of range. Please enter a valid score.</errorMessage>
+        <errorMessage>The Raw Score entered for Defensive Responding is out of range. Please enter a valid score. If this score is unavailable, enter 999.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>PSI_PCDI_P_double_entry_mismatch</fullName>
@@ -3087,7 +3086,7 @@
         <fullName>PSI_PCDI_P_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-            (BPSIPCDI_PTLE__c&gt;=1)&amp;&amp;
+            (BPSIPCDI_PTLE__c&gt;=0)&amp;&amp;
             (BPSIPCDI_PTLE__c &lt;= 99)
             )
             &amp;&amp;
@@ -3114,9 +3113,12 @@
             &amp;&amp;
             NOT(
             ISNULL(BPSIPCDI__c)
-            )</errorConditionFormula>
+            )
+&amp;&amp;
+NOT(
+BPSIPCDI__c = 999)</errorConditionFormula>
         <errorDisplayField>BPSIPCDI__c</errorDisplayField>
-        <errorMessage>The Raw Score entered for Parent-Child Dysfunctional Interaction  is out of range. Please enter a valid score.</errorMessage>
+        <errorMessage>The Raw Score entered for Parent-Child Dysfunctional Interaction  is out of range. Please enter a valid score. If this score is unavailable, enter 999.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>PSI_PD_P_double_entry_mismatch</fullName>
@@ -3129,7 +3131,7 @@
         <fullName>PSI_PD_P_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-            (BPSIPD_PTLE__c&gt;=1)&amp;&amp;
+            (BPSIPD_PTLE__c&gt;=0)&amp;&amp;
             (BPSIPD_PTLE__c &lt;= 99)
             )
             &amp;&amp;
@@ -3156,9 +3158,12 @@
             &amp;&amp;
             NOT(
             ISNULL(BPSIPD__c)
-            )</errorConditionFormula>
+            )
+&amp;&amp;
+NOT(
+BPSIPD__c = 999)</errorConditionFormula>
         <errorDisplayField>BPSIPD__c</errorDisplayField>
-        <errorMessage>The Raw Score entered for Parental Distress is out of range. Please enter a valid score.</errorMessage>
+        <errorMessage>The Raw Score entered for Parental Distress is out of range. Please enter a valid score.  If this score is unavailable, enter 999.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>PSI_TS_P_double_entry_mismatch</fullName>
@@ -3171,7 +3176,7 @@
         <fullName>PSI_TS_P_out_of_range</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
-            (BPSITS_PTLE__c&gt;=1)&amp;&amp;
+            (BPSITS_PTLE__c&gt;=0)&amp;&amp;
             (BPSITS_PTLE__c &lt;= 99)
             )
             &amp;&amp;
@@ -3198,9 +3203,12 @@
             &amp;&amp;
             NOT(
             ISNULL(BPSITS__c)
-            )</errorConditionFormula>
+            )
+&amp;&amp;
+NOT(
+BPSITS__c = 999)</errorConditionFormula>
         <errorDisplayField>BPSITS__c</errorDisplayField>
-        <errorMessage>The Raw Score entered for Total Stress is out of range. Please enter a valid score.</errorMessage>
+        <errorMessage>The Raw Score entered for Total Stress is out of range. Please enter a valid score. Please enter a valid score. If this score is unavailable, enter 999.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>PSI_date_cannot_be_before_BDOV</fullName>

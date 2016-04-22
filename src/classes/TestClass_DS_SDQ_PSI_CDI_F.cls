@@ -7,20 +7,27 @@
 *Bulkified testing
 *Asserted Variables
 *
-*@group Test Script 
-*@group-content /ApexDocContent/Test/DS_SDQ_PSI_CDI_F.htm
-*
 *@author Kelsey Willett
 *@date 11/18/2015
 *@modified date
 *
 *@date 1/27/2016
 *@modified date
+*@author KW
 *Purpose: PSI coverage
 *
 *@date 2/8/16
 *@modified date
+*@author KW
 *Purpose: PSI assert
+
+*@date 3/2/16
+*@modified date
+*@author KW
+*Purpose: update bulk insert, asserts
+*
+*@group Test Script 
+*@group-content /ApexDocContent/Test/DS_SDQ_PSI_CDI_F.htm
 ****/
 
 @isTest (SeeAllData=false)
@@ -61,21 +68,20 @@ private class TestClass_DS_SDQ_PSI_CDI_F  {
             bulkObj.add(new DS_SDQ_PSI_CDI_F__c(client__c = client.id,
                                                 FEMONULLP__c = 0, FBEHNULLP__c = 0, FHYPNULLP__c = 0, FOTCNULLP__c = 0, FKHBNULLP__c = 0,//null counts parent
                                                 FEMONULLS__c = 0, FBEHNULLS__c = 0, FHYPNULLS__c = 0, FOTCNULLS__c = 0, FKHBNULLS__c = 0,//null counts self
-                                                FDOASDYP__c = System.today(), FDOASDOP__c = System.today(), FDOASDOS__c = System.today(),
-                                                FMETSDYP__c = '1', FMETSDOP__c = '1', FMETSDOS__c = '1',
-                                                          FPSIPD__c = 13, FPSIPD_PTLE__c = 81, 
-                                                            FPSIPD2__c = 13, FPSIPD_PTLE2__c = 81,
-                                                          FPSIPCDI__c = 13, FPSIPCDI_PTLE__c = 81, 
-                                                            FPSIPCDI2__c = 13, FPSIPCDI_PTLE2__c = 81,
-                                                          FPSIDC__c = 13, FPSIDC_PTLE__c = 81, 
-                                                            FPSIDC2__c = 13, FPSIDC_PTLE2__c = 81,
-                                                          FPSITS__c = 38, FPSITS_PTLE__c = 81, 
-                                                            FPSITS2__c = 38, FPSITS_PTLE2__c = 81,
-                                                          FPSIDR__c = 9, FPSIDR_PTLE__c = 81, 
-                                                            FPSIDR2__c = 9, FPSIDR_PTLE2__c = 81,
-                                                          FDOAPSI__c = System.today(),
+                                                FSDPSOMA__c = '1', FSDPWORR__c = '1', FSDPUNHA__c = '1', FSDPCLIN__c= '1', FSDPAFRA__c = '1',//emotional responses parent
+                                                FSDPTANT__c = '1', FSDPOBEY__c = '1', FSDPFIGH__c = '1', FSDPLIES__c = '1', FSDPSTEA__c = '1',//behavioral responses parent
+                                                FSDPREST__c = '1', FSDPFIDG__c = '1', FSDPDIST__c = '1', FSDPREFL__c = '1', FSDPATTE__c= '2',//hyperactive responses parent
+                                                FSDPLONE__c = '1', FSDPFRIE__c = '1', FSDPPOPU__c = '0', FSDPBULL__c = '1',FSDPOLDB__c = '1',//peer responses parent
+                                                FSDPCONS__c = '1', FSDPSHAR__c = '1', FSDPCARI__c = '1', FSDPKIND__c = '0', FSDPHELP__c = '1',//prosocial responses parent
+                                                FDOASDYP__c = System.today(), FDOASDOP__c = System.today(), FDOASDOS__c = System.today(),FDOAPSI__c = System.today(),//dates 
+                                                FMETSDYP__c = '1', FMETSDOP__c = '1', FMETSDOS__c = '1',//methods
+                                                STATUS_SDQ_P_04_10__c = 'Complete', STATUS_SDQ_P_11_17__c = 'Complete', //parent status
+                                                STATUS_SDQ_S_11_17__c = 'Complete',//self status
+                                                STATUS_PSI__c = 'Complete', //psi status   
                                                 SECTION__c = '1'));      
         }
+        
+        insert bulkObj;         
         
     }
     
@@ -165,18 +171,19 @@ private class TestClass_DS_SDQ_PSI_CDI_F  {
         //save/cancel
         controller.save();
         controller.cancel();
-        controller.saveview();        
+        controller.saveview();  
         
-        //init variable alias to be tested    
-        String FSDPINFOR= '0';
-        String FSDPFIDG= '2';
-        String FSDPFIGH = '1';
-        Date FDOASDYP=system.today();
+        //init test query 
+        DS_SDQ_PSI_CDI_F__c sdq = [SELECT  FSDPINFOR__c, FSDPFIDG__c,FSDPFIGH__c, FDOASDYP__c
+                                    FROM DS_SDQ_PSI_CDI_F__c
+                                    WHERE id =: obj.id];      
+        
         //Negative assert statements
-        System.assertNotEquals(obj.FSDPINFOR__c,FSDPINFOR,'Mother was NOT informant ');
-        System.assertNotEquals(obj.FSDPFIDG__c,FSDPFIDG,'Child is certainally NOT fidgety. ');
-        System.assertEquals(obj.FDOASDYP__c,FDOASDYP,'Administered  today,  '+obj.FDOASDYP__c+'. ');
-        System.assertEquals(obj.FSDPFIGH__c, FSDPFIGH, 'Child sometimes fights with or bullies other children.');
+        System.assertNotEquals(sdq.FSDPINFOR__c,'0','Mother was NOT informant ');
+        System.assertNotEquals(sdq.FSDPFIDG__c,'2','Child is certainally NOT fidgety. ');
+        //positive asserts
+        System.assertEquals(sdq.FSDPFIGH__c, '1', 'Child sometimes fights with or bullies other children.');
+        System.assertEquals(sdq.FDOASDYP__c,system.today(),'Administered  today,  '+sdq.FDOASDYP__c+'. ');
     }
     
     /****
@@ -264,16 +271,17 @@ private class TestClass_DS_SDQ_PSI_CDI_F  {
         controller.save();
         controller.cancel();
         controller.saveview();
-             
-        //init variable alias to be tested 
-        String FSDPCLIN= '1' ; 
-        String FSDPCOMM= 'null';
-        String FSDPKIND = '0';
         
-        //Negative assert statements 
-        System.assertEquals(obj.FSDPCLIN__c,FSDPCLIN,'Child is somewhat nervous or clingy. ');
-        System.assertNotEquals(obj.FSDPCOMM__c,FSDPCOMM,'Parent comments have been filled in. ');
-        System.assertEquals(obj.FSDPKIND__c, FSDPKIND, 'Child is NOT kind to younger children. ');
+        //init test query 
+        DS_SDQ_PSI_CDI_F__c sdq = [SELECT  FSDPCLIN__c, FSDPCOMM__c,FSDPKIND__c
+                                    FROM DS_SDQ_PSI_CDI_F__c
+                                    WHERE id =: obj.id];     
+     
+        //Negative assert statement 
+        System.assertNotEquals(sdq.FSDPCOMM__c,'','Parent comments have been filled in. ');
+        //positive asserts
+        System.assertEquals(sdq.FSDPCLIN__c,'1','Child is somewhat nervous or clingy. ');
+        System.assertEquals(sdq.FSDPKIND__c, '0', 'Child is NOT kind to younger children. ');
     }
     
     /****
@@ -364,15 +372,16 @@ private class TestClass_DS_SDQ_PSI_CDI_F  {
         controller.save();
         controller.cancel();
         controller.saveview();
-             
-        //init variable alias to be tested  
-        String FSDSPOPU= '0';
-        String FSDSSOMA= '1';
-        String FSDSATTE= '2';
+        
+        //init test query 
+        DS_SDQ_PSI_CDI_F__c sdq = [SELECT  FSDSPOPU__c,FSDSSOMA__c,FSDSATTE__c
+                                    FROM DS_SDQ_PSI_CDI_F__c
+                                    WHERE id =: obj.id];                                    
+     
         // assert statements 
-        System.assertEquals(obj.FSDSPOPU__c,FSDSPOPU,'I am certainally popular. ');
-        System.assertEquals(obj.FSDSSOMA__c,FSDSSOMA,'I feel sick sometimes. ');
-        System.assertEquals(obj.FSDSATTE__c,FSDSATTE,'I certainally do not have a good attention span. ');
+        System.assertEquals(sdq.FSDSPOPU__c,'0','I am certainally popular. ');
+        System.assertEquals(sdq.FSDSSOMA__c,'1','I feel sick sometimes. ');
+        System.assertEquals(sdq.FSDSATTE__c,'2','I certainally do not have a good attention span. ');
 
     }
     
@@ -445,8 +454,7 @@ private class TestClass_DS_SDQ_PSI_CDI_F  {
         System.assertEquals(2, sdq.FSDPHYP__c, 'SDQ Parent 4-10 Hyperactivity is wrong.');
         System.assertEquals(3, sdq.FSDPOTC__c, 'SDQ Parent 4-10 Peer Problems is wrong.');
         System.assertEquals(4, sdq.FSDPKHB__c, 'SDQ Parent 4-10 Prosocial is wrong.');
-        System.assertEquals(4, sdq.FSDPDCL__c, 'SDQ Parent 4-10 Impact is wrong.');
-        
+        System.assertEquals(4, sdq.FSDPDCL__c, 'SDQ Parent 4-10 Impact is wrong.');       
         
     }
     
@@ -673,13 +681,14 @@ private class TestClass_DS_SDQ_PSI_CDI_F  {
         RC.init();
         RC.editRecord();
         
-        //init variable alias to be tested 
-        Decimal FPSIPD = 13;
-        Decimal FPSIDC_PTLE2 = 90;
-        Date today = System.today();
+        //init test query 
+        DS_SDQ_PSI_CDI_F__c psi = [SELECT  FPSIPD__c,FPSIDC_PTLE2__c,SECTION__c
+                                    FROM DS_SDQ_PSI_CDI_F__c
+                                    WHERE id =: obj.id];
+                                    
         // assert statements 
-        System.assertEquals(obj.FPSIPD__c, FPSIPD,'Incorrect Parental distress raw score.');
-        System.assertEquals(obj.FPSIDC_PTLE2__c, FPSIDC_PTLE2,'Incorrect Difficult Child T-score double entry.');
-        System.assertEquals(obj.FDOAPSI__c, today,'Date incorrect.');
+        System.assertEquals(obj.FPSIPD__c, 13,'Incorrect Parental distress raw score.');
+        System.assertEquals(obj.FPSIDC_PTLE2__c, 90,'Incorrect Difficult Child T-score double entry.');
+        System.assertEquals(obj.FDOAPSI__c, System.today(),'Date incorrect.');
     }
 }

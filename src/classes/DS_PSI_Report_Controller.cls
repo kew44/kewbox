@@ -7,6 +7,27 @@
 *Purpose: Remove validity scores from clinical/normal/borderline range lists
 *update validity to use 'Invalid' instead of 'Clinical'
 *
+*@date 2/26/16
+*@modified date
+*@author KW
+*Purpose: Condense logic
+*found potential issue w/ borderline classification
+*
+*@date 2/29/16
+*@modified date
+*@author KW
+*Purpose: Exclude scores below 15 from significance
+*
+*@date 3/3/16
+*@modified date
+*@author KW
+*Purpose: Clinical range is inclusive (>=85)
+*
+*@date 3/4/16
+*@modified date
+*@author KW
+*Purpose: fix ranges
+*
 *@group Assessment
 *@group-content /ApexDocContent/Assessment/DS_PSI_Report_Controller.htm
 ****/
@@ -30,7 +51,7 @@ public with sharing class DS_PSI_Report_Controller extends DS_BasicForm_Controll
     Datetime currentVisitDate = null;
     
     //public alias scoretype string                    
-    public String Str_DR {get;set;}       
+    public String Str_DR{get;set;}    
     
     public class Visit {
         
@@ -47,7 +68,7 @@ public with sharing class DS_PSI_Report_Controller extends DS_BasicForm_Controll
         public Integer PSITS {get;set;}
         public Integer PSITS_PTLE {get;set;}
         public Integer PSIDR {get;set;}
-        public Integer PSIDR_PTLE {get;set;}
+        public Integer PSIDR_PTLE {get;set;}//dr %ile
         
         //alias score type    
         public String DR{get;set;}
@@ -67,8 +88,6 @@ public with sharing class DS_PSI_Report_Controller extends DS_BasicForm_Controll
     
         // Initilize the DS_BasicForm_Controller
         super(Apexpages.currentPage().getParameters().get('cimi'));
-        
-        //redundant cimi?
         cimi = Apexpages.currentPage().getParameters().get('cimi');
 
         visits = new List<Visit>();
@@ -81,6 +100,7 @@ public with sharing class DS_PSI_Report_Controller extends DS_BasicForm_Controll
         
         // Get field name from DS_DATA (variable)
         bfVariableMap = form.getVariable('PSI');
+        bfVariableMap.put('DOAPSI',   form.BorF+'DOAPSI__c');
         
         Date tempVisitDate = Date.valueOf(form.obj.get(form.BorF+'DOAPSI__c'));
         
@@ -100,95 +120,89 @@ public with sharing class DS_PSI_Report_Controller extends DS_BasicForm_Controll
     }
     
     public SObject getScoreType(SObject obj){
+            
+        //Map types and text
+        Map<String, String> C_Scale_Text = new Map<String,String>();
+        
+        //map text
+        C_Scale_Text.put('TS','Total Stress');
+        C_Scale_Text.put('PD','Parental Distress');
+        C_Scale_Text.put('PCDI','Parent-Child Dysfunctional Interaction');
+        C_Scale_Text.put('DC','Difficult Child');
     
         //list alerts for types of scoretypes   
         List<String> clinicalList = new List<String>();
         List<String> borderlineList = new List<String>();
         List<String> normalList = new List<String>(); 
         
-        //Total Stress    (TS)
-        if( (15 <= Integer.valueOf(form.obj.get(form.BorF+'PSITS_PTLE__c'))) && (Integer.valueOf(form.obj.get(form.BorF+'PSITS_PTLE__c')) <=80 ) ){
-            normalList.add('Total Stress');
-        }
-        else if(Integer.valueOf(form.obj.get(form.BorF+'PSITS_PTLE__c')) >85){
-            clinicalList.add('Total Stress');
-        }
-        else{
-            borderlineList.add('Total Stress');
-        }
+        //init var for scores
+        Integer C_Value; 
         
-        //Parental Distress (PD)     
-        if( (15 <= Integer.valueOf(form.obj.get(form.BorF+'PSIPD_PTLE__c'))) && (Integer.valueOf(form.obj.get(form.BorF+'PSIPD_PTLE__c')) <=80 ) ){
-            normalList.add('Parental Distress');
-        }
-        else if(Integer.valueOf(form.obj.get(form.BorF+'PSIPD_PTLE__c')) >85){
-            clinicalList.add('Parental Distress');
-        }
-        else{
-            borderlineList.add('Parental Distress');
-        }
+        //init var for text
+        String C_Text;         
         
-        //Parent-Child Dysfunctional Interaction (P-CDI)       
-        if( (15 <= Integer.valueOf(form.obj.get(form.BorF+'PSIPCDI_PTLE__c'))) && (Integer.valueOf(form.obj.get(form.BorF+'PSIPCDI_PTLE__c')) <=80 )) {
-            normalList.add('Parent-Child Dysfunctional Interaction');
+        for(String t : C_Scale_Text.keySet()){
+                            
+            //set value
+            C_Value =Integer.valueOf(form.obj.get(form.BorF+'PSI'+t+'_PTLE__c'));
+
+            //set text
+            C_Text = String.valueOf(C_Scale_Text.get(t));
+            
+            if(C_Value >= 15){
+                //assign text to range lists
+                if(C_Value <= 80){
+                    normalList.add(C_Text);             
+                }
+                else if(C_Value >=85){
+                    clinicalList.add(C_Text);
+                }
+                else{
+                    borderlineList.add(C_Text);
+                }
+            }
+            /*else if((1 < C_Value) && (C_Value < 15)){
+                below "Normal" range, do not add to any list
+            }*/
         }
-        else if(Integer.valueOf(form.obj.get(form.BorF+'PSIPD_PTLE__c')) >85){
-            clinicalList.add('Parent-Child Dysfunctional Interaction');
-        }
-        else{
-            borderlineList.add('Parent-Child Dysfunctional Interaction');
-        }
-        
-        //Difficult Child (DC)         
-        if( (15 <= Integer.valueOf(form.obj.get(form.BorF+'PSIDC_PTLE__c'))) && (Integer.valueOf(form.obj.get(form.BorF+'PSIDC_PTLE__c')) <=80 )) {
-            normalList.add('Difficult Child');
-        }
-        else if(Integer.valueOf(form.obj.get(form.BorF+'PSIDC_PTLE__c')) >85){
-            clinicalList.add('Difficult Child');
-        }
-        else{
-            borderlineList.add('Difficult Child');
-        }
-        
-        //Defensive Responding    (DR)      
-        if( (15 <= Integer.valueOf(form.obj.get(form.BorF+'PSIDR_PTLE__c'))) && (Integer.valueOf(form.obj.get(form.BorF+'PSIDR_PTLE__c')) <=80 )) {
-            Str_DR = 'Normal';
-         //   normalList.add('Defensive Responding');
-        } 
-        else if(Integer.valueOf(form.obj.get(form.BorF+'PSIDR_PTLE__c')) >85){
-            Str_DR = 'Invalid';
-         //   clinicalList.add('Defensive Responding');
-        }
-        else{
-            Str_DR = 'Borderline';
-         //   borderlineList.add('Defensive Responding');
-        }    
         
         //rejoin the lists
         clinicalRange = String.join(clinicalList, ', ');
         borderlineRange= String.join(borderlineList, ', ');
         normalRange= String.join(normalList, ', ');
         
+        //Validity score set to string, not lists
+        //Defensive Responding    (DR)     
+         if( Integer.valueOf(form.obj.get(form.BorF+'PSIDR__c')) <= 10){
+             Str_DR = 'Clinically Significant';
+         }
+         else{
+            Str_DR = 'Normal';
+         }
+                 
         return obj;
     }
     
     public void getAssesmentHistory() {
         
+        //query baseline
         List<SObject> baseline = 
             Database.query('SELECT ' + form.ut.getFields('DS_SDQ_PSI_CDI_B__c') +   
                            '  FROM DS_SDQ_PSI_CDI_B__c' +                           
                            ' WHERE Client__c = \''+ form.cID + '\'');
         
         addVisit(baseline, 'B',Str_DR);
-                         
+              
+        //query follow-ups             
         List<SObject> followup = 
             Database.query('SELECT ' + form.ut.getFields('DS_SDQ_PSI_CDI_F__c') +   
                            '  FROM DS_SDQ_PSI_CDI_F__c' +                           
                            ' WHERE Client__c = \''+ form.cID + '\'' +
                            ' ORDER BY FDOAPSI__c, SECTION__c');
         
-        if(followup.size() > 0) addVisit(followup, 'F',Str_DR);
-        
+        if(followup.size() > 0){
+            addVisit(followup, 'F',Str_DR);
+        }
     }
     
     public void addVisit(List<SObject> psi, String BorF, String Str_DR) {
@@ -214,8 +228,9 @@ public with sharing class DS_PSI_Report_Controller extends DS_BasicForm_Controll
             //alias score type
             visit.DR    =Str_DR;
             
-            visits.add(visit);
-            
+                if(visit.DOAPSI != null){
+                    visits.add(visit);        
+                }
             }
      }       
             

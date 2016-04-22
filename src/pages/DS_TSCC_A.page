@@ -30,20 +30,12 @@
                 <!--administration date indication-->
                 <div class="form-group">
                     <!--question-->
-<<<<<<< HEAD
-                    <label class="col-md-6 col-lg-6 control-label ">
-=======
                     <label class="col-sm-4 col-md-4 col-lg-4 control-label ">
->>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                         <span class="nmbr">1.</span>
                         Date of administration
                     </label>
                     <!--answer -->
-<<<<<<< HEAD
-                    <div class="col-md-4 col-lg-2 input-date">
-=======
                     <div class="col-sm-6 col-md-6 col-lg-4 input-date">
->>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                         <apex:inputField id="DOATSCC__c" styleClass="form-control input-date input-sm" required="true" showDatePicker="true" html-placeholder="MM/DD/YYYY" value="{!form.obj[bfVariableMap['DOATSCC']]}" />
                     </div>
                 </div>
@@ -51,30 +43,14 @@
                 
                 <div class="form-group ">
                     <!--question-->
-<<<<<<< HEAD
-                    <label class="col-md-4 col-lg-8 control-label ">
-                        <span class="nmbr">2.</span>
-                        Please enter a valid raw score and T-Score for each of the Clinical Scale Scores, Subscale Scores, and Validity Scale Score.  
-=======
                     <label class=" col-lg-8 control-label ">
                         <span class="nmbr">2.</span>
                         Please enter a valid raw score and T-Score for each of the Clinical Scale Scores, Subscale Scores, and Validity Scale Scores.<br/>  &nbsp; &nbsp;
->>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                         You are required to enter each of these twice as a way to decrease the likelihood of entry errors.
                     </label>
                 </div>
                 
                 <!--validity score responses-->
-<<<<<<< HEAD
-                <!--heading-->
-                <div class="row ">
-                    <div class="col-md-2 col-lg-2" ><h4>Validity Scores</h4></div>
-                    <div class="col-md-2 col-lg-2" ><h4>Raw Score</h4></div>
-                    <div class="col-md-2 col-lg-2" ><h4>T-Score</h4></div>
-                    <div class="col-md-2 col-lg-2" ><h4>Double Entry</h4></div>
-                    <div class="col-md-2 col-lg-2" ><h4>Raw Score</h4></div>
-                    <div class="col-md-2 col-lg-2" ><h4>T-Score</h4></div>
-=======
                 
                 <!--heading-->
                 <div class="row ">
@@ -84,7 +60,6 @@
                     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center" ><h4>Double Entry</h4></div>
                     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 "><!--text-center" >--><h4>Raw Score</h4></div>
                     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 "><!--text-center" >--><h4>T-Score</h4></div>
->>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                 </div>
                 <!--end heading-->                
                 
@@ -95,34 +70,12 @@
                         <!--Underresponsive-->        
                         <div class="form-group">        
                             <!--label-->
-<<<<<<< HEAD
-                            <div class="col-md-2 col-lg-2">
-=======
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
->>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                                 <label class=" control-label ">
                                     Underresponse (UND)
                                 </label>
                             </div>                          
                             <!--raw 1-->
-<<<<<<< HEAD
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCUNN__c" value="{!form.obj[bfVariableMap['TSCUNN']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-                            </div>
-                            <!--t 1-->
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCNTN__c" value="{!form.obj[bfVariableMap['TSCNTN']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-                            </div>
-                            <!--double entry space-->
-                            <div class="col-md-2 col-lg-2"></div>
-                            <!--raw 2-->
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCUNN2__c" value="{!form.obj[bfVariableMap['TSCUNN2']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-                            </div>
-                            <!--t 2-->
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCNTN2__c" value="{!form.obj[bfVariableMap['TSCNTN2']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-=======
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="TSCUNN__c" value="{!form.obj[bfVariableMap['TSCUNN']]}" required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
@@ -139,41 +92,18 @@
                             <!--t 2-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="TSCNTN2__c" value="{!form.obj[bfVariableMap['TSCNTN2']]}" required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
->>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                             </div>
                         </div>
                         
                         <!--Hyperresponsive-->        
                         <div class="form-group">        
                             <!--label-->
-<<<<<<< HEAD
-                            <div class="col-md-2 col-lg-2">
-=======
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
->>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                                 <label class=" control-label ">
                                     Hyperresponse (HYP)
                                 </label>
                             </div>                          
                             <!--raw 1-->
-<<<<<<< HEAD
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCHYN__c" value="{!form.obj[bfVariableMap['TSCHYN']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-                            </div>
-                            <!--t 1-->
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCHYTN__c" value="{!form.obj[bfVariableMap['TSCHYTN']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-                            </div>
-                            <!--double entry space-->
-                            <div class="col-md-2 col-lg-2"></div>
-                            <!--raw 2-->
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCHYN2__c" value="{!form.obj[bfVariableMap['TSCHYN2']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-                            </div>
-                            <!--t 2-->
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCHYTN2__c" value="{!form.obj[bfVariableMap['TSCHYTN2']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-=======
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="TSCHYN__c" value="{!form.obj[bfVariableMap['TSCHYN']]}" required="true"  styleClass="form-control input-sm control-inline " /><!--auto-width-->
                             </div>
@@ -190,7 +120,6 @@
                             <!--t 2-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="TSCHYTN2__c" value="{!form.obj[bfVariableMap['TSCHYTN2']]}" required="true"  styleClass="form-control input-sm control-inline " /><!--auto-width-->
->>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                             </div>
                         </div>
                     </apex:outputPanel>
@@ -200,21 +129,12 @@
                 
                 <!--heading-->
                 <div class="row ">
-<<<<<<< HEAD
-                    <div class="col-md-2 col-lg-2" ><h4>Clinical Scale/Subscale Scores</h4></div>
-                    <div class="col-md-2 col-lg-2" ><h4>Raw Score</h4></div>
-                    <div class="col-md-2 col-lg-2" ><h4>T-Score</h4></div>
-                    <div class="col-md-2 col-lg-2" ><h4>Double Entry</h4></div>
-                    <div class="col-md-2 col-lg-2" ><h4>Raw Score</h4></div>
-                    <div class="col-md-2 col-lg-2" ><h4>T-Score</h4></div>
-=======
                     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" ><h4>Clinical Scale/Subscale Scores</h4></div>
                     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 "><!--text-center" >--><h4>Raw Score</h4></div>
                     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 "><!--text-center" >--><h4>T-Score</h4></div>
                     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center" ><h4>Double Entry</h4></div>
                     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 "><!--text-center" >--><h4>Raw Score</h4></div>
                     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 "><!--text-center" >--><h4>T-Score</h4></div>
->>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                 </div>
                 <!--end heading-->
                 
@@ -225,34 +145,12 @@
                         <!--Anxiety-->              
                         <div class="form-group">        
                             <!--label-->
-<<<<<<< HEAD
-                            <div class="col-md-2 col-lg-2">
-=======
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
->>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                                 <label class=" control-label ">
                                     Anxiety (ANX)
                                 </label>
                             </div>                          
                             <!--raw 1-->
-<<<<<<< HEAD
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCAXN__c" value="{!form.obj[bfVariableMap['TSCAXN']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-                            </div>
-                            <!--t 1-->
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCAXTN__c" value="{!form.obj[bfVariableMap['TSCAXTN']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-                            </div>
-                            <!--double entry space-->
-                            <div class="col-md-2 col-lg-2"></div>
-                            <!--raw 2-->
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCAXN2__c" value="{!form.obj[bfVariableMap['TSCAXN2']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-                            </div>
-                            <!--t 2-->
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCAXTN2__c" value="{!form.obj[bfVariableMap['TSCAXTN2']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-=======
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="TSCAXN__c" value="{!form.obj[bfVariableMap['TSCAXN']]}" required="true"  styleClass="form-control input-sm control-inline " /><!--auto-width-->
                             </div>
@@ -269,41 +167,18 @@
                             <!--t 2-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="TSCAXTN2__c" value="{!form.obj[bfVariableMap['TSCAXTN2']]}" required="true"  styleClass="form-control input-sm control-inline " /><!--auto-width-->
->>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                             </div>
                         </div>
                         
                         <!--Depression-->              
                         <div class="form-group">        
                             <!--label-->
-<<<<<<< HEAD
-                            <div class="col-md-2 col-lg-2">
-=======
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
->>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                                 <label class=" control-label ">
                                     Depression (DEP)
                                 </label>
                             </div>                          
                             <!--raw 1-->
-<<<<<<< HEAD
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCDPN__c" value="{!form.obj[bfVariableMap['TSCDPN']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-                            </div>
-                            <!--t 1-->
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCDPTN__c" value="{!form.obj[bfVariableMap['TSCDPTN']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-                            </div>
-                            <!--double entry space-->
-                            <div class="col-md-2 col-lg-2"></div>
-                            <!--raw 2-->
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCDPN2__c" value="{!form.obj[bfVariableMap['TSCDPN2']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-                            </div>
-                            <!--t 2-->
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCDPTN2__c" value="{!form.obj[bfVariableMap['TSCDPTN2']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-=======
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="TSCDPN__c" value="{!form.obj[bfVariableMap['TSCDPN']]}" required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
@@ -320,41 +195,18 @@
                             <!--t 2-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="TSCDPTN2__c" value="{!form.obj[bfVariableMap['TSCDPTN2']]}" required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
->>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                             </div>
                         </div>
                         
                         <!--Anger-->              
                         <div class="form-group">        
                             <!--label-->
-<<<<<<< HEAD
-                            <div class="col-md-2 col-lg-2">
-=======
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
->>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                                 <label class=" control-label ">
                                     Anger (ANG)
                                 </label>
                             </div>                          
                             <!--raw 1-->
-<<<<<<< HEAD
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCAGG__c" value="{!form.obj[bfVariableMap['TSCAGG']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-                            </div>
-                            <!--t 1-->
-                            <div class="col-md-2 col-lg-2">                            
-                                <apex:inputField id="TSCAGTN__c" value="{!form.obj[bfVariableMap['TSCAGTN']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-                            </div>
-                            <!--double entry space-->
-                            <div class="col-md-2 col-lg-2"></div>
-                            <!--raw 2-->
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCAGG2__c" value="{!form.obj[bfVariableMap['TSCAGG2']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-                            </div>
-                            <!--t 2-->
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCAGTN2__c" value="{!form.obj[bfVariableMap['TSCAGTN2']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-=======
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="TSCAGG__c" value="{!form.obj[bfVariableMap['TSCAGG']]}" required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
@@ -371,41 +223,18 @@
                             <!--t 2-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="TSCAGTN2__c" value="{!form.obj[bfVariableMap['TSCAGTN2']]}" required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
->>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                             </div>
                         </div>                               
                         
                         <!--Posttraumatic Stress-->              
                         <div class="form-group">        
                             <!--label-->
-<<<<<<< HEAD
-                            <div class="col-md-2 col-lg-2">
-=======
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
->>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                                 <label class=" control-label ">
                                     Posttraumatic Stress (PTS)
                                 </label>
                             </div>                          
                             <!--raw 1-->
-<<<<<<< HEAD
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCPTN__c" value="{!form.obj[bfVariableMap['TSCPTN']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-                            </div>
-                            <!--t 1-->
-                            <div class="col-md-2 col-lg-2">                           
-                                <apex:inputField id="TSCPTTN__c" value="{!form.obj[bfVariableMap['TSCPTTN']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-                            </div>
-                            <!--double entry space-->
-                            <div class="col-md-2 col-lg-2"></div>
-                            <!--raw 2-->
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCPTN2__c" value="{!form.obj[bfVariableMap['TSCPTN2']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-                            </div>
-                            <!--t 2-->
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCPTTN2__c" value="{!form.obj[bfVariableMap['TSCPTTN2']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-=======
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="TSCPTN__c" value="{!form.obj[bfVariableMap['TSCPTN']]}" required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
@@ -422,41 +251,18 @@
                             <!--t 2-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="TSCPTTN2__c" value="{!form.obj[bfVariableMap['TSCPTTN2']]}" required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
->>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                             </div>
                         </div>
                         
                         <!--Dissociation-->              
                         <div class="form-group">        
                             <!--label-->
-<<<<<<< HEAD
-                            <div class="col-md-2 col-lg-2">
-=======
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
->>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                                 <label class=" control-label ">
                                     Dissociation (DIS)
                                 </label>
                             </div>                          
                             <!--raw 1-->
-<<<<<<< HEAD
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCDSN__c" value="{!form.obj[bfVariableMap['TSCDSN']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-                            </div>
-                            <!--t 1-->
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCDSTN__c" value="{!form.obj[bfVariableMap['TSCDSTN']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-                            </div>
-                            <!--double entry space-->
-                            <div class="col-md-2 col-lg-2"></div>
-                            <!--raw 2-->
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCDSN2__c" value="{!form.obj[bfVariableMap['TSCDSN2']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-                            </div>
-                            <!--t 2-->
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCDSTN2__c" value="{!form.obj[bfVariableMap['TSCDSTN2']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-=======
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="TSCDSN__c" value="{!form.obj[bfVariableMap['TSCDSN']]}" required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
@@ -473,41 +279,18 @@
                             <!--t 2-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="TSCDSTN2__c" value="{!form.obj[bfVariableMap['TSCDSTN2']]}" required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
->>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                             </div>
                         </div>                       
                         
                         <!--Overt Score-->        
                         <div class="form-group">        
                             <!--label-->
-<<<<<<< HEAD
-                            <div class="col-md-2 col-lg-2">
-=======
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
->>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                                 <label class=" control-label ">
                                     Overt Dissociation (DIS-O)
                                 </label>
                             </div>                          
                             <!--raw 1-->
-<<<<<<< HEAD
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCODN__c" value="{!form.obj[bfVariableMap['TSCODN']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-                            </div>
-                            <!--t 1-->
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCODTN__c" value="{!form.obj[bfVariableMap['TSCODTN']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-                            </div>
-                            <!--double entry space-->
-                            <div class="col-md-2 col-lg-2"></div>
-                            <!--raw 2-->
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCODN2__c" value="{!form.obj[bfVariableMap['TSCODN2']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-                            </div>
-                            <!--t 2-->
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCODTN2__c" value="{!form.obj[bfVariableMap['TSCODTN2']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-=======
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="TSCODN__c" value="{!form.obj[bfVariableMap['TSCODN']]}" required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
@@ -524,41 +307,18 @@
                             <!--t 2-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="TSCODTN2__c" value="{!form.obj[bfVariableMap['TSCODTN2']]}" required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
->>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                             </div>
                         </div>
                         
                         <!--Fantasy Score-->        
                         <div class="form-group">        
                             <!--label-->
-<<<<<<< HEAD
-                            <div class="col-md-2 col-lg-2">
-=======
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
->>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                                 <label class=" control-label ">
                                     Fantasy (DIS-F)
                                 </label>
                             </div>                          
                             <!--raw 1-->
-<<<<<<< HEAD
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCFNN__c" value="{!form.obj[bfVariableMap['TSCFNN']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-                            </div>
-                            <!--t 1-->
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCFNTN__c" value="{!form.obj[bfVariableMap['TSCFNTN']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-                            </div>
-                            <!--double entry space-->
-                            <div class="col-md-2 col-lg-2"></div>
-                            <!--raw 2-->
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCFNN2__c" value="{!form.obj[bfVariableMap['TSCFNN2']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-                            </div>
-                            <!--t 2-->
-                            <div class="col-md-2 col-lg-2">
-                                <apex:inputField id="TSCFNTN2__c" value="{!form.obj[bfVariableMap['TSCFNTN2']]}" required="true"  styleClass="form-control input-sm control-inline auto-width"/>
-=======
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="TSCFNN__c" value="{!form.obj[bfVariableMap['TSCFNN']]}" required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
@@ -575,7 +335,6 @@
                             <!--t 2-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
                                 <apex:inputField id="TSCFNTN2__c" value="{!form.obj[bfVariableMap['TSCFNTN2']]}" required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
->>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                             </div>
                         </div>
                     </apex:outputPanel>
@@ -584,13 +343,8 @@
                 
                 <!--Completion status control-->
                 <div class="form-group no-border-bottom no-space-bottom">
-<<<<<<< HEAD
-                    <label class="control-label col-md-2 col-md-offset-8 text-right">Complete?</label>
-                    <div class="col-md-2">
-=======
                     <label class="control-label col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4 text-right">Complete?</label>
                     <div class="col-sm-4 col-md-4 col-lg-4">
->>>>>>> e18c45f54d92dfae04e9d02f9ff4f1d2d0d25acb
                         <apex:selectList id="STATUS_TSCC_A__c" styleClass="pull-right form-control input-sm"  size="1" value="{!form.obj[bfVariableMap['STATUS']]}" >
                             <apex:selectOption itemValue="Incomplete" itemLabel="Incomplete"/>
                             <apex:selectOption itemValue="Complete" itemLabel="Complete"/>

@@ -2,8 +2,8 @@
     
     <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
     
-    <div>
-        <apex:sectionHeader title="{!form.title}" subtitle="{!form.subtitle}" />
+    <div class="{!HTMLENCODE(form.visitType)}-assessment">
+        <apex:sectionHeader title="{!HTMLENCODE(form.title)}" subtitle="{!HTMLENCODE(form.subtitle)}" />
     </div>
     
     <div class="bootwrap">
@@ -16,7 +16,7 @@
             <!--end client info pageBlock-->
             
             <!-- primary content pageBlock container-->
-            <apex:pageBlock title="{!form.title}" >
+            <apex:pageBlock title="{!HTMLENCODE(form.title)}" >
                 
                 <!--Save & view, save, and cancel control buttons for pageBlock-->
                 <apex:pageBlockButtons >

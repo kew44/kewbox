@@ -2,8 +2,8 @@
     
     <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
     
-    <div>
-        <apex:sectionHeader title="{!form.title}" subtitle="{!form.subtitle}" />
+    <div class="{!HTMLENCODE(form.visitType)}-assessment">
+        <apex:sectionHeader title="{!HTMLENCODE(form.title)}" subtitle="{!HTMLENCODE(form.subtitle)}" />
     </div>
     
     <div class="bootwrap">
@@ -16,7 +16,7 @@
             <!--end client info pageBlock-->
             
             <!-- primary content pageBlock container-->
-            <apex:pageBlock title="{!form.title}" >
+            <apex:pageBlock title="{!HTMLENCODE(form.title)}" >
                 
                 <!--Save & view, save, and cancel control buttons for pageBlock-->
                 <apex:pageBlockButtons >
@@ -95,7 +95,7 @@
                         <!--base question records-->
                         <apex:outputPanel layout="none" rendered="{!IF((item.section == FALSE),'TRUE','FALSE')}">
                             
-                            <div class="form-group {!IF(AND(displayWarningMessage = true, form.obj[item.field] = ''), 'missing-answer' , '')}">
+                            <div class="form-group {!IF(AND(displayWarningMessage = true, OR(form.obj[item.field] = '', form.obj[item.field] = '99')), 'missing-answer' , '')}">
                                 
                                 <!--question-->
                                 <label class="col-md-6 col-lg-6 control-label">

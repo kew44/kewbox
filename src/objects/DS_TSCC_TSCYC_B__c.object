@@ -1826,7 +1826,7 @@ Raw: 0-27</description>
         <fullName>TSCYC_ATR_T_double_entry_mismatch</fullName>
         <active>true</active>
         <errorConditionFormula>BATR_T__c  &lt;&gt;  BATR_T2__c</errorConditionFormula>
-        <errorDisplayField>BANX_T2__c</errorDisplayField>
+        <errorDisplayField>BATR_T2__c</errorDisplayField>
         <errorMessage>Double entry does not match for this score: Atypical Response T-Score</errorMessage>
     </validationRules>
     <validationRules>

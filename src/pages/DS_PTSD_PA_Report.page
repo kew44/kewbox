@@ -78,7 +78,7 @@
                             <th rowspan="2">UCLA<br/>PTSD-RI<br/>Total Scale<br/>Score</th>
                             <th colspan="4">Symptom Category Score (Symptom Criteria Met)</th>
                             
-                            <th rowspan="2">F<br/>Duration<br/>greater than<br/>on month</th>
+                            <th rowspan="2">F<br/>Duration<br/>greater than<br/>one month</th>
                             <th rowspan="2">G<br/>Clinically<br/>Significant<br/>Distress</th>
                             <th rowspan="2"  style="width:140px;">Clinician<br/>Assessment:<br/>Functional<br/>Impairment</th>
                             <th rowspan="2" style="width:140px;">Presence of<br/>one or more<br/>Dissociative<br/>Symptoms</th>
@@ -122,7 +122,7 @@
                                 <!--conditional, If 3 or more scores are missing, this panel is displayed instead of report-->
                                 <apex:outputPanel layout="none" rendered="{!if(visit.PTSAPPCNP = 0, true, false)}">
                                     <td colspan="10">
-                                        <strong>This record is <u>Not</u> Applicable. Score can't be calculated, three(3) or more anwers to the UCLA PTSD-RI were left blank.</strong>
+                                        <strong>This record is <u>Not</u> Applicable. Score can't be calculated, three(3) or more anwers to the UCLA PTSD-RI were left blank or marked unknown.</strong>
                                     </td>
                                 </apex:outputPanel>
                                 <!--end NaN message-->

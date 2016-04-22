@@ -153,6 +153,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>DS_PTSD_CA_Scoring</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>DS_PTSD_PA_Controller</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -14973,9 +14977,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>DS_PTSD_CA_B__c.STATUS_PTSD_PA__c</field>
-        <readable>true</readable>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -15993,19 +15997,19 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>DS_PTSD_CA_F__c.SECTION__c</field>
-        <readable>true</readable>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>DS_PTSD_CA_F__c.STATUS_PTSD_CA__c</field>
-        <readable>true</readable>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>DS_PTSD_CA_F__c.STATUS_PTSD_PA__c</field>
-        <readable>true</readable>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -22033,14 +22037,14 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>DS_TSCC_TSCYC_B__c.STATUS_TSCC_A__c</field>
-        <readable>true</readable>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>DS_TSCC_TSCYC_B__c.STATUS_TSCYC__c</field>
-        <readable>true</readable>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -22170,7 +22174,7 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>DS_TSCC_TSCYC_F__c.FDOV__c</field>
-        <readable>true</readable>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -22470,6 +22474,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>DS_TSCC_TSCYC_F__c.FTSCUNN__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCUNTN__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>

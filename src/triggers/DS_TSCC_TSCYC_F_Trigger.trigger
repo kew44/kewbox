@@ -5,7 +5,7 @@ trigger DS_TSCC_TSCYC_F_Trigger  on DS_TSCC_TSCYC_F__c (before insert, before up
     if(Trigger.isBefore) {
         
         // Get the Background_Family_Info data        
-        Map<String, SObject> backgroundObj = ut.getObjectRecordWithClient(Trigger.new, 'DS_Background_Family_Info_B__c', null);
+        Map<String, SObject> backgroundObj = ut.getObjectRecordWithClient(Trigger.new, 'DS_Background_Family_Info_F__c', null);
         
         for(DS_TSCC_TSCYC_F__c obj: Trigger.new) {
             // Background id

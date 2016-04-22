@@ -153,6 +153,10 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>DS_PTSD_CA_Scoring</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>DS_PTSD_PA_Controller</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -22470,6 +22474,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>DS_TSCC_TSCYC_F__c.FTSCUNN__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCUNTN__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>

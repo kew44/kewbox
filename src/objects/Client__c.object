@@ -257,6 +257,22 @@
         <unique>false</unique>
     </fields>
     <label>Client</label>
+    <listViews>
+        <fullName>My_Clients</fullName>
+        <columns>Clinician__c</columns>
+        <columns>NAME</columns>
+        <columns>INIT__c</columns>
+        <columns>GENDER__c</columns>
+        <columns>DOB1__c</columns>
+        <columns>AGE__c</columns>
+        <columns>CURRENT_AGE__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>OBJECT_ID</columns>
+        <filterScope>Everything</filterScope>
+        <label>My Clients</label>
+    </listViews>
     <nameField>
         <label>Client ID</label>
         <trackHistory>false</trackHistory>

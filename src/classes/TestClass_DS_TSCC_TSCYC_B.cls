@@ -7,9 +7,6 @@
 *Bulkified testing
 *Asserted Variables
 *
-*@group Test Script 
-*@group-content /ApexDocContent/Test/DS_TSCC_TSCYC_B.htm
-*
 *@author Kelsey Willett
 *@date 1/27/2016
 *@modified date
@@ -18,6 +15,14 @@
 *@date 2/8/16
 *@modified date
 *Purpose: TSCC/YC assert
+*
+*@date 3/2/16
+*@modified date
+*@author KW
+*Purpose: update bulk insert,asserts
+*
+*@group Test Script 
+*@group-content /ApexDocContent/Test/DS_TSCC_TSCYC_B.htm
 ****/
 
 @isTest (SeeAllData=false)
@@ -82,6 +87,8 @@ private class TestClass_DS_TSCC_TSCYC_B {
                                                 ));         
         }
         
+        //add list of records to object
+        insert bulkObj;  
     }
     
     /****
@@ -159,14 +166,14 @@ private class TestClass_DS_TSCC_TSCYC_B {
         RC.init();
         RC.editRecord();
         
-        //init variable alias to be tested 
-        Decimal BDEP_R = 30;
-        Decimal BPTSAV_T2 = 67;
-        String section = '0';
+        DS_TSCC_TSCYC_B__c tsc = [SELECT BDEP_R__c, BPTSAV_T2__c, SECTION__c
+                                    FROM DS_TSCC_TSCYC_B__c
+                                    WHERE id =: obj.id];
+        
         // assert statements 
-        System.assertEquals(obj.BDEP_R__c, BDEP_R,'Incorrect Depression raw score.');
-        System.assertEquals(obj.BPTSAV_T2__c, BPTSAV_T2,'Incorrect Avoidance T-score double entry.');
-        System.assertEquals(obj.SECTION__c, section,'Section incorrect: baseline.');
+        System.assertEquals(tsc.BDEP_R__c, 30,'Incorrect Depression raw score.');
+        System.assertEquals(tsc.BPTSAV_T2__c, 67,'Incorrect Avoidance T-score double entry.');
+        System.assertEquals(tsc.SECTION__c, '0','Section incorrect: baseline.');
         }
     
     /****
@@ -242,13 +249,13 @@ private class TestClass_DS_TSCC_TSCYC_B {
         RC.init();
         RC.editRecord();
         
-        //init variable alias to be tested 
-        Decimal BTSCAXN = 20;
-        Decimal BTSCAGTN2 = 62;
-        String section = '0';
+        DS_TSCC_TSCYC_B__c tsc = [SELECT BTSCAXN__c, BTSCAGTN2__c, SECTION__c
+                                    FROM DS_TSCC_TSCYC_B__c
+                                    WHERE id =: obj.id];
+        
         // assert statements 
-        System.assertEquals(obj.BTSCAXN__c, BTSCAXN,'Incorrect Anxiety raw score.');
-        System.assertEquals(obj.BTSCAGTN2__c, BTSCAGTN2,'Incorrect Anger T-score double entry.');
-        System.assertEquals(obj.SECTION__c, section,'Section incorrect: baseline.');
+        System.assertEquals(tsc.BTSCAXN__c, 20,'Incorrect Anxiety raw score.');
+        System.assertEquals(tsc.BTSCAGTN2__c, 62,'Incorrect Anger T-score double entry.');
+        System.assertEquals(tsc.SECTION__c, '0','Section incorrect: baseline.');
     }
 }

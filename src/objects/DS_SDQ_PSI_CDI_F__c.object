@@ -47,12 +47,9 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
-    <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
-    <enableSharing>true</enableSharing>
-    <enableStreamingApi>true</enableStreamingApi>
     <fieldSets>
         <fullName>STATUS</fullName>
         <description>STATUS</description>
@@ -373,7 +370,7 @@
         <description>Difficult Child (DC)</description>
         <externalId>false</externalId>
         <label>FPSIDC2</label>
-        <precision>2</precision>
+        <precision>3</precision>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
@@ -412,7 +409,7 @@
         <description>Difficult Child (DC)</description>
         <externalId>false</externalId>
         <label>FPSIDC</label>
-        <precision>2</precision>
+        <precision>3</precision>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
@@ -425,7 +422,7 @@
         <description>Defensive Responding</description>
         <externalId>false</externalId>
         <label>FPSIDR2</label>
-        <precision>2</precision>
+        <precision>3</precision>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
@@ -464,7 +461,7 @@
         <description>Defensive Responding</description>
         <externalId>false</externalId>
         <label>FPSIDR</label>
-        <precision>2</precision>
+        <precision>3</precision>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
@@ -477,7 +474,7 @@
         <description>Parent-Child Dysfunctional Interaction (P-CDI)</description>
         <externalId>false</externalId>
         <label>FPSIPCDI2</label>
-        <precision>2</precision>
+        <precision>3</precision>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
@@ -516,7 +513,7 @@
         <description>Parent-Child Dysfunctional Interaction (P-CDI)</description>
         <externalId>false</externalId>
         <label>FPSIPCDI</label>
-        <precision>2</precision>
+        <precision>3</precision>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
@@ -529,7 +526,7 @@
         <description>Parental Distress (PD)</description>
         <externalId>false</externalId>
         <label>FPSIPD2</label>
-        <precision>2</precision>
+        <precision>3</precision>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
@@ -568,7 +565,7 @@
         <description>Parental Distress (PD)</description>
         <externalId>false</externalId>
         <label>FPSIPD</label>
-        <precision>2</precision>
+        <precision>3</precision>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
@@ -3047,7 +3044,7 @@
         <picklist>
             <picklistValues>
                 <fullName>Incomplete</fullName>
-                <default>true</default>
+                <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>Complete</fullName>
@@ -3141,6 +3138,27 @@
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
     <validationRules>
+        <fullName>PSI_DC_P_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FPSIDC_PTLE__c &lt;&gt; FPSIDC_PTLE2__c</errorConditionFormula>
+        <errorDisplayField>FPSIDC_PTLE2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Difficult Child Percentile</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PSI_DC_P_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+(FPSIDC_PTLE__c&gt;=0)&amp;&amp;
+(FPSIDC_PTLE__c &lt;= 99)
+)
+&amp;&amp;
+NOT(
+ISNULL(FPSIDC_PTLE__c)
+)</errorConditionFormula>
+        <errorDisplayField>FPSIDC_PTLE__c</errorDisplayField>
+        <errorMessage>The Percentile entered for Difficult Child is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>PSI_DC_Raw_double_entry_mismatch</fullName>
         <active>true</active>
         <errorConditionFormula>FPSIDC__c &lt;&gt; FPSIDC2__c</errorConditionFormula>
@@ -3157,30 +3175,29 @@
 &amp;&amp;
 NOT(
 ISNULL(FPSIDC__c)
-)</errorConditionFormula>
-        <errorDisplayField>FPSIDC__c</errorDisplayField>
-        <errorMessage>The Raw Score entered for Difficult Child is out of range. Please enter a valid score.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PSI_DC_T_double_entry_mismatch</fullName>
-        <active>true</active>
-        <errorConditionFormula>FPSIDC_PTLE__c &lt;&gt; FPSIDC_PTLE2__c</errorConditionFormula>
-        <errorDisplayField>FPSIDC_PTLE2__c</errorDisplayField>
-        <errorMessage>Double entry does not match for this score: Difficult Child T-Score</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PSI_DC_T_out_of_range</fullName>
-        <active>true</active>
-        <errorConditionFormula>NOT(
-(FPSIDC_PTLE__c&gt;=1)&amp;&amp;
-(FPSIDC_PTLE__c &lt;= 99)
 )
 &amp;&amp;
 NOT(
-ISNULL(FPSIDC_PTLE__c)
+FPSIDC__c = 999)</errorConditionFormula>
+        <errorDisplayField>FPSIDC__c</errorDisplayField>
+        <errorMessage>The Raw Score entered for Difficult Child is out of range. Please enter a valid score. If this score is unavailable, enter 999.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PSI_DR_P_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FPSIDR_PTLE__c &lt;&gt; FPSIDR_PTLE2__c</errorConditionFormula>
+        <errorDisplayField>FPSIDR_PTLE2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Defensive Responding Percentile</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PSI_DR_P_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+(FPSIDR_PTLE__c&gt;=0)&amp;&amp;
+(FPSIDR_PTLE__c &lt;= 99)
 )</errorConditionFormula>
-        <errorDisplayField>FPSIDC_PTLE__c</errorDisplayField>
-        <errorMessage>The T-Score entered for Difficult Child is out of range. Please enter a valid score.</errorMessage>
+        <errorDisplayField>FPSIDR_PTLE__c</errorDisplayField>
+        <errorMessage>The Percentile entered for Defensive Responding is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>PSI_DR_Raw_double_entry_mismatch</fullName>
@@ -3199,30 +3216,33 @@ ISNULL(FPSIDC_PTLE__c)
 &amp;&amp;
 NOT(
 ISNULL(FPSIDR__c)
-)</errorConditionFormula>
-        <errorDisplayField>FPSIDR__c</errorDisplayField>
-        <errorMessage>The Raw Score entered for Defensive Responding is out of range. Please enter a valid score.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PSI_DR_T_double_entry_mismatch</fullName>
-        <active>true</active>
-        <errorConditionFormula>FPSIDR_PTLE__c &lt;&gt; FPSIDR_PTLE2__c</errorConditionFormula>
-        <errorDisplayField>FPSIDR_PTLE2__c</errorDisplayField>
-        <errorMessage>Double entry does not match for this score: Defensive Responding T-Score</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PSI_DR_T_out_of_range</fullName>
-        <active>true</active>
-        <errorConditionFormula>NOT(
-(FPSIDR_PTLE__c&gt;=1)&amp;&amp;
-(FPSIDR_PTLE__c &lt;= 99)
 )
 &amp;&amp;
 NOT(
-ISNULL(FPSIDR_PTLE__c)
+FPSIDR__c = 999)</errorConditionFormula>
+        <errorDisplayField>FPSIDR__c</errorDisplayField>
+        <errorMessage>The Raw Score entered for Defensive Responding is out of range. Please enter a valid score. If this score is unavailable, enter 999.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PSI_PCDI_P_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FPSIPCDI_PTLE__c &lt;&gt; FPSIPCDI_PTLE2__c</errorConditionFormula>
+        <errorDisplayField>FPSIPCDI_PTLE2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Parent-Child Dysfunctional Interaction Percentile</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PSI_PCDI_P_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+(FPSIPCDI_PTLE__c&gt;=0)&amp;&amp;
+(FPSIPCDI_PTLE__c &lt;= 99)
+)
+&amp;&amp;
+NOT(
+ISNULL(FPSIPCDI_PTLE__c)
 )</errorConditionFormula>
-        <errorDisplayField>FPSIDR_PTLE__c</errorDisplayField>
-        <errorMessage>The T-Score entered for Defensive Responding is out of range. Please enter a valid score.</errorMessage>
+        <errorDisplayField>FPSIPCDI_PTLE__c</errorDisplayField>
+        <errorMessage>The Percentile entered for Parent-Child Dysfunctional Interaction  is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>PSI_PCDI_Raw_double_entry_mismatch</fullName>
@@ -3241,30 +3261,33 @@ ISNULL(FPSIDR_PTLE__c)
 &amp;&amp;
 NOT(
 ISNULL(FPSIPCDI__c)
-)</errorConditionFormula>
-        <errorDisplayField>FPSIPCDI__c</errorDisplayField>
-        <errorMessage>The Raw Score entered for Parent-Child Dysfunctional Interaction  is out of range. Please enter a valid score.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PSI_PCDI_T_double_entry_mismatch</fullName>
-        <active>true</active>
-        <errorConditionFormula>FPSIPCDI_PTLE__c &lt;&gt; FPSIPCDI_PTLE2__c</errorConditionFormula>
-        <errorDisplayField>FPSIPCDI_PTLE2__c</errorDisplayField>
-        <errorMessage>Double entry does not match for this score: Parent-Child Dysfunctional Interaction T-Score</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PSI_PCDI_T_out_of_range</fullName>
-        <active>true</active>
-        <errorConditionFormula>NOT(
-(FPSIPCDI_PTLE__c&gt;=1)&amp;&amp;
-(FPSIPCDI_PTLE__c &lt;= 99)
 )
 &amp;&amp;
 NOT(
-ISNULL(FPSIPCDI_PTLE__c)
+FPSIPCDI__c = 999)</errorConditionFormula>
+        <errorDisplayField>FPSIPCDI__c</errorDisplayField>
+        <errorMessage>The Raw Score entered for Parent-Child Dysfunctional Interaction  is out of range. Please enter a valid score. If this score is unavailable, enter 999.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PSI_PD_P_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FPSIPD_PTLE__c &lt;&gt; FPSIPD_PTLE2__c</errorConditionFormula>
+        <errorDisplayField>FPSIPD_PTLE2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Parental Distress Percentile</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PSI_PD_P_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+(FPSIPD_PTLE__c&gt;=0)&amp;&amp;
+(FPSIPD_PTLE__c &lt;= 99)
+)
+&amp;&amp;
+NOT(
+ISNULL(FPSIPD_PTLE__c)
 )</errorConditionFormula>
-        <errorDisplayField>FPSIPCDI_PTLE__c</errorDisplayField>
-        <errorMessage>The T-Score entered for Parent-Child Dysfunctional Interaction  is out of range. Please enter a valid score.</errorMessage>
+        <errorDisplayField>FPSIPD_PTLE__c</errorDisplayField>
+        <errorMessage>The Percentile entered for Parental Distress is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>PSI_PD_Raw_double_entry_mismatch</fullName>
@@ -3283,30 +3306,33 @@ ISNULL(FPSIPCDI_PTLE__c)
 &amp;&amp;
 NOT(
 ISNULL(FPSIPD__c)
-)</errorConditionFormula>
-        <errorDisplayField>FPSIPD__c</errorDisplayField>
-        <errorMessage>The Raw Score entered for Parental Distress is out of range. Please enter a valid score.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PSI_PD_T_double_entry_mismatch</fullName>
-        <active>true</active>
-        <errorConditionFormula>FPSIPD_PTLE__c &lt;&gt; FPSIPD_PTLE2__c</errorConditionFormula>
-        <errorDisplayField>FPSIPD_PTLE2__c</errorDisplayField>
-        <errorMessage>Double entry does not match for this score: Parental Distress T-Score</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PSI_PD_T_out_of_range</fullName>
-        <active>true</active>
-        <errorConditionFormula>NOT(
-(FPSIPD_PTLE__c&gt;=1)&amp;&amp;
-(FPSIPD_PTLE__c &lt;= 99)
 )
 &amp;&amp;
 NOT(
-ISNULL(FPSIPD_PTLE__c)
+FPSIPD__c = 999)</errorConditionFormula>
+        <errorDisplayField>FPSIPD__c</errorDisplayField>
+        <errorMessage>The Raw Score entered for Parental Distress is out of range. Please enter a valid score. If this score is unavailable, enter 999.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PSI_TS_P_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FPSITS_PTLE__c &lt;&gt; FPSITS_PTLE2__c</errorConditionFormula>
+        <errorDisplayField>FPSITS_PTLE2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Total Stress Percentile</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PSI_TS_P_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+(FPSITS_PTLE__c&gt;=0)&amp;&amp;
+(FPSITS_PTLE__c &lt;= 99)
+)
+&amp;&amp;
+NOT(
+ISNULL(FPSITS_PTLE__c)
 )</errorConditionFormula>
-        <errorDisplayField>FPSIPD_PTLE__c</errorDisplayField>
-        <errorMessage>The T-Score entered for Parental Distress is out of range. Please enter a valid score.</errorMessage>
+        <errorDisplayField>FPSITS_PTLE__c</errorDisplayField>
+        <errorMessage>The Percentile entered for Total Stress is out of range. Please enter a valid score.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>PSI_TS_Raw_double_entry_mismatch</fullName>
@@ -3325,30 +3351,12 @@ ISNULL(FPSIPD_PTLE__c)
 &amp;&amp;
 NOT(
 ISNULL(FPSITS__c)
-)</errorConditionFormula>
-        <errorDisplayField>FPSITS__c</errorDisplayField>
-        <errorMessage>The Raw Score entered for Total Stress is out of range. Please enter a valid score.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PSI_TS_T_double_entry_mismatch</fullName>
-        <active>true</active>
-        <errorConditionFormula>FPSITS_PTLE__c &lt;&gt; FPSITS_PTLE2__c</errorConditionFormula>
-        <errorDisplayField>FPSITS_PTLE2__c</errorDisplayField>
-        <errorMessage>Double entry does not match for this score: Total Stress T-Score</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PSI_TS_T_out_of_range</fullName>
-        <active>true</active>
-        <errorConditionFormula>NOT(
-(FPSITS_PTLE__c&gt;=1)&amp;&amp;
-(FPSITS_PTLE__c &lt;= 99)
 )
 &amp;&amp;
 NOT(
-ISNULL(FPSITS_PTLE__c)
-)</errorConditionFormula>
-        <errorDisplayField>FPSITS_PTLE__c</errorDisplayField>
-        <errorMessage>The T-Score entered for Total Stress is out of range. Please enter a valid score.</errorMessage>
+FPSITS__c = 999)</errorConditionFormula>
+        <errorDisplayField>FPSITS__c</errorDisplayField>
+        <errorMessage>The Raw Score entered for Total Stress is out of range. Please enter a valid score. If this score is unavailable, enter 999.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>SDQ_OP_date_cannot_be_before_FDOV</fullName>

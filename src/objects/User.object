@@ -66,25 +66,6 @@
         <type>Hierarchy</type>
     </fields>
     <listViews>
-        <fullName>Active</fullName>
-        <columns>FULL_NAME</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <columns>CORE.USERS.USERNAME</columns>
-        <columns>CORE.USERS.LAST_LOGIN</columns>
-        <columns>CORE.USER_ROLE.NAME</columns>
-        <columns>CORE.USERS.ACTIVE</columns>
-        <columns>CORE.PROFILE.NAME</columns>
-        <columns>CORE.PROFILE.USERTYPE</columns>
-        <columns>SU_ACCESS_EXPIRATION</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CORE.USERS.ACTIVE</field>
-            <operation>equals</operation>
-            <value>1</value>
-        </filters>
-        <label>Active</label>
-    </listViews>
-    <listViews>
         <fullName>ActiveCompanyCommunities</fullName>
         <columns>FULL_NAME</columns>
         <columns>CORE.USERS.ALIAS</columns>
@@ -141,20 +122,6 @@
         <label>Admin Users</label>
     </listViews>
     <listViews>
-        <fullName>All</fullName>
-        <columns>FULL_NAME</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <columns>CORE.USERS.USERNAME</columns>
-        <columns>CORE.USERS.LAST_LOGIN</columns>
-        <columns>CORE.USER_ROLE.NAME</columns>
-        <columns>CORE.USERS.ACTIVE</columns>
-        <columns>CORE.PROFILE.NAME</columns>
-        <columns>CORE.PROFILE.USERTYPE</columns>
-        <columns>CREATED_DATE</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
-    <listViews>
         <fullName>External_Active_Users</fullName>
         <booleanFilter>(1 AND 2 AND 4) AND 3</booleanFilter>
         <columns>FULL_NAME</columns>
@@ -189,7 +156,7 @@
         <label>External Active Users</label>
     </listViews>
     <listViews>
-        <fullName>Internal_Active</fullName>
+        <fullName>Sandbox_Test_Users</fullName>
         <booleanFilter>(1 OR 2) AND 3</booleanFilter>
         <columns>FULL_NAME</columns>
         <columns>CORE.USERS.ALIAS</columns>
@@ -215,7 +182,7 @@
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>Internal Active</label>
+        <label>Sandbox Test Users</label>
     </listViews>
     <searchLayouts>
         <lookupDialogsAdditionalFields>FULL_NAME</lookupDialogsAdditionalFields>

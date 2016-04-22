@@ -7,20 +7,28 @@
 *Bulkified testing
 *Asserted Variables
 *
-*@group Test Script 
-*@group-content /ApexDocContent/Test/DS_SDQ_PSI_CDI_B.htm
-*
 *@author Kelsey Willett
 *@date 11/18/2015
 *@modified date
 *
 *@date 1/27/2016
 *@modified date
+*@author KW
 *Purpose: PSI coverage
 *
 *@date 2/8/16
 *@modified date
+*@author KW
 *Purpose: PSI assert
+*
+*@date 3/2/16
+*@modified date
+*@author KW
+*Purpose: resolve bulk insert issues involving sdq null counter vals
+*update asserts
+*
+*@group Test Script 
+*@group-content /ApexDocContent/Test/DS_SDQ_PSI_CDI_B.htm
 ****/
 
 @isTest (SeeAllData=false)
@@ -51,40 +59,30 @@ private class TestClass_DS_SDQ_PSI_CDI_B  {
     static TestMethod void bulkifyObj(){
     
         //init client
-        Client__c client = test_ut.createClientSummary();
+        Client__c client = test_ut.createClient();
         
         //init list of object
         List<DS_SDQ_PSI_CDI_B__c> bulkObj = new List<DS_SDQ_PSI_CDI_B__c>();
         
         ///begin bulk insert     
-        for (Integer i=0;i<200;i++){            
+        for (Integer i=0;i<200;i++){   
             bulkObj.add(new DS_SDQ_PSI_CDI_B__c(client__c = client.id,
                                                 BEMONULLP__c = 0, BBEHNULLP__c = 0, BHYPNULLP__c = 0, BOTCNULLP__c = 0, BKHBNULLP__c = 0,//null counts parent
                                                 BEMONULLS__c = 0, BBEHNULLS__c = 0, BHYPNULLS__c = 0, BOTCNULLS__c = 0, BKHBNULLS__c = 0,//null counts self
-                                                BDOASDYP__c = System.today(), BDOASDOP__c = System.today(), BDOASDOS__c = System.today(),BDOAPSI__c = System.today(),//dates
+                                                BSDPSOMA__c = '1', BSDPWORR__c = '1', BSDPUNHA__c = '1', BSDPCLIN__c= '1', BSDPAFRA__c = '1',//emotional responses parent
+                                                BSDPTANT__c = '1', BSDPOBEY__c = '1', BSDPFIGH__c = '1', BSDPLIES__c = '1', BSDPSTEA__c = '1',//behavioral responses parent
+                                                BSDPREST__c = '1', BSDPFIDG__c = '1', BSDPDIST__c = '1', BSDPREFL__c = '1', BSDPATTE__c= '2',//hyperactive responses parent
+                                                BSDPLONE__c = '1', BSDPFRIE__c = '1', BSDPPOPU__c = '0', BSDPBULL__c = '1',BSDPOLDB__c = '1',//peer responses parent
+                                                BSDPCONS__c = '1', BSDPSHAR__c = '1', BSDPCARI__c = '1', BSDPKIND__c = '0', BSDPHELP__c = '1',//prosocial responses parent
+                                                BDOASDYP__c = System.today(), BDOASDOP__c = System.today(), BDOASDOS__c = System.today(),BDOAPSI__c = System.today(),//dates 
                                                 BMETSDYP__c = '1', BMETSDOP__c = '1', BMETSDOS__c = '1',//methods
-                                                          BPSIPD__c = 13, BPSIPD_PTLE__c = 81, 
-                                                            BPSIPD2__c = 13, BPSIPD_PTLE2__c = 81,
-                                                          BPSIPCDI__c = 13, BPSIPCDI_PTLE__c = 81, 
-                                                            BPSIPCDI2__c = 13, BPSIPCDI_PTLE2__c = 81,
-                                                          BPSIDC__c = 13, BPSIDC_PTLE__c = 81, 
-                                                            BPSIDC2__c = 13, BPSIDC_PTLE2__c = 81,
-                                                          BPSITS__c = 38, BPSITS_PTLE__c = 81, 
-                                                            BPSITS2__c = 38, BPSITS_PTLE2__c = 81,
-                                                          BPSIDR__c = 9, BPSIDR_PTLE__c = 81, 
-                                                            BPSIDR2__c = 9, BPSIDR_PTLE2__c = 81,
                                                 STATUS_SDQ_P_04_10__c = 'Complete', STATUS_SDQ_P_11_17__c = 'Complete', //parent status
                                                 STATUS_SDQ_S_11_17__c = 'Complete',//self status
-                                                STATUS_PSI__c = 'Complete', //psi status         
+                                                STATUS_PSI__c = 'Complete', //psi status   
                                                 SECTION__c = '0'));   
         }
         
-     //   test.startTest();
-        //add list of records to object
-   //     insert bulkObj;  
-        
-       // test.stopTest();
-        
+        insert bulkObj;                  
     }
     
     /****
@@ -186,11 +184,11 @@ private class TestClass_DS_SDQ_PSI_CDI_B  {
                                     WHERE id =: obj.id];
                                     
         //Negative assert statements
-        System.assertNotEquals(obj.BSDPINFOR__c,'0','Mother was NOT informant ');
-        System.assertNotEquals(obj.BSDPFIDG__c,'2','Child is certainally NOT fidgety. ');
+        System.assertNotEquals(sdq.BSDPINFOR__c,'0','Mother was NOT informant ');
+        System.assertNotEquals(sdq.BSDPFIDG__c,'2','Child is certainally NOT fidgety. ');
         //positive asserts
-        System.assertEquals(obj.BDOASDYP__c,system.today(),'Administered  today,  '+obj.BDOASDYP__c+'. ');
-        System.assertEquals(obj.BSDPFIGH__c, '1', 'Child sometimes fights with or bullies other children.');
+        System.assertEquals(sdq.BDOASDYP__c,system.today(),'Administered  today,  '+sdq.BDOASDYP__c+'. ');
+        System.assertEquals(sdq.BSDPFIGH__c, '1', 'Child sometimes fights with or bullies other children.');
     }
     
     /****
@@ -290,10 +288,10 @@ private class TestClass_DS_SDQ_PSI_CDI_B  {
                                     WHERE id =: obj.id];     
      
         //Negative assert statement 
-        System.assertNotEquals(obj.BSDPCOMM__c,'','Parent comments have been filled in. ');
+        System.assertNotEquals(sdq.BSDPCOMM__c,'','Parent comments have been filled in. ');
         //positive asserts
-        System.assertEquals(obj.BSDPCLIN__c,'1','Child is somewhat nervous or clingy. ');
-        System.assertEquals(obj.BSDPKIND__c, '0', 'Child is NOT kind to younger children. ');
+        System.assertEquals(sdq.BSDPCLIN__c,'1','Child is somewhat nervous or clingy. ');
+        System.assertEquals(sdq.BSDPKIND__c, '0', 'Child is NOT kind to younger children. ');
     }
     
     /****
@@ -393,9 +391,9 @@ private class TestClass_DS_SDQ_PSI_CDI_B  {
                                     WHERE id =: obj.id];                                    
      
         // assert statements 
-        System.assertEquals(obj.BSDSPOPU__c,'0','I am certainally popular. ');
-        System.assertEquals(obj.BSDSSOMA__c,'1','I feel sick sometimes. ');
-        System.assertEquals(obj.BSDSATTE__c,'2','I certainally do not have a good attention span. ');
+        System.assertEquals(sdq.BSDSPOPU__c,'0','I am certainally popular. ');
+        System.assertEquals(sdq.BSDSSOMA__c,'1','I feel sick sometimes. ');
+        System.assertEquals(sdq.BSDSATTE__c,'2','I certainally do not have a good attention span. ');
     }
     
     /****
@@ -691,15 +689,16 @@ private class TestClass_DS_SDQ_PSI_CDI_B  {
         
         RC.init();
         RC.editRecord();
+       // RC.addVisit(ObjList, 'B'); 
         
         //init test query 
-        DS_SDQ_PSI_CDI_B__c sdq = [SELECT  BPSIPD__c,BPSIDC_PTLE2__c,SECTION__c
+        DS_SDQ_PSI_CDI_B__c psi = [SELECT  BPSIPD__c,BPSIDC_PTLE2__c,SECTION__c
                                     FROM DS_SDQ_PSI_CDI_B__c
                                     WHERE id =: obj.id];
                                     
         // assert statements 
-        System.assertEquals(obj.BPSIPD__c, 13,'Incorrect Parental distress raw score.');
-        System.assertEquals(obj.BPSIDC_PTLE2__c, 50,'Incorrect Difficult Child T-score double entry.');
-        System.assertEquals(obj.SECTION__c, '0','Section incorrect: baseline.');
+        System.assertEquals(psi.BPSIPD__c, 13,'Incorrect Parental distress raw score.');
+        System.assertEquals(psi.BPSIDC_PTLE2__c, 50,'Incorrect Difficult Child T-score double entry.');
+        System.assertEquals(psi.SECTION__c, '0','Section incorrect: baseline.');
     }
 }

@@ -102,7 +102,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>DS_FAPGAR_Scoring</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>DS_FOLLOWUPINFO_Controller</apexClass>
@@ -138,11 +138,11 @@
     </classAccesses>
     <classAccesses>
         <apexClass>DS_PSI_Controller</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>DS_PSI_Report_Controller</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>DS_PTSD_CA_Controller</apexClass>
@@ -153,16 +153,20 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>DS_PTSD_CA_Scoring</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>DS_PTSD_PA_Controller</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>DS_PTSD_PA_Report_Controller</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>DS_PTSD_Scoring</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>DS_REFIMM_Controller</apexClass>
@@ -170,27 +174,27 @@
     </classAccesses>
     <classAccesses>
         <apexClass>DS_SDQ_P_04_10_Controller</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>DS_SDQ_P_04_10_Report_Controller</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>DS_SDQ_P_11_17_Controller</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>DS_SDQ_P_11_17_Report_Controller</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>DS_SDQ_S_11_17_Controller</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>DS_SDQ_S_11_17_Report_Controller</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>DS_SDQ_Scoring</apexClass>
@@ -206,19 +210,19 @@
     </classAccesses>
     <classAccesses>
         <apexClass>DS_TSCC_A_Controller</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>DS_TSCC_A_Report_Controller</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>DS_TSCYC_Controller</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>DS_TSCYC_Report_Controller</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>DS_YCINDSEV_Controller</apexClass>
@@ -22474,6 +22478,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_TSCC_TSCYC_F__c.FTSCUNTN__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_TSCC_TSCYC_F__c.SECTION__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -23141,11 +23150,11 @@
     </pageAccesses>
     <pageAccesses>
         <apexPage>DS_PSI</apexPage>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
         <apexPage>DS_PSI_Report</apexPage>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
         <apexPage>DS_PTSD_CA</apexPage>
@@ -23157,11 +23166,11 @@
     </pageAccesses>
     <pageAccesses>
         <apexPage>DS_PTSD_PA</apexPage>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
         <apexPage>DS_PTSD_PA_Report</apexPage>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
         <apexPage>DS_REFIMM</apexPage>
@@ -23201,19 +23210,19 @@
     </pageAccesses>
     <pageAccesses>
         <apexPage>DS_TSCC_A</apexPage>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
         <apexPage>DS_TSCC_A_Report</apexPage>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
         <apexPage>DS_TSCYC</apexPage>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
         <apexPage>DS_TSCYC_Report</apexPage>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
         <apexPage>DS_YCINDSEV</apexPage>

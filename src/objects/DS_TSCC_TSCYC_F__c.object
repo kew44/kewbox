@@ -1836,7 +1836,7 @@ Raw: 0-27</description>
         <fullName>TSCYC_ATR_T_double_entry_mismatch</fullName>
         <active>true</active>
         <errorConditionFormula>FATR_T__c  &lt;&gt;  FATR_T2__c</errorConditionFormula>
-        <errorDisplayField>FANX_T2__c</errorDisplayField>
+        <errorDisplayField>FATR_T2__c</errorDisplayField>
         <errorMessage>Double entry does not match for this score: Atypical Response T-Score</errorMessage>
     </validationRules>
     <validationRules>
