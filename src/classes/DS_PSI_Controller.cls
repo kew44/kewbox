@@ -5,6 +5,8 @@
 *@modified date
 *@author KW
 *
+*@modified    4/22/16    KW    if r=999: p= 0, keysets,strings added
+*
 *@group Assessment
 *@group-content /ApexDocContent/Assessment/DS_PSI_Controller.htm
 ****/
@@ -15,6 +17,9 @@ public with sharing class DS_PSI_Controller extends DS_BasicForm_Controller  {
         // Initilize the DS_BasicForm_Controller
         super(Apexpages.currentPage().getParameters().get('cimi'));
         
+        // Serialize the skip library to JSON format
+        skipElementToJson = JSON.serialize(skip.skipList);
+        
         // Set the obj name 
         form.setObjName('DS_SDQ_PSI_CDI_'+form.BorF+'__c');
         
@@ -22,39 +27,36 @@ public with sharing class DS_PSI_Controller extends DS_BasicForm_Controller  {
         form.getObjRecord();
         
         // Get field name from DS_DATA (variable)
-        bfVariableMap = form.getVariable('PSI');
-
-        // Serialize the skip library to JSON format
-        skipElementToJson = JSON.serialize(skip.skipList);
-        
+        bfVariableMap = form.getVariable('PSI');      
+                
         bfVariableMap.put('DOAPSI',   form.BorF+'DOAPSI__c');
-        //pd
-        bfVariableMap.put('PSIPD',   form.BorF+'PSIPD__c');
-        bfVariableMap.put('PSIPD_PTLE',   form.BorF+'PSIPD_PTLE__c');
-            bfVariableMap.put('PSIPD2',   form.BorF+'PSIPD2__c');
-            bfVariableMap.put('PSIPD_PTLE2',   form.BorF+'PSIPD_PTLE2__c');
-        //pcdi
-        bfVariableMap.put('PSIPCDI',   form.BorF+'PSIPCDI__c');
-        bfVariableMap.put('PSIPCDI_PTLE',   form.BorF+'PSIPCDI_PTLE__c');
-            bfVariableMap.put('PSIPCDI2',   form.BorF+'PSIPCDI2__c');
-            bfVariableMap.put('PSIPCDI_PTLE2',   form.BorF+'PSIPCDI_PTLE2__c');
-        //dc
-        bfVariableMap.put('PSIDC',   form.BorF+'PSIDC__c');
-        bfVariableMap.put('PSIDC_PTLE',   form.BorF+'PSIDC_PTLE__c');
-            bfVariableMap.put('PSIDC2',   form.BorF+'PSIDC2__c');
-            bfVariableMap.put('PSIDC_PTLE2',   form.BorF+'PSIDC_PTLE2__c');
-        //ts
-        bfVariableMap.put('PSITS',   form.BorF+'PSITS__c');
-        bfVariableMap.put('PSITS_PTLE',   form.BorF+'PSITS_PTLE__c');
-            bfVariableMap.put('PSITS2',   form.BorF+'PSITS2__c');
-            bfVariableMap.put('PSITS_PTLE2',   form.BorF+'PSITS_PTLE2__c');
-        //dr
-        bfVariableMap.put('PSIDR',   form.BorF+'PSIDR__c');
-        bfVariableMap.put('PSIDR_PTLE',   form.BorF+'PSIDR_PTLE__c');
-            bfVariableMap.put('PSIDR2',   form.BorF+'PSIDR2__c');
-            bfVariableMap.put('PSIDR_PTLE2',   form.BorF+'PSIDR_PTLE2__c');
+        
+        ////
+        Map<String,String> prefixMap = new Map<String, String>();
+            prefixMap.put('DR',  'Defensive Responding');
+            prefixMap.put('TS',  'Total Stress');
+            prefixMap.put('PD',  'Parental Distress');
+            prefixMap.put('PCDI','Parent-Child Dysfunctional Interaction');
+            prefixMap.put('DC',  'Difficult Child');
+                
+        for(String pm : prefixMap.keySet()){
+            
+            //temp strings for each type of variable
+            String raw1 = String.valueOf(form.BorF+'PSI'+pm+'__c');      
+            Integer rVal1 =Integer.valueOf(form.obj.get(raw1));
+                  
+            String p1 = String.valueOf(form.BorF+'PSI'+pm+'_PTLE__c');
+            String p2 = String.valueOf(form.BorF+'PSI'+pm+'_PTLE2__c');
+            
+            if(rVal1 == 999){
+                System.debug(form.obj.get(p1));
+                form.obj.put(p1, 0);
+                form.obj.put(p2, 0);
+            }
+            
+         System.debug(form.obj.get(p1));            
+        }                 
     }
-
   
   public PageReference saveview() {
   

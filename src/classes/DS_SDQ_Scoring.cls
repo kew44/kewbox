@@ -95,7 +95,7 @@ public class DS_SDQ_Scoring {
                                     AND Section__c = false
                                    ];
         
-        System.debug(sdqdata );//*
+        //System.debug(sdqdata );//*
         //initialize null counters
         EMONULL = 0;
         BEHNULL = 0;
@@ -106,7 +106,7 @@ public class DS_SDQ_Scoring {
     
     public SObject scoreAnalyzer(SObject obj) {
         scoringBody(obj);
-        System.debug(obj);
+        //System.debug(obj);
         return obj;
     }
     
@@ -198,11 +198,11 @@ public class DS_SDQ_Scoring {
         obj.put(BorF+'SD'+PorS+'OTC__c', OTC);
         obj.put(BorF+'SD'+PorS+'KHB__c', KHB);
         
-        System.debug(EMO);
-        System.debug(BEH);
-        System.debug(HYP);
-        System.debug(OTC);
-        System.debug(KHB);
+        //System.debug(EMO);
+        //System.debug(BEH);
+        //System.debug(HYP);
+        //System.debug(OTC);
+        //System.debug(KHB);
         
         if ((obj.get(BorF+'SD'+PorS+'TIME__c')) == null){HOWLONG =0; }
         else {HOWLONG  = Integer.valueOf(obj.get(BorF+'SD'+PorS+'TIME__c'));}
@@ -210,7 +210,7 @@ public class DS_SDQ_Scoring {
         //add subscale score alias for total score alias and parse onto object variable
         TOT = EMO+BEH+HYP+OTC;//+KHB;
         obj.put(BorF+'SD'+PorS+'TOT__c', TOT);
-        System.debug(TOT);
+        //System.debug(TOT);
         
         //impact
         //Hand-scoring values are 0,0,1,2.
@@ -236,16 +236,16 @@ public class DS_SDQ_Scoring {
         obj.put(BorF+'SD'+PorS+'IMPC__c', String.valueOf(IMPC));
         obj.put(BorF+'SD'+PorS+'IMPL__c', String.valueOf(IMPL)); */
 
-        System.debug(UPSET);
-        System.debug(IMPH);
-        System.debug(IMPF);
-        System.debug(IMPC);
-        System.debug(IMPC);
+        //System.debug(UPSET);
+        //System.debug(IMPH);
+        //System.debug(IMPF);
+        //System.debug(IMPC);
+        //System.debug(IMPC);
         
         //add impact variable alias for total impact score alias and parse onto object variable
         DCL = UPSET+IMPH+IMPF+IMPC+IMPL; 
         obj.put(BorF+'SD'+PorS+'DCL__c', DCL);
-        System.debug(DCL);
+        //System.debug(DCL);
         
         //parse null alias onto the object variable
         obj.put(BorF+'EMONULL'+PorS+'__c',EMONULL);
@@ -344,9 +344,9 @@ public class DS_SDQ_Scoring {
         if (KHBNULL>2){ 
             obj.put(BorF+'SD'+PorS+'KTYP__c','Missing/Incomplete');
         }  
-        System.debug(BorF);
-        System.debug(PorS);
-        System.debug(obj);
+        //System.debug(BorF);
+        //System.debug(PorS);
+        //System.debug(obj);
         return obj;
     }               
 }

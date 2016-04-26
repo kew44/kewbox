@@ -28,6 +28,8 @@
 *@author KW
 *Purpose: fix ranges
 *
+*@modified    4/22/16    KW    999 condition
+*
 *@group Assessment
 *@group-content /ApexDocContent/Assessment/DS_PSI_Report_Controller.htm
 ****/
@@ -155,7 +157,9 @@ public with sharing class DS_PSI_Report_Controller extends DS_BasicForm_Controll
                     normalList.add(C_Text);             
                 }
                 else if(C_Value >=85){
-                    clinicalList.add(C_Text);
+                    if(C_Value != 999){
+                        clinicalList.add(C_Text);
+                    }
                 }
                 else{
                     borderlineList.add(C_Text);

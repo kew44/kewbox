@@ -47,9 +47,12 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fieldSets>
         <fullName>STATUS</fullName>
         <description>SDQ</description>
@@ -2968,15 +2971,17 @@
         <columns>NAME</columns>
         <columns>Client__c</columns>
         <columns>BDOV__c</columns>
-        <columns>BFORM__c</columns>
-        <columns>BDOAPSI__c</columns>
-        <columns>BDOASDOP__c</columns>
-        <columns>BDOASDOS__c</columns>
-        <columns>BDOASDYP__c</columns>
+        <columns>BPSIDC__c</columns>
+        <columns>BPSIDC_PTLE__c</columns>
+        <columns>BPSIDR__c</columns>
+        <columns>BPSIDR_PTLE__c</columns>
+        <columns>BPSIPCDI__c</columns>
+        <columns>BPSIPCDI_PTLE__c</columns>
+        <columns>BPSIPD__c</columns>
+        <columns>BPSIPD_PTLE__c</columns>
+        <columns>BPSITS__c</columns>
+        <columns>BPSITS_PTLE__c</columns>
         <columns>STATUS_PSI__c</columns>
-        <columns>STATUS_SDQ_P_04_10__c</columns>
-        <columns>STATUS_SDQ_P_11_17__c</columns>
-        <columns>STATUS_SDQ_S_11_17__c</columns>
         <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>

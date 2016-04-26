@@ -76,21 +76,21 @@
                             </div>                          
                             <!--raw 1-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
-                                <apex:inputField id="PSIDR__c" value="{!form.obj[bfVariableMap['PSIDR']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                                <apex:inputField id="PSIDR__c" value="{!form.obj[bfVariableMap['PSIDR']]}"  required="true"  styleClass="form-control input-sm control-inline  "/>
                             </div>
                             <!--% 1-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
-                                <apex:inputField id="PSIDR_PTLE__c" value="{!form.obj[bfVariableMap['PSIDR_PTLE']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                                <apex:inputField id="PSIDR_PTLE__c" value="{!form.obj[bfVariableMap['PSIDR_PTLE']]}" styleClass="form-control input-sm control-inline  "/><!--not required-->
                             </div>
                             <!--double entry space-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
                             <!--raw 2-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
-                                <apex:inputField id="PSIDR2__c" value="{!form.obj[bfVariableMap['PSIDR2']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                                <apex:inputField id="PSIDR2__c" value="{!form.obj[bfVariableMap['PSIDR2']]}"  required="true"  styleClass="form-control input-sm control-inline  "/>
                             </div>
                             <!--% 2-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
-                                <apex:inputField id="PSIDR_PTLE2__c" value="{!form.obj[bfVariableMap['PSIDR_PTLE2']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                                <apex:inputField id="PSIDR_PTLE2__c" value="{!form.obj[bfVariableMap['PSIDR_PTLE2']]}" styleClass="form-control input-sm control-inline  "/><!--not required-->
                             </div>
                         </div>
                         
@@ -125,21 +125,21 @@
                             </div>                          
                             <!--raw 1-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
-                                <apex:inputField id="PSITS__c" value="{!form.obj[bfVariableMap['PSITS']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                                <apex:inputField id="PSITS__c" value="{!form.obj[bfVariableMap['PSITS']]}"  required="true"  styleClass="form-control input-sm control-inline  "/>
                             </div>
                             <!--% 1-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
-                                <apex:inputField id="PSITS_PTLE__c" value="{!form.obj[bfVariableMap['PSITS_PTLE']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                                <apex:inputField id="PSITS_PTLE__c" value="{!form.obj[bfVariableMap['PSITS_PTLE']]}"  required="true"  styleClass="form-control input-sm control-inline  "/>
                             </div>
                             <!--double entry space-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
                             <!--raw 2-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
-                                <apex:inputField id="PSITS2__c" value="{!form.obj[bfVariableMap['PSITS2']]}" required="true"   styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                                <apex:inputField id="PSITS2__c" value="{!form.obj[bfVariableMap['PSITS2']]}" required="true"   styleClass="form-control input-sm control-inline  "/>
                             </div>
                             <!--% 2-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
-                                <apex:inputField id="PSITS_PTLE2__c" value="{!form.obj[bfVariableMap['PSITS_PTLE2']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                                <apex:inputField id="PSITS_PTLE2__c" value="{!form.obj[bfVariableMap['PSITS_PTLE2']]}"  required="true"  styleClass="form-control input-sm control-inline  "/>
                             </div>
                         </div>
                         
@@ -153,21 +153,21 @@
                             </div>                          
                             <!--raw 1-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
-                                <apex:inputField id="PSIPD__c" value="{!form.obj[bfVariableMap['PSIPD']]}"  required="true"   styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                                <apex:inputField id="PSIPD__c" value="{!form.obj[bfVariableMap['PSIPD']]}"  required="true"   styleClass="form-control input-sm control-inline  "/>
                             </div>
                             <!--% 1-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
-                                <apex:inputField id="PSIPD_PTLE__c" value="{!form.obj[bfVariableMap['PSIPD_PTLE']]}" required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                                <apex:inputField id="PSIPD_PTLE__c" value="{!form.obj[bfVariableMap['PSIPD_PTLE']]}" required="true"  styleClass="form-control input-sm control-inline  "/>
                             </div>
                             <!--double entry space-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
                             <!--raw 2-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
-                                <apex:inputField id="PSIPD2__c" value="{!form.obj[bfVariableMap['PSIPD2']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                                <apex:inputField id="PSIPD2__c" value="{!form.obj[bfVariableMap['PSIPD2']]}"  required="true"  styleClass="form-control input-sm control-inline  "/>
                             </div>
                             <!--% 2-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
-                                <apex:inputField id="PSIPD_PTLE2__c" value="{!form.obj[bfVariableMap['PSIPD_PTLE2']]}" required="true"   styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                                <apex:inputField id="PSIPD_PTLE2__c" value="{!form.obj[bfVariableMap['PSIPD_PTLE2']]}" required="true"   styleClass="form-control input-sm control-inline  "/>
                             </div>
                         </div>
                         
@@ -181,21 +181,21 @@
                             </div>                          
                             <!--raw 1-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
-                                <apex:inputField id="PSIPCDI__c" value="{!form.obj[bfVariableMap['PSIPCDI']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                                <apex:inputField id="PSIPCDI__c" value="{!form.obj[bfVariableMap['PSIPCDI']]}"  required="true"  styleClass="form-control input-sm control-inline  "/>
                             </div>
                             <!--% 1-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
-                                <apex:inputField id="PSIPCDI_PTLE__c" value="{!form.obj[bfVariableMap['PSIPCDI_PTLE']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                                <apex:inputField id="PSIPCDI_PTLE__c" value="{!form.obj[bfVariableMap['PSIPCDI_PTLE']]}"  required="true"  styleClass="form-control input-sm control-inline  "/>
                             </div>
                             <!--double entry space-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
                             <!--raw 2-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
-                                <apex:inputField id="PSIPCDI2__c" value="{!form.obj[bfVariableMap['PSIPCDI2']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                                <apex:inputField id="PSIPCDI2__c" value="{!form.obj[bfVariableMap['PSIPCDI2']]}"  required="true"  styleClass="form-control input-sm control-inline  "/>
                             </div>
                             <!--% 2-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
-                                <apex:inputField id="PSIPCDI_PTLE2__c" value="{!form.obj[bfVariableMap['PSIPCDI_PTLE2']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                                <apex:inputField id="PSIPCDI_PTLE2__c" value="{!form.obj[bfVariableMap['PSIPCDI_PTLE2']]}"  required="true"  styleClass="form-control input-sm control-inline  "/>
                             </div>
                         </div>
                         
@@ -209,21 +209,21 @@
                             </div>                          
                             <!--raw 1-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
-                                <apex:inputField id="PSIDC__c" value="{!form.obj[bfVariableMap['PSIDC']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                                <apex:inputField id="PSIDC__c" value="{!form.obj[bfVariableMap['PSIDC']]}"  required="true"  styleClass="form-control input-sm control-inline  "/>
                             </div>
                             <!--% 1-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
-                                <apex:inputField id="PSIDC_PTLE__c" value="{!form.obj[bfVariableMap['PSIDC_PTLE']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                                <apex:inputField id="PSIDC_PTLE__c" value="{!form.obj[bfVariableMap['PSIDC_PTLE']]}"  required="true"  styleClass="form-control input-sm control-inline  "/>
                             </div>
                             <!--double entry space-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
                             <!--raw 2-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
-                                <apex:inputField id="PSIDC2__c" value="{!form.obj[bfVariableMap['PSIDC2']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                                <apex:inputField id="PSIDC2__c" value="{!form.obj[bfVariableMap['PSIDC2']]}"  required="true"  styleClass="form-control input-sm control-inline  "/>
                             </div>
                             <!--% 2-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
-                                <apex:inputField id="PSIDC_PTLE2__c" value="{!form.obj[bfVariableMap['PSIDC_PTLE2']]}"  required="true"  styleClass="form-control input-sm control-inline  "/><!--auto-width-->
+                                <apex:inputField id="PSIDC_PTLE2__c" value="{!form.obj[bfVariableMap['PSIDC_PTLE2']]}"  required="true"  styleClass="form-control input-sm control-inline  "/>
                             </div>
                         </div>
                         

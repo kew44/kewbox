@@ -62,6 +62,9 @@
                         <br/>
                         <br/>
                         The PSI-SF includes a validity scale Defensive Responding. The symptom subscales should be considered in the context of this validity scale. 
+                        <br/>
+                        <br/>
+                        <i>*Please note that if a subscale's raw score is unknown, the percentile will be charted as zero.</i>
                     </p>
                     <!--end information-->
                     
@@ -133,14 +136,59 @@
                                 <td>{!IF(HTMLENCODE(visit.BorF) = 'B', 'Baseline', 'Follow-up')}</td>                          
                                 
                                 <apex:outputPanel layout="none" >
-                                    <td  class="text-center {!IF((visit.PSIDR)        <= 10,  'danger','')}"> {!visit.PSIDR} <br />{!IF((visit.PSIDR <=10), 'Clinically Significant','')}</td><!--raw <= 10, not percentile-->
-                                    <!--<td  class="text-center {!IF((visit.PSIDR_PTLE)   > 85, 'danger', (IF((visit.PSIDR_PTLE)   <= 80, '', 'warning')))}">{!visit.PSIDR_PTLE}<br/>{!IF((visit.PSIDR_PTLE)   > 85, 'Invalid',  (IF((visit.PSIDR_PTLE)   <= 80, '', 'Borderline')))}</td>--><!--dr-->   
-                                    <td  class="text-center {!IF((visit.PSITS_PTLE)   >= 85, 'danger', (IF((visit.PSITS_PTLE)   <= 80, '', 'warning')))}">{!visit.PSITS_PTLE}<br/>   {!IF((visit.PSITS_PTLE)   >= 85, 'Clinical', (IF((visit.PSITS_PTLE)   <= 80, '', 'Borderline')))}</td><!--ts-->    
-                                    <td  class="text-center {!IF((visit.PSIPD_PTLE)   >= 85, 'danger', (IF((visit.PSIPD_PTLE)   <= 80, '', 'warning')))}">{!visit.PSIPD_PTLE}<br/>   {!IF((visit.PSIPD_PTLE)   >= 85, 'Clinical', (IF((visit.PSIPD_PTLE)   <= 80, '', 'Borderline')))}</td><!--pd-->    
-                                    <td  class="text-center {!IF((visit.PSIPCDI_PTLE) >= 85, 'danger', (IF((visit.PSIPCDI_PTLE) <= 80, '', 'warning')))}">{!visit.PSIPCDI_PTLE}<br/> {!IF((visit.PSIPCDI_PTLE) >= 85, 'Clinical', (IF((visit.PSIPCDI_PTLE) <= 80, '', 'Borderline')))}</td><!--p_cdi-->    
-                                    <td  class="text-center {!IF((visit.PSIDC_PTLE)   >= 85, 'danger', (IF((visit.PSIDC_PTLE)   <= 80, '', 'warning')))}">{!visit.PSIDC_PTLE}<br/>   {!IF((visit.PSIDC_PTLE)   >= 85, 'Clinical', (IF((visit.PSIDC_PTLE)   <= 80, '', 'Borderline')))}</td><!--dc-->                                     
+                                
+                                <!--dr uses raw score, 10& under clinical, no borderline-->
+                                <td class="text-center {!IF((visit.PSIDR)<= 10, 'danger','')}"> <!--formatting-->
+                                    {!IF((visit.PSIDR) = 999, '***', visit.PSIDR)}              <!--value-->
+                                    <br/>   
+                                    <div class="{!IF((visit.PSIDR) = 999, 'message warningM3','')}" role="alert">
+                                        <apex:image rendered="{!IF((visit.PSIDR) = 999,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" /> <!--symbol-->
+                                        {!IF((visit.PSIDR) = 999, 'Not Available', (IF((visit.PSIDR)<= 10,'Clinically Significant','')))}   <!--significance-->
+                                    </div>
+                                </td>
+                                
+                                <!--percentile, 0 = not available, 1-14 n/a, 15-80 normal, 81-84 borderline, 85-99 clinical-->
+                                <!--ts-->                                   
+                                <td  class="text-center {!IF((visit.PSITS_PTLE)   >= 85, 'danger', (IF((visit.PSITS_PTLE)   <= 80, '', 'warning')))}">  <!--formatting-->
+                                    {!IF((visit.PSITS_PTLE) = 0, '***', visit.PSITS_PTLE )}                                                               <!--value-->
+                                    <br/>   
+                                    <div class="{!IF((visit.PSITS_PTLE) = 0, 'message warningM3','')}" role="alert">
+                                        <apex:image rendered="{!IF((visit.PSITS_PTLE) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" /> <!--symbol-->
+                                        {!IF((visit.PSITS_PTLE)= 0, 'Not Available', (IF((visit.PSITS_PTLE)>= 85,'Clinically Significant',(IF((visit.PSITS_PTLE)>= 81,'Borderline',(IF((visit.PSITS_PTLE)  <= 14,'N/A','')))))))}   <!--significance-->
+                                    </div>
+                                </td>     
+                                 
+                                <!--pd-->                 
+                                <td  class="text-center {!IF((visit.PSIPD_PTLE)   >= 85, 'danger', (IF((visit.PSIPD_PTLE)   <= 80, '', 'warning')))}">  <!--formatting-->
+                                    {!IF((visit.PSIPD_PTLE) = 0, '***', visit.PSIPD_PTLE )}                                                               <!--value-->
+                                    <br/>   
+                                    <div class="{!IF((visit.PSIPD_PTLE) = 0, 'message warningM3','')}" role="alert">
+                                        <apex:image rendered="{!IF((visit.PSIPD_PTLE) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" /> <!--symbol-->
+                                        {!IF((visit.PSIPD_PTLE)= 0, 'Not Available', (IF((visit.PSIPD_PTLE)>= 85,'Clinically Significant',(IF((visit.PSIPD_PTLE)>= 81,'Borderline',(IF((visit.PSIPD_PTLE)  <= 14,'N/A','')))))))}   <!--significance-->
+                                    </div>
+                                </td> 
+                                
+                                <!--p_cdi-->            
+                                <td  class="text-center {!IF((visit.PSIPCDI_PTLE)   >= 85, 'danger', (IF((visit.PSIPCDI_PTLE)   <= 80, '', 'warning')))}">  <!--formatting-->
+                                    {!IF((visit.PSIPCDI_PTLE) = 0, '***', visit.PSIPCDI_PTLE )}                                                               <!--value-->
+                                    <br/>   
+                                    <div class="{!IF((visit.PSIPCDI_PTLE) = 0, 'message warningM3','')}" role="alert">
+                                        <apex:image rendered="{!IF((visit.PSIPCDI_PTLE) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" /> <!--symbol-->
+                                        {!IF((visit.PSIPCDI_PTLE)= 0, 'Not Available', (IF((visit.PSIPCDI_PTLE)>= 85,'Clinically Significant',(IF((visit.PSIPCDI_PTLE)>= 81,'Borderline',(IF((visit.PSIPCDI_PTLE)  <= 14,'N/A','')))))))}   <!--significance-->
+                                    </div>
+                                </td> 
+                                
+                                <!--dc-->      
+                                <td  class="text-center {!IF((visit.PSIDC_PTLE)   >= 85, 'danger', (IF((visit.PSIDC_PTLE)   <= 80, '', 'warning')))}">  <!--formatting-->
+                                    {!IF((visit.PSIDC_PTLE) = 0, '***', visit.PSIDC_PTLE )}                                                               <!--value-->
+                                    <br/>   
+                                    <div class="{!IF((visit.PSIDC_PTLE) = 0, 'message warningM3','')}" role="alert">
+                                        <apex:image rendered="{!IF((visit.PSIDC_PTLE) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" /> <!--symbol-->
+                                        {!IF((visit.PSIDC_PTLE)= 0, 'Not Available', (IF((visit.PSIDC_PTLE)>= 85,'Clinically Significant',(IF((visit.PSIDC_PTLE)>= 81,'Borderline',(IF((visit.PSIDC_PTLE)  <= 14,'N/A','')))))))}   <!--significance-->
+                                    </div>
+                                </td>                                    
                                 </apex:outputPanel>
-                            </tr>                        
+                            </tr>                   
                         </apex:repeat>                    
                     </tbody>
                 </table>
