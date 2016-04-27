@@ -1222,7 +1222,8 @@ public with sharing class ClientSummaryReportController {
                             //determine significance by raw score 
                             psiValidList.add(new PSIElement('Defensive Responding (DR)',Integer.valueOf(clientPSI.get(BorF+'PSIDR__c')),
                                 ((Integer.valueOf(clientPSI.get(BorF+'PSIDR__c'))) <= 10) ? 'Clinically Significant' :
-                                    (((Integer.valueOf(clientPSI.get(BorF+'PSIDR__c'))) > 10 ) )? 'Normal':'' ));  
+                                    (((Integer.valueOf(clientPSI.get(BorF+'PSIDR__c'))) == 999 ) )? '***':
+                                        (((Integer.valueOf(clientPSI.get(BorF+'PSIDR__c'))) > 10 ) )? 'Normal':'' ));  
                             
                             //Scale
                             for(String p: PSIMap.keySet()){
@@ -1230,7 +1231,10 @@ public with sharing class ClientSummaryReportController {
                                 
                                 Psi_Val= Integer.valueOf(clientPSI.get(BorF+'PSI'+p+'_PTLE__c'));
                                 
-                                if(Psi_Val<15){
+                                if(Psi_Val == 0){
+                                    Psi_Sig = '***';
+                                }
+                                else if(Psi_Val<15){
                                     Psi_Sig = 'N/A';
                                 }
                                 else if((Psi_Val > =15) && (Psi_Val<= 80)){

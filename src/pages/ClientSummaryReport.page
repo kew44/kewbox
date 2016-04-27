@@ -845,14 +845,17 @@
                                 
                                 <tbody>   
                                     <apex:repeat value="{!psiValidList}" var="validdisplay">
-                                        <tr class="{!IF((validdisplay.significance) = 'Clinically Significant', 'danger', (IF((validdisplay.significance) = 'Normal' , '', 'warning')))}">
+                                        <tr class="{!IF((validdisplay.significance) = 'Clinically Significant', 'danger', (IF((validdisplay.significance) = 'Normal' , '', (IF((validdisplay.significance) = '***', '', 'warning')))))}">
                                             <!--Category-->
                                             <td class="content-table-col-A">
                                                 {!validdisplay.category}
                                             </td>
                                             <!--T-Score-->
                                             <td>
-                                                {!validdisplay.percentile }
+                                                <div class="{!IF((validdisplay.percentile) = 999,'message warningM3','')}" role="alert">
+                                                    <apex:image rendered="{!IF((validdisplay.percentile) = 999,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" /> 
+                                                    {!IF((validdisplay.percentile) = 999, 'Not Available',(validdisplay.percentile))}
+                                                </div>
                                             </td>
                                             <!--significance-->
                                             <td class="content-table-col-Z">
@@ -888,8 +891,11 @@
                                                 {!psidisplay.category}
                                             </td>
                                             <!--T-Score-->
-                                            <td >
-                                                {!psidisplay.percentile }
+                                            <td>
+                                                <div class="{!IF((psidisplay.percentile) = 0,'message warningM3','')}" role="alert">
+                                                    <apex:image rendered="{!IF((psidisplay.percentile) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" /> 
+                                                    {!IF((psidisplay.percentile) = 0, 'Not Available',(psidisplay.percentile))}
+                                                </div>
                                             </td>
                                             <!--significance-->
                                             <td class="content-table-col-Z">

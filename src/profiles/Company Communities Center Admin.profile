@@ -145,6 +145,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>DS_PSI_Scoring</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>DS_PTSD_CA_Controller</apexClass>
         <enabled>true</enabled>
     </classAccesses>

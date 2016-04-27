@@ -3052,7 +3052,10 @@ BPSIDC__c = 999)</errorConditionFormula>
         <errorConditionFormula>NOT(
             (BPSIDR_PTLE__c&gt;=0)&amp;&amp;
             (BPSIDR_PTLE__c &lt;= 99)
-            )</errorConditionFormula>
+            )
+&amp;&amp; NOT(
+ISNULL(BPSIDR_PTLE__c)
+)</errorConditionFormula>
         <errorDisplayField>BPSIDR_PTLE__c</errorDisplayField>
         <errorMessage>The Percentile entered for Defensive Responding is out of range. Please enter a valid score.</errorMessage>
     </validationRules>

@@ -3198,6 +3198,9 @@ FPSIDC__c = 999)</errorConditionFormula>
         <errorConditionFormula>NOT(
 (FPSIDR_PTLE__c&gt;=0)&amp;&amp;
 (FPSIDR_PTLE__c &lt;= 99)
+)
+&amp;&amp;NOT(
+ISNULL(FPSIDR_PTLE__c)
 )</errorConditionFormula>
         <errorDisplayField>FPSIDR_PTLE__c</errorDisplayField>
         <errorMessage>The Percentile entered for Defensive Responding is out of range. Please enter a valid score.</errorMessage>
