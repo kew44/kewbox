@@ -84,18 +84,22 @@
                         <p>
                             <br/>
                             <h4><u>Clinical Range </u></h4>
-                        <br/>
-                        The child’s symptoms on the following scales are clinically significant compared to other children their age: <b>{!clinicalRange}</b><br/>
+                            <br/>
+                            The child’s symptoms on the following scales are clinically significant compared to other children their age: <b>{!clinicalRange}</b><br/>
                         </p>  
                     </apex:outputPanel>
                     <!--end clinical list-->
                 
-                    <p>
-                        <br/>
-                        <strong><u>Validity Scales </u></strong>
-                        <br/>
-                        The score on the Defensive Responding scale is in the <u>{!Str_DR}</u> range. 
-                    </p>                
+                    <!--validity statement-->
+                    <apex:outputPanel layout="none" rendered="{!if(Str_DR != 'Not Available', true, false)}">
+                        <p>
+                            <br/>
+                            <strong><u>Validity Scales </u></strong>
+                            <br/>
+                            The score on the Defensive Responding scale is in the <u>{!Str_DR}</u> range. 
+                        </p>       
+                    </apex:outputPanel>  
+                    <!--end validity statement-->       
                 </div>
                 <!--end info-->
             

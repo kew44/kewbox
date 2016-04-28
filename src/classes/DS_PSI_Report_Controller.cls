@@ -30,6 +30,8 @@
 *
 *@modified    4/22/16    KW    999 condition
 *
+*@modified    4/28/16    KW    validity range string
+*
 *@group Assessment
 *@group-content /ApexDocContent/Assessment/DS_PSI_Report_Controller.htm
 ****/
@@ -177,7 +179,10 @@ public with sharing class DS_PSI_Report_Controller extends DS_BasicForm_Controll
         
         //Validity score set to string, not lists
         //Defensive Responding    (DR)     
-         if( Integer.valueOf(form.obj.get(form.BorF+'PSIDR__c')) <= 10){
+         if( Integer.valueOf(form.obj.get(form.BorF+'PSIDR__c')) == 999){
+             Str_DR = 'Not Available';
+         }
+         else if( Integer.valueOf(form.obj.get(form.BorF+'PSIDR__c')) <= 10){
              Str_DR = 'Clinically Significant';
          }
          else{
