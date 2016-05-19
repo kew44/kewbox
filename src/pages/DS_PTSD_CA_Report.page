@@ -1,7 +1,7 @@
 <apex:page standardController="DS_PTSD_CA_B__c" extensions="DS_PTSD_CA_Report_Controller" action="{!init}" showHeader="{!NOT(printReport)}" id="ptsd-report">
     
     <link href="{!URLFOR($Resource.CSS_DS_Report)}" rel="stylesheet" media="screen, print"/>
-    <link href="{!URLFOR($Resource.CSS_DS_PTSD_Report)}" rel="stylesheet" media="screen, print"/>
+    <!--<link href="{!URLFOR($Resource.CSS_DS_PTSD_Report)}" rel="stylesheet" media="screen, print"/>-->
     
     <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
     

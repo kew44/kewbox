@@ -80,6 +80,7 @@ public with sharing class ClientSummaryReportController {
         public Integer section { get; set; }
         public String visitType { get; set; }
         public Decimal visitAge { get; set; }
+        public Form form{get;set;}
 
         public Client__c client { get; set; }
   
@@ -417,17 +418,21 @@ public with sharing class ClientSummaryReportController {
               return returnValue;       
             }
         }
-
+        
     /****
     * @description Constructor
     * @param controller ApexPages.StandardController
     * @return null
     */
         public ClientSummaryReportController(ApexPages.StandardController controller) {
+        
 
         //vars used in url
         cID = parameter.get('c');
         cimi = Apexpages.currentPage().getParameters().get('cimi');
+        String summary='SummaryReport';
+//        form = new Form(cimi);
+       // System.debug(form);
 
         //visit information variables
         section = Integer.valueOf(parameter.get('section'));

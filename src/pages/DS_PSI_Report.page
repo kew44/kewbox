@@ -1,7 +1,7 @@
 <apex:page standardController="DS_SDQ_PSI_CDI_B__c"  extensions="DS_PSI_Report_Controller" action="{!init}"  showHeader="{!NOT(printReport)}" id="psi-report">
     
     <link href="{!URLFOR($Resource.CSS_DS_Report)}" rel="stylesheet" media="screen, print"/>
-    <link href="{!URLFOR($Resource.CSS_DS_PSI_Report)}" rel="stylesheet" media="screen, print"/>
+    <!--<link href="{!URLFOR($Resource.CSS_DS_PSI_Report)}" rel="stylesheet" media="screen, print"/>-->
     
     <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
     
@@ -103,7 +103,7 @@
                 </div>
                 <!--end info-->
             
-            <table class="table psi-table table-bordered table-striped">
+                <table class="table psi-table table-bordered table-striped">
                     <thead>
                         <!--score table headings-->
                         <tr>
@@ -348,7 +348,7 @@
                         title: 'Date of Assessment',                        
                     },
                     vAxis: {
-                        title: 'T-Score Value',
+                        title: 'Percentile',
                         maxValue: 100,
                         minValue: 0,
                         showTextEvery: 1,  

@@ -1,0 +1,399 @@
+<apex:page standardController="DS_Background_Family_Info_B__c" extensions="DS_TEMP_REPORT_CONTROLLER" id="temp-report" action="{!init}"  showHeader="{!NOT(printReport)}">
+    
+    <!--link to report stylesheet-->
+    <link href="{!URLFOR($Resource.CSS_DS_Report)}" rel="stylesheet" media="screen, print"/>
+    
+    <!--initializes scripts, styles, and navigation-->
+    <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
+    
+    <!--print report command for button-->  
+    <apex:outputPanel layout="none" rendered="{!printReport}">
+        <script>
+        $j(document).ready(function() { 
+            $j('.total-score').removeClass('col-md-12 col-lg-6').css('width','1150px', 'height', '300px', 'margin-bottom', '10px');
+            $j('.chart-t-score').removeClass('col-md-12 col-lg-6').css('width','1150px', 'height', '300px');
+            $j('.bPageTitle-page2').html($j('.bPageTitle').html());
+            $j('.header-info-table-page2').html($j('.header-info-table').html());
+            window.print(); 
+        });
+        </script>
+    </apex:outputPanel>
+    <!--end print command -->  
+    
+    <!--displays page name, client id & initials, tab icon, and breadcrumb link-->
+    <div class="{!HTMLENCODE(form.visitType)}-assessment">
+        <apex:sectionHeader title="{!HTMLENCODE(form.title)}" subtitle="{!HTMLENCODE(form.subtitle)}" /><!-- subtitle="{!IF(NOT(printReport), HTMLENCODE(form.subtitle), null)}" />-->
+    </div>    
+    
+    <!--styled with bootwrap-->
+    <div class="bootwrap">
+    
+        <!--begin report content-->
+        <apex:form id="DS_TEMP_REPORT" styleClass="form-horizontal temp-report"> 
+        
+            <!--ClientInformation header-->
+            <c:cimiClientInfo displayVisitType="true" formElement="{!form}"/>
+            
+            <!-- primary content pageBlock container-->
+            <apex:pageBlock title="{!HTMLENCODE(form.title)} Report" >
+                
+                <!--Save & view, save, and cancel control buttons for pageBlock-->
+                <apex:pageBlockButtons >
+                    <apex:commandButton action="{!editRecord}" value="Edit" styleClass="btn-info btn btn-sm" rendered="{!not(printReport)}"/>
+                </apex:pageBlockButtons>
+                <!--end buttons-->
+                
+                <!--placeholding structure that allows for system message display-->
+                <apex:pageMessages />
+                
+                <!--start warning, conditional if any nulls present-->
+                <apex:outputPanel styleClass="warning" layout="none"><!-- rendered="{!if(missing != '', true, false)}"><!--conditions will vary-->
+                    <div class="message well well-lg  " role="alert">
+                        <div class="messageText warningM3" id="report-alert" >
+                            <span id="report-alert-message">
+                                <img alt="ERROR" class="msgIcon" src="/s.gif" title="ERROR"/>
+                                    This message will show if there are missing values.
+                            </span>
+                        </div>
+                    </div>
+                </apex:outputPanel>
+                <!--end warning-->  
+                
+                <!--provides print button functionality and structure-->
+                <apex:outputPanel layout="none" rendered="{!NOT(printReport)}">
+                    <div>
+                        <a class="btn btn-default pull-right" href="/apex/DS_TEMP_REPORT?cimi={!HTMLENCODE(cimi)}&print=1" target="_blank">
+                            <i class="glyphicon glyphicon-print"></i> &nbsp;Print
+                        </a>
+                        <br/>
+                    </div>
+                </apex:outputPanel>
+                <!--end print button-->
+                
+                <!--information and instructions-->
+                <div class="alert alert-info">
+                    
+                    <apex:outputPanel >
+                        <!--information-->
+                        <p>
+                            This page is to demonstrate the layout and style of a report page in CIMI. This block will display any information about the assessment and its interpretation.<br/>
+                            For an assessment with multiple subscores, they may be listed (in-line) here: <em>Subscore1, Sub-scale2, 3, Four, Etc., and TheLastOne</em>.
+                        </p>
+                        <!--end information-->
+                        
+                        <br/>
+                        
+                        <!--administration date-->
+                        <h4>
+                            Date of administration: &nbsp;
+                            <apex:outputField id="DOV_TEMP__c" value="{!form.obj[bfVariableMap['DOV_TEMP']]}"/>
+                            <br/>
+                        </h4>
+                        <!--end administration date-->
+                    </apex:outputPanel>
+                    
+                    <br/>
+                    
+                    <!--interpretation guide(s)-->
+                    <!--clinically significant symptoms, if any-->
+                    <apex:outputPanel layout="none" rendered="{!if(clinicalRange != '', true, false)}">
+                        <u><strong>Clinical Range</strong></u>
+                        <p>
+                            The child’s symptoms on the following scales are clinically significant compared to other children their age: <u>{!clinicalRange}</u>.
+                        </p>  
+                    </apex:outputPanel>
+                    <!--end clinical list-->
+                    
+                    <br/>
+                    
+                    <!--borderline symptoms, if any-->
+                    <apex:outputPanel layout="none" rendered="{!if(borderlinerange != '', true, false)}">     <!--significance, conditional formatting-->     
+                        <strong><u>Borderline Range </u></strong>               
+                        <p>
+                            The child's symptoms on the following scales are in the borderline range compared to other children their age: <u>{!borderlinerange}</u>.
+                        </p>
+                    </apex:outputPanel>
+                    <!--end borderline-->
+                    
+                    <br/>
+                    
+                    <!--other interpretation statement-->
+                    <apex:outputPanel layout="none" rendered="{!if(Str_chk != 'Not Available', true, false)}">
+                        <strong><u>Other Interpretation or Validity</u></strong>
+                        <p>
+                            The <u>{!Str_chk}</u>. This section is used to show validity ranges on the PSI. Only the significance for this visit is displayed. 
+                        </p>       
+                    </apex:outputPanel>  
+                    <!--end other interpretation statement--> 
+                </div>
+                <!--end interpretation-->
+            
+				<apex:outputPanel styleClass="row"><!--rendered if not missing-->
+					<!--<div class= "score-table">-->
+						<table class="table table-bordered table-striped ">
+							<!--score table headings-->
+							<thead>
+								<!--main headings-->
+								<tr>
+									<th rowspan="2">Date</th>
+									<th rowspan="2">Visit</th>
+									<th colspan="2" class="text-center">Main Category 1</th>                      
+									<th colspan="2" class="text-center">Score X's</th>        
+									<th colspan="2" class="text-center">Score Y's</th>
+								</tr>
+								<!--sub category headings-->
+								<tr>
+									<th  class="text-center">Sub Category 1</th>
+									<th  class="text-center">Sub 2</th>
+									<th  class="text-center">Score</th>
+									<th  class="text-center">Double entry</th>
+									<th  class="text-center">Score</th>
+									<th  class="text-center">Double entry</th>
+								</tr>
+							</thead>
+							<!--end headings-->
+							
+							<tbody>                        
+								<apex:repeat value="{!visits}" var="visit"><!--use variable name or alias + section for id for all td-->
+									
+									<!--response summary-->
+									<tr id="row_{!visit.SECTION}">
+										<!--date field-->
+										<td id="date_{!visit.SECTION}" >
+											<apex:outputText value="{0,date,MM/dd/yyyy}">
+												<apex:param value="{!visit.dateTEMP}" />
+											</apex:outputText>
+										</td>
+										<!--end date-->
+										
+										<!--visit type-->
+										<td id="BorF_{!visit.SECTION}">{!IF(HTMLENCODE(visit.BorF) = 'B', 'Baseline', 'Follow-up')}</td> 
+									
+										<apex:outputPanel layout="none" >   
+											<!--sub category dummy val 1-->
+											<td id="num1_{!visit.SECTION}" class="text-center {!IF((visit.num1)   >= 6, 'danger', (IF((visit.num1)   <= 3, '', 'warning')))}"><!--formatting-->
+												{!IF((visit.num1) = 0, '***', visit.num1 )} <!--value-->
+												<br/> 
+												<div class="{!IF((visit.num1) = 0, 'message warningM3','')}" role="alert">
+													<apex:image rendered="{!IF((visit.num1) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" /> <!--symbol-->
+													{!IF((visit.num1)= 0, 'Not Available', (IF((visit.num1)>= 6,'Clinically Significant',(IF((visit.num1)>= 4,'Borderline',(IF((visit.num1)  <= 0,'N/A','')))))))}   <!--significance-->
+												</div>
+											</td>    
+											<!--sub category dummy val 2-->
+											<td id="num2_{!visit.SECTION}" class="text-center {!IF((visit.num2)   >= 6, 'danger', (IF((visit.num2)   <= 3, '', 'warning')))}"><!--formatting-->
+												{!IF((visit.num2) = 0, '***', visit.num2 )} <!--value-->
+												<br/> 
+												{!IF((visit.num2) >= 6, 'Clinical', (IF((visit.num2) <= 3, '', 'Borderline')))}
+											</td>     
+											<td id="num3_{!visit.SECTION}" class="text-center {!IF((visit.num3)   >= 6, 'danger', (IF((visit.num3)   <= 3, '', 'warning')))}"><!--formatting-->
+												{!IF((visit.num3) = 0, '***', visit.num3 )}  <!--value-->
+												<br/> 
+												{!IF((visit.num3) >= 6, 'Clinical', (IF((visit.num3) <= 3, '', 'Borderline')))}
+											</td><!--score x-->             
+											<td id="num3dbl_{!visit.SECTION}" class="text-center {!IF((visit.num3dbl)   >= 6, 'danger', (IF((visit.num3dbl)   <= 3, '', 'warning')))}"><!--formatting-->
+												{!IF((visit.num3dbl) = 0, '***', visit.num3dbl )} <!--value-->
+												<br/> 
+												{!IF((visit.num3dbl) >= 6, 'Clinical', (IF((visit.num3dbl) <= 3, '', 'Borderline')))}
+											</td><!--score x double-->             
+											<td id="num4_{!visit.SECTION}" class="text-center {!IF((visit.num4)   >= 6, 'danger', (IF((visit.num4)   <= 3, '', 'warning')))}"><!--formatting-->
+												{!IF((visit.num4) = 0, '***', visit.num4 )}  <!--value-->
+												<br/> 
+												{!IF((visit.num4) >= 6, 'Clinical', (IF((visit.num4) <= 3, '', 'Borderline')))}
+											</td><!--score y-->          
+											<td id="num4dbl_{!visit.SECTION}" class="text-center {!IF((visit.num4dbl)   >= 6, 'danger', (IF((visit.num3dbl)   <= 3, '', 'warning')))}"><!--formatting-->
+												{!IF((visit.num4dbl) = 0, '***', visit.num4dbl )}  <!--value-->
+												<br/> 
+												{!IF((visit.num4dbl) >= 6, 'Clinical', (IF((visit.num4dbl) <= 3, '', 'Borderline')))}
+											</td><!--score y double--> 
+										</apex:outputPanel>
+									</tr>         
+								</apex:repeat>                                  
+							</tbody>
+						</table>
+					<!--</div>-->
+					
+					<!--<div class="charts-div">-->
+						<!--panel reserved for linechart-->
+						<apex:outputPanel layout="none"  rendered="{!AND(displayHistory, NOT(printReport))}">
+							<div class="form-group charts-div no-border-bottom no-space-bottom">
+								<div class="col-md-12 col-lg-12  total-score">
+									<div id="linechart_material" ></div>
+								</div>
+							</div>  
+						</apex:outputPanel> 
+						<!--end linechart-->
+						
+						<!--panel reserved for colchart-->
+						<apex:outputPanel layout="none"  rendered="{!AND(displayHistory, NOT(printReport))}">
+							<div class="form-group charts-div no-border-bottom no-space-bottom">
+								<div class="col-md-12 col-lg-12  chart-t-score">
+									<div id="columnchart_material"></div>
+								</div>
+							</div>  
+						</apex:outputPanel> 
+						<!--end colchart-->
+					<!--</div>-->
+					
+				</apex:outputPanel>
+                
+            </apex:pageBlock>
+				
+			<!--citation information footer-->    
+			<c:cimiFormFooter formElement="{!form}"/>   
+        
+            <!--print charts panel-->
+            <apex:outputPanel layout="none" rendered="{!AND(printReport, displayHistory)}"><!-- styleClass="page2-break charts-div">-->
+                
+                <!--on seperate page-->
+                <apex:outputPanel layout="block" styleClass="page2-break"/>
+                
+                <!--page header-->
+                <!--<apex:outputPanel layout="none" styleClass=" overall-history page-break">-->
+				<apex:outputPanel layout="block" styleClass="row overall-history">
+                    <div class="bPageTitle-page2 col-md-6 col-lg-6"></div>
+                    <div class="header-info-table-page2 col-md-6 col-lg-6"></div>
+                					
+					<!--<div class="charts-div"><!-- class="row">-->
+											
+						<!--line-->
+						<apex:outputPanel layout="none" rendered="{!displayHistory}">
+							<div class="form-group charts-div no-border-bottom no-space-bottom">
+								<div class="col-md-12 col-lg-12  total-score">
+									<div id="linechart_material" ></div>
+								</div>
+							</div>  
+						</apex:outputPanel>
+						
+						<!--column-->
+						<apex:outputPanel layout="none" rendered="{!displayHistory}">
+							<div class="form-group charts-div no-border-bottom no-space-bottom">
+								<div class="col-md-12 col-lg-12  chart-t-score">
+									<div id="columnchart_material"></div>
+								</div>
+							</div>  
+						</apex:outputPanel>
+					<!--</div>-->
+					<!--</apex:pageBlock>-->
+                </apex:outputPanel>
+
+                <!--citation information footer-->    
+                <c:cimiFormFooter formElement="{!form}"/> 
+                
+            </apex:outputPanel>
+        </apex:form>
+    
+    </div>
+    
+    <!--setup for the charts-->
+    <apex:outputPanel rendered="{!displayHistory}">
+
+        <!--init google charts packages-->
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript">
+            
+            google.load("visualization", "1.1", {packages:['corechart', 'bar', 'line']});
+            google.setOnLoadCallback(drawLineChart);
+            google.setOnLoadCallback(drawAnnotations);
+                
+            //set chart height
+            var chartHeight = {!IF(printReport, 650, 650)};
+                        
+            //line chart
+            function drawLineChart() {
+                
+                //init data set
+                var data = new google.visualization.DataTable();
+                
+                //add total stress and date points
+                data.addColumn('string', 'Date of Assessment');
+                data.addColumn('number', 'Total Stress Score');
+                
+                //add borderline and clinical threshold points
+                data.addColumn({role:'data', label: 'Clinical', type: 'number'});
+                data.addColumn({role:'data', label: 'Borderline', type: 'number'});
+                
+                //add values, repeat over visits
+                data.addRows([
+                    <apex:repeat value="{!visits}" var="visit">
+                        ['<apex:outputText value="{0,date,MM/dd/yyyy}">
+                            <apex:param value="{!visit.dateTEMP}" />
+                        </apex:outputText>',  
+                        {!visit.num1},
+                        6,//clinical
+                        4],//borderline
+                    </apex:repeat>
+                ]);
+                
+                //formats for the chart
+                var options = {
+                    title: 'TEMP Total Score (num1)',
+                    series: {
+                        0: { pointSize: 5 },
+                        1: { pointSize: 0 },
+                        2: { pointSize: 0 }
+                    },
+                    hAxis: {
+                        title: 'Date of Assessment',                        
+                    },
+                    vAxis: {
+                        title: 'num1 Score',
+                        minValue: 0,
+                        maxValue: 110,  
+                        showTextEvery: 1,       
+                    },
+                    height: chartHeight,  
+                };
+                
+                var runchart = new google.visualization.LineChart(document.getElementById('linechart_material'));
+                
+                runchart.draw(data, options);
+            }
+                        
+            //column chart            
+            function drawAnnotations() {
+            
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Subscale');
+                <apex:repeat value="{!visits}" var="visit">
+                    data.addColumn('number', '<apex:outputText value="{0,date,MM/dd/yyyy}">
+                                   <apex:param value="{!visit.dateTEMP}" />
+                                   </apex:outputText>');
+                                   data.addColumn({type: 'string', role: 'annotation'});
+                </apex:repeat>
+            
+                data.addRows([    
+                     ['Num2'            <apex:repeat value="{!visits}" var="vnum2">,       {!vnum2.num2},        '{!IF((vnum2.num2)     >= 6, 'C', (IF((vnum2.num2)     <= 3, '', 'B')))}'  </apex:repeat>], 
+                     ['Num3'            <apex:repeat value="{!visits}" var="vnum3">,       {!vnum3.num3},        '{!IF((vnum3.num3)     >= 6, 'C', (IF((vnum3.num3)     <= 3, '', 'B')))}'  </apex:repeat>], 
+                    ]);
+            
+                    var options = {
+                        title: ' Subscale Scores',
+                        annotations: {
+                            alwaysOutside: false,
+                            textStyle: {
+                                fontSize: 12,
+                                color: '#000',
+                                auraColor: 'none'
+                            }
+                        },
+                        vAxis: {
+                            title: 'Score',
+                            minValue:0,
+                            maxValue:110,
+                        },
+                        hAxis: {
+                            title: 'Subscale',
+                        },
+                        height: chartHeight,    
+                        bar: {
+                            groupWidth: 80,
+                            groupWidth: '85%',
+                        },          
+                    };     
+
+                    var colchart = new google.visualization.ColumnChart(document.getElementById('columnchart_material'));
+                    colchart.draw(data, options);
+            }
+        </script>    
+    </apex:outputPanel>
+</apex:page>

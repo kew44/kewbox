@@ -1,7 +1,6 @@
 <apex:page standardController="DS_SDQ_PSI_CDI_B__c" extensions="DS_SDQ_S_11_17_Report_Controller" action="{!init}"  showHeader="{!NOT(printReport)}" id="sdq-s-report">
     
     <link href="{!URLFOR($Resource.CSS_DS_Report)}" rel="stylesheet" media="screen, print"/>
-    <link href="{!URLFOR($Resource.CSS_DS_SDQ_Report)}" rel="stylesheet" media="screen, print"/>
     
     <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
     
@@ -125,7 +124,7 @@
                                     Category |
                                     Date of administration
                                 </th>
-                                <th>
+                                <th class="darkerTHBottom">
                                     Current Significance
                                 </th>
                                 <apex:repeat value="{!visits}" var="visit">
@@ -143,7 +142,7 @@
                             <!--Total Difficulties-->
                     <tr>
                         <!--category, total, conditional formatting if missing-->
-                        <td class="darkerTDTop {!CASE(missingRange, '', '', 'warning')}"><b>Total Difficulties</b></td><!--category-->  
+                        <td class=" {!CASE(missingRange, '', '', 'warning')}"><b>Total Difficulties</b></td><!--category-->  <!--darkerTDTop-->
                         
                                 <!--significance, conditional formatting-->                       
                                 <td><!-- class="{!CASE({!form.obj[bfVariableMap['SDSTYP']]},'Borderline', 'warning', 'Clinical', 'danger','')} {!CASE(missingRange, '', '', 'warning')}">-->
@@ -174,7 +173,7 @@
                         <!--emotional-->
                             <tr>
                                 <!--category, total, conditional formatting if missing-->
-                                <td class="darkerTDTop"><b>Emotional Problems</b></td><!--category-->                                            
+                                <td ><b>Emotional Problems</b></td><!--category-->     <!--class="darkerTDTop"-->                                       
                                 
                                 <!--significance, conditional formatting-->               
                                 <td ><!--class="{!CASE({!form.obj[bfVariableMap['SDSETYP']]},'Borderline', 'warning', 'Clinical', 'danger','')}{!CASE(missingRange, '', '', 'warning')}">-->
@@ -205,7 +204,7 @@
                         <!--behavioral--> 
                             <tr>
                                 <!--category, total, conditional formatting if missing-->
-                                <td class="darkerTDTop"><b>Behavioral Difficulties</b></td><!--category-->                             
+                                <td ><b>Behavioral Difficulties</b></td><!--category-->                             
                                 
                                 <!--significance, conditional formatting-->                        
                                 <td ><!--class="{!CASE({!form.obj[bfVariableMap['SDSBTYP']]},'Borderline', 'warning', 'Clinical', 'danger','')} {!CASE(missingRange, '', '', 'warning')}">-->
@@ -236,7 +235,7 @@
                         <!--hyperactivity-->   
                             <tr>
                                 <!--category, total, conditional formatting if missing-->
-                                <td class="darkerTDTop"><b>Hyperactivity</b></td><!--category-->                               
+                                <td ><b>Hyperactivity</b></td><!--category-->                               
                                 
                                 <!--significance, conditional formatting-->  
                                 <td ><!--class="{!CASE({!form.obj[bfVariableMap['SDSHTYP']]},'Borderline', 'warning', 'Clinical', 'danger','')}">-->
@@ -267,7 +266,7 @@
                             <!--Peers/other children-->
                             <tr>
                                 <!--category, total, conditional formatting if missing-->
-                                <td class="darkerTDTop"><b>Peer Problems</b></td><!--category-->                    
+                                <td ><b>Peer Problems</b></td><!--category-->                    
                                 
                                 <!--significance, conditional formatting-->  
                                 <td ><!--class="{!CASE({!form.obj[bfVariableMap['SDSOTYP']]},'Borderline', 'warning', 'Clinical', 'danger','')}">-->
@@ -298,7 +297,7 @@
                         <!--kind and helpful-->
                             <tr>
                                 <!--category, total, conditional formatting if missing-->
-                                <td class="darkerTDTop"><b>Prosocial</b></td><!--category-->                 
+                                <td ><b>Prosocial</b></td><!--category-->                 
                                 
                                 <!--significance, conditional formatting-->  
                                 <td><!-- class="{!CASE({!form.obj[bfVariableMap['SDSKTYP']]},'Borderline', 'warning', 'Clinical', 'danger','')}">-->
@@ -328,7 +327,7 @@
         <!-------------------------------------------------------------------------------------------------------------------------------------> 
                         <!--difficulties impact-->
                         <tr>
-                            <td class="darkerTDTop"><b>Impact</b></td>    <!--category-->                                      
+                            <td ><b>Impact</b></td>    <!--category-->                                      
                                 
                                 <!--significance, conditional formatting-->  
                                 <td><!-- class="{!CASE({!form.obj[bfVariableMap['SDSITYP']]},'Borderline', 'warning', 'Clinical', 'danger','')}">-->

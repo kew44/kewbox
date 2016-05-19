@@ -1,5 +1,8 @@
 <apex:page standardController="Client__c" action="{!init}" showHeader="{!NOT(printReport)}" extensions="ClientSummaryReportController">
     
+    <!--report stylesheet-->
+    <link href="{!URLFOR($Resource.CSS_DS_Report)}" rel="stylesheet" media="screen, print"/>    
+    
     <!--JQuery -->
     <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.9.1.js')}"  /><!--allows for JQuery dependencies-->
     <script> $j = jQuery.noConflict(); </script><!--Reserves the '$' token for JQuery only-->
@@ -9,65 +12,11 @@
             <apex:includeScript value="{!URLFOR($Resource.VFbootstrap3, '/js/bootstrap.min.js')}"/>
                 
                 <!--link to the CSS resource in Salesforce internal document-->
-                    <apex:stylesheet value="{!$Resource.CustomCss}" />                                     
+                    <apex:stylesheet value="{!$Resource.CustomCss}" />       
+                                              
                         
                         <script>function setFocusOnLoad() {}</script>
-    
-    <!--supplementary styling information-->
-    <style>
-        .report-heading { 
-        color: #31708f;
-        background-color: #d9edf7;
-        border-color: #bce8f1;
-        padding: 10px 15px;
-        border-bottom: 1px solid transparent;
-        border-top-left-radius: 3px;
-        border-top-right-radius: 3px;
-        }
-        .report-description {
-        margin: 10px;
-        padding:7px;
-        /*border: 1px solid #CCCCCC;*/
-        font-size: 14px;
-        /*border-radius: 5px;*/
-        }
         
-        .report-content {
-        margin: 10px;
-        padding:7px;
-        }
-        .content-table { 
-        max-width:600px !important; 
-        margin-left:30px !important; 
-        }
-        
-        .content-table-col-A{
-        width:300px;
-        }
-        .content-table-col-Y{
-        width:75px;
-        }
-        .content-table-col-Z{
-        width:150px;
-        }
-        
-        @media print {
-        #trauma-history td {
-        color: #FFFFFF;
-        /*border: dashed 1px #000000;*/
-        /*border-bottom: none;*/
-        }
-        
-        #trauma-history td.info {
-        color: #000000;
-        font-weight: bold;
-        /*border: dashed 1px #000000;*/
-        /*border-bottom: none;*/
-        }
-        }
-    </style>
-    <!--end styling-->
-    
     <!-- "Breadcrumb" heading allows user to navigate to the ClientSummary page -->
     <apex:outputPanel layout="none" rendered="{!not(printReport)}">
         <script>
@@ -850,16 +799,16 @@
                                             <td class="content-table-col-A">
                                                 {!validdisplay.category}
                                             </td>
-                                            <!--T-Score-->
-                                            <td>
-                                                <div class="{!IF((validdisplay.percentile) = 999,'message warningM3','')}" role="alert">
-                                                    <apex:image rendered="{!IF((validdisplay.percentile) = 999,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" /> 
-                                                    {!IF((validdisplay.percentile) = 999, 'Not Available',(validdisplay.percentile))}
-                                                </div>
+                                            <!--Percentile-->
+                                            <td>                                                    
+                                                {!IF((validdisplay.percentile) = 999, '***',(validdisplay.percentile))}
                                             </td>
                                             <!--significance-->
                                             <td class="content-table-col-Z">
-                                                {!validdisplay.significance}
+                                                <div class="{!IF((validdisplay.percentile) = 999,'message warningM3','')}" role="alert">
+                                                    <apex:image rendered="{!IF((validdisplay.percentile) = 999,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" /> 
+                                                    {!IF((validdisplay.percentile) = 999, 'Not Available',(validdisplay.significance))}
+                                                </div>
                                             </td>
                                         </tr>
                                     </apex:repeat>
@@ -890,16 +839,16 @@
                                             <td class="content-table-col-A">
                                                 {!psidisplay.category}
                                             </td>
-                                            <!--T-Score-->
+                                            <!--Percentile-->
                                             <td>
-                                                <div class="{!IF((psidisplay.percentile) = 0,'message warningM3','')}" role="alert">
-                                                    <apex:image rendered="{!IF((psidisplay.percentile) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" /> 
-                                                    {!IF((psidisplay.percentile) = 0, 'Not Available',(psidisplay.percentile))}
-                                                </div>
+                                                {!IF((psidisplay.percentile) = 0, '***',(psidisplay.percentile))}
                                             </td>
                                             <!--significance-->
                                             <td class="content-table-col-Z">
-                                                {!psidisplay.significance}
+                                                <div class="{!IF((psidisplay.percentile) = 0,'message warningM3','')}" role="alert">
+                                                    <apex:image rendered="{!IF((psidisplay.percentile) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" /> 
+                                                    {!IF((psidisplay.percentile) = 0, 'Not Available',(psidisplay.significance))}
+                                                </div>
                                             </td>
                                         </tr>                                    
                                     </apex:repeat>
