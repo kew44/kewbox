@@ -57,6 +57,8 @@
 *add initials of clinical scores to display title of 'Other' assessments
 *ie:TSCCA "Anger" -> "Anger (ANG)"
 *
+*@modified  5/19/16 KW  purpose:add client info string
+*
 *@group ClientSummaryReport
 *@group-content /ApexDocContent/ClientSummaryReport/ClientSummaryReportController.htm
 ****/
@@ -72,7 +74,7 @@ public with sharing class ClientSummaryReportController {
         String cID;
         String summaryID;
         Boolean edit = FALSE;
-
+        
         public String BorF { get; set; }
         public String subtitle {get; set;} 
         public String forceRedirect {get; set;} 
@@ -431,7 +433,7 @@ public with sharing class ClientSummaryReportController {
         cID = parameter.get('c');
         cimi = Apexpages.currentPage().getParameters().get('cimi');
         String summary='SummaryReport';
-//        form = new Form(cimi);
+       // form = new Form(cimi);
        // System.debug(form);
 
         //visit information variables
@@ -1344,5 +1346,11 @@ public with sharing class ClientSummaryReportController {
                 otherEvaluation.sort();
                 evaluationOtherExisted = (otherEvaluation.size() > 0) ? true : false;
                 evaluationExisted = (evaluationOtherExisted == true || evaluationPrimaryExisted == true) ? true : false;
+            }
+            
+            public String getClientInfo() {
+                
+                return ut.clientSectionInfo(cID);
+              //  return ut.clientSection(cID,clientBackgroundInfo.id);
             }
           }

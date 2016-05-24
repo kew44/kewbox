@@ -13,7 +13,6 @@
                 
                 <!--link to the CSS resource in Salesforce internal document-->
                     <apex:stylesheet value="{!$Resource.CustomCss}" />       
-                                              
                         
                         <script>function setFocusOnLoad() {}</script>
         
@@ -41,51 +40,13 @@
     <!--Begin report content-->
     <apex:form id="ClientSummaryReport" styleClass="form-horizontal">
         
-        <apex:sectionHeader title="NCTSN Client Summary Report" subtitle="{!subtitle}" rendered="{!NOT(printReport)}"/><br/> 
-        <apex:sectionHeader title="NCTSN Client Summary Report" rendered="{!printReport}"/><br/>
+        <apex:sectionHeader title="NCTSN Client Summary Report" subtitle="{!subtitle}"/><!-- rendered="{!NOT(printReport)}"/><br/> -->
+        <!--<apex:sectionHeader title="NCTSN Client Summary Report" rendered="{!printReport}"/><br/>-->
         
-        <!--client information page heading pageBlock-->
-        <apex:pageBlock title="Client Information">
-            <div id="force">
-                
-                <!--client information table-->
-                <table class="table">        
-                    
-                    <!--table heading row-->
-                    <thead>
-                        
-                        <tr>
-                            <th>ID#</th>
-                            <th>Initials</th>
-                            <th>Gender</th>
-                            <th>Visit Age</th>
-                            <!-- <th>Race</th>-->
-                            <th>Visit Type</th>
-                            <th>Date of Visit</th>
-                        </tr>
-                    </thead>
-                    <!--end table heading-->
-                    
-                    <tbody>
-                        <tr>
-                            <td>{!client.name}</td><!--ID#-->
-                            <td>{!client.INIT__c}</td><!--Initials-->
-                            <td>{!client.GENDER__c}</td><!--Gender-->
-                            <td>{!visitAge}</td><!--Age, calculated value-->
-                            <!--<td></td><!--Race left intentionally blank due to content development?-->
-                            <td>{!visitType}</td><!--Visit Type-->
-                            <td><!--Date of Visit-->
-                                <apex:outputText value="{0,date,MM/dd/yyyy}">
-                                    <apex:param value="{!clientBackgroundInfo[BorF+'DOV__c']}"/>
-                                </apex:outputText>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!--end client information heading-->
-            </div>
-        </apex:pageBlock>     
-        
+<!-- show ClientInformation header -->
+<div class="bootwrap">
+    <apex:outputText value="{!ClientInfo}" escape="false"/>
+</div>
         <!-- primary content pageBlock container--> 
         <apex:pageBlock title="NCTSN Client Summary Report" >
             <apex:pageMessages /><!--placeholding structure that allows for system message display-->
@@ -123,7 +84,7 @@
                 <div class="report-content text-left">
                     <!--No record message-->
                     <apex:outputPanel layout="none" rendered="{!if(cansExisted = false, true, false)}">
-                        <div class="well well-lg" style="max-width:500px;">
+                        <div class="well well-lg well-max" >
                             <p>There is no record.</p>
                         </div>
                     </apex:outputPanel>
@@ -181,7 +142,7 @@
                 <div class="report-content text-left">
                     <!--No record message-->
                     <apex:outputPanel layout="none" rendered="{!if(iosExisted = false, true, false)}">
-                        <div class="well well-lg" style="max-width:500px;">
+                        <div class="well well-lg well-max" >
                             <p>There is no record.</p>
                         </div>
                     </apex:outputPanel>
@@ -254,7 +215,7 @@
                 <div class="report-content">
                     <!--No record message-->
                     <apex:outputPanel layout="none" rendered="{!if(traumaExisted = false, true, false)}">
-                        <div class="well well-lg" style="max-width:500px;">
+                        <div class="well well-lg well-max" >
                             <p>There is no trauma history record.</p>
                         </div>
                     </apex:outputPanel>
@@ -315,7 +276,7 @@
                 <div class="report-content text-left">
                     <!--No record message-->
                     <apex:outputPanel layout="none" rendered="{!if(serviceExisted = false, true, false)}">
-                        <div class="well well-lg" style="max-width:500px;">
+                        <div class="well well-lg well-max" >
                             <p>There is no service use record.</p>
                         </div>
                     </apex:outputPanel>
@@ -339,7 +300,7 @@
                                     <!--populates list of services indicated as being received in the past 30 days-->
                                     <td class="content-table-col-A">
                                         <apex:outputPanel layout="none" rendered="{!if(service30Existed = false, true, false)}">None</apex:outputPanel>
-                                        <ul style="padding-left: 0px;">
+                                        <ul class="ul-no-pad">
                                             <apex:repeat value="{!service30}" var="s30">
                                                 <li>{!s30}</li>
                                             </apex:repeat>
@@ -351,7 +312,7 @@
                                     <apex:outputPanel layout="none" rendered="{!if(BorF = 'B', true, false)}">
                                         <td>
                                             <apex:outputPanel layout="none" rendered="{!if(serviceLifeExisted = false, true, false)}">None</apex:outputPanel>
-                                            <ul  style="padding-left: 0px;">
+                                            <ul  class="ul-no-pad">
                                                 <apex:repeat value="{!serviceLife}" var="sLife">
                                                     <li>{!sLife}</li>
                                                 </apex:repeat>
@@ -381,7 +342,7 @@
                     <div class="report-content">
                         <!--No record message-->
                         <apex:outputPanel layout="none" rendered="{!if(CBCLExisted = false, true, false)}">
-                            <div class="well well-lg" style="max-width:500px;">
+                            <div class="well well-lg well-max" >
                                 <p>There is no CBCL record.</p>
                             </div>
                         </apex:outputPanel>
@@ -427,7 +388,7 @@
                     <div class="report-content">
                         <!--No record message-->
                         <apex:outputPanel layout="none" rendered="{!if(PTSDCAExisted = false, true, false)}">                                                              
-                            <div class="well well-lg" style="max-width:500px;">
+                            <div class="well well-lg well-max" >
                                 <p>There is no PTSD-RI Child/Adolescent record.</p>
                             </div>
                         </apex:outputPanel>
@@ -453,7 +414,7 @@
                                         <td>
                                             
                                             <apex:repeat value="{!PTSDCAList}" var="ptsdDisplay">
-                                                <ul style="padding-left: 0px;">
+                                                <ul class="ul-no-pad">
                                                     <li rendered="{!if(ptsdDisplay.met = 'Yes', true, false)}">
                                                         {!ptsdDisplay.clusterName}</li>
                                                 </ul>
@@ -472,7 +433,7 @@
                     <div class="report-content">
                         <!--No record message-->
                         <apex:outputPanel layout="none" rendered="{!if(PTSDPAExisted = false, true, false)}">                                                              
-                            <div class="well well-lg" style="max-width:500px;">
+                            <div class="well well-lg well-max" >
                                 <p>There is no PTSD-RI Parent/Caregiver record.</p>
                             </div>
                         </apex:outputPanel>
@@ -498,7 +459,7 @@
                                         <td>
                                             
                                             <apex:repeat value="{!PTSDPAList}" var="ptsdDisplay">
-                                                <ul style="padding-left: 0px;">
+                                                <ul class="ul-no-pad">
                                                     <li rendered="{!if(ptsdDisplay.met = 'Yes', true, false)}">
                                                         {!ptsdDisplay.clusterName}</li>
                                                 </ul>
@@ -517,7 +478,7 @@
                     <div class="report-content">
                         <!--No record message-->
                         <apex:outputPanel layout="none" rendered="{!if(SDQExisted = false, true, false)}">
-                            <div class="well well-lg" style="max-width:500px;">
+                            <div class="well well-lg well-max" >
                                 <p>There is no SDQ record.</p>
                             </div>
                         </apex:outputPanel>
@@ -580,7 +541,7 @@
                     <div class="report-content">
                         <!--No record message-->
                         <apex:outputPanel layout="none" rendered="{!if(TSCYCExisted = false, true, false)}">
-                            <div class="well well-lg" style="max-width:500px;">
+                            <div class="well well-lg well-max" >
                                 <p>There is no TSCYC record.</p>
                             </div>
                         </apex:outputPanel>
@@ -673,7 +634,7 @@
                     <div class="report-content">
                         <!--No record message-->
                         <apex:outputPanel layout="none" rendered="{!if(TSCCAExisted = false, true, false)}">
-                            <div class="well well-lg" style="max-width:500px;">
+                            <div class="well well-lg well-max" >
                                 <p>There is no TSCC-A record.</p>
                             </div>
                         </apex:outputPanel>
@@ -767,7 +728,7 @@
                     <div class="report-content">
                         <!--No record message-->
                         <apex:outputPanel layout="none" rendered="{!if(PSIExisted = false, true, false)}">
-                            <div class="well well-lg" style="max-width:500px;">
+                            <div class="well well-lg well-max" >
                                 <p>There is no PSI record.</p>
                             </div>
                         </apex:outputPanel>
@@ -883,7 +844,7 @@
                 <div class="report-content text-left">
                     <!--No record message-->
                     <apex:outputPanel layout="none" rendered="{!if(FAPGARExisted = false, true, false)}">
-                        <div class="well well-lg" style="max-width:500px;">
+                        <div class="well well-lg well-max" >
                             <p>There is no Family APGAR record.</p>
                         </div>
                     </apex:outputPanel>
@@ -931,7 +892,7 @@
                 <div class="report-content text-left">
                     <!--No record message-->
                     <apex:outputPanel layout="none" rendered="{!if(evaluationExisted = false, true, false)}">
-                        <div class="well well-lg" style="max-width:500px;">
+                        <div class="well well-lg well-max" >
                             <p>There is no clinical evaluation record.</p>
                         </div>
                     </apex:outputPanel>
