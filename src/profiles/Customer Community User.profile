@@ -1469,6 +1469,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_Background_Family_Info_B__c.BDOV_TEMP1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_Background_Family_Info_B__c.BDOV_TEMP__c</field>
         <readable>false</readable>
@@ -2539,6 +2544,36 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_Background_Family_Info_B__c.BRADIO1_TEMP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_Background_Family_Info_B__c.BRADIO2_TEMP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_Background_Family_Info_B__c.BRADIO3_TEMP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_Background_Family_Info_B__c.BRADIO4_TEMP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_Background_Family_Info_B__c.BRADIO5_TEMP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_Background_Family_Info_B__c.BRADIO6_TEMP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>DS_Background_Family_Info_B__c.BRADIO_TEMP__c</field>
         <readable>false</readable>
@@ -2765,6 +2800,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>DS_Background_Family_Info_B__c.BTXTSP1_TEMP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_Background_Family_Info_B__c.BTXTSP_TEMP__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>DS_Background_Family_Info_B__c.BUNCMIL__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2796,6 +2841,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>DS_Background_Family_Info_B__c.BZIPCODECHECK__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>DS_Background_Family_Info_B__c.BZIP_TEMP__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
