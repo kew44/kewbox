@@ -1,7 +1,7 @@
 <apex:page standardController="DS_SDQ_PSI_CDI_B__c" extensions="DS_SDQ_P_04_10_Report_Controller" action="{!init}"  showHeader="{!NOT(printReport)}" id="sdq-yp-report">    
     
     <link href="{!URLFOR($Resource.CSS_DS_Report)}" rel="stylesheet" media="screen, print"/>
-    <link href="{!URLFOR($Resource.CSS_DS_SDQ_Report)}" rel="stylesheet" media="screen, print"/>
+    <!--<link href="{!URLFOR($Resource.CSS_DS_SDQ_Report)}" rel="stylesheet" media="screen, print"/>-->
     
     <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
     

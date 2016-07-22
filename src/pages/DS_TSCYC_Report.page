@@ -1,7 +1,7 @@
 <apex:page standardController="DS_TSCC_TSCYC_B__c" extensions="DS_TSCYC_Report_Controller" action="{!init}"  showHeader="{!NOT(printReport)}" id="tscyc-report">
     
     <link href="{!URLFOR($Resource.CSS_DS_Report)}" rel="stylesheet" media="screen, print"/>
-    <link href="{!URLFOR($Resource.CSS_DS_TSCYC_Report)}" rel="stylesheet" media="screen, print"/>
+    <!--<link href="{!URLFOR($Resource.CSS_DS_TSCYC_Report)}" rel="stylesheet" media="screen, print"/>-->
     
     <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
     
@@ -20,7 +20,7 @@
     <!--end print command -->
     
     <div class="{!HTMLENCODE(form.visitType)}-assessment">
-        <apex:sectionHeader title="{!HTMLENCODE(form.title)}" subtitle="{!IF(NOT(printReport), HTMLENCODE(form.subtitle), null)}" />
+        <apex:sectionHeader title="{!HTMLENCODE(form.title)}" subtitle="{!HTMLENCODE(form.subtitle)}" />
     </div>    
     
     <div class="bootwrap">
@@ -169,7 +169,7 @@
                         <div id="columnchart_material"></div>
                     </div>
                 </div>  
-            </apex:outputPanel> 
+            </apex:outputPanel>    
 
         </apex:pageBlock>
         

@@ -159,6 +159,7 @@ public with sharing class DS_PSI_Report_Controller extends DS_BasicForm_Controll
                     normalList.add(C_Text);             
                 }
                 else if(C_Value >=85){
+                    //unknown value
                     if(C_Value != 999){
                         clinicalList.add(C_Text);
                     }
