@@ -1,0 +1,540 @@
+<apex:page standardController="DS_Functioning_Forms_B__c" extensions="DS_NOMS_Controller">
+    
+    <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
+        
+    <script src="{!URLFOR($Resource.JS_DS_NOMS)}"></script>
+    
+    <div class="{!HTMLENCODE(form.visitType)}">
+        <apex:sectionHeader title="{!HTMLENCODE(form.title)}" subtitle="{!HTMLENCODE(form.subtitle)}" />
+    </div>                
+                  
+    <div class="bootwrap">
+    
+    <!--Begin form content-->
+    <apex:form id="DS_NOMS" styleClass="form-horizontal" style="border-top:none">
+            
+            <!-- pageblock to show ClientInformation header as described in Utility class-->
+            <c:cimiClientInfo displayVisitType="true" formElement="{!form}"/>
+            <!--end client info pageBlock-->
+            
+            <!-- primary content pageBlock container-->
+            <apex:pageBlock title="{!HTMLENCODE(form.title)}" >
+                
+                <!--save and cancel control buttons for pageBlock-->
+                <apex:pageBlockButtons >
+                    <apex:commandButton id="Save" action="{!save}" value="Save" styleClass="btn-info btn btn-sm"/>
+                    <apex:commandButton id="Cancel" action="{!cancel}" value="Cancel" rendered="{!if(form.forceRedirect = '1', false, true)}" styleClass="btn-info btn btn-sm"/>
+                </apex:pageBlockButtons><!--end buttons-->
+                
+                <!--placeholding structure that allows for system message display-->
+                <apex:pageMessages />   
+                <div class="form-pageblock-subheader">
+                    <h3>Functioning</h3>
+                </div>          
+                
+                <div class="form-group">
+                    <!--q1 question-->
+                    <label class=" control-label">
+                        <span class="nmbr">1.</span>
+                            In order to provide the best possible mental health and related services, we need to know what you think about how well you were [your child was] able to deal with everyday life during the past 30 days.  Please indicate your disagreement/agreement with each of the following statements.  
+                    </label>
+                </div>     
+                    <!--q1 answer choices-->
+                    <div>
+                        <table class="table table-bordered table-hover table-condensed Q1table table-striped">
+                            
+                            <!--level of agreement indication headings-->
+                            <thead>
+                                <tr>
+                                    <td/>
+                                    <th style="vertical-align:middle;">Strongly Disagree</th>
+                                    <th style="vertical-align:middle;">Disagree</th>
+                                    <th style="vertical-align:middle;">Undecided</th>
+                                    <th style="vertical-align:middle;">Agree</th>
+                                    <th style="vertical-align:middle;">Strongly Agree</th>
+                                    <th style="vertical-align:middle;">Refused</th>
+                                    <th style="vertical-align:middle;">Not Applicable</th>
+                                </tr>
+                            </thead>    
+                            <!--end headings-->
+                                  
+                            <tbody>  
+                                <!--a. handling life--> 
+                                <tr>
+                                    <td>a.   I am [my child is] handling daily life.</td>
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-1-1" name="Q1-1" value="1" title="{!form.obj[bfVariableMap['NDAILYL']]}"/></td><!--strongly disagree-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-1-2" name="Q1-1" value="2" title="{!form.obj[bfVariableMap['NDAILYL']]}"/></td><!--disagree-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-1-3" name="Q1-1" value="3" title="{!form.obj[bfVariableMap['NDAILYL']]}"/></td><!--undecided-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-1-4" name="Q1-1" value="4" title="{!form.obj[bfVariableMap['NDAILYL']]}"/></td><!--agree-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-1-5" name="Q1-1" value="5" title="{!form.obj[bfVariableMap['NDAILYL']]}"/></td><!--strongly agree-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-1-96" name="Q1-1" value="96" title="{!form.obj[bfVariableMap['NDAILYL']]}"/></td><!--refused-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-1-97" name="Q1-1" value="97" title="{!form.obj[bfVariableMap['NDAILYL']]}"/></td><!--not applicable-->
+                                </tr> 
+                                    
+                                <!--b. get along w/ family-->         
+                                <tr>
+                                    <td>b.   I get [my child gets] along with family members.</td>
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-2-1" name="Q1-2" value="1" title="{!form.obj[bfVariableMap['NFAMILY']]}"/></td><!--strongly disagree-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-2-2" name="Q1-2" value="2" title="{!form.obj[bfVariableMap['NFAMILY']]}"/></td><!--disagree-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-2-3" name="Q1-2" value="3" title="{!form.obj[bfVariableMap['NFAMILY']]}"/></td><!--undecided-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-2-4" name="Q1-2" value="4" title="{!form.obj[bfVariableMap['NFAMILY']]}"/></td><!--agree-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-2-5" name="Q1-2" value="5" title="{!form.obj[bfVariableMap['NFAMILY']]}"/></td><!--strongly agree-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-2-96" name="Q1-2" value="96" title="{!form.obj[bfVariableMap['NFAMILY']]}"/></td><!--refused-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-2-97" name="Q1-2" value="97" title="{!form.obj[bfVariableMap['NFAMILY']]}"/></td><!--not applicable-->
+                                </tr> 
+                                    
+                                <!--c. get along w/ people-->        
+                                <tr>
+                                    <td>c.   I get [my child gets] along with friends and other people.</td>
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-3-1" name="Q1-3" value="1" title="{!form.obj[bfVariableMap['NFRIENDS']]}"/></td><!--strongly disagree-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-3-2" name="Q1-3" value="2" title="{!form.obj[bfVariableMap['NFRIENDS']]}"/></td><!--disagree-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-3-3" name="Q1-3" value="3" title="{!form.obj[bfVariableMap['NFRIENDS']]}"/></td><!--undecided-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-3-4" name="Q1-3" value="4" title="{!form.obj[bfVariableMap['NFRIENDS']]}"/></td><!--agree-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-3-5" name="Q1-3" value="5" title="{!form.obj[bfVariableMap['NFRIENDS']]}"/></td><!--strongly agree-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-3-96" name="Q1-3" value="96" title="{!form.obj[bfVariableMap['NFRIENDS']]}"/></td><!--refused-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-3-97" name="Q1-3" value="97" title="{!form.obj[bfVariableMap['NFRIENDS']]}"/></td><!--not applicable-->
+                                </tr>   
+                                    
+                                <!--d. well in school-->    
+                                <tr>
+                                    <td>d.   I am [my child is] doing well in school and/or work.</td>
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-4-1" name="Q1-4" value="1" title="{!form.obj[bfVariableMap['NSCHOOL']]}"/></td><!--strongly disagree-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-4-2" name="Q1-4" value="2" title="{!form.obj[bfVariableMap['NSCHOOL']]}"/></td><!--disagree-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-4-3" name="Q1-4" value="3" title="{!form.obj[bfVariableMap['NSCHOOL']]}"/></td><!--undecided-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-4-4" name="Q1-4" value="4" title="{!form.obj[bfVariableMap['NSCHOOL']]}"/></td><!--agree-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-4-5" name="Q1-4" value="5" title="{!form.obj[bfVariableMap['NSCHOOL']]}"/></td><!--strongly agree-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-4-96" name="Q1-4" value="96" title="{!form.obj[bfVariableMap['NSCHOOL']]}"/></td><!--refused-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-4-97" name="Q1-4" value="97" title="{!form.obj[bfVariableMap['NSCHOOL']]}"/></td><!--not applicable-->
+                                </tr> 
+                                    
+                                <!--e. cope-->        
+                                <tr>
+                                    <td>e.   I am [my child is] able to cope when things go wrong.</td>
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-5-1" name="Q1-5" value="1" title="{!form.obj[bfVariableMap['NWRONG']]}"/></td><!--strongly disagree-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-5-2" name="Q1-5" value="2" title="{!form.obj[bfVariableMap['NWRONG']]}"/></td><!--disagree-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-5-3" name="Q1-5" value="3" title="{!form.obj[bfVariableMap['NWRONG']]}"/></td><!--undecided-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-5-4" name="Q1-5" value="4" title="{!form.obj[bfVariableMap['NWRONG']]}"/></td><!--agree-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-5-5" name="Q1-5" value="5" title="{!form.obj[bfVariableMap['NWRONG']]}"/></td><!--strongly agree-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-5-96" name="Q1-5" value="96" title="{!form.obj[bfVariableMap['NWRONG']]}"/></td><!--refused-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-5-97" name="Q1-5" value="97" title="{!form.obj[bfVariableMap['NWRONG']]}"/></td><!--not applicable-->
+                                </tr>        
+                                    
+                                <!--f. satisfied w/ family-->             
+                                <tr>
+                                    <td>f.   I am satisfied with our family life right now.</td>
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-6-1" name="Q1-6" value="1" title="{!form.obj[bfVariableMap['NSATISFY']]}"/></td><!--strongly disagree-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-6-2" name="Q1-6" value="2" title="{!form.obj[bfVariableMap['NSATISFY']]}"/></td><!--disagree-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-6-3" name="Q1-6" value="3" title="{!form.obj[bfVariableMap['NSATISFY']]}"/></td><!--undecided-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-6-4" name="Q1-6" value="4" title="{!form.obj[bfVariableMap['NSATISFY']]}"/></td><!--agree-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-6-5" name="Q1-6" value="5" title="{!form.obj[bfVariableMap['NSATISFY']]}"/></td><!--strongly agree-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-6-96" name="Q1-6" value="96" title="{!form.obj[bfVariableMap['NSATISFY']]}"/></td><!--refused-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-6-97" name="Q1-6" value="97" title="{!form.obj[bfVariableMap['NSATISFY']]}"/></td><!--not applicable-->
+                                </tr> 
+                            </tbody> 
+                        </table>
+                        
+                        <!--value of radiobutton fields seperate from declaration to maintain one radiobutton per column structure -->
+                        <apex:inputField id="NDAILYL__c" value="{!form.obj[bfVariableMap['NDAILYL']]}"  styleClass="Q1-1 hidden"/><!--Q1 Table row a/1-->
+                        <apex:inputField id="NFAMILY__c" value="{!form.obj[bfVariableMap['NFAMILY']]}"  styleClass="Q1-2 hidden"/><!--Q1 Table row b/2-->
+                        <apex:inputField id="NFRIENDS__c" value="{!form.obj[bfVariableMap['NFRIENDS']]}"  styleClass="Q1-3 hidden"/><!--Q1 Table row c/3-->
+                        <apex:inputField id="NSCHOOL__c" value="{!form.obj[bfVariableMap['NSCHOOL']]}"  styleClass="Q1-4 hidden"/><!--Q1 Table row d/4-->
+                        <apex:inputField id="NWRONG__c" value="{!form.obj[bfVariableMap['NWRONG']]}"  styleClass="Q1-5 hidden"/><!--Q1 Table row e/5-->
+                        <apex:inputField id="NSATISFY__c" value="{!form.obj[bfVariableMap['NSATISFY']]}"  styleClass="Q1-6 hidden"/><!--Q1 Table row f/6-->
+                        
+                    </div>
+        <!----------------------------------------------------------------------------------Question 2 Table-------------------------------------------------------------------------------------------------------->  
+                <div class="form-group">
+                    <!--q2 question-->
+                    <label class="control-label">
+                        <span class="nmbr">2.</span>
+                            The following questions ask about how you have been feeling during that past 30 days.  For each question, please indicate how often you had this feeling. 
+                    </label>
+                </div>
+                    <!--q2 answer choices-->
+                    <div>
+                        <table class="table table-bordered table-hover table-condensed Q2table">
+                        <!--frequency indicator headings-->
+                            <thead>
+                                <tr>
+                                    <th style="vertical-align:middle;">During the past 30 days, about how often did you feel…</th>
+                                    <th style="vertical-align:middle;">All of the Time</th>
+                                    <th style="vertical-align:middle;">Most of the Time</th>
+                                    <th style="vertical-align:middle;">Some of the Time</th>
+                                    <th style="vertical-align:middle;">A Little of the Time</th>
+                                    <th style="vertical-align:middle;">None of the Time</th>
+                                    <th style="vertical-align:middle;">Refused</th>
+                                    <th style="vertical-align:middle;">Unknown</th>
+                                </tr>
+                            </thead>   
+                            <!--end frequency indicator headings-->
+                            
+                            <tbody> 
+                            <!--a. nervous-->             
+                                <tr>
+                                    <td>a.   Nervous?</td>
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-1-1" name="Q2-1" value="1" title="{!form.obj[bfVariableMap['NNERVOUS']]}"/></td><!--all the time-->
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-1-2" name="Q2-1" value="2" title="{!form.obj[bfVariableMap['NNERVOUS']]}"/></td><!--most of the time-->                                                    
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-1-3" name="Q2-1" value="3" title="{!form.obj[bfVariableMap['NNERVOUS']]}"/></td><!--sometimes-->
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-1-4" name="Q2-1" value="4" title="{!form.obj[bfVariableMap['NNERVOUS']]}"/></td><!--a little bit-->
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-1-5" name="Q2-1" value="5" title="{!form.obj[bfVariableMap['NNERVOUS']]}"/></td><!--not at all-->
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-1-96" name="Q2-1" value="96" title="{!form.obj[bfVariableMap['NNERVOUS']]}"/></td><!--refused-->
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-1-97" name="Q2-1" value="97" title="{!form.obj[bfVariableMap['NNERVOUS']]}"/></td><!--unknown-->
+                                </tr>         
+                                
+                                <!--b. hopeless  --> 
+                                <tr>
+                                    <td>b.   Hopeless?</td>
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-2-1" name="Q2-2" value="1" title="{!form.obj[bfVariableMap['NHOPELESS']]}"/></td><!--all the time-->
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-2-2" name="Q2-2" value="2" title="{!form.obj[bfVariableMap['NHOPELESS']]}"/></td><!--most of the time--> 
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-2-3" name="Q2-2" value="3" title="{!form.obj[bfVariableMap['NHOPELESS']]}"/></td><!--sometimes-->
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-2-4" name="Q2-2" value="4" title="{!form.obj[bfVariableMap['NHOPELESS']]}"/></td><!--a little bit-->
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-2-5" name="Q2-2" value="5" title="{!form.obj[bfVariableMap['NHOPELESS']]}"/></td><!--not at all-->
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-2-96" name="Q2-2" value="96" title="{!form.obj[bfVariableMap['NHOPELESS']]}"/></td><!--refused-->
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-2-97" name="Q2-2" value="97" title="{!form.obj[bfVariableMap['NHOPELESS']]}"/></td><!--unknown-->
+                                </tr>     
+                                
+                                <!--c. restless-->
+                                <tr>
+                                    <td>c.   Restless or fidgety?  </td>
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-3-1" name="Q2-3" value="1" title="{!form.obj[bfVariableMap['NRESTLESS']]}"/></td><!--all the time-->
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-3-2" name="Q2-3" value="2" title="{!form.obj[bfVariableMap['NRESTLESS']]}"/></td><!--most of the time--> 
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-3-3" name="Q2-3" value="3" title="{!form.obj[bfVariableMap['NRESTLESS']]}"/></td><!--sometimes-->
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-3-4" name="Q2-3" value="4" title="{!form.obj[bfVariableMap['NRESTLESS']]}"/></td><!--a little bit-->
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-3-5" name="Q2-3" value="5" title="{!form.obj[bfVariableMap['NRESTLESS']]}"/></td><!--not at all-->
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-3-96" name="Q2-3" value="96" title="{!form.obj[bfVariableMap['NRESTLESS']]}"/></td><!--refused-->
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-3-97" name="Q2-3" value="97" title="{!form.obj[bfVariableMap['NRESTLESS']]}"/></td><!--unknown-->
+                                </tr>
+                                
+                                <!--d. depressed-->
+                                <tr>
+                                    <td>d.   So depressed that nothing would cheer you up? </td>
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-4-1" name="Q2-4" value="1" title="{!form.obj[bfVariableMap['NDEPRESSED']]}"/></td><!--all the time-->
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-4-2" name="Q2-4" value="2" title="{!form.obj[bfVariableMap['NDEPRESSED']]}"/></td><!--most of the time--> 
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-4-3" name="Q2-4" value="3" title="{!form.obj[bfVariableMap['NDEPRESSED']]}"/></td><!--sometimes-->
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-4-4" name="Q2-4" value="4" title="{!form.obj[bfVariableMap['NDEPRESSED']]}"/></td><!--a little bit-->
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-4-5" name="Q2-4" value="5" title="{!form.obj[bfVariableMap['NDEPRESSED']]}"/></td><!--not at all-->
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-4-96" name="Q2-4" value="96" title="{!form.obj[bfVariableMap['NDEPRESSED']]}"/></td><!--refused-->
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-4-97" name="Q2-4" value="97" title="{!form.obj[bfVariableMap['NDEPRESSED']]}"/></td><!--unknown-->
+                                </tr>
+                                
+                                <!--e. effort-->
+                                <tr>
+                                    <td>e.   That everything was an effort? </td>
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-5-1" name="Q2-5" value="1" title="{!form.obj[bfVariableMap['NEFFORT']]}"/></td><!--all the time-->
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-5-2" name="Q2-5" value="2" title="{!form.obj[bfVariableMap['NEFFORT']]}"/></td><!--most of the time--> 
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-5-3" name="Q2-5" value="3" title="{!form.obj[bfVariableMap['NEFFORT']]}"/></td><!--sometimes-->
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-5-4" name="Q2-5" value="4" title="{!form.obj[bfVariableMap['NEFFORT']]}"/></td><!--a little bit-->
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-5-5" name="Q2-5" value="5" title="{!form.obj[bfVariableMap['NEFFORT']]}"/></td><!--not at all-->
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-5-96" name="Q2-5" value="96" title="{!form.obj[bfVariableMap['NEFFORT']]}"/></td><!--refused-->
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-5-97" name="Q2-5" value="97" title="{!form.obj[bfVariableMap['NEFFORT']]}"/></td><!--unknown-->
+                                </tr>
+                                
+                                <!--f. worthless-->
+                                <tr>
+                                    <td>f.   Worthless?</td>
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-6-1" name="Q2-6" value="1" title="{!form.obj[bfVariableMap['NWORTHLESS']]}"/></td><!--all the time-->
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-6-2" name="Q2-6" value="2" title="{!form.obj[bfVariableMap['NWORTHLESS']]}"/></td><!--most of the time--> 
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-6-3" name="Q2-6" value="3" title="{!form.obj[bfVariableMap['NWORTHLESS']]}"/></td><!--sometimes-->
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-6-4" name="Q2-6" value="4" title="{!form.obj[bfVariableMap['NWORTHLESS']]}"/></td><!--a little bit-->
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-6-5" name="Q2-6" value="5" title="{!form.obj[bfVariableMap['NWORTHLESS']]}"/></td><!--not at all-->
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-6-96" name="Q2-6" value="96" title="{!form.obj[bfVariableMap['NWORTHLESS']]}"/></td><!--refused-->
+                                    <td class="text-center"><input type="radio" class="Q2" id="Q2-6-97" name="Q2-6" value="97" title="{!form.obj[bfVariableMap['NWORTHLESS']]}"/></td><!--unknown-->
+                                </tr>
+                            </tbody>
+                        </table>
+                                    
+                                    <!--value of radiobutton fields seperate from declaration to maintain one radiobutton per column structure -->
+                                    <apex:inputField id="NNERVOUS__c" value="{!form.obj[bfVariableMap['NNERVOUS']]}"  styleClass="Q2-1 hidden"/><!--Q2 Table row a/1-->
+                                    <apex:inputField id="NHOPELESS__c" value="{!form.obj[bfVariableMap['NHOPELESS']]}"  styleClass="Q2-2 hidden"/><!--Q2 Table row b/2-->
+                                    <apex:inputField id="NRESTLESS__c" value="{!form.obj[bfVariableMap['NRESTLESS']]}"  styleClass="Q2-3 hidden"/><!--Q2 Table row c/3-->
+                                    <apex:inputField id="NDEPRESSED__c" value="{!form.obj[bfVariableMap['NDEPRESSED']]}"  styleClass="Q2-4 hidden"/><!--Q2 Table row d/4-->
+                                    <apex:inputField id="NEFFORT__c" value="{!form.obj[bfVariableMap['NEFFORT']]}"  styleClass="Q2-5 hidden"/><!--Q2 Table row e/5-->
+                                    <apex:inputField id="NWORTHLESS__c" value="{!form.obj[bfVariableMap['NWORTHLESS']]}"  styleClass="Q2-6 hidden"/><!--Q2 Table row f/6-->
+                                    
+                    </div> 
+         <!----------------------------------------------------------------------------------Question 3 Table-------------------------------------------------------------------------------------------------------->  
+                <div class="form-group">
+                    <!--q2 question-->
+                    <label class=" control-label">
+                        <span class="nmbr">3.</span>
+                            The following questions relate to your experience with alcohol, cigarettes, and other drugs.  Some of the substances we’ll talk about are prescribed by a doctor (like pain medications).  But I will only record these if you have taken them for reasons or in doses other than prescribed. 
+                    </label>       
+                </div>      
+                    <!--q3 question-->     
+                    <div>      
+                        <table class="table table-bordered table-hover table-condensed Q3table">
+                            <!--substance use frequency indication headings-->
+                            <thead>
+                                <tr>
+                                    <th style="vertical-align:middle;">In the past 30 days, how often have you used…</th>
+                                    <th style="vertical-align:middle;">Never</th>
+                                    <th style="vertical-align:middle;">Once or Twice</th>
+                                    <th style="vertical-align:middle;">Weekly</th>
+                                    <th style="vertical-align:middle;">Daily or Almost Daily</th>
+                                    <th style="vertical-align:middle;">Refused</th>
+                                    <th style="vertical-align:middle;">Unknown</th>
+                                </tr>
+                            </thead>  
+                            <!--end headings-->
+                            
+                            <tbody>        
+                            <!--a. tobacco-->       
+                                <tr>
+                                    <td>a.   Tobacco products (cigarettes, chewing tobacco, cigars, etc.)? </td>
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-1-1" name="Q3-1" value="1" title="{!form.obj[bfVariableMap['NTOBACCO']]}"/></td><!--never-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-1-2" name="Q3-1" value="2" title="{!form.obj[bfVariableMap['NTOBACCO']]}"/></td><!--once or twice-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-1-3" name="Q3-1" value="3" title="{!form.obj[bfVariableMap['NTOBACCO']]}"/></td><!--weekly-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-1-4" name="Q3-1" value="4" title="{!form.obj[bfVariableMap['NTOBACCO']]}"/></td><!--daily-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-1-96" name="Q3-1" value="96" title="{!form.obj[bfVariableMap['NTOBACCO']]}"/></td><!--refused-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-1-97" name="Q3-1" value="97" title="{!form.obj[bfVariableMap['NTOBACCO']]}"/></td><!--unknown-->
+                                </tr>
+                                
+                                <!--b. alcohol-->           
+                                <tr>
+                                    <td>b.   Alcoholic beverages (beer, wine, liquor, etc.)? </td>
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-2-1" name="Q3-2" value="1" title="{!form.obj[bfVariableMap['NALCOHOL']]}"/></td><!--never-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-2-2" name="Q3-2" value="2" title="{!form.obj[bfVariableMap['NALCOHOL']]}"/></td><!--once or twice-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-2-3" name="Q3-2" value="3" title="{!form.obj[bfVariableMap['NALCOHOL']]}"/></td><!--weekly-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-2-4" name="Q3-2" value="4" title="{!form.obj[bfVariableMap['NALCOHOL']]}"/></td><!--daily-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-2-96" name="Q3-2" value="96" title="{!form.obj[bfVariableMap['NALCOHOL']]}"/></td><!--refused-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-2-97" name="Q3-2" value="97" title="{!form.obj[bfVariableMap['NALCOHOL']]}"/></td><!--unknown-->
+                                </tr>
+                                
+                                <!--c. cannabis-->
+                                <tr>
+                                    <td>c.   Cannabis (marijuana, pot, grass, hash, etc.)?  </td>
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-3-1" name="Q3-3" value="1" title="{!form.obj[bfVariableMap['NCANNABIS']]}"/></td><!--never-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-3-2" name="Q3-3" value="2" title="{!form.obj[bfVariableMap['NCANNABIS']]}"/></td><!--once or twice-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-3-3" name="Q3-3" value="3" title="{!form.obj[bfVariableMap['NCANNABIS']]}"/></td><!--weekly-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-3-4" name="Q3-3" value="4" title="{!form.obj[bfVariableMap['NCANNABIS']]}"/></td><!--daily-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-3-96" name="Q3-3" value="96" title="{!form.obj[bfVariableMap['NCANNABIS']]}"/></td><!--refused-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-3-97" name="Q3-3" value="97" title="{!form.obj[bfVariableMap['NCANNABIS']]}"/></td><!--unknown-->
+                                </tr>
+                                
+                                <!--d. cocaine-->
+                                <tr>
+                                    <td>d.   Cocaine (coke, crack, etc.)?  </td>
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-4-1" name="Q3-4" value="1" title="{!form.obj[bfVariableMap['NCOCAINE']]}"/></td><!--never-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-4-2" name="Q3-4" value="2" title="{!form.obj[bfVariableMap['NCOCAINE']]}"/></td><!--once or twice-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-4-3" name="Q3-4" value="3" title="{!form.obj[bfVariableMap['NCOCAINE']]}"/></td><!--weekly-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-4-4" name="Q3-4" value="4" title="{!form.obj[bfVariableMap['NCOCAINE']]}"/></td><!--daily-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-4-96" name="Q3-4" value="96" title="{!form.obj[bfVariableMap['NCOCAINE']]}"/></td><!--refused-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-4-97" name="Q3-4" value="97" title="{!form.obj[bfVariableMap['NCOCAINE']]}"/></td><!--unknown-->
+                                </tr>
+                                
+                                <!--e. stimulant rx-->
+                                <tr>
+                                    <td>e.   Prescription stimulants (Ritalin, Concerta, Dexedrine, Adderall, diet pills, etc.)?  </td>
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-5-1" name="Q3-5" value="1" title="{!form.obj[bfVariableMap['NSTIMULANT']]}"/></td><!--never-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-5-2" name="Q3-5" value="2" title="{!form.obj[bfVariableMap['NSTIMULANT']]}"/></td><!--once or twice-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-5-3" name="Q3-5" value="3" title="{!form.obj[bfVariableMap['NSTIMULANT']]}"/></td><!--weekly-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-5-4" name="Q3-5" value="4" title="{!form.obj[bfVariableMap['NSTIMULANT']]}"/></td><!--daily-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-5-96" name="Q3-5" value="96" title="{!form.obj[bfVariableMap['NSTIMULANT']]}"/></td><!--refused-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-5-97" name="Q3-5" value="97" title="{!form.obj[bfVariableMap['NSTIMULANT']]}"/></td><!--unknown-->
+                                </tr>
+                                
+                                <!--f. meth-->
+                                <tr>
+                                    <td>f.   Methamphetamine (speed, crystal meth, ice, etc.)?  </td>
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-6-1" name="Q3-6" value="1" title="{!form.obj[bfVariableMap['NMETH']]}"/></td><!--never-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-6-2" name="Q3-6" value="2" title="{!form.obj[bfVariableMap['NMETH']]}"/></td><!--once or twice-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-6-3" name="Q3-6" value="3" title="{!form.obj[bfVariableMap['NMETH']]}"/></td><!--weekly-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-6-4" name="Q3-6" value="4" title="{!form.obj[bfVariableMap['NMETH']]}"/></td><!--daily-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-6-96" name="Q3-6" value="96" title="{!form.obj[bfVariableMap['NMETH']]}"/></td><!--refused-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-6-97" name="Q3-6" value="97" title="{!form.obj[bfVariableMap['NMETH']]}"/></td><!--unknown-->
+                                </tr>
+                                
+                                <!--g. inhalant-->
+                                <tr>
+                                    <td>g.   Inhalants (nitrous oxide, glue gas, paint thinner, etc.)?  </td>
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-7-1" name="Q3-7" value="1" title="{!form.obj[bfVariableMap['NINHALANT']]}"/></td><!--never-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-7-2" name="Q3-7" value="2" title="{!form.obj[bfVariableMap['NINHALANT']]}"/></td><!--once or twice-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-7-3" name="Q3-7" value="3" title="{!form.obj[bfVariableMap['NINHALANT']]}"/></td><!--weekly-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-7-4" name="Q3-7" value="4" title="{!form.obj[bfVariableMap['NINHALANT']]}"/></td><!--daily-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-7-96" name="Q3-7" value="96" title="{!form.obj[bfVariableMap['NINHALANT']]}"/></td><!--refused-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-7-97" name="Q3-7" value="97" title="{!form.obj[bfVariableMap['NINHALANT']]}"/></td><!--unknown-->
+                                </tr>
+                                
+                                <!--h. sedative-->
+                                <tr>
+                                    <td>h.   Sedatives or sleeping pills (Valium, Serepax, Ativan, Librium, Xanax, Rohypnol, GHB, etc.)?  </td>
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-8-1" name="Q3-8" value="1" title="{!form.obj[bfVariableMap['NSEDATIVE']]}"/></td><!--never-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-8-2" name="Q3-8" value="2" title="{!form.obj[bfVariableMap['NSEDATIVE']]}"/></td><!--once or twice-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-8-3" name="Q3-8" value="3" title="{!form.obj[bfVariableMap['NSEDATIVE']]}"/></td><!--weekly-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-8-4" name="Q3-8" value="4" title="{!form.obj[bfVariableMap['NSEDATIVE']]}"/></td><!--daily-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-8-96" name="Q3-8" value="96" title="{!form.obj[bfVariableMap['NSEDATIVE']]}"/></td><!--refused-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-8-97" name="Q3-8" value="97" title="{!form.obj[bfVariableMap['NSEDATIVE']]}"/></td><!--unknown-->
+                                </tr>
+                                
+                                <!--i. hallucinogen-->                                                    
+                                <tr>
+                                    <td>i.   Hallucinogens (LSD, acid, mushrooms, PCP, Special K, ecstasy, etc.)?  </td>
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-9-1" name="Q3-9" value="1" title="{!form.obj[bfVariableMap['NHALLUCIN']]}"/></td><!--never-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-9-2" name="Q3-9" value="2" title="{!form.obj[bfVariableMap['NHALLUCIN']]}"/></td><!--once or twice-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-9-3" name="Q3-9" value="3" title="{!form.obj[bfVariableMap['NHALLUCIN']]}"/></td><!--weekly-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-9-4" name="Q3-9" value="4" title="{!form.obj[bfVariableMap['NHALLUCIN']]}"/></td><!--daily-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-9-96" name="Q3-9" value="96" title="{!form.obj[bfVariableMap['NHALLUCIN']]}"/></td><!--refused-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-9-97" name="Q3-9" value="97" title="{!form.obj[bfVariableMap['NHALLUCIN']]}"/></td><!--unknown-->
+                                </tr>
+                                
+                                <!--j. street opioids-->
+                                <tr>
+                                    <td>j.   Street opioids (heroin, opium, etc.)?  </td>
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-10-1" name="Q3-10" value="1" title="{!form.obj[bfVariableMap['NSTOPIOID']]}"/></td><!--never-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-10-2" name="Q3-10" value="2" title="{!form.obj[bfVariableMap['NSTOPIOID']]}"/></td><!--once or twice-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-10-3" name="Q3-10" value="3" title="{!form.obj[bfVariableMap['NSTOPIOID']]}"/></td><!--weekly-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-10-4" name="Q3-10" value="4" title="{!form.obj[bfVariableMap['NSTOPIOID']]}"/></td><!--daily-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-10-96" name="Q3-10" value="96" title="{!form.obj[bfVariableMap['NSTOPIOID']]}"/></td><!--refused-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-10-97" name="Q3-10" value="97" title="{!form.obj[bfVariableMap['NSTOPIOID']]}"/></td><!--unknown-->
+                                </tr>
+                                
+                                <!--k. opioid rx-->
+                                <tr>
+                                    <td>k.   Prescription opioids (fentanyl, oxycodone [OxyContin, Percocet], hydrocodone [Vicodin], methadone, buprenorphine, etc.)?  </td>
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-11-1" name="Q3-11" value="1" title="{!form.obj[bfVariableMap['NPROPIOID']]}"/></td><!--never-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-11-2" name="Q3-11" value="2" title="{!form.obj[bfVariableMap['NPROPIOID']]}"/></td><!--once or twice-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-11-3" name="Q3-11" value="3" title="{!form.obj[bfVariableMap['NPROPIOID']]}"/></td><!--weekly-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-11-4" name="Q3-11" value="4" title="{!form.obj[bfVariableMap['NPROPIOID']]}"/></td><!--daily-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-11-96" name="Q3-11" value="96" title="{!form.obj[bfVariableMap['NPROPIOID']]}"/></td><!--refused-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-11-97" name="Q3-11" value="97" title="{!form.obj[bfVariableMap['NPROPIOID']]}"/></td><!--unknown-->
+                                </tr>
+                                
+                                <!--l. other, specify-->
+                                <tr>
+                                    <td>l.  Other (e-cigarettes, etc.), please specify:  &nbsp;<apex:inputField styleClass="form-control input-sm auto-width" value="{!form.obj[bfVariableMap['NSOTHERSP']]}" id="BNSOTHERSP__c"/></td>
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-12-1" name="Q3-12" value="1" title="{!form.obj[bfVariableMap['NSOTHER']]}"/></td><!--never-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-12-2" name="Q3-12" value="2" title="{!form.obj[bfVariableMap['NSOTHER']]}"/></td><!--once or twice-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-12-3" name="Q3-12" value="3" title="{!form.obj[bfVariableMap['NSOTHER']]}"/></td><!--weekly-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-12-4" name="Q3-12" value="4" title="{!form.obj[bfVariableMap['NSOTHER']]}"/></td><!--daily-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-12-96" name="Q3-12" value="96" title="{!form.obj[bfVariableMap['NSOTHER']]}"/></td><!--refused-->
+                                    <td class="text-center"><input type="radio" class="Q3" id="Q3-12-97" name="Q3-12" value="97" title="{!form.obj[bfVariableMap['NSOTHER']]}"/></td><!--unknown-->
+                                </tr>
+                            </tbody>
+                        </table>
+                                        
+                        <!--value of radiobutton fields seperate from declaration to maintain one radiobutton per column structure -->
+                        <apex:inputField id="NTOBACCO__c" value="{!form.obj[bfVariableMap['NTOBACCO']]}"  styleClass="Q3-1 hidden"/><!--Q3 Table row a/1-->
+                        <apex:inputField id="NALCOHOL__c" value="{!form.obj[bfVariableMap['NALCOHOL']]}"  styleClass="Q3-2 hidden"/><!--Q3 Table row b/2-->
+                        <apex:inputField id="NCANNABIS__c" value="{!form.obj[bfVariableMap['NCANNABIS']]}"  styleClass="Q3-3 hidden"/><!--Q3 Table row c/3-->
+                        <apex:inputField id="NCOCAINE__c" value="{!form.obj[bfVariableMap['NCOCAINE']]}"  styleClass="Q3-4 hidden"/><!--Q3 Table row d/4-->
+                        <apex:inputField id="NSTIMULANT__c" value="{!form.obj[bfVariableMap['NSTIMULANT']]}"  styleClass="Q3-5 hidden"/><!--Q3 Table row e/5-->
+                        <apex:inputField id="NMETH__c" value="{!form.obj[bfVariableMap['NMETH']]}"  styleClass="Q3-6 hidden"/><!--Q3 Table row f/6-->
+                        <apex:inputField id="NINHALANT__c" value="{!form.obj[bfVariableMap['NINHALANT']]}"  styleClass="Q3-7 hidden"/><!--Q3 Table row g/7-->
+                        <apex:inputField id="NSEDATIVE__c" value="{!form.obj[bfVariableMap['NSEDATIVE']]}"  styleClass="Q3-8 hidden"/><!--Q3 Table row h/8-->
+                        <apex:inputField id="NHALLUCIN__c" value="{!form.obj[bfVariableMap['NHALLUCIN']]}"  styleClass="Q3-9 hidden"/><!--Q3 Table row i/9-->
+                        <apex:inputField id="NSTOPIOID__c" value="{!form.obj[bfVariableMap['NSTOPIOID']]}"  styleClass="Q3-10 hidden"/><!--Q3 Table row j/10-->
+                        <apex:inputField id="NPROPIOID__c" value="{!form.obj[bfVariableMap['NPROPIOID']]}"  styleClass="Q3-11 hidden"/><!--Q3 Table row k/11-->
+                        <apex:inputField id="NSOTHER__c" value="{!form.obj[bfVariableMap['NSOTHER']]}"  styleClass="Q3-12 hidden"/><!--Q3 Table row l/12-->
+                        
+                    </div>       
+<!--end functioning -->
+<!-------------------------------------------------------------------------------------------SC------------------------------------------------------------------------------------------------------------------->
+            <!--social connectedness-->
+                <div class="form-pageblock-subheader">
+                    <h3>Social Connectedness</h3>
+                </div>
+                
+                <!--q1 question-->
+                <div class="form-group">
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">1.</span>
+                            Please indicate your disagreement/agreement with each of the following statements.  Please answer for relationships with persons other than your [your child’s] mental health provider(s) over the past 30 days.
+                    </label>
+                </div>
+                    <!--q1 answer choices-->
+                    <div >   
+                        <table class="table table-bordered table-hover table-condensed SC_Q1table">
+                            <tr>
+                            <!--agreement indicator headings-->
+                                <thead>
+                                    <tr>
+                                        <td/>
+                                        <th style="vertical-align:middle;">Strongly Disagree</th>
+                                        <th style="vertical-align:middle;">Disagree</th>
+                                        <th style="vertical-align:middle;">Undecided</th>
+                                        <th style="vertical-align:middle;">Agree</th>
+                                        <th style="vertical-align:middle;">Strongly Agree</th>
+                                        <th style="vertical-align:middle;">Refused</th>
+                                    </tr>
+                                </thead>
+                                <!--end headings-->
+                            </tr>
+                            
+                            <!--a. people will listen-->
+                            <tr>
+                                <td>a.   I know people who will listen and understand me when I need to talk.</td>
+                                <td class="text-center"><input type="radio" class="SC_Q1" id="SC_Q1-1-1" name="SC_Q1-1" value="1" title="{!form.obj[bfVariableMap['NSCLISTEN']]}"/></td><!--strongly disagree-->
+                                <td class="text-center"><input type="radio" class="SC_Q1" id="SC_Q1-1-2" name="SC_Q1-1" value="2" title="{!form.obj[bfVariableMap['NSCLISTEN']]}"/></td><!--disagree-->
+                                <td class="text-center"><input type="radio" class="SC_Q1" id="SC_Q1-1-3" name="SC_Q1-1" value="3" title="{!form.obj[bfVariableMap['NSCLISTEN']]}"/></td><!--undecided-->
+                                <td class="text-center"><input type="radio" class="SC_Q1" id="SC_Q1-1-4" name="SC_Q1-1" value="4" title="{!form.obj[bfVariableMap['NSCLISTEN']]}"/></td><!--agree-->
+                                <td class="text-center"><input type="radio" class="SC_Q1" id="SC_Q1-1-5" name="SC_Q1-1" value="5" title="{!form.obj[bfVariableMap['NSCLISTEN']]}"/></td><!--strongly agree-->
+                                <td class="text-center"><input type="radio" class="SC_Q1" id="SC_Q1-1-96" name="SC_Q1-1" value="96" title="{!form.obj[bfVariableMap['NSCLISTEN']]}"/></td><!--refused-->
+                            </tr>
+                            
+                            <!--b. comfortable talking-->
+                            <tr>
+                                <td>b.   I have people who I am comfortable talking with about my [my child’s] problems.</td>
+                                <td class="text-center"><input type="radio" class="SC_Q1" id="SC_Q1-2-1" name="SC_Q1-2" value="1" title="{!form.obj[bfVariableMap['NSCCOMFORT']]}"/></td><!--strongly disagree-->
+                                <td class="text-center"><input type="radio" class="SC_Q1" id="SC_Q1-2-2" name="SC_Q1-2" value="2" title="{!form.obj[bfVariableMap['NSCCOMFORT']]}"/></td><!--disagree-->
+                                <td class="text-center"><input type="radio" class="SC_Q1" id="SC_Q1-2-3" name="SC_Q1-2" value="3" title="{!form.obj[bfVariableMap['NSCCOMFORT']]}"/></td><!--undecided-->
+                                <td class="text-center"><input type="radio" class="SC_Q1" id="SC_Q1-2-4" name="SC_Q1-2" value="4" title="{!form.obj[bfVariableMap['NSCCOMFORT']]}"/></td><!--agree-->
+                                <td class="text-center"><input type="radio" class="SC_Q1" id="SC_Q1-2-5" name="SC_Q1-2" value="5" title="{!form.obj[bfVariableMap['NSCCOMFORT']]}"/></td><!--strongly agree-->
+                                <td class="text-center"><input type="radio" class="SC_Q1" id="SC_Q1-2-96" name="SC_Q1-2" value="96" title="{!form.obj[bfVariableMap['NSCCOMFORT']]}"/></td><!--refused-->
+                            </tr>
+                            
+                            <!--c. crisis support-->
+                            <tr>
+                                <td>c.   In a crisis, I would have the support I need from family or friends.</td>
+                                <td class="text-center"><input type="radio" class="SC_Q1" id="SC_Q1-3-1" name="SC_Q1-3" value="1" title="{!form.obj[bfVariableMap['NSCSUPPORT']]}"/></td><!--strongly disagree-->
+                                <td class="text-center"><input type="radio" class="SC_Q1" id="SC_Q1-3-2" name="SC_Q1-3" value="2" title="{!form.obj[bfVariableMap['NSCSUPPORT']]}"/></td><!--disagree-->
+                                <td class="text-center"><input type="radio" class="SC_Q1" id="SC_Q1-3-3" name="SC_Q1-3" value="3" title="{!form.obj[bfVariableMap['NSCSUPPORT']]}"/></td><!--undecided-->
+                                <td class="text-center"><input type="radio" class="SC_Q1" id="SC_Q1-3-4" name="SC_Q1-3" value="4" title="{!form.obj[bfVariableMap['NSCSUPPORT']]}"/></td><!--agree-->
+                                <td class="text-center"><input type="radio" class="SC_Q1" id="SC_Q1-3-5" name="SC_Q1-3" value="5" title="{!form.obj[bfVariableMap['NSCSUPPORT']]}"/></td><!--strongly agree-->
+                                <td class="text-center"><input type="radio" class="SC_Q1" id="SC_Q1-3-96" name="SC_Q1-3" value="96" title="{!form.obj[bfVariableMap['NSCSUPPORT']]}"/></td><!--refused-->
+                            </tr>
+                            
+                            <!--d. enjoy people -->
+                            <tr>
+                                <td>d.   I have people with whom I can do enjoyable things.</td>
+                                <td class="text-center"><input type="radio" class="SC_Q1" id="SC_Q1-4-1" name="SC_Q1-4" value="1" title="{!form.obj[bfVariableMap['NSCENJOY']]}"/></td><!--strongly disagree-->
+                                <td class="text-center"><input type="radio" class="SC_Q1" id="SC_Q1-4-2" name="SC_Q1-4" value="2" title="{!form.obj[bfVariableMap['NSCENJOY']]}"/></td><!--disagree-->
+                                <td class="text-center"><input type="radio" class="SC_Q1" id="SC_Q1-4-3" name="SC_Q1-4" value="3" title="{!form.obj[bfVariableMap['NSCENJOY']]}"/></td><!--undecided-->
+                                <td class="text-center"><input type="radio" class="SC_Q1" id="SC_Q1-4-4" name="SC_Q1-4" value="4" title="{!form.obj[bfVariableMap['NSCENJOY']]}"/></td><!--agree-->
+                                <td class="text-center"><input type="radio" class="SC_Q1" id="SC_Q1-4-5" name="SC_Q1-4" value="5" title="{!form.obj[bfVariableMap['NSCENJOY']]}"/></td><!--strongly agree-->
+                                <td class="text-center"><input type="radio" class="SC_Q1" id="SC_Q1-4-96" name="SC_Q1-4" value="96" title="{!form.obj[bfVariableMap['NSCENJOY']]}"/></td><!--refused-->
+                            </tr>
+                            
+                        </table>
+                                    
+                                            <!--value of radiobutton fields seperate from declaration to maintain one radiobutton per column structure -->
+                                    <apex:inputField id="NSCLISTEN__c" value="{!form.obj[bfVariableMap['NSCLISTEN']]}" styleClass="SC_Q1-1 hidden"/><!--SC Question 1 Table row a/1-->
+                                    <apex:inputField id="NSCCOMFORT__c" value="{!form.obj[bfVariableMap['NSCCOMFORT']]}" styleClass="SC_Q1-2 hidden"/><!--SC Question 1 Table row b/2-->
+                                    <apex:inputField id="NSCSUPPORT__" value="{!form.obj[bfVariableMap['NSCSUPPORT']]}" styleClass="SC_Q1-3 hidden"/><!--SC Question 1 Table row c/3-->
+                                    <apex:inputField id="NSCENJOY__c" value="{!form.obj[bfVariableMap['NSCENJOY']]}" styleClass="SC_Q1-4 hidden"/><!--SC Question 1 Table row d/4-->
+
+                    </div>
+                
+                <!--Completion status control-->
+                <div class="form-group no-border-bottom no-space-bottom">
+                    <label class="control-label col-md-2 col-md-offset-8 text-right">Complete?</label>
+                    <div class="col-md-2">
+                        <apex:selectList id="STATUS_NOMS__c" styleClass="pull-right form-control input-sm" value="{!form.obj[bfVariableMap['STATUS']]}" size="1">
+                            <apex:selectOption itemValue="Incomplete" itemLabel="Incomplete"/>
+                            <apex:selectOption itemValue="Complete" itemLabel="Complete"/>
+                        </apex:selectList> 
+                    </div>
+                </div>
+                <!--end completion status--> 
+                
+            </apex:pageBlock>
+            <!--end social connectedness-->
+
+    </apex:form>
+    <!--end form content-->
+    
+    <!--citation information footer-->    
+    <c:cimiFormFooter formElement="{!form}"/>    
+        
+    </div>
+        
+</apex:page>

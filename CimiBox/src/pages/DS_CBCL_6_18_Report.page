@@ -1,0 +1,495 @@
+<apex:page standardController="DS_CBCL_B__c" extensions="DS_CBCL_6_18_Report_Controller" action="{!init}" showHeader="{!NOT(printReport)}">
+    
+    <link href="{!URLFOR($Resource.CSS_DS_Report)}" rel="stylesheet" media="screen, print"/>
+    <link href="{!URLFOR($Resource.CSS_DS_CBCL_Report)}" rel="stylesheet" media="screen, print"/>
+    
+    <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
+    
+    <!--print report command for button-->  
+    <apex:outputPanel layout="none" rendered="{!printReport}">
+        <script>
+        $j(document).ready(function() { 
+            $j('.score-table').removeClass('col-md-12 col-lg-6').addClass('col-md-12 col-lg-12');
+            $j('.tscore-chart').removeClass('col-md-12 col-lg-6').css('width','1100px', 'height', '300px').addClass('col-md-12 col-lg-12');
+            $j('.bPageTitle-page2').html($j('.bPageTitle').html());
+            $j('.header-info-table-page2').html($j('.header-info-table').html());
+            window.print(); 
+        });
+        </script>
+    </apex:outputPanel>
+    <!--end print command -->  
+    
+    <div class="{!HTMLENCODE(form.visitType)}-assessment">
+        <apex:sectionHeader title="{!HTMLENCODE(form.title)}" subtitle="{!HTMLENCODE(form.subtitle)}" />
+    </div>
+    
+    <div class="bootwrap">
+        
+        <!--Begin form content-->
+        <apex:form id="DS_FORM" styleClass="form-horizontal form-cbcl-report">
+            
+            <!-- pageblock to show ClientInformation header as described in Utility class-->
+            <c:cimiClientInfo displayVisitType="true" formElement="{!form}"/>
+            <!--end client info pageBlock-->
+            
+            <!--begin report content-->
+            <apex:pageBlock title="Symptom Analysis Report">
+                
+                <!--Save & view, save, and cancel control buttons for pageBlock-->
+                <apex:pageBlockButtons >
+                    <apex:commandButton action="{!editRecord}" value="Edit" styleClass="btn-info btn btn-sm" rendered="{!not(printReport)}"/>
+                </apex:pageBlockButtons>
+                <!--end buttons-->
+                
+                <!--placeholding structure that allows for system message display-->
+                <apex:pageMessages />
+                
+                <!--provides print button functionality and structure-->
+                <apex:outputPanel layout="none" rendered="{!NOT(printReport)}">
+                    <div>
+                        <a href="/apex/DS_CBCL_6_18_Report?cimi={!HTMLENCODE(cimi)}&print=1" target="_blank">
+                            <button class="btn btn-default pull-right" type="button">
+                                <i class="glyphicon glyphicon-print"></i> &nbsp;Print
+                            </button>
+                        </a>
+                        <br/>
+                    </div>
+                </apex:outputPanel>
+                <!--end print button-->
+                
+                <!--information and instructions-->
+                <div class="alert alert-info">
+                    <!--administration date-->
+                    
+                    <h4>
+                        Date of administration:
+                        <apex:outputText value="{0,date,MM/dd/yyyy}">
+                            <apex:param value="{!visits[currentVisitDate].DOACO}"></apex:param>
+                        </apex:outputText>
+                    </h4>                
+                    
+                    <br/><br/>
+                    <!--end date-->
+                    <P>The CBCL measures symptoms across a broad range of emotional and behavioral areas in order to identify problems that may be targets for intervention. The CBCL is completed by an adult caregiver who reports on the child's functioning. Results from the CBCL can be used to identify possible treatment areas.</P><br/>
+                    
+                    <h4><u>Potential Treatment Targets</u></h4>   
+                    <br class="print-no-space"/><br class="print-no-space"/><!--blank lines-->
+                    
+                    <!--displays a list of all symptoms that are rated as clinically significant, if any-->
+                    <apex:outputPanel layout="none" rendered="{!if(clinicalRange != '', true, false)}"> 
+                        <!--significance, conditional formatting--> 
+                        <strong><u>Clinical Range</u></strong>
+                        
+                        <p>
+                            The child's symptoms on the following scales are in the clinically significant range compared to other children their age: {!clinicalRange}
+                        </p>  <br class="print-no-space"/>  
+                    </apex:outputPanel>     
+                    <!--end critical-->  
+                    
+                    
+                    
+                    <!--displays a list of borderline symptoms, if any-->
+                    <apex:outputPanel layout="none" rendered="{!if(borderlinerange != '', true, false)}">     <!--significance, conditional formatting-->     
+                        <strong><u>Borderline Range</u></strong>
+                        
+                        <p>
+                            The child's symptoms on the following scales are in the borderline range compared to other children their age: {!borderlinerange}
+                        </p><br class="print-no-space"/>
+                    </apex:outputPanel>
+                    <!--end borderline-->
+                    
+                    
+                    
+                    <h5>These areas may also be a focus of treatment and should be monitored. Exact scores are in the table below.</h5>
+                </div>
+                <!--end info-->
+                
+                <!--conditional, If 8 or more scores are missing, this panel is displayed instead of report-->
+                <apex:outputPanel layout="none" rendered="{!if(visits[currentVisitDate].CBAPPCN = 0, true, false)}">
+                    <div class="well well-lg">
+                        <h4>This record is Not Applicable.</h4><br/><br/>
+                        <p>Score can't be calculated, eight (8) or more anwers to the Child Behavior Check List (CBCL) were left blank.</p>
+                    </div>
+                </apex:outputPanel>
+                
+                <apex:outputPanel styleClass="row" rendered="{!if(visits[currentVisitDate].CBAPPCN = 1, true, false)}">
+                    
+                    <div class="col-md-12 col-lg-6 score-table">
+                        
+                        <table class="table" style="background-color: #F2F2F2;">
+                            <!--headings-->
+                            <thead> 
+                                <tr>
+                                    <th class="darkerTHBottom">Category</th>
+                                    <th class="darkerTHBottom">T-Scores</th>
+                                    <th class="darkerTHBottom">Percentile</th>
+                                    <th class="darkerTHBottom">Significance</th>
+                                </tr>
+                            </thead>
+                            <!--end headings-->
+                            
+                            <tbody>
+                                <!--exact scores table-->
+                                <tr>
+                                    <td class="darkerTDTop front16">Internalizing Problems Score</td><!--category-->
+                                    <td class="darkerTDTop">{!ROUND(visits[currentVisitDate].CBIBTN, 0)}</td> <!--score-->
+                                    <td class="darkerTDTop">{!visits[currentVisitDate].CBIBP}</td><!--percentile-->
+                                    <td class="darkerTDTop {!CASE(visits[currentVisitDate].CBIBS,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!visits[currentVisitDate].CBIBS} Range</td><!--significance, conditional formatting-->
+                                </tr>
+                                <tr>
+                                    <td>Anxious/Depressed</td><!--category-->
+                                    <td>{!ROUND(visits[currentVisitDate].CBADTN, 0)}</td> <!--score-->
+                                    <td>{!visits[currentVisitDate].CBADP}</td><!--percentile-->
+                                    <td class="{!CASE(visits[currentVisitDate].CBADS,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!visits[currentVisitDate].CBADS} Range</td><!--significance, conditional formatting-->
+                                </tr>
+                                <tr>
+                                    <td>Withdrawn/Depressed</td><!--category-->
+                                    <td>{!ROUND(visits[currentVisitDate].CBWDTN, 0)}</td> <!--score-->
+                                    <td>{!visits[currentVisitDate].CBWDP}</td><!--percentile-->
+                                    <td class="{!CASE(visits[currentVisitDate].CBWDS,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!visits[currentVisitDate].CBWDS} Range</td><!--significance, conditional formatting-->
+                                </tr>
+                                <tr>
+                                    <td>Somatic Complaints</td><!--category-->
+                                    <td>{!ROUND(visits[currentVisitDate].CBSCTN, 0)}</td> <!--score-->
+                                    <td>{!visits[currentVisitDate].CBSCP}</td><!--percentile-->
+                                    <td class="{!CASE(visits[currentVisitDate].CBSCS,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!visits[currentVisitDate].CBSCS} Range</td><!--significance, conditional formatting-->
+                                </tr>
+                                <tr>
+                                    <td class="darkerTDTop front16">Externalizing Problems Score</td><!--category-->
+                                    <td class="darkerTDTop">{!ROUND(visits[currentVisitDate].CBEBTN, 0)}</td> <!--score-->
+                                    <td class="darkerTDTop">{!visits[currentVisitDate].CBEBP}</td><!--percentile-->
+                                    <td class="darkerTDTop {!CASE(visits[currentVisitDate].CBEBS,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!visits[currentVisitDate].CBEBS} Range</td><!--significance, conditional formatting-->
+                                </tr>
+                                <tr>
+                                    <td>Rule Breaking Behavior</td><!--category-->
+                                    <td>{!ROUND(visits[currentVisitDate].CBRBTN, 0)}</td> <!--score-->
+                                    <td>{!visits[currentVisitDate].CBRBP}</td><!--percentile-->
+                                    <td class="{!CASE(visits[currentVisitDate].CBRBS,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!visits[currentVisitDate].CBRBS} Range</td><!--significance, conditional formatting-->
+                                </tr>
+                                <tr>
+                                    <td>Aggressive Behavior</td><!--category-->
+                                    <td>{!ROUND(visits[currentVisitDate].CBABTN, 0)}</td> <!--score-->
+                                    <td>{!visits[currentVisitDate].CBABP}</td><!--percentile-->
+                                    <td class="{!CASE(visits[currentVisitDate].CBABS,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!visits[currentVisitDate].CBABS} Range</td><!--significance, conditional formatting-->
+                                </tr>
+                                <tr>
+                                    <td class="darkerTDTop">Social Problems</td><!--category-->
+                                    <td class="darkerTDTop">{!ROUND(visits[currentVisitDate].CBSOTN, 0)}</td> <!--score-->
+                                    <td class="darkerTDTop">{!visits[currentVisitDate].CBSOP}</td><!--percentile-->
+                                    <td class="darkerTDTop {!CASE(visits[currentVisitDate].CBSOS,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!visits[currentVisitDate].CBSOS} Range</td><!--significance, conditional formatting-->
+                                </tr>
+                                <tr>
+                                    <td>Thought Problems</td><!--category-->
+                                    <td>{!ROUND(visits[currentVisitDate].CBTPTN, 0)}</td> <!--score-->
+                                    <td>{!visits[currentVisitDate].CBTPP}</td><!--percentile-->
+                                    <td class="{!CASE(visits[currentVisitDate].CBTPS,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!visits[currentVisitDate].CBTPS} Range</td><!--significance, conditional formatting-->
+                                </tr>
+                                <tr>
+                                    <td>Attention Problems</td><!--category-->
+                                    <td>{!ROUND(visits[currentVisitDate].CBAPTN, 0)}</td> <!--score-->
+                                    <td>{!visits[currentVisitDate].CBAPP}</td><!--percentile-->
+                                    <td class="{!CASE(visits[currentVisitDate].CBAPS,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!visits[currentVisitDate].CBAPS} Range</td><!--significance, conditional formatting-->
+                                </tr>
+                                <tr>
+                                    <td class="darkerTDTop front16"><strong>Total Problems Score</strong></td><!--category-->
+                                    <td class="darkerTDTop">{!ROUND(visits[currentVisitDate].CBTSTN, 0)}</td> <!--score-->
+                                    <td class="darkerTDTop">{!visits[currentVisitDate].CBTSP}</td><!--percentile-->
+                                    <td class="darkerTDTop {!CASE(visits[currentVisitDate].CBTSS,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!visits[currentVisitDate].CBTSS} Range</td><!--significance, conditional formatting-->
+                                </tr>
+                                <!--end scores table-->
+                            </tbody>
+                            
+                        </table>
+                        
+                    </div>
+                    
+                    <apex:outputPanel layout="none">
+                        <div id="chart_div" style="height: 470px;" class="col-md-12 col-lg-6 tscore-chart" />
+                    </apex:outputPanel>
+                    
+                    
+                    
+                </apex:outputPanel>
+                
+                <apex:outputPanel layout="none" rendered="{!AND(displayHistory, NOT(printReport))}">
+                    
+                    
+                    
+                    <br/><br/>
+                    
+                    <apex:outputPanel rendered="{!displayHistory}" layout="none">
+                        <div class="form-pageblock-subheader">
+                            <h3>CBCL: All Visits</h3>
+                        </div>
+                        
+                        <div class="row">
+                            
+                            <div id="chart-internalizing" class="col-md-12 col-lg-6 history-chart"></div>
+                            <div id="chart-externalizing" class="col-md-12 col-lg-6 history-chart"></div>
+                            <div id="chart-total-score" class="col-md-12 col-lg-6 history-chart"></div>
+                            
+                        </div>
+                    </apex:outputPanel>
+                    
+                </apex:outputPanel>
+                
+            </apex:pageBlock>
+            
+            <!--citation information footer-->
+            <p class="footer" style="text-align:center">
+                <em>
+                    Copyright T.M. Achenbach Programmed under License # 1094-11-18-14. All Rights Reserved<br/>
+                    Site Manager’s address 411 West Chapel Hill St., Suite 200, Durham, NC 27701; e-mail: <a href="mailto:Ernestine.briggs@dm.duke.edu">Ernestine.briggs@dm.duke.edu</a>; tel: 919-613-9855; fax: 919-613-9898.<br/>
+                    <strong>UNAUTHORIZED REPRODUCTION IS ILLEGAL</strong><br/>
+                    Used with permission of copyright owner for use with the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN).
+                </em>
+            </p> 
+            
+            
+            
+            <apex:outputPanel layout="none" rendered="{!AND(displayHistory, printReport)}">
+                
+                <apex:outputPanel layout="block" styleClass="page2-break"/>
+                
+                <apex:outputPanel layout="block" styleClass="row overall-history">
+                    <div class="bPageTitle-page2 col-md-6 col-lg-6"></div>
+                    <div class="header-info-table-page2 col-md-6 col-lg-6"></div>
+                    
+                    <apex:pageBlock title="Overall History">
+                        
+                        <div class="row">
+                            
+                            <div id="chart-internalizing" class="history-chart" style="width:1150px; "></div>
+                            <div id="chart-externalizing" class=" history-chart" style="width:1150px; "></div>
+                            <div id="chart-total-score" class="history-chart" style="width:1150px; "></div>
+                            
+                        </div>
+                        
+                    </apex:pageBlock>
+                    
+                </apex:outputPanel>
+                
+                <!--citation information footer-->
+                <p class="footer" style="text-align:center">
+                    <em>
+                        Copyright T.M. Achenbach Programmed under License # 1094-11-18-14. All Rights Reserved<br/>
+                        Site Manager’s address 411 West Chapel Hill St., Suite 200, Durham, NC 27701; e-mail: <a href="mailto:Ernestine.briggs@dm.duke.edu">Ernestine.briggs@dm.duke.edu</a>; tel: 919-613-9855; fax: 919-613-9898.<br/>
+                        <strong>UNAUTHORIZED REPRODUCTION IS ILLEGAL</strong><br/>
+                        Used with permission of copyright owner for use with the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN).
+                    </em>
+                </p> 
+                
+            </apex:outputPanel>
+            
+            
+        </apex:form>
+        
+    </div>
+    
+    <apex:outputPanel layout="none" rendered="{!if(visits[currentVisitDate].CBAPPCN = 1, true, false)}">
+        
+        <!--chart and graph constructed using javascript packages powered by Google-->
+        
+        <!--Load the AJAX API-->
+        <script type="text/javascript" src="https://www.google.com/jsapi"/>        
+        <script type="text/javascript">                   
+            
+            var displayHistory = {!displayhistory};
+        
+        var chartHeight = {!IF(printReport, 350, 500)};
+        var slantedText = {!IF(printReport, 'false' ,'false')};
+        
+        //Load the Visualization API and the piechart package.
+        google.load("visualization", "1", {packages:["corechart"]});
+        
+        //Set a callback to run when the Google Visualization API is loaded.
+        google.setOnLoadCallback(drawChart);
+        
+        if(displayHistory == true) {
+            google.setOnLoadCallback(totalChart);
+            google.setOnLoadCallback(internalizingChart);
+            google.setOnLoadCallback(externalizingChart);
+        }
+        
+        //Callback that creates and populates a data table, instantiates the chart, passes in the data and draws it.
+        function drawChart() {
+            
+            //Create the data table.
+            var data = {
+                "rows": [
+                    {"c": [{"v": "Anxious/Deprs."}, {"v": {!ROUND(visits[currentVisitDate].CBADTN, 0)}}, {"v": 69.5}, {"v": 64.5}, {"v": false}]},
+                    {"c": [{"v": "Withdrawn/Deprs."}, {"v": {!ROUND(visits[currentVisitDate].CBWDTN, 0)}}, {"v": 69.5}, {"v": 64.5}, {"v": false}]},
+                    {"c": [{"v": "Somatic Complnt."}, {"v": {!ROUND(visits[currentVisitDate].CBSCTN, 0)}}, {"v": 69.5}, {"v": 64.5}, {"v": false}]},
+                    {"c": [{"v": "Rule Brk. Beh."}, {"v": {!ROUND(visits[currentVisitDate].CBRBTN, 0)}}, {"v": 69.5}, {"v": 64.5}, {"v": false}]},
+                    {"c": [{"v": "Aggress. Beh."}, {"v": {!ROUND(visits[currentVisitDate].CBABTN, 0)}}, {"v": 69.5}, {"v": 64.5}, {"v": false}]},
+                    {"c": [{"v": "Social Prob."}, {"v": {!ROUND(visits[currentVisitDate].CBSOTN, 0)}}, {"v": 69.5}, {"v": 64.5}, {"v": false}]},
+                    {"c": [{"v": "Thought Prob."}, {"v": {!ROUND(visits[currentVisitDate].CBTPTN, 0)}}, {"v": 69.5}, {"v": 64.5}, {"v": false}]},
+                    {"c": [{"v": "Attention Prob."}, {"v": {!ROUND(visits[currentVisitDate].CBAPTN, 0)}}, {"v": 69.5}, {"v": 64.5}, {"v": false}]},
+                    {"c": [{"v": "Internal. Prob."}, {"v": {!ROUND(visits[currentVisitDate].CBIBTN, 0)}}, {"v": 63}, {"v": 60}, {"v": false}]},
+                    {"c": [{"v": "External. Prob."}, {"v": {!ROUND(visits[currentVisitDate].CBEBTN, 0)}}, {"v": 63}, {"v": 60}, {"v": false}]},
+                    {"c": [{"v": "Total Score"}, {"v": {!ROUND(visits[currentVisitDate].CBTSTN, 0)}}, {"v": 63}, {"v": 60}, {"v": false}]}],
+                
+                //Set chart options
+                "cols": [
+                    {"p": {"role": "domain"},"label": "Category","type": "string"},
+                    {"p": {"role": "data"},"label": "T-Score","type": "number"},
+                    {"p": {"role": "data"},"label": "Clinical Range","type": "number"},
+                    {"p": {"role": "data"},"label": "Borderline Range","type": "number"},
+                    {"p": {"role": "certainty"},"type": "boolean"}]
+            };
+            //end chart
+            
+            //visualize the data in the chart above with a line graph
+            var x = new google.visualization.DataTable(data);
+            
+            var options = {
+                title: 'T-Score',   
+                series: {
+                    0: { pointSize: 5 },
+                    1: { pointSize: 0 },
+                    2: { pointSize: 0 }
+                },
+                vAxis: { maxValue: 100, minValue: 40, title: 'T-Score'},
+                hAxis: { showTextEvery: 1, slantedText: true, slantedTextAngle:30, title: 'Category' },//x-axis main label
+                
+            };
+            
+            var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+            chart.draw(x, options);
+            //end graph
+        }
+        //end chart and graph
+        
+        
+        function totalChart() {
+            
+            //Create the data table.
+            var data = {
+                "rows": [
+                    <apex:repeat value="{!visits}" var="visitKey">
+                    {"c": [{"v": "<apex:outputText value="{0,date,MM/dd/yyyy}">
+                    <apex:param value="{!visits[visitKey].DOACO}" />
+                    </apex:outputText>"}, {"v": {!visits[visitKey].CBTSTN}}, {"v": 63}, {"v": 60}, {"v": false}]},
+                    </apex:repeat>
+                ],
+                
+                //Set chart options
+                "cols": [
+                    {"p": {"role": "domain"},"label": "Date of Administration","type": "string"},
+                    {"p": {"role": "data"},"label": "T-Score","type": "number"},
+                    {"p": {"role": "data"},"label": "Clinical Range","type": "number"},
+                    {"p": {"role": "data"},"label": "Borderline Range","type": "number"},
+                    {"p": {"role": "certainty"},"type": "boolean"}]
+            };
+            //end chart
+            
+            //visualize the data in the chart above with a line graph
+            var x = new google.visualization.DataTable(data);
+            
+            var options = {
+                title: 'Total Problem Score',   
+                series: {
+                    0: { pointSize: 5 },
+                    1: { pointSize: 0 },
+                    2: { pointSize: 0 }
+                },
+                vAxis: { maxValue: 100, minValue: 0, title: 'T-Score'},
+                hAxis: { showTextEvery: 1, slantedText: slantedText, slantedTextAngle:30, title: 'Date of administration' },//x-axis main label
+                height: chartHeight
+            };
+            
+            var chart = new google.visualization.LineChart(document.getElementById('chart-total-score'));
+            chart.draw(x, options);
+            
+        }
+        
+        function internalizingChart() {
+            
+            //Create the data table.
+            var data = {
+                "rows": [
+                    <apex:repeat value="{!visits}" var="visitKey">
+                    {"c": [{"v": "<apex:outputText value="{0,date,MM/dd/yyyy}">
+                    <apex:param value="{!visits[visitKey].DOACO}" />
+                    </apex:outputText>"}, {"v": {!visits[visitKey].CBIBTN}}, {"v": 63}, {"v": 60}, {"v": false}]},
+                    </apex:repeat>
+                ],
+                
+                //Set chart options
+                "cols": [
+                    {"p": {"role": "domain"},"label": "Date of Administration","type": "string"},
+                    {"p": {"role": "data"},"label": "T-Score","type": "number"},
+                    {"p": {"role": "data"},"label": "Clinical Range","type": "number"},
+                    {"p": {"role": "data"},"label": "Borderline Range","type": "number"},
+                    {"p": {"role": "certainty"},"type": "boolean"}]
+            };
+            //end chart
+            
+            //visualize the data in the chart above with a line graph
+            var x = new google.visualization.DataTable(data);
+            
+            var options = {
+                title: 'Internalizing Problems',   
+                series: {
+                    0: { pointSize: 5 },
+                    1: { pointSize: 0 },
+                    2: { pointSize: 0 }
+                },
+                vAxis: { maxValue: 100, minValue: 0, title: 'T-Score'},
+                hAxis: { showTextEvery: 1, slantedText: slantedText, slantedTextAngle:30, title: 'Date of administration' },//x-axis main label
+                height: chartHeight
+            };
+            
+            var chart = new google.visualization.LineChart(document.getElementById('chart-internalizing'));
+            chart.draw(x, options);
+            
+        }
+        
+        function externalizingChart() {
+            
+            //Create the data table.
+            var data = {
+                "rows": [
+                    <apex:repeat value="{!visits}" var="visitKey">
+                    {"c": [{"v": "<apex:outputText value="{0,date,MM/dd/yyyy}">
+                    <apex:param value="{!visits[visitKey].DOACO}" />
+                    </apex:outputText>"}, {"v": {!visits[visitKey].CBEBTN}}, {"v": 63}, {"v": 60}, {"v": false}]},
+                    </apex:repeat>
+                ],
+                
+                //Set chart options
+                "cols": [
+                    {"p": {"role": "domain"},"label": "Date of Administration","type": "string"},
+                    {"p": {"role": "data"},"label": "T-Score","type": "number"},
+                    {"p": {"role": "data"},"label": "Clinical Range","type": "number"},
+                    {"p": {"role": "data"},"label": "Borderline Range","type": "number"},
+                    {"p": {"role": "certainty"},"type": "boolean"}]
+            };
+            //end chart
+            
+            //visualize the data in the chart above with a line graph
+            var x = new google.visualization.DataTable(data);
+            
+            var options = {
+                title: 'Externalizing Problems',   
+                series: {
+                    0: { pointSize: 5 },
+                    1: { pointSize: 0 },
+                    2: { pointSize: 0 }
+                },
+                vAxis: { maxValue: 100, minValue: 0, title: 'T-Score'},
+                hAxis: { showTextEvery: 1, slantedText: slantedText, slantedTextAngle:30, title: 'Date of administration' },//x-axis main label
+                height: chartHeight
+            };
+            
+            var chart = new google.visualization.LineChart(document.getElementById('chart-externalizing'));
+            chart.draw(x, options);
+            
+        }
+        
+        </script>
+        
+    </apex:outputPanel>
+    
+    
+</apex:page>

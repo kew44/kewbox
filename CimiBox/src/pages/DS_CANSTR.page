@@ -1,0 +1,221 @@
+<apex:page standardController="DS_Functioning_Forms_B__c" extensions="DS_CANSTR_Controller">
+    
+    <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
+    
+    <div class="{!HTMLENCODE(form.visitType)}">
+        <apex:sectionHeader title="{!form.title}" subtitle="{!form.subtitle}" />
+    </div>
+    
+    <div class="bootwrap">
+        
+        <!--Begin form content-->
+        <apex:form id="DS_FORM" styleClass="form-horizontal">
+            
+            <!-- pageblock to show ClientInformation header as described in Utility class-->
+            <c:cimiClientInfo displayVisitType="true" formElement="{!form}"/>
+            <!--end client info pageBlock-->
+            
+            <!-- primary content pageBlock container-->
+            <apex:pageBlock title="{!form.title}" >
+                
+                <!--BEGIN CANSTR ASSESSMENT-->
+                
+                <!--Save & view, save, and cancel control buttons for pageBlock-->
+                <apex:pageBlockButtons >
+                    <apex:commandButton id="Save" action="{!save}" value="Save" styleClass="btn-info btn btn-sm"/>
+                    <apex:commandButton id="Cancel" action="{!cancel}" value="Cancel" styleClass="btn-info btn btn-sm" rendered="{!if(form.forceRedirect = '1', false, true)}"/>
+                </apex:pageBlockButtons>
+                <!--end buttons-->
+                
+                <apex:pageMessages /><!--placeholding structure that allows for system message display-->
+                
+                <!--Information-->      
+                <div class="alert alert-info">
+                    <b>FROM THE CHILD AND ADOLESCENT NEEDS AND STRENGTHS (CANS) – TRAUMA COMPREHENSIVE MANUAL MARCH 2013 – CHILD STRENGTHS DOMAIN </b><br/><br/>
+                    <b><i>These ratings describe a range of assets that children and adolescents may possess that can facilitate healthy development. An absence of a strength is not necessarily a need, but an indication that strength-building activities are suggested. In general, strengths are more trait-like, stable characteristics; however, the 30-day rating window still applies unless over-ridden by the action levels described below:</i></b><br/>
+                    <br/>
+                    <p ><b>0 </b>= A well-developed or centerpiece strength. This area may be able to be used as a 
+                        protective factor and a centerpiece for a strength-based plan. <br/>
+                        <b>1</b> = An area where a useful strength is evident, but requires some effort to maximize this  
+                        strength. This is a strength that might be able to be used and built upon in treatment. <br/>
+                        <b>2</b> = An area where strengths have been identified, but require significant strength-building 
+                        efforts. <br/>
+                        <b>3</b> = An area where no current strength is identified; there is no evidence of a strength in this 
+                        area. <br/>
+                        <b>97</b> = Not Applicable</p><br/>
+                    
+                    <b><i>*Note:  When you have no information/evidence about a strength in this area, use a score of 3. 
+                        Lower ratings are indicative of more adaptive functioning whereas higher scores can indicate 
+                        absence of strengths or the need for strength building.
+                        </i></b>
+                </div> 
+                <!--end information section-->
+                
+                <!--1. Family--> 
+                <div class="form-group">
+                    <label class="col-md-12 col-lg-12 control-label ">
+                        <span class="nmbr"><b>1.</b></span>
+                        <b>FAMILY</b> - <i> Family refers to all family members as defined by the youth or biological relatives and
+                        significant others with whom the child is still in contact.  Is the family (as defined by the child) a support and strength to the child? 
+                        </i>
+                    </label>
+                    <div class="col-md-12 col-lg-12">
+                        <apex:selectRadio styleClass="radio-list" id="STFAM__c" value="{!form.obj[bfVariableMap['STFAM']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['STFAM']]}">
+                            <apex:selectOptions value="{!StrongFamItems}"/> 
+                        </apex:selectRadio>
+                    </div>
+                </div>
+                
+                <!--2. Interpersonal--> 
+                <div class="form-group">
+                    <label class="col-md-12 col-lg-12 control-label ">
+                        <span class="nmbr"><b>2.</b></span>
+                        <b>INTERPERSONAL</b> - <i> This rating refers to the interpersonal skills of the child or youth both with peers and adults. </i>
+                    </label>
+                    <div class="col-md-12 col-lg-12">
+                        <apex:selectRadio styleClass="radio-list" id="STINTP__c" value="{!form.obj[bfVariableMap['STINTP']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['STINTP']]}">
+                            <apex:selectOptions value="{!StrongIntItems}"/> 
+                        </apex:selectRadio>
+                    </div>
+                </div>
+                
+                <!--3. Educational--> 
+                <div class="form-group">
+                    <label class="col-md-12 col-lg-12 control-label ">
+                        <span class="nmbr"><b>3.</b></span>
+                        <b>EDUCATIONAL SETTING</b> - <i> This rating refers to the strengths of the school system or the child’s preschool setting, and may or may not reflect any specific educational skills possessed by the child or youth. </i>
+                    </label>
+                    <div class="col-md-12 col-lg-12">
+                        <apex:selectRadio styleClass="radio-list" id="STEDU__c" value="{!form.obj[bfVariableMap['STEDU']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['STEDU']]}">
+                            <apex:selectOptions value="{!StrongEduItems}"/> 
+                        </apex:selectRadio>
+                    </div>
+                </div>
+                
+                <!--4. Vocational-->
+                <div class="form-group">
+                    <label class="col-md-12 col-lg-12 control-label ">
+                        <span class="nmbr"><b>4.</b></span>
+                        <b>VOCATIONAL</b> - <i> Generally this rating is reserved for adolescents and is not applicable for children 14 years and younger. Computer skills would be rated here. Scoring of this item supplements Ansell-Casey assessment. </i>
+                    </label>
+                    <div class="col-md-12 col-lg-12">
+                        <apex:selectRadio styleClass="radio-list" id="STVOC__c" value="{!form.obj[bfVariableMap['STVOC']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['STVOC']]}">
+                            <apex:selectOptions value="{!StrongVocItems}"/> 
+                        </apex:selectRadio>
+                    </div>
+                </div>
+                
+                <!--5. Coping/Savoring-->
+                <div class="form-group">
+                    <label class="col-md-12 col-lg-12 control-label ">
+                        <span class="nmbr"><b>5.</b></span>
+                        <b>COPING AND SAVORING SKILLS</b> - <i> This rating should be based on the psychological strengths that the child or adolescent might have developed including both the ability to enjoy positive life experiences and manage negative life experiences.  This should be rated independent of the child's current level of distress. </i>
+                    </label>
+                    <div class="col-md-12 col-lg-12">
+                        <apex:selectRadio styleClass="radio-list" id="STCOPE__c" value="{!form.obj[bfVariableMap['STCOPE']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['STCOPE']]}">
+                            <apex:selectOptions value="{!StrongCopeItems}"/> 
+                        </apex:selectRadio>
+                    </div>
+                </div>
+                
+                <!--6. Optimism--> 
+                <div class="form-group">
+                    <label class="col-md-12 col-lg-12 control-label ">
+                        <span class="nmbr"><b>6.</b></span>
+                        <b>OPTIMISM</b> - <i> This rating should be based on the child or adolescent's sense of him/herself in his/her own future.  This is intended to rate the child’s positive future orientation.</i>
+                    </label>
+                    <div class="col-md-12 col-lg-12">
+                        <apex:selectRadio styleClass="radio-list" id="STOPT__c" value="{!form.obj[bfVariableMap['STOPT']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['STOPT']]}">
+                            <apex:selectOptions value="{!StrongOptItems}"/> 
+                        </apex:selectRadio>
+                    </div>
+                </div>
+                
+                <!--7. Talents/Interests--> 
+                <div class="form-group">
+                    <label class="col-md-12 col-lg-12 control-label ">
+                        <span class="nmbr"><b>7.</b></span>
+                        <b>TALENT/INTERESTS</b> - <i> This rating should be based broadly on any talent, creative or artistic skill a child or adolescent may have including art, theatre, music, athletics, etc.</i>
+                    </label>
+                    <div class="col-md-12 col-lg-12">
+                        <apex:selectRadio styleClass="radio-list" id="STTAL__c" value="{!form.obj[bfVariableMap['STTAL']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['STTAL']]}">
+                            <apex:selectOptions value="{!StrongTalentItems}"/> 
+                        </apex:selectRadio>
+                    </div>
+                </div>
+                
+                <!--8. Spiritual-->
+                <div class="form-group">
+                    <label class="col-md-12 col-lg-12 control-label ">
+                        <span class="nmbr"><b>8.</b></span>
+                        <b>SPIRITUAL/RELIGIOUS</b> - <i> This rating should be based on the child or adolescent's and their family's involvement in spiritual or religious beliefs and activities.</i>
+                    </label>
+                    <div class="col-md-12 col-lg-12">
+                        <apex:selectRadio styleClass="radio-list" id="STSPIR__c" value="{!form.obj[bfVariableMap['STSPIR']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['STSPIR']]}">
+                            <apex:selectOptions value="{!StrongSpiritItems}"/> 
+                        </apex:selectRadio>
+                    </div>
+                </div>
+                
+                
+                <!--9. Community--> 
+                <div class="form-group">
+                    <label class="col-md-12 col-lg-12 control-label ">
+                        <span class="nmbr"><b>9.</b></span>
+                        <b>COMMUNITY LIFE</b> - <i> This rating should be based on the child or adolescent's level of involvement in the cultural aspects of life in his/her community. </i>
+                    </label>
+                    <div class="col-md-12 col-lg-12">
+                        <apex:selectRadio styleClass="radio-list" id="STCOM__c" value="{!form.obj[bfVariableMap['STCOM']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['STCOM']]}">
+                            <apex:selectOptions value="{!StrongComItems}"/> 
+                        </apex:selectRadio>
+                    </div>
+                </div>
+                
+                <!--10. Relationship permanence-->
+                <div class="form-group">
+                    <label class="col-md-12 col-lg-12 control-label ">
+                        <span class="nmbr"><b>10.</b></span>
+                        <b>RELATIONSHIP PERMANENCE</b> - <i> This rating refers to the stability of significant relationships in the child or youth's life.  This likely includes family members, but may also include other individuals. </i>
+                    </label>
+                    <div class="col-md-12 col-lg-12">
+                        <apex:selectRadio styleClass="radio-list" id="STRELT__c" value="{!form.obj[bfVariableMap['STRELT']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['STRELT']]}">
+                            <apex:selectOptions value="{!StrongRelateItems}"/> 
+                        </apex:selectRadio>
+                    </div>
+                </div>
+                
+                <!--11. Resilience-->
+                <div class="form-group">
+                    <label class="col-md-12 col-lg-12 control-label ">
+                        <span class="nmbr"><b>11.</b></span>
+                        <b>RESILIENCE</b> - <i> This rating refers to the child’s or youth’s ability to recognize his or her strengths and use them in times of need or to support his/her own development. </i>
+                    </label>
+                    <div class="col-md-12 col-lg-12">
+                        <apex:selectRadio styleClass="radio-list" id="STRESC__c" value="{!form.obj[bfVariableMap['STRESC']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['STRESC']]}">
+                            <apex:selectOptions value="{!StrongResItems}"/> 
+                        </apex:selectRadio>
+                    </div>
+                </div>
+                
+                <!--Completion status control-->
+                <div class="form-group no-border-bottom no-space-bottom">
+                    <label class="control-label col-md-2 col-md-offset-8 text-right">Complete?</label>
+                    <div class="col-md-2">
+                        <apex:selectList id="STATUS__c" styleClass="pull-right form-control input-sm" value="{!form.obj[bfVariableMap['STATUS']]}" size="1">
+                            <apex:selectOption itemValue="Incomplete" itemLabel="Incomplete"/>
+                            <apex:selectOption itemValue="Complete" itemLabel="Complete"/>
+                        </apex:selectList> 
+                    </div>
+                </div>
+                <!--end completion status-->
+                
+            </apex:pageBlock>
+            
+        </apex:form>
+        
+    </div>
+    
+    <!--citation information footer-->    
+    <c:cimiFormFooter formElement="{!form}"/>
+    
+</apex:page>

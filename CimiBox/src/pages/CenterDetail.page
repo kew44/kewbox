@@ -1,0 +1,21 @@
+<apex:page standardController="Center__c">
+    
+    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.9.1.js')}"  />
+    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-ui-1.10.3.custom.min.js')}"  />
+    <apex:stylesheet value="{!URLFOR($Resource.jQuery, '/css/redmond/jquery-ui-1.10.3.custom.min.css')}"  />
+    
+    <script> $j = jQuery.noConflict(); </script>
+    
+    <apex:detail subject="{!Center__c.id}" relatedList="true" title="true"/> 
+        
+        <script>
+        var centerType = '{!Center__c.Type__c}';
+    
+    $j(document).ready(function() {
+        //console.log(centerType);
+        $j(".bRelatedList").each(function(i) {
+            if(i == 0 && centerType == 'Sub')$j(this).hide();
+        });
+    });
+    </script>    
+</apex:page>

@@ -1,0 +1,420 @@
+<apex:page standardController="DS_TSCC_TSCYC_B__c" extensions="DS_TSCYC_Report_Controller" action="{!init}"  showHeader="{!NOT(printReport)}" id="tscyc-report">
+    
+    <link href="{!URLFOR($Resource.CSS_DS_Report)}" rel="stylesheet" media="screen, print"/>
+    <!--<link href="{!URLFOR($Resource.CSS_DS_TSCYC_Report)}" rel="stylesheet" media="screen, print"/>-->
+    
+    <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
+    
+    <!--print report command for button-->
+    <apex:outputPanel layout="none" rendered="{!printReport}">
+        <script>        
+        $j(document).ready(function() { 
+            $j('.total-score').removeClass('col-md-12 col-lg-6').css('width','1150px', 'height', '300px', 'margin-bottom', '10px');
+            $j('.chart-t-score').removeClass('col-md-12 col-lg-6').css('width','1150px', 'height', '300px');
+            $j('.bPageTitle-page2').html($j('.bPageTitle').html());
+            $j('.header-info-table-page2').html($j('.header-info-table').html());
+            window.print(); 
+        });
+        </script>
+    </apex:outputPanel>
+    <!--end print command -->
+    
+    <div class="{!HTMLENCODE(form.visitType)}-assessment">
+        <apex:sectionHeader title="{!HTMLENCODE(form.title)}" subtitle="{!HTMLENCODE(form.subtitle)}" />
+    </div>    
+    
+    <div class="bootwrap">
+    
+        <!--begin tscyc report content-->
+        <apex:form id="DS_TSCYC_REPORT"  styleClass="form-horizontal tscyc-report">
+            
+            <!-- pageblock to show ClientInformation header as described in Utility class-->
+            <c:cimiClientInfo displayVisitType="true" formElement="{!form}"/>
+            <!--end client info pageBlock-->
+            
+            <!-- primary content pageBlock container-->
+            <apex:pageBlock title="Trauma Symptoms Checklist for Young Children (TSCYC) Report">
+                
+                <!--Save & view, save, and cancel control buttons for pageBlock-->
+                <apex:pageBlockButtons >
+                    <apex:commandButton action="{!editRecord}" value="Edit" styleClass="btn-info btn btn-sm" rendered="{!not(printReport)}"/>
+                </apex:pageBlockButtons>
+                <!--end buttons-->
+                
+                <!--placeholding structure that allows for system message display-->
+                <apex:pageMessages />                  
+                
+                <!--provides print button functionality and structure-->
+                <apex:outputPanel layout="none" rendered="{!NOT(printReport)}">
+                    <div>
+                        <a class="btn btn-default pull-right" href="/apex/DS_TSCYC_Report?cimi={!HTMLENCODE(cimi)}&print=1" target="_blank">
+                            <i class="glyphicon glyphicon-print"></i> &nbsp;Print
+                        </a>
+                        <br/>
+                    </div>
+                </apex:outputPanel>
+                <!--end print button-->
+                
+                <div class="alert alert-info ">
+                    <!--information-->
+                    <p> 
+                        The TSCYC assesses caregiver perception of posttraumatic stress and associated symptoms in younger children and is reported by the caregiver. This results in scores for 8 clinical subscales representing different emotional and behavioral domains: Anxiety (ANX), Depression (DEP), Dissociation (DIS), Anger/Aggression (ANG), Sexual Concerns (SC), Posttraumatic Stress-Intrusion (PTS-I), Posttraumatic Stress-Avoidance (PTS-AV), Posttraumatic Stress-Arousal (PTS-AR), and Posttraumatic Stress-Total (PTS-TOT). 
+                        <br/>
+                        <br/>
+                        The TSCYC includes two validity scales that tap into the caregiver’s style of answering questions, response level and atypical response. The symptom subscales should be considered in the context of these validity scales. 
+                        <br/>
+                        <br/>
+                        <i>*Please note that if a subscale's raw score is unknown, the percentile will be charted as zero.</i>
+                    </p>
+                    <!--end information-->
+                    
+                    <br/>
+                    
+                    <!--administration date -->
+                    <strong><u>
+                        Date of administration: &nbsp;
+                        <apex:outputField id="DOATSCYC__c" value="{!form.obj[bfVariableMap['DOATSCYC']]}"/>
+                        <br/>
+                    </u></strong>
+                    <!--end administration date -->
+                    
+                    <!--specific reports of severity-->
+                    <!--displays a list of all symptoms that are rated as clinically significant, if any-->
+                    <apex:outputPanel layout="none" rendered="{!if(clinicalRange != '', true, false)}">
+                        <p>
+                            <br/>
+                            <h4><u>Clinical Range </u></h4>
+                            <br/>
+                            The child’s symptoms on the following scales are clinically significant compared to other children their age: <b>{!clinicalRange}</b><br/>
+                        </p>  
+                    </apex:outputPanel>
+                    <!--end clinical list-->
+                
+                    <p>
+                        <br/>
+                        <strong><u>Validity Scales </u></strong>
+                        <br/>
+                        The score on the Response Level scale is in the <u>{!Str_RL}</u> range and their score on the Atypical Response scale is in the <u>{!Str_ATR}</u> range. 
+                    </p>                
+                </div>
+                <!--end info-->
+            
+                <table class="table tscyc-table table-bordered table-striped">
+                    <thead>
+                        <!--score table headings-->
+                        <tr>
+                            <th rowspan="2">Date</th>
+                            <th rowspan="2" class="tscyc-visit-cell-width">Visit</th>
+                            <th colspan="2"  class="text-center">Validity</th>                      
+                            <th colspan="9"  class="text-center">Symptom Category T Score (Symptom Significance) </th>
+                        </tr>
+                        <!--end headings-->
+                        <tr>
+                            <th  class="text-center">Response Level</th>
+                            <th  class="text-center">Atypical Response</th>
+                            <th  class="text-center">Anxiety</th>
+                            <th  class="text-center">Depression</th>
+                            <th  class="text-center">Anger</th>
+                            <th  class="text-center">PTS-Intrusions</th>
+                            <th  class="text-center">PTS-Avoidance</th>
+                            <th  class="text-center">PTS-Arousal</th>
+                            <th  class="text-center">PTS-Total</th>
+                            <th  class="text-center">Dissociation</th>
+                            <th  class="text-center">Sexual Concerns</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <apex:repeat value="{!visits}" var="visit">
+                            
+                            <!--response summary-->
+                            <tr class="first-row">
+                                <!--date field-->
+                                <td>
+                                    <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                        <apex:param value="{!visit.DOATSCYC}" />
+                                    </apex:outputText>
+                                </td>
+                                <!--end date-->
+                                
+                                <!--visit type-->
+                                <td>{!IF(HTMLENCODE(visit.BorF) = 'B', 'Baseline', 'Follow-up')}</td>                          
+                                
+                                <apex:outputPanel layout="none" >    
+								
+									<!--rl-->
+                                    <td  class="text-center {!IF((visit.RL_T) >= 70, 'danger', (IF((visit.RL_T)<= 64, '', 'warning')))}">					<!--formatting-->
+										{!IF((visit.RL_T) = 0, '***', visit.RL_T)}    																		<!--value-->
+										<br/> 
+										<div class="{!IF((visit.RL_T) = 0, 'message warningM3','')}" role="alert">
+											<apex:image rendered="{!IF((visit.RL_T) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />	<!--symbol-->
+											{!IF((visit.RL_T)= 0, 'Not Available', (IF((visit.RL_T)     >= 70, 'Invalid',  (IF((visit.RL_T)     <= 64, '', 'Borderline')))))}<!--significance-->
+										</div>
+									</td>
+									<!--atr-->
+                                    <td  class="text-center {!IF((visit.ATR_T)>= 90, 'danger', (IF((visit.ATR_T)<= 69, '', 'warning')))}">
+										{!IF((visit.ATR_T) = 0, '***', visit.ATR_T)}    
+										<br/> 
+										<div class="{!IF((visit.ATR_T) = 0, 'message warningM3','')}" role="alert">
+											<apex:image rendered="{!IF((visit.ATR_T) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
+											{!IF((visit.ATR_T )= 0, 'Not Available', (IF((visit.ATR_T)    >= 90, 'Invalid',  (IF((visit.ATR_T)    <= 69, '', 'Borderline')))))} 
+										</div>
+									</td>									
+									<!--anx-->									
+                                    <td  class="text-center {!IF((visit.ANX_T)>= 70, 'danger', (IF((visit.ANX_T)<= 64, '', 'warning')))}">
+										{!IF((visit.ANX_T) = 0, '***', visit.ANX_T)}     
+										<br/> 
+										<div class="{!IF((visit.ANX_T) = 0, 'message warningM3','')}" role="alert">
+											<apex:image rendered="{!IF((visit.ANX_T) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
+											{!IF((visit.ANX_T )= 0, 'Not Available', (IF((visit.ANX_T) >= 70, 'Clinical',  (IF((visit.ANX_T)  <= 64, '', 'Borderline')))))}
+										</div>
+									</td>
+									<!--dep-->
+                                    <td  class="text-center {!IF((visit.DEP_T)>= 70, 'danger', (IF((visit.DEP_T)<= 64, '', 'warning')))}">
+										{!IF((visit.DEP_T) = 0, '***', visit.DEP_T)}     
+										<br/> 
+										<div class="{!IF((visit.DEP_T) = 0, 'message warningM3','')}" role="alert">
+											<apex:image rendered="{!IF((visit.DEP_T) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
+											{!IF((visit.DEP_T )= 0, 'Not Available', (IF((visit.DEP_T) >= 70, 'Clinical',  (IF((visit.DEP_T)  <= 64, '', 'Borderline')))))}
+										</div>
+									</td>
+									<!--ang-->
+                                    <td  class="text-center {!IF((visit.ANG_T)>= 70, 'danger', (IF((visit.ANG_T)<= 64, '', 'warning')))}">
+										{!IF((visit.ANG_T) = 0, '***', visit.ANG_T)} 
+										<br/> 
+										<div class="{!IF((visit.ANG_T) = 0, 'message warningM3','')}" role="alert">
+											<apex:image rendered="{!IF((visit.ANG_T) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
+											{!IF((visit.ANG_T )= 0, 'Not Available', (IF((visit.ANG_T) >= 70, 'Clinical',  (IF((visit.ANG_T)  <= 64, '', 'Borderline')))))}
+										</div>
+									</td>
+									<!--ptsi-->
+                                    <td  class="text-center {!IF((visit.PTSI_T)>= 70, 'danger', (IF((visit.PTSI_T)<= 64, '', 'warning')))}">
+										{!IF((visit.PTSI_T) = 0, '***', visit.PTSI_T)}     
+										<br/> 
+										<div class="{!IF((visit.PTSI_T) = 0, 'message warningM3','')}" role="alert">
+											<apex:image rendered="{!IF((visit.PTSI_T) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
+											{!IF((visit.PTSI_T )= 0, 'Not Available', (IF((visit.PTSI_T) >= 70, 'Clinical',  (IF((visit.PTSI_T)  <= 64, '', 'Borderline')))))}
+										</div>
+									</td>
+									<!--ptsav-->
+                                    <td  class="text-center {!IF((visit.PTSAV_T)>= 70, 'danger', (IF((visit.PTSAV_T)<= 64, '', 'warning')))}">
+										{!IF((visit.PTSAV_T) = 0, '***', visit.PTSAV_T)} 
+										<br/> 
+										<div class="{!IF((visit.PTSAV_T) = 0, 'message warningM3','')}" role="alert">
+											<apex:image rendered="{!IF((visit.PTSAV_T) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
+											{!IF((visit.PTSAV_T )= 0, 'Not Available', (IF((visit.PTSAV_T) >= 70, 'Clinical',  (IF((visit.PTSAV_T)  <= 64, '', 'Borderline')))))}
+										</div>
+									</td>
+									<!--ptsar--> 
+                                    <td  class="text-center {!IF((visit.PTSAR_T)>= 70, 'danger', (IF((visit.PTSAR_T)<= 64, '', 'warning')))}">
+										{!IF((visit.PTSAR_T) = 0, '***', visit.PTSAR_T)} 
+										<br/> 
+										<div class="{!IF((visit.PTSAR_T) = 0, 'message warningM3','')}" role="alert">
+											<apex:image rendered="{!IF((visit.PTSAR_T) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
+											{!IF((visit.PTSAR_T )= 0, 'Not Available', (IF((visit.PTSAR_T) >= 70, 'Clinical',  (IF((visit.PTSAR_T)  <= 64, '', 'Borderline')))))}
+										</div>
+									</td>  
+									<!--ptstot-->
+                                    <td  class="text-center {!IF((visit.PTSTOT_T)>= 70, 'danger', (IF((visit.PTSTOT_T)<= 64, '', 'warning')))}">
+										{!IF((visit.PTSTOT_T) = 0, '***', visit.PTSTOT_T)} 
+										<br/> 
+										<div class="{!IF((visit.PTSTOT_T) = 0, 'message warningM3','')}" role="alert">
+											<apex:image rendered="{!IF((visit.PTSTOT_T) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
+											{!IF((visit.PTSTOT_T )= 0, 'Not Available', (IF((visit.PTSTOT_T) >= 70, 'Clinical',  (IF((visit.PTSTOT_T)  <= 64, '', 'Borderline')))))}
+										</div>
+									</td>  
+									<!--dis-->
+                                    <td  class="text-center {!IF((visit.DIS_T)>= 70, 'danger', (IF((visit.DIS_T)<= 64, '', 'warning')))}">
+										{!IF((visit.DIS_T) = 0, '***', visit.DIS_T)}   
+										<br/> 
+										<div class="{!IF((visit.DIS_T) = 0, 'message warningM3','')}" role="alert">
+											<apex:image rendered="{!IF((visit.DIS_T) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
+											{!IF((visit.DIS_T )= 0, 'Not Available', (IF((visit.DIS_T) >= 70, 'Clinical',  (IF((visit.DIS_T)  <= 64, '', 'Borderline')))))}
+										</div>
+									</td>    
+									<!--sc-->
+                                    <td  class="text-center {!IF((visit.SC_T)>= 70, 'danger', (IF((visit.SC_T)<= 64, '', 'warning')))}">
+										{!IF((visit.SC_T) = 0, '***', visit.SC_T)}    
+										<br/> 
+										<div class="{!IF((visit.SC_T) = 0, 'message warningM3','')}" role="alert">
+											<apex:image rendered="{!IF((visit.SC_T) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
+											{!IF((visit.SC_T )= 0, 'Not Available', (IF((visit.SC_T) >= 70, 'Clinical',  (IF((visit.SC_T)  <= 64, '', 'Borderline')))))}
+										</div>
+									</td>     
+                                </apex:outputPanel>
+                            </tr>                        
+                        </apex:repeat>                    
+                    </tbody>
+                </table>     
+            
+            <apex:outputPanel layout="none"  rendered="{!AND(displayHistory, NOT(printReport))}">
+                <div class="form-group charts-div no-border-bottom no-space-bottom">
+                    <div class="col-md-12 col-lg-12  total-score">
+                        <div id="linechart_material" ></div>
+                    </div>
+                </div>  
+            </apex:outputPanel> 
+            
+            <apex:outputPanel layout="none"  rendered="{!AND(displayHistory, NOT(printReport))}">
+                <div class="form-group charts-div no-border-bottom no-space-bottom">
+                    <div class="col-md-12 col-lg-12  chart-t-score">
+                        <div id="columnchart_material"></div>
+                    </div>
+                </div>  
+            </apex:outputPanel>    
+
+        </apex:pageBlock>
+        
+        <!--citation information footer-->    
+        <c:cimiFormFooter formElement="{!form}"/>   
+
+        <apex:outputPanel layout="none" rendered="{!AND(printReport, displayHistory)}">
+
+            <apex:outputPanel layout="block" styleClass="page-break"/>
+            
+                <apex:outputPanel layout="block" styleClass="row overall-history">
+                    <div class="bPageTitle-page2 col-md-6 col-lg-6"></div>
+                    <div class="header-info-table-page2 col-md-6 col-lg-6"></div>
+                </apex:outputPanel>
+            
+                <apex:pageBlock title="Overall History">
+
+                    <apex:outputPanel layout="none"  rendered="{!displayHistory}">
+                        <div class="form-group charts-div no-border-bottom no-space-bottom">
+                            <div class="col-md-12 col-lg-12  total-score">
+                                <div id="linechart_material" ></div>
+                            </div>
+                        </div>  
+                    </apex:outputPanel> 
+                    
+                    <apex:outputPanel layout="none"  rendered="{!displayHistory}">
+                        <div class="form-group charts-div no-border-bottom no-space-bottom">
+                            <div class="col-md-12 col-lg-12  chart-t-score">
+                                <div id="columnchart_material"></div>
+                            </div>
+                        </div>  
+                    </apex:outputPanel> 
+
+                 </apex:pageBlock>
+
+                <!--citation information footer-->    
+                <c:cimiFormFooter formElement="{!form}"/>     
+            </apex:outputPanel>            
+            
+        </apex:form>
+        
+    </div>
+
+    <apex:outputPanel rendered="{!displayHistory}">
+
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript">
+            
+            google.load("visualization", "1.1", {packages:['corechart', 'bar', 'line']});
+            google.setOnLoadCallback(drawLineChart);
+            google.setOnLoadCallback(drawAnnotations);
+                
+            var chartHeight = {!IF(printReport, 650, 650)};
+                        
+            function drawAnnotations() {
+            
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Subscale');
+                <apex:repeat value="{!visits}" var="visit">
+                    data.addColumn('number', '<apex:outputText value="{0,date,MM/dd/yyyy}">
+                                   <apex:param value="{!visit.DOATSCYC}" />
+                                   </apex:outputText>');
+                                   data.addColumn({type: 'string', role: 'annotation'});
+                </apex:repeat>
+            
+                data.addRows([    
+                     ['Anxiety'            <apex:repeat value="{!visits}" var="vanx">,       {!vanx.ANX_T},        '{!IF((vanx.ANX_T)     >= 70, 'C', (IF((vanx.ANX_T)     <= 64, '', 'B')))}'  </apex:repeat>], 
+                     ['Depression'         <apex:repeat value="{!visits}" var="vdep">,       {!vdep.DEP_T},        '{!IF((vdep.DEP_T)     >= 70, 'C', (IF((vdep.DEP_T)     <= 64, '', 'B')))}'  </apex:repeat>], 
+                     ['Anger'              <apex:repeat value="{!visits}" var="vang">,       {!vang.ANG_T},        '{!IF((vang.ANG_T)     >= 70, 'C', (IF((vang.ANG_T)     <= 64, '', 'B')))}'  </apex:repeat>], 
+                     ['PTS-Intrusions'     <apex:repeat value="{!visits}" var="vptsi">,      {!vptsi.PTSI_T},      '{!IF((vptsi.PTSI_T)   >= 70, 'C', (IF((vptsi.PTSI_T)   <= 64, '', 'B')))}'  </apex:repeat>], 
+                     ['PTS-Avoidance'      <apex:repeat value="{!visits}" var="vptsav">,     {!vptsav.PTSAV_T},    '{!IF((vptsav.PTSAV_T) >= 70, 'C', (IF((vptsav.PTSAV_T) <= 64, '', 'B')))}'  </apex:repeat>], 
+                     ['PTS-Arousal'        <apex:repeat value="{!visits}" var="vptsar">,     {!vptsar.PTSAR_T},    '{!IF((vptsar.PTSAR_T) >= 70, 'C', (IF((vptsar.PTSAR_T) <= 64, '', 'B')))}'  </apex:repeat>], 
+                     ['Dissociation'       <apex:repeat value="{!visits}" var="vdis">,       {!vdis.DIS_T},        '{!IF((vdis.DIS_T)     >= 70, 'C', (IF((vdis.DIS_T)     <= 64, '', 'B')))}'  </apex:repeat>], 
+                     ['Sexual Concerns'    <apex:repeat value="{!visits}" var="vsc">,        {!vsc.SC_T},          '{!IF((vsc.SC_T)       >= 70, 'C', (IF((vsc.SC_T)       <= 64, '', 'B')))}'  </apex:repeat>], 
+                    ]);
+            
+                    var options = {
+                        title: 'TSCYC Subscale Scores',
+                        annotations: {
+                            alwaysOutside: false,
+                            textStyle: {
+                                fontSize: 12,
+                                color: '#000',
+                                auraColor: 'none'
+                            }
+                        },
+                        vAxis: {
+                            title: 'T-Score',
+                            minValue:0,
+                            maxValue:110,
+                        },
+                        hAxis: {
+                            title: 'Subscale',
+                        },
+                        height: chartHeight,         
+                        bar: {
+                            groupWidth: 80,
+                            groupWidth: '85%',
+                        },          
+                    };
+                    
+                    var colchart = new google.visualization.ColumnChart(document.getElementById('columnchart_material'));
+                    colchart.draw(data, options);
+            }
+                
+            function drawLineChart() {
+                
+                var data = new google.visualization.DataTable();
+                
+                //add total stress and date points
+                data.addColumn('string', 'Date of Assessment');
+                data.addColumn('number', 'Total Stress Score');
+                
+                //add borderline and clinical threshold points
+                data.addColumn({role:'data', label: 'Clinical', type: 'number'});
+                data.addColumn({role:'data', label: 'Borderline', type: 'number'});
+                
+                //add values, repeat over visits
+                data.addRows([
+                    <apex:repeat value="{!visits}" var="visit">
+                        ['<apex:outputText value="{0,date,MM/dd/yyyy}">
+                            <apex:param value="{!visit.DOATSCYC}" />
+                        </apex:outputText>',  
+                        {!visit.PTSTOT_T},
+                        70, //clinical val
+                        64],//borderline val
+                    </apex:repeat> 
+                 ]);
+                
+                //formats for the chart
+                var options = {
+                    title: 'TSCYC PTS Total Score',
+                    series: {
+                        0: { pointSize: 5 },
+                        1: { pointSize: 0 },
+                        2: { pointSize: 0 }
+                    },
+                    hAxis: {
+                        title: 'Date of Assessment',                        
+                    },
+                    vAxis: {
+                        title: 'T-Score',
+                        minValue: 0,
+                        maxValue: 110,  
+                        showTextEvery: 1,       
+                    },
+                    height: chartHeight,  
+                };
+                
+                var runchart = new google.visualization.LineChart(document.getElementById('linechart_material'));
+                
+                runchart.draw(data, options);
+            }
+        </script>    
+    </apex:outputPanel>
+</apex:page>

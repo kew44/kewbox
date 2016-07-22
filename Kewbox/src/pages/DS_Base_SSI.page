@@ -1,0 +1,203 @@
+<apex:page standardController="Client__c" extensions="ClientController" sidebar="true">
+    
+    <!--JQuery -->
+    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.9.1.js')}"  /><!--allows for JQuery dependencies-->
+    <script> $j = jQuery.noConflict(); </script><!--Reserves the '$' token for JQuery only-->
+    
+    <!-- Bootstrap -->
+    <apex:stylesheet value="{!URLFOR($Resource.bootwrap, '/css/bootstrap.css')}" />
+    <apex:includeScript value="{!URLFOR($Resource.bootwrap, '/js/bootstrap.min.js')}"/> 
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
+
+    <!-- Custom CIMI Styles -->
+    <apex:stylesheet value="{!URLFOR($Resource.cimiStyles)}" />
+
+    <!--link to the CSS resource in Salesforce internal document-->
+    <apex:stylesheet value="{!$Resource.CustomCss}" />
+        
+    <script>
+        $j(document).ready(function(){
+            
+            $j('.submitBtn').click(function(){
+                
+                $j('.submitBtn').addClass('btnDisabled');
+                $j('.submitBtn').toggleClass("btn-info");
+                $j('.submitBtn').val('Saving');
+                setTimeout(function(){$j('.submitBtn').attr("disabled","disabled");}, 20);
+                
+            });
+            
+        });
+    </script>
+                                
+     <!--JQuery script block-->
+     <script>
+     <!--skip logic framework-->
+     function logic (idName, trigger, tragetType, tragetName) {//variable initialization for logic function
+      this.idName = idName;
+      this.trigger = trigger; 
+       this.tragetType = tragetType;
+       this.tragetName = tragetName;        
+         }
+    
+    logic.prototype.action = function(){// setup for action that will show or hide components using logic variables
+        var itemObject = $j('[id$='+this.idName+']');
+        var itemValue = $j('[id$='+this.idName+']').val();
+        var compoment = this.getTarget();
+        compoment.hide();    
+        if(this.trigger == itemValue) compoment.show();
+        else                          compoment.hide();
+    }
+    
+    logic.prototype.getTarget = function(){//positioning of skip logic components
+        var targetObject = $j('[id$='+this.tragetName+']');
+        if(this.tragetType == 'select' || this.tragetType == 'text') {
+            targetObject.parent('td').parent('tr').children('th').addClass('left20px');
+            return targetObject.parent('td').parent('tr');
+        }
+        else if(this.tragetType == 'lookup') {
+            return targetObject.parent('span').parent('td').parent('tr');
+        }
+    }
+    
+    function execSkiplogic(logic) {//show logic components on change of response
+        logic.action();
+        $j('[id$='+logic.idName+']').change(function(){
+            logic.action();
+        });
+    }
+    <!--end skip logic-->
+    
+    <!--gender required warning in JQuery-->
+    $j(document).ready(function() {
+    <!--initialize variables-->
+        var logics = [new logic('BPREVCA', 'Yes', 'select', 'BENRCDS'),
+                      new logic('BPREVEPI', 'Yes', 'select', 'BENRCDS1')];    
+    <!--end variables-->
+                       
+        for(var i=0; i < logics.length; i++) execSkiplogic(logics[i]); 
+        
+        $j('[id$=GENDER]').change(function(){//gender declined warning listener
+            if($j(this).val() == "Declined" || $j(this).val() == "Don't know/ Information not available") {
+                if  (!$j('.apexp .individualPalette .pbBody .warningM3').length) {
+                    $j('.apexp .individualPalette .pbBody').prepend($j('#gender_warning').html());
+                }
+            }
+            else {//do not show warning
+                $j('.apexp .individualPalette .pbBody .warningM3').remove();
+            }           
+        });        
+    });
+    <!--end gender-->
+    </script>      
+    <!--end JQuery block-->
+    
+    <!--supplementary styling information-->
+        <style>
+        .left20px { padding-left:20px !important; }
+    .bPageBlock .detailList .labelCol { text-align:left; vertical-align:middle; width:70%; padding-left:5px; }
+    /*.bPageTitle, .apexp { max-width: 900px; margin:0 auto; }*/
+    .pbButtonb, .pbButton { float:right; }
+    .formtd { padding-top:5px; }
+    #sidebarCell { display: none;}
+    @media only screen and (min-width : 1224px) {
+        #sidebarCell { display: table-cell;}
+    }    
+    </style>
+    <!--end styling-->
+        
+    <div class="bootwrap">
+    
+        <!--Begin form content-->
+            <apex:form >
+                <apex:sectionHeader title="Client"/><!-- subtitle="{!Title}"/><br/>-->
+                    
+                    <!-- primary content pageBlock container-->
+                        <apex:pageBlock title="Client Edit">
+                        
+                        <!--save and cancel control buttons for pageBlock-->
+                        <apex:pageBlockButtons >
+                            <apex:commandButton action="{!save}" value="Save" styleClass="submitBtn btn btn-info btn-sm"/>
+                            <apex:commandButton action="{!cancel}" value="Cancel" styleClass="btn-info btn btn-sm"/>
+                        </apex:pageBlockButtons>
+                        <!--end buttons-->
+
+                        <!--placeholding structure that allows for system message display-->
+                        <apex:pageMessages />
+                                
+                                <!--pageBlockSection container-->
+                                <apex:pageBlockSection title="General Information" columns="1">
+                                
+                                <p>Please complete the following.</p><br/>
+                                
+                                <!--Clinician-->
+                                <apex:inputField value="{!Client__c.Clinician__c}" rendered="{!isNotClinician}" label="1. Clinician ID" id="Clinician"/>
+                                
+                                <!--Client initials-->
+                                <apex:inputField value="{!Client__c.INIT__c}" label="2. Child's initials (Enter a dash if no middle initial.)" id="INIT"/>
+                                
+                                <!--Date of Birth-->
+                                <!--<apex:inputText value="{!Client__c.DOB1__c}" label="3. Child's date of birth (Please use the format: MM/DD/YYYY)" id="DOB1"/>-->
+                                <apex:inputField showDatePicker="false" value="{!Client__c.DOB1__c}" label="3. Child's date of birth" id="DOB1" html-placeholder="MM/DD/YYYY"/>
+                                
+                                <!--Date of Birth re-entry-->
+                                <apex:inputField showDatePicker="false" value="{!Client__c.DOB2__c}" label="4. Confirm child's date of birth" id="DOB2" html-placeholder="MM/DD/YYYY" />
+                                
+                                <!--Child age in whole years-->
+                                <apex:inputField value="{!Client__c.AGE__c}" label="5. Child's age" id="AGE"/>
+                                
+                                <!--Client Gender-->
+                                <apex:inputField value="{!Client__c.GENDER__c}" label="6. What sex was the child assigned at birth (on their original birth certificate)?" id="GENDER" required="true"/>
+                                
+                                <!--Has child been seen by NCTSN before?-->
+                                <apex:inputField value="{!Client__c.BPREVCA__c}" label="7. Has this child been seen at another NCTSN center(s) for a previous episode(s) of care?" id="BPREVCA"/> 
+                                
+                                <!--Enrolled in Core Data Set/CIMI previously?--------- Conditional if seen by NCTSN previously-->
+                                <apex:inputField value="{!Client__c.BENRCDS__c}" label="7a. Was this child enrolled in the NCTSN Core Data Set or CIMI?" id="BENRCDS"/>
+                                
+                                <!--Has child been seen at site before?-->
+                                <apex:inputField value="{!Client__c.BPREVEPI__c}" label="8. Has this child been seen at this center for a previous episode(s) of care?" id="BPREVEPI"/>
+                                
+                                <!--Enrolled in Core Data Set/CIMI previously?--------- Conditional if seen by site previously-->
+                                <apex:inputField value="{!Client__c.BENRCDS1__c}" label="8a. Was this child already enrolled in the NCTSN Core Data Set or CIMI?" id="BENRCDS1"/>
+     
+</apex:pageBlockSection><!--end client info pageblock-->
+
+</apex:pageBlock>
+</apex:form><!--end form content-->
+
+<!--custom warning setup-->
+<div id="gender_warning" class="hidden">
+    <div class="message warningM3" role="alert">
+        <table border="0" cellpadding="0" cellspacing="0" class="messageTable" style="padding:0px;margin:0px;">
+            <tbody>
+                <tr valign="top">
+                    <td><img alt="ERROR" class="msgIcon" src="/s.gif" title="ERROR"/></td>
+                    <td class="messageCell">
+                        <div id="j_id0:j_id5:j_id8:j_id9:j_id10:j_id11:0:j_id12:j_id13:j_id15" class="messageText">
+                            <span id="j_id0:j_id5:j_id8:j_id9:j_id10:j_id11:0:j_id12:j_id13:j_id16"><!-- style="color:#cc0000">-->
+                                <h4>Warning</h4>
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+                
+                <!--specific gender warning-->
+                <tr>
+                    <td></td>
+                    <td>
+                        <span id="j_id0:j_id5:j_id8:j_id9:j_id10:j_id11:0:j_id12:j_id13:j_id25">
+                            <ul style="padding-left:10px;padding-top:0px;margin:0px">
+                                <li style="padding-top:5px">If the client’s sex is “declined” or “unknown”, assessments that rely on gender for scoring will not be accessible.</li>
+                            </ul>
+                        </span>
+                    </td>
+                </tr>
+                <!--end gender warning-->
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+<!--end warning setup-->
+</apex:page>

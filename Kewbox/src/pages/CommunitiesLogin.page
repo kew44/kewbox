@@ -1,0 +1,69 @@
+<apex:page id="loginPage" controller="CommunitiesLoginController"  showHeader="false" sidebar="false" standardStylesheets="false"><!--action="{!forwardToAuthPage}" title="{!$Label.site.site_login}"-->
+
+  <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.9.1.js')}"  />
+  <script> $j = jQuery.noConflict(); </script>
+  <link href="{!URLFOR($Resource.VFbootstrap3, '/css/VFbootstrap.css')}" rel="stylesheet" media="screen"/>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
+  <apex:stylesheet value="{!$Resource.CustomCss}" />
+  <apex:includeScript value="{!URLFOR($Resource.VFbootstrap3, '/js/bootstrap.min.js')}"/>
+
+  <apex:form styleClass="form-horizontal">
+
+      <fieldset>
+
+        <div id="legend">
+
+          <legend class="">Login</legend>
+
+        </div>
+
+        <div>
+
+          <!-- Username -->
+
+          <apex:outputLabel value="Username" styleClass="col-lg-2 control-label" for="username"/>
+          <div>
+
+              <apex:inputText value="{!username}" id="username" styleClass="form-control" />
+
+          </div>
+
+        </div>
+
+     
+
+        <div>
+
+          <!-- Password-->
+
+          <apex:outputLabel value="Password" styleClass="col-lg-2 control-label" for="password"/>
+
+          <div>
+
+            <apex:inputSecret id="password" value="{!password}" styleClass="form-control" />
+
+          </div>
+
+        </div>
+
+
+        <div>
+
+          <!-- Button -->
+
+          <div></div>
+
+          <div>
+
+            <apex:commandButton action="{!login}" styleClass="btn btn-success" value="Login"/>
+
+          </div>
+
+        </div>
+
+      </fieldset>
+
+    </apex:form>
+
+
+</apex:page>

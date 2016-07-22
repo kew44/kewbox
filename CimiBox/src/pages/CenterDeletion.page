@@ -1,0 +1,56 @@
+<!--<apex:page standardController="Center__c" extensions="CenterDeletion" action="{!if(subcenter == 0, URLFOR($Action.Center__c.Tab, $ObjectType.Center__c), null)}">-->
+
+<!--<apex:page standardController="Center__c" extensions="CenterDeletion" >-->
+<apex:page standardController="Center__c" extensions="CenterDeletion" action="{!checkDeletion}">
+
+    
+    <script src="/soap/ajax/29.0/connection.js" type="text/javascript"></script>
+    <script src="/soap/ajax/29.0/apex.js" type="text/javascript"></script>
+    
+    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.9.1.js')}"  />
+    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-ui-1.10.3.custom.min.js')}"  />
+    <apex:stylesheet value="{!URLFOR($Resource.jQuery, '/css/redmond/jquery-ui-1.10.3.custom.min.css')}"  />
+    
+    <script> $j = jQuery.noConflict(); </script>
+    
+    <script>
+               
+      sforce.connection.sessionId = '{!GETSESSIONID()}';
+      
+      var total = {!total};
+      
+      /*if(total == 0) {
+          
+          try {
+            var result = sforce.apex.execute("SuperDelete","deleteRecord", {id:"{!Center__c.Id}", item:"center"});
+          } catch(e) {
+              errorDiv.innerHTML = result; 
+              errorDiv.style.display = 'block'; 
+          }
+            
+          window.top.location.href = "/a00/o";
+      
+      }*/
+      
+      $j(document).ready(function() {
+          $j(".pbTitle").css({"height":"33px"});
+          $j(".pbButton").each(function(i) {
+              $j(this).children('input').hide();
+          });
+          /*$j(".actionLink").each(function(i) {
+              if($j(this).html() == 'Del')
+                  $j(this).hide();
+          });*/
+      });
+    
+    </script>
+    
+    <apex:sectionHeader title="Deletion Problem" subtitle="{!subtitle}"/>
+      
+    <apex:pagemessages />  <br/>
+    <!--<apex:pageBlock title="{!title}" >-->
+  
+  
+  <apex:relatedList list="Subcenters__r" rendered="{!if(subcenter > 0, true, false)}"/>
+  <apex:relatedList list="Clinicians__r" rendered="{!if(clinician > 0, true, false)}"/>
+</apex:page>

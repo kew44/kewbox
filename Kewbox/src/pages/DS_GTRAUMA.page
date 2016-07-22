@@ -1,0 +1,146 @@
+<apex:page standardController="DS_GTRAUMA__c" extensions="DS_GTRAUMA_Controller">
+    
+    <link href="{!URLFOR($Resource.CSS_DS_GTRAUMA)}" rel="stylesheet" media="screen, print"/>
+
+    <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
+
+    <!--JQuery script block to ensure only valid ages can be selected-->
+    <script> var clientAge = {!form.client.CURRENT_AGE__c}; </script>
+    <script src="{!URLFOR($Resource.JS_DS_GTRAUMA)}"/>
+    <!--end script block-->
+
+    <div class="{!HTMLENCODE(form.visitType)}-assessment">
+        <apex:sectionHeader title="{!form.title}" subtitle="{!form.subtitle}" />
+    </div>
+    
+    <!--Begin form content-->
+    <div class="bootwrap">
+        <apex:form id="DS_FORM_GTRAUMA" styleClass="form-horizontal">
+            
+            <!-- pageblock to show ClientInformation header as described in Utility class-->
+            <c:cimiClientInfo displayVisitType="true" formElement="{!form}"/>
+            <!--end client info pageBlock-->
+            
+            <!-- primary content pageBlock container-->
+            <apex:pageBlock title="General Trauma Information" >
+
+                <!--save and cancel control buttons-->
+                <apex:pageBlockButtons >
+                    <apex:commandButton action="{!save}" value="Save" styleClass="btn btn-info btn-sm btn-save"/>
+                    <apex:commandButton action="{!cancel}" value="Cancel" styleClass="btn btn-info btn-sm btn-cancel"/>
+                </apex:pageBlockButtons>
+
+                <apex:pageMessages /><!--placeholding structure that allows for system message display-->
+                
+                    <!--instructions-->
+                    <br/><!--blankrow-->
+                    When were the questions on this form administered/updated?<apex:inputField styleClass="form-control auto-width" value="{!form.obj[bfVariableMap['GTDATE']]}"/> <!--admin date-->
+                    <br/>
+                    <br/ >
+                    <strong>Please complete the following based on the client's trauma history. This information should be updated during treatment if new trauma is experienced or additional trauma is revealed.</strong>
+                    <br/><br/><!--blank rows-->                                   
+                    <!--end instructions-->
+                    
+                    <table class="table table-bordered table-responsive GT-table">
+                       
+                        <!--column headings-->
+                        <thead>
+                            <tr>
+                                <th rowspan="1" class="span1">#</th>
+                                <th rowspan="1" class="span2" style="width:361px;">Trauma Type</th>
+                                <th rowspan="1" class="span3" style="width:150px;">Has child experienced<br/> this trauma? <br/>(Answer all Trauma Types)</th>
+                                <th colspan="20" class="span4">When was this type of trauma experienced?<br/>Age in years: (Select all ages that apply)</th>
+                            </tr>
+                        </thead>
+                        <!--end headings-->
+                            
+                        <!--populates records with information about each trauma type based on DS_DATA-->
+                        <apex:repeat value="{!rows}" var="r">
+                            
+                            <!--trauma record-->
+                            <tr>                
+                                <!--displays trauma number-->
+                                <td><apex:outputText value="{!r.num}"/></td>
+                                
+                                <!--displays trauma name and description-->
+                                <td class="GT{!r.num}Q">
+                                    <apex:outputText value="{!r.trauma}" escape="false"/><br/>
+                                    <small><apex:outputText value="{!r.subtitle}" escape="false"/></small>
+                                </td>
+                                <!--end name and description-->
+                                
+                                <!--experienced indication-->
+                                <td data-type="GT{!r.num}A" data-num="{!r.num}">
+                                    <apex:selectList styleClass="GT-exp form-control GT-exp-{!r.num}" size="1" value="{!form.obj[bfVariableMap[r.exp]]}" multiselect="false">
+                                        <apex:selectOptions value="{!TraumaType}"/>
+                                    </apex:selectList><p/>
+                                </td>
+                                <!--end trauma experience-->
+                                
+                                <!--populates a grid containing age selectors (0-18) for each trauma type-->
+                                <apex:repeat value="{!ageNum}" var="aNum">
+                                    <td class="GT-td-age GT{!r.num}ATD GT{!r.num}ATDNUM" data-type="{!r.num}" data-age="{!aNum}">
+                                        {!if(VALUE(aNum) < 10, '0'+aNum, aNum)}
+                                        <apex:inputCheckbox styleClass="GT{!r.num}A GT-checkbox GT{!r.num}ACHK" value="{!form.obj[bfVariableMap['GT'+r.num+'RA'+aNum]]}"/>
+                                    </td>
+                                </apex:repeat>
+                                <!--end age grid-->
+                                
+                                <!--age unknown indicator-->
+                                <td class="GT-td-age GT{!r.num}ATD GT-td-unk GT{!r.num}UNK" data-type="{!r.num}" data-age="unk">
+                                    Unknown
+                                    <apex:inputCheckbox styleClass="GT{!r.num}A GT-checkbox GT{!r.num}UNKCHK" value="{!form.obj[bfVariableMap['GT'+r.num+'RAU']]}"/>
+                                </td>
+                                <!--end age unknown-->
+                                
+                            </tr>
+                            <!--end trauma record-->
+                        </apex:repeat>
+                        <!--end list of trauma types information-->
+                            
+                        <!--24. Which trauma type is the primary focus of this treatment>-->
+                        <tr>
+                            <td>24</td>
+                            <td>What is the primary focus of the current treatment? (Select only one.)</td>
+                            <td class="GT-primary" style="text-align:left !important; vertical-align: middle !important;" colspan="21">
+                                <apex:selectList size="1" styleClass="form-control primarySelect" value="{!form.obj[bfVariableMap['GTPRIMRY']]}" multiselect="false">
+                                    <apex:selectOptions value="{!PrimaryType}"/>
+                                </apex:selectList>                    
+                            </td>
+                        </tr>
+                        <!--end focus-->
+                            
+                        <tr>  
+                            <!--Completion status control-->              
+                            <td style="text-align: right !important;" colspan="23">
+                                Complete?&nbsp;&nbsp;
+                                <apex:selectList styleClass="form-control input-sm" style="width:130px; display: inherit;" value="{!form.obj[bfVariableMap['STATUS']]}" size="1">
+                                    <apex:selectOption itemValue="Incomplete" itemLabel="Incomplete"/>
+                                    <apex:selectOption itemValue="Complete" itemLabel="Complete"/>
+                                </apex:selectList>  
+                                <!--end completion status-->
+                            </td>
+                        </tr>
+                            
+                    </table>
+                    
+                    <!--23. Other trauma specified-->
+                    <div id="other-content">
+                        <div class="row">
+                            <div class="col-sm-5 text-right">
+                                <label class="control-label">Please Specify:</label>
+                            </div>
+                            <div class="col-sm-7">
+                                <apex:inputField styleClass="form-control input-sm" id="other" value="{!form.obj[bfVariableMap['GT23RSP']]}"/>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end specify 23-->  
+                
+            </apex:pageBlock><!--end buttons-->
+            
+        </apex:form>
+        
+    </div>
+    <!--end content-->
+</apex:page>

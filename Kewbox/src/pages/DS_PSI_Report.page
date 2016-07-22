@@ -1,0 +1,365 @@
+<apex:page standardController="DS_SDQ_PSI_CDI_B__c"  extensions="DS_PSI_Report_Controller" action="{!init}"  showHeader="{!NOT(printReport)}" id="psi-report">
+    
+    <link href="{!URLFOR($Resource.CSS_DS_Report)}" rel="stylesheet" media="screen, print"/>
+    <!--<link href="{!URLFOR($Resource.CSS_DS_PSI_Report)}" rel="stylesheet" media="screen, print"/>-->
+    
+    <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
+    
+    <!--print report command for button-->
+    <apex:outputPanel layout="none" rendered="{!printReport}">
+        <script>        
+        $j(document).ready(function() { 
+            $j('.total-score').removeClass('col-md-12 col-lg-6').css('width','1150px', 'height', '300px', 'margin-bottom', '10px');
+            $j('.chart-t-score').removeClass('col-md-12 col-lg-6').css('width','1150px', 'height', '300px');
+            $j('.bPageTitle-page2').html($j('.bPageTitle').html());
+            $j('.header-info-table-page2').html($j('.header-info-table').html());
+            window.print(); 
+        });
+        </script>
+    </apex:outputPanel>
+    <!--end print command -->
+    
+    <div class="{!HTMLENCODE(form.visitType)}-assessment">
+        <apex:sectionHeader title="{!HTMLENCODE(form.title)}" subtitle="{!HTMLENCODE(form.subtitle)}" />
+    </div>    
+    
+    <div class="bootwrap">
+    
+        <!--begin psi report content-->
+        <apex:form id="DS_PSI_REPORT"  styleClass="form-horizontal psi-report">
+            
+            <!-- pageblock to show ClientInformation header as described in Utility class-->
+            <c:cimiClientInfo displayVisitType="true" formElement="{!form}"/>
+            <!--end client info pageBlock-->
+            
+            <!-- primary content pageBlock container-->
+            <apex:pageBlock title="Parenting Stress Index-Short Form (PSI-SF) Symptom Analysis Report" >
+                
+                <!--Save & view, save, and cancel control buttons for pageBlock-->
+                <apex:pageBlockButtons >
+                    <apex:commandButton action="{!editRecord}" value="Edit" styleClass="btn-info btn btn-sm" rendered="{!not(printReport)}"/>
+                </apex:pageBlockButtons>
+                <!--end buttons-->
+                
+                <!--placeholding structure that allows for system message display-->
+                <apex:pageMessages />         
+                
+                <!--provides print button functionality and structure-->
+                <apex:outputPanel layout="none" rendered="{!NOT(printReport)}">
+                    <div>
+                        <a class="btn btn-default pull-right" href="/apex/DS_PSI_Report?cimi={!HTMLENCODE(cimi)}&print=1" target="_blank">
+                            <i class="glyphicon glyphicon-print"></i> &nbsp;Print
+                        </a>
+                        <br/>
+                    </div>
+                </apex:outputPanel>
+                <!--end print button-->
+                
+                <div class="alert alert-info ">
+                    <!--information-->
+                    <p> 
+                        The PSI-SF assesses the relative stress in the caregiver-child relationship. It is used for early identification of dysfunctional caregiver-child interactions, caregiver stress, family functioning, and child symptomatology. It yields a Total Stress score that is derived from three domains: Parental Distress, Parent-Child Dysfunctional Interaction, and Difficult Child. 
+                        <br/>
+                        <br/>
+                        The PSI-SF includes a validity scale Defensive Responding. The symptom subscales should be considered in the context of this validity scale. 
+                        <br/>
+                        <br/>
+                        <i>*Please note that if a subscale's raw score is unknown, the percentile will be charted as zero.</i>
+                    </p>
+                    <!--end information-->
+                    
+                    <br/>
+                    
+                    <!--administration date -->
+                    <strong><u>
+                        Date of administration: &nbsp;
+                        <apex:outputField id="DOAPSI__c" value="{!form.obj[bfVariableMap['DOAPSI']]}"/>
+                        <br/>
+                        </u></strong>
+                    <!--end administration date -->
+                    
+                    <!--specific reports of severity-->
+                    <!--displays a list of all symptoms that are rated as clinically significant, if any-->
+                    <apex:outputPanel layout="none" rendered="{!if(clinicalRange != '', true, false)}">
+                        <p>
+                            <br/>
+                            <h4><u>Clinical Range </u></h4>
+                            <br/>
+                            The child’s symptoms on the following scales are clinically significant compared to other children their age: <b>{!clinicalRange}</b><br/>
+                        </p>  
+                    </apex:outputPanel>
+                    <!--end clinical list-->
+                
+                    <!--validity statement-->
+                    <apex:outputPanel layout="none" rendered="{!if(Str_DR != 'Not Available', true, false)}">
+                        <p>
+                            <br/>
+                            <strong><u>Validity Scales </u></strong>
+                            <br/>
+                            The score on the Defensive Responding scale is in the <u>{!Str_DR}</u> range. 
+                        </p>       
+                    </apex:outputPanel>  
+                    <!--end validity statement-->       
+                </div>
+                <!--end info-->
+            
+                <table class="table psi-table table-bordered table-striped">
+                    <thead>
+                        <!--score table headings-->
+                        <tr>
+                            <th rowspan="2">Date</th>
+                            <th rowspan="2" class="psi-visit-cell-width">Visit</th>
+                            <th colspan="1"  class="text-center">Validity</th>                      
+                            <th colspan="4"  class="text-center">Symptom Category Percentile (Symptom Significance) </th>
+                        </tr>
+                        <!--condensed headings-->
+                        <tr>
+                            <th  class="text-center">Defensive Responding</th>
+                            <th  class="text-center">Total Stress</th>
+                            <th  class="text-center">Parental Distress </th>
+                            <th  class="text-center">Parent-Child Dysfunctional Interaction </th>
+                            <th  class="text-center">Difficult Child </th>
+                        </tr>
+                        <!--end headings-->
+                    </thead>
+                    <tbody>
+                        
+                        <apex:repeat value="{!visits}" var="visit">
+                            
+                            <!--response summary-->
+                            <tr class="first-row">
+                                <!--date field-->
+                                <td>
+                                    <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                        <apex:param value="{!visit.DOAPSI}" />
+                                    </apex:outputText>
+                                </td>
+                                <!--end date-->
+                                
+                                <!--visit type-->
+                                <td>{!IF(HTMLENCODE(visit.BorF) = 'B', 'Baseline', 'Follow-up')}</td>                          
+                                
+                                <apex:outputPanel layout="none" >
+                                
+                                <!--dr uses raw score, 10& under clinical, no borderline-->
+                                <td class="text-center {!IF((visit.PSIDR)<= 10, 'danger','')}"> <!--formatting-->
+                                    {!IF((visit.PSIDR) = 999, '***', visit.PSIDR)}              <!--value-->
+                                    <br/>   
+                                    <div class="{!IF((visit.PSIDR) = 999, 'message warningM3','')}" role="alert">
+                                        <apex:image rendered="{!IF((visit.PSIDR) = 999,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" /> <!--symbol-->
+                                        {!IF((visit.PSIDR) = 999, 'Not Available', (IF((visit.PSIDR)<= 10,'Clinically Significant','')))}   <!--significance-->
+                                    </div>
+                                </td>
+                                
+                                <!--percentile, 0 = not available, 1-14 n/a, 15-80 normal, 81-84 borderline, 85-99 clinical-->
+                                <!--ts-->                                   
+                                <td  class="text-center {!IF((visit.PSITS_PTLE)   >= 85, 'danger', (IF((visit.PSITS_PTLE)   <= 80, '', 'warning')))}">  <!--formatting-->
+                                    {!IF((visit.PSITS_PTLE) = 0, '***', visit.PSITS_PTLE )}                                                               <!--value-->
+                                    <br/>   
+                                    <div class="{!IF((visit.PSITS_PTLE) = 0, 'message warningM3','')}" role="alert">
+                                        <apex:image rendered="{!IF((visit.PSITS_PTLE) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" /> <!--symbol-->
+                                        {!IF((visit.PSITS_PTLE)= 0, 'Not Available', (IF((visit.PSITS_PTLE)>= 85,'Clinically Significant',(IF((visit.PSITS_PTLE)>= 81,'Borderline',(IF((visit.PSITS_PTLE)  <= 14,'N/A','')))))))}   <!--significance-->
+                                    </div>
+                                </td>     
+                                 
+                                <!--pd-->                 
+                                <td  class="text-center {!IF((visit.PSIPD_PTLE)   >= 85, 'danger', (IF((visit.PSIPD_PTLE)   <= 80, '', 'warning')))}">  <!--formatting-->
+                                    {!IF((visit.PSIPD_PTLE) = 0, '***', visit.PSIPD_PTLE )}                                                               <!--value-->
+                                    <br/>   
+                                    <div class="{!IF((visit.PSIPD_PTLE) = 0, 'message warningM3','')}" role="alert">
+                                        <apex:image rendered="{!IF((visit.PSIPD_PTLE) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" /> <!--symbol-->
+                                        {!IF((visit.PSIPD_PTLE)= 0, 'Not Available', (IF((visit.PSIPD_PTLE)>= 85,'Clinically Significant',(IF((visit.PSIPD_PTLE)>= 81,'Borderline',(IF((visit.PSIPD_PTLE)  <= 14,'N/A','')))))))}   <!--significance-->
+                                    </div>
+                                </td> 
+                                
+                                <!--p_cdi-->            
+                                <td  class="text-center {!IF((visit.PSIPCDI_PTLE)   >= 85, 'danger', (IF((visit.PSIPCDI_PTLE)   <= 80, '', 'warning')))}">  <!--formatting-->
+                                    {!IF((visit.PSIPCDI_PTLE) = 0, '***', visit.PSIPCDI_PTLE )}                                                               <!--value-->
+                                    <br/>   
+                                    <div class="{!IF((visit.PSIPCDI_PTLE) = 0, 'message warningM3','')}" role="alert">
+                                        <apex:image rendered="{!IF((visit.PSIPCDI_PTLE) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" /> <!--symbol-->
+                                        {!IF((visit.PSIPCDI_PTLE)= 0, 'Not Available', (IF((visit.PSIPCDI_PTLE)>= 85,'Clinically Significant',(IF((visit.PSIPCDI_PTLE)>= 81,'Borderline',(IF((visit.PSIPCDI_PTLE)  <= 14,'N/A','')))))))}   <!--significance-->
+                                    </div>
+                                </td> 
+                                
+                                <!--dc-->      
+                                <td  class="text-center {!IF((visit.PSIDC_PTLE)   >= 85, 'danger', (IF((visit.PSIDC_PTLE)   <= 80, '', 'warning')))}">  <!--formatting-->
+                                    {!IF((visit.PSIDC_PTLE) = 0, '***', visit.PSIDC_PTLE )}                                                               <!--value-->
+                                    <br/>   
+                                    <div class="{!IF((visit.PSIDC_PTLE) = 0, 'message warningM3','')}" role="alert">
+                                        <apex:image rendered="{!IF((visit.PSIDC_PTLE) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" /> <!--symbol-->
+                                        {!IF((visit.PSIDC_PTLE)= 0, 'Not Available', (IF((visit.PSIDC_PTLE)>= 85,'Clinically Significant',(IF((visit.PSIDC_PTLE)>= 81,'Borderline',(IF((visit.PSIDC_PTLE)  <= 14,'N/A','')))))))}   <!--significance-->
+                                    </div>
+                                </td>                                    
+                                </apex:outputPanel>
+                            </tr>                   
+                        </apex:repeat>                    
+                    </tbody>
+                </table>
+            
+            <apex:outputPanel layout="none"  rendered="{!AND(displayHistory, NOT(printReport))}">
+                <div class="form-group charts-div no-border-bottom no-space-bottom">
+                    <div class="col-md-12 col-lg-12  total-score">
+                        <div id="linechart_material" ></div>
+                    </div>
+                </div>  
+            </apex:outputPanel> 
+            
+            <apex:outputPanel layout="none"  rendered="{!AND(displayHistory, NOT(printReport))}">
+                <div class="form-group charts-div no-border-bottom no-space-bottom">
+                    <div class="col-md-12 col-lg-12  chart-t-score">
+                        <div id="columnchart_material"></div>
+                    </div>
+                </div>  
+            </apex:outputPanel>    
+            
+        </apex:pageBlock>
+        
+        <!--citation information footer-->    
+        <c:cimiFormFooter formElement="{!form}"/>  
+
+        <apex:outputPanel layout="none" rendered="{!AND(printReport, displayHistory)}">
+
+            <apex:outputPanel layout="block" styleClass="page-break"/>
+            
+                <apex:outputPanel layout="block" styleClass="row overall-history">
+                    <div class="bPageTitle-page2 col-md-6 col-lg-6"></div>
+                    <div class="header-info-table-page2 col-md-6 col-lg-6"></div>
+                </apex:outputPanel>
+            
+                <apex:pageBlock title="Overall History">
+
+                    <apex:outputPanel layout="none"  rendered="{!displayHistory}">
+                        <div class="form-group charts-div no-border-bottom no-space-bottom">
+                            <div class="col-md-12 col-lg-12  total-score">
+                                <div id="linechart_material" ></div>
+                            </div>
+                        </div>  
+                    </apex:outputPanel> 
+                    
+                    <apex:outputPanel layout="none"  rendered="{!displayHistory}">
+                        <div class="form-group charts-div no-border-bottom no-space-bottom">
+                            <div class="col-md-12 col-lg-12  chart-t-score"> 
+                                <div id="columnchart_material"></div>        
+                            </div>
+                        </div>  
+                    </apex:outputPanel> 
+
+                 </apex:pageBlock>
+
+                <!--citation information footer-->    
+                <c:cimiFormFooter formElement="{!form}"/>     
+            </apex:outputPanel>         
+            
+        </apex:form>
+        
+    </div>
+
+    <apex:outputPanel rendered="{!displayHistory}">
+    
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript">
+        
+            google.load("visualization", "1.1", {packages:['corechart', 'bar', 'line']});
+            google.setOnLoadCallback(drawLineChart);
+            google.setOnLoadCallback(drawAnnotations);
+                
+            var chartHeight = {!IF(printReport, 650, 650)};
+                    
+            function drawAnnotations() {
+                
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Subscale');
+                <apex:repeat value="{!visits}" var="visit">
+                    data.addColumn('number', '<apex:outputText value="{0,date,MM/dd/yyyy}">
+                                   <apex:param value="{!visit.DOAPSI}" />
+                                   </apex:outputText>');
+                                   data.addColumn({type: 'string', role: 'annotation'});
+                </apex:repeat>
+            
+                data.addRows([
+                     ['Parental Distress'                      <apex:repeat value="{!visits}" var="vpd">,    {!vpd.PSIPD_PTLE},    '{!IF((vpd.PSIPD_PTLE)     >= 85, 'C', (IF((vpd.PSIPD_PTLE)    <= 80, '', 'B')))}'</apex:repeat>],
+                     ['Parent-Child Dysfunctional Interaction' <apex:repeat value="{!visits}" var="vcdi">,   {!vcdi.PSIPCDI_PTLE}, '{!IF((vcdi.PSIPCDI_PTLE)  >= 85, 'C', (IF((vcdi.PSIPCDI_PTLE) <= 80, '', 'B')))}'</apex:repeat>],
+                     ['Difficult Child'                        <apex:repeat value="{!visits}" var="vdc">,    {!vdc.PSIDC_PTLE},    '{!IF((vdc.PSIDC_PTLE)     >= 85, 'C', (IF((vdc.PSIDC_PTLE)    <= 80, '', 'B')))}'</apex:repeat>],
+                    ]);
+            
+                    var options = {
+                        title: 'PSI Subscale Scores',
+                        annotations: {
+                            alwaysOutside: false,
+                            textStyle: {
+                                fontSize: 12,
+                                color: '#000',
+                                auraColor: 'none'
+                            }
+                        },
+                        vAxis: {
+                            title: 'Percentile',
+                            minValue:0,
+                            maxValue:100,
+                        },
+                        hAxis: {
+                            title: 'Subscale',
+                        },
+                        height: chartHeight,         
+                        bar: {
+                            groupWidth: 80,
+                            groupWidth: '85%',
+                        },          
+                    };
+                    
+                    var colchart = new google.visualization.ColumnChart(document.getElementById('columnchart_material'));
+                    colchart.draw(data, options);
+            }
+            
+            function drawLineChart() {
+                
+                var data = new google.visualization.DataTable();
+                
+                //add total stress and date points
+                data.addColumn('string', 'Date of Assessment');
+                data.addColumn('number', 'Total Stress Score');
+                
+                //add borderline and clinical threshold points
+                data.addColumn({role:'data', label: 'Clinical', type: 'number'});
+                data.addColumn({role:'data', label: 'Borderline', type: 'number'});
+                
+                //add values, repeat over visits
+                data.addRows([
+                    <apex:repeat value="{!visits}" var="visit">
+                        ['<apex:outputText value="{0,date,MM/dd/yyyy}">
+                            <apex:param value="{!visit.DOAPSI}" />
+                        </apex:outputText>',  
+                        {!visit.PSITS_PTLE}, 
+                        85, //clinical val
+                        81],//borderline val
+                     </apex:repeat> 
+                 ]);
+            
+                //formats for the chart
+                var options = {
+                    title: 'PSI Total Stress Score',
+                    series: {
+                        0: { pointSize: 5 },
+                        1: { pointSize: 0 },
+                        2: { pointSize: 0 }
+                    },
+                    hAxis: {
+                        title: 'Date of Assessment',                        
+                    },
+                    vAxis: {
+                        title: 'Percentile',
+                        maxValue: 100,
+                        minValue: 0,
+                        showTextEvery: 1,  
+                    },
+                    height: chartHeight,
+                };
+            
+                var runchart = new google.visualization.LineChart(document.getElementById('linechart_material'));
+                
+                runchart.draw(data, options);
+            }
+        </script>                
+    </apex:outputPanel>
+</apex:page>

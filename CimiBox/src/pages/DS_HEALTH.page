@@ -1,0 +1,470 @@
+<apex:page standardController="DS_Background_Family_Info_B__c" extensions="DS_HEALTH_Controller">   
+                          
+    <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
+    
+    <script src="{!URLFOR($Resource.JS_DS_HEALTH)}"></script>
+    
+    <div class="{!HTMLENCODE(form.visitType)}">
+        <apex:sectionHeader title="{!form.title}" subtitle="{!form.subtitle}" />
+    </div>
+    
+    <div class="bootwrap">
+        
+        <!--Begin form content-->
+        <apex:form id="DS_FORM" styleClass="form-horizontal">
+            
+            <!-- pageblock to show ClientInformation header as described in Utility class-->
+            <c:cimiClientInfo displayVisitType="true" formElement="{!form}"/>
+            <!--end client info pageBlock-->
+            
+            <!-- primary content pageBlock container-->
+            <apex:pageBlock title="{!form.title}" >
+                
+                <!--BEGIN CANSTR ASSESSMENT-->
+                
+                <!--Save & view, save, and cancel control buttons for pageBlock-->
+                <apex:pageBlockButtons >
+                    <apex:commandButton id="Save" action="{!save}" value="Save" styleClass="btn-info btn btn-sm"/>
+                    <apex:commandButton id="Cancel" action="{!cancel}" value="Cancel" styleClass="btn-info btn btn-sm"/>
+                </apex:pageBlockButtons>
+                <!--end buttons-->
+                
+                <apex:pageMessages /><!--placeholding structure that allows for system message display-->
+                
+                <!--1. Current health conditions & severity chart-->
+                <div class="form-group">
+                    <label class="col-md-12 col-lg-12 control-label">
+                        <span class="nmbr">1.</span>
+                        Please indicate any current physical/medical health condition(s) and rate the condition's impact on the child's ability to perform activities of daily living using the following scale: the child does not have this condition <strong>(no condition)</strong>, the condition has a <strong>mild</strong> impact on daily living, the condition has a <strong>moderate</strong> impact on daily living, or the condition has a <strong>severe</strong> impact on daily living. <strong>(Please rate each.)</strong>
+                        <br/><br/>
+                    </label>
+                    <div class="col-md-12 col-lg-12">
+                        <table class="table table-bordered table-hover table-condensed Q1table table-striped">
+                            <thead>
+                                <!--heading of table-->
+                                <tr>
+                                    <th style="vertical-align:middle;">Physical/Medical Health Condition</th><!--health condition name column-->                                                
+                                    <th colspan="4" class="text-center">If child has/exhibits this condition, please rate impact on activities of daily living.</th>
+                                </tr>
+                                
+                                <tr>
+                                    <th />
+                                    <th class="text-center" style="width:170px">No Condition</th><!--radiobutton column to indicate lack of condition-->
+                                    <th class="text-center" style="width:170px">Mild</th><!--radiobutton column to indicate mild form of condition-->
+                                    <th class="text-center" style="width:170px">Moderate</th><!--radiobutton column to indicate moderate symptom level-->
+                                    <th class="text-center" style="width:170px">Severe</th><!--radiobutton column to indicate severe medical condition-->
+                                </tr>
+                            </thead>
+                            <!--end of heading-->
+                            <tbody>
+                                <!--allergies-->
+                                <tr>
+                                    <td>
+                                        <label class="control-label col-md-12 col-lg-12">
+                                            <span class="nmbr">1.</span> 
+                                            Allergy (to medications, food, animals, insects, environment)
+                                        </label>
+                                    </td>
+                                    <td class="text-center Q1td"><input type="radio" class="Q1" id="Q1-1-0" name="Q1-1" value="0" title="{!form.obj[bfVariableMap['HISALL']]}"/></td><!--no allergies-->
+                                    <td class="text-center Q1td"><input type="radio" class="Q1" id="Q1-1-1" name="Q1-1" value="1" title="{!form.obj[bfVariableMap['HISALL']]}"/></td><!--mild allergies-->
+                                    <td class="text-center Q1td"><input type="radio" class="Q1" id="Q1-1-2" name="Q1-1" value="2" title="{!form.obj[bfVariableMap['HISALL']]}"/></td><!--moderate allergies-->
+                                    <td class="text-center Q1td"><input type="radio" class="Q1" id="Q1-1-3" name="Q1-1" value="3" title="{!form.obj[bfVariableMap['HISALL']]}"/></td><!--severe allergies-->
+                                </tr>
+                                <!--asthma-->
+                                <tr>
+                                    <td>
+                                        <label class="control-label col-md-12 col-lg-12">
+                                            <span class="nmbr">2.</span> 
+                                            Asthma
+                                        </label>
+                                    </td>
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-2-0" name="Q1-2" value="0" title="{!form.obj[bfVariableMap['HISASTH']]}"/></td><!--no asthma-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-2-1" name="Q1-2" value="1" title="{!form.obj[bfVariableMap['HISASTH']]}"/></td><!--mild asthma-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-2-2" name="Q1-2" value="2" title="{!form.obj[bfVariableMap['HISASTH']]}"/></td><!--moderate asthma-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-2-3" name="Q1-2" value="3" title="{!form.obj[bfVariableMap['HISASTH']]}"/></td><!--severe asthma-->
+                                </tr>
+                                <!--cancer-->
+                                <tr>
+                                    <td>
+                                        <label class="control-label col-md-12 col-lg-12">
+                                            <span class="nmbr">3.</span> 
+                                            Cancer/Leukemia 
+                                        </label>
+                                    </td>
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-3-0" name="Q1-3" value="0" title="{!form.obj[bfVariableMap['HISCAN']]}"/></td><!--no cancer-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-3-1" name="Q1-3" value="1" title="{!form.obj[bfVariableMap['HISCAN']]}"/></td><!--mild cancer-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-3-2" name="Q1-3" value="2" title="{!form.obj[bfVariableMap['HISCAN']]}"/></td><!--moderate cancer-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-3-3" name="Q1-3" value="3" title="{!form.obj[bfVariableMap['HISCAN']]}"/></td><!--severe cancer -->
+                                </tr>
+                                <!--dental problems-->
+                                <tr>
+                                    <td>
+                                        <label class="control-label col-md-12 col-lg-12">
+                                            <span class="nmbr">4.</span> 
+                                            Dental Conditions (e.g., Tooth decay, gum disease, other major dental problems, etc.) 
+                                        </label>
+                                    </td>
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-4-0" name="Q1-4" value="0" title="{!form.obj[bfVariableMap['HISDEN']]}"/></td><!--no dental problems-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-4-1" name="Q1-4" value="1" title="{!form.obj[bfVariableMap['HISDEN']]}"/></td><!--mild dental problems-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-4-2" name="Q1-4" value="2" title="{!form.obj[bfVariableMap['HISDEN']]}"/></td><!--moderate dental problems-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-4-3" name="Q1-4" value="3" title="{!form.obj[bfVariableMap['HISDEN']]}"/></td><!--severe dental problems-->
+                                </tr>
+                                <!--diabetes-->
+                                <tr>
+                                    <td>
+                                        <label class="control-label col-md-12 col-lg-12">
+                                            <span class="nmbr">5.</span> 
+                                            Diabetes
+                                        </label>
+                                    </td>
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-5-0" name="Q1-5" value="0" title="{!form.obj[bfVariableMap['HISDIAB']]}"/></td><!--no diabetes-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-5-1" name="Q1-5" value="1" title="{!form.obj[bfVariableMap['HISDIAB']]}"/></td><!--mild diabetes-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-5-2" name="Q1-5" value="2" title="{!form.obj[bfVariableMap['HISDIAB']]}"/></td><!--moderate diabetes-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-5-3" name="Q1-5" value="3" title="{!form.obj[bfVariableMap['HISDIAB']]}"/></td><!--severe diabetes-->
+                                </tr>
+                                <!--bowel movement accidents-->
+                                <tr>
+                                    <td>
+                                        <label class="control-label col-md-12 col-lg-12">
+                                            <span class="nmbr">6.</span>
+                                            Encopresis (If over 5 years old, having bowel movement accidents in pants/bed)
+                                        </label>
+                                    </td>
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-6-0" name="Q1-6" value="0" title="{!form.obj[bfVariableMap['HISENCO']]}"/></td><!--no bowel movement accidents-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-6-1" name="Q1-6" value="1" title="{!form.obj[bfVariableMap['HISENCO']]}"/></td><!--mild bowel movement accidents-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-6-2" name="Q1-6" value="2" title="{!form.obj[bfVariableMap['HISENCO']]}"/></td><!--moderate bowel movement accidents-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-6-3" name="Q1-6" value="3" title="{!form.obj[bfVariableMap['HISENCO']]}"/></td><!--severe bowel movement accidents-->
+                                </tr>
+                                <!--bed/pants wetting-->
+                                <tr>
+                                    <td>
+                                        <label class="control-label col-md-12 col-lg-12">
+                                            <span class="nmbr">7.</span> 
+                                            Enuresis (If over 5 years old, wetting pants/bed)
+                                        </label>
+                                    </td>
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-7-0" name="Q1-7" value="0" title="{!form.obj[bfVariableMap['HISENUR']]}"/></td><!--no bed/pants wetting-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-7-1" name="Q1-7" value="1" title="{!form.obj[bfVariableMap['HISENUR']]}"/></td><!--mild bed/pants wetting-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-7-2" name="Q1-7" value="2" title="{!form.obj[bfVariableMap['HISENUR']]}"/></td><!--moderate bed/pants wetting-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-7-3" name="Q1-7" value="3" title="{!form.obj[bfVariableMap['HISENUR']]}"/></td><!--severe bed/pants wetting-->
+                                </tr>
+                                <!--feeding problems-->
+                                <tr>
+                                    <td>
+                                        <label class="control-label col-md-12 col-lg-12">
+                                            <span class="nmbr">8.</span> 
+                                            Feeding Conditions (e.g., eats non-foods, has swallowing difficulties, etc.)
+                                        </label>
+                                    </td>
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-8-0" name="Q1-8" value="0" title="{!form.obj[bfVariableMap['HISFEED']]}"/></td><!--no feeding problems-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-8-1" name="Q1-8" value="1" title="{!form.obj[bfVariableMap['HISFEED']]}"/></td><!--mild feeding problems-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-8-2" name="Q1-8" value="2" title="{!form.obj[bfVariableMap['HISFEED']]}"/></td><!--moderate feeding problems-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-8-3" name="Q1-8" value="3" title="{!form.obj[bfVariableMap['HISFEED']]}"/></td><!--severe feeding problems-->
+                                </tr>
+                                <!--GI Problems-->
+                                <tr>
+                                    <td>
+                                        <label class="control-label col-md-12 col-lg-12">
+                                            <span class="nmbr">9.</span>
+                                            GI Problems (e.g., constipation, stomach aches, etc.)
+                                        </label>
+                                    </td>
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-9-0" name="Q1-9" value="0" title="{!form.obj[bfVariableMap['HISGI']]}"/></td><!--no GI Problems-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-9-1" name="Q1-9" value="1" title="{!form.obj[bfVariableMap['HISGI']]}"/></td><!--mild GI Problems-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-9-2" name="Q1-9" value="2" title="{!form.obj[bfVariableMap['HISGI']]}"/></td><!--moderate GI Problems-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-9-3" name="Q1-9" value="3" title="{!form.obj[bfVariableMap['HISGI']]}"/></td><!--severe GI Problems-->
+                                </tr>
+                                <!--headaches-->
+                                <tr>
+                                    <td>
+                                        <label class="control-label col-md-12 col-lg-12">
+                                            <span class="nmbr">10.</span> 
+                                            Headaches/Migraines 
+                                        </label>
+                                    </td>
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-10-0" name="Q1-10" value="0" title="{!form.obj[bfVariableMap['HISHED']]}"/></td><!--no headaches-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-10-1" name="Q1-10" value="1" title="{!form.obj[bfVariableMap['HISHED']]}"/></td><!--mild headaches-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-10-2" name="Q1-10" value="2" title="{!form.obj[bfVariableMap['HISHED']]}"/></td><!--moderate headaches-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-10-3" name="Q1-10" value="3" title="{!form.obj[bfVariableMap['HISHED']]}"/></td><!--severe headaches-->
+                                </tr>
+                                <!--heart problems-->
+                                <tr>
+                                    <td>
+                                        <label class="control-label col-md-12 col-lg-12">
+                                            <span class="nmbr">11.</span> 
+                                            Heart Conditions
+                                        </label>
+                                    </td>
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-11-0" name="Q1-11" value="0" title="{!form.obj[bfVariableMap['HISHRT']]}"/></td><!--no heart problems-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-11-1" name="Q1-11" value="1" title="{!form.obj[bfVariableMap['HISHRT']]}"/></td><!--mild heart problems-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-11-2" name="Q1-11" value="2" title="{!form.obj[bfVariableMap['HISHRT']]}"/></td><!--moderate heart problems-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-11-3" name="Q1-11" value="3" title="{!form.obj[bfVariableMap['HISHRT']]}"/></td><!--severe heart problems-->
+                                </tr>
+                                <!--physical problems-->
+                                <tr>
+                                    <td>
+                                        <label class="control-label col-md-12 col-lg-12">
+                                            <span class="nmbr">12.</span>
+                                            Physical Impairments (e.g., visual, hearing, speech, etc.)
+                                        </label>
+                                    </td>
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-12-0" name="Q1-12" value="0" title="{!form.obj[bfVariableMap['HISPYSI']]}"/></td><!--no physical problem-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-12-1" name="Q1-12" value="1" title="{!form.obj[bfVariableMap['HISPYSI']]}"/></td><!--mild physical problem-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-12-2" name="Q1-12" value="2" title="{!form.obj[bfVariableMap['HISPYSI']]}"/></td><!--moderate physical problem-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-12-3" name="Q1-12" value="3" title="{!form.obj[bfVariableMap['HISPYSI']]}"/></td><!--severe physical problem-->
+                                </tr>
+                                <!--ear infections-->
+                                <tr>
+                                    <td>
+                                        <label class="control-label col-md-12 col-lg-12">
+                                            <span class="nmbr">13.</span>
+                                            Recurrent Ear Infections
+                                        </label>
+                                    </td>
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-13-0" name="Q1-13" value="0" title="{!form.obj[bfVariableMap['HISEI']]}"/></td><!--no ear infections-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-13-1" name="Q1-13" value="1" title="{!form.obj[bfVariableMap['HISEI']]}"/></td><!--mild ear infections-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-13-2" name="Q1-13" value="2" title="{!form.obj[bfVariableMap['HISEI']]}"/></td><!--moderate ear infections-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-13-3" name="Q1-13" value="3" title="{!form.obj[bfVariableMap['HISEI']]}"/></td><!--severe ear infections-->
+                                </tr>
+                                <!--seizures-->
+                                <tr>
+                                    <td>
+                                        <label class="control-label col-md-12 col-lg-12">
+                                            <span class="nmbr">14.</span>
+                                            Seizures/Convulsions/Epilepsy
+                                        </label>
+                                    </td>
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-14-0" name="Q1-14" value="0" title="{!form.obj[bfVariableMap['HISSEZ']]}"/></td><!--no seizures-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-14-1" name="Q1-14" value="1" title="{!form.obj[bfVariableMap['HISSEZ']]}"/></td><!--mild seizures-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-14-2" name="Q1-14" value="2" title="{!form.obj[bfVariableMap['HISSEZ']]}"/></td><!--moderate seizures-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-14-3" name="Q1-14" value="3" title="{!form.obj[bfVariableMap['HISSEZ']]}"/></td><!--severe seizures-->
+                                </tr>
+                                <!--weight problems-->
+                                <tr>
+                                    <td>
+                                        <label class="control-label col-md-12 col-lg-12">
+                                            <span class="nmbr">15.</span>
+                                            Weight Issues (overweight, underweight)
+                                        </label>
+                                    </td>
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-15-0" name="Q1-15" value="0" title="{!form.obj[bfVariableMap['HISWT']]}"/></td><!--no weight problems-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-15-1" name="Q1-15" value="1" title="{!form.obj[bfVariableMap['HISWT']]}"/></td><!--mild weight problems-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-15-2" name="Q1-15" value="2" title="{!form.obj[bfVariableMap['HISWT']]}"/></td><!--moderate weight problems-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-15-3" name="Q1-15" value="3" title="{!form.obj[bfVariableMap['HISWT']]}"/></td><!--severe weight problems-->
+                                </tr>
+                                <!--thyroid indicative problems-->
+                                <tr>
+                                    <td>
+                                        <label class="control-label col-md-12 col-lg-12">
+                                            <span class="nmbr">16.</span>
+                                            Weight Loss/Weight Gain/Thyroid Problems 
+                                        </label>
+                                    </td>
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-16-0" name="Q1-16" value="0" title="{!form.obj[bfVariableMap['HISWTLS']]}"/></td><!--no thyroid indicative problems-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-16-1" name="Q1-16" value="1" title="{!form.obj[bfVariableMap['HISWTLS']]}"/></td><!--mild thyroid indicative problems-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-16-2" name="Q1-16" value="2" title="{!form.obj[bfVariableMap['HISWTLS']]}"/></td><!--moderate thyroid indicative problems-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-16-3" name="Q1-16" value="3" title="{!form.obj[bfVariableMap['HISWTLS']]}"/></td><!--severe thyroid indicative problems-->
+                                </tr>
+                                <!--other specified health problem-->
+                                <tr>
+                                    <td>
+                                        <label class="col-md-4 col-lg-4 control-label specify-label">17. Other, please specify: </label>
+                                        <div class="col-md-4 col-lg-4 specify-input">
+                                            <apex:inputField styleClass="form-control input-sm" value="{!form.obj[bfVariableMap['HISOTSP']]}" id="HISOTSP__c"/>
+                                        </div>
+                                    </td>
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-17-0" name="Q1-17" value="0" title="{!form.obj[bfVariableMap['HISOTHR']]}"/></td><!--no other specified health problem-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-17-1" name="Q1-17" value="1" title="{!form.obj[bfVariableMap['HISOTHR']]}"/></td><!--mild other specified health problem-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-17-2" name="Q1-17" value="2" title="{!form.obj[bfVariableMap['HISOTHR']]}"/></td><!--moderate other specified health problem-->
+                                    <td class="text-center"><input type="radio" class="Q1" id="Q1-17-3" name="Q1-17" value="3" title="{!form.obj[bfVariableMap['HISOTHR']]}"/></td><!--severe other specified health problem-->
+                                </tr>
+                            </tbody>
+                            <!--end table of conditions-->
+                        </table>
+                        
+                        <!--value of radiobutton fields seperate from declaration to maintain one radiobutton per column structure -->
+                        <apex:inputField value="{!form.obj[bfVariableMap['HISALL']]}"  styleClass="Q1-1 hidden"/><!--allergies-->
+                        <apex:inputField value="{!form.obj[bfVariableMap['HISASTH']]}" styleClass="Q1-2 hidden"/><!-- asthma-->
+                        <apex:inputField value="{!form.obj[bfVariableMap['HISCAN']]}" styleClass="Q1-3 hidden"/><!-- cancer-->
+                        <apex:inputField value="{!form.obj[bfVariableMap['HISDEN']]}" styleClass="Q1-4 hidden"/><!-- dental problems-->          
+                        <apex:inputField value="{!form.obj[bfVariableMap['HISDIAB']]}" styleClass="Q1-5 hidden"/><!-- diabetes-->
+                        <apex:inputField value="{!form.obj[bfVariableMap['HISENCO']]}"   styleClass="Q1-6 hidden"/><!-- bowel movement accidents-->
+                        <apex:inputField value="{!form.obj[bfVariableMap['HISENUR']]}" styleClass="Q1-7 hidden"/><!-- bed/pants wetting-->
+                        <apex:inputField value="{!form.obj[bfVariableMap['HISFEED']]}"   styleClass="Q1-8 hidden"/><!-- feeding problems-->
+                        <apex:inputField value="{!form.obj[bfVariableMap['HISGI']]}"   styleClass="Q1-9 hidden"/><!-- GI Problems-->
+                        <apex:inputField value="{!form.obj[bfVariableMap['HISHED']]}"  styleClass="Q1-10 hidden"/><!-- headaches-->
+                        <apex:inputField value="{!form.obj[bfVariableMap['HISHRT']]}" styleClass="Q1-11 hidden"/><!-- heart problems-->
+                        <apex:inputField value="{!form.obj[bfVariableMap['HISPYSI']]}" styleClass="Q1-12 hidden"/><!-- physical problem-->
+                        <apex:inputField value="{!form.obj[bfVariableMap['HISEI']]}" styleClass="Q1-13 hidden"/><!-- ear infections-->
+                        <apex:inputField value="{!form.obj[bfVariableMap['HISSEZ']]}" styleClass="Q1-14 hidden"/><!-- seizures-->
+                        <apex:inputField value="{!form.obj[bfVariableMap['HISWT']]}"   styleClass="Q1-15 hidden"/><!-- weight problems-->
+                        <apex:inputField value="{!form.obj[bfVariableMap['HISWTLS']]}"   styleClass="Q1-16 hidden"/><!--thyroid indicative problems -->
+                        <apex:inputField value="{!form.obj[bfVariableMap['HISOTHR']]}" styleClass="Q1-17 hidden"/><!--other specified health problem -->
+                    </div>
+                </div>
+                
+                <!--2. Is there a course of treatment?-->
+                <div class="form-group">
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">2.</span>
+                        For any/all of the conditions above, does the child have a current course of treatment?
+                    </label>
+                    <div class="col-md-6 col-lg-4">
+                        <apex:selectList styleClass="skip-element-TRT form-control" id="TRT__c" value="{!form.obj[bfVariableMap['TRT']]}" size="1" onChange="skipLogic('TRT',this.value)">
+                            <apex:selectOptions value="{!NYUOptionWithBlank}"/>
+                        </apex:selectList>
+                    </div>
+                </div>
+                
+                <!--Conditional if course of treatment exists-->
+                <div class="form-group skip-TRTOMED">
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr"></span>
+                        Please identify the course of treatment. <strong>(Select all that apply.)</strong>
+                    </label>
+                    <div class="col-md-6 col-lg-6">
+                        <!--oral medication-->
+                        <div class="checkbox">
+                            <label>             
+                                <apex:inputCheckbox styleClass="skip-element-TRTOMED"  id="TRTOMED__c" value="{!form.obj[bfVariableMap['TRTOMED']]}"/>
+                                Takes oral medication
+                            </label>
+                        </div>
+                        
+                        <!--injections-->
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox value="{!form.obj[bfVariableMap['TRTINJ']]}" styleClass="skip-element-TRTINJ" id="TRTINJ__c"/>
+                                Receives injections (e.g., allergy shots, insulin for diabetes)                      
+                            </label>
+                        </div>
+                        <!--physical limitations-->
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox value="{!form.obj[bfVariableMap['TRTPL']]}" styleClass="skip-element-TRTPL" id="TRTPL__c"/>
+                                Has physical limitations (e.g., restriction on activities, limitations due to illness or condition)
+                            </label>
+                        </div>
+                        <!--diet-->
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox value="{!form.obj[bfVariableMap['TRTPD']]}" styleClass="skip-element-TRTPD" id="TRTPD__c"/>
+                                Follows a prescribed diet
+                            </label>
+                        </div>
+                        <!--unknown-->
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox value="{!form.obj[bfVariableMap['TRTUK']]}" styleClass="skip-element-TRTUK" id="TRTUK__c"/>
+                                Unknown
+                            </label>
+                        </div>
+                        <!--other-->
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox value="{!form.obj[bfVariableMap['TRTOTHR']]}" styleClass="skip-element-TRTOTHR" id="TRTOTHR__c" onChange="skipLogic('TRTOTHR',this.checked)"/>
+                                Other
+                            </label>
+                            <!--Conditional, specify other-->
+                            <div class="skip-TRTOTSP">
+                                <label class="col-md-4 col-lg-4 control-label specify-label">
+                                    <apex:outputLabel value=" Please specify: " for="TRTOTSP__c"/>
+                                </label>
+                                <div class="col-md-4 col-lg-4 specify-input">
+                                    <apex:inputField styleClass="form-control input-sm skip-element-TRTOTSP" id="TRTOTSP__c" value="{!form.obj[bfVariableMap['TRTOTSP']]}"/>
+                                </div>
+                            </div>
+                            <!--end other conditional-->
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
+                <!--3. Have there been extra services used?-->
+                <div class="form-group">
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">3.</span>
+                        In the past year, has the child used any healthcare services beyond primary care related to any/all of the conditions above?
+                    </label>
+                    <div class="col-md-6 col-lg-4">
+                        <apex:selectList styleClass="skip-element-HSR form-control" id="HSR__c" value="{!form.obj[bfVariableMap['HSR']]}" size="1" onChange="skipLogic('HSR',this.value)">
+                            <apex:selectOptions value="{!NYUOptionWithBlank}"/>
+                        </apex:selectList>
+                    </div>
+                </div>
+                
+                <!--Conditional if services used-->
+                <div class="form-group skip-HSRHOS">
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr"></span>
+                        Please identify the services. <strong>(Select all that apply.)</strong>
+                    </label>
+                    <div class="col-md-6 col-lg-6">
+                        <!--hospital stay-->
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputField value="{!form.obj[bfVariableMap['HSRHOS']]}" styleClass="skip-element-HSRHOS" id="HSRHOS__c"/>
+                                Hospital stay
+                            </label>
+                        </div>
+                        <!--Emergency room-->
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputField value="{!form.obj[bfVariableMap['HSRED']]}" styleClass="skip-element-HSRED" id="HSRED__c"/>
+                                Emergency department/room
+                            </label>
+                        </div>
+                        <!--surgery-->
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputField value="{!form.obj[bfVariableMap['HSRSUR']]}" styleClass="skip-element-HSRSUR" id="HSRSUR__c"/>
+                                Surgery
+                            </label>
+                        </div>
+                        <!--urgent care-->
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputField value="{!form.obj[bfVariableMap['HSRUC']]}" styleClass="skip-element-HSRUC" id="HSRUC__c"/>
+                                Urgent Care
+                            </label>
+                        </div>
+                        <!--occupational, physical, or speech therapy-->
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputField value="{!form.obj[bfVariableMap['HSROT']]}" styleClass="skip-element-HSROT" id="HSROT__c"/>
+                                Occupational therapy, physical therapy, and/or speech-language therapy
+                            </label>
+                        </div>
+                        <!--unknown-->
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputField value="{!form.obj[bfVariableMap['HSRUK']]}" styleClass="skip-element-HSRUK" id="HSRUK__c"/>
+                                Unknown
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!--Completion status control-->
+                <div class="form-group no-border-bottom no-space-bottom">
+                    <label class="control-label col-md-2 col-md-offset-8 text-right">Complete?</label> 
+                    <div class="col-md-2">
+                        <apex:selectList id="STATUS_HEALTH__c" styleClass="pull-right form-control input-sm" value="{!form.obj[bfVariableMap['STATUS']]}" size="1">
+                            <apex:selectOption itemValue="Incomplete" itemLabel="Incomplete"/>
+                            <apex:selectOption itemValue="Complete" itemLabel="Complete"/>
+                        </apex:selectList> 
+                    </div>
+                </div>
+                <!--end completion status-->  
+                
+            </apex:pageBlock>
+            
+        </apex:form>
+<!--end form content-->
+
+    <!--citation information footer-->    
+    <c:cimiFormFooter formElement="{!form}"/>
+    
+    </div>
+</apex:page>

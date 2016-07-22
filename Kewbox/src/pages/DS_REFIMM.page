@@ -1,0 +1,336 @@
+<apex:page standardController="DS_Background_Family_Info_B__c" extensions="DS_REFIMM_Controller">              
+    
+    <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
+        
+    <div class="{!HTMLENCODE(form.visitType)}">
+        <apex:sectionHeader title="{!HTMLENCODE(form.title)}" subtitle="{!HTMLENCODE(form.subtitle)}" />
+    </div>                
+    
+    <div class="bootwrap">
+        <!--Begin form content-->
+        <apex:form id="DS_FORM" styleClass="form-horizontal">
+            
+            <!-- pageblock to show ClientInformation header as described in Utility class-->
+            <c:cimiClientInfo displayVisitType="true" formElement="{!form}"/>
+            <!--end client info pageBlock-->
+            
+            <!-- primary content pageBlock container-->
+            <apex:pageBlock title="{!HTMLENCODE(form.title)}" >
+                
+                <!--save and cancel control buttons for pageBlock-->
+                <apex:pageBlockButtons >
+                    <apex:commandButton id="Save" action="{!save}" value="Save" styleClass="btn-info btn btn-sm"/>
+                    <apex:commandButton id="Cancel" action="{!cancel}" value="Cancel" rendered="{!if(form.forceRedirect = '1', false, true)}" styleClass="btn-info btn btn-sm"/>
+                </apex:pageBlockButtons><!--end buttons-->
+                
+                <!--placeholding structure that allows for system message display-->
+                <apex:pageMessages />
+                
+                <!--instructions -->
+                <div class="alert alert-info">
+                    If the child was not born in the United States, as indicated by question 5 in the Baseline Visit and Demographic Information Form above, and/or if the child has a parent who was not born in the United States, as indicated by question 6, please complete the following questions.  These questions require detailed information; please include caregiver if appropriate.
+                    <br/>Please note that <i>ethnic origin</i> in this case refers to culture or social background, traditions, identity group, language, and/or religious traditions.                   
+                </div>
+                <!--end instructions--> 
+                        
+                <!--1. Child's age of entry into the US-->
+                <div class="form-group ">
+                    <!--q1 question-->
+                    <label class=" control-label col-md-6 col-lg-6 ">
+                        <span class="nmbr">1.</span>
+                        Age of entry:
+                    </label>
+                    <!--q1 answer choices-->
+                    <div class="form-group col-md-4 col-lg-4">
+                        <apex:inputField styleClass="form-control auto-width input-sm" id="AGENT__c" label="Age of entry" value="{!form.obj[bfVariableMap['AGENT']]}"  />
+                        <div >
+                            <apex:inputCheckbox id="AGUS__c" value="{!form.obj[bfVariableMap['AGUS']]}" styleClass="form-control2" />
+                            Child was born in the United States
+                        </div>
+                        <div>
+                            <apex:inputCheckbox id="AGUK__c" value="{!form.obj[bfVariableMap['AGUK']]}" styleClass="form-control2" />
+                            Unknown 
+                        </div>
+                    </div>
+                </div>
+                        
+                <!--2. Child's ethnic origin-->
+                <div class="form-group">
+                    <!--q2 question-->
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">2.</span>
+                            What is the ethnic origin of the child?                             
+                    </label>
+                    <!--q2 answer choices-->
+                    <div class="col-md-6 col-lg-6">
+                        <apex:inputField label="Ethnic Origin" id="CETHORG__c" value="{!form.obj[bfVariableMap['CETHORG']]}" styleClass="form-control auto-width input-sm" />
+                    </div>
+                </div>
+                
+                <!--3. Mother born in US-->
+                <div class="form-group">
+                    <!--q3 question-->
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">3.</span>
+                            Was the child’s mother born in the United States?
+                    </label>
+                    <!--q3 answer choices-->
+                    <div class="col-md-6 col-lg-6">
+                        <apex:selectRadio styleClass="form-control2" id="MOMUS__c" value="{!form.obj[bfVariableMap['MOMUS']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['MOMUS']]}" onChange="skipLogic('MOMUS',this.value)">
+                            <apex:selectOptions value="{!NYUOption}"/>
+                        </apex:selectRadio>
+                    </div>
+                </div>
+                
+                    <!--conditional, if mother not US born-->
+                    <div class="form-group skip-MOMCTY">
+                        <!--mother's nationality-->
+                        <label class="col-md-6 col-lg-6 control-label">
+                            <span class="nmbr"></span>
+                            In what country was the child’s mother born?
+                        </label>
+                        <!--answer choices-->
+                        <div class="col-md-6 col-lg-6"> 
+                            <apex:selectList styleClass="form-control input-sm auto-width skip-element-MOMCTY" id="MOMCTY__c" value="{!form.obj[bfVariableMap['MOMCTY']]}" title="{!form.obj[bfVariableMap['MOMCTY']]}" size="1">
+                                <apex:selectOptions value="{!CTDECT}"/>
+                            </apex:selectList>
+                            <br/>
+                        </div>
+                        <!--mother's ethnicity-->
+                        <label class="col-md-6 col-lg-6 control-label">
+                            <span class="nmbr"></span>
+                            What is her ethnic origin?
+                        </label>
+                        <!--answer field-->
+                        <div class="col-md-6 col-lg-6"> 
+                            <apex:inputField styleClass="form-control input-sm auto-width skip-element-METHORG" id="METHORG__c" value="{!form.obj[bfVariableMap['METHORG']]}" />
+                        </div>
+                    </div>
+                        
+                <!--4. Father born in US?-->
+                <div class="form-group">
+                    <!--q4 question-->
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">4.</span>
+                            Was the child’s father born in the United States?
+                    </label>
+                    <!--q4 answer choices-->
+                    <div class="col-md-6 col-lg-6">
+                        <apex:selectRadio styleClass="form-control2 " id="DADUS__c" value="{!form.obj[bfVariableMap['DADUS']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['DADUS']]}" onChange="skipLogic('DADUS',this.value)">
+                            <apex:selectOptions value="{!NYUOption}"/>
+                        </apex:selectRadio>
+                    </div>
+                </div>
+                        
+                    <!--conditional, if faher not US born-->
+                    <div class="form-group skip-DADCTY">
+                        <!--father's nationality-->
+                        <label class="col-md-6 col-lg-6 control-label">
+                            <span class="nmbr"></span>
+                            In what country was the child’s father born?
+                        </label>
+                        <!--answer choices-->
+                        <div class="col-md-6 col-lg-6"> 
+                            <apex:selectList styleClass="form-control input-sm auto-width skip-element-DADCTY" id="DADCTY__c" value="{!form.obj[bfVariableMap['DADCTY']]}" title="{!form.obj[bfVariableMap['DADCTY']]}" size="1">
+                                <apex:selectOptions value="{!CTDECT}"/>
+                            </apex:selectList>
+                        <br/>
+                        </div>
+                        <!--father's ethnicity-->
+                        <label class="col-md-6 col-lg-6 control-label">
+                            <span class="nmbr"></span>
+                            What is his ethnic origin?
+                        </label>
+                        <!--answer field-->
+                        <div class="col-md-6 col-lg-6"> 
+                            <apex:inputField styleClass="form-control input-sm auto-width skip-element-DETHORG" id="DETHORG__c" value="{!form.obj[bfVariableMap['DETHORG']]}" />
+                        </div>
+                    </div>     
+                        
+                <!--5. Child immigration status indication checkbox list-->
+                <div class="form-group">
+                    <!--q5 question-->
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">5.</span>
+                            Please indicate if the child has ever had any of the following statuses.<br/>  (Select all that apply.)<br/>
+                    </label>
+                    <!--q5 answer choices-->
+                    <div class="col-md-6 col-lg-6">
+                        <!--No status-->
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="CSTNONE__c" value="{!form.obj[bfVariableMap['CSTNONE']]}" styleClass="form-control2" />
+                                None
+                            </label>
+                        </div>
+                        <!--Refugee-->
+                        <div class="checkbox">
+                            <label>
+                            <apex:inputCheckbox id="CSTREF__c" value="{!form.obj[bfVariableMap['CSTREF']]}" styleClass="form-control2" />
+                            Refugee (U.S. government refugee status, "A refugee is someone who has been forced to flee his or her country because of persecution, war, or violence")
+                            </label>
+                        </div>
+                        <!--Asylee-->
+                        <div class="checkbox">
+                            <label>
+                            <apex:inputCheckbox id="CSTASY__c" value="{!form.obj[bfVariableMap['CSTASY']]}" styleClass="form-control2" />
+                            Asylee (formally going through a legal process to become an asylee because of fear of persecution in their country of origin) 
+                            </label>
+                        </div>
+                        <!--immigrant-->
+                        <div class="checkbox">
+                            <label>
+                            <apex:inputCheckbox id="CSTIMM__c" value="{!form.obj[bfVariableMap['CSTIMM']]}" styleClass="form-control2" />
+                            Immigrant
+                            </label>
+                        </div>
+                        <!--unknown-->
+                        <div class="checkbox">
+                            <label>
+                            <apex:inputCheckbox id="CSTUK__c" value="{!form.obj[bfVariableMap['CSTUK']]}" styleClass="form-control2" />
+                            Unknown
+                            </label>
+                        </div>
+                      <!--end checkbox list--> 
+                    </div>
+                </div>
+                        
+                <!--6. Parent immigration status indication checkbox list-->
+                <div class="form-group">
+                    <!--q6 question-->
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">6.</span>
+                                Please indicate if the parents have ever had any of the following statuses.<br/>  (Select all that apply.)<br/>
+                    </label>
+                    <!--q6 answer choices-->
+                    <div class="col-md-6 col-lg-6">
+                        <!--No status-->
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="PSTNONE__c" value="{!form.obj[bfVariableMap['PSTNONE']]}" styleClass="form-control2" />
+                                None
+                            </label>
+                        </div>
+                        <!--Refugee-->
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="PSTREF__c" value="{!form.obj[bfVariableMap['PSTREF']]}" styleClass="form-control2" />
+                                Refugee (U.S. government refugee status, "A refugee is someone who has been forced to flee his or her country because of persecution, war, or violence")
+                            </label>
+                        </div>
+                        <!--Asylee-->
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="PSTASY__c" value="{!form.obj[bfVariableMap['PSTASY']]}" styleClass="form-control2" />
+                                Asylee (formally going through a legal process to become an asylee because of fear of persecution in their country of origin) 
+                            </label>
+                        </div>
+                        <!--immigrant-->
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="PSTIMM__c" value="{!form.obj[bfVariableMap['PSTIMM']]}" styleClass="form-control2" />
+                                Immigrant
+                            </label>
+                        </div>
+                        <!--unknown-->
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="PSTUK__c" value="{!form.obj[bfVariableMap['PSTUK']]}" styleClass="form-control2" />
+                                Unknown
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                        
+                <!--7. Child encampmant-->
+                <div class="form-group">
+                    <!--q7 question-->
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">7.</span>
+                            Did the child ever live in a refugee or detention camp?
+                    </label>
+                    <!--q7 answer choices-->
+                    <div class="col-md-6 col-lg-6">
+                        <apex:selectRadio styleClass="form-control2" id="REFCAMP__c" value="{!form.obj[bfVariableMap['REFCAMP']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['REFCAMP']]}" onChange="skipLogic('REFCAMP',this.value)">
+                            <apex:selectOptions value="{!NYUOption}"/>
+                        </apex:selectRadio>
+                    </div>
+                </div>
+                        
+                        <div class="form-group skip-CAMPMO"><!--conditional if child was in a camp-->
+                            <!--duration of encampment-->
+                            <label class="col-md-6 col-lg-6 control-label">
+                                <span/>
+                                How long did the child live in a refugee/detention camp(s)?
+                            </label>
+                   
+                                <div class="col-md-6 col-lg-6 form-group control-label">
+                                    <!--months-->
+                                    <label>
+                                        Months:
+                                    </label>
+                                    <div>
+                                        <apex:inputField id="CAMPMO__c" styleClass="form-control auto-width input-sm skip-element-CAMPMO" value="{!form.obj[bfVariableMap['CAMPMO']]}"/>                            
+                                    </div>
+                                    <!--Whole years-->
+                                    <label>
+                                        Years:
+                                    </label>
+                                    <div>   
+                                        <apex:inputField id="CAMPYR__c" styleClass="form-control auto-width input-sm skip-element-CAMPYR" value="{!form.obj[bfVariableMap['CAMPYR']]}"/> 
+                                    </div>
+                                </div>
+                        </div>  <!--end camp conditional-->
+                        
+                <!--8. parental english skills-->
+                <div class="form-group">
+                    <!--q8 question-->
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">8.</span>
+                        How well do the child’s parent(s)/primary caregiver(s) speak English? (Select only one. Please respond with respect to the parent/caregiver who is most proficient in English.) <br/>
+                    </label>
+                    <!--q8 answer choices-->
+                    <div class="col-md-6 col-lg-6">
+                        <apex:selectRadio id="PARENG__c" value="{!form.obj[bfVariableMap['PARENG']]}" title="{!form.obj[bfVariableMap['PARENG']]}" layout="pageDirection">
+                            <apex:selectOptions value="{!EngWellItems}"/>
+                        </apex:selectRadio>
+                    </div>
+                </div>
+                        
+                <!--9. child english level-->
+                <div class="form-group">
+                    <!--q9 question-->
+                    <label class="col-md-6 col-lg-6 control-label">
+                        <span class="nmbr">9.</span>
+                                How well does the child speak English (for a child of his or her age)?  (Select only one.) <br/>
+                    </label>
+                    <!--q9 answer choices-->
+                    <div class="col-md-6 col-lg-6">
+                        <apex:selectRadio id="CHIENG__c" value="{!form.obj[bfVariableMap['CHIENG']]}" title="{!form.obj[bfVariableMap['CHIENG']]}" layout="pageDirection">
+                            <apex:selectOptions value="{!EngWellItems}"/>
+                        </apex:selectRadio>
+                    </div>
+                </div>
+                        
+                    <!--Completion status control-->
+                <div class="form-group">
+                    <label class="control-label col-md-2 col-md-offset-8 text-right">Complete?</label>
+                    <div class="col-md-2">
+                        <apex:selectList id="STATUS_REFIMM__c" styleClass="form-control input-sm" style="width:130px" value="{!form.obj[bfVariableMap['STATUS']]}" size="1">
+                            <apex:selectOption itemValue="Incomplete" itemLabel="Incomplete"/>
+                            <apex:selectOption itemValue="Complete" itemLabel="Complete"/>
+                        </apex:selectList> 
+                    </div>
+                </div>
+                <!--end completion status-->
+                
+        </apex:pageBlock><!--end refimm pageBlock-->        
+    </apex:form>  
+    <!--end form content--> 
+    
+    <!--citation information footer-->    
+    <c:cimiFormFooter formElement="{!form}"/>    
+        
+    </div>
+        
+</apex:page>

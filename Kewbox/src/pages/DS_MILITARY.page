@@ -1,0 +1,803 @@
+<apex:page StandardController="DS_Background_Family_Info_B__c" extensions="DS_MILITARY_Controller" > 
+    
+    <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
+    
+    <!--Dynamic family member table-->
+    <script src="{!URLFOR($Resource.JS_DS_MILITARY)}"></script>  
+  <!--  <script src="{!URLFOR($Resource.Scripts, 'DS_MILITARY.js')}"></script>  -->
+    
+    <div class="{!HTMLENCODE(form.visitType)}">
+        <apex:sectionHeader title="{!HTMLENCODE(form.title)}" subtitle="{!HTMLENCODE(form.subtitle)}" />
+    </div>
+    
+    <div class="bootwrap">
+        <!--Begin form content-->
+        <apex:form id="DS_FORM" styleClass="form-horizontal">
+            
+            <!-- pageblock to show ClientInformation header as described in Utility class-->
+            <c:cimiClientInfo displayVisitType="true" formElement="{!form}"/>
+            <!--end client info pageBlock-->
+                        
+            <!-- primary content pageBlock container-->
+            <apex:pageBlock title="{!HTMLENCODE(form.title)}" >
+                <!--save and cancel control buttons for pageBlock-->
+                <apex:pageBlockButtons >
+                    <apex:commandButton id="Save" action="{!save}" value="Save" styleClass="btn btn-info btn-sm"/>
+                    <apex:commandButton id="Cancel" action="{!cancel}" value="Cancel" styleClass="btn btn-info btn-sm" rendered="{!if(form.forceRedirect = '1', false, true)}"/>
+                </apex:pageBlockButtons>
+                <!--end buttons-->
+
+                <!--placeholding structure that allows for system message display-->
+                <apex:pageMessages />
+    
+                <!--Begin Military Form-->
+                <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
+                    <div class="alert alert-info baseline-alert">
+                        <strong>If the child has served, or has family member(s) who served, in the military as indicated by questions 8 or 9 in the Baseline Visit and Demographic Information form, please complete the following questions. <br/><br/>These questions require detailed information; please include caregiver if available.</strong>
+                    </div> 
+                </apex:outputPanel>
+
+                <apex:outputPanel rendered="{!form.isFollowUp}" layout="none">
+                    <div class="alert alert-info followup-alert">
+                        <strong>If the child has served, or has family member(s) who served, in the military, as indicated by question 11 in the Follow-Up Visit and Demographic Information form above, please complete the following questions. <br/><br/>These questions require detailed information; please include caregiver if available.</strong>
+                    </div>        
+                </apex:outputPanel>
+                <!--1. relationship-->        
+                <div class="form-group">
+                
+                    <!--q1 question-->
+                        <label class="col-md-6 col-lg-6 control-label ">
+                            <span class="nmbr">1.</span>
+                            What is the relationship of the service member(s) to the child? <strong>(Select all that apply.)</strong>
+                        </label>
+                        
+                    <!--q1 answer choices-->
+                    <!--start checkbox list-->
+                    <div class="col-md-6 col-lg-6 checkbox">
+                        <!--self--> 
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="SELFMIL__c" value="{!form.obj[bfVariableMap['SELFMIL']]}"/>
+                                Self  
+                            </label>
+                        </div>
+                        <!--mother-->
+                        <div class="checkbox">
+                            <label>
+                             <apex:inputCheckbox id="MOMMIL__c" value="{!form.obj[bfVariableMap['MOMMIL']]}"/>                           
+                                Mother (Biological, adoptive, step) 
+                            </label>
+                        </div>
+                        <!--father-->
+                        <div class="checkbox">
+                            <label>
+                               <apex:inputCheckbox id="DADMIL__c" value="{!form.obj[bfVariableMap['DADMIL']]}"/>                          
+                                Father (Biological, adoptive, step) 
+                            </label>
+                        </div>
+                        <!--brother-->
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="BROMIL__c" value="{!form.obj[bfVariableMap['BROMIL']]}"/>                          
+                                Brother  
+                            </label>
+                        </div>
+                        <!--sister-->
+                        <div class="checkbox">
+                            <label>
+                               <apex:inputCheckbox id="SISMIL__c" value="{!form.obj[bfVariableMap['SISMIL']]}"/>                          
+                                Sister
+                            </label>
+                        </div>
+                        <!--cousin-->
+                        <div class="checkbox">
+                            <label>
+                             <apex:inputCheckbox id="COUMIL__c" value="{!form.obj[bfVariableMap['COUMIL']]}"/>                         
+                                Cousin
+                            </label>
+                        </div>
+                        <!--uncle-->
+                        <div class="checkbox">
+                            <label>
+                              <apex:inputCheckbox id="UNCMIL__c" value="{!form.obj[bfVariableMap['UNCMIL']]}"/>                         
+                                Uncle
+                            </label>
+                        </div>
+                        <!--aunt-->
+                        <div class="checkbox">
+                            <label>
+                              <apex:inputCheckbox id="AUNMIL__c" value="{!form.obj[bfVariableMap['AUNMIL']]}"/>                          
+                                Aunt
+                            </label>
+                        </div>
+                        <!--grandparent-->
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="GRAMIL__c" value="{!form.obj[bfVariableMap['GRAMIL']]}"/>                          
+                                Grandparent
+                            </label>
+                        </div>
+                        <!--other-->
+                        <div class ="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="OTHMIL__c" value="{!form.obj[bfVariableMap['OTHMIL']]}" onChange="skipLogic('OTHMIL',this.checked)"/>                          
+                                Other
+                            </label>
+                        </div>
+                        <!--conditional if other, specify-->
+                        <div class="form-group no-border-bottom no-space-bottom skip-OTHMILSP">
+                            <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please specify: " for="OTHMILSP__c"/>
+                            <div class="col-md-4 col-lg-4 specify-input">
+                                <apex:inputField styleClass="form-control input-sm skip-element-OTHMILSP" id="OTHMILSP__c" value="{!form.obj[bfVariableMap['OTHMILSP']]}"/>
+                            </div>
+                        </div>
+                        <!--end conditional-->
+                    </div>
+                    <!--end checkbox list-->
+                    <!--end q1 answer-->
+                </div>
+                <!--end q1-->                   
+
+                <!--2. relocation amount-->     
+                <div class="form-group">
+                    <!--q2 question-->
+                    <label class="col-md-6 col-lg-6 control-label ">
+                        <span class="nmbr">2.</span>
+                        How many times did the family (including the child) move or relocate for military reasons or orders? <strong>(Select only one.)</strong>
+                    </label>
+                    
+                    <!--q2 answer choices-->
+                    <div class="col-md-6 col-lg-6">                  
+                        <apex:selectRadio styleClass="radio-list"  title="{!form.obj[bfVariableMap['MILMOVE']]}" id="MILMOVE__c" value="{!form.obj[bfVariableMap['MILMOVE']]}" layout="pageDirection" >
+                            <apex:selectOptions value="{!MoveItems}" />
+                        </apex:selectRadio>
+                    </div>    
+                    <!--end q2 answers-->
+                </div>
+                <!--end q2-->
+                
+                <!--directions-->
+                <div class="alert alert-info">
+                    <strong>If service member(s) indicated in question 1 is the client, caregiver, or immediate family member (e.g., father, sister), please answer the following questions for each family member. <br> If not, skip to the next section of the Follow-Up Visit, "FAPGAR."</br></strong>
+                </div>
+                <!--end directions-->
+                
+                <!--3.number of family members-->
+                <div class="form-group">
+                    <!--q3 question-->
+                    <label class="col-md-6 col-lg-6 control-label ">
+                        <span class="nmbr">3.</span>
+                        What is the total number of immediate family members who have served in the military since 2001? <strong>(Select only one.)</strong>
+                    </label>
+                    
+                    <!--q3 answer choices-->
+                    <div class="col-md-6 col-lg-6">      
+                        <apex:selectRadio styleClass="radio-list Q3-answer" title="{!form.obj[bfVariableMap['MILSERV']]}" id="MILSERV" value="{!form.obj[bfVariableMap['MILSERV']]}" layout="pageDirection" onchange="('MILSERV',this.value)">
+                            <apex:selectOptions value="{!ServeItems}" />
+                        </apex:selectRadio>
+                    </div>              
+                </div>
+                <!--end q3-->
+
+                <div class="family-table-div" >
+                    <!--4. family member table, conditional based on answer to #3-->
+                    <div class="form-group no-border-bottom">   
+                        <!--information-->
+                        <label class="col-md-12 col-lg-12 control-label ">
+                            <span class="nmbr">4.</span>
+                            Please answer the questions below for the client and/or each immediate family member counted in question 3. A checked box indicates "Yes" to the item posed.  If the child is the person who served or is serving in the military, choose "Other" under "Family Member" and specify, "self." 
+                        </label>
+                        <!--end information-->                  
+                    </div>
+                    <div class="form-group">
+                        <!--begin table-->
+                        <div class="family-table-div responsive-table" style="display:none;">
+                            <table class="table military-table table-bordered table-striped table-condensed">
+                                <tr >
+                                
+                                    <!--table headings-->
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center" style="vertical-align:middle;">Relationship to the Child </th>
+                                            <th class="text-center" colspan="2" style="vertical-align:middle;">Service Branch</th>
+                                            <th class="text-center" style="vertical-align:middle;">Status</th>
+                                            <th class="text-center" style="vertical-align:middle;">Did they<br/>experience a<br/>wartime<br/>deployment?</th>
+                                            <th class="text-center" style="vertical-align:middle;">Most recent<br/>deployment</th>
+                                            <th class="text-center" style="vertical-align:middle;">During the child’s life,<br/>what was the total length<br/>of time this person was<br/>deployed?</th>
+                                        </tr>
+                                    </thead>
+                                    <!--end heading-->
+                                    
+                                    <tbody> 
+                                        <!--family member row 1-->
+                                        <tr class="family-row-1"> 
+                                            <!--Relationship to the Child-->
+                                            <td >
+                                                <apex:selectRadio styleClass="radio-list"   title="{!form.obj[bfVariableMap['MFMR1']]}" id="MFMR1__c" value="{!form.obj[bfVariableMap['MFMR1']]}" layout="pageDirection" onchange="skipLogic('MFMR1',this.value)">
+                                                    <apex:selectOptions value="{!RelationItems}"/>
+                                                </apex:selectRadio>
+                                                <!--conditional if other, specify-->
+                                                <div class="skip-MFMR1SP form-group no-border-bottom no-space-bottom">
+                                                    <label class="control-label specify-label specify-matrix">Please specify:</label>
+                                                </div>
+                                                <div class="skip-MFMR1SP form-group no-border-bottom no-space-bottom">
+                                                    <div class="specify-input specify-matrix">
+                                                        <apex:inputField styleClass="form-control skip-element-MFMR1SP" id="MFMR1SP__c" value="{!form.obj[bfVariableMap['MFMR1SP']]}"/>
+                                                    </div>
+                                                </div>
+                                                <!--end conditional-->
+                                            </td>  
+                                            <!--end relationship-->
+                                            
+                                            <!--Service Branch-->
+                                            <!--active branch-->
+                                            <td >
+                                                <apex:selectRadio styleClass="radio-list"   title="{!form.obj[bfVariableMap['MFM1B']]}" id="MFM1B__c" value="{!form.obj[bfVariableMap['MFM1B']]}" layout="pageDirection">
+                                                    <apex:selectOptions value="{!Branch1Items}"/>
+                                                </apex:selectRadio>
+                                            </td>                                                   
+                                            <!--supplementary branch-->
+                                            <td >
+                                                <apex:selectRadio styleClass="radio-list"   title="{!form.obj[bfVariableMap['MFM1B2']]}" id="MFM1B2__c" value="{!form.obj[bfVariableMap['MFM1B2']]}" layout="pageDirection">
+                                                    <apex:selectOptions value="{!Branch2Items}"/>
+                                                </apex:selectRadio>
+                                            </td> 
+                                            <!--end military branches-->
+                                            
+                                            <!--status-->
+                                            <td >
+                                                <apex:selectRadio styleClass="radio-list"   title="{!form.obj[bfVariableMap['MFM1S']]}" id="MFM1S__c" value="{!form.obj[bfVariableMap['MFM1S']]}" layout="pageDirection">
+                                                    <apex:selectOptions value="{!StatusItems}"/>
+                                                </apex:selectRadio>
+                                            </td> 
+                                            <!--end status-->
+                                            
+                                            <!--wartime?-->
+                                            <td >
+                                                <apex:selectRadio styleClass="radio-list"   title="{!form.obj[bfVariableMap['MFM1DP']]}" id="MFM1DP__c" value="{!form.obj[bfVariableMap['MFM1DP']]}" layout="pageDirection">
+                                                    <apex:selectOptions value="{!WartimeItems}"/>
+                                                </apex:selectRadio>
+                                            </td> 
+                                            <!--end wartime-->
+                                            
+                                            <!--most recent deployment-->
+                                            <td >
+                                                <apex:selectRadio styleClass="radio-list"   title="{!form.obj[bfVariableMap['MFM1RDP']]}" id="MFM1RDP__c" value="{!form.obj[bfVariableMap['MFM1RDP']]}" layout="pageDirection">
+                                                    <apex:selectOptions value="{!DeployItems}"/>
+                                                </apex:selectRadio>
+                                            </td> 
+                                            <!--end most recent-->
+                                            
+                                            <!--amount of child's life deployed-->
+                                            <td >
+                                                <apex:selectRadio styleClass="radio-list"   title="{!form.obj[bfVariableMap['MFM1MODP']]}" id="MFM1MODP__c" value="{!form.obj[bfVariableMap['MFM1MODP']]}" layout="pageDirection">
+                                                    <apex:selectOptions value="{!DeployAllItems}"/>
+                                                </apex:selectRadio>
+                                            </td> 
+                                            <!--child lifetime deployment-->
+                                        </tr>
+                                        <!--end family member 1-->
+                                        
+                                        <!--family member row 2-->                        
+                                        <tr class="family-row-2"> 
+                                            <!--Relationship to the Child-->
+                                            <td >
+                                                <apex:selectRadio styleClass="radio-list"   title="{!form.obj[bfVariableMap['MFMR2']]}" id="MFMR2__c" value="{!form.obj[bfVariableMap['MFMR2']]}" layout="pageDirection" onchange="skipLogic('MFMR2',this.value)">
+                                                    <apex:selectOptions value="{!RelationItems}"/>
+                                                </apex:selectRadio>
+                                                <!--conditional if other, specify-->
+                                                <div class="skip-MFMR2SP form-group no-border-bottom no-space-bottom">
+                                                    <label class="control-label specify-label specify-matrix">Please specify:</label>
+                                                </div>
+                                                <div class="skip-MFMR2SP form-group no-border-bottom no-space-bottom">
+                                                    <div class="specify-input specify-matrix">
+                                                        <apex:inputField styleClass="form-control skip-element-MFMR2SP" id="MFMR2SP__c" value="{!form.obj[bfVariableMap['MFMR2SP']]}"/>
+                                                    </div>
+                                                </div>
+                                                <!--end conditional-->
+                                            </td>  
+                                            <!--end relationship-->
+                                            
+                                            <!--Service Branch-->
+                                            <!--active branch-->
+                                            <td >
+                                                <apex:selectRadio styleClass="radio-list"   title="{!form.obj[bfVariableMap['MFM2B']]}" id="MFM2B__c" value="{!form.obj[bfVariableMap['MFM2B']]}" layout="pageDirection">
+                                                    <apex:selectOptions value="{!Branch1Items}"/>
+                                                </apex:selectRadio>
+                                            </td>                   
+                                            <!--supplementary branch-->
+                                            <td >
+                                                <apex:selectRadio styleClass="radio-list"   title="{!form.obj[bfVariableMap['MFM2B2']]}" id="MFM2B2__c" value="{!form.obj[bfVariableMap['MFM2B2']]}" layout="pageDirection">
+                                                    <apex:selectOptions value="{!Branch2Items}"/>
+                                                </apex:selectRadio>
+                                            </td> 
+                                            <!--end military branches-->
+                                            
+                                            <!--status-->
+                                            <td >
+                                                <apex:selectRadio styleClass="radio-list"   title="{!form.obj[bfVariableMap['MFM2S']]}" id="MFM2S__c" value="{!form.obj[bfVariableMap['MFM2S']]}" layout="pageDirection">
+                                                    <apex:selectOptions value="{!StatusItems}"/>
+                                                </apex:selectRadio>
+                                            </td> 
+                                            <!--end status-->
+                                            
+                                            <!--wartime?-->
+                                            <td >
+                                                <apex:selectRadio styleClass="radio-list"   title="{!form.obj[bfVariableMap['MFM2DP']]}" id="MFM2DP__c" value="{!form.obj[bfVariableMap['MFM2DP']]}" layout="pageDirection">
+                                                    <apex:selectOptions value="{!WartimeItems}"/>
+                                                </apex:selectRadio>
+                                            </td> 
+                                            <!--end wartime-->
+                                            
+                                            <!--most recent deployment-->
+                                            <td >
+                                                <apex:selectRadio styleClass="radio-list"   title="{!form.obj[bfVariableMap['MFM2RDP']]}" id="MFM2RDP__c" value="{!form.obj[bfVariableMap['MFM2RDP']]}" layout="pageDirection">
+                                                    <apex:selectOptions value="{!DeployItems}"/>
+                                                </apex:selectRadio>
+                                            </td> 
+                                            <!--end most recent-->
+                                            
+                                            <!--amount of child's life deployed-->
+                                            <td >
+                                                <apex:selectRadio styleClass="radio-list"   title="{!form.obj[bfVariableMap['MFM2MODP']]}" id="MFM2MODP__c" value="{!form.obj[bfVariableMap['MFM2MODP']]}" layout="pageDirection">
+                                                    <apex:selectOptions value="{!DeployAllItems}"/>
+                                                </apex:selectRadio>
+                                            </td> 
+                                            <!--child lifetime deployment-->
+                                        </tr>
+                                        <!--end family member 2-->
+                                        
+                                        <!--family member row 3-->                   
+                                        <tr class="family-row-3">
+                                            <!--Relationship to the Child--> 
+                                            <td >
+                                                <apex:selectRadio styleClass="radio-list"   title="{!form.obj[bfVariableMap['MFMR3']]}" id="MFMR3__c" value="{!form.obj[bfVariableMap['MFMR3']]}" layout="pageDirection" onchange="skipLogic('MFMR3',this.value)">
+                                                    <apex:selectOptions value="{!RelationItems}"/>
+                                                </apex:selectRadio>
+                                                <!--conditional if other, specify-->
+                                                <div class="skip-MFMR3SP form-group no-border-bottom no-space-bottom">
+                                                    <label class="control-label specify-label specify-matrix">Please specify:</label>
+                                                </div>
+                                                 <div class="skip-MFMR3SP form-group no-border-bottom no-space-bottom">
+                                                    <div class="specify-input specify-matrix">
+                                                        <apex:inputField styleClass="form-control skip-element-MFMR3SP" id="MFMR3SP__c" value="{!form.obj[bfVariableMap['MFMR3SP']]}"/>
+                                                    </div>
+                                                </div>
+                                                <!--end conditional-->
+                                            </td> 
+                                            <!--end relationship-->
+                                            
+                                            <!--Service Branch-->
+                                            <!--active branch--> 
+                                            <td >
+                                                <apex:selectRadio styleClass="radio-list"   title="{!form.obj[bfVariableMap['MFM3B']]}" id="MFM3B__c" value="{!form.obj[bfVariableMap['MFM3B']]}" layout="pageDirection">
+                                                    <apex:selectOptions value="{!Branch1Items}"/>
+                                                </apex:selectRadio>
+                                            </td> 
+                                            <!--supplementary branch-->
+                                            <td >
+                                                <apex:selectRadio styleClass="radio-list"   title="{!form.obj[bfVariableMap['MFM3B2']]}" id="MFM3B2__c" value="{!form.obj[bfVariableMap['MFM3B2']]}" layout="pageDirection">
+                                                    <apex:selectOptions value="{!Branch2Items}"/>
+                                                </apex:selectRadio>
+                                            </td> 
+                                            <!--end military branches-->
+                                            
+                                            <!--status-->
+                                            <td >
+                                                <apex:selectRadio styleClass="radio-list"   title="{!form.obj[bfVariableMap['MFM3S']]}" id="MFM3S__c" value="{!form.obj[bfVariableMap['MFM3S']]}" layout="pageDirection">
+                                                    <apex:selectOptions value="{!StatusItems}"/>
+                                                </apex:selectRadio>
+                                            </td> 
+                                            <!--end status-->
+                                            
+                                            <!--wartime?-->
+                                            <td >
+                                                <apex:selectRadio styleClass="radio-list"   title="{!form.obj[bfVariableMap['MFM3DP']]}" id="MFM3DP__c" value="{!form.obj[bfVariableMap['MFM3DP']]}" layout="pageDirection">
+                                                    <apex:selectOptions value="{!WartimeItems}"/>
+                                                </apex:selectRadio>
+                                            </td> 
+                                            <!--end wartime-->
+                                            
+                                            <!--most recent deployment-->
+                                            <td >
+                                                <apex:selectRadio styleClass="radio-list"   title="{!form.obj[bfVariableMap['MFM3RDP']]}" id="MFM3RDP__c" value="{!form.obj[bfVariableMap['MFM3RDP']]}" layout="pageDirection">
+                                                    <apex:selectOptions value="{!DeployItems}"/>
+                                                </apex:selectRadio>
+                                            </td> 
+                                            <!--end most recent-->
+                                            
+                                            <!--amount of child's life deployed-->
+                                            <td >
+                                                <apex:selectRadio styleClass="radio-list"   title="{!form.obj[bfVariableMap['MFM3MODP']]}" id="MFM3MODP__c" value="{!form.obj[bfVariableMap['MFM3MODP']]}" layout="pageDirection">
+                                                    <apex:selectOptions value="{!DeployAllItems}"/>
+                                                </apex:selectRadio>
+                                            </td> 
+                                            <!--child lifetime deployment-->
+                                        </tr>
+                                        <!--end family member 3-->
+                                        
+                                        <!--family member row 4-->           
+                                        <tr class="family-row-4"> 
+                                            <!--Relationship to the Child--> 
+                                            <td >
+                                                <apex:selectRadio styleClass="radio-list"   title="{!form.obj[bfVariableMap['MFMR4']]}" id="MFMR4__c" value="{!form.obj[bfVariableMap['MFMR4']]}" layout="pageDirection" onchange="skipLogic('MFMR4',this.value)">
+                                                    <apex:selectOptions value="{!RelationItems}"/>
+                                                </apex:selectRadio>
+                                                <!--conditional if other, specify-->
+                                                <div class="skip-MFMR4SP form-group no-border-bottom no-space-bottom">
+                                                    <label class="control-label specify-label specify-matrix">Please specify:</label>
+                                                </div>
+                                                <div class="skip-MFMR4SP form-group no-border-bottom no-space-bottom">
+                                                    <div class="specify-input specify-matrix">
+                                                        <apex:inputField styleClass="form-control skip-element-MFMR4SP" id="MFMR4SP__c" value="{!form.obj[bfVariableMap['MFMR4SP']]}"/>
+                                                    </div>
+                                                </div>
+                                                <!--end conditional-->
+                                            </td>  
+                                            <!--end relationship-->
+                                            
+                                            <!--Service Branch-->
+                                            <!--active branch--> 
+                                            <td >
+                                                <apex:selectRadio styleClass="radio-list"   title="{!form.obj[bfVariableMap['MFM4B']]}" id="MFM4B__c" value="{!form.obj[bfVariableMap['MFM4B']]}" layout="pageDirection">
+                                                    <apex:selectOptions value="{!Branch1Items}"/>
+                                                </apex:selectRadio>
+                                            </td> 
+                                            <!--supplementary branch-->
+                                            <td >
+                                                <apex:selectRadio styleClass="radio-list"   title="{!form.obj[bfVariableMap['MFM4B2']]}" id="MFM4B2__c" value="{!form.obj[bfVariableMap['MFM4B2']]}" layout="pageDirection">
+                                                    <apex:selectOptions value="{!Branch2Items}"/>
+                                                </apex:selectRadio>
+                                            </td> 
+                                            <!--end military branches-->
+                                            
+                                            <!--status-->
+                                            <td >
+                                                <apex:selectRadio styleClass="radio-list"   title="{!form.obj[bfVariableMap['MFM4S']]}" id="MFM4S__c" value="{!form.obj[bfVariableMap['MFM4S']]}" layout="pageDirection">
+                                                    <apex:selectOptions value="{!StatusItems}"/>
+                                                </apex:selectRadio>
+                                            </td> 
+                                            <!--end status-->
+                                            
+                                            <!--wartime?-->
+                                            <td >
+                                                <apex:selectRadio styleClass="radio-list"   title="{!form.obj[bfVariableMap['MFM4DP']]}" id="MFM4DP__c" value="{!form.obj[bfVariableMap['MFM4DP']]}" layout="pageDirection">
+                                                    <apex:selectOptions value="{!WartimeItems}"/>
+                                                </apex:selectRadio>
+                                            </td> 
+                                            <!--end wartime-->
+                                            
+                                            <!--most recent deployment-->
+                                            <td >
+                                                <apex:selectRadio styleClass="radio-list"   title="{!form.obj[bfVariableMap['MFM4RDP']]}" id="MFM4RDP__c" value="{!form.obj[bfVariableMap['MFM4RDP']]}" layout="pageDirection">
+                                                    <apex:selectOptions value="{!DeployItems}"/>
+                                                </apex:selectRadio>
+                                            </td> 
+                                            <!--end most recent-->
+                                            
+                                            <!--amount of child's life deployed-->
+                                            <td >
+                                                <apex:selectRadio styleClass="radio-list"   title="{!form.obj[bfVariableMap['MFM4MODP']]}" id="MFM4MODP__c" value="{!form.obj[bfVariableMap['MFM4MODP']]}" layout="pageDirection">
+                                                    <apex:selectOptions value="{!DeployAllItems}"/>
+                                                </apex:selectRadio>
+                                            </td> 
+                                            <!--child lifetime deployment-->
+                                        </tr>
+                                        <!--end family member 4-->
+                                    </tbody>
+                                </tr>
+                            </table> 
+                        <!--end table-->
+                        </div>
+                
+                    </div>
+                    <!--end q4-->
+                    
+                    <!--5. difficulties directly from service-->
+                    <div class="form-group">
+                        <!--q5 question-->
+                        <label class="col-md-6 col-lg-6 control-label ">
+                            <span class="nmbr">5.</span>
+                             As a result of their military experiences, did any of the service members listed above experience any of the following? <strong>(Select all that apply.)</strong>
+                        </label>
+                        
+                        <!--q5 answer choices-->
+                        <!--start checkbox list-->
+                        <div class="col-md-6 col-lg-6">
+                            <!--physical injury--> 
+                            <div class="checkbox">
+                                <label>
+                                    <apex:inputCheckbox styleClass=" skip-element-MPI" id="MPI__c" value="{!form.obj[bfVariableMap['MPI']]}" label="Physical injury" onChange="skipLogic('MPI',this.checked)" />
+                                    Physical injury
+                                </label>
+                            </div>
+                            <!--Conditional if Physical Injury-->
+                            <div class="skip-MPIAMP">
+                                <div class="skipContent checkbox">
+                                    <label>Indicate the type of injury/ injuries. (Select all that apply.)</label>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-11 col-lg-11 col-md-offset-1 col-lg-offset-1">
+                                        <!--amputation-->
+                                        <div class="skipContent checkbox">
+                                            <label>
+                                                <apex:inputCheckbox styleClass=" skip-element-MPIAMP"  id="MPIAMP__c" value="{!form.obj[bfVariableMap['MPIAMP']]}" label="Amputation" />
+                                                Amputation
+                                            </label>
+                                        </div>
+                                        <!--traumatic brain injury-->
+                                        <div class="skipContent checkbox">
+                                            <label>
+                                                <apex:inputCheckbox styleClass=" skip-element-MPITBI"  id="MPITBI__c" value="{!form.obj[bfVariableMap['MPITBI']]}" label="Traumatic Brain Injury (TBI)/ blast-related concussion" />
+                                                Traumatic Brain Injury (TBI)/ blast-related concussion
+                                            </label>
+                                        </div>
+                                        <!--burns-->
+                                        <div class="skipContent checkbox">
+                                            <label>
+                                                <apex:inputCheckbox styleClass=" skip-element-MPIBRN"  id="MPIBRN__c" value="{!form.obj[bfVariableMap['MPIBRN']]}" label="Burns" />
+                                                Burns
+                                            </label>
+                                        </div>
+                                        <!--chronic pain-->
+                                        <div class="skipContent checkbox">
+                                            <label>
+                                                <apex:inputCheckbox styleClass=" skip-element-MPICPF"  id="MPICPF__c" value="{!form.obj[bfVariableMap['MPICPF']]}" label="Chronic pain or fatigue/ musculoskeletal pain " />
+                                                Chronic pain or fatigue/ musculoskeletal pain
+                                            </label>
+                                        </div>
+                                        <!--unknown-->  
+                                        <div class="skipContent checkbox">
+                                            <label>
+                                                <apex:inputCheckbox styleClass=" skip-element-MPIUK"  id="MPIUK__c" value="{!form.obj[bfVariableMap['MPIUK']]}" label="Unknown"/>
+                                                Unknown
+                                            </label>
+                                        </div>  
+                                        <!--other-->  
+                                        <div class="skipContent checkbox">
+                                            <label>
+                                                <apex:inputCheckbox styleClass=" skip-element-MPIOTH" id="MPIOTH__c" value="{!form.obj[bfVariableMap['MPIOTH']]}" label="Other" onChange="skipLogic('MPIOTH',this.checked)" />
+                                                Other
+                                            </label>
+                                        </div>
+                                        <!--conditional if other, specify-->
+                                        <div class="skipContent skip-MPIOSP form-group no-border-bottom no-space-bottom">
+                                            <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please specify:" for="MPIOSP__c"/>
+                                            <div class="col-md-4 col-lg-4 specify-input">
+                                                <apex:inputField styleClass=" input-sm form-control skip-element-MPIOSP" id="MPIOSP__c" value="{!form.obj[bfVariableMap['MPIOSP']]}" />                                                        
+                                            </div> 
+                                        </div>                            
+                                    </div>
+                                </div>
+                            </div>
+                            <!--stress problems-->
+                            <div class="checkbox">
+                                <label>
+                                    <apex:inputCheckbox styleClass="skip-element-MST" id="MST__c" value="{!form.obj[bfVariableMap['MST']]}" label="Developed stress symptoms/difficulties adjusting following deployment " onChange="skipLogic('MST',this.checked)"/>
+                                    Developed stress symptoms/difficulties adjusting following deployment                    
+                                </label>
+                            </div>
+                            <!--conditional if stress problems-->
+                            <div class="skip-MSTPTSD">
+                                <div class="skipContent checkbox">
+                                    <label>Indicate the type of difficulty/difficulties. <strong>(Select all that apply.)</strong></label>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-11 col-lg-11 col-md-offset-1 col-lg-offset-1">
+                                        <!--ptsd-->
+                                        <div class="skipContent checkbox">
+                                            <label>             
+                                                <apex:inputCheckbox styleClass=" skip-element-MSTPTSD"  id="MSTPTSD__c" value="{!form.obj[bfVariableMap['MSTPTSD']]}" label="Post-Traumatic Stress or PTSD"/>
+                                                Post-Traumatic Stress or PTSD
+                                            </label>
+                                        </div>
+                                        <!--depression/anxiety-->
+                                        <div class="skipContent checkbox">
+                                            <label>             
+                                                <apex:inputCheckbox styleClass=" skip-element-MSTDEP"  id="MSTDEP__c" value="{!form.obj[bfVariableMap['MSTDEP']]}" label="Depression or anxiety  "/>
+                                                Depression or anxiety
+                                                 </label>
+                                        </div>
+                                        <!--substance use-->
+                                        <div class="skipContent checkbox">
+                                            <label>             
+                                                <apex:inputCheckbox styleClass=" skip-element-MSTSUB"  id="MSTSUB__c" value="{!form.obj[bfVariableMap['MSTSUB']]}" label="Substance use or abuse  "/>  
+                                                Substance use or abuse
+                                            </label>
+                                        </div>
+                                        <!--suicidality-->
+                                        <div class="skipContent checkbox">
+                                            <label>             
+                                                <apex:inputCheckbox styleClass=" skip-element-MSTSUIC"  id="MSTSUIC__c" value="{!form.obj[bfVariableMap['MSTSUIC']]}" label="Suicidal thoughts or attempts  "/>
+                                                Suicidal thoughts or attempts
+                                                 </label>
+                                        </div>
+                                        <!--unknown-->
+                                        <div class="skipContent checkbox">
+                                            <label>             
+                                                <apex:inputCheckbox styleClass=" skip-element-MSTUK"  id="MSTUK__c" value="{!form.obj[bfVariableMap['MSTUK']]}" label="Unknown  "/>
+                                                Unknown
+                                            </label>
+                                        </div>
+                                        <!--other-->  
+                                        <div class="skipContent checkbox">
+                                            <label>             
+                                                <apex:inputCheckbox styleClass=" skip-element-MSTOTH" id="MSTOTH__c" value="{!form.obj[bfVariableMap['MSTOTH']]}" label="Other" onChange="skipLogic('MSTOTH',this.checked)" />
+                                                Other                                                    
+                                            </label>
+                                        </div>
+                                        <!--conditional if other, specify-->
+                                        <div class="skipContent skip-MSTOSP form-group no-border-bottom no-space-bottom">
+                                            <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please specify:" for="MSTOSP__c"/>
+                                            <div class="col-md-4 col-lg-4 specify-input">
+                                                <apex:inputField styleClass="input-sm form-control skip-element-MSTOSP" id="MSTOSP__c" value="{!form.obj[bfVariableMap['MSTOSP']]}" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Killed-->
+                            <div class="checkbox">
+                                <label>
+                                    <apex:inputCheckbox styleClass="skip-element-MKIL" id="MKIL__c" value="{!form.obj[bfVariableMap['MKIL']]}" label="A service member from those listed above was killed " onChange="skipLogic('MKIL',this.checked)"/>
+                                    A service member from those listed above was killed                    
+                                </label>                        
+                            </div>
+                            <!--conditional if killed-->
+                            <div class="skip-MKILCOM">
+                                <div class="skipContent checkbox">
+                                    <label>What was the nature of the death? <strong>(Select all that apply.)</strong></label>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-11 col-lg-11 col-md-offset-1 col-lg-offset-1">
+                                        <!--in combat-->
+                                        <div class="skipContent checkbox">
+                                            <label>             
+                                                <apex:inputCheckbox styleClass=" skip-element-MKILCOM"  id="MKILCOM__c" value="{!form.obj[bfVariableMap['MKILCOM']]}" label="Killed in combat"/>
+                                                Killed in combat
+                                            </label>
+                                        </div>
+                                        <!--accidental-->
+                                        <div class="skipContent checkbox">  
+                                            <label>             
+                                                <apex:inputCheckbox styleClass=" skip-element-MKILACC"  id="MKILACC__c" value="{!form.obj[bfVariableMap['MKILACC']]}" label="Accidental death"/>
+                                                Accidental death
+                                            </label>
+                                        </div>
+                                        <!--illness--> 
+                                        <div class="skipContent checkbox">   
+                                            <label>             
+                                                <apex:inputCheckbox styleClass=" skip-element-MKILMED"  id="MKILMED__c" value="{!form.obj[bfVariableMap['MKILMED']]}" label="Medical condition or illness "/>
+                                                Medical condition or illness
+                                            </label>
+                                        </div>
+                                        <!--suicide-->
+                                        <div class="skipContent checkbox">
+                                            <label>             
+                                                <apex:inputCheckbox styleClass=" skip-element-MKILSUIC"  id="MKILSUIC__c" value="{!form.obj[bfVariableMap['MKILSUIC']]}" label="Suicide "/>
+                                                Suicide
+                                            </label>
+                                        </div>
+                                        <!--unknown-->
+                                        <div class="skipContent checkbox">
+                                            <label>             
+                                                <apex:inputCheckbox styleClass=" skip-element-MKILUK"  id="MKILUK__c" value="{!form.obj[bfVariableMap['MKILUK']]}" label="Unknown"/>
+                                                Unknown
+                                            </label>
+                                        </div>
+                                        <!--other-->
+                                        <div class="skipContent checkbox">
+                                            <label>             
+                                                <apex:inputCheckbox styleClass=" skip-element-MKILOTH" id="MKILOTH__c" value="{!form.obj[bfVariableMap['MKILOTH']]}" label="Other" onChange="skipLogic('MKILOTH',this.checked)"/>
+                                                Other                                                   
+                                            </label>
+                                        </div>
+                                        <!--conditional if other, specify-->
+                                        <div class="skipContent skip-MKILOSP form-group no-border-bottom no-space-bottom">
+                                            <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please specify:" for="MKILOSP__c"/>
+                                            <div class="col-md-4 col-lg-4 specify-input">
+                                                <apex:inputField styleClass="input-sm form-control skip-element-MKILOSP" id="MKILOSP__c" value="{!form.obj[bfVariableMap['MKILOSP']]}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!--6. reintegration-->
+                    <div class="form-group">
+                        <!--q6 question-->
+                        <label class="col-md-6 col-lg-6 control-label ">
+                            <span class="nmbr">6.</span>
+                            Is the child’s family currently experiencing any difficulties associated with the service member’s reintegration or transition back into community life? 
+                        </label>
+                        <div class="col-md-6 col-lg-6">
+                            <apex:selectRadio styleClass="radio-list"  id="MDIFRI__c" value="{!form.obj[bfVariableMap['MDIFRI']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['MDIFRI']]}" onChange="skipLogic('MDIFRI',this.value)">
+                                <apex:selectOptions value="{!IsDiffItems}"/>
+                            </apex:selectRadio>
+                        </div>
+                    </div>
+                    <!--conditional, if difficulties exist-->
+                    <div class="form-group skip-MDIFRIE">
+                        <label class="col-md-6 col-lg-6 control-label">
+                            <span class="nmbr"></span>
+                            What are the difficulties? <strong>(Select all that apply.)</strong>
+                        </label>
+                            <!--start checkbox list-->
+                        <div class="col-md-6 col-lg-6">
+                            <!--employment-->
+                            <div class="skipContent checkbox">
+                                <label>             
+                                    <apex:inputCheckbox styleClass=" skip-element-MDIFRIE"  id="MDIFRIE__c" value="{!form.obj[bfVariableMap['MDIFRIE']]}" label="Employment and career issues"/>
+                                    Employment and career issues
+                                </label>
+                            </div>
+                            <!--housing-->    
+                            <div class="skipContent checkbox">
+                                <label>             
+                                    <apex:inputCheckbox styleClass=" skip-element-MDIFRIH"  id="MDIFRIH__c" value="{!form.obj[bfVariableMap['MDIFRIH']]}" label="Homelessness or access to stable housing"/>
+                                    Homelessness or access to stable housing
+                                </label>
+                            </div>
+                            <!--legal-->    
+                            <div class="skipContent checkbox">
+                                <label>             
+                                    <apex:inputCheckbox styleClass=" skip-element-MDIFRIL"  id="MDIFRIL__c" value="{!form.obj[bfVariableMap['MDIFRIL']]}" label="Legal problems"/>
+                                    Legal problems  <br/>
+                                </label>
+                            </div>
+                            <!--benefits-->  
+                            <div class="skipContent checkbox">
+                                <label>             
+                                    <apex:inputCheckbox styleClass=" skip-element-MDIFRIA"  id="MDIFRIA__c" value="{!form.obj[bfVariableMap['MDIFRIA']]}" label="Access to benefits (e.g., VA, GI Bill) "/>
+                                    Access to benefits (e.g., VA, GI Bill)
+                                    </label>
+                            </div>
+                            <!--unknown-->  
+                            <div class="skipContent checkbox">
+                                <label>             
+                                    <apex:inputCheckbox styleClass=" skip-element-MDIFRIUK"  id="MDIFRIUK__c" value="{!form.obj[bfVariableMap['MDIFRIUK']]}" label="Unknown "/>
+                                    Unknown
+                                </label>
+                            </div>
+                            <!--other-->  
+                            <div class="skipContent checkbox">
+                                <label>             
+                                    <apex:inputCheckbox styleClass=" skip-element-MDIFRIO" id="MDIFRIO__c" value="{!form.obj[bfVariableMap['MDIFRIO']]}" label="Other" onChange="skipLogic('MDIFRIO',this.checked)"/>
+                                    Other<br/>                                                    
+                                </label>
+                            </div>
+                            <!--conditional if other, specify-->
+                            <div class="skipContent skip-MDIFRIOSP form-group no-border-bottom no-space-bottom">
+                                <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please specify:" for="MKILOSP__c"/>
+                                <div class="col-md-4 col-lg-4 specify-input">
+                                    <apex:inputField styleClass="form-control input-sm skip-element-MDIFRIOSP" id="MDIFRIOSP__c" value="{!form.obj[bfVariableMap['MDIFRIOSP']]}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end q6-->          
+                </div>       
+                <!--Completion status control-->
+                <div class="form-group no-border-bottom no-space-bottom">
+                    <label class="control-label col-md-2 col-md-offset-8 text-right">Complete?</label>
+                    <div class="col-md-2">
+                        <apex:selectList id="STATUS_MILITARY__c" styleClass="pull-right form-control input-sm" value="{!form.obj[bfVariableMap['STATUS']]}" size="1">
+                            <apex:selectOption itemValue="Incomplete" itemLabel="Incomplete"/>
+                            <apex:selectOption itemValue="Complete" itemLabel="Complete"/>
+                        </apex:selectList> 
+                    </div>
+                </div>
+                <!--end completion status-->
+              
+            </apex:pageBlock>
+        </apex:form>
+<!--end form content-->
+
+    <!--citation information footer-->    
+    <c:cimiFormFooter formElement="{!form}"/>
+    
+    </div>
+
+</apex:page>
