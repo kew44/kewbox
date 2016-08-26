@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_33850060</developerName>
+        <masterLabel>Age Range Buckets</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Client__c$CURRENT_AGE__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>0</to>
+            </sourceValues>
+            <value>Age 0</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>0</from>
+                <to>4</to>
+            </sourceValues>
+            <value>Ages 1-4</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>4</from>
+                <to>9</to>
+            </sourceValues>
+            <value>Ages 5-9</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>9</from>
+                <to>12</to>
+            </sourceValues>
+            <value>Ages 10-12</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>12</from>
+                <to>17</to>
+            </sourceValues>
+            <value>Ages 13-17</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>17</from>
+                <to>21</to>
+            </sourceValues>
+            <value>Ages 18-21</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>21</from>
+            </sourceValues>
+            <value>Ages 22+</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Client__c$CURRENT_AGE__c</field>
+    </columns>
+    <columns>
+        <field>BucketField_33850060</field>
+    </columns>
+    <format>Tabular</format>
+    <name>CurrentAge Bucket Tabular</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>COCAP_Age_Ranges__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Client__c.DS_Background_Family_Info_B__r$BDOV__c</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
+    </timeFrameFilter>
+</Report>

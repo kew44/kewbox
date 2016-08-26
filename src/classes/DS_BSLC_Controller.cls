@@ -44,7 +44,7 @@ public with sharing class DS_BSLC_Controller extends DS_BasicForm_Controller {
         
         List<SelectOption> options = new List<SelectOption>(); 
         
-        options.add(new SelectOption('1','Trauma-Focused Cognitive Behavior Therapy (TF-CBT) ')); 
+        options.add(new SelectOption('1','Trauma-Focused Cognitive Behavioral Therapy (TF-CBT) ')); 
         options.add(new SelectOption('2','Life Skills/Life Stories ')); 
         options.add(new SelectOption('3','Structured Psychotherapy for Adolescents Responding to Chronic Stress (SPARCS)    ')); 
         options.add(new SelectOption('4','Trauma Affect Regulation: Guidelines for Education and Therapy (TARGET)')); 
@@ -64,7 +64,7 @@ public with sharing class DS_BSLC_Controller extends DS_BasicForm_Controller {
         
         List<SelectOption> options = new List<SelectOption>(); 
         
-        options.add(new SelectOption('0','No, left treatment before completing ')); 
+        options.add(new SelectOption('0','No, left this treatment before completing ')); 
         options.add(new SelectOption('1','Yes, completed treatment ')); 
         return options; 
         

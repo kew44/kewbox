@@ -82,7 +82,7 @@
                 <div class="form-group">
                     <label class="col-md-12 col-lg-12 control-label ">
                         <span class="nmbr">3.</span>
-                        <strong>Feeding</strong> – Issues with feeding (e.g., difficulty sucking, chewing or swallowing, sensory food aversions, symptoms of failure to thrive, overeating and/or Pica (an appetite for non-nutritive substances, such as dirt)).
+                        <strong>Feeding</strong> – Issues with feeding (e.g., difficulty sucking, chewing or swallowing, sensory food aversions, symptoms of failure to thrive, overeating and/or Pica (an appetite for non-nutritive substances, such as dirt) ).
                     </label>
                     <div class="col-md-12 col-lg-12">
                         <apex:selectRadio styleClass="radio-list" id="FEEDING__c" value="{!form.obj[bfVariableMap['FEEDING']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['FEEDING']]}">

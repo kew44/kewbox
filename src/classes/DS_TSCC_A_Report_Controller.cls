@@ -21,6 +21,10 @@
 *@author KW
 *Purpose: add subscale scores to map of clinical scores
 *
+*@modified    6/23/16    KW    999 condition
+*
+*@modified    6/27/16    KW    validity string comparison values (999->0)
+*
 *@group Assessment
 *@group-content /ApexDocContent/Assessment/DS_TSCC_A_Report_Controller.htm
 ****/
@@ -167,7 +171,10 @@ public with sharing class DS_TSCC_A_Report_Controller extends DS_BasicForm_Contr
             //negligable LOC difference b/w iterative and mapped
             
         //Underresponse (UND)           
-        if(Integer.valueOf(form.obj.get(form.BorF+'TSCNTN__c')) <= 64){
+        if(Integer.valueOf(form.obj.get(form.BorF+'TSCNTN__c')) == 0){
+            Str_UND = 'Not Available';
+        }
+        else if(Integer.valueOf(form.obj.get(form.BorF+'TSCNTN__c')) <= 64){
             Str_UND = 'Normal';
         }
         else if(Integer.valueOf(form.obj.get(form.BorF+'TSCNTN__c')) >= 70){
@@ -177,8 +184,11 @@ public with sharing class DS_TSCC_A_Report_Controller extends DS_BasicForm_Contr
             Str_UND = 'Borderline';
         }
 
-        //Hyperresponse (HYP)           
-        if(Integer.valueOf(form.obj.get(form.BorF+'TSCHYTN__c')) <= 64){
+        //Hyperresponse (HYP)        
+        if(Integer.valueOf(form.obj.get(form.BorF+'TSCHYTN__c')) == 0){
+            Str_HYP = 'Not Available';
+        }
+        else if(Integer.valueOf(form.obj.get(form.BorF+'TSCHYTN__c')) <= 64){
             Str_HYP = 'Normal';
         }
         else if(Integer.valueOf(form.obj.get(form.BorF+'TSCHYTN__c')) >=90){

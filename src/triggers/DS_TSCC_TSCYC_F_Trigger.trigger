@@ -7,7 +7,16 @@ trigger DS_TSCC_TSCYC_F_Trigger  on DS_TSCC_TSCYC_F__c (before insert, before up
         // Get the Background_Family_Info data        
         Map<String, SObject> backgroundObj = ut.getObjectRecordWithClient(Trigger.new, 'DS_Background_Family_Info_F__c', null);
         
+        DS_TSCC_TSCYC_Scoring tsccayc = new DS_TSCC_TSCYC_Scoring(); 
+		
         for(DS_TSCC_TSCYC_F__c obj: Trigger.new) {
+            
+            if(obj.STATUS_TSCC_A__c != null){
+                obj = (DS_TSCC_TSCYC_F__c) tsccayc.delta_TSCC(obj);
+            }
+            if(obj.STATUS_TSCYC__c != null){
+                obj = (DS_TSCC_TSCYC_F__c) tsccayc.delta_TSCYC(obj);
+            }
             // Background id
             if(backgroundObj.containsKey(obj.Client__c+'-'+obj.SECTION__c))
                 obj.Background_ID__c = String.valueOf(backgroundObj.get(obj.Client__c+'-'+obj.SECTION__c).get('id'));

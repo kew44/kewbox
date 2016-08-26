@@ -99,33 +99,23 @@ private class TestClass_DS_TDETAIL {
         
         controller.getContent();
         
-        String clientInfo = controller.getClientInfo();
-        
-        controller.CommandButton();
-        
         Component.Apex.pageBlock block = new Component.Apex.pageBlock();
-        
-        controller.completeStatus(block);
-        
-        // Test all the question type
-        //List<SelectOption> questionType = test_ut.getPicklistValues(new DS_TD_Form_Info__c(), 'Category__c');
-        
-        //for(SelectOption question : questionType)
-        //    controller.QuesGenerator(block, question.getValue(), '1', 'test');
         
         List<String> questionType = 
             new List<String>{
-                    'RBASE', 'RBEN','RCG','RCMP','RCP','RD','RDIS','RDU',
-                    'REVAC','RFREQ','RFRGT','RFTB','RGANG','RHDAM','RIMP',
-                    'RINC','RINJ','RINJ2','RLIFE','RMED','RMEN','RMTYP',
-                    'RNTYPES','RPAIN','RPENET','RPER','RPER2','RPER3','RPICU',
-                    'RPORNOG','RPR','RPR2','RRE','RREPORT','RRES','RRESIB',
-                    'RREUN','RSE','RSET1','RSET2','RSET3','RSET4','RSRV',
-                    'RST','RTHI','RTRNSP','RTT12C','RTVIO','RTYP','RTYPDS',
-                    'RVTYP','RWEAPON','RWPN','TYPES', 'RTYPES'};
+                    'RBASE',  'RBEN',   'RCG',    'RCMP',   'RCP',    'RD',     'RDIS',   'RDU',  'RDV',
+                    'REVAC',  'RFREQ',  'RFRGT',  'RFTB',   'RGANG',  'RHDAM',  'RILL',   'RIMP',
+                    'RIN',    'RINC',   'RINJ',   'RINJ_2', 'RINJ_3', 'RINJ_4', 'RLIFE',  'RMED', 'RMEN', 'RMTYP',
+                    'RNTYPES','RPAIN',  'RPENET', 'RPER',   'RPER_2', 'RPER_3', 'RPER_4', 'RPICU',
+                    'RPORNOG','RPR',    'RPR_2',  'RRE',    'RREPORT','RRES',   'RRESIB',
+                    'RREUN',  'RSE',    'RSET_1', 'RSET_2', 'RSET_3', 'RSET_4', 'RSRV',
+                    'RST',    'RTHI',   'RTR',    'RTRNSP', 'RTT12C', 'RTVIO',  'RTYP',   'RTYPDS',
+                    'RVTYP',  'RWEAPON','RWPN',   'RWPN_2', 'RTYPDS', 'SECTION','STATUS', 'SUBMITBTN', 'null'
+                        };
                         
         for(String question : questionType) {
-            controller.QuesGenerator(block, question, '1', 'test');
+            System.debug(question);
+            controller.elementGenerator(block, question, '1', 'test');
         }
         
         controller.save();

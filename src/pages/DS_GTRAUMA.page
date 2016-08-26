@@ -1,305 +1,146 @@
 <apex:page standardController="DS_GTRAUMA__c" extensions="DS_GTRAUMA_Controller">
-  
-    <!--JQuery -->
-    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.9.1.js')}"  /><!--allows for JQuery dependencies-->
-    <script> $j = jQuery.noConflict(); </script><!--Reserves the '$' token for JQuery only-->
     
-    <!-- Bootstrap -->
-        <link href="{!URLFOR($Resource.VFbootstrap3, '/css/VFbootstrap.css')}" rel="stylesheet" media="screen"/>
-            <apex:includeScript value="{!URLFOR($Resource.VFbootstrap3, '/js/bootstrap.min.js')}"/>
-                
-                <!--link to the CSS resource in Salesforce internal document-->
-                    <apex:stylesheet value="{!$Resource.CustomCss}" />
+    <link href="{!URLFOR($Resource.CSS_DS_GTRAUMA)}" rel="stylesheet" media="screen, print"/>
 
-  <script>function setFocusOnLoad() {}</script>
+    <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
 
-    <!-- "Breadcrumb" heading allows user to navigate to the ClientSummary page -->
-  <script>
-    $j(document).ready(function() {
-      $j('.bPageTitle').append('<div class="ptBreadcrumb">&nbsp;«&nbsp;<a href="/apex/ClientSummary?s=-1&id={!client.id}">Back to Client Summary</a></div>');
-    });
-  </script>
-  <!--end breadcrumb link-->
-  
-  <!--JQuery script block to ensure only valid ages can be selected-->
-  <script>
-  
-    var clientAge = {!clientCurrentAge};
-  
-    function expCheck() {
-      $j('.GT-checkbox').each(function(){ $j(this).attr("disabled", true); });
-      $j('.GT23Q').append($j('#other-content'));
-    }
+    <!--JQuery script block to ensure only valid ages can be selected-->
+    <script> var clientAge = {!form.client.CURRENT_AGE__c}; </script>
+    <script src="{!URLFOR($Resource.JS_DS_GTRAUMA)}"/>
+    <!--end script block-->
+
+    <div class="{!HTMLENCODE(form.visitType)}-assessment">
+        <apex:sectionHeader title="{!form.title}" subtitle="{!form.subtitle}" />
+    </div>
     
-    expCheck.prototype.oper = function(resource){
-    
-      var value = resource.val();
-  
-      var targetCheck = $j('.'+resource.parent('td').attr('data-type'));
-      var targetTD = $j('.'+resource.parent('td').attr('data-type')+'TD');
-      
-      var num = resource.parent('td').attr('data-num');
-                          
-      if((value==2) || (value== 1)) {
-
-        // Only show the age under current age
-        targetTD.each(function(){
-
-          if(parseInt($j(this).attr('data-age')) <= clientAge || 
-             $j(this).attr('data-age') == 'unk') {
-            $j(this).children('input').removeAttr("disabled");
-            $j(this).addClass('GT-age-pointer');
-          }
-        });
-
-        $j('.GT-primary select option[value="'+ num +'"]').show();
-      }
-      else {
-          targetTD.removeClass('GT-age-pointer');
-          targetTD.removeClass('GT-age-sel');
-          targetCheck.prop('checked', false);
-          targetCheck.attr("disabled", true);
-          $j('.GT-primary select option[value="'+ num +'"]').hide();
-      }                 
-    }
-  
-    $j(document).ready(function() {
-
-        var exp = new expCheck();
-
-        $j('.GT-exp').each(function(){ exp.oper($j(this)); });
-        $j('.GT-exp').change(function(){ exp.oper($j(this)); });
-        $j('.GT-td-age').click(function(){
-
-          if(parseInt($j(this).attr('data-age')) > clientAge) 
-            return 0;
-
-          if($j(this).hasClass('GT-age-sel')) {  // If the age is selected 
-            
-            $j(this).children('input').prop('checked', false);
-            $j(this).removeClass('GT-age-sel');
-
-            if($j(this).hasClass('GT-td-unk')) {
-              // Only show the age under current age
-              $j('.GT'+$j(this).attr('data-type')+'ATDNUM').each(function(){ 
-                if(parseInt($j(this).attr('data-age')) <= clientAge)
-                  $j(this).addClass('GT-age-pointer');
-              });
-            }
-          }
-          else {
-            if(!$j(this).children('input').attr("disabled") && 
-               !$j('.GT'+$j(this).attr('data-type')+'UNK').hasClass('GT-age-sel')) {
-
-              $j(this).children('input').prop('checked', true);
-              $j(this).addClass('GT-age-sel');
-
-              if($j(this).hasClass('GT-td-unk')) { // Select unknown
-
-                $j('.GT'+$j(this).attr('data-type')+'ACHK').each(function(){
-                  if($j(this).is(':checked'))
-                    $j(this).trigger("click");
-                }); 
-                $j('.GT'+$j(this).attr('data-type')+'ATDNUM').removeClass('GT-age-pointer');
-              }
-            }
-          }
-        });
-
-        $j('.GT-td-age').each(function(){
-
-          if($j(this).children('input').is(':checked'))
-            $j(this).addClass('GT-age-sel');
-
-          if($j(this).hasClass('GT'+$j(this).attr('data-type')+'ATDNUM') && 
-             $j('.GT'+$j(this).attr('data-type')+'UNKCHK').is(':checked')) {
-            $j(this).removeClass('GT-age-pointer');
-          }
-        });
-
-        $j('.GT-checkbox').change(function(){
-          if(!$j(this).is(':checked'))
-            $j(this).parent().removeClass('GT-age-sel');
-        });
-    });           
-  </script>
-  <!--end script block-->
-  
-    <!--supplementary styling information-->
-  <style>
-    .GT-table thead th { text-align:center !important; vertical-align:middle !important;}
-    .GT-table thead th:first-child  {}
-    .GT-table td:nth-child(2) { text-align:left !important; }
-     
-    .GT-table .primarySelect { width: inherit !important;}
-     
-     
-    .GT-table td  {text-align:center !important; vertical-align:middle !important;}
-    .GT-table td.type  {text-align:left !important; vertical-align:middle !important;}
-    .GT-table td:first-child  {text-align:center !important;}
-     
-    .GT-primary { padding-left:35px !important; vertical-align:middle;}
-     
-    .GT-table th.span2 {width:347px !impoartant;}
-    .GT-table td .GT-exp { margin-bottom: 0px !important;}
-    .pbButtonb, .pbButton { float:right; }
-     
-    .GT23Q td { border:none !important; }
-    body .apexp .bPageBlock.apexDefaultPageBlock .pbBottomButtons { border: 0px; }
-    #sidebarCell { display: none;}
-    @media only screen and (min-width : 1300px) {
-      #sidebarCell { display: table-cell;}
-    }
-
-    #force { font-size: 13px; }
-    #force small { font-size: 90%; }
-
-    .GT-td-age { color: #ddd !important; }
-    .GT-checkbox { display:none; }
-    .GT-age-unsel { color: #ddd !important; }
-    .GT-age-sel { color: #31708f !important; background: #d9edf7;}
-    .GT-age-pointer { cursor: pointer; color: #666666 !important;}
-
-    .completeField td { vertical-align: middle; }
-    .auto-width { width:auto !important; display: inline !important; }
-  </style>
-    <!--end styling-->
-  
     <!--Begin form content-->
-  <apex:form >
-    <apex:sectionHeader title="General Trauma Information Form" subtitle="{!subtitle}"/><br/>
+    <div class="bootwrap">
+        <apex:form id="DS_FORM_GTRAUMA" styleClass="form-horizontal">
+            
+            <!-- pageblock to show ClientInformation header as described in Utility class-->
+            <c:cimiClientInfo displayVisitType="true" formElement="{!form}"/>
+            <!--end client info pageBlock-->
+            
+            <!-- primary content pageBlock container-->
+            <apex:pageBlock title="General Trauma Information" >
 
-    <!-- pageblock to show ClientInformation header as described in Utility class-->
-    <apex:pageBlock title="Client Information">
-      <div id="force">
-        <apex:outputText value="{!ClientInfo}" escape="false"/>
-      </div>
-    </apex:pageBlock><!--end client info pageBlock-->
-    
-    <!-- primary content pageBlock container-->
-    <apex:pageBlock title="General Trauma Information" >
-      <apex:pageMessages /><!--placeholding structure that allows for system message display-->
-      
-      <div id="force">
-          <!--instructions-->
-          <br/><!--blankrow-->
-          When were the questions on this form administered/updated?<apex:inputField styleClass="form-control auto-width" value="{!GTRAUMA.GTDATE__c}"/> <!--admin date-->
-          <br/>
-          <br/ >
-          <strong>Please complete the following 24 questions based on the client's trauma history. This information should be maintained during treatment if trauma is experienced or new trauma is revealed.</strong>
-          <br/><br/><!--blank rows-->                                   
-          <!--end instructions-->
-          
-          <table class="table table-bordered table-responsive GT-table">
- 
-              
-              <!--column headings-->
-              <thead>
-                  <tr>
-                    <th rowspan="1" class="span1">#</th>
-                    <th rowspan="1" class="span2" style="width:361px;">Trauma Type</th>
-                    <th rowspan="1" class="span3" style="width:150px;">Has child experienced<br/> this trauma? <br/>(Answer all Trauma Types)</th>
-                    <th colspan="20" class="span4">When was this type of trauma experienced?<br/>Age in years: (Check all ages that apply)</th>
-                   </tr>
-              </thead>
-              <!--end headings-->
-              
-              <!--populates records with information about each trauma type based on DS_DATA-->
-              <apex:repeat value="{!rows}" var="r">
-              
-                <!--trauma record-->
-                  <tr>                
-                      <!--displays trauma number-->
-                      <td><apex:outputText value="{!r.num}"/></td>
-                      
-                      <!--displays trauma name and description-->
-                      <td class="GT{!r.num}Q">
-                        <apex:outputText value="{!r.trauma}" escape="false"/><br/>
-                        <small><apex:outputText value="{!r.subtitle}" escape="false"/></small>
-                      </td>
-                      <!--end name and description-->
-                      
-                      <!--experienced indication-->
-                      <td data-type="GT{!r.num}A" data-num="{!r.num}">
-                          <apex:selectList styleClass="GT-exp form-control GT-exp-{!r.num}" size="1" value="{!GTRAUMA[r.exp]}" multiselect="false">
-                            <apex:selectOptions value="{!TraumaType}"/>
-                          </apex:selectList><p/>
-                      </td>
-                      <!--end trauma experience-->
+                <!--save and cancel control buttons-->
+                <apex:pageBlockButtons >
+                    <apex:commandButton action="{!save}" value="Save" styleClass="btn btn-info btn-sm btn-save"/>
+                    <apex:commandButton action="{!cancel}" value="Cancel" styleClass="btn btn-info btn-sm btn-cancel"/>
+                </apex:pageBlockButtons>
 
-                      <!--populates a grid containing age selectors (0-18) for each trauma type-->
-                      <apex:repeat value="{!ageNum}" var="aNum">
-                        <td class="GT-td-age GT{!r.num}ATD GT{!r.num}ATDNUM" data-type="{!r.num}" data-age="{!aNum}">
-                          {!if(VALUE(aNum) < 10, '0'+aNum, aNum)}
-                          <apex:inputCheckbox styleClass="GT{!r.num}A GT-checkbox GT{!r.num}ACHK" value="{!GTRAUMA['GT'+r.num+'RA'+aNum+'__c']}"/>
-                        </td>
-                      </apex:repeat>
-                      <!--end age grid-->
-
-                      <!--age unknown indicator-->
-                      <td class="GT-td-age GT{!r.num}ATD GT-td-unk GT{!r.num}UNK" data-type="{!r.num}" data-age="unk">
-                        Unknown
-                        <apex:inputCheckbox styleClass="GT{!r.num}A GT-checkbox GT{!r.num}UNKCHK" value="{!GTRAUMA['GT'+r.num+'RAU__c']}"/>
-                      </td>
-                      <!--end age unknown-->
-
-                  </tr>
-                  <!--end trauma record-->
-              </apex:repeat>
-              <!--end list of trauma types information-->
-              
-              <!--24. Which trauma type is the primary focus of this treatment>-->
-              <tr>
-                <td>24</td>
-                <td>Primary focus of current treatment?</td>
-                <td class="GT-primary" style="text-align:left !important; vertical-align: middle !important;" colspan="21">
-                    <apex:selectList size="1" styleClass="form-control primarySelect" value="{!GTRAUMA.GTPRIMRY__c}" multiselect="false">
-                        <apex:selectOptions value="{!PrimaryType}"/>
-                    </apex:selectList>                    
-                </td>
-              </tr>
-              <!--end focus-->
+                <apex:pageMessages /><!--placeholding structure that allows for system message display-->
                 
-              <tr>  
-                <!--Completion status control-->              
-                <td style="text-align: right !important;" colspan="23">
-                Complete?&nbsp;&nbsp;
-                  <apex:selectList styleClass="form-control input-sm" style="width:130px; display: inherit;" value="{!GTRAUMA.STATUS_GTRAUMA__c}" size="1">
-                      <apex:selectOption itemValue="Incomplete" itemLabel="Incomplete"/>
-                      <apex:selectOption itemValue="Complete" itemLabel="Complete"/>
-                  </apex:selectList>  
-                  <!--end completion status-->
-              </td>
-              </tr>
-              
-          
+                    <!--instructions-->
+                    <br/><!--blankrow-->
+                    When were the questions on this form administered/updated?<apex:inputField styleClass="form-control auto-width" value="{!form.obj[bfVariableMap['GTDATE']]}"/> <!--admin date-->
+                    <br/>
+                    <br/ >
+                    <strong>Please complete the following based on the client's trauma history. This information should be updated during treatment if new trauma is experienced or additional trauma is revealed.</strong>
+                    <br/><br/><!--blank rows-->                                   
+                    <!--end instructions-->
+                    
+                    <table class="table table-bordered table-responsive GT-table">
+                       
+                        <!--column headings-->
+                        <thead>
+                            <tr>
+                                <th rowspan="1" class="span1">#</th>
+                                <th rowspan="1" class="span2" style="width:361px;">Trauma Type</th>
+                                <th rowspan="1" class="span3" style="width:150px;">Has child experienced<br/> this trauma? <br/>(Answer all trauma types.)</th>
+                                <th colspan="20" class="span4">When was this type of trauma experienced?<br/>Age in years: (Select all ages that apply.)</th>
+                            </tr>
+                        </thead>
+                        <!--end headings-->
+                            
+                        <!--populates records with information about each trauma type based on DS_DATA-->
+                        <apex:repeat value="{!rows}" var="r">
+                            
+                            <!--trauma record-->
+                            <tr>                
+                                <!--displays trauma number-->
+                                <td><apex:outputText value="{!r.num}"/></td>
+                                
+                                <!--displays trauma name and description-->
+                                <td class="GT{!r.num}Q">
+                                    <apex:outputText value="{!r.trauma}" escape="false"/><br/>
+                                    <small><apex:outputText value="{!r.subtitle}" escape="false"/></small>
+                                </td>
+                                <!--end name and description-->
+                                
+                                <!--experienced indication-->
+                                <td data-type="GT{!r.num}A" data-num="{!r.num}">
+                                    <apex:selectList styleClass="GT-exp form-control GT-exp-{!r.num}" size="1" value="{!form.obj[bfVariableMap[r.exp]]}" multiselect="false">
+                                        <apex:selectOptions value="{!TraumaType}"/>
+                                    </apex:selectList><p/>
+                                </td>
+                                <!--end trauma experience-->
+                                
+                                <!--populates a grid containing age selectors (0-18) for each trauma type-->
+                                <apex:repeat value="{!ageNum}" var="aNum">
+                                    <td class="GT-td-age GT{!r.num}ATD GT{!r.num}ATDNUM" data-type="{!r.num}" data-age="{!aNum}">
+                                        {!if(VALUE(aNum) < 10, '0'+aNum, aNum)}
+                                        <apex:inputCheckbox styleClass="GT{!r.num}A GT-checkbox GT{!r.num}ACHK" value="{!form.obj[bfVariableMap['GT'+r.num+'RA'+aNum]]}"/>
+                                    </td>
+                                </apex:repeat>
+                                <!--end age grid-->
+                                
+                                <!--age unknown indicator-->
+                                <td class="GT-td-age GT{!r.num}ATD GT-td-unk GT{!r.num}UNK" data-type="{!r.num}" data-age="unk">
+                                    Unknown
+                                    <apex:inputCheckbox styleClass="GT{!r.num}A GT-checkbox GT{!r.num}UNKCHK" value="{!form.obj[bfVariableMap['GT'+r.num+'RAU']]}"/>
+                                </td>
+                                <!--end age unknown-->
+                                
+                            </tr>
+                            <!--end trauma record-->
+                        </apex:repeat>
+                        <!--end list of trauma types information-->
+                            
+                        <!--24. Which trauma type is the primary focus of this treatment>-->
+                        <tr>
+                            <td>24</td>
+                            <td>What is the primary focus of the current treatment? (Select only one.)</td>
+                            <td class="GT-primary" style="text-align:left !important; vertical-align: middle !important;" colspan="21">
+                                <apex:selectList size="1" styleClass="form-control primarySelect" value="{!form.obj[bfVariableMap['GTPRIMRY']]}" multiselect="false">
+                                    <apex:selectOptions value="{!PrimaryType}"/>
+                                </apex:selectList>                    
+                            </td>
+                        </tr>
+                        <!--end focus-->
+                            
+                        <tr>  
+                            <!--Completion status control-->              
+                            <td style="text-align: right !important;" colspan="23">
+                                Complete?&nbsp;&nbsp;
+                                <apex:selectList styleClass="form-control input-sm" style="width:130px; display: inherit;" value="{!form.obj[bfVariableMap['STATUS']]}" size="1">
+                                    <apex:selectOption itemValue="Incomplete" itemLabel="Incomplete"/>
+                                    <apex:selectOption itemValue="Complete" itemLabel="Complete"/>
+                                </apex:selectList>  
+                                <!--end completion status-->
+                            </td>
+                        </tr>
+                            
+                    </table>
+                    
+                    <!--23. Other trauma specified-->
+                    <div id="other-content">
+                        <div class="row">
+                            <div class="col-sm-5 text-right">
+                                <label class="control-label">Please Specify:</label>
+                            </div>
+                            <div class="col-sm-7">
+                                <apex:inputField styleClass="form-control input-sm" id="other" value="{!form.obj[bfVariableMap['GT23RSP']]}"/>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end specify 23-->  
+                
+            </apex:pageBlock><!--end buttons-->
+            
+        </apex:form>
         
-        </table>
-          
-          <!--23. Other trauma specified-->
-          <div id="other-content">
-            <div class="row">
-              <div class="col-sm-5 text-right">
-                <label class="control-label">Please Specify:</label>
-              </div>
-              <div class="col-sm-7">
-                <apex:inputField styleClass="form-control input-sm" id="other" value="{!GTRAUMA.GT23RSP__c}"/>
-              </div>
-            </div>
-         </div>
-         <!--end specify 23-->  
-         
-      </div>
-      
-            <!--save and cancel control buttons-->
-      <apex:pageBlockButtons >
-                        <apex:commandButton action="{!save}" value="Save"/>
-                        <apex:commandButton action="{!cancel}" value="Cancel"/>
-                  </apex:pageBlockButtons>
-    </apex:pageBlock><!--end buttons-->
-    
-  </apex:form>
-  <!--end content-->
-  
-  
+    </div>
+    <!--end content-->
 </apex:page>

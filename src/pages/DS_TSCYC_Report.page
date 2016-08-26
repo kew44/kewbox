@@ -62,6 +62,9 @@
                         <br/>
                         <br/>
                         The TSCYC includes two validity scales that tap into the caregiver’s style of answering questions, response level and atypical response. The symptom subscales should be considered in the context of these validity scales. 
+                        <br/>
+                        <br/>
+                        <i>*Please note that if a subscale's raw score is unknown, the percentile will be charted as zero.</i>
                     </p>
                     <!--end information-->
                     
@@ -91,7 +94,7 @@
                         <br/>
                         <strong><u>Validity Scales </u></strong>
                         <br/>
-                        The score on the Response Level scale is in the <u>{!Str_RL}</u> range and their score on the Atypical Response scale is in the <u>{!Str_ATR}</u><!--{!visits[SectionNum].ATR}--> range. 
+                        The score on the Response Level scale is in the <u>{!Str_RL}</u> range and their score on the Atypical Response scale is in the <u>{!Str_ATR}</u> range. 
                     </p>                
                 </div>
                 <!--end info-->
@@ -138,17 +141,106 @@
                                 <td>{!IF(HTMLENCODE(visit.BorF) = 'B', 'Baseline', 'Follow-up')}</td>                          
                                 
                                 <apex:outputPanel layout="none" >    
-                                    <td  class="text-center {!IF((visit.RL_T)       >= 70, 'danger', (IF((visit.RL_T)     <= 64, '', 'warning')))}">{!visit.RL_T}     <br/> {!IF((visit.RL_T)     >= 70, 'Invalid',  (IF((visit.RL_T)     <= 64, '', 'Borderline')))}</td><!--rl-->
-                                    <td  class="text-center {!IF((visit.ATR_T)      >= 90, 'danger', (IF((visit.ATR_T)    <= 69, '', 'warning')))}">{!visit.ATR_T}    <br/> {!IF((visit.ATR_T)    >= 90, 'Invalid',  (IF((visit.ATR_T)    <= 69, '', 'Borderline')))} </td><!--atr-->    
-                                    <td  class="text-center {!IF((visit.ANX_T)      >= 70, 'danger', (IF((visit.ANX_T)    <= 64, '', 'warning')))}">{!visit.ANX_T}    <br/> {!IF((visit.ANX_T)    >= 70, 'Clinical', (IF((visit.ANX_T)    <= 64, '', 'Borderline')))} </td><!--anx-->
-                                    <td  class="text-center {!IF((visit.DEP_T)      >= 70, 'danger', (IF((visit.DEP_T)    <= 64, '', 'warning')))}">{!visit.DEP_T}    <br/> {!IF((visit.DEP_T)    >= 70, 'Clinical', (IF((visit.DEP_T)    <= 64, '', 'Borderline')))} </td><!--dep-->
-                                    <td  class="text-center {!IF((visit.ANG_T)      >= 70, 'danger', (IF((visit.ANG_T)    <= 64, '', 'warning')))}">{!visit.ANG_T}    <br/> {!IF((visit.ANG_T)    >= 70, 'Clinical', (IF((visit.ANG_T)    <= 64, '', 'Borderline')))} </td><!--ang-->
-                                    <td  class="text-center {!IF((visit.PTSI_T)     >= 70, 'danger', (IF((visit.PTSI_T)   <= 64, '', 'warning')))}">{!visit.PTSI_T}   <br/> {!IF((visit.PTSI_T)   >= 70, 'Clinical', (IF((visit.PTSI_T)   <= 64, '', 'Borderline')))} </td><!--ptsi-->
-                                    <td  class="text-center {!IF((visit.PTSAV_T)    >= 70, 'danger', (IF((visit.PTSAV_T)  <= 64, '', 'warning')))}">{!visit.PTSAV_T}  <br/> {!IF((visit.PTSAV_T)  >= 70, 'Clinical', (IF((visit.PTSAV_T)  <= 64, '', 'Borderline')))} </td><!--ptsav-->
-                                    <td  class="text-center {!IF((visit.PTSAR_T)    >= 70, 'danger', (IF((visit.PTSAR_T)  <= 64, '', 'warning')))}">{!visit.PTSAR_T}  <br/> {!IF((visit.PTSAR_T)  >= 70, 'Clinical', (IF((visit.PTSAR_T)  <= 64, '', 'Borderline')))} </td><!--ptsar-->   
-                                    <td  class="text-center {!IF((visit.PTSTOT_T)   >= 70, 'danger', (IF((visit.PTSTOT_T) <= 64, '', 'warning')))}">{!visit.PTSTOT_T} <br/> {!IF((visit.PTSTOT_T) >= 70, 'Clinical', (IF((visit.PTSTOT_T) <= 64, '', 'Borderline')))} </td><!--ptstot-->  
-                                    <td  class="text-center {!IF((visit.DIS_T)      >= 70, 'danger', (IF((visit.DIS_T)    <= 64, '', 'warning')))}">{!visit.DIS_T}    <br/> {!IF((visit.DIS_T)    >= 70, 'Clinical', (IF((visit.DIS_T)    <= 64, '', 'Borderline')))} </td><!--dis-->    
-                                    <td  class="text-center {!IF((visit.SC_T)       >= 70, 'danger', (IF((visit.SC_T)     <= 64, '', 'warning')))}">{!visit.SC_T}     <br/> {!IF((visit.SC_T)     >= 70, 'Clinical', (IF((visit.SC_T)     <= 64, '', 'Borderline')))} </td><!--sc-->     
+                                
+                                    <!--rl-->
+                                    <td  class="text-center {!IF((visit.RL_T) >= 70, 'danger', (IF((visit.RL_T)<= 64, '', 'warning')))}">                   <!--formatting-->
+                                        {!IF((visit.RL_T) = 0, '***', visit.RL_T)}                                                                          <!--value-->
+                                        <br/> 
+                                        <div class="{!IF((visit.RL_T) = 0, 'message warningM3','')}" role="alert">
+                                            <apex:image rendered="{!IF((visit.RL_T) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />  <!--symbol-->
+                                            {!IF((visit.RL_T)= 0, 'Not Available', (IF((visit.RL_T)     >= 70, 'Invalid',  (IF((visit.RL_T)     <= 64, '', 'Borderline')))))}<!--significance-->
+                                        </div>
+                                    </td>
+                                    <!--atr-->
+                                    <td  class="text-center {!IF((visit.ATR_T)>= 90, 'danger', (IF((visit.ATR_T)<= 69, '', 'warning')))}">
+                                        {!IF((visit.ATR_T) = 0, '***', visit.ATR_T)}    
+                                        <br/> 
+                                        <div class="{!IF((visit.ATR_T) = 0, 'message warningM3','')}" role="alert">
+                                            <apex:image rendered="{!IF((visit.ATR_T) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
+                                            {!IF((visit.ATR_T )= 0, 'Not Available', (IF((visit.ATR_T)    >= 90, 'Invalid',  (IF((visit.ATR_T)    <= 69, '', 'Borderline')))))} 
+                                        </div>
+                                    </td>                                   
+                                    <!--anx-->                                  
+                                    <td  class="text-center {!IF((visit.ANX_T)>= 70, 'danger', (IF((visit.ANX_T)<= 64, '', 'warning')))}">
+                                        {!IF((visit.ANX_T) = 0, '***', visit.ANX_T)}     
+                                        <br/> 
+                                        <div class="{!IF((visit.ANX_T) = 0, 'message warningM3','')}" role="alert">
+                                            <apex:image rendered="{!IF((visit.ANX_T) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
+                                            {!IF((visit.ANX_T )= 0, 'Not Available', (IF((visit.ANX_T) >= 70, 'Clinical',  (IF((visit.ANX_T)  <= 64, '', 'Borderline')))))}
+                                        </div>
+                                    </td>
+                                    <!--dep-->
+                                    <td  class="text-center {!IF((visit.DEP_T)>= 70, 'danger', (IF((visit.DEP_T)<= 64, '', 'warning')))}">
+                                        {!IF((visit.DEP_T) = 0, '***', visit.DEP_T)}     
+                                        <br/> 
+                                        <div class="{!IF((visit.DEP_T) = 0, 'message warningM3','')}" role="alert">
+                                            <apex:image rendered="{!IF((visit.DEP_T) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
+                                            {!IF((visit.DEP_T )= 0, 'Not Available', (IF((visit.DEP_T) >= 70, 'Clinical',  (IF((visit.DEP_T)  <= 64, '', 'Borderline')))))}
+                                        </div>
+                                    </td>
+                                    <!--ang-->
+                                    <td  class="text-center {!IF((visit.ANG_T)>= 70, 'danger', (IF((visit.ANG_T)<= 64, '', 'warning')))}">
+                                        {!IF((visit.ANG_T) = 0, '***', visit.ANG_T)} 
+                                        <br/> 
+                                        <div class="{!IF((visit.ANG_T) = 0, 'message warningM3','')}" role="alert">
+                                            <apex:image rendered="{!IF((visit.ANG_T) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
+                                            {!IF((visit.ANG_T )= 0, 'Not Available', (IF((visit.ANG_T) >= 70, 'Clinical',  (IF((visit.ANG_T)  <= 64, '', 'Borderline')))))}
+                                        </div>
+                                    </td>
+                                    <!--ptsi-->
+                                    <td  class="text-center {!IF((visit.PTSI_T)>= 70, 'danger', (IF((visit.PTSI_T)<= 64, '', 'warning')))}">
+                                        {!IF((visit.PTSI_T) = 0, '***', visit.PTSI_T)}     
+                                        <br/> 
+                                        <div class="{!IF((visit.PTSI_T) = 0, 'message warningM3','')}" role="alert">
+                                            <apex:image rendered="{!IF((visit.PTSI_T) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
+                                            {!IF((visit.PTSI_T )= 0, 'Not Available', (IF((visit.PTSI_T) >= 70, 'Clinical',  (IF((visit.PTSI_T)  <= 64, '', 'Borderline')))))}
+                                        </div>
+                                    </td>
+                                    <!--ptsav-->
+                                    <td  class="text-center {!IF((visit.PTSAV_T)>= 70, 'danger', (IF((visit.PTSAV_T)<= 64, '', 'warning')))}">
+                                        {!IF((visit.PTSAV_T) = 0, '***', visit.PTSAV_T)} 
+                                        <br/> 
+                                        <div class="{!IF((visit.PTSAV_T) = 0, 'message warningM3','')}" role="alert">
+                                            <apex:image rendered="{!IF((visit.PTSAV_T) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
+                                            {!IF((visit.PTSAV_T )= 0, 'Not Available', (IF((visit.PTSAV_T) >= 70, 'Clinical',  (IF((visit.PTSAV_T)  <= 64, '', 'Borderline')))))}
+                                        </div>
+                                    </td>
+                                    <!--ptsar--> 
+                                    <td  class="text-center {!IF((visit.PTSAR_T)>= 70, 'danger', (IF((visit.PTSAR_T)<= 64, '', 'warning')))}">
+                                        {!IF((visit.PTSAR_T) = 0, '***', visit.PTSAR_T)} 
+                                        <br/> 
+                                        <div class="{!IF((visit.PTSAR_T) = 0, 'message warningM3','')}" role="alert">
+                                            <apex:image rendered="{!IF((visit.PTSAR_T) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
+                                            {!IF((visit.PTSAR_T )= 0, 'Not Available', (IF((visit.PTSAR_T) >= 70, 'Clinical',  (IF((visit.PTSAR_T)  <= 64, '', 'Borderline')))))}
+                                        </div>
+                                    </td>  
+                                    <!--ptstot-->
+                                    <td  class="text-center {!IF((visit.PTSTOT_T)>= 70, 'danger', (IF((visit.PTSTOT_T)<= 64, '', 'warning')))}">
+                                        {!IF((visit.PTSTOT_T) = 0, '***', visit.PTSTOT_T)} 
+                                        <br/> 
+                                        <div class="{!IF((visit.PTSTOT_T) = 0, 'message warningM3','')}" role="alert">
+                                            <apex:image rendered="{!IF((visit.PTSTOT_T) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
+                                            {!IF((visit.PTSTOT_T )= 0, 'Not Available', (IF((visit.PTSTOT_T) >= 70, 'Clinical',  (IF((visit.PTSTOT_T)  <= 64, '', 'Borderline')))))}
+                                        </div>
+                                    </td>  
+                                    <!--dis-->
+                                    <td  class="text-center {!IF((visit.DIS_T)>= 70, 'danger', (IF((visit.DIS_T)<= 64, '', 'warning')))}">
+                                        {!IF((visit.DIS_T) = 0, '***', visit.DIS_T)}   
+                                        <br/> 
+                                        <div class="{!IF((visit.DIS_T) = 0, 'message warningM3','')}" role="alert">
+                                            <apex:image rendered="{!IF((visit.DIS_T) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
+                                            {!IF((visit.DIS_T )= 0, 'Not Available', (IF((visit.DIS_T) >= 70, 'Clinical',  (IF((visit.DIS_T)  <= 64, '', 'Borderline')))))}
+                                        </div>
+                                    </td>    
+                                    <!--sc-->
+                                    <td  class="text-center {!IF((visit.SC_T)>= 70, 'danger', (IF((visit.SC_T)<= 64, '', 'warning')))}">
+                                        {!IF((visit.SC_T) = 0, '***', visit.SC_T)}    
+                                        <br/> 
+                                        <div class="{!IF((visit.SC_T) = 0, 'message warningM3','')}" role="alert">
+                                            <apex:image rendered="{!IF((visit.SC_T) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
+                                            {!IF((visit.SC_T )= 0, 'Not Available', (IF((visit.SC_T) >= 70, 'Clinical',  (IF((visit.SC_T)  <= 64, '', 'Borderline')))))}
+                                        </div>
+                                    </td>     
                                 </apex:outputPanel>
                             </tr>                        
                         </apex:repeat>                    

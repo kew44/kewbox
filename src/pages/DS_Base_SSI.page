@@ -14,21 +14,8 @@
 
     <!--link to the CSS resource in Salesforce internal document-->
     <apex:stylesheet value="{!$Resource.CustomCss}" />
-        
-    <script>
-        $j(document).ready(function(){
-            
-            $j('.submitBtn').click(function(){
-                
-                $j('.submitBtn').addClass('btnDisabled');
-                $j('.submitBtn').toggleClass("btn-info");
-                $j('.submitBtn').val('Saving');
-                setTimeout(function(){$j('.submitBtn').attr("disabled","disabled");}, 20);
-                
-            });
-            
-        });
-    </script>
+    
+    <script src="{!URLFOR($Resource.JS_Save_Button_Disable)}"></script>
                                 
      <!--JQuery script block-->
      <script>
@@ -117,7 +104,7 @@
                         
                         <!--save and cancel control buttons for pageBlock-->
                         <apex:pageBlockButtons >
-                            <apex:commandButton action="{!save}" value="Save" styleClass="submitBtn btn btn-info btn-sm"/>
+                            <apex:commandButton action="{!save}" value="Save" styleClass="btn btn-info btn-sm btn-submit"/>
                             <apex:commandButton action="{!cancel}" value="Cancel" styleClass="btn-info btn btn-sm"/>
                         </apex:pageBlockButtons>
                         <!--end buttons-->
@@ -150,7 +137,7 @@
                                 <apex:inputField value="{!Client__c.GENDER__c}" label="6. What sex was the child assigned at birth (on their original birth certificate)?" id="GENDER" required="true"/>
                                 
                                 <!--Has child been seen by NCTSN before?-->
-                                <apex:inputField value="{!Client__c.BPREVCA__c}" label="7. Has this child been seen at another NCTSN center(s) for a previous episode(s) of care?" id="BPREVCA"/> 
+                                <apex:inputField value="{!Client__c.BPREVCA__c}" label="7. Has this child been seen at another NCTSN center(s) for previous episode(s) of care?" id="BPREVCA"/> 
                                 
                                 <!--Enrolled in Core Data Set/CIMI previously?--------- Conditional if seen by NCTSN previously-->
                                 <apex:inputField value="{!Client__c.BENRCDS__c}" label="7a. Was this child enrolled in the NCTSN Core Data Set or CIMI?" id="BENRCDS"/>

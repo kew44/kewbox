@@ -185,7 +185,7 @@
                         <!--information-->
                         <label class="col-md-12 col-lg-12 control-label ">
                             <span class="nmbr">4.</span>
-                            Please answer the questions below for the client and/or each immediate family member counted in question 3. A checked box indicates "Yes" to the item posed.  If the child is the person who served or is serving in the military, choose "Other" under "Family Member" and specify, "self." 
+                            Please answer the questions below for the client and/or each immediate family member counted in question 3. A checked box indicates "Yes" to each item posed.  If the child is the person who served or is serving in the military, choose "Other" under "Family Member" and specify, "self." 
                         </label>
                         <!--end information-->                  
                     </div>
@@ -514,7 +514,7 @@
                             <!--Conditional if Physical Injury-->
                             <div class="skip-MPIAMP">
                                 <div class="skipContent checkbox">
-                                    <label>Indicate the type of injury/ injuries. (Select all that apply.)</label>
+                                    <label>Indicate the type of injury/injuries. (Select all that apply.)</label>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-11 col-lg-11 col-md-offset-1 col-lg-offset-1">
@@ -529,7 +529,7 @@
                                         <div class="skipContent checkbox">
                                             <label>
                                                 <apex:inputCheckbox styleClass=" skip-element-MPITBI"  id="MPITBI__c" value="{!form.obj[bfVariableMap['MPITBI']]}" label="Traumatic Brain Injury (TBI)/ blast-related concussion" />
-                                                Traumatic Brain Injury (TBI)/ blast-related concussion
+                                                Traumatic Brain Injury (TBI)/blast-related concussion
                                             </label>
                                         </div>
                                         <!--burns-->
@@ -542,8 +542,8 @@
                                         <!--chronic pain-->
                                         <div class="skipContent checkbox">
                                             <label>
-                                                <apex:inputCheckbox styleClass=" skip-element-MPICPF"  id="MPICPF__c" value="{!form.obj[bfVariableMap['MPICPF']]}" label="Chronic pain or fatigue/ musculoskeletal pain " />
-                                                Chronic pain or fatigue/ musculoskeletal pain
+                                                <apex:inputCheckbox styleClass=" skip-element-MPICPF"  id="MPICPF__c" value="{!form.obj[bfVariableMap['MPICPF']]}" label="Chronic pain or fatigue/musculoskeletal pain " />
+                                                Chronic pain or fatigue/musculoskeletal pain
                                             </label>
                                         </div>
                                         <!--unknown-->  

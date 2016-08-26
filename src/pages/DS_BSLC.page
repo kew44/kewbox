@@ -96,7 +96,7 @@
                         <!--q4 question-->
                         <label class="col-md-6 col-lg-6 control-label">
                             <span class="nmbr">4.</span>
-                                Date this treatment began:
+                                Date this treatment began
                         </label>
                         
                         <!--q4 answer field-->
@@ -125,12 +125,12 @@
                                 <div class="skipContent skip-Date  input-date">
                                     <!--treatment abandoned without completion date-->
                                     <div class="col-lg-4 specify-input input-date skipContent skip-No" >
-                                        Date left this treatment:    
+                                        Date left this treatment    
                                         <apex:inputField id="TXLFTDT__c" html-placeholder="MM/DD/YYYY"  showDatePicker="true" styleClass="form-control input-sm skip-element-TXLFTDT" value="{!form.obj[bfVariableMap['TXLFTDT']]}"/>
                                     </div>             
                                     <!--treatment completion date-->
                                     <div class="col-lg-4 specify-input input-date skipContent skip-Yes " >
-                                        Date completed this treatment: 
+                                        Date completed this treatment 
                                         <apex:inputField id="TXCPDT__c" html-placeholder="MM/DD/YYYY"  showDatePicker="true" styleClass="form-control input-sm skip-element-TXCPDT" value="{!form.obj[bfVariableMap['TXCPDT']]}"/>
                                     </div>
                                 </div>

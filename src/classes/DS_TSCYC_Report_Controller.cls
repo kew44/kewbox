@@ -17,6 +17,10 @@
 *@author KW
 *Purpose: fix ranges
 *
+*@modified    6/23/16    KW    999 condition
+*
+*@modified    6/27/16    KW    validity string comparison values (999->0)
+*
 *@group Assessment
 *@group-content /ApexDocContent/Assessment/DS_TSCYC_Report_Controller.htm
 ****/
@@ -167,7 +171,10 @@ public with sharing class DS_TSCYC_Report_Controller extends DS_BasicForm_Contro
             //negligable LOC difference b/w iterative and mapped
                     
         //Response Level (RL)           
-        if(Integer.valueOf(form.obj.get(form.BorF+'RL_T__c')) <= 64){
+        if(Integer.valueOf(form.obj.get(form.BorF+'RL_T__c')) == 0){
+            Str_RL = 'Not Available';
+        }
+        else if(Integer.valueOf(form.obj.get(form.BorF+'RL_T__c')) <= 64){
             Str_RL = 'Normal';
         }
         else if(Integer.valueOf(form.obj.get(form.BorF+'RL_T__c')) >=70){
@@ -177,8 +184,11 @@ public with sharing class DS_TSCYC_Report_Controller extends DS_BasicForm_Contro
             Str_RL = 'Borderline';
         }       
         
-        //Atypical Response (ATR)           
-        if(Integer.valueOf(form.obj.get(form.BorF+'ATR_T__c')) <= 69){
+        //Atypical Response (ATR)             
+        if(Integer.valueOf(form.obj.get(form.BorF+'ATR_T__c')) == 0){
+            Str_ATR = 'Not Available';
+        }
+        else if(Integer.valueOf(form.obj.get(form.BorF+'ATR_T__c')) <= 69){
             Str_ATR = 'Normal';
         }
         else if(Integer.valueOf(form.obj.get(form.BorF+'ATR_T__c')) >=90){

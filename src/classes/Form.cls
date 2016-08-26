@@ -38,7 +38,7 @@ global with sharing class Form {
     
     public SkipLogic skip { get; set; }
     
-    Map<String, String> parameter;
+    public Map<String, String> parameter { get; set; }
     
     
     public Form(String cimi) {
@@ -53,6 +53,9 @@ global with sharing class Form {
         this.summary = (summaryID != null) ? [SELECT SECTION__c, Page__r.CONTENT__c FROM Client_Summary__c WHERE ID =:summaryID] : null;
           
         this.BorF = (Integer.valueOf(summary.SECTION__c) > 0) ? 'F' : 'B';
+        
+        // If it is trauma forms, there is no BorF
+        this.BorF = (Integer.valueOf(summary.SECTION__c) < 0) ? '' : this.BorF;
 
         this.isBaseline = (Integer.valueOf(summary.SECTION__c) > 0) ? false : true;
         this.isFollowup = (Integer.valueOf(summary.SECTION__c) > 0) ? true : false;
@@ -85,8 +88,14 @@ global with sharing class Form {
                                          WHERE SOURCE_FORM__c = :sourceForm];
 
         for(DS_DATA__c var : varFromData) {
-            if(var.VARIABLE_NAME__c != null) 
-                vars.add(var.VARIABLE_NAME__c.substring(1, var.VARIABLE_NAME__c.length()));
+            if(var.VARIABLE_NAME__c != null) {
+                if (this.BorF == '') {
+                    vars.add(var.VARIABLE_NAME__c);
+                }
+                else {
+                    vars.add(var.VARIABLE_NAME__c.substring(1, var.VARIABLE_NAME__c.length()));
+                }
+            }
         }
 
         for(String bfVar : vars)

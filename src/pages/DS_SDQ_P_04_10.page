@@ -68,7 +68,7 @@
                 <!--information/instructions-->
                 <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                     <div class="alert alert-info baseline-alert">
-                       <strong>For each item, please mark the box for Not True, Somewhat True, or Certainly True. It would help us if you answered all items as best you can even if you are not absolutely certain. Please give your answers on the basis of your child's behavior over the last 6 months.</strong>
+                       <strong>For each item, please mark the box for Not True, Somewhat True, or Certainly True. It would help us if you answered all items as best you can even if you are not absolutely certain. Please give your answers on the basis of your child's behavior over the last six months.</strong>
                     </div> 
                 </apex:outputPanel>
 
@@ -365,7 +365,7 @@
                     <div class="form-group">
                         <!--question-->
                         <label class="control-label col-md-6 col-lg-6">
-                            Overall, do you think that your child has difficulties in one or more of the following areas: emotions, concentration, behavior or being able to get on with other people?
+                            Overall, do you think that your child has difficulties in one or more of the following areas: emotions, concentration, behavior, or being able to get on with other people?
                         </label>
                         <!--answer -->
                         <div class="col-md-6 col-lg-6">
@@ -381,7 +381,7 @@
                     <div class="form-group">
                         <!--question-->
                         <label class="control-label col-md-6 col-lg-6">
-                            Over the last month, has your child had difficulties in one or more of the following areas: emotions, concentration, behavior or being able to get on with other people?
+                            Over the last month, has your child had difficulties in one or more of the following areas: emotions, concentration, behavior, or being able to get on with other people?
                         </label>
                         <!--answer -->
                         <div class="col-md-6 col-lg-6">                          
@@ -454,7 +454,7 @@
                             <tbody>
                                 <!--Home life-->
                                 <tr class="skip-difficult">
-                                    <td class="text-right" style="width:100px" colspan="2">Home Life</td>
+                                    <td class="text-right" style="width:100px" colspan="2">HOME LIFE</td>
                                     <td class="text-center" style="width:100px"><input type="radio" class="SDQI" id="SDQI-1-0" name="SDQI-1" value="0" title="{!form.obj[bfVariableMap['SDPIMPH']]}" /></td><!--no-->                                                        
                                     <td class="text-center" style="width:100px"><input type="radio" class="SDQI" id="SDQI-1-1" name="SDQI-1" value="1" title="{!form.obj[bfVariableMap['SDPIMPH']]}" /></td><!--a little-->
                                     <td class="text-center" style="width:100px"><input type="radio" class="SDQI" id="SDQI-1-2" name="SDQI-1" value="2" title="{!form.obj[bfVariableMap['SDPIMPH']]}" /></td><!--medium-->
@@ -464,7 +464,7 @@
                                 
                                 <!--friendships-->
                                 <tr class="skip-difficult">
-                                    <td class="text-right" style="width:100px" colspan="2">Friendships</td>
+                                    <td class="text-right" style="width:100px" colspan="2">FRIENDSHIPS</td>
                                     <td class="text-center" style="width:100px"><input type="radio" class="SDQI" id="SDQI-2-0" name="SDQI-2" value="0" title="{!form.obj[bfVariableMap['SDPIMPF']]}" /></td><!--no-->
                                     <td class="text-center" style="width:100px"><input type="radio" class="SDQI" id="SDQI-2-1" name="SDQI-2" value="1" title="{!form.obj[bfVariableMap['SDPIMPF']]}" /></td><!--a little-->
                                     <td class="text-center" style="width:100px"><input type="radio" class="SDQI" id="SDQI-2-2" name="SDQI-2" value="2" title="{!form.obj[bfVariableMap['SDPIMPF']]}" /></td><!--medium-->
@@ -474,7 +474,7 @@
                                 
                                 <!--classroom learning-->
                                 <tr class="skip-difficult">
-                                    <td class="text-right" style="width:100px" colspan="2">Classroom Learning</td>
+                                    <td class="text-right" style="width:100px" colspan="2">CLASSROOM LEARNING</td>
                                     <td class="text-center" style="width:100px"><input type="radio" class="SDQI" id="SDQI-3-0" name="SDQI-3" value="0" title="{!form.obj[bfVariableMap['SDPIMPC']]}" /></td><!--no-->
                                     <td class="text-center" style="width:100px"><input type="radio" class="SDQI" id="SDQI-3-1" name="SDQI-3" value="1" title="{!form.obj[bfVariableMap['SDPIMPC']]}"  /></td><!--a little-->
                                     <td class="text-center" style="width:100px"><input type="radio" class="SDQI" id="SDQI-3-2" name="SDQI-3" value="2" title="{!form.obj[bfVariableMap['SDPIMPC']]}"  /></td><!--medium-->
@@ -484,7 +484,7 @@
                                 
                                 <!--leisure activities-->
                                 <tr class="skip-difficult">
-                                    <td class="text-right" style="width:100px" colspan="2">Leisure Activities</td>
+                                    <td class="text-right" style="width:100px" colspan="2">LEISURE ACTIVITIES</td>
                                     <td class="text-center" style="width:100px"><input type="radio" class="SDQI" id="SDQI-4-0" name="SDQI-4" value="0" title="{!form.obj[bfVariableMap['SDPIMPL']]}" /></td><!--no-->
                                     <td class="text-center" style="width:100px"><input type="radio" class="SDQI" id="SDQI-4-1" name="SDQI-4" value="1" title="{!form.obj[bfVariableMap['SDPIMPL']]}"  /></td><!--a little-->
                                     <td class="text-center" style="width:100px"><input type="radio" class="SDQI" id="SDQI-4-2" name="SDQI-4" value="2" title="{!form.obj[bfVariableMap['SDPIMPL']]}" /></td><!--medium-->
@@ -568,7 +568,7 @@
     <!--citation information footer-->
     <p class="footer" style="text-align:center ">
         <i>© Robert Goodman, 2005<br/>
-        This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - {!CASE(form.visitType, 'baseline', 'Baseline', 'Follow-Up')} - CRF Version 6 2015
+        This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - {!CASE(form.visitType, 'baseline', 'Baseline', 'Follow-Up')} - CRF Version 6 2016
         </i>
     </p> 
 </apex:page>

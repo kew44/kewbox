@@ -1,7 +1,7 @@
 <apex:page standardController="DS_SDQ_PSI_CDI_B__c" extensions="DS_SDQ_P_04_10_Report_Controller" action="{!init}"  showHeader="{!NOT(printReport)}" id="sdq-yp-report">    
     
     <link href="{!URLFOR($Resource.CSS_DS_Report)}" rel="stylesheet" media="screen, print"/>
-    <!--<link href="{!URLFOR($Resource.CSS_DS_SDQ_Report)}" rel="stylesheet" media="screen, print"/>-->
+    <link href="{!URLFOR($Resource.CSS_DS_SDQ_Report)}" rel="stylesheet" media="screen, print"/>
     
     <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
     
@@ -84,7 +84,7 @@
                                 
                <!--administration date -->
                 <h5><strong><u>
-                    Date of administration: &nbsp;
+                    Date of administration &nbsp;
                     <apex:outputField id="DOASDYP__c" value="{!form.obj[bfVariableMap['DOASDYP']]}"/>
                 </u></strong></h5>
                 <!--end administration date -->
@@ -380,7 +380,7 @@
         <!--citation information footer-->
         <p style="class:footer; text-align:center ">
             <i>© Robert Goodman, 2005<br/>
-                This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - {!CASE(form.visitType, 'baseline', 'Baseline', 'Follow-Up')} - CRF Version 6 2015
+                This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - {!CASE(form.visitType, 'baseline', 'Baseline', 'Follow-Up')} - CRF Version 6 2016
             </i>
         </p> 
         
@@ -411,11 +411,11 @@
         </apex:repeat>
         
         data.addRows([
-            ['Emotional Symptoms' <apex:repeat value="{!visits}" var="ve">, {!ve.SDPEMO}, '{!CASE(ve.SDPETYP,'Borderline','B','Clinical','C','')}'</apex:repeat>],
+            ['Emotional Problems' <apex:repeat value="{!visits}" var="ve">, {!ve.SDPEMO}, '{!CASE(ve.SDPETYP,'Borderline','B','Clinical','C','')}'</apex:repeat>],
              ['Conduct Problems' <apex:repeat value="{!visits}" var="vb">, {!vb.SDPBEH}, '{!CASE(vb.SDPBTYP,'Borderline','B','Clinical','C','')}'</apex:repeat>],
              ['Hyperactivity' <apex:repeat value="{!visits}" var="vh">, {!vh.SDPHYP}, '{!CASE(vh.SDPHTYP,'Borderline','B','Clinical','C','')}'</apex:repeat>],
              ['Peer Problems' <apex:repeat value="{!visits}" var="vo">, {!vo.SDPOTC}, '{!CASE(vo.SDPOTYP,'Borderline','B','Clinical','C','')}'</apex:repeat>],
-             ['Prosocial Behavior' <apex:repeat value="{!visits}" var="vk">, {!vk.SDPKHB}, '{!CASE(vk.SDPKTYP,'Borderline','B','Clinical','C','')}'</apex:repeat>],
+             ['Prosocial' <apex:repeat value="{!visits}" var="vk">, {!vk.SDPKHB}, '{!CASE(vk.SDPKTYP,'Borderline','B','Clinical','C','')}'</apex:repeat>],
              ['Impact' <apex:repeat value="{!visits}" var="vi">, {!vi.SDPDCL}, '{!CASE(vi.SDPITYP,'Borderline','B','Clinical','C','')}'</apex:repeat>]
             ]);
             

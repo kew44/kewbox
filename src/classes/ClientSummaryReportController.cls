@@ -57,7 +57,9 @@
 *add initials of clinical scores to display title of 'Other' assessments
 *ie:TSCCA "Anger" -> "Anger (ANG)"
 *
-*@modified  5/19/16 KW  purpose:add client info string
+*@modified  6/24/16 KW  TSCC/YC unknown value display
+*
+*@modified  6/27/16 KW  TSCCA display
 *
 *@group ClientSummaryReport
 *@group-content /ApexDocContent/ClientSummaryReport/ClientSummaryReportController.htm
@@ -74,7 +76,7 @@ public with sharing class ClientSummaryReportController {
         String cID;
         String summaryID;
         Boolean edit = FALSE;
-        
+
         public String BorF { get; set; }
         public String subtitle {get; set;} 
         public String forceRedirect {get; set;} 
@@ -82,7 +84,7 @@ public with sharing class ClientSummaryReportController {
         public Integer section { get; set; }
         public String visitType { get; set; }
         public Decimal visitAge { get; set; }
-        public Form form{get;set;}
+
 
         public Client__c client { get; set; }
   
@@ -420,21 +422,21 @@ public with sharing class ClientSummaryReportController {
               return returnValue;       
             }
         }
-        
+
     /****
     * @description Constructor
     * @param controller ApexPages.StandardController
     * @return null
     */
         public ClientSummaryReportController(ApexPages.StandardController controller) {
-        
+
 
         //vars used in url
         cID = parameter.get('c');
         cimi = Apexpages.currentPage().getParameters().get('cimi');
-        String summary='SummaryReport';
-       // form = new Form(cimi);
-       // System.debug(form);
+
+
+
 
         //visit information variables
         section = Integer.valueOf(parameter.get('section'));
@@ -655,7 +657,7 @@ public with sharing class ClientSummaryReportController {
                 cansList.add(new Element('Coping and Savoring Skills', 'STCOPE__c', null));
                 cansList.add(new Element('Optimism', 'STOPT__c', null));
                 cansList.add(new Element('Talent/Interests', 'STTAL__c', null));
-                cansList.add(new Element('Spirtual/Religious', 'STSPIR__c', null));
+                cansList.add(new Element('Spiritual/Religious', 'STSPIR__c', null));
                 cansList.add(new Element('Community Life', 'STCOM__c', null));
                 cansList.add(new Element('Relationship Permanence', 'STRELT__c', null));
                 cansList.add(new Element('Resilience', 'STRESC__c', null));
@@ -1134,17 +1136,22 @@ public with sharing class ClientSummaryReportController {
                         //validity
                             tscycValidList.add(new TSCYCElement('Response Level (RL)',  Integer.valueOf(clientTSCYC.get(BorF+'RL_T__c')),     
                                 ((Integer.valueOf(clientTSCYC.get(BorF+'RL_T__c'))) >= 70) ? 'Invalid' :
-                                    (((Integer.valueOf(clientTSCYC.get(BorF+'RL_T__c'))) <= 64 ) ? 'Normal': 'Borderline')) );    
+                                    (((Integer.valueOf(clientTSCYC.get(BorF+'RL_T__c'))) == 0 ) )? '***':
+                                        (((Integer.valueOf(clientTSCYC.get(BorF+'RL_T__c'))) <= 64 ) ? 'Normal': 'Borderline')) );    
                             tscycValidList.add(new TSCYCElement('Atypical Response (ATR)',  Integer.valueOf(clientTSCYC.get(BorF+'ATR_T__c')),    
                                 ((Integer.valueOf(clientTSCYC.get(BorF+'ATR_T__c'))) >= 90) ? 'Invalid' :
-                                    (((Integer.valueOf(clientTSCYC.get(BorF+'ATR_T__c'))) <= 69 ) ? 'Normal': 'Borderline')) );
+                                    (((Integer.valueOf(clientTSCYC.get(BorF+'ATR_T__c'))) == 0 ) )? '***':
+                                        (((Integer.valueOf(clientTSCYC.get(BorF+'ATR_T__c'))) <= 69 ) ? 'Normal': 'Borderline')) );
 
                         //symptoms
                         for(String y : TSCYCMap.keySet()){
                             Tscyc_Text= String.valueOf(TSCYCMap.get(y));
                             Tscyc_Val= Integer.valueOf(clientTSCYC.get(BorF+y+'_T__c'));
                             
-                            if(Tscyc_Val <= 64){
+                            if(Tscyc_Val ==0){
+                                Tscyc_Sig = '***';
+                            }
+                            else if(Tscyc_Val <= 64){
                                 Tscyc_Sig = 'Normal';
                             }
                             else if(Tscyc_Val >= 70){
@@ -1181,17 +1188,23 @@ public with sharing class ClientSummaryReportController {
                         //validity
                         tsccaValidList.add(new TSCCAElement('Underresponse (UND)',  Integer.valueOf(clientTSCCA.get(BorF+'TSCNTN__c')), 
                             ((Integer.valueOf(clientTSCCA.get(BorF+'TSCNTN__c'))) >= 70) ? 'Invalid' :
-                                (((Integer.valueOf(clientTSCCA.get(BorF+'TSCNTN__c'))) <=  64) ? 'Normal': 'Borderline')) );
+                                    (((Integer.valueOf(clientTSCCA.get(BorF+'TSCNTN__c'))) == 0 ) )? '***':
+                                        (((Integer.valueOf(clientTSCCA.get(BorF+'TSCNTN__c'))) <=  64) ? 'Normal': 'Borderline')) );
                         tsccaValidList.add(new TSCCAElement('Hyperresponse (HYP)',  Integer.valueOf(clientTSCCA.get(BorF+'TSCHYTN__c')), 
                             ((Integer.valueOf(clientTSCCA.get(BorF+'TSCHYTN__c'))) >= 90) ? 'Invalid' :
-                                (((Integer.valueOf(clientTSCCA.get(BorF+'TSCHYTN__c'))) <=  64) ? 'Normal': 'Borderline')) );
+                                    (((Integer.valueOf(clientTSCCA.get(BorF+'TSCHYTN__c'))) == 0 ) )? '***':
+                                        (((Integer.valueOf(clientTSCCA.get(BorF+'TSCHYTN__c'))) <=  64) ? 'Normal': 'Borderline')) );
                                   
                         //symptoms
                         for(String t : TSCCAMap.keySet()){
                             Tscca_Text= String.valueOf(TSCCAMap.get(t));
-                            Tscca_Val= Integer.valueOf(clientTSCCA.get(BorF+'TSC'+t+'TN__c'));
-                            
-                            if(Tscca_Val <= 59){
+							
+							Tscca_Val= Integer.valueOf(clientTSCCA.get(BorF+'TSC'+t+'TN__c'));
+							
+                            if(Tscca_Val == 999){
+								Tscca_Sig = '***';
+							}
+                            else if(Tscca_Val <= 59){
                                 Tscca_Sig = 'Normal';
                             }
                             else if(Tscca_Val >= 65){
@@ -1347,10 +1360,12 @@ public with sharing class ClientSummaryReportController {
                 evaluationOtherExisted = (otherEvaluation.size() > 0) ? true : false;
                 evaluationExisted = (evaluationOtherExisted == true || evaluationPrimaryExisted == true) ? true : false;
             }
-            
-            public String getClientInfo() {
-                
-                return ut.clientSectionInfo(cID);
-              //  return ut.clientSection(cID,clientBackgroundInfo.id);
-            }
+
+
+
+
+
+
+
+
           }

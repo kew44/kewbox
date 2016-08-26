@@ -36,15 +36,15 @@
                     <br/>
                     <p ><b>0 </b>= A well-developed or centerpiece strength. This area may be able to be used as a 
                         protective factor and a centerpiece for a strength-based plan. <br/>
-                        <b>1</b> = An area where a useful strength is evident but requires some effort to maximize this  
+                        <b>1</b> = An area where a useful strength is evident, but requires some effort to maximize this  
                         strength. This is a strength that might be able to be used and built upon in treatment. <br/>
-                        <b>2</b> = An area where strengths have been identified but require significant strength-building 
+                        <b>2</b> = An area where strengths have been identified, but require significant strength-building 
                         efforts. <br/>
                         <b>3</b> = An area where no current strength is identified; there is no evidence of a strength in this 
                         area. <br/>
                         <b>97</b> = Not Applicable</p><br/>
                     
-                    <b><i>*Note:  When you have no information/evidence about a strength in this area use a score of 3. 
+                    <b><i>*Note:  When you have no information/evidence about a strength in this area, use a score of 3. 
                         Lower ratings are indicative of more adaptive functioning whereas higher scores can indicate 
                         absence of strengths or the need for strength building.
                         </i></b>
@@ -61,7 +61,7 @@
                     </label>
                     <div class="col-md-12 col-lg-12">
                         <apex:selectRadio styleClass="radio-list" id="STFAM__c" value="{!form.obj[bfVariableMap['STFAM']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['STFAM']]}">
-                            <apex:selectOptions value="{!StrongFamItems}"/> 
+                            <apex:selectOptions value="{!StrongFamItems}" /> 
                         </apex:selectRadio>
                     </div>
                 </div>
@@ -127,6 +127,7 @@
                     <div class="col-md-12 col-lg-12">
                         <apex:selectRadio styleClass="radio-list" id="STOPT__c" value="{!form.obj[bfVariableMap['STOPT']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['STOPT']]}">
                             <apex:selectOptions value="{!StrongOptItems}"/> 
+                               <!-- <apex:selectOption itemValue="0" itemLabel="0 = Child has a strong and stable optimistic outlook on his/her life. <b> Child is future oriented </b>"/>-->
                         </apex:selectRadio>
                     </div>
                 </div>
@@ -215,7 +216,14 @@
         
     </div>
     
-    <!--citation information footer-->    
-    <c:cimiFormFooter formElement="{!form}"/>
+    <!--citation information footer-->
+    <p style="class:footer; text-align:center ">
+    <i>From: Kisiel, C., Lyons, J.S., Blaustein, M., Fehrenbach, T., Griffin, G., Germain, J., Saxe, G., Ellis, H., Praed Foundation, &amp; National Child Traumatic Stress Network. (2010). 
+    Child and adolescent needs and strengths (CANS) manual: The NCTSN CANS Comprehensive – Trauma Version: A comprehensive information integration tool for children and adolescents exposed to traumatic events. 
+    Chicago, IL: Praed Foundation/Los Angeles, CA &amp; Durham, NC: National Center for Child Traumatic Stress. 
+    </i>
+    </p>
     
+    <!--standard citation information footer-->    
+    <c:cimiFormFooter formElement="{!form}"/>
 </apex:page>

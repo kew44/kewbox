@@ -97,6 +97,14 @@ private class TestClass_DS_GTRAUMA  {
                                               GT21R__c = '1',GT22R__c = '1',GT23R__c = '1');
         
         insert obj;
+
+        obj.GT10RA0__c = true;
+
+        update obj;
+
+        obj.GT10RA0__c = false;
+        obj.GT10RAU__c = true;
+
         update obj;
                 
         //encoded parameters

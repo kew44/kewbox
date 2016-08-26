@@ -1,3 +1,0 @@
-function tempModule(){
-	null;
-}

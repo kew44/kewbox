@@ -1,7 +1,7 @@
 <apex:page standardController="DS_SDQ_PSI_CDI_B__c"  extensions="DS_PSI_Report_Controller" action="{!init}"  showHeader="{!NOT(printReport)}" id="psi-report">
     
     <link href="{!URLFOR($Resource.CSS_DS_Report)}" rel="stylesheet" media="screen, print"/>
-    <!--<link href="{!URLFOR($Resource.CSS_DS_PSI_Report)}" rel="stylesheet" media="screen, print"/>-->
+    <link href="{!URLFOR($Resource.CSS_DS_PSI_Report)}" rel="stylesheet" media="screen, print"/>
     
     <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
     
@@ -58,13 +58,13 @@
                 <div class="alert alert-info ">
                     <!--information-->
                     <p> 
-                        The PSI-SF assesses the relative stress in the caregiver-child relationship. It is used for early identification of dysfunctional caregiver-child interactions, caregiver stress, family functioning, and child symptomatology. It yields a Total Stress score that is derived from three domains: Parental Distress, Parent-Child Dysfunctional Interaction, and Difficult Child. 
+                        The PSI-SF assesses the relative stress in the caregiver-child relationship. It is used for early identification of dysfunctional caregiver-child interactions, caregiver stress, family functioning, and child symptomatology. It yields a Total Stress score that is derived from three domains: Parental Distress (PD), Parent-Child Dysfunctional Interaction (P-CDI), and Difficult Child (DC). 
                         <br/>
                         <br/>
-                        The PSI-SF includes a validity scale Defensive Responding. The symptom subscales should be considered in the context of this validity scale. 
+                        The PSI-SF includes a validity scale: Defensive Responding. The symptom scales should be considered in the context of this validity scale. 
                         <br/>
                         <br/>
-                        <i>*Please note that if a subscale's raw score is unknown, the percentile will be charted as zero.</i>
+                        <i>*Please note that if a scale's raw score is unknown, the percentile will be charted as zero.</i>
                     </p>
                     <!--end information-->
                     
@@ -72,7 +72,7 @@
                     
                     <!--administration date -->
                     <strong><u>
-                        Date of administration: &nbsp;
+                        Date of administration &nbsp;
                         <apex:outputField id="DOAPSI__c" value="{!form.obj[bfVariableMap['DOAPSI']]}"/>
                         <br/>
                         </u></strong>
@@ -85,7 +85,7 @@
                             <br/>
                             <h4><u>Clinical Range </u></h4>
                             <br/>
-                            The child’s symptoms on the following scales are clinically significant compared to other children their age: <b>{!clinicalRange}</b><br/>
+                            The child’s symptoms on the following scale(s) are clinically significant compared to other children their age: <b>{!clinicalRange}</b><br/>
                         </p>  
                     </apex:outputPanel>
                     <!--end clinical list-->
@@ -269,7 +269,7 @@
             function drawAnnotations() {
                 
                 var data = new google.visualization.DataTable();
-                data.addColumn('string', 'Subscale');
+                data.addColumn('string', 'Scale');
                 <apex:repeat value="{!visits}" var="visit">
                     data.addColumn('number', '<apex:outputText value="{0,date,MM/dd/yyyy}">
                                    <apex:param value="{!visit.DOAPSI}" />
@@ -284,7 +284,7 @@
                     ]);
             
                     var options = {
-                        title: 'PSI Subscale Scores',
+                        title: 'PSI Clinical Scale Scores',
                         annotations: {
                             alwaysOutside: false,
                             textStyle: {
@@ -299,7 +299,7 @@
                             maxValue:100,
                         },
                         hAxis: {
-                            title: 'Subscale',
+                            title: 'Clinical Scale',
                         },
                         height: chartHeight,         
                         bar: {

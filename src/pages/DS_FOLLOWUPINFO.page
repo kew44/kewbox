@@ -52,7 +52,7 @@
                     <!--q1 question-->
                     <label class="control-label col-md-6 col-lg-6 ">
                         <span class="nmbr">1.</span>
-                        Date of follow-up:
+                        Date of follow-up
                     </label>
                     
                     <!--q1 answer field-->
@@ -171,7 +171,7 @@
                     <div class="col-md-4 col-lg-4" >
                         <apex:inputField styleClass="form-control auto-width input-sm"  id="FVISITS__c" value="{!form.obj[bfVariableMap['VISITS']]}"  />            
                         <br />
-                        <strong> Or, check the following if unknown: &nbsp;</strong>
+                        <strong> Or, check if unknown: &nbsp;</strong>
                         <apex:inputField styleClass="checkinput" id="FVISITCHECK__c" value="{!form.obj[bfVariableMap['VISITCHECK']]}"/>
                     </div>
                 </div>  
@@ -374,14 +374,14 @@
                     <!--q10 label-->
                     <label class="control-label  col-md-6 col-lg-6">
                         <span class="nmbr">10.</span>
-                        Please specify ZIP code of child's current residence:
+                        Please specify ZIP code of child's current residence
                     </label>
                     <!--q10 answer field-->
                     <div class="col-md-4 col-lg-4" >
                         <apex:inputField styleClass="form-control auto-width input-sm"  id="FNZCODESP__c" value="{!form.obj[bfVariableMap['NZCODESP']]}"  /> &nbsp;(5 digit zip code)       
                         <br />
                         <br/>
-                        <strong>Or, check the following if unknown: &nbsp;</strong>
+                        <strong>Or, check if unknown: &nbsp;</strong>
                         <apex:inputField styleClass="checkinput" id="FZIPCODECHECK__c" value="{!form.obj[bfVariableMap['ZIPCODECHECK']]}"/>
                     </div>
                 </div> 

@@ -1,8 +1,4 @@
 <apex:page standardController="Client__c" action="{!init}" showHeader="{!NOT(printReport)}" extensions="ClientSummaryReportController">
-    
-    <!--report stylesheet-->
-    <link href="{!URLFOR($Resource.CSS_DS_Report)}" rel="stylesheet" media="screen, print"/>    
-    
     <!--JQuery -->
     <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.9.1.js')}"  /><!--allows for JQuery dependencies-->
     <script> $j = jQuery.noConflict(); </script><!--Reserves the '$' token for JQuery only-->
@@ -12,10 +8,65 @@
             <apex:includeScript value="{!URLFOR($Resource.VFbootstrap3, '/js/bootstrap.min.js')}"/>
                 
                 <!--link to the CSS resource in Salesforce internal document-->
-                    <apex:stylesheet value="{!$Resource.CustomCss}" />       
+                    <apex:stylesheet value="{!$Resource.CustomCss}" />                                     
                         
                         <script>function setFocusOnLoad() {}</script>
+    
+    <!--supplementary styling information-->
+    <style>
+        .report-heading { 
+        color: #31708f;
+        background-color: #d9edf7;
+        border-color: #bce8f1;
+        padding: 10px 15px;
+        border-bottom: 1px solid transparent;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        }
+        .report-description {
+        margin: 10px;
+        padding:7px;
+        /*border: 1px solid #CCCCCC;*/
+        font-size: 14px;
+        /*border-radius: 5px;*/
+        }
         
+        .report-content {
+        margin: 10px;
+        padding:7px;
+        }
+        .content-table { 
+        max-width:600px !important; 
+        margin-left:30px !important; 
+        }
+        
+        .content-table-col-A{
+        width:300px;
+        }
+        .content-table-col-Y{
+        width:75px;
+        }
+        .content-table-col-Z{
+        width:150px;
+        }
+        
+        @media print {
+        #trauma-history td {
+        color: #FFFFFF;
+        /*border: dashed 1px #000000;*/
+        /*border-bottom: none;*/
+        }
+        
+        #trauma-history td.info {
+        color: #000000;
+        font-weight: bold;
+        /*border: dashed 1px #000000;*/
+        /*border-bottom: none;*/
+        }
+        }
+    </style>
+    <!--end styling-->
+    
     <!-- "Breadcrumb" heading allows user to navigate to the ClientSummary page -->
     <apex:outputPanel layout="none" rendered="{!not(printReport)}">
         <script>
@@ -40,13 +91,52 @@
     <!--Begin report content-->
     <apex:form id="ClientSummaryReport" styleClass="form-horizontal">
         
-        <apex:sectionHeader title="NCTSN Client Summary Report" subtitle="{!subtitle}"/><!-- rendered="{!NOT(printReport)}"/><br/> -->
-        <!--<apex:sectionHeader title="NCTSN Client Summary Report" rendered="{!printReport}"/><br/>-->
+        <apex:sectionHeader title="NCTSN Client Summary Report" subtitle="{!subtitle}" rendered="{!NOT(printReport)}"/><br/> 
+        <apex:sectionHeader title="NCTSN Client Summary Report" rendered="{!printReport}"/><br/>
         
-<!-- show ClientInformation header -->
-<div class="bootwrap">
-    <apex:outputText value="{!ClientInfo}" escape="false"/>
-</div>
+
+        <!--client information page heading pageBlock-->
+        <apex:pageBlock title="Client Information">
+            <div id="force">
+                
+                <!--client information table-->
+                <table class="table">        
+                    
+                    <!--table heading row-->
+                    <thead>
+                        
+                        <tr>
+                            <th>ID#</th>
+                            <th>Initials</th>
+                            <th>Gender</th>
+                            <th>Visit Age</th>
+                            <!-- <th>Race</th>-->
+                            <th>Visit Type</th>
+                            <th>Date of Visit</th>
+                        </tr>
+                    </thead>
+                    <!--end table heading-->
+                    
+                    <tbody>
+                        <tr>
+                            <td>{!client.name}</td><!--ID#-->
+                            <td>{!client.INIT__c}</td><!--Initials-->
+                            <td>{!client.GENDER__c}</td><!--Gender-->
+                            <td>{!visitAge}</td><!--Age, calculated value-->
+                            <!--<td></td><!--Race left intentionally blank due to content development?-->
+                            <td>{!visitType}</td><!--Visit Type-->
+                            <td><!--Date of Visit-->
+                                <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                    <apex:param value="{!clientBackgroundInfo[BorF+'DOV__c']}"/>
+                                </apex:outputText>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!--end client information heading-->
+            </div>
+        </apex:pageBlock>     
+        
         <!-- primary content pageBlock container--> 
         <apex:pageBlock title="NCTSN Client Summary Report" >
             <apex:pageMessages /><!--placeholding structure that allows for system message display-->
@@ -75,7 +165,7 @@
                 <div class="report-description">
                     These ratings describe a range of assets that children and adolescents may process that can facilitate health development. Response options include: A well-developed strength, a useful strength, an area where strengths are identified, an area where no current strength is identified.<br/><br/>
                     <apex:outputPanel layout="none" rendered="{!cansExisted}">
-                        For this child, the following strengths are indicated :
+                        For this child, the following strengths are indicated:
                     </apex:outputPanel>
                 </div>
                 <!--End information-->
@@ -84,7 +174,7 @@
                 <div class="report-content text-left">
                     <!--No record message-->
                     <apex:outputPanel layout="none" rendered="{!if(cansExisted = false, true, false)}">
-                        <div class="well well-lg well-max" >
+                        <div class="well well-lg" style="max-width:500px;">
                             <p>There is no record.</p>
                         </div>
                     </apex:outputPanel>
@@ -142,7 +232,7 @@
                 <div class="report-content text-left">
                     <!--No record message-->
                     <apex:outputPanel layout="none" rendered="{!if(iosExisted = false, true, false)}">
-                        <div class="well well-lg well-max" >
+                        <div class="well well-lg" style="max-width:500px;">
                             <p>There is no record.</p>
                         </div>
                     </apex:outputPanel>
@@ -215,7 +305,7 @@
                 <div class="report-content">
                     <!--No record message-->
                     <apex:outputPanel layout="none" rendered="{!if(traumaExisted = false, true, false)}">
-                        <div class="well well-lg well-max" >
+                        <div class="well well-lg" style="max-width:500px;">
                             <p>There is no trauma history record.</p>
                         </div>
                     </apex:outputPanel>
@@ -276,7 +366,7 @@
                 <div class="report-content text-left">
                     <!--No record message-->
                     <apex:outputPanel layout="none" rendered="{!if(serviceExisted = false, true, false)}">
-                        <div class="well well-lg well-max" >
+                        <div class="well well-lg" style="max-width:500px;">
                             <p>There is no service use record.</p>
                         </div>
                     </apex:outputPanel>
@@ -300,7 +390,8 @@
                                     <!--populates list of services indicated as being received in the past 30 days-->
                                     <td class="content-table-col-A">
                                         <apex:outputPanel layout="none" rendered="{!if(service30Existed = false, true, false)}">None</apex:outputPanel>
-                                        <ul class="ul-no-pad">
+
+                                        <ul style="padding-left: 0px;">
                                             <apex:repeat value="{!service30}" var="s30">
                                                 <li>{!s30}</li>
                                             </apex:repeat>
@@ -312,7 +403,8 @@
                                     <apex:outputPanel layout="none" rendered="{!if(BorF = 'B', true, false)}">
                                         <td>
                                             <apex:outputPanel layout="none" rendered="{!if(serviceLifeExisted = false, true, false)}">None</apex:outputPanel>
-                                            <ul  class="ul-no-pad">
+
+                                            <ul  style="padding-left: 0px;">
                                                 <apex:repeat value="{!serviceLife}" var="sLife">
                                                     <li>{!sLife}</li>
                                                 </apex:repeat>
@@ -342,7 +434,7 @@
                     <div class="report-content">
                         <!--No record message-->
                         <apex:outputPanel layout="none" rendered="{!if(CBCLExisted = false, true, false)}">
-                            <div class="well well-lg well-max" >
+                            <div class="well well-lg" style="max-width:500px;">
                                 <p>There is no CBCL record.</p>
                             </div>
                         </apex:outputPanel>
@@ -388,7 +480,7 @@
                     <div class="report-content">
                         <!--No record message-->
                         <apex:outputPanel layout="none" rendered="{!if(PTSDCAExisted = false, true, false)}">                                                              
-                            <div class="well well-lg well-max" >
+                            <div class="well well-lg" style="max-width:500px;">
                                 <p>There is no PTSD-RI Child/Adolescent record.</p>
                             </div>
                         </apex:outputPanel>
@@ -414,7 +506,8 @@
                                         <td>
                                             
                                             <apex:repeat value="{!PTSDCAList}" var="ptsdDisplay">
-                                                <ul class="ul-no-pad">
+
+                                                <ul style="padding-left: 0px;">
                                                     <li rendered="{!if(ptsdDisplay.met = 'Yes', true, false)}">
                                                         {!ptsdDisplay.clusterName}</li>
                                                 </ul>
@@ -433,7 +526,7 @@
                     <div class="report-content">
                         <!--No record message-->
                         <apex:outputPanel layout="none" rendered="{!if(PTSDPAExisted = false, true, false)}">                                                              
-                            <div class="well well-lg well-max" >
+                            <div class="well well-lg" style="max-width:500px;">
                                 <p>There is no PTSD-RI Parent/Caregiver record.</p>
                             </div>
                         </apex:outputPanel>
@@ -459,7 +552,8 @@
                                         <td>
                                             
                                             <apex:repeat value="{!PTSDPAList}" var="ptsdDisplay">
-                                                <ul class="ul-no-pad">
+
+                                                <ul style="padding-left: 0px;">
                                                     <li rendered="{!if(ptsdDisplay.met = 'Yes', true, false)}">
                                                         {!ptsdDisplay.clusterName}</li>
                                                 </ul>
@@ -478,7 +572,7 @@
                     <div class="report-content">
                         <!--No record message-->
                         <apex:outputPanel layout="none" rendered="{!if(SDQExisted = false, true, false)}">
-                            <div class="well well-lg well-max" >
+                            <div class="well well-lg" style="max-width:500px;">
                                 <p>There is no SDQ record.</p>
                             </div>
                         </apex:outputPanel>
@@ -541,7 +635,7 @@
                     <div class="report-content">
                         <!--No record message-->
                         <apex:outputPanel layout="none" rendered="{!if(TSCYCExisted = false, true, false)}">
-                            <div class="well well-lg well-max" >
+                            <div class="well well-lg" style="max-width:500px;">
                                 <p>There is no TSCYC record.</p>
                             </div>
                         </apex:outputPanel>
@@ -569,18 +663,21 @@
                                 
                                 <tbody>   
                                     <apex:repeat value="{!tscycValidList}" var="validdisplay">
-                                        <tr class="{!IF((validdisplay.significance) = 'Invalid', 'danger', (IF((validdisplay.significance) = 'Normal' , '', 'warning')))}">
+                                        <tr class="{!IF((validdisplay.significance) = 'Invalid', 'danger', (IF((validdisplay.significance) = 'Normal' , '', (IF((validdisplay.significance) = '***', '', 'warning')))))}">
                                             <!--Category-->
                                             <td class="content-table-col-A">
                                                 {!validdisplay.category}
                                             </td>
                                             <!--T-Score-->
                                             <td >
-                                                {!validdisplay.tscore}
+                                                {!IF((validdisplay.tscore) = 0, '***',(validdisplay.tscore))}
                                             </td>
                                             <!--significance-->
                                             <td class="content-table-col-Z">
-                                                {!validdisplay.significance}
+                                                <div class="{!IF((validdisplay.tscore) = 0,'message warningM3','')}" role="alert">
+                                                    <apex:image rendered="{!IF((validdisplay.tscore) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" /> 
+                                                    {!IF((validdisplay.tscore) = 0, 'Not Available',(validdisplay.significance))}
+                                                </div>
                                             </td>
                                         </tr>
                                     </apex:repeat>
@@ -606,18 +703,21 @@
                                 <!--tscyc scores-->
                                 <tbody>   
                                     <apex:repeat value="{!tscycList}" var="tscycdisplay">
-                                        <tr class="{!IF((tscycdisplay.significance) = 'Clinical', 'danger', (IF((tscycdisplay.significance) = 'Normal' , '', 'warning')))}">
+                                        <tr class="{!IF((tscycdisplay.significance) = 'Clinical', 'danger', (IF((tscycdisplay.significance) = 'Normal' , '', (IF((tscycdisplay.significance) = '***', '', 'warning')))))}">
                                             <!--Category-->
                                             <td class="content-table-col-A">
                                                 {!tscycdisplay.category}
                                             </td>
                                             <!--T-Score-->
                                             <td >
-                                                {!tscycdisplay.tscore}
+                                                {!IF((tscycdisplay.tscore) = 0, '***',(tscycdisplay.tscore))}
                                             </td>
                                             <!--significance-->
                                             <td class="content-table-col-Z" >
-                                                {!tscycdisplay.significance}
+                                                <div class="{!IF((tscycdisplay.tscore) = 0,'message warningM3','')}" role="alert">
+                                                    <apex:image rendered="{!IF((tscycdisplay.tscore) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" /> 
+                                                    {!IF((tscycdisplay.tscore) = 0, 'Not Available',(tscycdisplay.significance))}
+                                                </div>
                                             </td>
                                         </tr>                                    
                                     </apex:repeat>
@@ -634,7 +734,7 @@
                     <div class="report-content">
                         <!--No record message-->
                         <apex:outputPanel layout="none" rendered="{!if(TSCCAExisted = false, true, false)}">
-                            <div class="well well-lg well-max" >
+                            <div class="well well-lg" style="max-width:500px;">
                                 <p>There is no TSCC-A record.</p>
                             </div>
                         </apex:outputPanel>
@@ -661,18 +761,21 @@
                                 
                                 <tbody>   
                                     <apex:repeat value="{!tsccaValidList}" var="validdisplay">
-                                        <tr class="{!IF((validdisplay.significance) = 'Invalid', 'danger', (IF((validdisplay.significance) = 'Normal' , '', 'warning')))}">
+                                        <tr class="{!IF((validdisplay.significance) = 'Invalid', 'danger', (IF((validdisplay.significance) = 'Normal' , '', (IF((validdisplay.significance) = '***', '', 'warning')))))}">
                                             <!--Category-->
                                             <td class="content-table-col-A">
                                                 {!validdisplay.category}
                                             </td>
                                             <!--T-Score-->
                                             <td >
-                                                {!validdisplay.tscore}
+                                                {!IF((validdisplay.tscore) = 0, '***',(validdisplay.tscore))}
                                             </td>
                                             <!--significance-->
                                             <td class="content-table-col-Z">
-                                                {!validdisplay.significance}
+                                                <div class="{!IF((validdisplay.tscore) = 0,'message warningM3','')}" role="alert">
+                                                    <apex:image rendered="{!IF((validdisplay.tscore) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" /> 
+                                                    {!IF((validdisplay.tscore) = 0, 'Not Available',(validdisplay.significance))}
+                                                </div>
                                             </td>
                                         </tr>
                                     </apex:repeat>
@@ -699,18 +802,21 @@
                                 <!--tscc scores-->
                                 <tbody>   
                                     <apex:repeat value="{!tsccaList}" var="tsccdisplay">
-                                        <tr class="{!IF((tsccdisplay.significance) = 'Clinical', 'danger', (IF((tsccdisplay.significance) = 'Normal' , '', 'warning')))}">
+                                        <tr class="{!IF((tsccdisplay.significance) = 'Clinical', 'danger', (IF((tsccdisplay.significance) = 'Normal' , '', (IF((tsccdisplay.significance) = '***', '', 'warning')))))}">
                                             <!--Category-->
                                             <td class="content-table-col-A">
                                                 {!tsccdisplay.category}
                                             </td>
                                             <!--T-Score-->
                                             <td >
-                                                {!tsccdisplay.tscore}
+                                                {!IF((tsccdisplay.tscore) = 0, '***',(tsccdisplay.tscore))}
                                             </td>
                                             <!--significance-->
                                             <td class="content-table-col-Z">
-                                                {!tsccdisplay.significance}
+                                                <div class="{!IF((tsccdisplay.tscore) = 0,'message warningM3','')}" role="alert">
+                                                    <apex:image rendered="{!IF((tsccdisplay.tscore) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" /> 
+                                                    {!IF((tsccdisplay.tscore) = 0, 'Not Available',(tsccdisplay.significance))}
+                                                </div>
                                             </td>
                                         </tr>                                    
                                     </apex:repeat>
@@ -728,7 +834,7 @@
                     <div class="report-content">
                         <!--No record message-->
                         <apex:outputPanel layout="none" rendered="{!if(PSIExisted = false, true, false)}">
-                            <div class="well well-lg well-max" >
+                            <div class="well well-lg" style="max-width:500px;">
                                 <p>There is no PSI record.</p>
                             </div>
                         </apex:outputPanel>
@@ -755,12 +861,12 @@
                                 
                                 <tbody>   
                                     <apex:repeat value="{!psiValidList}" var="validdisplay">
-                                        <tr class="{!IF((validdisplay.significance) = 'Clinically Significant', 'danger', (IF((validdisplay.significance) = 'Normal' , '', (IF((validdisplay.significance) = '***', '', 'warning')))))}">
+                                        <tr class="{!IF((validdisplay.significance) = 'Clinically Significant', 'danger',(IF((validdisplay.significance) = '***',  'warning', '')))}">
                                             <!--Category-->
                                             <td class="content-table-col-A">
                                                 {!validdisplay.category}
                                             </td>
-                                            <!--Percentile-->
+                                            <!--Percentile--><!--'percentile' actually refers to 'raw' for defensive reasoning only-->
                                             <td>                                                    
                                                 {!IF((validdisplay.percentile) = 999, '***',(validdisplay.percentile))}
                                             </td>
@@ -795,7 +901,7 @@
                                 <!--psi scores-->
                                 <tbody>   
                                     <apex:repeat value="{!psiList}" var="psidisplay">
-                                        <tr class="{!IF((psidisplay.significance) = 'Clinical', 'danger', (IF((psidisplay.significance) = 'Borderline', 'warning', '')))}">
+                                        <tr class="{!IF((psidisplay.significance) = 'Clinical','danger', (IF((psidisplay.significance) = '***', 'warning','')))}">
                                             <!--Category-->
                                             <td class="content-table-col-A">
                                                 {!psidisplay.category}
@@ -844,7 +950,7 @@
                 <div class="report-content text-left">
                     <!--No record message-->
                     <apex:outputPanel layout="none" rendered="{!if(FAPGARExisted = false, true, false)}">
-                        <div class="well well-lg well-max" >
+                        <div class="well well-lg" style="max-width:500px;">
                             <p>There is no Family APGAR record.</p>
                         </div>
                     </apex:outputPanel>
@@ -892,7 +998,7 @@
                 <div class="report-content text-left">
                     <!--No record message-->
                     <apex:outputPanel layout="none" rendered="{!if(evaluationExisted = false, true, false)}">
-                        <div class="well well-lg well-max" >
+                        <div class="well well-lg" style="max-width:500px;">
                             <p>There is no clinical evaluation record.</p>
                         </div>
                     </apex:outputPanel>

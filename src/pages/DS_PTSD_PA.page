@@ -30,7 +30,7 @@
                 
                 <!--information and instructions-->
                 <div class="alert alert-info">
-                    <strong>
+                    <!--<strong>-->
                         Here is a list of problems that children may have after bad things happen. 
                         Please think about the bad thing that happened to your child that seems to <u>bother your child the most now</u>. 
                         For each problem, <strong>SELECT ONE</strong> of the numbers (0, 1, 2, 3, 4 or 5/99) that tells how often the problem happened to your child <strong>in the past month</strong>, 
@@ -38,7 +38,7 @@
                         Use the <strong>Frequency Rating Sheet</strong> to help you decide how often the problem happened <strong>in the past month</strong>. 
                         <u>Note</u>: If you are unsure about how often your child has experienced a problem, make your best estimation. 
                         <strong>Only</strong> select <strong>"Don't Know"</strong> if you absolutely <strong>cannot</strong> give an answer. <strong>PLEASE BE SURE TO ANSWER ALL QUESTIONS</strong>.
-                    </strong>
+                    <!--</strong>-->
                 </div>
                 <!--end info-->
                 
@@ -73,7 +73,7 @@
                 <!--question prompt heading-->
                 <div class="row">
                     <div class="col-md-6 col-lg-6"><h4>Question</h4></div>
-                    <div class="col-md-6 col-lg-6"><h4>How much of the time during the past month...</h4></div>
+                    <div class="col-md-6 col-lg-6"><h4><i>HOW MUCH OF THE TIME DURING THE PAST MONTH...</i></h4></div>
                 </div>
                 <!--end heading-->
                 
@@ -139,7 +139,7 @@
                 
                 <!--clinician instructions heading-->
                 <div class="alert alert-info">
-                    Clinician: Ask the parent/caregiver whether the reactions (thoughts and feelings) above cause significant <strong><i>distress</i></strong> or <strong><i>functional impairment</i></strong> to the child.  
+                    <strong>Clinician</strong>: Ask the parent/caregiver whether the reactions (thoughts and feelings) above cause significant <strong><i>distress</i></strong> or <strong><i>functional impairment</i></strong> to the child.  
                 </div>
                 <!--end clinician heading-->
                 
@@ -162,7 +162,7 @@
                 <!--impairment section-->
                 <h4>(2) Significant Functional Impairment: (check if functional impairment at home, at school, in peer relationships, in developmental progression)</h4>
                 <!--home sub-section-->
-                <h5>Home: (check if youth endorses #1, #2 or #3 below)</h5>
+                <h5>Home: (check if parent/caregiver endorses #1, #2 or #3 below)</h5>
                 
                 <!--1. hard to get along at home?-->
                 <div class="form-group">

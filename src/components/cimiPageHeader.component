@@ -27,9 +27,10 @@
         <script> var skipElement = JSON.parse("{!skipElement}"); </script>
     </apex:outputPanel>
 
-    <script src="{!URLFOR($Resource.Scripts, '/skipLogic.js')}"></script>
+    <script src="{!URLFOR($Resource.Scripts, '/skipLogic.js')}"/>
     
-    
+    <script src="{!URLFOR($Resource.JS_Save_Button_Disable)}"/>
+        
     <!-- "Breadcrumb" heading allows user to navigate to the ClientSummary page -->
     <apex:outputPanel rendered="{!if(formElement.forceRedirect = '1', false, true)}" layout="none">
         <script>

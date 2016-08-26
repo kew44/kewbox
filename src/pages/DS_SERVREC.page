@@ -30,14 +30,14 @@
                 <!-- Baseline instructions -->
                 <apex:outputPanel rendered="{!form.isBaseline}" layout="none">
                     <div class="alert alert-info baseline-alert">
-                        <strong>BASELINE INSTRUCTIONS: Has the child received any of these services or been placed in any of the following within the past 30 days (excluding today’s visit) or during their lifetime (excluding the past 30 days)?  Did the child receive the services as a result of trauma (could have been anytime during his or her life)?  These may include services provided by your center, as well as services provided by any other clinician, setting, or sector.</strong>                     
+                        <strong>BASELINE INSTRUCTIONS: Has the child received any of these services or been placed in any of the following within the past 30 days (excluding today’s visit) or during their lifetime (excluding the past 30 days)?  Did the child receive the services as a result of trauma (could have been anytime during his/her life)?  These may include services provided by your center, as well as services provided by any other clinician, setting, or sector.</strong>                     
                     </div> 
                 </apex:outputPanel>
                 
                 <!-- Follow-up instructions -->
                 <apex:outputPanel rendered="{!form.isFollowUp}" layout="none">
                     <div class="alert alert-info followup-alert">
-                        <strong>FOLLOW-UP INSTRUCTIONS: Has the child received any of these services or been placed in any of the following (excluding today's visit) since his or her last CIMI assessment? These may include services provided by your Center as well as services provided by any other clinician, setting, or sector.</strong>
+                        <strong>FOLLOW-UP INSTRUCTIONS: Has the child received any of these services or been placed in any of the following (excluding today's visit) since his/her last CIMI assessment? These may include services provided by your Center as well as services provided by any other clinician, setting, or sector.</strong>
                     </div>        
                 </apex:outputPanel>
 
@@ -1001,7 +1001,7 @@
                             <td>
                                 <label class="control-label">
                                     <span class="nmbr">25.</span>
-                                    Peer support / therapy
+                                    Peer support/therapy
                                 </label>
                             </td>
                             
@@ -1160,9 +1160,8 @@
                             <td colspan="{!if(form.isBaseline, '4', '2')}">
                                 <label class="control-label">
                                     <span class="nmbr">29.</span>
-                                    If the child received outpatient therapy/ treatment, please indicate which of the following treatment modalities were received.
-                                    <apex:outputPanel rendered="{!form.isFollowUp}" layout="none">
-                                        since his or her last CIMI assessment.
+                                    If the child received outpatient therapy/treatment, please indicate which of the following treatment modalities were received
+                                    <apex:outputPanel rendered="{!form.isFollowUp}" layout="none"> since his/her last CIMI assessment.
                                     </apex:outputPanel>
                                      <strong>(Select all that apply.)</strong>
                                 </label>

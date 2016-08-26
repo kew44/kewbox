@@ -231,26 +231,6 @@
         <unique>false</unique>
     </fields>
     <label>Audit Trail</label>
-    <listViews>
-        <fullName>All</fullName>
-        <columns>Action__c</columns>
-        <columns>CLIENT__c</columns>
-        <columns>SUBJECT_ID__c</columns>
-        <columns>Visit_Type__c</columns>
-        <columns>FORM__c</columns>
-        <columns>FORM_ID__c</columns>
-        <columns>NUMBER__c</columns>
-        <columns>Question__c</columns>
-        <columns>Prior_Value__c</columns>
-        <columns>Updated_Value__c</columns>
-        <columns>VARIABLE__c</columns>
-        <columns>Date__c</columns>
-        <columns>Time__c</columns>
-        <columns>User_ID__c</columns>
-        <columns>User_Initial__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
     <nameField>
         <displayFormat>AT-{0000000000}</displayFormat>
         <label>Audit Trail ID</label>

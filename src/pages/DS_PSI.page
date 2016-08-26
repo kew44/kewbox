@@ -43,11 +43,11 @@
                 
                 <div class="form-group ">
                     <!--question-->
-                    <label class="col-xs-10 col-lg-10 control-label ">
+                    <label class="col-xs-12 col-lg-12 control-label ">
                         <span class="nmbr">2.</span>
-                        Please enter a valid raw score and percentile score for each of the Clinical Scale Scores, Subscale Scores, and Validity Scale Scores.  <br/>
+                        Please enter a valid raw score and percentile score for each of the Clinical Scale Scores and Validity Scale Scores.  <br/>
                         You are required to enter each of these twice as a way to decrease the likelihood of entry errors.
-                        Please enter 999 for an unknown/unavailable raw score.<br/>
+                        If a raw score is unknown/unavailable enter 999 for the raw score and 0 for the corresponding percentile score.<br/>
                     </label>
                 </div>
                 

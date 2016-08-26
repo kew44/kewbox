@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject>Client__c</baseObject>
+    <category>other</category>
+    <deployed>true</deployed>
+    <description>Select info to determine age ranges for cocap reporting</description>
+    <join>
+        <outerJoin>false</outerJoin>
+        <relationship>DS_Background_Family_Info_B__r</relationship>
+    </join>
+    <label>COCAP Age Ranges</label>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>AGE__c</field>
+            <table>Client__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CURRENT_AGE__c</field>
+            <table>Client__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>B_VISIT_AGE__c</field>
+            <table>Client__c.DS_Background_Family_Info_B__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>BDOV__c</field>
+            <table>Client__c.DS_Background_Family_Info_B__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SECTION__c</field>
+            <table>Client__c.DS_Background_Family_Info_B__r</table>
+        </columns>
+        <masterLabel>Clients</masterLabel>
+    </sections>
+</ReportType>

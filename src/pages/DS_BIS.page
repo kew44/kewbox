@@ -222,7 +222,7 @@
                     <!--q3 question-->
                     <label class="col-md-6 col-lg-6 control-label">
                         <span class="nmbr">3.</span>
-                        Date this brief episode of care began:
+                        Date this brief episode of care began
                     </label>
                     
                     <!--q3 answer field-->
@@ -253,12 +253,12 @@
                             <div class="skipContent skip-Date input-date">
                                 <!--if treatment left/NOT completed-->
                                 <div class="  col-lg-4 specify-input input-date skipContent skip-No" >
-                                    Date left treatment:
+                                    Date left treatment
                                     <apex:inputField id="CBISLFDT__c" showDatePicker="true"  styleClass="form-control input-sm skip-element-CBISLFDT " value="{!form.obj[bfVariableMap['CBISLFDT']]}" html-placeholder="MM/DD/YYYY"/>
                                 </div>
                                 <!--treatment completion date-->
                                 <div class=" col-lg-4 specify-input input-date skipContent skip-Yes " >
-                                    Date completed treatment:
+                                    Date completed treatment
                                     <apex:inputField id="CBISCODT__c" showDatePicker="true" styleClass="form-control input-sm skip-element-CBISCODT " value="{!form.obj[bfVariableMap['CBISCODT']]}" html-placeholder="MM/DD/YYYY" /> 
                                 </div>
                             </div>

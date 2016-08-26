@@ -1,6 +1,7 @@
 <apex:page standardController="DS_CBCL_B__c" extensions="DS_CBCL_6_18_Report_Controller" action="{!init}" showHeader="{!NOT(printReport)}">
     
     <link href="{!URLFOR($Resource.CSS_DS_Report)}" rel="stylesheet" media="screen, print"/>
+    <link href="{!URLFOR($Resource.CSS_DS_CBCL_Report)}" rel="stylesheet" media="screen, print"/>
     
     <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
     

@@ -8,7 +8,7 @@ public with sharing class DS_FAPGAR_Controller extends DS_BasicForm_Controller {
     // Variable for tracking the warning message for FFAPGARRAW
     private Boolean displayWarningMessageFFAPGARRAW = false;
     
-    Final String warningMessageContent = 'Please note that if one or more items are missing the score will not be provided.  Click Save if you wish to proceed without completing all questions.';
+    Final String warningMessageContent = 'Please note that if one or more items are missing the score will not be provided.  Click "Save" if you wish to proceed without completing all questions.';
     
     public DS_FAPGAR_Controller(ApexPages.StandardController controller) {
         

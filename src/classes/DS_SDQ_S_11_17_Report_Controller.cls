@@ -123,11 +123,11 @@ public with sharing class DS_SDQ_S_11_17_Report_Controller extends DS_BasicForm_
         
         //Emotional
         if (EmoSym == 'Clinical')
-            clinicalRangeList.add('Emotional Symptoms');
+            clinicalRangeList.add('Emotional Problems');
         else if (EmoSym == 'Borderline')
-            borderlineList.add('Emotional Symptoms'); 
+            borderlineList.add('Emotional Problems'); 
         else if (EmoSym == 'Missing/Incomplete')
-            missingList.add('Emotional Symptoms'); 
+            missingList.add('Emotional Problems'); 
         
         //Behavioral
         if (BehDif == 'Clinical')

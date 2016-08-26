@@ -17,21 +17,11 @@
         <name>ApexTrigger</name>
     </types>
     <types>
-        <members>Account</members>
-        <members>AccountContactRole</members>
-        <members>Activity</members>
-        <members>Asset</members>
         <members>Audit_Trail__c</members>
-        <members>Case</members>
-        <members>CaseContactRole</members>
         <members>Center__c</members>
         <members>Client_Summary__c</members>
         <members>Client__c</members>
         <members>Clinician__c</members>
-        <members>Contact</members>
-        <members>ContentVersion</members>
-        <members>Contract</members>
-        <members>ContractContactRole</members>
         <members>Counter__c</members>
         <members>DS_Background_Family_Info_B__c</members>
         <members>DS_Background_Family_Info_F__c</members>
@@ -52,32 +42,133 @@
         <members>DuplicateRecordItem</members>
         <members>DuplicateRecordSet</members>
         <members>Event</members>
-        <members>FeedItem</members>
-        <members>ForecastingCategoryMapping</members>
-        <members>Foundation_Countries__c</members>
-        <members>Foundation_States__c</members>
-        <members>Idea</members>
-        <members>Lead</members>
-        <members>Opportunity</members>
-        <members>OpportunityCompetitor</members>
-        <members>OpportunityContactRole</members>
-        <members>OpportunityLineItem</members>
-        <members>PartnerRole</members>
-        <members>Pricebook2</members>
-        <members>PricebookEntry</members>
-        <members>Product2</members>
-        <members>Site</members>
         <members>Solution</members>
-        <members>StreamingChannel</members>
-        <members>Task</members>
         <members>User</members>
-        <members>UserProvisioningRequest</members>
         <members>User_Profile__c</members>
         <name>CustomObject</name>
     </types>
     <types>
         <members>*</members>
+        <name>Layout</name>
+    </types>
+    <types>
+        <members>*</members>
         <name>Profile</name>
+    </types>
+    <types>
+        <members>Best_Practice_Service_Reports</members>
+        <members>Best_Practice_Service_Reports/Age_of_Cases_Currently_Open_by_Type</members>
+        <members>Best_Practice_Service_Reports/Aged_Cases_by_Account</members>
+        <members>Best_Practice_Service_Reports/Aged_Cases_by_Agent</members>
+        <members>Best_Practice_Service_Reports/Average_Case_Resolution_Time_1</members>
+        <members>Best_Practice_Service_Reports/Average_Case_Resolution_Time_MTD</members>
+        <members>Best_Practice_Service_Reports/Avg_Case_Resolution_Time_MTD_by_Agen</members>
+        <members>Best_Practice_Service_Reports/Case_Resolution_Time_MTD_by_Origin</members>
+        <members>Best_Practice_Service_Reports/Cases_Closed_MTD</members>
+        <members>Best_Practice_Service_Reports/Cases_Closed_MTD_by_Agent</members>
+        <members>Best_Practice_Service_Reports/Cases_Created_MTD</members>
+        <members>Best_Practice_Service_Reports/Cases_Currently_Open</members>
+        <members>Best_Practice_Service_Reports/Cases_Currently_Open_by_Account</members>
+        <members>Best_Practice_Service_Reports/Cases_Currently_Open_by_Agent</members>
+        <members>Best_Practice_Service_Reports/Cases_Currently_Open_by_Origin</members>
+        <members>Best_Practice_Service_Reports/Cases_Currently_Open_by_Priority</members>
+        <members>Best_Practice_Service_Reports/Cases_Currently_Open_by_Type</members>
+        <members>Best_Practice_Service_Reports/Cases_by_Origin</members>
+        <members>Best_Practice_Service_Reports/Cases_by_Origin_and_Open_Status</members>
+        <members>Best_Practice_Service_Reports/Cases_by_Priority</members>
+        <members>Best_Practice_Service_Reports/Cases_by_Type_and_Open_Status</members>
+        <members>Best_Practice_Service_Reports/High_Priority_Open_Cases_by_Account</members>
+        <members>Best_Practice_Service_Reports/Top_10_Cases_by_Age</members>
+        <members>Best_Practice_Service_Reports/Trend_of_Case_Resolution_Time</members>
+        <members>Best_Practice_Service_Reports/Trend_of_Cases_Closed</members>
+        <members>Best_Practice_Service_Reports/Trend_of_Cases_Created</members>
+        <members>COCAP</members>
+        <members>COCAP/COCAP_AGE_RANGE_SUMMARY</members>
+        <members>COCAP/COCAP_RACES</members>
+        <members>COCAP/COCAP_Race_and_Ethnicity</members>
+        <members>COCAP/Client_Demographics_Raw</members>
+        <members>COCAP/Cocap_Age_Range</members>
+        <members>COCAP/Cocap_Race2</members>
+        <members>COCAP/Cocap_age_bucket_sum</members>
+        <members>COCAP/Cocap_age_matrix</members>
+        <members>COCAP/Cocap_cumulative_report_v1</members>
+        <members>COCAP/CurrentAge_Bucket_Tabular</members>
+        <members>COCAP/Identity_Gender</members>
+        <members>COCAP/Multi_Race</members>
+        <members>COCAP/age_matrix</members>
+        <members>COCAP/background_raw</members>
+        <members>COCAP/cocap_parent_prev_sums</members>
+        <members>DashboardReportsAdoption</members>
+        <members>DashboardReportsAdoption/UsageActivitiesCompleted</members>
+        <members>Sales_Marketing_Dashboard_Reports</members>
+        <members>Sales_Marketing_Dashboard_Reports/Activities_by_Salesperson</members>
+        <members>Sales_Marketing_Dashboard_Reports/Closed_Deals_leader_board</members>
+        <members>Sales_Marketing_Dashboard_Reports/Closed_opportunity</members>
+        <members>Sales_Marketing_Dashboard_Reports/Leads_by_Industry</members>
+        <members>Sales_Marketing_Dashboard_Reports/LeadsbySource</members>
+        <members>Sales_Marketing_Dashboard_Reports/Marketing_Exec_Conversion_Rate</members>
+        <members>Sales_Marketing_Dashboard_Reports/Marketing_Exec_Converted_Amount</members>
+        <members>Sales_Marketing_Dashboard_Reports/Marketing_Exec_Converted_and_Won_Amount</members>
+        <members>Sales_Marketing_Dashboard_Reports/Marketing_Exec_Converted_by_Month</members>
+        <members>Sales_Marketing_Dashboard_Reports/Marketing_Exec_Lead_Trends_by_Status</members>
+        <members>Sales_Marketing_Dashboard_Reports/Marketing_Exec_Leads_Converted</members>
+        <members>Sales_Marketing_Dashboard_Reports/Marketing_Exec_of_Leads</members>
+        <members>Sales_Marketing_Dashboard_Reports/OpportunityProductPipeline</members>
+        <members>Sales_Marketing_Dashboard_Reports/SP_Current_Month_Open_Pipeline</members>
+        <members>Sales_Marketing_Dashboard_Reports/Sales_Exec</members>
+        <members>Sales_Marketing_Dashboard_Reports/Sales_Exec_Bookings_Trend</members>
+        <members>Sales_Marketing_Dashboard_Reports/Sales_Exec_Closed_Deals_QTD</members>
+        <members>Sales_Marketing_Dashboard_Reports/Sales_Exec_Lost_Deals</members>
+        <members>Sales_Marketing_Dashboard_Reports/Sales_Exec_Open_Deals</members>
+        <members>Sales_Marketing_Dashboard_Reports/Sales_Exec_Open_Pipeline</members>
+        <members>Sales_Marketing_Dashboard_Reports/Sales_Exec_Open_Pipeline_next_90_days</members>
+        <members>Sales_Marketing_Dashboard_Reports/Sales_Exec_Top_Closed_Deals</members>
+        <members>Sales_Marketing_Dashboard_Reports/Sales_Manager_Closed_Deals</members>
+        <members>Sales_Marketing_Dashboard_Reports/Sales_Manager_Open_Opportunities</members>
+        <members>Sales_Marketing_Dashboard_Reports/Sales_Manager_Open_Pipeline</members>
+        <members>Sales_Marketing_Dashboard_Reports/Sales_Manager_Pipeline_Next_90_days</members>
+        <members>Sales_Marketing_Dashboard_Reports/Sales_Person_Activities_Completed</members>
+        <members>Sales_Marketing_Dashboard_Reports/Sales_Person_Activity</members>
+        <members>Sales_Marketing_Dashboard_Reports/Sales_Person_MTD_Sales</members>
+        <members>Sales_Marketing_Dashboard_Reports/Sales_Person_Open_Pipeline_by_stage</members>
+        <members>sample_report</members>
+        <members>sample_report/SampleReportActiveUsers</members>
+        <members>sample_report/SampleReportCasesStatusbyRep</members>
+        <members>sample_report/SampleReportClosedSales</members>
+        <members>sample_report/SampleReportCompletedActivities</members>
+        <members>sample_report/SampleReportCustomReportsbyUser</members>
+        <members>sample_report/SampleReportDocumentLibrary</members>
+        <members>sample_report/SampleReportLastModifiedBy</members>
+        <members>sample_report/SampleReportLeadsbyLeadSource</members>
+        <members>sample_report/SampleReportLoginLeaderboard</members>
+        <members>sample_report/SampleReportLoginWallofShame</members>
+        <members>sample_report/SampleReportMonthtoDateTrending</members>
+        <members>sample_report/SampleReportOpenCasesByPriority</members>
+        <members>sample_report/SampleReportOpenDeals</members>
+        <members>sample_report/SampleReportPipelineByCloseMonth</members>
+        <members>sample_report/SampleReportPipelineHistory</members>
+        <members>sample_report/SampleReportSalesLeaderboard</members>
+        <members>sample_report/SampleReportSalesPipelinebyStage</members>
+        <members>sample_report/SampleReportSolutionsAdded</members>
+        <members>sample_report/SampleReportTopAccounts</members>
+        <members>sample_report/SampleReportUsersLoggedIn</members>
+        <members>sample_report/SampleReportofAccounts</members>
+        <members>sample_report/SampleReportofCases</members>
+        <members>sample_report/SampleReportofContacts</members>
+        <members>sample_report/SampleReportofDocuments</members>
+        <members>sample_report/SampleReportofLeads</members>
+        <members>sample_report/SampleReportofOpenTasks</members>
+        <members>sample_report/SampleReportofOpportunities</members>
+        <members>sample_report/SampleReportofReports</members>
+        <members>sample_report/SampleReportofSolutions</members>
+        <members>sample_report/SampleReportofTasksandActivities</members>
+        <members>sample_report/SampleReportsLeadsbyStatus</members>
+        <members>unfiled$public</members>
+        <name>Report</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ReportType</name>
     </types>
     <types>
         <members>*</members>

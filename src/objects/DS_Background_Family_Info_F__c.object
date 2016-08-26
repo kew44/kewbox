@@ -332,60 +332,6 @@
         <type>Picklist</type>
     </fields>
     <fields>
-        <fullName>FCHECK1_TEMP__c</fullName>
-        <defaultValue>false</defaultValue>
-        <externalId>false</externalId>
-        <label>FCHECK1_TEMP</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>FCHECK2_TEMP__c</fullName>
-        <defaultValue>false</defaultValue>
-        <externalId>false</externalId>
-        <label>FCHECK2_TEMP</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>FCHECK3_TEMP__c</fullName>
-        <defaultValue>false</defaultValue>
-        <externalId>false</externalId>
-        <label>FCHECK3_TEMP</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>FCHECK4_TEMP__c</fullName>
-        <defaultValue>false</defaultValue>
-        <externalId>false</externalId>
-        <label>FCHECK4_TEMP</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>FCHECK5_TEMP__c</fullName>
-        <defaultValue>false</defaultValue>
-        <externalId>false</externalId>
-        <label>FCHECK5_TEMP</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>FCHECK6_TEMP__c</fullName>
-        <defaultValue>false</defaultValue>
-        <externalId>false</externalId>
-        <label>FCHECK6_TEMP</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>FCHHOMECHECK__c</fullName>
         <defaultValue>false</defaultValue>
         <description>3.  Total number of children living in child&apos;s home</description>
@@ -615,16 +561,6 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>FDOV_TEMP__c</fullName>
-        <description>Dummy variable to bind to TEMP page</description>
-        <externalId>false</externalId>
-        <label>FDOV_TEMP</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Date</type>
     </fields>
     <fields>
         <fullName>FDOV__c</fullName>
@@ -1910,26 +1846,6 @@
             </picklistValues>
             <picklistValues>
                 <fullName>99</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-    </fields>
-    <fields>
-        <fullName>FMET_TEMP__c</fullName>
-        <description>Dummy method of administration picklist</description>
-        <externalId>false</externalId>
-        <label>FMET_TEMP</label>
-        <picklist>
-            <picklistValues>
-                <fullName>0</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>1</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -3477,129 +3393,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>FNUM1_TEMP__c</fullName>
-        <description>Dummy number for temp</description>
-        <externalId>false</externalId>
-        <label>FNUM1_TEMP</label>
-        <precision>2</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>FNUM2_TEMP__c</fullName>
-        <description>dummy temp</description>
-        <externalId>false</externalId>
-        <label>FNUM2_TEMP</label>
-        <precision>2</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>FNUM3_DBL_TEMP__c</fullName>
-        <externalId>false</externalId>
-        <label>FNUM3_DBL_TEMP</label>
-        <precision>3</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>FNUM3_TEMP__c</fullName>
-        <externalId>false</externalId>
-        <label>FNUM3_TEMP</label>
-        <precision>3</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>FNUM4_DBL_TEMP__c</fullName>
-        <description>dummy double entry for dummy 4 for temp</description>
-        <externalId>false</externalId>
-        <label>FNUM4_DBL_TEMP</label>
-        <precision>2</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>FNUM4_TEMP__c</fullName>
-        <externalId>false</externalId>
-        <label>FNUM4_TEMP</label>
-        <precision>2</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>FNUM5_DBL_TEMP__c</fullName>
-        <externalId>false</externalId>
-        <label>FNUM5_DBL_TEMP</label>
-        <precision>3</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>FNUM5_TEMP__c</fullName>
-        <externalId>false</externalId>
-        <label>FNUM5_TEMP</label>
-        <precision>3</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>FNUM6_DBL_TEMP__c</fullName>
-        <externalId>false</externalId>
-        <label>FNUM6_DBL_TEMP</label>
-        <precision>2</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>FNUM6_TEMP__c</fullName>
-        <externalId>false</externalId>
-        <label>FNUM6_TEMP</label>
-        <precision>2</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>FNZCODESP__c</fullName>
         <description>9. Zip Code specified</description>
         <externalId>false</externalId>
@@ -4041,30 +3834,6 @@
             </picklistValues>
             <picklistValues>
                 <fullName>99</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-    </fields>
-    <fields>
-        <fullName>FRADIO_TEMP__c</fullName>
-        <description>Dummy radio list options</description>
-        <externalId>false</externalId>
-        <label>FRADIO_TEMP</label>
-        <picklist>
-            <picklistValues>
-                <fullName>0</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>1</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>98</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -5923,25 +5692,6 @@
         <description>1. Uncle is service member</description>
         <externalId>false</externalId>
         <label>FUNCMIL</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>FUNK_CHECK2_TEMP__c</fullName>
-        <defaultValue>false</defaultValue>
-        <externalId>false</externalId>
-        <label>FUNK_CHECK2_TEMP</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>FUNK_CHECK_TEMP__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>dummy checkbox for unknown value</description>
-        <externalId>false</externalId>
-        <label>FUNK_CHECK_TEMP</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>

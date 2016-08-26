@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>DS_Background_Family_Info_B__c.RINDIAN__c:SUM +DS_Background_Family_Info_B__c.RAKNTV__c:SUM</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>American Indian/Alaska Native</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>DS_Background_Family_Info_B__c.RASIANIN__c:SUM+DS_Background_Family_Info_B__c.RCHINESE__c:SUM+DS_Background_Family_Info_B__c.RFILIPINO__c:SUM+DS_Background_Family_Info_B__c.RJAPANESE__c:SUM+DS_Background_Family_Info_B__c.RKOREAN__c:SUM+DS_Background_Family_Info_B__c.RVIETNAMESE__c:SUM+DS_Background_Family_Info_B__c.ROASIAN__c:SUM</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA2</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Asain</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>DS_Background_Family_Info_B__c.RHAWAN__c:SUM+DS_Background_Family_Info_B__c.RGUAM__c:SUM+DS_Background_Family_Info_B__c.RSAMOA__c:SUM</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA3</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Native Hawaiian/Other Pacific Islander</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>DS_Background_Family_Info_B__c.RREF__c:SUM+DS_Background_Family_Info_B__c.RUNK__c:SUM</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA4</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Race Unknown or Not Reported</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>RowCount</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA5</developerName>
+        <downGroupingContext>BucketField_22327215</downGroupingContext>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Hispanic/Latino Count</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_22327215</developerName>
+        <masterLabel>Hispanic/Latino Ethnicity Status</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>DS_Background_Family_Info_B__c$ETHNIC__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>1</sourceValue>
+            </sourceValues>
+            <value>Hispanic/Latino</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>96</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>99</sourceValue>
+            </sourceValues>
+            <value>Ethnicity Unknown or Not Reported</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>2</sourceValue>
+            </sourceValues>
+            <value>Not Hispanic/Latino</value>
+        </values>
+    </buckets>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>DS_Background_Family_Info_B__c$RWHITE__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>DS_Background_Family_Info_B__c$RBLACK__c</field>
+    </columns>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_22327215</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>COCAP Race and Ethnicity</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>COCAP_Race_and_Ethnicity__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+</Report>

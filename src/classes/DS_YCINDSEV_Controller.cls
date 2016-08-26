@@ -1,5 +1,5 @@
 /**
-* The controller class for Young Child Indicators of Severity of Problems- Children Under 6  
+* The controller class for Young Child Indicators of Severity of Problems  - Children Under 6  
 * 
 **/
 
@@ -54,7 +54,7 @@ public with sharing class DS_YCINDSEV_Controller extends DS_BasicForm_Controller
         options.add(new SelectOption('0','No evidence of regulatory problems ')); 
         options.add(new SelectOption('1','Mild problems with emotional regulation. Child may have difficulty in choosing or may require more structure and support than other children in coping with frustration and difficult emotions ')); 
         options.add(new SelectOption('2','Moderate problems with emotion regulation that may include: 1) difficulties with transitions; 2) severe irritability including extreme or prolonged tantrums; 3) low frustration tolerance; 4) age-inappropriate ability to delay gratification.  Problems interfere with child’s developmental functioning and may require consistent adult intervention ')); 
-        options.add(new SelectOption('3','Profound problems with emotional regulation that place the child’s safety, well-being and/or development at risk  '));    
+        options.add(new SelectOption('3','Profound problems with emotional regulation that place the child’s safety, well-being, and/or development at risk  '));    
         options.add(new SelectOption('99','Unknown/unable to rate '));
         
         return options; 

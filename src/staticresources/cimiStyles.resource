@@ -90,6 +90,10 @@ div.bootwrap .checkbox label{
 line-height: 20px;
 }
 
+div.bootwrap .checkbox label.no-padding-left{
+	padding-left: 0px;
+}
+
 /*sets the font weight of the radiobutton labels to normal*/
 div.bootwrap label {
 font-weight:normal;
@@ -306,6 +310,10 @@ div.bootwrap .form-table .striped-question .form-group {
 }      
 
 .citation-footer { text-align: center; }
+
+/*div[class*="skip"] {
+    display: none;
+}*/
 
 /* Follow-up icon for the subtitle */ 
 

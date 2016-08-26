@@ -2,7 +2,7 @@ public with sharing class DS_CBCL_0_5_Controller extends DS_BasicForm_Controller
     
     public List<Item> items { get; set; }
         
-    Final String warningMessageContent = 'Please note that if eight or more items are missing the score will not be provided. Click Save or Save & View report if you wish to proceed without completing all questions.';
+    Final String warningMessageContent = 'Please note that if eight (8) or more items are missing the score will not be provided. Click "Save" or "Save & View Report" if you wish to proceed without completing all questions.';
     
     public class Item {
         

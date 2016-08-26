@@ -48,7 +48,7 @@ public with sharing class DS_CLINEVAL_Controller extends DS_BasicForm_Controller
         options.add(new SelectOption('12','Acute Stress Disorder ')); 
         options.add(new SelectOption('13','Post-Traumatic Stress Disorder ')); 
         options.add(new SelectOption('14','Adjustment Disorder')); 
-        options.add(new SelectOption('15','Attachment Problems/ Difficulties')); 
+        options.add(new SelectOption('15','Attachment Problems/Difficulties')); 
         options.add(new SelectOption('16','Dissociative Symptoms')); 
         options.add(new SelectOption('17','Dissociative Disorder')); 
         options.add(new SelectOption('18','Somatization ')); 

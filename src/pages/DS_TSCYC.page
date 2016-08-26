@@ -43,10 +43,10 @@
                 
                 <div class="form-group">
                     <!--question-->
-                    <label class=" col-lg-8 control-label ">
+                    <label class=" col-lg-12 control-label ">
                         <span class="nmbr">2.</span>
-                        Please enter a valid raw score and T-Score for each of the Clinical Scale Scores, Subscale Scores, and Validity Scale Scores.  <br/>  &nbsp; &nbsp;
-                        You are required to enter each of these twice as a way to decrease the likelihood of entry errors.
+                        Please enter a valid raw score and T-Score for each of the Clinical Scale Scores, Subscale Scores, and Validity Scale Scores. <br/>
+                        You are required to enter each of these twice as a way to decrease the likelihood of entry errors. If a raw score is unknown/unavailable enter 999 for the raw score and 0 for the corresponding T-Score.
                     </label>
                 </div>     
                 
@@ -81,7 +81,7 @@
                             </div>
                             <!--t 1-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
-                                <apex:inputField id="RL_T__c" value="{!form.obj[bfVariableMap['RL_T']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
+                                <apex:inputField id="RL_T__c" value="{!form.obj[bfVariableMap['RL_T']]}"    styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--double entry space-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
@@ -91,7 +91,7 @@
                             </div>
                             <!--t 2-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
-                                <apex:inputField id="RL_T2__c" value="{!form.obj[bfVariableMap['RL_T2']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
+                                <apex:inputField id="RL_T2__c" value="{!form.obj[bfVariableMap['RL_T2']]}"   styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                         </div>
                         
@@ -109,7 +109,7 @@
                             </div>
                             <!--t 1-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
-                                <apex:inputField id="ATR_T__c" value="{!form.obj[bfVariableMap['ATR_T']]}"  required="true"  styleClass="form-control input-sm control-inline "/><!--auto-width-->
+                                <apex:inputField id="ATR_T__c" value="{!form.obj[bfVariableMap['ATR_T']]}"    styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                             <!--double entry space-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;"></div>
@@ -119,7 +119,7 @@
                             </div>
                             <!--t 2-->
                             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
-                                <apex:inputField id="ART_T2__c" value="{!form.obj[bfVariableMap['ATR_T2']]}" required="true"   styleClass="form-control input-sm control-inline "/><!--auto-width-->
+                                <apex:inputField id="ART_T2__c" value="{!form.obj[bfVariableMap['ATR_T2']]}"   styleClass="form-control input-sm control-inline "/><!--auto-width-->
                             </div>
                         </div>
                         

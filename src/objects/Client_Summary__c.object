@@ -141,20 +141,6 @@
         <type>Picklist</type>
     </fields>
     <label>Client Summary</label>
-    <listViews>
-        <fullName>All</fullName>
-        <columns>OBJECT_ID</columns>
-        <columns>Client__c</columns>
-        <columns>NAME</columns>
-        <columns>Page__c</columns>
-        <columns>FORM_TYPE__c</columns>
-        <columns>SECTION__c</columns>
-        <columns>STATUS__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>LAST_UPDATE</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
     <nameField>
         <displayFormat>summary-{000000}</displayFormat>
         <label>Client Summary Name</label>

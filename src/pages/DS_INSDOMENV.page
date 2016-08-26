@@ -181,7 +181,7 @@
                 <div class="form-group">
                     <label class="col-md-6 col-lg-6 control-label ">
                         <span class="nmbr">2.</span>
-                        Is the child’s parent/guardian covered by any type of health insurance?
+                        Is the child’s parent/guardian covered by any type of insurance?
                     </label>
                     <div class="col-md-6 col-lg-6">
                         <apex:selectRadio styleClass="radio-list" id="PINANY__c" value="{!form.obj[bfVariableMap['PINANY']]}" layout="pageDirection" title="{!form.obj[bfVariableMap['PINANY']]}" onChange="skipLogic('PINANY',this.value)">

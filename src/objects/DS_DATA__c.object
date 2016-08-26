@@ -87,6 +87,10 @@
                 <default>false</default>
             </picklistValues>
             <picklistValues>
+                <fullName>7_21</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
                 <fullName>11_17</fullName>
                 <default>false</default>
             </picklistValues>
@@ -378,6 +382,10 @@
             </picklistValues>
             <picklistValues>
                 <fullName>TRSEXASSAULT</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>TRTRAFFICKING</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
@@ -979,7 +987,31 @@
         <label>AllBlank</label>
     </listViews>
     <listViews>
-        <fullName>AllCBCL</fullName>
+        <fullName>CBCL_Form_Info</fullName>
+        <columns>NAME</columns>
+        <columns>Data_Type__c</columns>
+        <columns>Symptom__c</columns>
+        <columns>Scale__c</columns>
+        <columns>Content__c</columns>
+        <columns>Number__c</columns>
+        <columns>Question_Field__c</columns>
+        <columns>Type__c</columns>
+        <columns>Object__c</columns>
+        <columns>Form__c</columns>
+        <columns>FILE_NAME__c</columns>
+        <columns>Age_Range__c</columns>
+        <columns>SOURCE_FORM__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Data_Type__c</field>
+            <operation>equals</operation>
+            <value>DS_CBCL_Form_Info</value>
+        </filters>
+        <label>CBCL Form Info</label>
+    </listViews>
+    <listViews>
+        <fullName>CBCL_Scale</fullName>
         <columns>NAME</columns>
         <columns>Gender__c</columns>
         <columns>Data_Type__c</columns>
@@ -999,33 +1031,9 @@
         <filters>
             <field>Data_Type__c</field>
             <operation>equals</operation>
-            <value>DS_CBCL_SCALE</value>
+            <value>DS_CBCL_SCALES</value>
         </filters>
-        <label>AllCBCL</label>
-    </listViews>
-    <listViews>
-        <fullName>CBCL_Form_Info</fullName>
-        <columns>NAME</columns>
-        <columns>Data_Type__c</columns>
-        <columns>Symptom__c</columns>
-        <columns>Scale__c</columns>
-        <columns>Content__c</columns>
-        <columns>Number__c</columns>
-        <columns>Question_Field__c</columns>
-        <columns>Type__c</columns>
-        <columns>Object__c</columns>
-        <columns>Form__c</columns>
-        <columns>FILE_NAME__c</columns>
-        <columns>Age_Range__c</columns>
-        <columns>SOURCE_FORM__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Data_Type__c</field>
-            <operation>equals</operation>
-            <value>DS_CBCL_Form_Info</value>
-        </filters>
-        <label>CBCL Form Info</label>
-        <language>en_US</language>
+        <label>CBCL Scale</label>
     </listViews>
     <listViews>
         <fullName>Form_Info</fullName>
@@ -1041,9 +1049,9 @@
         <columns>Age_Range__c</columns>
         <columns>Content__c</columns>
         <columns>Section__c</columns>
-        <columns>Note__c</columns>
-        <columns>Gender_Required__c</columns>
         <columns>LAST_UPDATE</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>UPDATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Data_Type__c</field>
@@ -1105,6 +1113,35 @@
         <label>Form Info baseline content</label>
     </listViews>
     <listViews>
+        <fullName>Form_Info_duplicate_6_7</fullName>
+        <columns>OBJECT_ID</columns>
+        <columns>NAME</columns>
+        <columns>Category__c</columns>
+        <columns>Data_Type__c</columns>
+        <columns>FILE_NAME__c</columns>
+        <columns>Variable__c</columns>
+        <columns>Page__c</columns>
+        <columns>SOURCE_FORM__c</columns>
+        <columns>Form__c</columns>
+        <columns>Object__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Data_Type__c</field>
+            <operation>equals</operation>
+            <value>DS_Form_Info</value>
+        </filters>
+        <filters>
+            <field>CREATED_DATE</field>
+            <operation>equals</operation>
+            <value>6/7/2016 12:00 AM</value>
+        </filters>
+        <label>Form Info duplicate 6-7</label>
+    </listViews>
+    <listViews>
         <fullName>PTSD_Form_Info</fullName>
         <columns>NAME</columns>
         <columns>Object__c</columns>
@@ -1114,6 +1151,7 @@
         <columns>Field__c</columns>
         <columns>Number__c</columns>
         <columns>Symptom__c</columns>
+        <columns>UPDATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Data_Type__c</field>
@@ -1218,6 +1256,7 @@
         <columns>VARIABLE_LABEL__c</columns>
         <columns>VARIABLE_NAME__c</columns>
         <columns>VARIABLE_TYPE__c</columns>
+        <columns>UPDATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Data_Type__c</field>

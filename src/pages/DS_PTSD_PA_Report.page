@@ -1,7 +1,7 @@
 <apex:page standardController="DS_PTSD_CA_B__c" extensions="DS_PTSD_PA_Report_Controller" action="{!init}" showHeader="{!NOT(printReport)}" id="ptsd-report">
     
     <link href="{!URLFOR($Resource.CSS_DS_Report)}" rel="stylesheet" media="screen, print"/>
-    <!--<link href="{!URLFOR($Resource.CSS_DS_PTSD_Report)}" rel="stylesheet" media="screen, print"/>-->
+    <link href="{!URLFOR($Resource.CSS_DS_PTSD_Report)}" rel="stylesheet" media="screen, print"/>
     
     <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
     
@@ -60,8 +60,8 @@
                 
                 <!--information and instructions-->
                 <div class="alert alert-info">
-                    <p> The UCLA PTSD Reaction Index for DSM-5 measures the child's experience of PTSD symptoms.This measure assesses the frequency with which the child experienced PTSD symptoms over the past month.</p>
-                    <p><b>This report provides a list of the symptoms that are present and some guidance on whether a child is likely to meet the DSM-5 diagosis of PTSD.</b></p>
+                    <p> The UCLA PTSD Reaction Index for DSM-5 measures the child's experience of PTSD symptoms. This measure assesses the frequency with which the child experienced PTSD symptoms over the past month.</p>
+                    <p><b>This report provides a list of the symptoms that are present and some guidance on whether a child is likely to meet the DSM-5 diagnosis of PTSD.</b></p>
                 </div>
                 <!--end info-->
                 
@@ -122,7 +122,7 @@
                                 <!--conditional, If 3 or more scores are missing, this panel is displayed instead of report-->
                                 <apex:outputPanel layout="none" rendered="{!if(visit.PTSAPPCNP = 0, true, false)}">
                                     <td colspan="10">
-                                        <strong>This record is <u>Not</u> Applicable. Score can't be calculated, three(3) or more anwers to the UCLA PTSD-RI were left blank or marked unknown.</strong>
+                                        <strong>This record is <u>Not</u> Applicable. Score cannot be calculated, three (3) or more answers to the UCLA PTSD-RI were left blank or marked unknown.</strong>
                                     </td>
                                 </apex:outputPanel>
                                 <!--end NaN message-->

@@ -167,10 +167,10 @@ public with sharing class DS_DEMO_Controller extends DS_BasicForm_Controller{
     List<SelectOption> options = new List<SelectOption>(); 
     
     options.add(new SelectOption('','')); 
-    options.add(new SelectOption('0','Child has no current health problems or chronic conditions.')); 
-    options.add(new SelectOption('1','Child has mild/treatable medical problems that require medical treatment. ')); 
-    options.add(new SelectOption('2','Child has chronic illness that requires ongoing medical intervention. '));
-    options.add(new SelectOption('3','Child has life threatening illness or medical condition that requires frequent hospitalization and medical intervention. '));
+    options.add(new SelectOption('0','Child has no current health problems or chronic conditions')); 
+    options.add(new SelectOption('1','Child has mild/treatable medical problems that require medical treatment ')); 
+    options.add(new SelectOption('2','Child has chronic illness that requires ongoing medical intervention '));
+    options.add(new SelectOption('3','Child has life threatening illness or medical condition that requires frequent hospitalization and medical intervention '));
     options.add(new SelectOption('99','Unknown '));
     
     return options; 
@@ -249,7 +249,7 @@ public with sharing class DS_DEMO_Controller extends DS_BasicForm_Controller{
     
     options.add(new SelectOption('','')); 
     options.add(new SelectOption('1','Heterosexual (that is straight) ')); 
-    options.add(new SelectOption('2','Gay or Lesbian')); 
+    options.add(new SelectOption('2','Lesbian or Gay')); 
     options.add(new SelectOption('3','Bisexual')); 
     options.add(new SelectOption('98','Other'));
     options.add(new SelectOption('96','Declined'));

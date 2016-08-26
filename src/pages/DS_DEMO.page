@@ -85,7 +85,7 @@
                                 How many visits (including today's visit) has the child had at your center for the current episode of care?
                             </label>
                             <div><br/>
-                                Number of visits:
+                                Number of visits
                                 &nbsp;
                                 <apex:inputField styleClass="form-control auto-width input-sm skip-element-CUREPVS" value="{!form.obj['CUREPVS__c']}"/>
                             </div>
@@ -256,14 +256,14 @@
                     <!--q7 label-->
                     <label class="control-label  col-md-6 col-lg-6">
                         <span class="nmbr">7.</span>
-                        Please specify ZIP code of child's current residence:    
+                        Please specify ZIP code of child's current residence    
                     </label>
                     <!--q7 answer field-->
                     <div class="col-md-4 col-lg-4" >  
                         <apex:inputField styleClass="form-control auto-width input-sm" id="NZCODESP__c" value="{!form.obj[bfVariableMap['NZCODESP']]}"/>&nbsp;(5 digit zip code)
                         <br />
                         <br/>
-                        <strong>Or, check the following if unknown: &nbsp;</strong>
+                        <strong>Or, check if unknown: &nbsp;</strong>
                         <apex:inputField styleClass="checkinput" id="ZIPCODECHECK__c" value="{!form.obj[bfVariableMap['ZIPCODECHECK']]}"/>         
                     </div>
                 </div>
@@ -318,11 +318,11 @@
                                 Referral to treatment services
                             </label>
                         </div>                              
-                        <!--Treatment/ Recovery planning-->
+                        <!--Treatment/Recovery Planning-->
                         <div class="checkbox">
                             <label>
                                 <apex:inputField styleClass="checkinput" value="{!form.obj[bfVariableMap['TREATRECO']]}" id="TREATRECO__c"/>
-                                Treatment/ Recovery planning
+                                Treatment/Recovery Planning
                             </label>
                         </div>                              
                         <!--Individual counseling-->
@@ -515,7 +515,7 @@
                         <div class="checkbox">
                             <label>
                                 <apex:inputField styleClass="checkinput skip-element-RBLACK" value="{!form.obj['RBLACK__c']}" id="RBLACK__c"/>
-                                Black/ African American
+                                Black/African American
                             </label>
                         </div>                                
                         <!--American Indian-->
@@ -621,7 +621,7 @@
                         <div class="checkbox">
                             <label>
                                 <apex:inputField styleClass="checkinput skip-element-RREF" value="{!form.obj['RREF__c']}" id="RREF__c"/>
-                                Refused/ Prefer not to answer
+                                Refused/Prefer not to answer
                             </label>
                         </div>                                
                         <!--Unknown-->
@@ -720,7 +720,7 @@
                     <!--ID number(s) of sibling(s)-->
                     <label class="col-md-6 col-lg-6 control-label">
                         <span class="nmbr" />
-                        If known, please enter the ID numbers for the child's sibling(s)
+                        If known, please enter the ID numbers for the child's sibling(s).
                     </label>
                     <div class="col-md-6 col-lg-6">
                         <apex:inputField styleClass="form-control auto-width skip-element-SIBID" value="{!form.obj[bfVariableMap['SIBID']]}"/>
@@ -824,7 +824,7 @@
                         <div class="checkbox">
                             <label>
                                 <apex:inputField styleClass="checkinput skip-element-RHCPD" value="{!form.obj[bfVariableMap['RHCPD']]}" id="RHCPD__c"/>
-                                Private Doctor/ HMO 
+                                Private Doctor/HMO 
                             </label>
                         </div>                              
                         <!--Unknown-->
@@ -1005,7 +1005,7 @@
                                 <div class="checkbox">
                                     <label>
                                         <apex:inputField value="{!form.obj[bfVariableMap['DEVAUT']]}"  styleClass="skip-element-DEVAUT" id="DEVAUT__c"/>
-                                        Autism Spectrum Disorder/ Asperger's
+                                        Autism Spectrum Disorder/Asperger's
                                     </label>
                                 </div>                                        
                                 <!--Blind-->
@@ -1189,7 +1189,7 @@
                         <div class="form-group  skip-DVSRHOS">
                             <label class="control-label col-md-6 col-lg-6">
                                 <span class="nmbr"></span>
-                                Please identify the services.<strong>(Select all that apply.) </strong>
+                                Please identify the services. <strong>(Select all that apply.) </strong>
                             </label>
                             <div class="col-md-6 col-lg-6">
                                 <!--Hospital stay-->

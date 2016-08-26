@@ -102,7 +102,7 @@
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
-            <field>STATUS_TRCOMMEXP__c</field>
+            <field>STATUS_TRTRAFFICKING__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
@@ -183,25 +183,6 @@
         <fullName>STATUS_TRACCIDENT__c</fullName>
         <externalId>false</externalId>
         <label>STATUS TRACCIDENT</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Incomplete</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-    </fields>
-    <fields>
-        <fullName>STATUS_TRCOMMEXP__c</fullName>
-        <externalId>false</externalId>
-        <label>STATUS TRCOMMEXP</label>
         <picklist>
             <picklistValues>
                 <fullName>Incomplete</fullName>
@@ -354,6 +335,25 @@
         <fullName>STATUS_TRSEX__c</fullName>
         <externalId>false</externalId>
         <label>STATUS TRSEX</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Incomplete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Complete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>STATUS_TRTRAFFICKING__c</fullName>
+        <externalId>false</externalId>
+        <label>STATUS TRTRAFFICKING</label>
         <picklist>
             <picklistValues>
                 <fullName>Incomplete</fullName>
@@ -5873,7 +5873,7 @@
         <active>true</active>
         <description>If OTHER selected, this must be completed</description>
         <errorConditionFormula>T2RINJO__c = true &amp;&amp; ISBLANK(T2RINJOS__c)</errorConditionFormula>
-        <errorDisplayField>T2RINJO__c</errorDisplayField>
+        <errorDisplayField>T2RINJOS__c</errorDisplayField>
         <errorMessage>Please specify to whom serious injury was inflicted.</errorMessage>
     </validationRules>
     <validationRules>
@@ -5881,7 +5881,7 @@
         <active>true</active>
         <description>If OTHER selected, this must be completed</description>
         <errorConditionFormula>T2RINJO__c = true &amp;&amp; ISBLANK(T2RSETOS__c)</errorConditionFormula>
-        <errorDisplayField>T2RINJO__c</errorDisplayField>
+        <errorDisplayField>T2RINJ__c</errorDisplayField>
         <errorMessage>Please specify the setting for this experience.</errorMessage>
     </validationRules>
     <validationRules>
