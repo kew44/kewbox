@@ -62,6 +62,35 @@
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
+        <label>Direct Services to Children and Families</label>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>TreatmentCompleted__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>TreatmentAsPlanned__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>TreatmentMissing__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>DateEarliest__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>DateMostRecent__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <style>OneColumn</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
         <label>Gender</label>
         <layoutColumns>
             <layoutItems>
@@ -88,30 +117,9 @@
                 <behavior>Edit</behavior>
                 <field>GenderRefusedUnknown__c</field>
             </layoutItems>
-        </layoutColumns>
-        <style>OneColumn</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>true</editHeading>
-        <label>Direct Services to Children and Families</label>
-        <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>TreatmentCompleted__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>TreatmentAsPlanned__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>DateEarliest__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>DateMostRecent__c</field>
+                <field>GenderMissing__c</field>
             </layoutItems>
         </layoutColumns>
         <style>OneColumn</style>
@@ -125,6 +133,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>MilitaryAssociated__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>MilitaryMissing__c</field>
             </layoutItems>
         </layoutColumns>
         <style>OneColumn</style>
@@ -150,6 +162,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>EthnicityRefusedUnknown__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>EthnicityMissing__c</field>
             </layoutItems>
         </layoutColumns>
         <style>OneColumn</style>

@@ -3,7 +3,8 @@
     <baseObject>Custom_Reporting__c</baseObject>
     <category>other</category>
     <deployed>true</deployed>
-    <description>Data from Custom Reporting record</description>
+    <description>Data from Custom Reporting record
+Use this for Custom Reports</description>
     <label>Custom Report Information</label>
     <sections>
         <columns>
@@ -130,6 +131,11 @@
             <field>EthnicityRefusedUnknown__c</field>
             <table>Custom_Reporting__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>EthnicityMissing__c</field>
+            <table>Custom_Reporting__c</table>
+        </columns>
         <masterLabel>Ethnicity</masterLabel>
     </sections>
     <sections>
@@ -163,12 +169,22 @@
             <field>GenderOther__c</field>
             <table>Custom_Reporting__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>GenderMissing__c</field>
+            <table>Custom_Reporting__c</table>
+        </columns>
         <masterLabel>Gender</masterLabel>
     </sections>
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>MilitaryAssociated__c</field>
+            <table>Custom_Reporting__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>MilitaryMissing__c</field>
             <table>Custom_Reporting__c</table>
         </columns>
         <masterLabel>Military</masterLabel>
@@ -184,6 +200,11 @@
             <field>TreatmentAsPlanned__c</field>
             <table>Custom_Reporting__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>TreatmentMissing__c</field>
+            <table>Custom_Reporting__c</table>
+        </columns>
         <masterLabel>Services and Treatment Plan</masterLabel>
     </sections>
     <sections>
@@ -195,11 +216,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>DateMostRecent__c</field>
-            <table>Custom_Reporting__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Quarter__c</field>
             <table>Custom_Reporting__c</table>
         </columns>
         <masterLabel>Visit Dates</masterLabel>
