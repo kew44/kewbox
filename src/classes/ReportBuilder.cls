@@ -673,115 +673,13 @@ public class ReportBuilder {
             raceAsian  = FALSE;
             raceHIOPI  = FALSE;
             raceUnkNR  = FALSE;
-            //raceCount = raceCount +1;
-        }
-        
-        System.debug(backB);
-        //map race categories to the variable names
-   /*     Map<String, String> raceMap= new Map<String, String>();
-            //race variable, race group
-            raceMap.put('', '' );
-            raceMap.put('', 'American Indian/Native Alaskan');
-            raceMap.put('', 'Asian' );
-            raceMap.put('', 'Asian');
-            raceMap.put('', 'Asian' );
-            raceMap.put('', 'Asian');
-            raceMap.put('', 'Asian' );
-            raceMap.put('', 'Asian');
-            raceMap.put('', '' );
-            raceMap.put('', '');
-            raceMap.put('', 'Native Hawaiian/Other Pacific Islander' );
-            raceMap.put('', 'Native Hawaiian/Other Pacific Islander' );
-            raceMap.put('', 'Native Hawaiian/Other Pacific Islander' );
-            raceMap.put('', '' );
-            raceMap.put('', 'White' );
-            raceMap.put('', 'Unknown or Not Reported' );
-            raceMap.put('', '' );
-*/
-        //list of races for an individual client
-       // List<String> raceList = new List<String>();
-        
-       // System.debug(raceMap);
-      //  System.debug(backB);
-        System.debug(raceCount);
-        
-        //string variable value
-        //String valString;
-        //temp String for races
-        //String rg;
-        
-        //map groups to true/false values
-      //  Map<String,String> raceValMap= new Map<String,String>();
-        
-        //loop through the race variables
-      /*  for (String r: raceMap.keySet()){
-            
-            //variable value
-            String valString = String.valueOf(backB.get(r));
-            
-            //race category
-            String rg= String.valueOf(raceMap.get(r));
 
-            //map true/false and race group
-            raceValMap.put(rg, valString);
-            System.debug(raceValMap);
-            System.debug(rg);
-        }*/
-        
-       // System.debug(raceValMap);
-      //  System.debug(raceValMap.size());
-        
-      /*  for(String v : raceValMap.keySet()){
-            System.debug(v);
-            System.debug(raceValMap.get(v));
-            if(raceValMap.get(v) == 'true'){
-                raceList.add(v);
-                raceCount = raceCount +1;
-            }
-            System.debug(raceList);
-        }           */
-        
-        System.debug(raceCount);
-        
-    //  System.debug(raceMap);
-        //System.debug(raceList);
-        //System.debug(raceValMap);
-        
-        System.debug(raceGroup);
-    //  System.debug(raceList);
-        //System.debug(racelist.size());
-       // System.debug(raceList);
-        //System.debug(raceGroup);
-        //System.debug(raceCount);
-        
-        //more than one race indicated for client
-   /*     if(raceList.size() >1){
-            System.debug(raceGroup);
         }
-        else if(raceList.size() == 1){
-            System.debug(raceList);
-            raceGroup= raceList.get(0);
-            System.debug(raceGroup);
-            if(raceGroup== 'Unknown or Not Reported'){
-                System.debug(raceGroup);
-            }
-            else if(raceGroup=='White'){
-                System.debug(raceGroup);
-            }
-            else if(raceGroup=='Native Hawaiian/Other Pacific Islander'){
-                System.debug(raceGroup);
-            }
-            else if(raceGroup=='Black/African American'){
-                System.debug(raceGroup);
-            }
-            else if(raceGroup=='Asian'){
-                System.debug(raceGroup);
-            }
-            else if(raceGroup=='American Indian/Native Alaskan'){
-                System.debug(raceGroup);
-            }
-        }*/
-        //}
+        
+       System.debug(backB);
+       System.debug(raceCount);        
+       System.debug(raceCount);        
+       System.debug(raceGroup);
        System.debug(raceGroup);     
     }
     public void findEthnic(SObject backB){
@@ -866,10 +764,6 @@ public class ReportBuilder {
         if(backF != null){
             fMil = Integer.valueOf(backF.get('FMSTAT__c'));
         }
-      /*  else{
-            fMil = 0;
-        }*/
-        
         if(
            ((bFam == 1) || (bFam ==2)) 
            || (bSelf == 1)
@@ -899,8 +793,6 @@ public class ReportBuilder {
         }
         else{
             treatMissing = TRUE;
-        }
-        
-    }    
-    
+        }        
+    }        
 }

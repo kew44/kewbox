@@ -345,14 +345,7 @@
                                 <apex:inputField styleClass="checkinput" value="{!form.obj[bfVariableMap['TREATFAM']]}" id="TREATFAM__c"/>
                                 Family Counseling
                             </label>
-                        </div>                                          
-                        <!-- Unknown-->
-                        <div class="checkbox">
-                            <label>
-                                <apex:inputField styleClass="checkinput" value="{!form.obj[bfVariableMap['TREATU']]}" id="TREATU__c"/>
-                                Unknown 
-                            </label>
-                        </div>                  
+                        </div>              
                         <!--Other-->
                         <div class="checkbox">
                             <label>
@@ -360,11 +353,19 @@
                                 Other
                             </label>      
                         </div>                              
-                        <!-- Conditional if other service intended -->
-                        <div class="form-group col-md-6 col-lg-6 skip-TREATOSP">
-                            <apex:outputLabel value="Please specify: " for="TREATOSP__c"/>
-                            <apex:inputField styleClass="form-control input-sm auto-width skip-element-TREATOSP" id="TREATOSP__c" value="{!form.obj[bfVariableMap['TREATOSP']]}"/>
-                        </div><!--end conditional-->
+                            <!-- Conditional if other service intended -->
+                            <div class="form-group skip-TREATOSP">
+                                <apex:outputLabel value="Please specify: " for="TREATOSP__c"/>
+                                <apex:inputField styleClass="form-control input-sm auto-width skip-element-TREATOSP" id="TREATOSP__c" value="{!form.obj[bfVariableMap['TREATOSP']]}"/>
+                            </div>
+                            <!--end conditional-->                            
+                        <!-- Unknown-->
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputField styleClass="checkinput" value="{!form.obj[bfVariableMap['TREATU']]}" id="TREATU__c"/>
+                                Unknown 
+                            </label>
+                        </div>                  
                     </div><!--end checkboxes-->
                 </div>                        
                 <!-- END BASELINE VISIT INFORMATION -->
@@ -377,7 +378,7 @@
                     <!--q1 question-->
                     <label class="control-label col-md-6 col-lg-6">
                         <span class="nmbr">1.</span>
-                        What is the child's current gender identity (for clients 5 or older)?  
+                        What is the child's current gender identity <strong>(for clients 5 or older)</strong>?  
                     </label>
                     
                     <!--q1 answer field-->
@@ -397,7 +398,7 @@
                     <!--q2 label-->
                     <label class="control-label  col-md-6 col-lg-6">
                         <span class="nmbr">2.</span>
-                        Which of the following do you consider yourself to be (for clients 12 or older)?
+                        Which of the following do you consider yourself to be <strong>(for clients 12 or older)</strong>?
                     </label>
                     <!--q2 answer-->
                     <div class="col-md-4 col-lg-2">
@@ -430,8 +431,8 @@
                         <span class="nmbr" />
                         What ethnic group does the child belong to? <strong>(Select all that apply.)</strong>
                     </label>          
-                    <!--Central American-->
                     <div class="col-md-6 col-lg-6">
+                        <!--Central American-->
                         <div class="checkbox">
                             <label>
                                 <apex:inputField value="{!form.obj['ETHNICHCA__c']}" styleClass="skip-element-ETHNICHCA" id="ETHNICHCA__c"/> 
@@ -472,13 +473,7 @@
                                 <apex:inputField value="{!form.obj['ETHNICHSA__c']}" styleClass="skip-element-ETHNICHSA" id="ETHNICHSA__c"/>
                                 South American  
                             </label>
-                        </div>          
-                        <div class="checkbox">
-                            <label>
-                                <apex:inputField value="{!form.obj['ETHNICHUK__c']}" styleClass="skip-element-ETHNICHUK" id="ETHNICHUK__c"/>
-                                Unknown
-                            </label>
-                        </div> <!-- end checkboxes -->                              
+                        </div>                            
                         <!--Other-->
                         <div class="checkbox">
                             <label>
@@ -486,15 +481,23 @@
                                 Other 
                             </label>
                         </div>                    
-                        <!-- Conditionally if other Hispanic or Latino ethnicity is indicated-->
-                        <div class="col-md-4 col-lg-4 skip-ETHNICHOSP">
-                            <apex:outputLabel value=" Please specify: " for="ETHNICHOSP__c"/>
-                            <apex:inputField styleClass="form-control input-sm auto-width skip-element-ETHNICHOSP" id="ETHNICHOSP__c" value="{!form.obj['ETHNICHOSP__c']}"/>
-                        </div><!--end conditional-->                    
-                        <!--Unknown-->
-                        <!-- end skip content -->
+                            <!-- Conditionally if other Hispanic or Latino ethnicity is indicated-->
+                            <div class="col-md-4 col-lg-4 skip-ETHNICHOSP">
+                                <apex:outputLabel value=" Please specify: " for="ETHNICHOSP__c"/>
+                                <apex:inputField styleClass="form-control input-sm auto-width skip-element-ETHNICHOSP" id="ETHNICHOSP__c" value="{!form.obj['ETHNICHOSP__c']}"/>
+                            </div>
+                            <!--end conditional-->                
+                        <!--Unknown-->                      
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputField value="{!form.obj['ETHNICHUK__c']}" styleClass="skip-element-ETHNICHUK" id="ETHNICHUK__c"/>
+                                Unknown
+                            </label>
+                        </div> 
                     </div> 
+                    <!-- end checkboxes -->                     
                 </div>
+                <!-- end skip content -->
                 <!-- 4. Child's race -->
                 <div class="form-group">
                     <!--q4 question-->
@@ -732,7 +735,7 @@
                     <!--q8 question-->
                     <label class="col-md-6 col-lg-6 control-label">
                         <span class="nmbr" >8.</span>
-                        Are you currently serving on active duty in the Armed Forces, the Reserves, or the National Guard (for clients over 18 years old)?  
+                        Are you currently serving on active duty in the Armed Forces, the Reserves, or the National Guard <strong>(for clients over 18 years old)</strong>?  
                     </label>
                     <!--q8 answer choices-->
                     <div class="col-md-4 col-lg-2">

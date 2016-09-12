@@ -1,6 +1,7 @@
 trigger DS_CBCL_F_Trigger on DS_CBCL_F__c (before insert, before update, after insert, after update) {
     
     Utility ut = new Utility();
+    ReportBuilder rb = new ReportBuilder();
     
     List<String> clientIDs = new List<String>();
     
@@ -31,6 +32,7 @@ trigger DS_CBCL_F_Trigger on DS_CBCL_F__c (before insert, before update, after i
     
     if(Trigger.isAfter) { 
         
+        rb.cocap(Trigger.new);
         ut.updateSummaryStatusForMergedObject(Trigger.new);
         
         AuditTrail audit = new AuditTrail(Trigger.new, Trigger.old); 

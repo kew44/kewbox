@@ -1,6 +1,7 @@
 trigger DS_SDQ_PSI_CDI_B_Trigger on DS_SDQ_PSI_CDI_B__c (before insert, before update, after insert, after update) {
     
     Utility ut = new Utility();
+    ReportBuilder rb = new ReportBuilder();
     
     if(Trigger.isBefore) {
         
@@ -27,6 +28,7 @@ trigger DS_SDQ_PSI_CDI_B_Trigger on DS_SDQ_PSI_CDI_B__c (before insert, before u
     } 
     
     if(Trigger.isAfter) { 
+        rb.cocap(Trigger.new);
         ut.updateSummaryStatusForMergedObject(Trigger.new);
         
         AuditTrail audit = new AuditTrail(Trigger.new, Trigger.old); 

@@ -46,9 +46,9 @@ public with sharing class DS_DOMENV_Controller extends DS_BasicForm_Controller {
     options.add(new SelectOption('6','Residential treatment center ')); 
     options.add(new SelectOption('7','Correctional facility')); 
     options.add(new SelectOption('8','Homeless')); 
-    options.add(new SelectOption('9','Shelter'));
-    options.add(new SelectOption('99','Unknown'));     
+    options.add(new SelectOption('9','Shelter'));   
     options.add(new SelectOption('98','Other'));  
+    options.add(new SelectOption('99','Unknown'));  
     
     return options; 
         
@@ -103,8 +103,8 @@ public with sharing class DS_DOMENV_Controller extends DS_BasicForm_Controller {
     options.add(new SelectOption('10','Detox/inpatient or residential substance abuse treatment facility '));
     options.add(new SelectOption('11','Correctional facility (juvenile detention center/jail/prison) '));
     options.add(new SelectOption('96','Refused'));
-    options.add(new SelectOption('99','Unknown')); 
     options.add(new SelectOption('98','Other housing '));
+    options.add(new SelectOption('99','Unknown')); 
     
     return options; 
         
@@ -134,8 +134,8 @@ public with sharing class DS_DOMENV_Controller extends DS_BasicForm_Controller {
     options.add(new SelectOption('9','Russian'));
     options.add(new SelectOption('10','Arabic'));
     options.add(new SelectOption('11','Hebrew'));
-    options.add(new SelectOption('99','Unknown')); 
     options.add(new SelectOption('98','Other'));
+    options.add(new SelectOption('99','Unknown')); 
     
     return options; 
         
@@ -154,8 +154,8 @@ public with sharing class DS_DOMENV_Controller extends DS_BasicForm_Controller {
     options.add(new SelectOption('8','$50,000 – $74,999 '));
     options.add(new SelectOption('9','$75,000 – $99,999 '));
     options.add(new SelectOption('10','$100,000 and over '));
-    options.add(new SelectOption('99','Unknown')); 
     options.add(new SelectOption('98','Other'));
+    options.add(new SelectOption('99','Unknown')); 
     
     return options; 
         

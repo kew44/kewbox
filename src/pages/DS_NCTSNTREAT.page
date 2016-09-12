@@ -415,21 +415,21 @@
                         </div>
                         <div class="checkbox">
                             <label>
-                                <apex:inputCheckbox id="TXNONE__c" value="{!form.obj[bfVariableMap['TXNONE']]}"/>
-                                None/Not Applicable    
-                            </label> 
-                        </div>
-                        <div class="checkbox">
-                            <label>
                                 <apex:inputCheckbox id="TXOTHMOD__c" value="{!form.obj[bfVariableMap['TXOTHMOD']]}" onChange="skipLogic('TXOTHMOD',this.checked)"/>
                                 Other 
                             </label> 
                         </div>
-                        <div class="no-border-bottom no-space-bottom skip-TXOTMOSP">
-                            <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please specify:" for="TXOTMOSP__c"/> 
-                            <div class="col-md-4 col-lg-4 specify-input">
-                                <apex:inputField styleClass="form-control skip-element-TXOTMOSP input-sm"  id="TXOTMOSP__c" value="{!form.obj[bfVariableMap['TXOTMOSP']]}"/>
+                            <div class="no-border-bottom no-space-bottom skip-TXOTMOSP">
+                                <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please specify:" for="TXOTMOSP__c"/> 
+                                <div class="specify-input">
+                                    <apex:inputField styleClass="form-control skip-element-TXOTMOSP input-sm"  id="TXOTMOSP__c" value="{!form.obj[bfVariableMap['TXOTMOSP']]}"/>
+                                </div>
                             </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXNONE__c" value="{!form.obj[bfVariableMap['TXNONE']]}"/>
+                                None/Not Applicable    
+                            </label> 
                         </div>
                     </div>
                 </div> 
@@ -815,21 +815,21 @@
                         </div>
                         <div class="checkbox">
                             <label>
-                                <apex:inputCheckbox id="TXPSNONE__c" value="{!form.obj[bfVariableMap['TXPSNONE']]}"/>
-                                None     
-                            </label> 
-                        </div>
-                        <div class="checkbox">
-                            <label>
                                 <apex:inputCheckbox id="TXPSIOTH__c" value="{!form.obj[bfVariableMap['TXPSIOTH']]}" onChange="skipLogic('TXPSIOTH',this.checked)"/>
                                 Other 
                             </label> 
                         </div>
-                        <div class="no-border-bottom no-space-bottom skip-TXPSOTSP">
-                            <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please specify:" for="TXPSOTSP__c"/> 
-                            <div class="col-md-4 col-lg-4 specify-input">
-                                <apex:inputField styleClass="form-control skip-element-TXPSOTSP  input-sm"  id="TXPSOTSP__c" value="{!form.obj[bfVariableMap['TXPSOTSP']]}"/>
+                            <div class="no-border-bottom no-space-bottom skip-TXPSOTSP">
+                                <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please specify:" for="TXPSOTSP__c"/> 
+                                <div class="specify-input">
+                                    <apex:inputField styleClass="form-control skip-element-TXPSOTSP  input-sm"  id="TXPSOTSP__c" value="{!form.obj[bfVariableMap['TXPSOTSP']]}"/>
+                                </div>
                             </div>
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputCheckbox id="TXPSNONE__c" value="{!form.obj[bfVariableMap['TXPSNONE']]}"/>
+                                None     
+                            </label> 
                         </div>
 
                     </div>

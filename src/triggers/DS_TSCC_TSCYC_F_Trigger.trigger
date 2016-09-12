@@ -1,6 +1,7 @@
 trigger DS_TSCC_TSCYC_F_Trigger  on DS_TSCC_TSCYC_F__c (before insert, before update, after insert, after update) {
     
     Utility ut = new Utility();
+    ReportBuilder rb = new ReportBuilder();
     
     if(Trigger.isBefore) {
         
@@ -8,7 +9,7 @@ trigger DS_TSCC_TSCYC_F_Trigger  on DS_TSCC_TSCYC_F__c (before insert, before up
         Map<String, SObject> backgroundObj = ut.getObjectRecordWithClient(Trigger.new, 'DS_Background_Family_Info_F__c', null);
         
         DS_TSCC_TSCYC_Scoring tsccayc = new DS_TSCC_TSCYC_Scoring(); 
-		
+        
         for(DS_TSCC_TSCYC_F__c obj: Trigger.new) {
             
             if(obj.STATUS_TSCC_A__c != null){
@@ -25,6 +26,7 @@ trigger DS_TSCC_TSCYC_F_Trigger  on DS_TSCC_TSCYC_F__c (before insert, before up
     } 
     
     if(Trigger.isAfter) { 
+        rb.cocap(Trigger.new);
         ut.updateSummaryStatusForMergedObject(Trigger.new);
         
         AuditTrail audit = new AuditTrail(Trigger.new, Trigger.old); 

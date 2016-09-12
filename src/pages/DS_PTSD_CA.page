@@ -32,8 +32,8 @@
                 <div class="alert alert-info">
                     <strong>
                         Here is a list of problems people can have after bad things happen. 
-                        Please think about the bad thing that happened to you that bothers you the most now. For each problem 
-                        SELECT ONE of the numbers (0, 1, 2, 3 or 4) that tells how often the problem happened to you in the past month, even if the bad thing happened a long time ago. 
+                        Please think about the bad thing that happened to you that <u>bothers you the most now</u>. 
+                        For each problem SELECT ONE of the numbers (0, 1, 2, 3 or 4) that tells how often the problem happened to you in the past month, even if the bad thing happened a long time ago. 
                         Use the Frequency Rating Sheet to help you decide how often the problem happened in the past month.
                     </strong>
                 </div>
@@ -70,7 +70,7 @@
                 <!--question prompt heading-->
                 <div class="row">
                     <div class="col-md-6 col-lg-6"><h4>Question</h4></div>
-                    <div class="col-md-6 col-lg-6"><h4>HOW MUCH OF THE TIME DURING THE PAST MONTH...</h4></div>
+                    <div class="col-md-6 col-lg-6"><h4><strong><em>HOW MUCH OF THE TIME DURING THE PAST MONTH...</em></strong></h4></div>
                 </div>
                 <!--end heading-->
                 
@@ -136,7 +136,7 @@
                 
                 <!--clinician instructions heading-->
                 <div class="alert alert-info">
-                    Clinician: Check whether the reactions above appear to cause clinically significant (1) distress or (2) functional impairment.   
+                    <strong><u>Clinician</u></strong>: Check whether the reactions above appear to cause clinically significant (1) <em><strong>distress </strong></em>or (2) <em><strong>functional impairment.</strong></em>   
                 </div>
                 <!--end clinician heading-->
                 
@@ -159,7 +159,7 @@
                 <!--impairment section-->
                 <h4>(2) Clinically Significant Functional Impairment: (check if functional impairment at home, at school, in peer relationships, developmental progression)</h4>
                 <!--home sub-section-->
-                <h5>Home: (check if youth endorses #1, #2 or #3 below)</h5>
+                <h5><strong>Home: </strong>(check if youth endorses #1, #2 or #3 below)</h5>
                 
                 <!--1. hard to get along at home?-->
                 <div class="form-group">
@@ -217,7 +217,7 @@
                 <!--end home-->
                 
                 <!--school sub-section-->
-                <h5>School: (check if youth endorses #1 or #2 below)</h5>
+                <h5><strong>School: </strong>(check if youth endorses #1 or #2 below)</h5>
                 
                 <!--1.performance in school?-->
                 <div class="form-group">
@@ -262,7 +262,7 @@
                 <!--end school-->
                 
                 <!--Peer Relationships-->
-                <h5>Peer Relationships: (check if youth endorses #1 below)</h5>
+                <h5><strong>Peer Relationships: </strong>(check if youth endorses #1 below)</h5>
                 
                 <!--1.make nre friend?-->
                 <div class="form-group">

@@ -13,6 +13,8 @@
 *@author Kelsey Willett
 *@date 11/18/2015
 *@modified date
+*
+*@modified    9/9/16    KW    custom report coverage
 ****/
 
 @isTest (SeeAllData=false)
@@ -27,6 +29,8 @@ private class TestClass_DS_Background_Family_Info_B  {
     *@description Initialize reference to Utility
     ****/
     public static Utility ut = new Utility();
+    
+    public static ReportBuilder rb = new ReportBuilder();
     
     /****
     *@description Load required data from TestClassData

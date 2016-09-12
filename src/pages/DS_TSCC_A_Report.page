@@ -78,7 +78,7 @@
                     <apex:outputPanel layout="none" rendered="{!if(clinicalRange != '', true, false)}">
                         <p>
                             <br/>
-                            <h4><u>Clinical Range </u></h4>
+                            <strong><u>Clinical Range </u></strong>
                         <br/>
                         The child’s symptoms on the following scales are clinically significant compared to other children their age: <b>{!clinicalRange}</b><br/>
                     </p>  
@@ -137,87 +137,87 @@
                             <td>{!IF(HTMLENCODE(visit.BorF) = 'B', 'Baseline', 'Follow-up')}</td>                          
                             
                             <apex:outputPanel layout="none" >   
-								<!--und-->
-                                <td class="text-center {!IF((visit.TSCNTN)  >= 70, 'danger', (IF((visit.TSCNTN)  <= 64, '', 'warning')))}">			<!--formatting-->
-									{!IF((visit.TSCNTN) = 0, '***', visit.TSCNTN)} 													<!--value-->
-									<br/> 
-									<div class="{!IF((visit.TSCNTN) = 0, 'message warningM3','')}" role="alert">
-										<apex:image rendered="{!IF((visit.TSCNTN) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />	<!--symbol-->
-										{!IF((visit.TSCNTN)= 0, 'Not Available', (IF((visit.TSCNTN)  >= 70, 'Invalid',  (IF((visit.TSCNTN)  <= 64, '', 'Borderline')))))}	<!--significance-->				<!--significance-->
-									</div>
-								</td>  
-								<!--hyp--> 
+                                <!--und-->
+                                <td class="text-center {!IF((visit.TSCNTN)  >= 70, 'danger', (IF((visit.TSCNTN)  <= 64, '', 'warning')))}">         <!--formatting-->
+                                    {!IF((visit.TSCNTN) = 0, '***', visit.TSCNTN)}                                                  <!--value-->
+                                    <br/> 
+                                    <div class="{!IF((visit.TSCNTN) = 0, 'message warningM3','')}" role="alert">
+                                        <apex:image rendered="{!IF((visit.TSCNTN) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />    <!--symbol-->
+                                        {!IF((visit.TSCNTN)= 0, 'Not Available', (IF((visit.TSCNTN)  >= 70, 'Invalid',  (IF((visit.TSCNTN)  <= 64, '', 'Borderline')))))}   <!--significance-->             <!--significance-->
+                                    </div>
+                                </td>  
+                                <!--hyp--> 
                                 <td class="text-center {!IF((visit.TSCHYTN) >= 90, 'danger', (IF((visit.TSCHYTN) <= 64, '', 'warning')))}">
-									{!IF((visit.TSCHYTN) = 0, '***', visit.TSCHYTN)}
-									<br/> 
-									<div class="{!IF((visit.TSCHYTN) = 0, 'message warningM3','')}" role="alert">
-										<apex:image rendered="{!IF((visit.TSCHYTN) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
-										{!IF((visit.TSCHYTN)= 0, 'Not Available', (IF((visit.TSCHYTN) >= 90, 'Invalid',  (IF((visit.TSCHYTN) <= 64, '', 'Borderline')))))}
-									</div>
-								</td>
-								<!--anx-->
+                                    {!IF((visit.TSCHYTN) = 0, '***', visit.TSCHYTN)}
+                                    <br/> 
+                                    <div class="{!IF((visit.TSCHYTN) = 0, 'message warningM3','')}" role="alert">
+                                        <apex:image rendered="{!IF((visit.TSCHYTN) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
+                                        {!IF((visit.TSCHYTN)= 0, 'Not Available', (IF((visit.TSCHYTN) >= 90, 'Invalid',  (IF((visit.TSCHYTN) <= 64, '', 'Borderline')))))}
+                                    </div>
+                                </td>
+                                <!--anx-->
                                 <td class="text-center {!IF((visit.TSCAXTN) >= 65, 'danger', (IF((visit.TSCAXTN) <= 59, '', 'warning')))}">
-									{!IF((visit.TSCAXTN) = 0, '***', visit.TSCAXTN)}
-									<br/> 
-									<div class="{!IF((visit.TSCAXTN) = 0, 'message warningM3','')}" role="alert">
-										<apex:image rendered="{!IF((visit.TSCAXTN) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
-										{!IF((visit.TSCAXTN)= 0, 'Not Available', (IF((visit.TSCAXTN) >= 65, 'Clinical', (IF((visit.TSCAXTN) <= 59, '', 'Borderline')))))}
-									</div>
-								</td> 
-								<!--dep-->
+                                    {!IF((visit.TSCAXTN) = 0, '***', visit.TSCAXTN)}
+                                    <br/> 
+                                    <div class="{!IF((visit.TSCAXTN) = 0, 'message warningM3','')}" role="alert">
+                                        <apex:image rendered="{!IF((visit.TSCAXTN) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
+                                        {!IF((visit.TSCAXTN)= 0, 'Not Available', (IF((visit.TSCAXTN) >= 65, 'Clinical', (IF((visit.TSCAXTN) <= 59, '', 'Borderline')))))}
+                                    </div>
+                                </td> 
+                                <!--dep-->
                                 <td class="text-center {!IF((visit.TSCDPTN) >= 65, 'danger', (IF((visit.TSCDPTN) <= 59, '', 'warning')))}">
-									{!IF((visit.TSCDPTN) = 0, '***', visit.TSCDPTN)}
-									<br/>  
-									<div class="{!IF((visit.TSCDPTN) = 0, 'message warningM3','')}" role="alert">
-										<apex:image rendered="{!IF((visit.TSCDPTN) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
-										{!IF((visit.TSCDPTN)= 0, 'Not Available', (IF((visit.TSCDPTN) >= 65, 'Clinical', (IF((visit.TSCDPTN) <= 59, '', 'Borderline')))))}
-									</div>
-								</td>        
-								<!--ang-->
+                                    {!IF((visit.TSCDPTN) = 0, '***', visit.TSCDPTN)}
+                                    <br/>  
+                                    <div class="{!IF((visit.TSCDPTN) = 0, 'message warningM3','')}" role="alert">
+                                        <apex:image rendered="{!IF((visit.TSCDPTN) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
+                                        {!IF((visit.TSCDPTN)= 0, 'Not Available', (IF((visit.TSCDPTN) >= 65, 'Clinical', (IF((visit.TSCDPTN) <= 59, '', 'Borderline')))))}
+                                    </div>
+                                </td>        
+                                <!--ang-->
                                 <td class="text-center {!IF((visit.TSCAGTN) >= 65, 'danger', (IF((visit.TSCAGTN) <= 59, '', 'warning')))}">
-									{!IF((visit.TSCAGTN) = 0, '***', visit.TSCAGTN)}
-									<br/>  
-									<div class="{!IF((visit.TSCAGTN) = 0, 'message warningM3','')}" role="alert">
-										<apex:image rendered="{!IF((visit.TSCAGTN) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
-										{!IF((visit.TSCAGTN)= 0, 'Not Available', (IF((visit.TSCAGTN) >= 65, 'Clinical', (IF((visit.TSCAGTN) <= 59, '', 'Borderline')))))}
-									</div>
-								</td> 
-								<!--pts-->
+                                    {!IF((visit.TSCAGTN) = 0, '***', visit.TSCAGTN)}
+                                    <br/>  
+                                    <div class="{!IF((visit.TSCAGTN) = 0, 'message warningM3','')}" role="alert">
+                                        <apex:image rendered="{!IF((visit.TSCAGTN) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
+                                        {!IF((visit.TSCAGTN)= 0, 'Not Available', (IF((visit.TSCAGTN) >= 65, 'Clinical', (IF((visit.TSCAGTN) <= 59, '', 'Borderline')))))}
+                                    </div>
+                                </td> 
+                                <!--pts-->
                                 <td class="text-center {!IF((visit.TSCPTTN) >= 65, 'danger', (IF((visit.TSCPTTN) <= 59, '', 'warning')))}">
-									{!IF((visit.TSCPTTN) = 0, '***', visit.TSCPTTN)}
-									<br/>  
-									<div class="{!IF((visit.TSCPTTN) = 0, 'message warningM3','')}" role="alert">
-										<apex:image rendered="{!IF((visit.TSCPTTN) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
-										{!IF((visit.TSCPTTN)= 0, 'Not Available', (IF((visit.TSCPTTN) >= 65, 'Clinical', (IF((visit.TSCPTTN) <= 59, '', 'Borderline')))))}
-									</div>
-								</td> 
-								<!--dis--> 
+                                    {!IF((visit.TSCPTTN) = 0, '***', visit.TSCPTTN)}
+                                    <br/>  
+                                    <div class="{!IF((visit.TSCPTTN) = 0, 'message warningM3','')}" role="alert">
+                                        <apex:image rendered="{!IF((visit.TSCPTTN) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
+                                        {!IF((visit.TSCPTTN)= 0, 'Not Available', (IF((visit.TSCPTTN) >= 65, 'Clinical', (IF((visit.TSCPTTN) <= 59, '', 'Borderline')))))}
+                                    </div>
+                                </td> 
+                                <!--dis--> 
                                 <td class="text-center {!IF((visit.TSCDSTN) >= 65, 'danger', (IF((visit.TSCDSTN) <= 59, '', 'warning')))}">
-									{!IF((visit.TSCDSTN) = 0, '***', visit.TSCDSTN)}
-									<br/>  
-									<div class="{!IF((visit.TSCDSTN) = 0, 'message warningM3','')}" role="alert">
-										<apex:image rendered="{!IF((visit.TSCDSTN) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
-										{!IF((visit.TSCDSTN)= 0, 'Not Available', (IF((visit.TSCDSTN) >= 65, 'Clinical', (IF((visit.TSCDSTN) <= 59, '', 'Borderline')))))}
-									</div>
-								</td> 
-								<!--diso-->
+                                    {!IF((visit.TSCDSTN) = 0, '***', visit.TSCDSTN)}
+                                    <br/>  
+                                    <div class="{!IF((visit.TSCDSTN) = 0, 'message warningM3','')}" role="alert">
+                                        <apex:image rendered="{!IF((visit.TSCDSTN) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
+                                        {!IF((visit.TSCDSTN)= 0, 'Not Available', (IF((visit.TSCDSTN) >= 65, 'Clinical', (IF((visit.TSCDSTN) <= 59, '', 'Borderline')))))}
+                                    </div>
+                                </td> 
+                                <!--diso-->
                                 <td class="text-center {!IF((visit.TSCODTN) >= 65, 'danger', (IF((visit.TSCODTN) <= 59, '', 'warning')))}">
-									{!IF((visit.TSCODTN) = 0, '***', visit.TSCODTN)}
-									<br/>  
-									<div class="{!IF((visit.TSCODTN) = 0, 'message warningM3','')}" role="alert">
-										<apex:image rendered="{!IF((visit.TSCODTN) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
-										{!IF((visit.TSCODTN)= 0, 'Not Available', (IF((visit.TSCODTN) >= 65, 'Clinical', (IF((visit.TSCODTN) <= 59, '', 'Borderline')))))}
-									</div>
-								</td>  
-								<!--disf-->
+                                    {!IF((visit.TSCODTN) = 0, '***', visit.TSCODTN)}
+                                    <br/>  
+                                    <div class="{!IF((visit.TSCODTN) = 0, 'message warningM3','')}" role="alert">
+                                        <apex:image rendered="{!IF((visit.TSCODTN) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
+                                        {!IF((visit.TSCODTN)= 0, 'Not Available', (IF((visit.TSCODTN) >= 65, 'Clinical', (IF((visit.TSCODTN) <= 59, '', 'Borderline')))))}
+                                    </div>
+                                </td>  
+                                <!--disf-->
                                 <td class="text-center {!IF((visit.TSCFNTN) >= 65, 'danger', (IF((visit.TSCFNTN) <= 59, '', 'warning')))}">
-									{!IF((visit.TSCFNTN) = 0, '***', visit.TSCFNTN)} 
-									<br/>  
-									<div class="{!IF((visit.TSCFNTN) = 0, 'message warningM3','')}" role="alert">
-										<apex:image rendered="{!IF((visit.TSCFNTN) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
-										{!IF((visit.TSCFNTN)= 0, 'Not Available', (IF((visit.TSCFNTN) >= 65, 'Clinical', (IF((visit.TSCFNTN) <= 59, '', 'Borderline')))))}
-									</div>
-								</td>            
+                                    {!IF((visit.TSCFNTN) = 0, '***', visit.TSCFNTN)} 
+                                    <br/>  
+                                    <div class="{!IF((visit.TSCFNTN) = 0, 'message warningM3','')}" role="alert">
+                                        <apex:image rendered="{!IF((visit.TSCFNTN) = 0,'','')}" styleclass="msgIcon"  alt="Not Available" url="/s.gif" />
+                                        {!IF((visit.TSCFNTN)= 0, 'Not Available', (IF((visit.TSCFNTN) >= 65, 'Clinical', (IF((visit.TSCFNTN) <= 59, '', 'Borderline')))))}
+                                    </div>
+                                </td>            
                             </apex:outputPanel>
                         </tr>                        
                     </apex:repeat>                    

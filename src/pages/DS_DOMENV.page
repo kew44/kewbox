@@ -256,14 +256,6 @@
                             </label>
                         </div>
                         
-                        <!--unknown-->
-                        <div class="checkbox">
-                            <label>
-                                <apex:inputField id="LUNK__c" value="{!form.obj[bfVariableMap['LUNK']]}" />
-                                Unknown  <br/>
-                            </label>
-                        </div>
-                        
                         <!--other-->
                         <div class="checkbox">
                             <label>
@@ -271,14 +263,22 @@
                                 Other <br/>
                             </label>                                      
                         </div>
-                        <!--conditional, if other selected, please specify:-->
-                        <div class="skip-LOTHRSP">
-                            <label class="col-md-4 col-lg-4 control-label specify-label">Please specify:</label>
-                            <div class="col-md-4 col-lg-4 specify-input">
-                                <apex:inputField styleClass="form-control input-sm skip-element-LOTHRSP" id="LOTHRSP__c" value="{!form.obj[bfVariableMap['LOTHRSP']]}"/>
+                            <!--conditional, if other selected, please specify:-->
+                            <div class="skip-LOTHRSP">
+                                <label class=" control-label specify-label">Please specify:</label>
+                                <div class=" specify-input">
+                                    <apex:inputField styleClass="form-control input-sm skip-element-LOTHRSP" id="LOTHRSP__c" value="{!form.obj[bfVariableMap['LOTHRSP']]}"/>
+                                </div>
                             </div>
+                            <!--end conditional-->
+                        
+                        <!--unknown-->
+                        <div class="checkbox">
+                            <label>
+                                <apex:inputField id="LUNK__c" value="{!form.obj[bfVariableMap['LUNK']]}" />
+                                Unknown  <br/>
+                            </label>
                         </div>
-                        <!--end conditional-->
                             
                         
                         <!--end checkboxes-->

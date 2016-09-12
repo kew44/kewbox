@@ -314,72 +314,70 @@
                             <apex:selectOptions value="{!NYUOptionWithBlank}"/>
                         </apex:selectList>
                     </div>
-                </div>
-                
-                <!--Conditional if course of treatment exists-->
-                <div class="form-group skip-TRTOMED">
-                    <label class="col-md-6 col-lg-6 control-label">
-                        <span class="nmbr"></span>
-                        Please identify the course of treatment. <strong>(Select all that apply.)</strong>
-                    </label>
-                    <div class="col-md-6 col-lg-6">
-                        <!--oral medication-->
-                        <div class="checkbox">
-                            <label>             
-                                <apex:inputCheckbox styleClass="skip-element-TRTOMED"  id="TRTOMED__c" value="{!form.obj[bfVariableMap['TRTOMED']]}"/>
-                                Takes oral medication
-                            </label>
-                        </div>
-                        
-                        <!--injections-->
-                        <div class="checkbox">
-                            <label>
-                                <apex:inputCheckbox value="{!form.obj[bfVariableMap['TRTINJ']]}" styleClass="skip-element-TRTINJ" id="TRTINJ__c"/>
-                                Receives injections (e.g., allergy shots, insulin for diabetes)                      
-                            </label>
-                        </div>
-                        <!--physical limitations-->
-                        <div class="checkbox">
-                            <label>
-                                <apex:inputCheckbox value="{!form.obj[bfVariableMap['TRTPL']]}" styleClass="skip-element-TRTPL" id="TRTPL__c"/>
-                                Has physical limitations (e.g., restriction on activities, limitations due to illness or condition)
-                            </label>
-                        </div>
-                        <!--diet-->
-                        <div class="checkbox">
-                            <label>
-                                <apex:inputCheckbox value="{!form.obj[bfVariableMap['TRTPD']]}" styleClass="skip-element-TRTPD" id="TRTPD__c"/>
-                                Follows a prescribed diet
-                            </label>
-                        </div>
-                        <!--unknown-->
-                        <div class="checkbox">
-                            <label>
-                                <apex:inputCheckbox value="{!form.obj[bfVariableMap['TRTUK']]}" styleClass="skip-element-TRTUK" id="TRTUK__c"/>
-                                Unknown
-                            </label>
-                        </div>
-                        <!--other-->
-                        <div class="checkbox">
-                            <label>
-                                <apex:inputCheckbox value="{!form.obj[bfVariableMap['TRTOTHR']]}" styleClass="skip-element-TRTOTHR" id="TRTOTHR__c" onChange="skipLogic('TRTOTHR',this.checked)"/>
-                                Other
-                            </label>
-                            <!--Conditional, specify other-->
-                            <div class="skip-TRTOTSP">
-                                <label class="col-md-4 col-lg-4 control-label specify-label">
-                                    <apex:outputLabel value=" Please specify: " for="TRTOTSP__c"/>
+                </div>                
+                    <!--Conditional if course of treatment exists-->
+                    <div class="form-group skip-TRTOMED">
+                        <label class="col-md-6 col-lg-6 control-label">
+                            <span class="nmbr"></span>
+                            Please identify the course of treatment. <strong>(Select all that apply.)</strong>
+                        </label>
+                        <div class="col-md-6 col-lg-6">
+                            <!--oral medication-->
+                            <div class="checkbox">
+                                <label>             
+                                    <apex:inputCheckbox styleClass="skip-element-TRTOMED"  id="TRTOMED__c" value="{!form.obj[bfVariableMap['TRTOMED']]}"/>
+                                    Takes oral medication
                                 </label>
-                                <div class="col-md-4 col-lg-4 specify-input">
-                                    <apex:inputField styleClass="form-control input-sm skip-element-TRTOTSP" id="TRTOTSP__c" value="{!form.obj[bfVariableMap['TRTOTSP']]}"/>
-                                </div>
+                            </div>                        
+                            <!--injections-->
+                            <div class="checkbox">
+                                <label>
+                                    <apex:inputCheckbox value="{!form.obj[bfVariableMap['TRTINJ']]}" styleClass="skip-element-TRTINJ" id="TRTINJ__c"/>
+                                    Receives injections (e.g., allergy shots, insulin for diabetes)                      
+                                </label>
                             </div>
-                            <!--end other conditional-->
+                            <!--physical limitations-->
+                            <div class="checkbox">
+                                <label>
+                                    <apex:inputCheckbox value="{!form.obj[bfVariableMap['TRTPL']]}" styleClass="skip-element-TRTPL" id="TRTPL__c"/>
+                                    Has physical limitations (e.g., restriction on activities, limitations due to illness or condition)
+                                </label>
+                            </div>
+                            <!--diet-->
+                            <div class="checkbox">
+                                <label>
+                                    <apex:inputCheckbox value="{!form.obj[bfVariableMap['TRTPD']]}" styleClass="skip-element-TRTPD" id="TRTPD__c"/>
+                                    Follows a prescribed diet
+                                </label>
+                            </div>
+                            <!--other-->
+                            <div class="checkbox">
+                                <label>
+                                    <apex:inputCheckbox value="{!form.obj[bfVariableMap['TRTOTHR']]}" styleClass="skip-element-TRTOTHR" id="TRTOTHR__c" onChange="skipLogic('TRTOTHR',this.checked)"/>
+                                    Other
+                                </label>
+                                <!--Conditional, specify other-->
+                                <div class="skip-TRTOTSP">
+                                    <label class=" control-label specify-label">
+                                        <apex:outputLabel value=" Please specify: " for="TRTOTSP__c"/>
+                                    </label>
+                                    <div class=" specify-input">
+                                        <apex:inputField styleClass="form-control input-sm skip-element-TRTOTSP" id="TRTOTSP__c" value="{!form.obj[bfVariableMap['TRTOTSP']]}"/>
+                                    </div>
+                                </div>
+                                <!--end other conditional-->    
+                            </div>      
+                            <!--unknown-->
+                            <div class="checkbox">
+                                <label>
+                                    <apex:inputCheckbox value="{!form.obj[bfVariableMap['TRTUK']]}" styleClass="skip-element-TRTUK" id="TRTUK__c"/>
+                                    Unknown
+                                </label>
+                            </div>              
                         </div>
-                        
+                        <!--end checkboxes-->
                     </div>
-                    
-                </div>
+                    <!--end conditional-->
                 
                 <!--3. Have there been extra services used?-->
                 <div class="form-group">

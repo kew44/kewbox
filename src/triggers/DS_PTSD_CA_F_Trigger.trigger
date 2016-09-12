@@ -1,6 +1,7 @@
 trigger DS_PTSD_CA_F_Trigger on DS_PTSD_CA_F__c (before insert, before update, after insert, after update) {
     
     Utility ut = new Utility();
+    ReportBuilder rb = new ReportBuilder();
     
     if(Trigger.isBefore) {
         
@@ -21,6 +22,7 @@ trigger DS_PTSD_CA_F_Trigger on DS_PTSD_CA_F__c (before insert, before update, a
     
     
     if(Trigger.isAfter) { 
+        rb.cocap(Trigger.new);
         
         ut.updateSummaryStatusForMergedObject(Trigger.new);
         

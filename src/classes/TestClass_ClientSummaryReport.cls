@@ -12,6 +12,8 @@
 *@date 2/3/16
 *@modified date
 *Purpose: Coverage for ClientSummaryController
+*
+*@modified    9/8-9/16    KW    coverage for reports
 ****/
 
 @isTest (SeeAllData=false)
@@ -26,6 +28,9 @@ public class TestClass_ClientSummaryReport {
     *@description Initialize reference to Utility
     ****/
     public static Utility ut = new Utility();
+  //  public static DS_Background_Family_Info_B__c bb = ut.backgroundB();
+    
+    public static ReportBuilder rb = new ReportBuilder();
     
     /****
     *@description Load required data from TestClassData
@@ -35,7 +40,7 @@ public class TestClass_ClientSummaryReport {
         TestClassData_DS_DATA importData = new TestClassData_DS_DATA();  
         importData.variable(); 
         importData.cbcl();     
-        importData.ptsd();      
+        importData.ptsd();    
     }
     
     /****
@@ -44,17 +49,32 @@ public class TestClass_ClientSummaryReport {
     ****/
     static TestMethod void Test_ClientSummaryReportBaselineYoung() {
         
+        Custom_Reporting__c cReport = new Custom_Reporting__c();
+        
         TestClass_ClientSummaryReport clientSummary = new TestClass_ClientSummaryReport();
         
         Client__c client = test_ut.createClient(test_ut.getClient('Female', 4));
         
-        DS_Background_Family_Info_B__c background = new DS_Background_Family_Info_B__c(Client__c = client.id);
+        DS_Background_Family_Info_B__c background = test_ut.backgroundB();//new DS_Background_Family_Info_B__c(Client__c = client.id);
         
         background.BMET__c = '1';
         background.BDOV__c = date.today();
         background.RWHITE__c = true;
-        
+                
         insert background;
+        
+        //use background object as parameter for report methods
+        rb.findAge(client);
+        rb.findRace(background);
+        rb.findEthnic(background);
+        rb.findGender(background);
+      //  TestClass_ReportBuilder reportBuild = new TestClass_ReportBuilder();
+       // reportBuild.testNewReport();
+       // rb.cocap();
+        
+        cReport.Id__c = client.id;
+        cReport.AgeCurrentAge__c = client.Current_Age__c;
+        
         
         DS_Functioning_Forms_B__c functioning = new DS_Functioning_Forms_B__c(Client__c = client.id);
         

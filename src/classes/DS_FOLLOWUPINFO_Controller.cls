@@ -126,8 +126,8 @@ public with sharing class DS_FOLLOWUPINFO_Controller extends DS_BasicForm_Contro
         options.add(new SelectOption('2','Other adult relative'));
         options.add(new SelectOption('3','State'));
         options.add(new SelectOption('4','Emancipated minor (self)'));
-        options.add(new SelectOption('99','Unknown'));
         options.add(new SelectOption('98','Other'));
+        options.add(new SelectOption('99','Unknown'));
         
         return options;
     }

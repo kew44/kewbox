@@ -48,8 +48,8 @@
                             <tr>
                                 <th rowspan="1" class="span1">#</th>
                                 <th rowspan="1" class="span2" style="width:361px;">Trauma Type</th>
-                                <th rowspan="1" class="span3" style="width:150px;">Has child experienced<br/> this trauma? <br/>(Answer all trauma types.)</th>
-                                <th colspan="20" class="span4">When was this type of trauma experienced?<br/>Age in years: (Select all ages that apply.)</th>
+                                <th rowspan="1" style="width:150px;"><!--class="span3" --><strong>Has child experienced<br/> this trauma? </strong><br/>(Answer all trauma types.)</th>
+                                <th colspan="20"><!-- class="span4"--><strong>When was this type of trauma experienced?</strong><br/>Age in years: (Select all ages that apply.)</th>
                             </tr>
                         </thead>
                         <!--end headings-->
@@ -101,7 +101,7 @@
                         <!--24. Which trauma type is the primary focus of this treatment>-->
                         <tr>
                             <td>24</td>
-                            <td>What is the primary focus of the current treatment? (Select only one.)</td>
+                            <td>What is the primary focus of the current treatment? <strong>(Select only one.)</strong></td>
                             <td class="GT-primary" style="text-align:left !important; vertical-align: middle !important;" colspan="21">
                                 <apex:selectList size="1" styleClass="form-control primarySelect" value="{!form.obj[bfVariableMap['GTPRIMRY']]}" multiselect="false">
                                     <apex:selectOptions value="{!PrimaryType}"/>

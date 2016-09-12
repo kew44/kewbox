@@ -74,7 +74,7 @@
                         <!--q3 question-->
                         <label class="col-md-6 col-lg-6 control-label">
                             <span class="nmbr">3.</span>
-                                What treatment is this child/family receiving through a therapist participating in a breakthrough series or other learning collaborative? (Select only one.) 
+                                What treatment is this child/family receiving through a therapist participating in a breakthrough series or other learning collaborative? <strong>(Select only one.) </strong>
                         </label>
                         
                         <!--q3 answer choices-->
@@ -108,7 +108,7 @@
                     <!--5. Was treatment completed?-->
                     <div class="form-group skip-NCCTSBSLC">    <!--Conditional, if Q1 yes----->
                         <div class="alert alert-info"> 
-                            Complete question 5 after the child/family has terminated <u>this</u> treatment.<br/>
+                            <strong>Complete question 5 after the child/family has terminated <u>this</u> treatment.</strong><br/>
                         </div>                          
                         <!--q5 question-->
                         <label class="col-md-6 col-lg-6 control-label">

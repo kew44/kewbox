@@ -70,8 +70,10 @@
     </miniLayout>
     <relatedLists>
         <fields>Name</fields>
-        <fields>Headline</fields>
+        <fields>Content</fields>
+        <fields>Persona</fields>
         <fields>Posted</fields>
+        <fields>Parent</fields>
         <fields>PostUrl</fields>
         <relatedList>InReplyToList</relatedList>
     </relatedLists>

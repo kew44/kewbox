@@ -1,6 +1,7 @@
 trigger DS_Background_Family_Info_F_Trigger on DS_Background_Family_Info_F__c (before insert, before update, after insert, after delete, after update) {
     
     Utility ut = new Utility();    
+    ReportBuilder rb = new ReportBuilder();
     
     if(Trigger.isBefore) {
         
@@ -23,6 +24,7 @@ trigger DS_Background_Family_Info_F_Trigger on DS_Background_Family_Info_F__c (b
     if(Trigger.isAfter) { 
         
         FormBuilder.FormDisplayLogic(Trigger.new);
+        rb.cocap(Trigger.new);
         
         ut.updateSummaryStatusForMergedObject(Trigger.new);
 

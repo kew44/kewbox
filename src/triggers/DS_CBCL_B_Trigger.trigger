@@ -1,6 +1,7 @@
 trigger DS_CBCL_B_Trigger on DS_CBCL_B__c (before insert, before update, after insert, after update) {
     
     Utility ut = new Utility();
+    ReportBuilder rb = new ReportBuilder();
     
     List<String> clientIDs = new List<String>();
     
@@ -15,7 +16,7 @@ trigger DS_CBCL_B_Trigger on DS_CBCL_B__c (before insert, before update, after i
                 
         Map<Id, Client__c> clients = 
             new Map<Id, Client__c>([SELECT id, Gender__c, AGE__c, 
-                                    	   DOB1__c, CURRENT_AGE__c
+                                           DOB1__c, CURRENT_AGE__c
                                     FROM Client__c
                                     WHERE id IN : clientIDs]);
         
@@ -31,6 +32,7 @@ trigger DS_CBCL_B_Trigger on DS_CBCL_B__c (before insert, before update, after i
     
     if(Trigger.isAfter) { 
         
+        rb.cocap(Trigger.new);
         ut.updateSummaryStatusForMergedObject(Trigger.new);
         
         AuditTrail audit = new AuditTrail(Trigger.new, Trigger.old); 

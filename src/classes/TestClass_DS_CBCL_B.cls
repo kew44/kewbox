@@ -13,6 +13,9 @@
 *@author Kelsey Willett
 *@date 11/18/2015
 *@modified date
+*
+*@modified    9/8/16    KW    coverage?
+*@modified    9/9/16    KW    reduced bulk
 ****/
 
 @isTest (SeeAllData=false)
@@ -27,6 +30,8 @@ private class TestClass_DS_CBCL_B  {
     *@description Initialize reference to Utility
     ****/
     public static Utility ut = new Utility();
+    
+    public static ReportBuilder rb = new ReportBuilder();
     
     /****
     *@description Load required data from TestClassData
@@ -55,7 +60,7 @@ private class TestClass_DS_CBCL_B  {
         List<DS_CBCL_B__c> bulkObj = new List<DS_CBCL_B__c>();
                 
         ///begin bulk insert     
-        for (Integer i=0;i<200;i++){
+        for (Integer i=0;i<100;i++){
             //add record with required values
             bulkObj.add(new DS_CBCL_B__c(client__c = client.id,
                                         BDOACY__c = date.today(), 
@@ -63,11 +68,11 @@ private class TestClass_DS_CBCL_B  {
                                         BCBAPPCN__c = 0 ));
         }
         
-        test.startTest();
+  //      test.startTest();
         //add list of records to object
         insert bulkObj;  
         
-        test.stopTest();
+      //  test.stopTest();
         
     }
         
@@ -78,9 +83,14 @@ private class TestClass_DS_CBCL_B  {
     *some variables asserted may represent required values for certain logic
     ****/
     static TestMethod void assertControllers(){
+        Custom_Reporting__c cReport = new Custom_Reporting__c();
     
         //create test client 
         Client__c client = test_ut.createClient(test_ut.getClient('Male', 4));
+        
+        cReport.AgeCurrentAge__c = 4;
+        cReport.GenderIdentity__c = client.GENDER__c;
+      //  insert cReport;
         
         DS_DATA__c dataPage = [SELECT id FROM DS_DATA__c 
                                 WHERE Page__c = 'DS_CBCL_0_5'
@@ -493,7 +503,7 @@ private class TestClass_DS_CBCL_B  {
         System.assertEquals(59, cbcl.BCBSOTN__c, 'Social Problems T-score BCBSOTN is wrong.');
         System.assertEquals('81', cbcl.BCBSOP__c, 'Social Problems Percentile BCBSOP is wrong.');
         
-		// Thought Problems
+        // Thought Problems
         System.assertEquals(66, cbcl.BCBTPTN__c, 'Social Problems T-score BCBTPTN is wrong.');
         System.assertEquals('95', cbcl.BCBTPP__c, 'Social Problems Percentile BCBTPP is wrong.');        
         
@@ -627,7 +637,7 @@ private class TestClass_DS_CBCL_B  {
         System.assertEquals(69, cbcl.BCBSOTN__c, 'Social Problems T-score BCBSOTN is wrong.');
         System.assertEquals('97', cbcl.BCBSOP__c, 'Social Problems Percentile BCBSOP is wrong.');
         
-		// Thought Problems
+        // Thought Problems
         System.assertEquals(66, cbcl.BCBTPTN__c, 'Social Problems T-score BCBTPTN is wrong.');
         System.assertEquals('95', cbcl.BCBTPP__c, 'Social Problems Percentile BCBTPP is wrong.');        
         

@@ -83,7 +83,7 @@
                     <apex:outputPanel layout="none" rendered="{!if(clinicalRange != '', true, false)}">
                         <p>
                             <br/>
-                            <h4><u>Clinical Range </u></h4>
+                            <strong><u>Clinical Range </u></strong>
                             <br/>
                             The child’s symptoms on the following scales are clinically significant compared to other children their age: <b>{!clinicalRange}</b><br/>
                         </p>  

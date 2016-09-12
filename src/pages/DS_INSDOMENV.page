@@ -37,146 +37,154 @@
                         </apex:selectRadio>
                     </div>
                 </div>
-                
-                
-                <div class="form-group skip-CINPUB">
-                    
-                    <label class="col-md-6 col-lg-6 control-label">
-                        <span class="nmbr">1a.</span>
-                        What type of public or private health insurance is currently covering the child?<strong> (Select all that apply.)</strong>
-                    </label>
-                    
-                    <div class="col-md-6 col-lg-6">
+                    <!--conditional if yes-->
+                    <div class="form-group skip-CINPUB">
                         
-                        <!--public insurance-->
-                        <div class="checkbox">
-                            <label>
-                                <apex:inputCheckbox styleClass="skip-element-CINPUB" id="CINPUB__c" value="{!form.obj[bfVariableMap['CINPUB']]}" label="Public" onChange="skipLogic('CINPUB',this.checked)"/>
-                                Public
-                            </label> 
-                        </div> 
-                        <div class="row">
-                            <div class="col-md-11 col-lg-11 col-md-offset-1 col-lg-offset-1">
-                                <div class="skip-CINCHIP">
-                                    <div class="skipContent">
-                                        <!--Chip-->
-                                        <div class="checkbox">
-                                            <label>             
-                                                <apex:inputCheckbox styleClass="skip-element-CINCHIP"  id="CINCHIP__c" value="{!form.obj[bfVariableMap['CINCHIP']]}" label="Children’s Health Insurance Program (CHIP)"/>
-                                                Children’s Health Insurance Program (CHIP)
-                                            </label>
-                                        </div>
-                                        <!--Indian Health Service-->
-                                        <div class="checkbox">
-                                            <label>             
-                                                <apex:inputCheckbox styleClass="skip-element-CINIH"  id="CINIH__c" value="{!form.obj[bfVariableMap['CINIH']]}" label="Indian Health Service"/>
-                                                Indian Health Service
-                                            </label>
-                                        </div>
-                                        <!--Medicaid-->
-                                        <div class="checkbox">
-                                            <label>             
-                                                <apex:inputCheckbox styleClass="skip-element-CINMEDD"  id="CINMEDD__c" value="{!form.obj[bfVariableMap['CINMEDD']]}" label="Medicaid"/>
-                                                Medicaid
-                                            </label>
-                                        </div>
-                                        <!--Medicare-->
-                                        <div class="checkbox">
-                                            <label>             
-                                                <apex:inputCheckbox styleClass="skip-element-CINMEDR"  id="CINMEDR__c" value="{!form.obj[bfVariableMap['CINMEDR']]}" label="Medicare"/>
-                                                Medicare
-                                            </label>
-                                        </div>
-                                        <!--Military-->
-                                        <div class="checkbox">
-                                            <label>             
-                                                <apex:inputCheckbox styleClass="skip-element-CINMHC"  id="CINMHC__c" value="{!form.obj[bfVariableMap['CINMHC']]}" label="Military health care (TRICARE, CHAMPVA)"/>
-                                                Military health care (TRICARE, CHAMPVA)
-                                            </label>
-                                        </div> 
-                                        <!--Unknown-->
-                                        <div class="checkbox">
-                                            <label>             
-                                                <apex:inputCheckbox styleClass="skip-element-CINPBUK"  id="CINPBUK__c" value="{!form.obj[bfVariableMap['CINPBUK']]}" label="Unknown"/>
-                                                Unknown
-                                            </label>
-                                        </div>                
-                                        <!--Other-->
-                                        <div class="checkbox">
-                                            <label>             
-                                                <apex:inputCheckbox styleClass="skip-element-CINOPUB"  id="CINOPUB__c" value="{!form.obj[bfVariableMap['CINOPUB']]}" label="Other public" onChange="skipLogic('CINOPUB',this.checked)"/>
-                                                Other public
-                                            </label>
-                                        </div>
-                                    </div><!--end checkboxes-->
-                                    <div class="form-group no-border-bottom no-space-bottom skip-CINOPSP">
-                                        <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please specify:" for="CINOPSP__c"/> 
-                                        <div class="col-md-4 col-lg-4 specify-input">                           
-                                            <apex:inputField styleClass="form-control skip-element-CINOPSP input-sm"  id="CINOPSP__c" value="{!form.obj[bfVariableMap['CINOPSP']]}"/>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--private insurance-->
-                        <div class="checkbox">
-                            <label>
-                                <apex:inputCheckbox styleClass="skip-element-CINPRIV"  id="CINPRIV__c" value="{!form.obj[bfVariableMap['CINPRIV']]}" label="Private" onChange="skipLogic('CINPRIV',this.checked)"/>
-                                Private
-                            </label>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-11 col-lg-11 col-md-offset-1 col-lg-offset-1">
-                                <div class="skip-CINHMO"> 
-                                    <div class="skipContent">
-                                        <!--HMO-->
-                                        <div class="checkbox">                                                
-                                            <label>             
-                                                <apex:inputCheckbox styleClass="skip-element-CINHMO"  id="CINHMO__c" value="{!form.obj[bfVariableMap['CINHMO']]}" label="HMO"/>
-                                                HMO
-                                            </label>
-                                        </div>
-                                        <!--PPO-->
-                                        <div class="checkbox">
-                                            <label>              
-                                                <apex:inputCheckbox styleClass="skip-element-CINPPO"  id="CINPPO__c" value="{!form.obj[bfVariableMap['CINPPO']]}" label="PPO"/>
-                                                PPO
-                                            </label>
-                                        </div>
-                                        <!--fee for service-->
-                                        <div class="checkbox">
-                                            <label> 
-                                                <apex:inputCheckbox styleClass="skip-element-CINFFS"  id="CINFFS__c" value="{!form.obj[bfVariableMap['CINFFS']]}" label="Fee-for-service"/>
-                                                Fee-for-service
-                                            </label>
-                                        </div>
-                                        <!--unknown-->
-                                        <div class="checkbox">
-                                            <label> 
-                                                <apex:inputCheckbox styleClass="skip-element-CINPRUK"  id="CINPRUK__c" value="{!form.obj[bfVariableMap['CINPRUK']]}" label="Unknown"/>
-                                                Unknown
-                                            </label>
-                                        </div>
-                                        <!--other-->
-                                        <div class="checkbox">
-                                            <label> 
-                                                <apex:inputCheckbox styleClass="skip-element-CINOPRI"  id="CINOPRI__c" value="{!form.obj[bfVariableMap['CINOPRI']]}" label="Other private" onChange="skipLogic('CINOPRI',this.checked)"/>
-                                                Other private
-                                            </label>                         
-                                        </div>
-                                        <div class="form-group no-border-bottom no-space-bottom skip-CINOPRS"><!--Conditional if other, specify-->
-                                            <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please specify:" for="CINOPRS__c"/>
-                                            <div class="col-md-4 col-lg-4 specify-input">
-                                                <apex:inputField styleClass="form-control skip-element-CINOPRS input-sm"  id="CINOPRS__c" value="{!form.obj[bfVariableMap['CINOPRS']]}" />
+                        <label class="col-md-6 col-lg-6 control-label">
+                            <span class="nmbr">1a.</span>
+                            What type of public or private health insurance is currently covering the child?<strong> (Select all that apply.)</strong>
+                        </label>
+                        <!--checkboxes-->
+                        <div class="col-md-6 col-lg-6">                         
+                            <!--public insurance-->
+                            <div class="checkbox">
+                                <label>
+                                    <apex:inputCheckbox styleClass="skip-element-CINPUB" id="CINPUB__c" value="{!form.obj[bfVariableMap['CINPUB']]}" label="Public" onChange="skipLogic('CINPUB',this.checked)"/>
+                                    Public
+                                </label> 
+                            </div> 
+                            <div class="row">
+                                <!--public conditional-->
+                                <div class="col-md-11 col-lg-11 col-md-offset-1 col-lg-offset-1">
+                                    <div class="skip-CINCHIP">
+                                        <div class="skipContent">
+                                            <!--Chip-->
+                                            <div class="checkbox">
+                                                <label>             
+                                                    <apex:inputCheckbox styleClass="skip-element-CINCHIP"  id="CINCHIP__c" value="{!form.obj[bfVariableMap['CINCHIP']]}" label="Children’s Health Insurance Program (CHIP)"/>
+                                                    Children’s Health Insurance Program (CHIP)
+                                                </label>
                                             </div>
-                                        </div><!--end other conditional-->
+                                            <!--Indian Health Service-->
+                                            <div class="checkbox">
+                                                <label>             
+                                                    <apex:inputCheckbox styleClass="skip-element-CINIH"  id="CINIH__c" value="{!form.obj[bfVariableMap['CINIH']]}" label="Indian Health Service"/>
+                                                    Indian Health Service
+                                                </label>
+                                            </div>
+                                            <!--Medicaid-->
+                                            <div class="checkbox">
+                                                <label>             
+                                                    <apex:inputCheckbox styleClass="skip-element-CINMEDD"  id="CINMEDD__c" value="{!form.obj[bfVariableMap['CINMEDD']]}" label="Medicaid"/>
+                                                    Medicaid
+                                                </label>
+                                            </div>
+                                            <!--Medicare-->
+                                            <div class="checkbox">
+                                                <label>             
+                                                    <apex:inputCheckbox styleClass="skip-element-CINMEDR"  id="CINMEDR__c" value="{!form.obj[bfVariableMap['CINMEDR']]}" label="Medicare"/>
+                                                    Medicare
+                                                </label>
+                                            </div>
+                                            <!--Military-->
+                                            <div class="checkbox">
+                                                <label>             
+                                                    <apex:inputCheckbox styleClass="skip-element-CINMHC"  id="CINMHC__c" value="{!form.obj[bfVariableMap['CINMHC']]}" label="Military health care (TRICARE, CHAMPVA)"/>
+                                                    Military health care (TRICARE, CHAMPVA)
+                                                </label>
+                                            </div> 
+                                            <!--Other-->
+                                            <div class="checkbox">
+                                                <label>             
+                                                    <apex:inputCheckbox styleClass="skip-element-CINOPUB"  id="CINOPUB__c" value="{!form.obj[bfVariableMap['CINOPUB']]}" label="Other public" onChange="skipLogic('CINOPUB',this.checked)"/>
+                                                    Other public
+                                                </label>
+                                            </div>
+                                                <!--specify-->
+                                                <div class="form-group no-border-bottom no-space-bottom skip-CINOPSP">
+                                                    <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please specify:" for="CINOPSP__c"/> 
+                                                    <div class="col-md-4 col-lg-4 specify-input">                           
+                                                        <apex:inputField styleClass="form-control skip-element-CINOPSP input-sm"  id="CINOPSP__c" value="{!form.obj[bfVariableMap['CINOPSP']]}"/>
+                                                    </div>
+                                                </div>
+                                                <!--end specify-->
+                                            <!--Unknown-->
+                                            <div class="checkbox">
+                                                <label>             
+                                                    <apex:inputCheckbox styleClass="skip-element-CINPBUK"  id="CINPBUK__c" value="{!form.obj[bfVariableMap['CINPBUK']]}" label="Unknown"/>
+                                                    Unknown
+                                                </label>
+                                            </div>                
+                                        </div>
+                                        <!--end checkboxes-->
+                                    </div>
+                                </div>
+                                <!--end public conditional-->
+                            </div>
+                            <!--private insurance-->
+                            <div class="checkbox">
+                                <label>
+                                    <apex:inputCheckbox styleClass="skip-element-CINPRIV"  id="CINPRIV__c" value="{!form.obj[bfVariableMap['CINPRIV']]}" label="Private" onChange="skipLogic('CINPRIV',this.checked)"/>
+                                    Private
+                                </label>
+                            </div>
+                            <div class="row">
+                                <!--conditional if private-->
+                                <div class="col-md-11 col-lg-11 col-md-offset-1 col-lg-offset-1">
+                                    <div class="skip-CINHMO"> 
+                                        <div class="skipContent">
+                                            <!--HMO-->
+                                            <div class="checkbox">                                                
+                                                <label>             
+                                                    <apex:inputCheckbox styleClass="skip-element-CINHMO"  id="CINHMO__c" value="{!form.obj[bfVariableMap['CINHMO']]}" label="HMO"/>
+                                                    HMO
+                                                </label>
+                                            </div>
+                                            <!--PPO-->
+                                            <div class="checkbox">
+                                                <label>              
+                                                    <apex:inputCheckbox styleClass="skip-element-CINPPO"  id="CINPPO__c" value="{!form.obj[bfVariableMap['CINPPO']]}" label="PPO"/>
+                                                    PPO
+                                                </label>
+                                            </div>
+                                            <!--fee for service-->
+                                            <div class="checkbox">
+                                                <label> 
+                                                    <apex:inputCheckbox styleClass="skip-element-CINFFS"  id="CINFFS__c" value="{!form.obj[bfVariableMap['CINFFS']]}" label="Fee-for-service"/>
+                                                    Fee-for-service
+                                                </label>
+                                            </div>
+                                            <!--other-->
+                                            <div class="checkbox">
+                                                <label> 
+                                                    <apex:inputCheckbox styleClass="skip-element-CINOPRI"  id="CINOPRI__c" value="{!form.obj[bfVariableMap['CINOPRI']]}" label="Other private" onChange="skipLogic('CINOPRI',this.checked)"/>
+                                                    Other private
+                                                </label>                         
+                                            </div>
+                                                <!--other conditional-->
+                                                <div class="form-group no-border-bottom no-space-bottom skip-CINOPRS"><!--Conditional if other, specify-->
+                                                    <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please specify:" for="CINOPRS__c"/>
+                                                    <div class="col-md-4 col-lg-4 specify-input">
+                                                        <apex:inputField styleClass="form-control skip-element-CINOPRS input-sm"  id="CINOPRS__c" value="{!form.obj[bfVariableMap['CINOPRS']]}" />
+                                                    </div>
+                                                </div>
+                                                <!--end other conditional-->
+                                            <!--unknown-->
+                                            <div class="checkbox">
+                                                <label> 
+                                                    <apex:inputCheckbox styleClass="skip-element-CINPRUK"  id="CINPRUK__c" value="{!form.obj[bfVariableMap['CINPRUK']]}" label="Unknown"/>
+                                                    Unknown
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!--end checkbox content-->
                                     </div>
                                 </div>
                             </div>
+                            <!--end private-->
                         </div>
                     </div>
-                </div>
-                
+                    <!--end conditional-->
                 <!-- 2. parent/guardian covered by any type of insurance? -->
                 <div class="form-group">
                     <label class="col-md-6 col-lg-6 control-label ">

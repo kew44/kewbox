@@ -61,6 +61,8 @@
 *
 *@modified  6/27/16 KW  TSCCA display
 *
+*@modified  9/12/16 KW  debug sdq display
+*
 *@group ClientSummaryReport
 *@group-content /ApexDocContent/ClientSummaryReport/ClientSummaryReportController.htm
 ****/
@@ -430,14 +432,10 @@ public with sharing class ClientSummaryReportController {
     */
         public ClientSummaryReportController(ApexPages.StandardController controller) {
 
-
         //vars used in url
         cID = parameter.get('c');
         cimi = Apexpages.currentPage().getParameters().get('cimi');
-
-
-
-
+        
         //visit information variables
         section = Integer.valueOf(parameter.get('section'));
         BorF = (section > 0) ? 'F' : 'B';
@@ -502,21 +500,31 @@ public with sharing class ClientSummaryReportController {
                              '  FROM DS_SDQ_PSI_CDI_' + BorF + '__c' +
                              ' WHERE client__c = \'' + cID + '\''+
                              '   AND SECTION__c = \''+ section + '\'');
-                              
+                        
+            System.debug(sdq);
+            
             if(sdq.size() > 0) {
+                //young parent
                 if(sdq.get(0).get('STATUS_SDQ_P_04_10__c')!= null) {
                     clientSDQYP = sdq.get(0);
                 }
+                //old parent
                 if(sdq.get(0).get('STATUS_SDQ_P_11_17__c')!= null) {
                     clientSDQOP = sdq.get(0);
                 }
+                //self
                 if(sdq.get(0).get('STATUS_SDQ_S_11_17__c')!= null) {
                     clientSDQOS = sdq.get(0);
                 }
+                //psi
                 if(sdq.get(0).get('STATUS_PSI__c')!= null) {
                     clientPSI = sdq.get(0);
                 }
             }
+            System.debug(clientSDQYP);
+            System.debug(clientSDQOP);
+            System.debug(clientSDQOS);
+            System.debug(clientPSI);
                             
             //TSC (TSCC-A/TSCYC)
             List<Sobject> tsc = 
@@ -570,6 +578,9 @@ public with sharing class ClientSummaryReportController {
                     SDQParentExisted = false;
                     SDQSelfExisted = false;
                     SDQExisted = false; 
+                    System.debug(SDQParentExisted);
+                    System.debug(SDQSelfExisted);
+                    System.debug(SDQExisted);
                     
                 
                 //TSYC 
@@ -891,6 +902,8 @@ public with sharing class ClientSummaryReportController {
                 /****            
                 *@description Standardized Measures criteria method (CBCL, PTSD, SDQ)-COMBINED  
                 ****/
+                
+/*can we get rid of this method? add a measure.put(,new Element()); in with the assessments' methods directly?*/
                     public void measure() {
 
                         measure = new Map<Integer, Element>();      
@@ -941,9 +954,11 @@ public with sharing class ClientSummaryReportController {
                             List<SObject> sdq =     
                                 Database.query('SELECT ' + ut.getFields('DS_SDQ_PSI_CDI_'+BorF+'__c') +   
                                                '  FROM DS_SDQ_PSI_CDI_'+BorF+'__c' +                              
-                                               ' WHERE Client__c = \''+ cID + '\'' );               
+                                               ' WHERE Client__c = \''+ cID + '\'' );      
+                            System.debug(sdq);
                                      
                             if (sdq.size() >0){
+                                System.debug(sdq.get(0));
                                 //Old
                                 if (visitAge>10){
                                     if(sdq.get(0).get('STATUS_SDQ_S_11_17__c')!= null){     
@@ -964,7 +979,7 @@ public with sharing class ClientSummaryReportController {
                                 }
                             }
                         }
-                            
+                        System.debug(measure);    
                         if(measure.size() > 0) measureExisted = true;    
                     }
 
@@ -1096,7 +1111,7 @@ public with sharing class ClientSummaryReportController {
                         }
                         else{
                             //young Parent
-                            if(clientSDQOP != null){
+                            if(clientSDQYP != null){/*changed here!*/
                                     sdqList.add(new SDQElement('SDQ Parent Overall Stress Score', Integer.valueOf(clientSDQYP.get(BorF+'SDPTOT__c')), String.valueOf(clientSDQYP.get(BorF+'SDPTYP__c'))));
                                     sdqParentExisted = true;
                             }
@@ -1106,6 +1121,14 @@ public with sharing class ClientSummaryReportController {
                             }
                         } 
                         sdqExisted=  true;
+                        
+                        System.debug(clientSDQOP);
+                        System.debug(clientSDQOS);
+                        System.debug(clientSDQYP);
+                        System.debug(sdqSelfExisted);
+                        System.debug(sdqParentExisted);
+                        System.debug(sdqList);
+                        System.debug(sdqExisted);
                     }                
             
                 /****
@@ -1198,12 +1221,12 @@ public with sharing class ClientSummaryReportController {
                         //symptoms
                         for(String t : TSCCAMap.keySet()){
                             Tscca_Text= String.valueOf(TSCCAMap.get(t));
-							
-							Tscca_Val= Integer.valueOf(clientTSCCA.get(BorF+'TSC'+t+'TN__c'));
-							
+                            
+                            Tscca_Val= Integer.valueOf(clientTSCCA.get(BorF+'TSC'+t+'TN__c'));
+                            
                             if(Tscca_Val == 999){
-								Tscca_Sig = '***';
-							}
+                                Tscca_Sig = '***';
+                            }
                             else if(Tscca_Val <= 59){
                                 Tscca_Sig = 'Normal';
                             }
@@ -1360,12 +1383,5 @@ public with sharing class ClientSummaryReportController {
                 evaluationOtherExisted = (otherEvaluation.size() > 0) ? true : false;
                 evaluationExisted = (evaluationOtherExisted == true || evaluationPrimaryExisted == true) ? true : false;
             }
-
-
-
-
-
-
-
 
           }

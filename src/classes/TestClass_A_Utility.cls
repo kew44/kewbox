@@ -7,6 +7,8 @@
 *@author Kelsey Willett
 *@date 11/18/2015
 *@modified date
+*
+*@modified    9/9/16    KW    client background
 ****/
 
 @isTest (SeeAllData=false)
@@ -34,6 +36,8 @@ public class TestClass_A_Utility {
         String param = ul.urlEncode('c=1&test=1');
         
         ul.urlDecode(param);
+        
+       // ut.backgroundB();
         
     }
     
@@ -297,8 +301,8 @@ public class TestClass_A_Utility {
         Clinician__c clinician = createClinician();
         
         for(Client__c c: clients) {
-    		c.Clinician__c = clinician.id;        
-	    }
+            c.Clinician__c = clinician.id;        
+        }
         
         insert clients;
         
@@ -324,6 +328,38 @@ public class TestClass_A_Utility {
         
         return client;
         
+    }
+    
+    /****
+    *@description method to create background b responses for client reporting
+    *@param
+    *@return
+    ****/
+    public DS_Background_Family_Info_B__c backgroundB(){
+    
+        //create client to report on
+        Client__c client = createClient();
+        
+        //client info
+        //Integer age = client.Current_Age__c;
+        
+        //background required fields for reports
+        DS_Background_Family_Info_B__c bg = new DS_Background_Family_Info_B__c();
+            
+            bg.Client__c = client.id;           
+            bg.BDOV__c = date.today();
+            bg.BMILFAMILY__c = '1';
+            bg.BMILSELF__c = '0';
+            bg.BIDENT__c = '2';
+            bg.ETHNIC__c = '2';
+            bg.RINDIAN__c = TRUE;           
+            bg.RASIANIN__c = TRUE;
+            bg.RBLACK__c = TRUE;
+            bg.RHAWAN__c = TRUE;
+            bg.RWHITE__c = TRUE;
+            
+        insert bg;
+        return bg;
     }
     
     /****
@@ -415,8 +451,8 @@ public class TestClass_A_Utility {
     }
     
     /****
-	*@description method to setup CBCL Visit 
-	****/
+    *@description method to setup CBCL Visit 
+    ****/
     public class Visit {
         
         public Date  DOACY    { get; set; }    // Date of administration
@@ -466,8 +502,8 @@ public class TestClass_A_Utility {
     }
     
     /****
-	*@description method to setup Item
-	****/
+    *@description method to setup Item
+    ****/
     public class Item{
         public String num { get; set; }
         public String question { get; set; }
@@ -489,9 +525,9 @@ public class TestClass_A_Utility {
     }
     
     /****
-	*@description method to setup GTRAUMA 
-	*@return client
-	****/
+    *@description method to setup GTRAUMA 
+    *@return client
+    ****/
     public Client__c createClientGTRAUMA() {
         
         Client__c client = createClient();
@@ -512,9 +548,9 @@ public class TestClass_A_Utility {
     }    
     
     /****
-	*@description method to test the capability of terminating scheduled jobs
-	*not currently used functionality
-	****/
+    *@description method to test the capability of terminating scheduled jobs
+    *not currently used functionality
+    ****/
     public void terminateSchduledJob() {
         
         List<CronTrigger> cronJob = [SELECT id FROM CronTrigger];

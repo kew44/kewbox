@@ -158,7 +158,7 @@
                 
                 <!--directions-->
                 <div class="alert alert-info">
-                    <strong>If service member(s) indicated in question 1 is the client, caregiver, or immediate family member (e.g., father, sister), please answer the following questions for each family member. <br> If not, skip to the next section of the Follow-Up Visit, "FAPGAR."</br></strong>
+                    <strong>If service member(s) indicated in question 1 is the client, caregiver, or immediate family member (e.g., father, sister), please answer the following questions for each family member. <br> If not, skip to the next section of the {!if(form.borf = 'B', 'Baseline', 'Follow-Up')} Visit, "FAPGAR."</br></strong>
                 </div>
                 <!--end directions-->
                 
@@ -546,13 +546,6 @@
                                                 Chronic pain or fatigue/musculoskeletal pain
                                             </label>
                                         </div>
-                                        <!--unknown-->  
-                                        <div class="skipContent checkbox">
-                                            <label>
-                                                <apex:inputCheckbox styleClass=" skip-element-MPIUK"  id="MPIUK__c" value="{!form.obj[bfVariableMap['MPIUK']]}" label="Unknown"/>
-                                                Unknown
-                                            </label>
-                                        </div>  
                                         <!--other-->  
                                         <div class="skipContent checkbox">
                                             <label>
@@ -560,13 +553,21 @@
                                                 Other
                                             </label>
                                         </div>
-                                        <!--conditional if other, specify-->
-                                        <div class="skipContent skip-MPIOSP form-group no-border-bottom no-space-bottom">
-                                            <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please specify:" for="MPIOSP__c"/>
-                                            <div class="col-md-4 col-lg-4 specify-input">
-                                                <apex:inputField styleClass=" input-sm form-control skip-element-MPIOSP" id="MPIOSP__c" value="{!form.obj[bfVariableMap['MPIOSP']]}" />                                                        
-                                            </div> 
-                                        </div>                            
+                                            <!--conditional if other, specify-->
+                                            <div class="skipContent skip-MPIOSP form-group no-border-bottom no-space-bottom">
+                                                <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please specify:" for="MPIOSP__c"/>
+                                                <div class="col-md-4 col-lg-4 specify-input">
+                                                    <apex:inputField styleClass=" input-sm form-control skip-element-MPIOSP" id="MPIOSP__c" value="{!form.obj[bfVariableMap['MPIOSP']]}" />                                                        
+                                                </div> 
+                                            </div>               
+                                            <!--end other conditional-->
+                                        <!--unknown-->  
+                                        <div class="skipContent checkbox">
+                                            <label>
+                                                <apex:inputCheckbox styleClass=" skip-element-MPIUK"  id="MPIUK__c" value="{!form.obj[bfVariableMap['MPIUK']]}" label="Unknown"/>
+                                                Unknown
+                                            </label>
+                                        </div>  
                                     </div>
                                 </div>
                             </div>
@@ -610,14 +611,7 @@
                                             <label>             
                                                 <apex:inputCheckbox styleClass=" skip-element-MSTSUIC"  id="MSTSUIC__c" value="{!form.obj[bfVariableMap['MSTSUIC']]}" label="Suicidal thoughts or attempts  "/>
                                                 Suicidal thoughts or attempts
-                                                 </label>
-                                        </div>
-                                        <!--unknown-->
-                                        <div class="skipContent checkbox">
-                                            <label>             
-                                                <apex:inputCheckbox styleClass=" skip-element-MSTUK"  id="MSTUK__c" value="{!form.obj[bfVariableMap['MSTUK']]}" label="Unknown  "/>
-                                                Unknown
-                                            </label>
+                                             </label>
                                         </div>
                                         <!--other-->  
                                         <div class="skipContent checkbox">
@@ -627,11 +621,18 @@
                                             </label>
                                         </div>
                                         <!--conditional if other, specify-->
-                                        <div class="skipContent skip-MSTOSP form-group no-border-bottom no-space-bottom">
-                                            <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please specify:" for="MSTOSP__c"/>
-                                            <div class="col-md-4 col-lg-4 specify-input">
-                                                <apex:inputField styleClass="input-sm form-control skip-element-MSTOSP" id="MSTOSP__c" value="{!form.obj[bfVariableMap['MSTOSP']]}" />
+                                            <div class="skipContent skip-MSTOSP form-group no-border-bottom no-space-bottom">
+                                                <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please specify:" for="MSTOSP__c"/>
+                                                <div class="col-md-4 col-lg-4 specify-input">
+                                                    <apex:inputField styleClass="input-sm form-control skip-element-MSTOSP" id="MSTOSP__c" value="{!form.obj[bfVariableMap['MSTOSP']]}" />
+                                                </div>
                                             </div>
+                                        <!--unknown-->
+                                        <div class="skipContent checkbox">
+                                            <label>             
+                                                <apex:inputCheckbox styleClass=" skip-element-MSTUK"  id="MSTUK__c" value="{!form.obj[bfVariableMap['MSTUK']]}" label="Unknown  "/>
+                                                Unknown
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
@@ -678,13 +679,6 @@
                                                 Suicide
                                             </label>
                                         </div>
-                                        <!--unknown-->
-                                        <div class="skipContent checkbox">
-                                            <label>             
-                                                <apex:inputCheckbox styleClass=" skip-element-MKILUK"  id="MKILUK__c" value="{!form.obj[bfVariableMap['MKILUK']]}" label="Unknown"/>
-                                                Unknown
-                                            </label>
-                                        </div>
                                         <!--other-->
                                         <div class="skipContent checkbox">
                                             <label>             
@@ -692,12 +686,19 @@
                                                 Other                                                   
                                             </label>
                                         </div>
-                                        <!--conditional if other, specify-->
-                                        <div class="skipContent skip-MKILOSP form-group no-border-bottom no-space-bottom">
-                                            <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please specify:" for="MKILOSP__c"/>
-                                            <div class="col-md-4 col-lg-4 specify-input">
-                                                <apex:inputField styleClass="input-sm form-control skip-element-MKILOSP" id="MKILOSP__c" value="{!form.obj[bfVariableMap['MKILOSP']]}"/>
+                                            <!--conditional if other, specify-->
+                                            <div class="skipContent skip-MKILOSP form-group no-border-bottom no-space-bottom">
+                                                <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please specify:" for="MKILOSP__c"/>
+                                                <div class="col-md-4 col-lg-4 specify-input">
+                                                    <apex:inputField styleClass="input-sm form-control skip-element-MKILOSP" id="MKILOSP__c" value="{!form.obj[bfVariableMap['MKILOSP']]}"/>
+                                                </div>
                                             </div>
+                                        <!--unknown-->
+                                        <div class="skipContent checkbox">
+                                            <label>             
+                                                <apex:inputCheckbox styleClass=" skip-element-MKILUK"  id="MKILUK__c" value="{!form.obj[bfVariableMap['MKILUK']]}" label="Unknown"/>
+                                                Unknown
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
@@ -754,13 +755,6 @@
                                     Access to benefits (e.g., VA, GI Bill)
                                     </label>
                             </div>
-                            <!--unknown-->  
-                            <div class="skipContent checkbox">
-                                <label>             
-                                    <apex:inputCheckbox styleClass=" skip-element-MDIFRIUK"  id="MDIFRIUK__c" value="{!form.obj[bfVariableMap['MDIFRIUK']]}" label="Unknown "/>
-                                    Unknown
-                                </label>
-                            </div>
                             <!--other-->  
                             <div class="skipContent checkbox">
                                 <label>             
@@ -768,12 +762,19 @@
                                     Other<br/>                                                    
                                 </label>
                             </div>
-                            <!--conditional if other, specify-->
-                            <div class="skipContent skip-MDIFRIOSP form-group no-border-bottom no-space-bottom">
-                                <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please specify:" for="MKILOSP__c"/>
-                                <div class="col-md-4 col-lg-4 specify-input">
-                                    <apex:inputField styleClass="form-control input-sm skip-element-MDIFRIOSP" id="MDIFRIOSP__c" value="{!form.obj[bfVariableMap['MDIFRIOSP']]}"/>
+                                <!--conditional if other, specify-->
+                                <div class="skipContent skip-MDIFRIOSP form-group no-border-bottom no-space-bottom">
+                                    <apex:outputLabel styleClass="col-md-4 col-lg-4 control-label specify-label" value="Please specify:" for="MKILOSP__c"/>
+                                    <div class="col-md-4 col-lg-4 specify-input">
+                                        <apex:inputField styleClass="form-control input-sm skip-element-MDIFRIOSP" id="MDIFRIOSP__c" value="{!form.obj[bfVariableMap['MDIFRIOSP']]}"/>
+                                    </div>
                                 </div>
+                            <!--unknown-->  
+                            <div class="skipContent checkbox">
+                                <label>             
+                                    <apex:inputCheckbox styleClass=" skip-element-MDIFRIUK"  id="MDIFRIUK__c" value="{!form.obj[bfVariableMap['MDIFRIUK']]}" label="Unknown "/>
+                                    Unknown
+                                </label>
                             </div>
                         </div>
                     </div>
