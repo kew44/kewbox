@@ -1,0 +1,58 @@
+<apex:page standardController="Strategic_Reports__c" extensions="Report_Controller">
+    
+    <div class="bootwrap">
+        <apex:form id="ReportsLanding" styleClass="form-horizontal">     
+        
+    <div >
+        <apex:sectionHeader title="{!$UserRole.Name}" subtitle="{!$Profile.Name}" />
+    </div>
+            <!-- primary content pageBlock container-->
+            <apex:pageBlock title="{!$UserRole.Name}" >
+            
+                <!--placeholding structure that allows for system message display-->
+                <apex:pageMessages />
+            
+                <!--input start date-->
+                <div class="form-group">
+                        Start Date: 
+                        <apex:inputField label="StartDate"  html-placeholder="MM/DD/YYYY"  styleClass=" input-date input-sm"  id="start" value="{!Strategic_Reports__c.DateStart__c}"/>
+                        End Date: 
+                        <apex:inputField label="EndDate"  html-placeholder="MM/DD/YYYY"  styleClass=" input-date input-sm"  id="end" value="{!Strategic_Reports__c.DateEnd__c}"/>
+                </div>
+                
+                <a href="/00O55000000Og5M">the report</a>
+                <!--button-->
+                <apex:commandButton id="run" image="cocap" title="Run Cocap" alt="Run COCAP" action="{!runCoCap}"/>
+                
+                
+                <!--<apex:dynamicComponent/>-->
+                <!--div report layout-->
+                <apex:outputPanel >
+                    <div>
+                        <u>Direct Services to Children and Families</u>
+                        <br/>
+                        Total Clients:
+                        <br/>
+                        New Clients:
+                        <br/>
+                        Clients with Clinical Assessments:
+                        <br/>
+                        Clients receiving Services:
+                        <br/>
+                        Clients who ended treatment:
+                        <br/>
+                        Treatment was completed as planned:
+                        <br/>
+                        Military-connected families:
+                    </div>
+                </apex:outputPanel>
+                <!--end report layout-->                       
+               
+                <!--table-->
+                <apex:dataTable value="{!2}" var="c">
+                </apex:dataTable>
+                
+            </apex:pageBlock>
+        </apex:form>
+    </div>
+</apex:page>

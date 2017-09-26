@@ -1,0 +1,162 @@
+<apex:page standardController="Client__c" extensions="CoCap9_Controller" docType="html-5.0" action="{!init}" sidebar="{!NOT(printReport)}" showHeader="{!NOT(printReport)}" id="cocap-report" >
+   
+    <link href="{!URLFOR($Resource.CSS_DS_Report)}" rel="stylesheet" media="screen, print"/>
+    
+    <!--print report command for button-->  
+    <apex:outputPanel layout="none" rendered="{!printReport}">
+        <script>        
+        $j(document).ready(function() { 
+            window.print(); 
+        });
+        </script>
+    </apex:outputPanel>
+    <!--end print command --> 
+    
+    <div class="bootwrap">
+                
+        <apex:form id="Cocap_Report" styleClass="form-horizontal cocap-report">  
+            
+            <!--heading label container-->
+            <div >
+                <!--user information instead of client-->
+                <apex:sectionHeader title="{!$UserRole.Name}" subtitle="{!$Profile.Name}" />
+            </div>
+            
+            <!-- primary content pageBlock container-->
+            <apex:pageBlock title="{!$UserRole.Name} view of COCAP report"  mode="edit" id="dates" >
+                
+                <!--placeholding structure that allows for system message display-->
+                <apex:pageMessages />                
+    
+                <!--provides print button functionality and structure-->
+                <apex:outputPanel layout="none" rendered="{!NOT(printReport)}">
+                 <!--<apex:commandLink value="Print" onclick="window.print();"/>-->
+                    <div>
+                        <a class="btn btn-default pull-right" href="/apex/Cocap9?&print=1" target="_blank">
+                            <i class="glyphicon glyphicon-print"></i> &nbsp;Print
+                        </a>
+                        <br/>
+                    </div>
+                </apex:outputPanel>
+                <!--end print button-->
+                
+                <!--input fields block-->
+                <apex:outputPanel layout="none" rendered="{!NOT(printReport)}">
+                    <div class="form-group" >
+                        <apex:pageBlock id="inputDates" title="Please input the start and end dates." >
+                            <apex:pageBlockSection >
+                                <!--start date input-->
+                                <apex:pageBlockSectionItem >
+                                    Start Date:
+                                    <apex:input type="date" label="Start Date:"  value="{!StartDate}" id="startDate" />
+                                </apex:pageBlockSectionItem>
+                                <!--end date input-->
+                                <apex:pageBlockSectionItem >
+                                    End Date: 
+                                    <apex:input type="date" label="End Date:"  value="{!EndDate}" id="endDate"/>
+                                </apex:pageBlockSectionItem>                           
+                                 <apex:commandButton onClick="datesButton();return false;" title="Enter"  styleClass="btn-info btn btn-sm"  id="GetData" value="Submit Dates"/>
+                                </apex:pageBlockSection>
+                                
+                                <apex:actionFunction name="datesButton" action="{!getData}" reRender="treat,demo,mil,gen,age,race,eth" >
+                                </apex:actionFunction>            
+                        </apex:pageBlock>
+                    </div>
+                </apex:outputPanel>
+                <!--end date input-->
+                
+            </apex:pageBlock>
+            
+            <!--treatment-->                    
+            <apex:pageBlock id="treat" title="Direct Services to Children and Families" >
+                <table id="treatment" class="table cocap-table cocap-treatment" style="table-table table-bordered table-striped">    
+                    <tbody> 
+                        <apex:repeat value="{!treatmentRecords}" var="t">   
+                            <tr>
+                                <th>{!t.recLabel}</th>
+                                <th>{!t.recValue}</th>
+                            </tr>      
+                        </apex:repeat>          
+                    </tbody>             
+                </table>
+            </apex:pageBlock>
+              
+            <apex:pageBlock id="demo" title="Demographics"> 
+            <apex:outputPanel id="demo" title=" Demographics"> 
+                All demographics information is based on Clients with Clinical Assessments (#3 above). Total of <apex:outputText label="Recent Assessments" value=" {!assessmentTotal}"/>  Clients.
+                
+                <!--military-->    
+                <apex:outputPanel id="mil" title=" Military Families">                            
+                    <table id="military" class="table cocap-table cocap-military"  style="table-table table-bordered table-striped">  
+                        <tbody>   
+                            <apex:repeat value="{!milRecords}" var="m">    
+                                <tr>
+                                    <td>{!m.recLabel}</td>
+                                    <td>{!m.recValue}</td>
+                                </tr>      
+                            </apex:repeat>        
+                        </tbody>                    
+                    </table>                  
+                </apex:outputPanel>
+                
+                <!--gender-->                                       
+                <apex:outputPanel id="gen" title="Gender Identity">                
+                    <table id="gender" class="table cocap-table cocap-gender"  style="table-table table-bordered table-striped"> 
+                        <tbody>   
+                            <apex:repeat value="{!genderRecords}" var="g">    
+                                <tr>
+                                    <td>{!g.recLabel}</td>
+                                    <td>{!g.recValue}</td>
+                                </tr>      
+                            </apex:repeat>        
+                        </tbody>                               
+                    </table>                  
+                </apex:outputPanel>
+                
+                <!--age-->                                             
+                <apex:outputPanel id="age" title="Age Group">                     
+                    <table id="age" class="table cocap-table cocap-age"  style="table-table table-bordered table-striped">    
+                        <tbody>   
+                            <apex:repeat value="{!ageRecords}" var="a">    
+                                <tr>
+                                    <td>{!a.recLabel}</td>
+                                    <td>{!a.recValue}</td>
+                                </tr>      
+                            </apex:repeat>        
+                        </tbody>                    
+                    </table>                    
+                </apex:outputPanel>
+                  
+                <!--ethnicity-->                                     
+                <apex:outputPanel id="eth" title="Ethnicity">                
+                    <table id="ethnic" class="table cocap-table cocap-ethnic"  style="table-table table-bordered table-striped"> 
+                        <tbody>   
+                            <apex:repeat value="{!ethnicRecords}" var="e">    
+                                <tr>
+                                    <td>{!e.recLabel}</td>
+                                    <td>{!e.recValue}</td>
+                                </tr>      
+                            </apex:repeat>        
+                        </tbody>                    
+                    </table>                  
+                </apex:outputPanel>
+                   
+                <!--race-->                                    
+                <apex:outputPanel id="race" title="Race">                
+                    <table id="race" class="table cocap-table cocap-race" style="table-table table-bordered table-striped"> 
+                        <tbody>   
+                            <apex:repeat value="{!raceRecords}" var="r">    
+                                <tr>
+                                    <td>{!r.recLabel}</td>
+                                    <td>{!r.recValue}</td>
+                                </tr>      
+                            </apex:repeat>        
+                        </tbody>                    
+                    </table>                                        
+                </apex:outputPanel>                    
+                                            
+                </apex:outputPanel>
+             </apex:pageBlock>
+        </apex:form>
+    </div>   
+</apex:page>

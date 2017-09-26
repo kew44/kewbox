@@ -1,0 +1,13 @@
+Dear {!Contact.FirstName}:
+
+{!Organization.Name} uses Salesforce CRM to share information such as leads, opportunities and products with its partners. It's secure, instant and as easy as point and click.
+
+Are you interested in learning more about connecting with {!Organization.Name}? You don't have to be using Salesforce CRM. Please complete this survey:
+{!Contact_PartnerSurveyUrl}
+
+Thank you for your response! {!Organization.Name} appreciates your participation.
+
+Regards,
+
+
+{!User.FirstName} {!User.LastName}

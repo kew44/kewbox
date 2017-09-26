@@ -1,0 +1,268 @@
+<apex:page standardController="Client__c" extensions="CoCaP_Report_Controller" docType="html-5.0" action="{!init}" tabStyle="Cocap__tab" id="cocap-report">    
+    <!--styles-->
+    <link href="{!URLFOR($Resource.bootwrap, '/css/bootstrap.css')}" rel="stylesheet" media="screen, print"/>
+    <link href="{!URLFOR($Resource.CSS_Cocap_Report)}" rel="stylesheet" media="screen, print" />  
+
+    <div class="bootwrap">
+        <apex:form id="Cocap_Report" styleClass="form-horizontal cocap-report">
+        
+            <apex:sectionHeader title="NCTSN Collaborative Change Project" subTitle="Cocap Reporting Summary" />
+            
+            <div class="noprint "> 
+                <!--input section-->            
+                <apex:pageBlock title="Please enter the Start and End dates" >
+                
+                    <!--input-->
+                    <div class="noprint ">        <!--cocap-input-->   <!--col-md-12 col-lg-6-->
+                        <apex:outputPanel >
+                        
+                            <p><i>
+                                Dates must be entered in 'Month/Day/Year' format.
+                                <br/>
+                            </i></p>
+                            
+                            <!--enter dates-->
+                            <apex:pageBlockSection >
+                                <!--start date input-->
+                                <apex:pageBlockSectionItem >
+                                    Start Date:
+                                    <apex:input html-placeholder="MM/DD/YYYY" label="Start Date:"  value="{!StartDate}" id="startDate" type="date"/>
+                                </apex:pageBlockSectionItem>
+                                
+                                <!--end date input-->
+                                <apex:pageBlockSectionItem >
+                                    End Date: 
+                                    <apex:input html-placeholder="MM/DD/YYYY"  label="End Date:"  value="{!EndDate}" id="endDate" type="date"/>
+                                </apex:pageBlockSectionItem>       
+                                
+                                <!--submit dates button-->
+                                <apex:outputPanel layout="none">
+                                    
+                                    <div>
+                                         <apex:commandButton action="{!getData}" title="Enter Dates" id="GetData" value="Submit Dates" status="loadingStatus" reRender="report, dateFooter" styleClass="btn btn-default pull-right cocap-button" />
+                                         <br />
+                                    </div>
+                                    
+                                     <br />
+                                     
+                                     <!--loading image-->
+                                     <div id="loadDiv" class="loadingClass">
+
+                                       <apex:actionStatus id="loadingStatus">
+                                            <apex:facet name="start" >
+                                                <apex:outputPanel id="loadPanel" >
+                                                    <img src="/img/loading32.gif" width="25" height="25" name="spinImg" id="spinner" />
+                                                    <apex:outputLabel value="Loading Data..." id="loadLabel" />
+                                                </apex:outputPanel>            
+                                            </apex:facet>
+                                        </apex:actionStatus>
+
+                                    </div>
+                                 </apex:outputPanel>
+                            </apex:pageBlockSection>
+                            
+                        </apex:outputPanel>                                                        
+                    </div>
+                </apex:pageBlock>
+            </div>
+
+        <!--this section should be rerendered and (except for button) printed-->
+            <!--reporting content-->
+            <apex:outputPanel id="report" >
+
+                <!--date error message section-->
+                <apex:pageBlock rendered="{!NOT(isValidData)}" id="errorBlock">
+                     <apex:pageMessages escape="false"/>
+                </apex:pageBlock>
+
+                <!--show reporting period dates-->
+                <div class=" small-cocap">
+                    <apex:pageBlock title="Reporting Period {!StartDate} - {!EndDate}"  rendered="{!isValidData}">
+
+                        <!--print button-->
+                        <apex:outputPanel styleClass="noprint">                                
+                                <a onClick="window.print();">
+                                    <button class="btn btn-default pull-right cocap-button" type="button"  >
+                                        <i class="glyphicon glyphicon-print"></i> &nbsp;Print Cocap Report
+                                    </button>
+                                </a>
+                        </apex:outputPanel>
+                        <!--end print button-->  
+
+                    </apex:pageBlock>                 
+                </div>         
+                         
+                <!--direct services-->
+                <div >  
+                    <apex:pageBlock title="Direct Services to Children and Families"   rendered="{!isValidData}">
+                    
+                        <!--total sentences-->
+                        <div class="small-cocap">
+                            <apex:outputPanel id="summary" rendered="{!isValidData}">
+                                Total number of clients 0-21 receiving direct clinical services: {!receivingTotal}  <br/>
+                                Total number of clients 0-21 for whom your center conducted clinical assessments:  {!assessmentTotal}<br/>
+                                Total number of new clients 0-21 who began receiving direct clinical services: {!newTotal} <br/>
+                                Total number of clients 0-21 receiving direct clinical services who are from military-connected families: {!militaryTotal}<br/>
+                            </apex:outputPanel>
+                            <br/>
+                        </div>
+                        <!--end sentences-->
+                        
+                        <!--services to families-->
+                        <div >
+                            <apex:outputPanel id="treat">
+                                <table class="report-table table-striped">
+                                    <tbody>
+                                        <apex:repeat value="{!treatmentRecords}" var="t">   
+                                            <tr class="row-print-border">
+                                                <td >{!t.recLabel}</td>
+                                                <td class=" rt-col" align="right">{!t.recValue}</td>
+                                            </tr>      
+                                        </apex:repeat>     
+                                    </tbody>
+                                </table>
+                            </apex:outputPanel>
+                        </div>
+                    </apex:pageBlock>  
+                </div>
+                      
+                <!--demographics section-->
+                <div > 
+                    <apex:pageBlock title="Demographics (Clients receiving services = {!receivingTotal})"  rendered="{!isValidData}" >
+                    
+                        <!--mlitary-->
+                        <div>
+                            <apex:outputPanel id="mil">
+                            
+                                <!--title-->
+                                <div class="cocap-heading">
+                                     Family Military Association
+                                </div>
+
+                                <table class="report-table table-striped">
+                                    <!--values-->
+                                    <tbody>                            
+                                        <apex:repeat value="{!milRecords}" var="m">    
+                                            <tr class="row-print-border">
+                                                <td >{!m.recLabel}</td>
+                                                <td class=" rt-col" align="right">{!m.recValue}</td>
+                                            </tr>      
+                                        </apex:repeat>        
+                                    </tbody>
+                                </table>
+                            </apex:outputPanel>
+                        </div>
+                        
+                        <!--age-->
+                        <div >
+                            <apex:outputPanel id="age">
+                            
+                                <!--title-->
+                                <div class="cocap-heading">
+                                     Age Groups
+                                     <apex:outputText value=" (as of {0,date, MM'/'dd'/'yyyy})" >
+                                         <apex:param value="{!EndDate}"/>
+                                     </apex:outputText>
+                                </div>
+
+                                <table class=" report-table table-striped">
+                                    <!--values-->
+                                    <tbody>
+                                        <apex:repeat value="{!ageRecords}" var="a">    
+                                            <tr class="row-print-border">
+                                                <td >{!a.recLabel}</td>
+                                                <td class=" rt-col" align="right">{!a.recValue}</td>
+                                            </tr>      
+                                        </apex:repeat>     
+                                    </tbody>
+                                </table>
+                            </apex:outputPanel>
+                        </div>
+                        
+                        <!--gender-->
+                        <div>
+                            <apex:outputPanel id="gen">
+                            
+                                <!--title-->
+                                <div class="cocap-heading">
+                                    Gender Identity
+                                </div>
+
+                                <table class="report-table table-striped">
+                                    <!--values-->
+                                    <tbody>
+                                        <apex:repeat value="{!genderRecords}" var="g">    
+                                            <tr class="row-print-border">
+                                                <td >{!g.recLabel}</td>
+                                                <td class=" rt-col" align="right">{!g.recValue}</td>
+                                            </tr>      
+                                        </apex:repeat>  
+                                    </tbody>
+                                </table>
+                            </apex:outputPanel>
+                        </div>
+                        
+                        <!--ethnicity-->
+                        <div >
+                            <apex:outputPanel id="eth">
+
+                                <!--title-->
+                                <div class="cocap-heading">
+                                    Ethnicity
+                                </div>
+
+                                <table   class="report-table table-striped"> 
+                                    <!--values-->
+                                    <tbody>
+                                        <apex:repeat value="{!ethnicRecords}" var="e">    
+                                            <tr class="row-print-border">
+                                                <td >{!e.recLabel}</td>
+                                                <td class=" rt-col" align="right">{!e.recValue}</td>
+                                            </tr>      
+                                        </apex:repeat> 
+                                    </tbody>
+                                </table>
+                            </apex:outputPanel>
+                        </div>
+                        
+                        <!--race-->
+                        <div>
+                            <apex:outputPanel id="race">      
+                                <!--title-->
+                                <div class="cocap-heading">
+                                    Race
+                                </div>
+
+                                <table class="report-table table-striped">
+                                    <!--values-->
+                                    <tbody>
+                                        <apex:repeat value="{!raceRecords}" var="r">    
+                                            <tr class="row-print-border">
+                                                <td >{!r.recLabel}</td>
+                                                <td class=" rt-col" align="right">{!r.recValue}</td>
+                                            </tr>      
+                                        </apex:repeat>        
+                                    </tbody>
+                                </table>
+                            </apex:outputPanel>
+                        </div>
+                    
+                    </apex:pageBlock>
+                </div>
+            </apex:outputPanel>
+        </apex:form>  
+        
+        <!--footer for print only, date run-->
+        <div class="dateFoot">
+            <apex:outputPanel id="dateFooter"   >    
+                <p class="footer" style="text-align:center">  
+                    <i>
+                        This report was compiled on: {!compileTime}<br/>.
+                    </i>
+                </p>
+            </apex:outputPanel>
+        </div>
+        <!--end footer-->
+        
+    </div>
+</apex:page>

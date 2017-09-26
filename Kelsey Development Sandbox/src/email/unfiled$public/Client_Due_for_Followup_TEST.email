@@ -1,0 +1,6 @@
+Dear {!Client__c.Clinician_Name__c}, 
+This is a test reminder for Client 
+****-**- {!TRIM(RIGHT(Client__c.Name, 5))}.
+{!Client__c.INIT__c}
+{!Client__c.CENTER__c}
+{!Client__c.Closed_Treatment__c}

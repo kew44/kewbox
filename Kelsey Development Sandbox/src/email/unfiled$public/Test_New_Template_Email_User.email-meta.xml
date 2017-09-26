@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Test_Letterhead_1_0</letterhead>
+    <name>Test New Template Email User</name>
+    <style>formalLetter</style>
+    <subject>Test New User Template Message</subject>
+    <textOnly>Dear {!User.FirstName},
+Thank you for using CIMI!
+This is an email to test the workflow functionality.
+Your user name in CIMI is {!User.Username}.
+We have your email address as {!User.Email}. Additionally, we may communicate information about your CIMI account to an authorized email account ( {!User.Approved_Contact__c} )
+Please email help@nctsn.com for technical support.
+
+Thank you and welcome to CIMI!
+Kelsey Willett
+kelsey.willett@duke.edu
+CIMI Adminstrator</textOnly>
+    <type>html</type>
+</EmailTemplate>

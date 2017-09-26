@@ -1,0 +1,147 @@
+<apex:page standardController="Client__c" extensions="CoCap_v3_Controller" docType="html-5.0" ><!--action="{!InitData}"><!--doctype supports inputfield-->
+
+<!--JQuery fn for start date-->
+    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.9.1.js')}"  /><!--allows for JQuery dependencies-->
+    <script> $j = jQuery.noConflict(); </script><!--Reserves the '$' token for JQuery only-->
+
+    
+      <script type="text/javascript">
+      function doSearch() {
+        searchDates(
+          document.getElementById("StartDate").value,
+          document.getElementById("EndDate").value
+          );
+      }
+      </script> 
+      
+      <script type="text/javascript">
+        $j(document).ready(function(){
+            $j('.coCappingFunction').change(function(){
+            }
+        }
+      </script>
+    
+    <div class="bootwrap">
+        <apex:form id="ReportsPage" styleClass="form-horizontal">  
+            
+    <!--    <apex:actionFunction name="searchDates" action="{!getDates}" rerender="servInfo, demoInfo, debug">
+     <!--       <apex:param name="StartDate" value="{!StartDate}"/><!-- styleClass="coCappingFunction"/>-->
+      <!--      <apex:param name="EndDate" value="{!EndDate}" /><!-- styleClass="coCappingFunction"/>-->
+      <!--  </apex:actionFunction>-->
+        
+            <!--heading label container-->
+            <div >
+                <!--user information instead of client-->
+                <apex:sectionHeader title="{!$UserRole.Name}" subtitle="{!$Profile.Name}" />
+            </div>
+            
+            <!-- primary content pageBlock container-->
+            <apex:pageBlock title="{!$UserRole.Name} view of COCAP report"  mode="edit" id="dates">
+                
+                <!--placeholding structure that allows for system message display-->
+                <apex:pageMessages />
+                
+                <!--input fields block-->
+                <div class="form-group">
+                    <apex:pageBlock id="inputDates" title="Please input the start and end dates." >
+                        <apex:pageBlockSection >
+                            <!--start date input-->
+                            <apex:pageBlockSectionItem >
+                                Start Date:
+                                <apex:input type="date" label="Start Date:"  value="{!StartDate}" id="startDate" /><!--onchange="doSearch"/>-->
+                            </apex:pageBlockSectionItem>
+                            <!--end date input-->
+                            <apex:pageBlockSectionItem >
+                                End Date: 
+                                <apex:input type="date" label="End Date:"  value="{!EndDate}" id="endDate"/>
+                            </apex:pageBlockSectionItem>
+                            
+                            <!--button-->
+                            <apex:commandButton action="{!runQuery}" reRender="servInfo, demoInfo, debug" onclick="InitData()" styleClass="coCappingFunction"/>
+                        </apex:pageBlockSection>
+                    </apex:pageBlock>
+                </div>
+                
+                <div class="form-group">
+                    <apex:pageBlock id="servInfo" title="Services"><!-- rendered="{!submitDates}" >-->
+                   <!--     <apex:pageBlockSection >
+                            <apex:pageBlockSectionItem >
+                                1.  New Clients Sum number of clients where Age=0-21 with a BDOV within reporting period
+                                <apex:outputText title="Total"/>
+                            </apex:pageBlockSectionItem>
+                            
+                            <apex:pageBlockSectionItem >
+                                2.  Clients receiving  services (Sum number of clients where Age=0-21 ever entered)-number of clients where FUTYPE=2 before reporting period.
+                                <apex:outputText title="Total"/>
+                            </apex:pageBlockSectionItem>
+                            
+                            <apex:pageBlockSectionItem >
+                                3.  Clients with a Clinical Assessment Total number of clients where Age=0-21 with any of the following: BDOV, BDOAPTSD, BDOATSCYC, BDOACO, BDOACY, BDOAPSI, BDOATSCCA, FDOV, FDOAPTSD, FDOATSCYC, FDOACO, FDOACY, FDOAPSI, FDOATSCCA within the reporting period. Do not double count.
+                                <apex:outputText title="Total"/>
+                            </apex:pageBlockSectionItem>
+                            
+                            <apex:pageBlockSectionItem >
+                                4.  Ended Treatment Sum number of clients where Age=0-21 with FUTYPE=2 within reporting period
+                                <apex:outputText title="Total"/>
+                            </apex:pageBlockSectionItem>
+                            
+                            <apex:pageBlockSectionItem >
+                                a.  Treatment Completed as Planned Total number of clients where Age=0-21 with FETSTAT=1 within reporting period
+                                <apex:outputText title="Total"/>
+                            </apex:pageBlockSectionItem>
+                            
+                            <apex:pageBlockSectionItem >
+                                Total number of clients 0-21 receiving direct clinical services who are from military-connected families  #2 above where (BMILFAMILY=1 or 2) or BMILSELF=1 or FMSTAT=1
+                                <apex:outputText title="Total"/>
+                            </apex:pageBlockSectionItem>
+                            
+                        </apex:pageBlockSection>-->
+                    </apex:pageBlock>
+                </div>
+                        
+                <div class="form-group">
+                    <apex:pageBlock id="demoInfo" title="Demographics">
+                    
+                        <apex:pageBlockSection >
+                            age<br/>
+                                age 0-4<br/>
+                                age 5-9<br/>
+                                age 10-12<br/>
+                                age 13-17<br/>
+                                age 18-21<br/>
+                            <br/>
+                            gender<br/>
+                                female<br/>
+                                male<br/>
+                                trans<br/>
+                                other<br/>
+                                unk/ref<br/>
+                            <br/>
+                            ethnicity<br/>
+                                hispanic<br/>
+                                not hispanic<br/>
+                                refused/unknown<br/>
+                            <br/>
+                            race<br/>
+                                American indian/alaskan native<br/>
+                                asian<br/>
+                                black<br/>
+                                white<br/>
+                                multi<br/>
+                                refused/unknown<br/>                                
+                        </apex:pageBlockSection>
+                    </apex:pageBlock>
+                </div>
+                
+            </apex:pageBlock>
+            
+            <apex:pageBlock id="debug" title="Debug">
+                <apex:outputText value="{!StartDate}"/><br/>
+                <apex:outputText value="{!EndDate}"/>
+                
+            </apex:pageBlock>
+            
+                
+        </apex:form>
+    </div>   
+</apex:page>

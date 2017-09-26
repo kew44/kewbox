@@ -1,0 +1,48 @@
+<apex:page standardController="Client__c" extensions="CoCap_v4_Controller" docType="html-5.0">
+ 
+    <div class="bootwrap">
+        <apex:form id="ReportsPage" styleClass="form-horizontal">  
+            
+            <!--heading label container-->
+            <div >
+                <!--user information instead of client-->
+                <apex:sectionHeader title="{!$UserRole.Name}" subtitle="{!$Profile.Name}" />
+            </div>
+            
+            <!-- primary content pageBlock container-->
+            <apex:pageBlock title="{!$UserRole.Name} view of COCAP report"  mode="edit" id="dates">
+                
+                <!--placeholding structure that allows for system message display-->
+                <apex:pageMessages />
+                
+                <!--input fields block-->
+                <div class="form-group">
+                    <apex:pageBlock id="inputDates" title="Please input the start and end dates." >
+                        <apex:pageBlockSection >
+                            <!--start date input-->
+                            <apex:pageBlockSectionItem >
+                                Start Date:
+                                <apex:input type="date" label="Start Date:"  value="{!StartDate}" id="startDate" />
+                            </apex:pageBlockSectionItem>
+                            <!--end date input-->
+                            <apex:pageBlockSectionItem >
+                                End Date: 
+                                <apex:input type="date" label="End Date:"  value="{!EndDate}" id="endDate"/>
+                            </apex:pageBlockSectionItem>
+                             <apex:commandButton onClick="bigRedButton()" title="Enter"  id="GetData" value="Submit Dates" />
+                            </apex:pageBlockSection>
+                            
+                            <apex:actionFunction name="bigRedButton" action="{!getData}" reRender="debug" />                           
+                   
+                    </apex:pageBlock>
+                </div>
+            </apex:pageBlock>
+            
+            <apex:pageBlock id="debug" title="Debug">
+                <apex:outputText value="{!StartDate}"/><br/>
+                <apex:outputText value="{!EndDate}"/>   <br/>
+            </apex:pageBlock>
+                
+        </apex:form>
+    </div>   
+</apex:page>

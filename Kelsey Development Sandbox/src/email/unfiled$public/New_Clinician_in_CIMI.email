@@ -1,0 +1,29 @@
+<table border="0" cellpadding="5" width="600" cellspacing="5" height="400" >
+<tr valign="top" height="50" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[Hello {!Clinician__c.Name__c},<br>]]></td>
+</tr>
+<tr valign="top" height="300" >
+<td tEditID="c1r2" style=" background-color:#FFFFFF; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r2" locked="0" >
+<![CDATA[Thank you for participating in CIMI!<br><br>You will soon receive an email from Salesforce.com to verify your account.<br>Click the button that says "Verify Account" to set up your CIMI account. (Please note that this button will remain valid for six months after your account's creation, but may only be clicked once)<br><br>To access your CIMI account in the future, go to login.salesforce.com.<br>Your username will most likely be the same as this email address.{!Clinician__c.Email__c}<br><br>When accessing CIMI from a new computer, browser, or network, you may be prompted for a Verification Code, which will be emailed to you. This is a security measure to ensure that your account (and the information of your CIMI Clients) remains confidential. <br><br>If you forget your password, please click on the "Forgot Password?" link on the login screen and a link will be automatically emailed to you.<br><br>For any technical issues or feedback, please contact help@nctsn.com. Our team will be happy to help you. <br><br>Once again, welcome to CIMI!<br>]]></td>
+</tr>
+<tr valign="top" height="50" >
+<td tEditID="c1r3" style=" background-color:#FFFFFF; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r3" locked="0" >
+<![CDATA[<p class="x_x_MsoNormal"><i><span style="font-size:9.0pt; color:#003572"><span style="font-size:11pt; color:rgb(0,0,0)">Kelsey Willett </span><br>
+<span style="color:rgb(0,0,0)"></span></span></i></p>
+<span style="color:rgb(0,0,0)"></span>
+<p class="x_x_MsoNormal"><i><span style="font-size:9pt; color:rgb(0,0,0)">Analyst Programmer</span></i></p>
+<span style="color:rgb(0,0,0)"></span>
+<p class="x_x_MsoNormal"><i><span style="font-size:9pt; color:rgb(0,0,0)">CIMI System Administrator</span></i></p>
+<span style="color:rgb(0,0,0)"></span>
+<p class="x_x_MsoNormal"><i><span style="font-size:9pt; color:rgb(0,0,0)">The National Center for Child Traumatic Stress</span></i></p>
+<span style="color:rgb(0,0,0)"></span>
+<p class="x_x_MsoNormal"><i><span style="font-size:9pt; color:rgb(0,0,0)">Data and Evaluation/Informatics and Technology </span></i></p>
+<span style="color:rgb(0,0,0)"></span>
+<p class="x_x_MsoNormal"><i><span style="font-size:9.0pt; color:#003572"><span style="color:rgb(0,0,0)">Duke University School of Medicine</span><br>
+<span style="color:rgb(0,0,0)">Durham, NC 27701</span><br>
+<span style="color:rgb(0,0,0)">(919) 613-5461</span></span></i></p>
+<span style="color:rgb(0,0,0)"></span>
+<p class="x_x_MsoNormal"><i><span style="font-size:9pt; color:rgb(0,0,0)">Kelsey.willett@duke.dm.edu</span></i></p>]]></td>
+</tr>
+</table>

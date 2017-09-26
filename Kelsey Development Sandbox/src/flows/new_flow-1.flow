@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>new_user_test_email_alert</name>
+        <label>new user test email alert</label>
+        <locationX>331</locationX>
+        <locationY>74</locationY>
+        <actionName>User.Test_new_user</actionName>
+        <actionType>emailAlert</actionType>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>userid</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <interviewLabel>new flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>new flow</label>
+    <processType>Flow</processType>
+    <recordCreates>
+        <name>new_user</name>
+        <label>new user</label>
+        <locationX>110</locationX>
+        <locationY>43</locationY>
+        <assignRecordIdToReference>userid</assignRecordIdToReference>
+        <connector>
+            <targetReference>new_user_test_email_alert</targetReference>
+        </connector>
+        <object>User</object>
+    </recordCreates>
+    <startElementReference>new_user</startElementReference>
+    <variables>
+        <name>userid</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

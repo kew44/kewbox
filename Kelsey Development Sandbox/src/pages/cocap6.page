@@ -1,0 +1,198 @@
+<apex:page standardController="Client__c" extensions="Cocap6_Controller" docType="html-5.0"  >
+    <div class="bootwrap">
+        <apex:form id="ReportsPage" styleClass="form-horizontal">  
+            
+            <!--heading label container-->
+            <div >
+                <!--user information instead of client-->
+                <apex:sectionHeader title="{!$UserRole.Name}" subtitle="{!$Profile.Name}" />
+            </div>
+            
+            <!-- primary content pageBlock container-->
+            <apex:pageBlock title="{!$UserRole.Name} view of COCAP report"  mode="edit" id="dates">
+                
+                <!--placeholding structure that allows for system message display-->
+                <apex:pageMessages />
+                
+                <!--input fields block-->
+                <div class="form-group">
+                    <apex:pageBlock id="inputDates" title="Please input the start and end dates." >
+                        <apex:pageBlockSection >
+                            <!--start date input-->
+                            <apex:pageBlockSectionItem >
+                                Start Date:
+                                <apex:input type="date" label="Start Date:"  value="{!StartDate}" id="startDate" />
+                            </apex:pageBlockSectionItem>
+                            <!--end date input-->
+                            <apex:pageBlockSectionItem >
+                                End Date: 
+                                <apex:input type="date" label="End Date:"  value="{!EndDate}" id="endDate"/>
+                            </apex:pageBlockSectionItem>                           
+                             <apex:commandButton onClick="bigRedButton();return false;" title="Enter"  id="GetData" value="Submit Dates"/>
+                            </apex:pageBlockSection>
+                            
+                            <apex:actionFunction name="bigRedButton" action="{!getData}" reRender="debug, demo" >
+                            </apex:actionFunction>                         
+                   
+                    </apex:pageBlock>
+                </div>
+            </apex:pageBlock>
+            
+            <apex:pageBlock id="demo" title=" Demographics">
+                <table id="gender" class="table" style="table-table table-bordered table-striped">
+                    
+                    <!--heading-->
+                    <thead> 
+                        <tr>
+                            <th>Gender</th>
+                            <th>Count</th>
+                        </tr>
+                    </thead>
+                    <!--end heading-->
+                    
+                    <tbody>   
+                        <apex:repeat value="{!genderRecords}" var="g">    
+                            <tr>
+                                <td>{!g.recLabel}</td>
+                                <td>{!g.recValue}</td>
+                            </tr>      
+                        </apex:repeat>        
+                    </tbody>                    
+                </table>     
+                
+                <table id="age" class="table" style="table-table table-bordered table-striped">
+                    
+                    <!--heading-->
+                    <thead> 
+                        <tr>
+                            <th>Age Group</th>
+                            <th>Count</th>
+                        </tr>
+                    </thead>
+                    <!--end heading-->
+                    
+                    <tbody>   
+                        <apex:repeat value="{!ageRecords}" var="a">    
+                            <tr>
+                                <td>{!a.recLabel}</td>
+                                <td>{!a.recValue}</td>
+                            </tr>      
+                        </apex:repeat>        
+                    </tbody>                    
+                </table>     
+                
+                <table id="ethnic" class="table" style="table-table table-bordered table-striped">
+                    
+                    <!--heading-->
+                    <thead> 
+                        <tr>
+                            <th>Ethnic Group</th>
+                            <th>Count</th>
+                        </tr>
+                    </thead>
+                    <!--end heading-->
+                    
+                    <tbody>   
+                        <apex:repeat value="{!ethnicRecords}" var="e">    
+                            <tr>
+                                <td>{!e.recLabel}</td>
+                                <td>{!e.recValue}</td>
+                            </tr>      
+                        </apex:repeat>        
+                    </tbody>                    
+                </table>     
+                
+                <table id="race" class="table" style="table-table table-bordered table-striped">
+                    
+                    <!--heading-->
+                    <thead> 
+                        <tr>
+                            <th>Race Group</th>
+                            <th>Count</th>
+                        </tr>
+                    </thead>
+                    <!--end heading-->
+                    
+                    <tbody>   
+                        <apex:repeat value="{!raceRecords}" var="r">    
+                            <tr>
+                                <td>{!r.recLabel}</td>
+                                <td>{!r.recValue}</td>
+                            </tr>      
+                        </apex:repeat>        
+                    </tbody>                    
+                </table>                     
+                
+                <table id="military" class="table" style="table-table table-bordered table-striped">
+                    
+                    <!--heading-->
+                    <thead> 
+                        <tr>
+                            <th>Military Status</th>
+                            <th>Count</th>
+                        </tr>
+                    </thead>
+                    <!--end heading-->
+                    
+                    <tbody>   
+                        <apex:repeat value="{!milRecords}" var="m">    
+                            <tr>
+                                <td>{!m.recLabel}</td>
+                                <td>{!m.recValue}</td>
+                            </tr>      
+                        </apex:repeat>        
+                    </tbody>                    
+                </table>  
+                
+                <table id="newClients" class="table" style="table-table table-bordered table-striped">
+                    
+                    <tbody> 
+                        <apex:repeat value="{!newRecords}" var="n">   
+                            <tr>
+                                <th>{!n.recLabel}</th>
+                                <th>{!n.recValue}</th>
+                            </tr>      
+                        </apex:repeat>          
+                    </tbody>             
+                </table>
+                
+                <table id="treatmentCompleted" class="table" style="table-table table-bordered table-striped">
+                    
+                    <tbody> 
+                        <apex:repeat value="{!completedRecords}" var="c">   
+                            <tr>
+                                <th>{!c.recLabel}</th>
+                                <th>{!c.recValue}</th>
+                            </tr>      
+                        </apex:repeat>          
+                    </tbody>             
+                </table>
+                
+                <table id="completedAsPlanned" class="table" style="table-table table-bordered table-striped">
+                    
+                    <tbody> 
+                        <apex:repeat value="{!plannedRecords}" var="p">   
+                            <tr>
+                                <th>{!p.recLabel}</th>
+                                <th>{!p.recValue}</th>
+                            </tr>      
+                        </apex:repeat>          
+                    </tbody>             
+                </table>
+                 
+            </apex:pageBlock>
+            
+            <apex:pageBlock id="debug" title="Debug">
+                <apex:outputText value="{!StartDate}"/><br/>
+                <apex:outputText value="{!EndDate}"/>   <br/>   
+                New Clients  : Sum number of clients where Age=0-21 with a BDOV within reporting period.  <br/> 
+                Clients receiving services : (Sum number of clients where Age=0-21 ever entered)-number of clients where FUTYPE=2 before reporting period. <br/> 
+                Clients with a Clinical Assessment Total number of clients where Age=0-21 with any of the dates within the reporting period. Do not double count. <br/> 
+                Ended Treatment : Sum number of clients where Age=0-21 with FUTYPE=2 within reporting period <br/>     
+                Treatment Completed as Planned : Total number of clients where Age=0-21 with FETSTAT=1 within reporting period 
+                                                          
+            </apex:pageBlock>
+                
+        </apex:form>
+    </div>   
+</apex:page>

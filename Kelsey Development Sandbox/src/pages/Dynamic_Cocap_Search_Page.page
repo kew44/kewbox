@@ -1,0 +1,9 @@
+<apex:page standardController="Custom_Reporting__c" extensions="DynamiCocap"  >
+
+    <div class="bootwrap">
+        <!--Begin form content-->
+        <apex:form id="Cocap" styleClass="form-horizontal">
+        </apex:form>
+    </div>
+
+</apex:page>

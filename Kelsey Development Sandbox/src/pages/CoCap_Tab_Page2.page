@@ -1,0 +1,88 @@
+<apex:page standardController="Strategic_Reports__c" extensions="CoCap_Report_Filter_Controller" docType="html-5.0"><!--standardController="Custom_Reporting__c" -->
+
+    <div class="bootwrap">
+        <apex:form id="ReportsPage" styleClass="form-horizontal">  
+        
+            <!--heading label container-->
+            <div >
+                <!--user information instead of client-->
+                <apex:sectionHeader title="{!$UserRole.Name}" subtitle="{!$Profile.Name}" />
+            </div>
+            
+            <!-- primary content pageBlock container-->
+           <!-- <apex:pageBlock title="{!$UserRole.Name} view of COCAP report" >-->
+                
+                <!--placeholding structure that allows for system message display-->
+                <apex:pageMessages />
+                
+                <!--input fields block-->
+                <div class="form-group">
+                    <apex:pageBlock id="inputDates" title="Please input the start and end dates." >
+                        <apex:pageBlockSection >
+                            <!--start date input-->
+                            <apex:pageBlockSectionItem >
+                                Start Date:
+                                <apex:input type="date" label="Start Date:"  value="{!DateStart}"/>
+                            </apex:pageBlockSectionItem>
+                            <!--end date input-->
+                            <apex:pageBlockSectionItem >
+                                End Date: 
+                                <apex:inputField label="End Date:" value="{!Strategic_Reports__c.DateEnd__c}"/>
+                            </apex:pageBlockSectionItem>
+                            <!--button-->
+                            <apex:commandButton onclick="StartDate" reRender="query"/>
+                        </apex:pageBlockSection>
+                    </apex:pageBlock>
+                </div>
+                
+                <!--table of cocap records-->
+                <div>
+                    <table class="table" style="table-table table-bordered table-striped">
+                        <!--heading-->
+                        <thead>
+                            <tr>
+                                <th colspan="6">
+                                    Clients in Cocap
+                                </th>
+                            </tr>
+                            <tr>
+                                <th class="text-center">Center</th>
+                                <th class="text-center">Client Id</th>
+                                <th class="text-center">Age Group</th>
+                                <th class="text-center">Gender Identity</th>
+                                <th class="text-center">Ethnic Group</th>
+                                <th class="text-center">Race</th>
+                            </tr>
+                        </thead>
+                        <!--end heading-->
+                        
+                        <!--cocap records-->
+                        <tbody>
+                            <apex:repeat value="{!cocapInfoList}" var="c">
+                                <tr>                                
+                                    <apex:outputpanel layout="none">                                    
+                                        <td class="text-center">{!c.Center}</td>
+                                        <td class="text-center">{!c.Client}</td>
+                                        <td class="text-center">{!c.ageGroup}</td>
+                                        <td class="text-center">{!c.genIdentity}</td>
+                                        <td class="text-center">{!c.ethnicGroup}</td>
+                                        <td class="text-center">{!c.raceGroup}</td>
+                                    </apex:outputpanel>            
+                                </tr>
+                            </apex:repeat>              
+                        </tbody>
+                        <!--end cocap records-->
+                    </table>
+                </div>
+            <!--</apex:pageBlock>-->
+            
+                <div class="form-group">
+                    <apex:pageBlock id="query" title="Query Results">
+                        {!DateStart}
+                    </apex:pageBlock>
+                </div>
+        
+        </apex:form>
+    </div>   
+        
+</apex:page>

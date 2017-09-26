@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>cimi</letterhead>
+    <name>New Clinician in CIMI</name>
+    <style>formalLetter</style>
+    <subject>Welcome to CIMI</subject>
+    <textOnly>Hello {!Clinician__c.Name__c},
+Thank you for participating in CIMI!
+
+You will soon receive an email from Salesforce.com to verify your account.
+Click the button that says &quot;Verify Account&quot; to set up your CIMI account. (Please note that this button will remain valid for six months after your account&apos;s creation, but may only be clicked once)
+
+To access your CIMI account in the future, go to login.salesforce.com.
+Your username will most likely be the same as this email address.
+
+When accessing CIMI from a new computer, browser, or network, you may be prompted for a Verification Code, which will be emailed to you. This is a security measure to ensure that your account (and the information of your CIMI Clients) remains confidential.
+
+If you forget your password, please click on the &quot;Forgot Password?&quot; link on the login screen and a link will be automatically emailed to you.
+
+For any technical issues or feedback, please contact help@nctsn.com. Our team will be happy to help you.
+
+Once again, welcome to CIMI!
+
+Kelsey Willett
+
+Analyst Programmer
+
+CIMI System Administrator
+
+The National Center for Child Traumatic Stress
+
+Data and Evaluation/Informatics and Technology
+
+Duke University School of Medicine
+Durham, NC 27701
+(919) 613-5461
+
+Kelsey.willett@duke.dm.edu</textOnly>
+    <type>html</type>
+</EmailTemplate>
