@@ -1,0 +1,61 @@
+<apex:page standardController="Account" sidebar="false" standardStylesheets="false" showHeader="false">
+<apex:sectionHeader title="Sample" />
+<head> 
+    <title>Create New Account</title>
+
+    <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"/>
+    <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"/>
+
+    <apex:includeScript value="{!URLFOR($Resource.Bootstrap, 'js/bootstrap.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.Bootstrap, 'js/bootstrap.min.js')}"/>
+    
+    <apex:stylesheet value="{!URLFOR($Resource.Bootstrap, 'css/bootstrap.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.Bootstrap, 'css/bootstrap.min.css')}"/>
+    
+    <style type="text/css"><!-- Spacing for the Nav bar -->
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+
+    <script type="text/javascript">
+        var $j = jQuery.noConflict();
+    </script>
+</head>
+
+<body>
+     <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+            <a class="brand" href="#">Bootstrap Page</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            </ul>
+            <span class="navbar-form span3 pull-right">
+                <li><a href="#">Right Link</a></li>
+            </span>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+    <apex:pageBlock >
+        <apex:form >
+            <h3>Enter New Account Name: </h3>
+            <apex:inputField value="{!Account.Name}"/>
+            <apex:commandButton action="{!save}" styleClass="btn btn-success" value="Create New Account" />
+        </apex:form>
+    </apex:pageBlock>
+    </div> <!-- /container -->
+
+</body>
+</apex:page>

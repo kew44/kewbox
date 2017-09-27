@@ -1,0 +1,16 @@
+<apex:page standardController="Client__c" recordSetVar="clients" sidebar="false">
+  <apex:pageBlock >
+    <apex:form >
+      <apex:panelGrid columns="2">
+        <apex:outputLabel value="View:"/>
+        <apex:selectList value="{!filterId}" size="1">
+          <apex:actionSupport event="onchange" rerender="list"/>
+          <apex:selectOptions value="{!listviewoptions}"/>
+        </apex:selectList>
+      </apex:panelGrid>
+      <apex:pageBlockTable value="{!clients}" var="c" id="list">
+        <apex:column value="{!c.Name}"/>
+      </apex:pageBlockTable>
+    </apex:form>
+  </apex:pageBlock>
+</apex:page>

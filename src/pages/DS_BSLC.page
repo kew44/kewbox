@@ -1,0 +1,237 @@
+<apex:page standardController="DS_Functioning_Forms_B__c" extensions="DS_BSLC_Controller">   
+    
+    <!--JQuery -->
+    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.9.1.js')}"  /><!--allows for JQuery dependencies-->
+    <script> $j = jQuery.noConflict(); </script><!--Reserves the '$' token for JQuery only-->
+    
+    <!-- Bootstrap -->
+        <link href="{!URLFOR($Resource.VFbootstrap3, '/css/VFbootstrap.css')}" rel="stylesheet" media="screen"/>
+            <apex:includeScript value="{!URLFOR($Resource.VFbootstrap3, '/js/bootstrap.min.js')}"/>
+                
+                <!--link to the CSS resource in Salesforce internal document-->
+                    <apex:stylesheet value="{!$Resource.CustomCss}" />                                     
+                        
+                        <!--provides framework for "skip-logic" capabilities-->
+                            <script>function setFocusOnLoad() {}</script>
+    <script> var skipElement = JSON.parse("{!JSENCODE(skipElementToJson)}"); </script>
+    <script src="{!URLFOR($Resource.Scripts, '/skipLogic.js')}"></script>
+    
+    <!--JQuery script for allowing de-selection of radiobuttons-->   
+    <script>
+    $j(document).ready(function(){
+        
+        $j('input[type="radio"]').click(function(){
+            
+            var previousValue = $j(this).attr('title');
+            var val = $j(this).val();
+            var name = $j(this).attr('name');
+            
+            if (previousValue == val) {  // uncheck radio button
+                $j(this).removeAttr('checked').change();
+                $j("input[name='"+name+"']:radio").attr('title', '');
+                
+                ////------------------------------------//// Add by Danny
+                if($j(this).attr('name').indexOf("BSLCTREATMENT") != -1) // Q1
+                    skipLogic('BSLCTREATMENT','0');
+                else if($j(this).attr('name').indexOf("BTXCOMP") != -1)
+                    dateModule(2);
+            }
+            else {
+                $j("input[name='"+name+"']:radio").attr('title', val);
+            }
+            
+        });
+        
+    });
+    </script>   <!--End JQuery deselect radiobutton value script -->
+    
+    <!--date module criteria, test for treatment completion-->
+    <script>
+    $j(document).ready(function(){
+        dateModule({!dateModuleStatus});
+    });
+    
+    function dateModule(value){
+        if( value == '0'){
+            $j('.skip-No').show();
+            $j('.skip-Yes').hide();}
+        else if( value == '1' ){
+            $j('.skip-Yes').show();
+            $j('.skip-No').hide();}
+            else{
+                $j('.skip-No').hide();
+                $j('.skip-Yes').hide();}
+    }
+    </script>   <!--End JQuery script block-->
+    
+    <!-- "Breadcrumb" heading allows user to navigate to the ClientSummary page --> 
+    <apex:outputPanel rendered="{!if(forceRedirect = '1', false, true)}" layout="none">
+        <script>
+        $j(document).ready(function() {
+            $j('.bPageTitle').append('<div class="ptBreadcrumb">&nbsp;«&nbsp;<a href="/apex/ClientSummary?s=0&id={!client.id}">Back to Client Summary</a></div>');
+        });
+        </script>
+    </apex:outputPanel>
+    <!--Begin form content-->
+    <apex:form id="DS_BSLC_FORM">
+        <apex:sectionHeader title="NCTSN BSLC" subtitle="{!subtitle}"/><br/>
+        
+        <!-- pageblock to show ClientInformation header as described in Utility class-->
+        <apex:pageBlock title="Client Information">
+            <div id="force">
+                <apex:outputText value="{!ClientInfo}" escape="false"/>
+            </div>
+        </apex:pageBlock>
+        
+        <!-- primary content pageBlock container-->
+        <apex:pageBlock title="NCTSN BREAKTHROUGH SERIES/LEARNING COLLABORATIVE(S) " >
+            <apex:pageMessages /><!--placeholding structure that allows for system message display-->
+            
+            <div id="force"> 
+                
+                <table class="table DS-table">
+                    <tbody>
+                        <!--Begin BSLC questionnaire-->
+                        
+                        
+                        <!--1. Is the child/family recieving BSLC treatment?-->
+                        <tr>          
+                            <td>
+                                <b>1.</b>  Is this child/family receiving a treatment from a therapist participating in a breakthrough series or learning collaborative for that treatment? 
+                                <apex:selectRadio styleClass="form-control2" id="BSLCTREATMENT__c" value="{!obj.BSLCTREATMENT__c}" layout="pageDirection" title="{!obj.BSLCTREATMENT__c}" onChange="skipLogic('BSLCTREATMENT',this.value)">
+                                    <apex:selectOptions value="{!YNIems}" id="test"/>
+                                </apex:selectRadio>
+                                <b>If Yes:</b> Please complete the requested information for <b>EACH</b> treatment the child/family is receiving through a breakthrough series or learning collaborative.  A new entry is required for each type of treatment and each distinct set of start/stop dates. 
+                            </td>    
+                        </tr>
+                        
+                        <!--2. Is BSLT part of NCTSN?-->
+                        <tr class="skip-BNCCTSBSLC"> <!--Conditional, if Q1 yes----->      
+                            <td>
+                                <b>2.</b>  Is the breakthrough series or learning collaborative led by the UCLA-Duke University National Center for Child Traumatic Stress? 
+                                <apex:selectRadio styleClass="form-control2" id="BNCCTSBSLC__c" value="{!obj.BNCCTSBSLC__c}" layout="pageDirection" title="{!obj.BNCCTSBSLC__c}" onChange="skipLogic('BNCCTSBSLC',this.value)">
+                                    <apex:selectOptions value="{!YNUIems}"/>
+                                </apex:selectRadio>
+                            </td>    
+                        </tr>
+                        
+                        <!--3. What treatment?-->
+                        <tr class="skip-BNCCTSBSLC">  <!--Conditional, if Q1 yes----->             
+                            <td>
+                                <b>3.</b>   What treatment is this child/family receiving through a therapist participating in a breakthrough series or other learning collaborative? <b>(Select only one.) </b>
+                                <apex:selectRadio styleClass="form-control2" id="BTXTYPE__c" value="{!obj.BTXTYPE__c}" layout="pageDirection" title="{!obj.BTXTYPE__c}" onChange="skipLogic('BTXTYPE',this.value)">
+                                    <apex:selectOptions value="{!TreatIems}"/>
+                                </apex:selectRadio>
+                            </td>    
+                        </tr>
+                        
+                        <tr class="skipContent"> <!--Conditional, if Q1 yes----->
+                            <td class="skipContent">
+                                <!--If Other, Please specify--->
+                                <div class="skip-BTXTYPSP">          
+                                    <div class="skip-BTXTYPE">
+                                        <apex:outputLabel value="Please specify name of treatment: " for="BTXTYPSP__c"/>                            
+                                        <apex:inputField styleClass="form-control2 skip-element-BTXTYPSP"  id="BTXTYPSP__c" value="{!obj.BTXTYPSP__c}" label="Please Specify"/><br/>
+                                    </div>
+                                </div>
+                                <!--end Please specify---->
+                            </td>
+                        </tr>
+                        
+                        <!--4. Date treatment began?-->
+                        <tr class="skip-BNCCTSBSLC"> <!--Conditional, if Q1 yes----->    
+                            <td >
+                                <b>4.</b>    Date this treatment began: 
+                                <apex:inputField id="BTXSTDT__c" showDatePicker="true" styleClass="form-control2 auto-width" value="{!obj.BTXSTDT__c}"/>
+                            </td>
+                        </tr>
+                        
+                        <!--5. Was treatment completed?-->
+                        <tr class="skip-BNCCTSBSLC">    <!--Conditional, if Q1 yes----->
+                            <td>
+                                <p> <b>Complete question 5 after the child/family has terminated <u>this</u> treatment.</b><br/></p>
+                                
+                                <div class="skipContent">
+                                    <b>5.</b>    Did this child/family complete this treatment? 
+                                    <apex:selectRadio styleClass="form-control2" id="BTXCOMP__c" value="{!obj.BTXCOMP__c}" layout="pageDirection" title="{!obj.BTXCOMP__c}" onChange="dateModule(this.value)">
+                                        <apex:selectOptions value="{!YNCompletedIems}"/>
+                                    </apex:selectRadio>   
+                                    
+                                    <!--- Begin date module------------------>
+                                    <div class="skipContent skip-Date">
+                                        <!--treatment abandoned without completion date-->
+                                        <div class="skipContent skip-No" >
+                                            <b>Date left this treatment:  </b>  
+                                            <apex:inputField id="BTXLFTDT__c" showDatePicker="true" styleClass="form-control2 auto-width skip-element-BTXLFTDT" value="{!obj.BTXLFTDT__c}"/>
+                                        </div>             
+                                        <!--treatment completion date-->
+                                        <div class="skipContent skip-Yes" >
+                                            <b>Date completed this treatment: </b>
+                                            <apex:inputField id="BTXCPDT__c" showDatePicker="true" styleClass="form-control2 auto-width skip-element-BTXCPDT" value="{!obj.BTXCPDT__c}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!---End of date module---->
+                            </td>
+                        </tr><!--end Q1 Conditional-->
+                        
+                        <tr>
+                            <!--Completion status control-->
+                            <td colspan="2" class="text-right complete-title"><b>Complete?</b></td>
+                            <td>
+                                <apex:selectList id="STATUS_BSLC__c" styleClass="form-control input-sm" style="width:130px" value="{!obj.STATUS_BSLC__c}" size="1">
+                                    <apex:selectOption itemValue="Incomplete" itemLabel="Incomplete"/>
+                                    <apex:selectOption itemValue="Complete" itemLabel="Complete"/>
+                                </apex:selectList> 
+                            </td>
+                            <!--end completion status--> 
+                        </tr>
+                        
+                    </tbody>
+                </table>
+                
+                
+                
+            </div> 
+            
+            <!--save and cancel control buttons for pageBlock-->
+            <apex:pageBlockButtons >
+                <apex:commandButton id="Save" action="{!save}" value="Save"/>
+                <apex:commandButton id="Cancel" action="{!cancel}" value="Cancel" rendered="{!if(forceRedirect = '1', false, true)}"/>
+            </apex:pageBlockButtons><!--end buttons-->
+            
+        </apex:pageBlock><!--end BSLC pageBlock--> 
+        
+        
+        <apex:actionStatus id="loading" onstart="loading(true)" onstop="loading(false)" />
+    </apex:form>
+    <!--end form content-->
+    
+    <!--supplementary styling information-->
+    <style>
+        .loader {
+        background: url('/img/loading32.gif') scroll no-repeat 0 0;
+        width: 32px;
+        height: 32px;
+        position: absolute;
+        left: 50%;
+        }
+    </style>
+    <!--end styling-->
+    
+    <!--loadingBox-->   
+    <div id="load_scrl" class="loadingBox loader" style="display:none;"> </div>
+    
+    <script type="text/javascript">
+    function loading(val) {
+        if(val) { $j('#load_scrl').css('top', $j(document).scrollTop() + 200); $j('.loadingBox').show(); }
+        else $j('.loadingBox').hide();
+    }
+    </script>
+    
+    <!--citation information footer-->
+    <p style="class:footer; text-align:center ">
+        <i>This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - Baseline - CRF Version 6 2014
+        </i>
+    </p>    
+</apex:page>

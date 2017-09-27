@@ -1,0 +1,333 @@
+<apex:page standardController="DS_Background_Family_Info_B__c" extensions="DS_REFIMM_Controller">              
+    
+    <!--JQuery -->
+    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.9.1.js')}"  /><!--allows for JQuery dependencies-->
+    <script> $j = jQuery.noConflict(); </script><!--Reserves the '$' token for JQuery only-->
+    
+    <!-- Bootstrap -->
+        <link href="{!URLFOR($Resource.VFbootstrap3, '/css/VFbootstrap.css')}" rel="stylesheet" media="screen"/>
+            <apex:includeScript value="{!URLFOR($Resource.VFbootstrap3, '/js/bootstrap.min.js')}"/>
+                
+                <!--link to the CSS resource in Salesforce internal document-->
+                    <apex:stylesheet value="{!$Resource.CustomCss}" />
+                        
+                        <!--provides framework for "skip-logic" capabilities-->
+                            <script>function setFocusOnLoad() {}</script>
+                            <script> var skipElement = JSON.parse("{!JSENCODE(skipElementToJson)}"); </script>
+                            <script src="{!URLFOR($Resource.Scripts, '/skipLogic.js')}"></script>
+    
+    <!--JQuery script for allowing de-selection of radiobuttons-->
+    <script>
+    $j(document).ready(function(){        
+        $j('input[type="radio"]').click(function(){            
+            var previousValue = $j(this).attr('title');
+            var val = $j(this).val();
+            var name = $j(this).attr('name');      
+            
+            if (previousValue == val) {  // uncheck radio button
+                $j(this).removeAttr('checked').change();
+                $j("input[name='"+name+"']:radio").attr('title', '');
+            }
+            else {
+                $j("input[name='"+name+"']:radio").attr('title', val);
+            }            
+        });        
+    });    
+    </script><!--End JQuery deselect radiobutton value script -->        
+    
+    <!-- "Breadcrumb" heading allows user to navigate to the ClientSummary page -->
+    <apex:outputPanel rendered="{!if(forceRedirect = '1', false, true)}" layout="none">
+        <script>
+        $j(document).ready(function() {
+            $j('.bPageTitle').append('<div class="ptBreadcrumb">&nbsp;«&nbsp;<a href="/apex/ClientSummary?s=0&id={!client.id}">Back to Client Summary</a></div>');
+        });        
+        </script>
+    </apex:outputPanel>
+    <!--Begin form content-->
+    <apex:form id="DS_REFIMM_FORM" styleClass="form-horizontal">
+        <apex:sectionHeader title="Refugee and Immigrant Families Form" subtitle="{!subtitle}"/><br/>
+    
+        <!-- pageblock to show ClientInformation header as described in Utility class-->
+        <apex:pageBlock title="Client Information">
+            <div id="force">
+                <apex:outputText value="{!ClientInfo}" escape="false"/>
+            </div>
+        </apex:pageBlock>
+        
+        <!-- primary content pageBlock container-->
+        <apex:pageBlock title="Refugee and Immigrant Families Form"  >
+            <apex:pageMessages /><!--placeholding structure that allows for system message display-->            
+            
+            <div id="force"> 
+                
+                <div><b>If the child was not born in the United States, as indicated by question 5 in the Baseline Visit and Demographic Information Form above, and/or if the child has a parent who was not born in the United States, as indicated by question 6, please complete the following questions.  These questions require detailed information; please include caregiver if appropriate.
+                    <br/>Please note that <i>ethnic origin</i> in this case refers to culture or social background, traditions, identity group, language, and/or religious traditions.
+                    </b>
+                </div>
+                <table class="table DS-table">
+                    <tbody>   
+                        
+                        <!--1. Child's age of entry into the US-->
+                        <tr>
+                            <td><b>1. </b>
+                                How old was the child when he/she <u>first</u> entered the United States?
+                                <br/>
+                                <br/>
+                            </td>
+                            <td>
+                                
+                                Age of entry:  
+                                <apex:inputField id="BAGENT__c" label="Age of entry" value="{!obj.BAGENT__c}" styleClass="form-control2" />
+                                <br/>
+                                <label>
+                                    <apex:inputCheckbox id="BAGUS__c" value="{!obj.BAGUS__c}" styleClass="form-control2" />
+                                    Child was born in the United States   
+                                </label>
+                                <br/>
+                                <label>
+                                    <apex:inputCheckbox id="BAGUK__c" value="{!obj.BAGUK__c}" styleClass="form-control2" />
+                                    Unknown
+                                </label>
+                                <br/>
+                            </td>
+                        </tr>
+                        
+                        <!--2. Child's ethnic origin-->
+                        <tr>
+                            <td><b>2. </b>
+                                What is the ethnic origin of the child?</td>
+                            <td>
+                                <apex:inputField label="Ethnic Origin" id="BCETHORG__c" value="{!obj.BCETHORG__c}" styleClass="form-control2" />
+                            </td>
+                        </tr>
+                        
+                        <!--3. Mother born in US?-->
+                        <tr>
+                            <td><b>3. </b>
+                                Was the child’s mother born in the United States?
+                                <br/>
+                            </td>
+                            <td>
+                                <apex:selectRadio styleClass="form-control2" id="BMOMUS__c" value="{!obj.BMOMUS__c}" layout="pageDirection" title="{!obj.BMOMUS__c}" onChange="skipLogic('BMOMUS',this.value)">
+                                    <apex:selectOptions value="{!CTYNUNItems}"/>
+                                </apex:selectRadio>
+                            </td>
+                        </tr>
+                        
+                        <!--conditional, if mother not US born-->
+                        <tr class="skip-BMOMCTY">
+                            <td class="skipContent">
+                                In what country was the child’s mother born?
+                            </td>
+                            
+                            <td>
+                                <!--mother's nationality-->
+                                <apex:selectList styleClass="form-control2 skip-element-BMOMCTY" id="BMOMCTY__c" value="{!obj.BMOMCTY__c}" title="{!obj.BMOMCTY__c}" size="1">
+                                    <apex:selectOptions value="{!CTDECT}"/>
+                                </apex:selectList>
+                                <br/>
+                                <br/>
+                                <!--mother's ethnicity-->
+                                What is her ethnic origin?
+                                <apex:inputField styleClass="form-control2 skip-element-BMETHORG" id="BMETHORG__c" value="{!obj.BMETHORG__c}" />
+                            </td>
+                        </tr>
+                        
+                        <!--4. Father born in US?-->
+                        <tr>
+                            <td><b>4. </b>
+                                Was the child’s father born in the United States?
+                                <br/>
+                            </td>
+                            <td>
+                                <apex:selectRadio styleClass="form-control2" id="BDADUS__c" value="{!obj.BDADUS__c}" layout="pageDirection" title="{!obj.BDADUS__c}" onChange="skipLogic('BDADUS',this.value)">
+                                    <apex:selectOptions value="{!CTYNUNItems}"/>
+                                </apex:selectRadio>
+                            </td>
+                        </tr>
+                        
+                        <!--conditional, if faher not US born-->
+                        <tr class="skip-BDADCTY">
+                            <td class="skipContent">
+                                In what country was the child’s father born?
+                            </td>
+                            <td>
+                                <!--mother's nationality-->
+                                <apex:selectList styleClass="form-control2 skip-element-BDADCTY" id="BDADCTY__c" value="{!obj.BDADCTY__c}" title="{!obj.BDADCTY__c}" size="1">
+                                    <apex:selectOptions value="{!CTDECT}"/>
+                                </apex:selectList>
+                                <br/>
+                                <br/>
+                                <!--mother's ethnicity-->
+                                What is his ethnic origin?
+                                <apex:inputField styleClass="form-control2 skip-element-BDETHORG" id="BDETHORG__c" value="{!obj.BDETHORG__c}" />
+                            </td>
+                        </tr>     
+                        
+                        <!--5. Child immigration status indication checkbox list-->
+                        <tr>
+                            <td><b>5. </b>
+                                Please indicate if the child has ever had any of the following statuses.<br/>  <b>(Select all that apply.)</b><br/>
+                                <br/>
+                            </td>
+                            <td>
+                                <!--No status-->
+                                <label>
+                                    <apex:inputCheckbox id="BCSTNONE__c" value="{!obj.BCSTNONE__c}" styleClass="form-control2" />
+                                    None
+                                </label>
+                                <br/>
+                                <!--Refugee-->
+                                <label>
+                                    <apex:inputCheckbox id="BCSTREF__c" value="{!obj.BCSTREF__c}" styleClass="form-control2" />
+                                    Refugee (U.S. government refugee status, "A refugee is someone who has been forced to flee his or her country because of persecution, war, or violence")
+                                </label>
+                                <br/>
+                                <!--Asylee-->
+                                <label>
+                                    <apex:inputCheckbox id="BCSTASY__c" value="{!obj.BCSTASY__c}" styleClass="form-control2" />
+                                    Asylee (formally going through a legal process to become an asylee because of fear of persecution in their country of origin) 
+                                </label>
+                                <br/>
+                                <!--immigrant-->
+                                <label>
+                                    <apex:inputCheckbox id="BCSTIMM__c" value="{!obj.BCSTIMM__c}" styleClass="form-control2" />
+                                    Immigrant
+                                </label>
+                                <br/>
+                                <!--unknown-->
+                                <label>
+                                    <apex:inputCheckbox id="BCSTUK__c" value="{!obj.BCSTUK__c}" styleClass="form-control2" />
+                                    Unknown
+                                </label>
+                                <br/>
+                            </td>
+                        </tr>  <!--end checkbox list-->   
+                        
+                        <!--6. Parent immigration status indication checkbox list-->
+                        <tr>
+                            <td><b>6. </b>
+                                Please indicate if the parents have ever had any of the following statuses.<br/>  <b>(Select all that apply.)</b><br/>
+                                <br/>
+                            </td>
+                            <td>
+                                <!--No status-->
+                                <label>
+                                    <apex:inputCheckbox id="BPSTNONE__c" value="{!obj.BPSTNONE__c}" styleClass="form-control2" />
+                                    None
+                                </label>
+                                <br/>
+                                <!--Refugee-->
+                                <label>
+                                    <apex:inputCheckbox id="BPSTREF__c" value="{!obj.BPSTREF__c}" styleClass="form-control2" />
+                                    Refugee (U.S. government refugee status, "A refugee is someone who has been forced to flee his or her country because of persecution, war, or violence")
+                                </label>
+                                <br/>
+                                <!--Asylee-->
+                                <label>
+                                    <apex:inputCheckbox id="BPSTASY__c" value="{!obj.BPSTASY__c}" styleClass="form-control2" />
+                                    Asylee (formally going through a legal process to become an asylee because of fear of persecution in their country of origin) 
+                                </label>
+                                <br/> 
+                                <!--immigrant-->
+                                <label>
+                                    <apex:inputCheckbox id="BPSTIMM__c" value="{!obj.BPSTIMM__c}" styleClass="form-control2" />
+                                    Immigrant
+                                </label>
+                                <br/>
+                                <!--unknown-->
+                                <label>
+                                    <apex:inputCheckbox id="BPSTUK__c" value="{!obj.BPSTUK__c}" styleClass="form-control2" />
+                                    Unknown
+                                </label>
+                                <br/>
+                            </td>
+                        </tr>    
+                        
+                        <!--7. Child encampmant-->
+                        <tr>
+                            <td><b>7. </b> 
+                                Did the child ever live in a refugee or detention camp?
+                                <br/>
+                            </td>
+                            <td>
+                                <apex:selectRadio styleClass="form-control2" id="BREFCAMP__c" value="{!obj.BREFCAMP__c}" layout="pageDirection" title="{!obj.BREFCAMP__c}" onChange="skipLogic('BREFCAMP',this.value)">
+                                    <apex:selectOptions value="{!CTYNUNItems}"/>
+                                </apex:selectRadio>
+                            </td>
+                        </tr>
+                        
+                        <tr class="skip-BCAMPMO"><!--conditional if child was in a camp-->
+                            <!--duration of encampment-->
+                            <td class="skipContent">
+                                How long did the child live in a refugee/detention camp(s)?
+                            </td>
+                            <td>
+                                <!--months-->
+                                Months: <apex:inputField id="BCAMPMO__c" styleClass="form-control2 skip-element-BCAMPMO" value="{!obj.BCAMPMO__c}"/>                            
+                                <br/>
+                                <br/>
+                                <!--Whole years-->
+                                Years:&nbsp;&nbsp;&nbsp; <apex:inputField id="BCAMPYR__c" styleClass="form-control2 skip-element-BCAMPYR" value="{!obj.BCAMPYR__c}"/> 
+                            </td>
+                        </tr>  <!--end camp conditional-->
+                        
+                        <!--8. parental english skills-->
+                        <tr>
+                            <td><b>8. </b> 
+                                How well do the child’s parent(s)/primary caregiver(s) speak English? <b>(Select only one. Please respond with respect to the parent/caregiver who is most proficient in English.) </b><br/>
+                                <br/>
+                            </td>
+                            <td>
+                                <apex:selectRadio id="BPARENG__c" value="{!obj.BPARENG__c}" title="{!obj.BPARENG__c}" layout="pageDirection">
+                                    <apex:selectOptions value="{!EngWellItems}"/>
+                                </apex:selectRadio>
+                            </td>
+                        </tr>  
+                        
+                        <!--9. child english level-->
+                        <tr>
+                            <td><b>9. </b>
+                                How well does the child speak English (for a child of his or her age)?  <b>(Select only one.) </b><br/>
+                                <br/>
+                            </td>
+                            <td>
+                                <apex:selectRadio id="BCHIENG__c" value="{!obj.BCHIENG__c}" title="{!obj.BCHIENG__c}" layout="pageDirection">
+                                    <apex:selectOptions value="{!EngWellItems}"/>
+                                </apex:selectRadio>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                    <!--Completion status control-->
+                            <td colspan="2" class="text-right complete-title"><b>Complete?</b></td>
+                            <td>
+                                <apex:selectList id="STATUS_REFIMM__c" styleClass="form-control input-sm" style="width:130px" value="{!obj.STATUS_REFIMM__c}" size="1">
+                                    <apex:selectOption itemValue="Incomplete" itemLabel="Incomplete"/>
+                                    <apex:selectOption itemValue="Complete" itemLabel="Complete"/>
+                                </apex:selectList> 
+                            </td>
+                    <!--end completion status-->
+                        </tr>
+                        
+                    </tbody>
+                    
+                </table>    
+                
+        <!--save and cancel control buttons for pageBlock-->
+                <apex:pageBlockButtons >
+                    <apex:commandButton id="Save" action="{!save}" value="Save"/>
+                    <apex:commandButton id="Cancel" action="{!cancel}" value="Cancel" rendered="{!if(forceRedirect = '1', false, true)}"/>
+                </apex:pageBlockButtons><!--end buttons--> 
+                
+            </div>
+        </apex:pageBlock><!--end refimm pageBlock-->        
+    </apex:form>  
+    <!--end form content--> 
+    
+    <!--citation information footer-->
+    <p style="class:footer; text-align:center ">
+        <i>This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - Baseline - CRF Version 6 2014
+        </i>
+    </p>  
+</apex:page>

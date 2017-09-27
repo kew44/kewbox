@@ -1,0 +1,63 @@
+<apex:page standardController="Client__c"  extensions="FollowUpConfirmAddController">
+    
+    <!--JQuery -->
+    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.9.1.js')}"  /><!--allows for JQuery dependencies-->
+    <script> $j = jQuery.noConflict(); </script><!--Reserves the '$' token for JQuery only-->
+    
+    <!-- Bootstrap -->
+        <link href="{!URLFOR($Resource.VFbootstrap3, '/css/VFbootstrap.css')}" rel="stylesheet" media="screen"/>
+            <apex:includeScript value="{!URLFOR($Resource.VFbootstrap3, '/js/bootstrap.min.js')}"/>
+                
+                <!--link to the CSS resource in Salesforce internal document-->
+                    <apex:stylesheet value="{!$Resource.CustomCss}" />
+                        
+                        <script>function setFocusOnLoad() {}</script>
+    
+    <!--supplementary styling information-->
+    <style>
+        @media only screen and (min-width : 1600px) {
+        #sidebarCell { display: table-cell;}
+        }
+        #sidebarCell { display: none !important; }
+    </style>
+    <!--end styling-->  
+    
+<apex:form styleClass="form-horizontal">
+<apex:pageBlock >
+  <h1>You have selected "add new Follow-up". Do you wish to continue creating a Follow-up record? </h1>
+  <table>
+      <tr>
+          <td> 
+              <apex:outputPanel layout="none" >
+               <!--<a href="/apex/FollowUpSummary?apex/FollowUpSummary?id=a02e0000005ASYa">-->
+               <button type="button" class="btn btn-primary btn-xs btn-sl">No</button>
+               <!--</a>-->
+               </apex:outputPanel>
+          </td>
+          <td>
+              <apex:outputPanel layout="none" >
+              <!-- <a href="/apex/FollowUpSummary?apex/FollowUpSummary?id=a02e0000005ASYa">-->
+               <button type="button" class="btn btn-primary btn-xs btn-sl">Yes. Let's get started!</button>
+              <!-- </a>-->
+               </apex:outputPanel>
+          </td>
+          <td>
+              <apex:outputPanel layout="none" >
+              <!-- <a href="/apex/FollowUpSummary?apex/FollowUpSummary?id=a02e0000005ASYa">-->
+               <button type="button" class="btn btn-primary btn-xs btn-sl">Yes, but take me to the summary page first.</button>
+               <!--</a>-->
+               </apex:outputPanel>
+          </td>
+      </tr>
+      <tr>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+      </tr>
+  </table>
+  </apex:pageBlock>
+  </apex:form>
+</apex:page>

@@ -1,0 +1,318 @@
+<apex:page standardController="DS_PTSD_CA_B__c" extensions="DS_PTSD_CA_Report_Controller" action="{!init}" showHeader="{!NOT(printReport)}">
+
+    <!--JQuery -->
+    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.9.1.js')}"  /><!--allows for JQuery dependencies-->
+    <script> $j = jQuery.noConflict(); </script><!--Reserves the '$' token for JQuery only-->
+    
+    <!-- Bootstrap -->
+        <link href="{!URLFOR($Resource.VFbootstrap3, '/css/VFbootstrap.css')}" rel="stylesheet" media="screen"/>
+            <apex:includeScript value="{!URLFOR($Resource.VFbootstrap3, '/js/bootstrap.min.js')}"/>
+                
+                <!--link to the CSS resource in Salesforce internal document-->
+                    <apex:stylesheet value="{!$Resource.CustomCss}" />
+                    
+    <script>function setFocusOnLoad() {}</script> 
+    
+    <!--supplementary styling information-->
+    <style>
+        .pbTitle { width:390px !important; }
+        .pbButtonb, .pbButton { float:right; }
+        #force .form-control { display: inline; /*width:auto;*/ }
+        #force { font-size: 13px; }
+        /*.form-checkbox label { display: inline !important; }*/
+        .auto-width { width:auto !important; }
+        #sidebarCell { display: none;}
+        
+        @media only screen and (min-width : 1224px) {
+        #sidebarCell { display: table-cell;}
+        }
+        .complete-title { vertical-align: middle !important; }
+        .PTSD-table tbody th { text-align: center !important; }
+        .first-row td { text-align: center !important; }
+        .PTSD-table ul { padding: 0px; }
+    </style>
+    <!--end styling-->
+        
+    <!-- "Breadcrumb" heading allows user to navigate to the ClientSummary page -->
+    <apex:outputPanel layout="none" rendered="{!not(printReport)}">
+        <script>
+        $j(document).ready(function() {
+            $j('.bPageTitle').append('<div class="ptBreadcrumb">&nbsp;«&nbsp;<a href="/apex/ClientSummary?id={!cID}&s=0">Back to Client Summary</a></div>');
+        });
+        </script>
+    </apex:outputPanel>
+    <!--end breadcrumb-->
+    
+    <!--print report command for button-->  
+    <apex:outputPanel layout="none" rendered="{!printReport}">
+        <script>
+        $j(document).ready(function() { 
+            $j('.bPageTitle .ptBody .content').prepend('<img style="display:inline;float:left;" src="{!URLFOR($Resource.images, 'cimiLogo.png')}"/>');
+            window.print(); 
+        });
+        </script>
+    </apex:outputPanel>
+    <!--end print command -->  
+    
+    <apex:form id="DS_PTSD_CA_REPORT">
+        
+        <apex:sectionHeader title=" UCLA PTSD Reaction Index for Children/Adolescents" subtitle="{!subtitle}" rendered="{!NOT(printReport)}"/>
+        <apex:sectionHeader title="UCLA PTSD Reaction Index for Children/Adolescents" rendered="{!printReport}"/><br/>
+        
+        <!-- pageblock to show ClientInformation header as described in Utility class-->
+        <apex:pageBlock title="Client Information">
+            <div id="force">
+                <apex:outputText value="{!ClientInfo}" escape="false"/>
+            </div>
+        </apex:pageBlock><!--end client info pageBlock-->  
+        
+        <!--begin report content-->
+        <apex:pageBlock title="Symptom Analysis Report">
+            <apex:pageMessages /><!--placeholding structure that allows for system message display-->
+            
+            <div id="force">
+                
+                <!--provides print button functionality and structure-->
+                <apex:outputPanel layout="none" rendered="{!NOT(printReport)}">
+                    <div>
+                        <a href="/apex/DS_PTSD_CA_Report?cimi={!cimi}&print=1" target="_blank">
+                            <button class="btn btn-default pull-right" type="button">
+                                <i class="glyphicon glyphicon-print"></i> &nbsp;Print
+                            </button>
+                        </a>
+                        <br/>
+                    </div>
+                </apex:outputPanel>
+                <!--end print button-->
+                
+                <!--information-->
+                <p>The UCLA PTSD Reaction Index for DSM-5 measures the child's experience of PTSD symptoms.This measure assesses the frequency with which the child experienced PTSD symptoms over the past month.</p>
+                <p><b>This report provides a list of the symptoms that are present and some guidance on whether a child is likely to meet the DSM-5 diagosis of PTSD.</b></p>
+                <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAPPCN']] = 1, true, false)}"><!--conditional display--> 
+                <!--end information-->
+                
+                    <table class="table PTSD-table table-bordered">
+                        <tbody>
+                            <!--score table headings-->
+                            <tr>
+                                <th rowspan="2">Date</th>
+                                <th rowspan="2">Visit</th>
+                                <th rowspan="2">Meets<br/>UCLA PTSD<br/>Diagnostic<br/>Criteria DSM-5 </th>
+                                <th rowspan="2">UCLA PTSD-RI<br/>Total Scale<br/>Score</th>
+                                <th colspan="4">Symptom Category Score (Symptom Criteria Met)</th>
+                                
+                                <th rowspan="2">F<br/>Duration<br/>greater than<br/>on month</th>
+                                <th rowspan="2">G<br/>Clinically<br/>Significant<br/>Distress</th>
+                                <th rowspan="2">Clinician<br/>Assessment:<br/>Functional<br/>Impairment</th>
+                                <th rowspan="2">Presence of<br/>one or more<br/>Dissociative<br/>Symtoms</th>
+                            </tr>
+                            
+                            <!--condensed headings-->
+                            <tr>
+                                <th>B<br/>Intrusion</th>
+                                <th>C<br/>Avoidance</th>
+                                <th>D<br/>Negative<br/>Alterations in<br/>Cognitions/Mood</th>
+                                <th>E<br/>Alterations in<br/>Arousal/Reactivity</th>
+                            </tr>
+                            <!--end condensed heading format-->
+                            <!--end headings-->
+                            
+                            <!--response summary-->
+                            <tr class="first-row">
+                                <!--date field-->
+                                <td>
+                                    <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                        <apex:param value="{!obj[bfVariableMap['DOAPTSD']]}" />
+                                    </apex:outputText>
+                                </td>
+                                <!--end date-->
+                                
+                                <!--visit type-->
+                                <td>{!IF(BorF = 'B', 'Baseline', 'Follow-up')}</td>
+                                
+                                <!--meets or doesn't meet criteria-->
+                                <td><b>{!if(obj[bfVariableMap['PTSOCN']] = 1, 'Meets', 'Does Not Meet')}</b></td>
+                                
+                                <!--total score-->
+                                <td><b>{!obj[bfVariableMap['PTSORN']]}</b></td>
+                                
+                                <!--sub-category scores and if criteria was met/not met-->
+                                <!--B. Intrusion-->
+                                <td>{!obj[bfVariableMap['PTSBRN']]} <b>[{!if(obj[bfVariableMap['PTSBMN']] = 1, 'Met', 'Not Met')}]</b></td>
+                                <!--C. Avoidance-->
+                                <td>{!obj[bfVariableMap['PTSCRN']]} <b>[{!if(obj[bfVariableMap['PTSCMN']] = 1, 'Met', 'Not Met')}]</b></td>
+                                <!--D. Negative Alterations in Cognitions/Mood-->
+                                <td>{!obj[bfVariableMap['PTSDRN']]} <b>[{!if(obj[bfVariableMap['PTSDMN']] = 1, 'Met', 'Not Met')}]</b></td>
+                                <!--E. Alterations in Arousal/Reactivity-->
+                                <td>{!obj[bfVariableMap['PTSERN']]} <b>[{!if(obj[bfVariableMap['PTSEMN']] = 1, 'Met', 'Not Met')}]</b></td>
+                                
+                                <!--duration > 1 month?-->
+                                <td><b>{!CASE(obj[bfVariableMap['PTSDURA']], '0', 'No', '1', 'Yes', '99', 'Unknown', '')}</b></td>
+                                <!--significant distress?-->
+                                <td><b>{!if(obj[bfVariableMap['PTSDC']] = true, 'Yes', 'No')}</b></td>
+                                <!--impairment?-->
+                                <td><b>{!if(obj[bfVariableMap['PTSFC']] = true, 'Yes', 'No')}</b></td>
+                                <!--dissociative symptoms present?-->
+                                <td><b>{!if(obj[bfVariableMap['PTSVDSN']] = 1, 'Yes', 'No')}</b></td>
+                            </tr>
+                            <!--end summary-->
+                            
+                            <!--list of symptoms met in symptom categories-->
+                            <tr>
+                                <td colspan="4" class="text-right" style="vertical-align:top;"><b>Symptoms Present</b></td>
+                                
+                                <!--category B-->
+                                <td>
+                                    <ul>
+                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAB1']] > 2, true, false)}">
+                                            <li>Intrusive Recollections</li>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAB2']] > 2, true, false)}">
+                                            <li>Recurrent Dreams</li>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAB3']] > 2, true, false)}">
+                                            <li>Flashbacks</li>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel layout="none" rendered="{!if(OR(obj[bfVariableMap['PTSAB4']] > 2, obj[bfVariableMap['PTSAB5']] > 2), true, false)}">
+                                            <li>Psychological Reactivity to Reminders</li>
+                                        </apex:outputPanel>
+                                    </ul>
+                                </td>
+                                <!--end B-->
+                                
+                                <!--category C-->
+                                <td>
+                                    <ul>
+                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAC1']] > 2, true, false)}">
+                                            <li>Avoidance of Thoughts or Feelings</li>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAC2']] > 2, true, false)}">
+                                            <li>Avoidance of Reminders</li>
+                                        </apex:outputPanel>
+                                    </ul>
+                                </td>
+                                <!--end C-->
+                                
+                                <!--category D-->
+                                <td>
+                                    <ul>
+                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAD1']] > 2, true, false)}">
+                                            <li>Trouble Remembering</li>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAD2']] > 2, true, false)}">
+                                            <li>Negative Beliefs</li>
+                                        </apex:outputPanel> 
+                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAD3']] > 2, true, false)}">
+                                            <li>Distorted Negative Cognitions</li>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAD4']] > 2, true, false)}">
+                                            <li>Negative Emotional State</li>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAD5']] > 2, true, false)}">
+                                            <li>Diminished Interest</li>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAD6']] > 2, true, false)}">
+                                            <li>Detachment</li>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAD7']] > 2, true, false)}">
+                                            <li>Inability for Positive Emotions</li>
+                                        </apex:outputPanel>
+                                    </ul>
+                                </td>
+                                <!--end D-->
+                                
+                                <!--category E-->
+                                <td>
+                                    <ul>
+                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAE1']] > 2, true, false)}">
+                                            <li>Irritability and Anger</li>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAE2']] > 2, true, false)}">
+                                            <li>Reckless/Self-Destructive Behavior</li>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAE3']] > 2, true, false)}">
+                                            <li>Hypervigilance</li>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAE4']] > 2, true, false)}">
+                                            <li>Exaggerated Startle</li>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAE5']] > 2, true, false)}">
+                                            <li>Concentration Problems</li>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAE6']] > 2, true, false)}">
+                                            <li>Sleep Disturbance</li>
+                                        </apex:outputPanel>                 
+                                    </ul>
+                                </td>
+                                <!--end E-->
+                                
+                                <td></td><!--intentional blank cell space, compensation for condensing-->
+                                <td></td><!--intentional blank cell space, compensation for condensing-->
+                                
+                                <!--category F-->
+                                <td>
+                                    <ul>
+                                        <apex:outputPanel layout="none" rendered="{!obj[bfVariableMap['PTSFHC']] = true}">
+                                            <li>Home</li>
+                                        </apex:outputPanel> 
+                                        <apex:outputPanel layout="none" rendered="{!obj[bfVariableMap['PTSFSC']] = true}">
+                                            <li>School</li>
+                                        </apex:outputPanel> 
+                                        <apex:outputPanel layout="none" rendered="{!obj[bfVariableMap['PTSFRC']] = true}">
+                                            <li>Peer Relationships</li>
+                                        </apex:outputPanel> 
+                                        <apex:outputPanel layout="none" rendered="{!obj[bfVariableMap['PTSFPC']] = true}">
+                                            <li>Developmental Progression</li>
+                                        </apex:outputPanel> 
+                                    </ul>
+                                </td>
+                                <!--end F-->
+                                
+                                <!--category G-->
+                                <td>
+                                    <ul>
+                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSVDA1']] > 2, true, false)}">
+                                            <li>Depersonalization</li>
+                                        </apex:outputPanel>  
+                                        <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSVDA2']] > 2, true, false)}">
+                                            <li>Derealization</li>
+                                        </apex:outputPanel>  
+                                    </ul>
+                                </td>
+                                <!--end G-->
+                            </tr>
+                            <!--end symptom lists-->
+                            
+                        </tbody>
+                    </table>
+                </apex:outputPanel>
+                <!--end report content-->
+                
+                <!--conditional, If 3 or more scores are missing, this panel is displayed instead of report-->
+                <apex:outputPanel layout="none" rendered="{!if(obj[bfVariableMap['PTSAPPCN']] = 0, true, false)}">
+                    <div class="well well-lg">
+                        <h4>This record is Not Applicable.</h4><br/><br/>
+                        <p>Score can't be calculated, three(3) or more anwers to the UCLA PTSD-RI were left blank.</p>
+                    </div>
+                </apex:outputPanel>
+                <!--end NaN message-->
+            </div>
+            
+            <!--edit button-->
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!save}" value="Edit" rendered="{!not(printReport)}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+        <!--end button-->
+        
+        <!--citation information footer-->
+    <p style="class:footer; text-align:center ">
+        <i>©2014: Robert S. Pynoos, M.D., M.P.H. and Alan M. Steinberg, Ph.D. All rights reserved.<br/>
+        This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - Baseline - CRF Version 6 2014
+        </i>
+    </p> 
+        
+    </apex:form>
+    <!--end report-->
+    
+</apex:page>

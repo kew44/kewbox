@@ -1,0 +1,283 @@
+<apex:page standardController="DS_CBCL_B__c" extensions="DS_CBCL_0_5_Controller">
+    
+    <!--JQuery -->
+    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.9.1.js')}"  /><!--allows for JQuery dependencies-->
+    <script> $j = jQuery.noConflict(); </script><!--Reserves the '$' token for JQuery only-->
+    
+    <!-- Bootstrap -->
+        <link href="{!URLFOR($Resource.VFbootstrap3, '/css/VFbootstrap.css')}" rel="stylesheet" media="screen"/>
+            <apex:includeScript value="{!URLFOR($Resource.VFbootstrap3, '/js/bootstrap.min.js')}"/>
+                
+                <!--link to the CSS resource in Salesforce internal document-->
+                    <apex:stylesheet value="{!$Resource.CustomCss}" />
+                        
+                        <script>function setFocusOnLoad() {}</script>
+    
+    <!--JQuery script for allowing de-selection of radiobuttons-->  
+    <script>
+    $j(document).ready(function(){
+        
+        $j('input[type="radio"]').click(function(){
+            
+            var previousValue = $j(this).attr('title');
+            var val = $j(this).val();
+            var name = $j(this).attr('name');
+            
+            if (previousValue == val) {  // uncheck radio button
+                $j(this).removeAttr('checked').change();
+                $j("input[name='"+name+"']:radio").attr('title', '');
+            }
+            else {
+                $j("input[name='"+name+"']:radio").attr('title', val);
+            }
+            
+        });
+        
+    });
+    
+    </script><!--End JQuery deselect radiobutton value script block-->
+    
+    <!--supplementary styling information-->
+    <style>
+        @media only screen and (min-width : 1600px) {
+        #sidebarCell { display: table-cell;}
+        }
+        #sidebarCell { display: none !important; }
+        .radioboxTD { width: 225px; }
+        .radioboxTD table { width: 100%; }
+        /*.radioboxTD td { padding: 0 10px 0 10px; }*/
+        
+        .content-table { margin-bottom: 0px !important; }
+        .content-table th { color: #000000; }
+        .content-table td .content-question { font-weight: bold; line-height: 23px;}
+        .content-question { margin: 0px 0px 5px 0px;}
+        .content-radio { margin: 0px 0px 5px 0px; }
+        .content-radio input { margin: 0px 2px 0px 3px !important; }
+        .content-radio label { font-weight: normal !important; }
+        .content-radio { padding: 7px 7px 0px 0px; }
+        .content-th-number { width: 25px; }
+        .content-number { width: 25px; padding-top: 10px !important;}
+    </style>
+    <!--end styling-->
+    
+    <!-- "Breadcrumb" heading allows user to navigate to the ClientSummary page -->
+    <apex:outputPanel rendered="{!if(forceRedirect = '1', false, true)}" layout="none">
+        <script>
+        $j(document).ready(function() {
+            $j('.bPageTitle').append('<div class="ptBreadcrumb">&nbsp;«&nbsp;<a href="/apex/ClientSummary?s=0&id={!client.id}">Back to Client Summary</a></div>');
+        });
+        </script>
+    </apex:outputPanel>
+    <!--Begin form content-->
+    <apex:sectionHeader title="Child Behavior Checklist for Ages 1.5-5" subtitle="{!subtitle}"/><br/>
+    
+    <!-- pageblock to show ClientInformation header as described in Utility class-->
+    <apex:pageBlock title="Client Information">
+        <div id="force"><apex:outputText value="{!ClientInfo}" escape="false"/></div>
+    </apex:pageBlock><!--end client info pageBlock-->
+    
+    <!-- primary content pageBlock container-->
+    <apex:form id="DS_CBCL-0-5" styleClass="form-horizontal">      
+        <apex:pageBlock title="Child Behavior Checklist for Ages 1.5-5" >    
+            <apex:pageMessages /><!--placeholding structure that allows for system message display-->
+            
+            <div id="force">
+                <!--copyright warning-->
+                <div class="copyrighted" style="padding:1px;">
+                    <table>
+                        <tr class="warning">
+                            <th>COPYRIGHTED MATERIALS</th>
+                        </tr>
+                    </table>
+                </div>
+                <!--end warning-->
+                
+                <!--instructions-->
+                <div>
+                    Please fill out this form to reflect <i>your</i> view of the child's behavior even if other people might not agree. <b><i>Be sure to answer all items.</i></b>
+                    <br/><!--blank row-->
+                    <br/><!--blank row-->
+                </div>
+                <!--end instructions-->                
+                
+                <div class="formTopContent">
+                <!--informational heading-->
+                    Below is a list of items that describe children. For each item that describes the child <b><i>now or within the past 2 months</i></b>, please circle the <i><b>2</b></i> if the item is <b><i>very true or often true</i></b> of the child. Circle the <b><i>1</i></b> if the item is <b><i>somewhat or sometimes true</i></b> of the child. If the item is <b><i>not true</i></b> of the child, circle the <b><i>0</i></b>. Please answer all items as well as you can, even if some do not seem to apply to the child.
+                    <br/><!--blank row-->
+                    <br/><!--blank row-->
+                    <table>
+                        <tr>
+                            <td style="text-align:center;  padding-right: 200px; padding-left: 50px"><b>0 = Not True(as far as you know)</b></td>
+                            <td style="text-align:center;  padding-right: 200px; padding-left: 200px"><b>1 = Somewhat or Sometimes True</b> </td>
+                            <td style="text-align:center;  padding-right: 50px; padding-left: 200px"><b>2 = Very True or Often True</b> </td>
+                        </tr>
+                    </table>
+                    <!--end heading-->
+                </div>
+                
+                <br/><!--blank row-->          
+                                
+                <!--section with basic information-->                
+                <div class="row">
+                    
+                    <div class="col-md-12 col-sm-12 col-lg-12" style="padding:1px;">
+                        <table class="content-table table table-condensed">
+                        
+                            <!--basic information sub-heading-->
+                            <tr class="warning">
+                                <th>Basic Information</th>
+                                <th></th>
+                            </tr>
+                            <!--end basic information sub-header-->
+                            
+                            <!--date-->
+                            <tr>
+                                <td style="padding-left:20px; vertical-align: middle;">Date of administration</td>
+                                <td>
+                                    <apex:inputField id="DOACY__c" styleClass="form-control auto-width" value="{!obj[bfVariableMap['DOACY']]}"/>
+                                </td>
+                            </tr>
+                            <!--end date-->
+                            
+                            <!--administration method-->
+                            <tr>
+                                <td style="padding-left: 20px; vertical-align: middle;">How was this form administered?</td>
+                                <td>
+                                    <apex:selectList id="CBYMETH__c" styleClass="form-control auto-width" value="{!obj[bfVariableMap['CBYMETH']]}" size="1" required="true">
+                                        <apex:selectOptions value="{!BMETItems}"/> 
+                                    </apex:selectList>
+                                </td>                  
+                            </tr>
+                            <!--end administration-->
+                            
+                        </table>
+                    </div>
+                    <!--end basic information section-->
+                    
+                    <div class="col-md-12 col-sm-12 col-lg-6" style="padding: 1px;">
+                        
+                        <!--question number sub-heading bar-->
+                        <div class="col-md-12 col-sm-12 col-lg-12" style="padding: 1px;">
+                            <table class="content-table table table-condensed">
+                                <tr class="warning">
+                                    <th class="content-th-number">#</th>
+                                    <th>Question</th>
+                                </tr>
+                            </table>
+                        </div>
+                        <!--end question number sub-heading-->
+                        
+                        <!--question content populated from form information data-->
+                        <apex:repeat value="{!items}" var="item"> 
+                            
+                            <!-- new column starting at #52?-->
+                            <apex:outputPanel layout="none" rendered="{!IF((item.num == '52'), 'TRUE', 'FALSE')}"><!--conditional-->
+                                
+                                <apex:outputText value='</div>' escape="false"/>
+                                <apex:outputText value='<div class="col-md-12 col-sm-12 col-lg-6" style="padding: 1px;">' escape="false"/>
+                                
+                                <!--new column sub-heading for question # ? -->
+                                <div class="col-md-12 col-sm-12 col-lg-12 visible-lg" style="padding: 1px;">
+                                    <table class="content-table table table-condensed">
+                                        <tr class="warning">
+                                            <th class="content-th-number">#</th>
+                                            <th>Question</th>
+                                        </tr>
+                                    </table>
+                                </div>      
+                                <!--end sub-heading-->                              
+                            </apex:outputPanel>
+                            <!--end column-->
+                            
+                            <apex:outputPanel layout="none" rendered="{!IF((item.section == TRUE), 'TRUE', 'FALSE')}"><!--conditional-->
+                                
+                                <div class="col-md-12 col-sm-12 col-lg-12" style="padding: 1px;">
+                                    <table class="content-table table table-condensed">
+                                        <tr class="warning">
+                                            <td class="content-number">{!item.num}.</td>
+                                            <td>
+                                                <div>
+                                                    <apex:outputText value="{!item.question}" escape="false"/>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                
+                            </apex:outputPanel>
+                            
+                            <apex:outputPanel layout="none" rendered="{!IF((item.section == FALSE), 'TRUE', 'FALSE')}"><!--conditional-->
+                                
+                                <div class="col-md-12 col-sm-12 col-lg-12" style="padding: 1px;">
+                                    <table class="content-table table table-condensed table-hover">
+                                        <tr>
+                                            <td class="content-number">{!item.num}.</td>
+                                            <td>
+                                                <div class="content-question col-md-12 col-sm-5 col-lg-12" style="line-height:{!IF(OR(item.describeField = 'BCBY1__c', item.describeField = 'FCBY1__c'), '30px', '0px')}">
+                                                    {!item.question} &nbsp;&nbsp;
+                                                    <apex:outputPanel layout="none" rendered="{!IF(OR(item.describeField = 'BCBY1__c', item.describeField = 'FCBY1__c'), false, true)}">
+                                                        <apex:inputField value="{!obj[item.describeField]}" styleClass="form-control input-sm auto-width"/>
+                                                    </apex:outputPanel>
+                                                </div>
+                                                <div class="content-radio col-md-12 col-sm-7 col-lg-12">
+                                                    <apex:selectRadio value="{!obj[item.questionField]}" title="{!obj[item.questionField]}">
+                                                        <apex:selectOptions value="{!NSVItems}"/>
+                                                    </apex:selectRadio>
+                                                </div>
+                                            </td>
+                                            
+                                        </tr>
+                                    </table>
+                                </div>
+                            </apex:outputPanel>
+                        </apex:repeat>
+                        <!--end questions-->
+                        
+                        <apex:outputText ><big><p><b><i>Please be sure you have answered all items.</i></b></p></big></apex:outputText>
+                        
+                        <div class="col-md-12 col-sm-12 col-lg-12" style="padding: 1px;">
+                            <table class="content-table table table-condensed table-hover">
+                                <tr>
+                                    <td class="content-number"></td>
+                                    
+                                    <!--Completion status control-->
+                                    <td>
+                                        <div class="content-question">
+                                            Complete? &nbsp;&nbsp;
+                                            <apex:selectList id="STATUS_CBCL_0_5__c" styleClass="form-control input-sm auto-width" value="{!obj[bfVariableMap['STATUS']]}" size="1">
+                                                <apex:selectOption itemValue="Incomplete" itemLabel="Incomplete"/>
+                                                <apex:selectOption itemValue="Complete" itemLabel="Complete"/>
+                                            </apex:selectList> 
+                                        </div>
+                                    </td>
+                                    <!--end completion status--> 
+                                </tr>
+                            </table>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+            <!--Save & view reoprt, save and cancel control buttons for pageBlock-->
+            <apex:pageBlockButtons >
+                <apex:commandButton id="SaveView" action="{!saveView}" value="Save & View Report"/>
+                <apex:commandButton id="Save" action="{!save}" value="Save"/>
+                <apex:commandButton id="Cancel" action="{!cancel}" value="Cancel"/>
+            </apex:pageBlockButtons><!--end buttons-->
+            
+        </apex:pageBlock>        
+    </apex:form>  
+    <!--end form content-->
+    
+    <!--citation information footer-->
+    <p style="class:footer; text-align:center ">
+        <i>Copyright T.M. Achenbach<br/>
+            Programmed under License # 1095-11-18-14. All Rights Reserved<br/>
+            <strong>UNAUTHORIZED REPRODUCTION IS ILLEGAL</strong><br/>
+            Used with permission of copyright owner for use with the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN).
+        </i>
+    </p>
+</apex:page>

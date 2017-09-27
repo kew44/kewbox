@@ -1,0 +1,302 @@
+<apex:page standardController="DS_CBCL_B__c" extensions="DS_CBCL_6_18_Report_Controller" action="{!init}" showHeader="{!NOT(printReport)}">
+    
+    <!--JQuery -->
+    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.9.1.js')}"  /><!--allows for JQuery dependencies-->
+    <script> $j = jQuery.noConflict(); </script><!--Reserves the '$' token for JQuery only-->
+    
+    <!-- Bootstrap -->
+        <link href="{!URLFOR($Resource.VFbootstrap3, '/css/VFbootstrap.css')}" rel="stylesheet" media="screen, print"/>
+            <apex:includeScript value="{!URLFOR($Resource.VFbootstrap3, '/js/bootstrap.min.js')}"/>
+                
+                <!--link to the CSS resource in Salesforce internal document-->
+                    <apex:stylesheet value="{!$Resource.CustomCss}" />
+                    
+    <script>function setFocusOnLoad() {}</script> 
+    
+    <!--supplementary styling information-->
+    <style>
+        .force { font-size: 13px; }
+        .darkerTDTop { border-top: 1px solid #7A7979 !important; }
+        .darkerTHBottom { border-bottom: 2px solid #7A7979 !important; }
+        .front16 { font-size: 16px; }                   
+        @media print {
+        #chart_div {page-break-before: always;}
+                }
+    </style>
+    <!--end styling-->
+        
+    <apex:outputPanel layout="none" rendered="{!if(analysis.CBAPPCN = 1, true, false)}">
+        
+        <!--chart and graph constructed using javascript packages powered by Google-->
+        
+        <!--Load the AJAX API-->
+        <script type="text/javascript" src="https://www.google.com/jsapi"/>        
+        <script type="text/javascript">   
+        
+         <!--Load the Visualization API and the piechart package.-->                
+            google.load("visualization", "1", {packages:["corechart"]});
+            
+            <!--Set a callback to run when the Google Visualization API is loaded.-->
+        google.setOnLoadCallback(drawChart);
+        
+        <!--Callback that creates and populates a data table, instantiates the chart, passes in the data and draws it.-->
+        function drawChart() {
+        
+            <!--Create the data table.-->
+            var data = {
+                "rows": [
+                    {"c": [{"v": "Anxious/Deprs."}, {"v": {!ROUND(analysis.CBADTN, 0)}}, {"v": 69.5}, {"v": 64.5}, {"v": false}]},
+                    {"c": [{"v": "Withdrawn/Deprs."}, {"v": {!ROUND(analysis.CBWDTN, 0)}}, {"v": 69.5}, {"v": 64.5}, {"v": false}]},
+                    {"c": [{"v": "Somatic Complnt."}, {"v": {!ROUND(analysis.CBSCTN, 0)}}, {"v": 69.5}, {"v": 64.5}, {"v": false}]},
+                    {"c": [{"v": "Rule Brk. Beh."}, {"v": {!ROUND(analysis.CBRBTN, 0)}}, {"v": 69.5}, {"v": 64.5}, {"v": false}]},
+                    {"c": [{"v": "Aggress. Beh."}, {"v": {!ROUND(analysis.CBABTN, 0)}}, {"v": 69.5}, {"v": 64.5}, {"v": false}]},
+                    {"c": [{"v": "Social Prob."}, {"v": {!ROUND(analysis.CBSOTN, 0)}}, {"v": 69.5}, {"v": 64.5}, {"v": false}]},
+                    {"c": [{"v": "Thought Prob."}, {"v": {!ROUND(analysis.CBTPTN, 0)}}, {"v": 69.5}, {"v": 64.5}, {"v": false}]},
+                    {"c": [{"v": "Attention Prob."}, {"v": {!ROUND(analysis.CBAPTN, 0)}}, {"v": 69.5}, {"v": 64.5}, {"v": false}]},
+                    {"c": [{"v": "Internal. Prob."}, {"v": {!ROUND(analysis.CBIBTN, 0)}}, {"v": 63}, {"v": 60}, {"v": false}]},
+                    {"c": [{"v": "External. Prob."}, {"v": {!ROUND(analysis.CBEBTN, 0)}}, {"v": 63}, {"v": 60}, {"v": false}]},
+                    {"c": [{"v": "Total Score"}, {"v": {!ROUND(analysis.CBTSTN, 0)}}, {"v": 63}, {"v": 60}, {"v": false}]}],
+                
+                <!--Set chart options-->
+                "cols": [
+                    {"p": {"role": "domain"},"label": "Category","type": "string"},
+                    {"p": {"role": "data"},"label": "T-Score","type": "number"},
+                    {"p": {"role": "data"},"label": "Clinical Range","type": "number"},
+                    {"p": {"role": "data"},"label": "Borderline Range","type": "number"},
+                    {"p": {"role": "certainty"},"type": "boolean"}]
+            };            
+            <!--end chart-->
+            
+            <!--visualize the data in the chart above with a line graph-->
+            var x = new google.visualization.DataTable(data);
+            
+            var options = {
+                title: 'T-Score',   
+                series: {
+                    0: { pointSize: 5 },
+                    1: { pointSize: 0 },
+                    2: { pointSize: 0, role: 'certainty'}
+                },
+                hAxis: { showTextEvery: 1, slantedText: true, slantedTextAngle:30, maxValue: 100, minValue: 30, title: 'Category' },<!--x-axis main label-->
+            };
+            
+            var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+            chart.draw(x, options);
+            <!--end graph-->
+        }
+        <!--end chart and graph-->
+        </script>
+        
+    </apex:outputPanel>
+    
+    <!-- "Breadcrumb" heading allows user to navigate to the ClientSummary page -->
+    <apex:outputPanel layout="none" rendered="{!not(printReport)}">
+        <script>
+        $j(document).ready(function() {
+            $j('.bPageTitle').append('<div class="ptBreadcrumb">&nbsp;«&nbsp;<a href="/apex/ClientSummary?id={!cID}&s=0">Back to Client Summary</a></div>');
+        });
+        </script>
+    </apex:outputPanel>
+    <!--end breadcrumb-->
+    
+    <!--print report command for button-->  
+    <apex:outputPanel layout="none" rendered="{!printReport}">
+        <script>        
+        $j(document).ready(function() { 
+            $j('.bPageTitle .ptBody .content').prepend('<img style="display:inline;float:left;" src="{!URLFOR($Resource.images, 'cimiLogo.png')}"/>');
+            window.print(); 
+        });
+        </script>
+    </apex:outputPanel>
+    <!--end print command -->  
+    
+    <apex:form id="DS_CBCL_6_18_REPORT">
+        
+        <apex:sectionHeader title="Child Behavior Check List (CBCL) Scoring Report" subtitle="{!subtitle}"  rendered="{!NOT(printReport)}"/>
+        <apex:sectionHeader title="Child Behavior Check List (CBCL) Scoring Report" rendered="{!printReport}"/><br/>
+        
+        <!-- pageblock to show ClientInformation header as described in Utility class-->
+        <apex:pageBlock title="Client Information">
+            <div id="force">
+                <apex:outputText value="{!ClientInfo}" escape="false"/>
+            </div>
+        </apex:pageBlock><!--end client info pageBlock-->  
+        
+        <!--begin report content-->
+        <apex:pageBlock title="Symptom Analysis Report">
+            <apex:pageMessages /><!--placeholding structure that allows for system message display-->
+            
+            <div id="force">
+                
+                <!--provides print button functionality and structure-->
+                <apex:outputPanel layout="none" rendered="{!NOT(printReport)}">
+                    <div>
+                        <a href="/apex/DS_CBCL_6_18_Report?cimi={!cimi}&print=1" target="_blank">
+                            <button class="btn btn-default pull-right" type="button">
+                                <i class="glyphicon glyphicon-print"></i> &nbsp;Print
+                            </button>
+                        </a>
+                        <br/>
+                    </div>
+                </apex:outputPanel>
+                <!--end print button-->
+                
+                <!--administration date-->
+                <h4>
+                    <u>Date of administration: 
+                        <apex:outputText value="{0,date,MM/dd/yyyy}">
+                            <apex:param value="{!analysis.DOACO}" />
+                        </apex:outputText>
+                    </u>
+                </h4>
+                <!--end date-->
+                
+                <br/><br/><!--blank lines-->
+                
+                <!--information-->
+                <p>
+                    The CBCL measures symptoms across a broad range of emotional and behavioral areas in order to identify problems that may be targets for intervention. The CBCL is completed by an adult caregiver who reports on the child's functioning. Results from the CBCL can be used to identify possible treatment areas.                    
+                </p>    
+                <!--end information-->              
+                
+                <h4><u>Potential Treatment Targets</u></h4>   
+                <br/><br/><!--blank lines-->
+                
+            <!--displays a list of all symptoms that are rated as clinically significant, if any-->
+                <apex:outputPanel layout="none" rendered="{!if(clinicalRange != '', true, false)}"><!--significance, conditional formatting--> 
+                    <b><h5>Clinical Range</h5></b>
+                    
+                    <p>
+                        The child's symptoms on the following scales are in the clinically significant range compared to other children their age: <b>{!clinicalRange}</b>
+                    </p>   
+                </apex:outputPanel> 
+                <!--end critical-->                            
+                
+            <!--displays a list of borderline symptoms, if any-->
+                <apex:outputPanel layout="none" rendered="{!if(borderlinerange != '', true, false)}">   <!--significance, conditional formatting-->        
+                    <b><h5>Borderline Range</h5></b>
+                    
+                    <p>
+                        The child's symptoms on the following scales are in the borderline range compared to other children their age: <b>{!borderlinerange}</b>
+                    </p>
+                </apex:outputPanel>
+                <!--end borderline-->
+                
+                <!--Treatment foci-->
+                <p>These areas may also be a focus of treatment and should be monitored. Exact scores are in the table below.</p>
+                
+                <center>                    
+                    <apex:outputPanel layout="none" rendered="{!if(analysis.CBAPPCN = 1, true, false)}">
+                        <table class="table" style="max-width:800px;background-color: #F2F2F2;">
+                            <!--headings-->
+                            <thead> 
+                                <tr>
+                                    <th class="darkerTHBottom">Category</th>
+                                    <th class="darkerTHBottom">T-Scores</th>
+                                    <th class="darkerTHBottom">Percentile</th>
+                                    <th class="darkerTHBottom">Significance</th>
+                                </tr>
+                            </thead>
+                            <!--end headings-->
+                            
+                            <tbody>
+                            <!--exact scores table-->
+                                <tr>
+                                    <td class="darkerTDTop front16"><b>Internalizing Problems Score</b></td><!--category-->
+                                    <td class="darkerTDTop">{!ROUND(analysis.CBIBTN, 0)}</td> <!--score-->
+                                    <td class="darkerTDTop">{!analysis.CBIBP}</td><!--percentile-->
+                                    <td class="darkerTDTop {!CASE(analysis.CBIBS,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!analysis.CBIBS} Range</td><!--significance, conditional formatting-->
+                                </tr>
+                                <tr>
+                                    <td>Anxious/Depressed</td><!--category-->
+                                    <td>{!ROUND(analysis.CBADTN, 0)}</td> <!--score-->
+                                    <td>{!analysis.CBADP}</td><!--percentile-->
+                                    <td class="{!CASE(analysis.CBADS,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!analysis.CBADS} Range</td><!--significance, conditional formatting-->
+                                </tr>
+                                <tr>
+                                    <td>Withdrawn/Depressed</td><!--category-->
+                                    <td>{!ROUND(analysis.CBWDTN, 0)}</td> <!--score-->
+                                    <td>{!analysis.CBWDP}</td><!--percentile-->
+                                    <td class="{!CASE(analysis.CBWDS,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!analysis.CBWDS} Range</td><!--significance, conditional formatting-->
+                                </tr>
+                                <tr>
+                                    <td>Somatic Complaints</td><!--category-->
+                                    <td>{!ROUND(analysis.CBSCTN, 0)}</td> <!--score-->
+                                    <td>{!analysis.CBSCP}</td><!--percentile-->
+                                    <td class="{!CASE(analysis.CBSCS,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!analysis.CBSCS} Range</td><!--significance, conditional formatting-->
+                                </tr>
+                                <tr>
+                                    <td class="darkerTDTop front16"><b>Externalizing Problems Score</b></td><!--category-->
+                                    <td class="darkerTDTop">{!ROUND(analysis.CBEBTN, 0)}</td> <!--score-->
+                                    <td class="darkerTDTop">{!analysis.CBEBP}</td><!--percentile-->
+                                    <td class="darkerTDTop {!CASE(analysis.CBEBS,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!analysis.CBEBS} Range</td><!--significance, conditional formatting-->
+                                </tr>
+                                <tr>
+                                    <td>Rule Breaking Behavior</td><!--category-->
+                                    <td>{!ROUND(analysis.CBRBTN, 0)}</td> <!--score-->
+                                    <td>{!analysis.CBRBP}</td><!--percentile-->
+                                    <td class="{!CASE(analysis.CBRBS,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!analysis.CBRBS} Range</td><!--significance, conditional formatting-->
+                                </tr>
+                                <tr>
+                                    <td>Aggressive Behavior</td><!--category-->
+                                    <td>{!ROUND(analysis.CBABTN, 0)}</td> <!--score-->
+                                    <td>{!analysis.CBABP}</td><!--percentile-->
+                                    <td class="{!CASE(analysis.CBABS,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!analysis.CBABS} Range</td><!--significance, conditional formatting-->
+                                </tr>
+                                <tr>
+                                    <td class="darkerTDTop">Social Problems</td><!--category-->
+                                    <td class="darkerTDTop">{!ROUND(analysis.CBSOTN, 0)}</td> <!--score-->
+                                    <td class="darkerTDTop">{!analysis.CBSOP}</td><!--percentile-->
+                                    <td class="darkerTDTop {!CASE(analysis.CBSOS,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!analysis.CBSOS} Range</td><!--significance, conditional formatting-->
+                                </tr>
+                                <tr>
+                                    <td>Thought Problems</td><!--category-->
+                                    <td>{!ROUND(analysis.CBTPTN, 0)}</td> <!--score-->
+                                    <td>{!analysis.CBTPP}</td><!--percentile-->
+                                    <td class="{!CASE(analysis.CBTPS,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!analysis.CBTPS} Range</td><!--significance, conditional formatting-->
+                                </tr>
+                                <tr>
+                                    <td>Attention Problems</td><!--category-->
+                                    <td>{!ROUND(analysis.CBAPTN, 0)}</td> <!--score-->
+                                    <td>{!analysis.CBAPP}</td><!--percentile-->
+                                    <td class="{!CASE(analysis.CBAPS,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!analysis.CBAPS} Range</td><!--significance, conditional formatting-->
+                                </tr>
+                                <tr>
+                                    <td class="darkerTDTop front16"><strong>Total Problems Score</strong></td><!--category-->
+                                    <td class="darkerTDTop">{!ROUND(analysis.CBTSTN, 0)}</td> <!--score-->
+                                    <td class="darkerTDTop">{!analysis.CBTSP}</td><!--percentile-->
+                                    <td class="darkerTDTop {!CASE(analysis.CBTSS,'Borderline', 'warning', 'Clinical', 'danger', '')}">{!analysis.CBTSS} Range</td><!--significance, conditional formatting-->
+                                </tr>
+                                <!--end scores table-->
+                            </tbody>
+                            
+                        </table>
+                        
+                        <div id="chart_div" style="max-width:800px; height: 470px;" />
+                        
+                    </apex:outputPanel>
+                    <!--end treatment foci-->
+                    
+                    <!--conditional, If 8 or more scores are missing, this panel is displayed instead of report-->
+                    <apex:outputPanel layout="none" rendered="{!if(analysis.CBAPPCN = 0, true, false)}">
+                        <div class="well well-lg">
+                            <h4>This record is Not Applicable.</h4><br/><br/>
+                            <p>Score can't be calculated, eight (8) or more anwers to the Child Behavior Check List (CBCL) were left blank.</p>
+                        </div>
+                    </apex:outputPanel>
+                <!--end NaN message-->
+                </center>                
+            </div>
+            <!--end report content-->
+            
+            <!--edit button-->
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!save}" value="Edit" rendered="{!not(printReport)}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+        <!--end button-->
+        
+    </apex:form>
+    <!--end report-->
+    
+</apex:page>
