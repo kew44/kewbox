@@ -1,0 +1,46 @@
+<apex:component >
+
+    <apex:attribute name="skipElement" description="This is the value for skiplogic elements." type="String" required="false"/>
+      
+    <apex:attribute name="formElement" description="This is the value for form object." type="Form" required="true"/>
+
+  
+    <!--JQuery -->
+    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.11.2.min.js')}"  /><!--allows for JQuery dependencies-->
+    <script> $j = jQuery.noConflict(); </script><!--Reserves the '$' token for JQuery only-->
+    
+    <!-- Bootstrap -->
+    <apex:stylesheet value="{!URLFOR($Resource.bootwrap, '/css/bootstrap.css')}" html-media="screen,print" />
+    <!--<link href="{!URLFOR($Resource.bootwrap, '/css/bootstrap.css')}" rel="stylesheet" media="screen, print"/>-->
+    <apex:includeScript value="{!URLFOR($Resource.bootwrap, '/js/bootstrap.min.js')}"/> 
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"></link>
+
+    <!-- Custom CIMI Styles -->
+    <apex:stylesheet value="{!URLFOR($Resource.cimiStyles)}" />   
+        
+    <!-- inFocus on the text fields when the page is loaded -->
+    <script>function setFocusOnLoad() {}</script>
+    
+    <apex:outputPanel rendered="{!if(skipElement = '', false, true)}" layout="none">
+        <script> var skipElement = JSON.parse("{!skipElement}"); </script>
+    </apex:outputPanel>
+
+    <script src="{!URLFOR($Resource.Scripts, '/skipLogic.js')}"/>
+    
+    <script src="{!URLFOR($Resource.JS_UTILITY)}"/>
+        
+    <!-- "Breadcrumb" heading allows user to navigate to the ClientSummary page -->
+    <apex:outputPanel rendered="{!if(formElement.forceRedirect = '1', false, true)}" layout="none">
+        <script>
+            $j(document).ready(function() {
+                $j('.bPageTitle').append('<div class="ptBreadcrumb">&nbsp;«&nbsp;<a href="/apex/ClientSummary?s={!formElement.summary.SECTION__c}&id={!formElement.client.id}">Back to Client Summary</a></div>');
+            });
+        </script>
+    </apex:outputPanel>
+    <!--end breadcrumb-->
+    
+    
+  
+</apex:component>

@@ -1,0 +1,14 @@
+<apex:page id="communitiesLandingPage" controller="CommunitiesLandingController"  showHeader="false" sidebar="false" standardStylesheets="false"><!--action="{!forwardToStartPage}" title="{!$Label.site.site_login}"-->
+
+  <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.9.1.js')}"  />
+  <script> $j = jQuery.noConflict(); </script>
+  <link href="{!URLFOR($Resource.VFbootstrap3, '/css/VFbootstrap.css')}" rel="stylesheet" media="screen"/>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
+  <apex:stylesheet value="{!$Resource.CustomCss}" />
+  <apex:includeScript value="{!URLFOR($Resource.VFbootstrap3, '/js/bootstrap.min.js')}"/>
+
+  <apex:form styleClass="form-horizontal"> 
+  <h1>Welcome to the CIMI landing page for Company Community license users!</h1>
+  <p>You have successfully logged in.</p>
+  </apex:form>
+</apex:page>

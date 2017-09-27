@@ -1,0 +1,4405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>DS Functioning Forms F</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>DS Functioning Forms F</value>
+    </caseValues>
+    <fields>
+        <label><!-- Background ID --></label>
+        <name>Background_ID__c</name>
+        <relationshipLabel><!-- DS Functioning Forms F --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Client ID --></label>
+        <name>Client_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Client --></label>
+        <name>Client__c</name>
+        <relationshipLabel><!-- DS Functioning Forms F --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- FAGGRESS --></label>
+        <name>FAGGRESS__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FASSESS --></label>
+        <name>FASSESS__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>95</masterLabel>
+            <translation><!-- 95 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FATTACH --></label>
+        <name>FATTACH__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FATYPBEH --></label>
+        <name>FATYPBEH__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FBSLCTREATMENT --></label>
+        <name>FBSLCTREATMENT__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCASEMGMT --></label>
+        <name>FCASEMGMT__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>95</masterLabel>
+            <translation><!-- 95 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCBISASSM --></label>
+        <name>FCBISASSM__c</name>
+    </fields>
+    <fields>
+        <label><!-- FCBISCFTS --></label>
+        <name>FCBISCFTS__c</name>
+    </fields>
+    <fields>
+        <label><!-- FCBISCODT --></label>
+        <name>FCBISCODT__c</name>
+    </fields>
+    <fields>
+        <label><!-- FCBISCOMP --></label>
+        <name>FCBISCOMP__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCBISCONS --></label>
+        <name>FCBISCONS__c</name>
+    </fields>
+    <fields>
+        <label><!-- FCBISCREE --></label>
+        <name>FCBISCREE__c</name>
+    </fields>
+    <fields>
+        <label><!-- FCBISCRIM --></label>
+        <name>FCBISCRIM__c</name>
+    </fields>
+    <fields>
+        <label><!-- FCBISFAMT --></label>
+        <name>FCBISFAMT__c</name>
+    </fields>
+    <fields>
+        <label><!-- FCBISGRPT --></label>
+        <name>FCBISGRPT__c</name>
+    </fields>
+    <fields>
+        <label><!-- FCBISINDT --></label>
+        <name>FCBISINDT__c</name>
+    </fields>
+    <fields>
+        <label><!-- FCBISLFDT --></label>
+        <name>FCBISLFDT__c</name>
+    </fields>
+    <fields>
+        <label><!-- FCBISMANA --></label>
+        <name>FCBISMANA__c</name>
+    </fields>
+    <fields>
+        <label><!-- FCBISOTHE --></label>
+        <name>FCBISOTHE__c</name>
+    </fields>
+    <fields>
+        <label><!-- FCBISOTHS --></label>
+        <name>FCBISOTHS__c</name>
+    </fields>
+    <fields>
+        <label><!-- FCBISPFA --></label>
+        <name>FCBISPFA__c</name>
+    </fields>
+    <fields>
+        <label><!-- FCBISPSYE --></label>
+        <name>FCBISPSYE__c</name>
+    </fields>
+    <fields>
+        <label><!-- FCBISRECV --></label>
+        <name>FCBISRECV__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCBISRFSE --></label>
+        <name>FCBISRFSE__c</name>
+    </fields>
+    <fields>
+        <label><!-- FCBISSFTP --></label>
+        <name>FCBISSFTP__c</name>
+    </fields>
+    <fields>
+        <label><!-- FCBISSPR --></label>
+        <name>FCBISSPR__c</name>
+    </fields>
+    <fields>
+        <label><!-- FCBISSUPG --></label>
+        <name>FCBISSUPG__c</name>
+    </fields>
+    <fields>
+        <label><!-- FCBISTCDT --></label>
+        <name>FCBISTCDT__c</name>
+    </fields>
+    <fields>
+        <label><!-- FCCONTACT --></label>
+        <name>FCCONTACT__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCEADHD --></label>
+        <name>FCEADHD__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCEADJ --></label>
+        <name>FCEADJ__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCEASD --></label>
+        <name>FCEASD__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCEATTPR --></label>
+        <name>FCEATTPR__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCEBIPL --></label>
+        <name>FCEBIPL__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCECD --></label>
+        <name>FCECD__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCEDEP --></label>
+        <name>FCEDEP__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCEDISSO --></label>
+        <name>FCEDISSO__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCEDISYMP --></label>
+        <name>FCEDISYMP__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCEDPS --></label>
+        <name>FCEDPS__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCEEAT --></label>
+        <name>FCEEAT__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCEEXPL --></label>
+        <name>FCEEXPL__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCEGA --></label>
+        <name>FCEGA__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCEGBP --></label>
+        <name>FCEGBP__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCEOCD --></label>
+        <name>FCEOCD__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCEODD --></label>
+        <name>FCEODD__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCEOTHER --></label>
+        <name>FCEOTHER__c</name>
+    </fields>
+    <fields>
+        <label><!-- FCEOTHY --></label>
+        <name>FCEOTHY__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCEPANDS --></label>
+        <name>FCEPANDS__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCEPHODS --></label>
+        <name>FCEPHODS__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCEPRIMSP --></label>
+        <name>FCEPRIMSP__c</name>
+    </fields>
+    <fields>
+        <label><!-- FCEPRIM --></label>
+        <name>FCEPRIM__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>10</masterLabel>
+            <translation><!-- 10 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>11</masterLabel>
+            <translation><!-- 11 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>12</masterLabel>
+            <translation><!-- 12 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>13</masterLabel>
+            <translation><!-- 13 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>14</masterLabel>
+            <translation><!-- 14 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>15</masterLabel>
+            <translation><!-- 15 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>16</masterLabel>
+            <translation><!-- 16 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>17</masterLabel>
+            <translation><!-- 17 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>18</masterLabel>
+            <translation><!-- 18 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>19</masterLabel>
+            <translation><!-- 19 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>20</masterLabel>
+            <translation><!-- 20 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>21</masterLabel>
+            <translation><!-- 21 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>22</masterLabel>
+            <translation><!-- 22 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>23</masterLabel>
+            <translation><!-- 23 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>24</masterLabel>
+            <translation><!-- 24 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>25</masterLabel>
+            <translation><!-- 25 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>26</masterLabel>
+            <translation><!-- 26 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>27</masterLabel>
+            <translation><!-- 27 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>28</masterLabel>
+            <translation><!-- 28 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>29</masterLabel>
+            <translation><!-- 29 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation><!-- 5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>6</masterLabel>
+            <translation><!-- 6 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>7</masterLabel>
+            <translation><!-- 7 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>8</masterLabel>
+            <translation><!-- 8 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>9</masterLabel>
+            <translation><!-- 9 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>98</masterLabel>
+            <translation><!-- 98 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCEPSY --></label>
+        <name>FCEPSY__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCEPTSD --></label>
+        <name>FCEPTSD__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCESA --></label>
+        <name>FCESA__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCESBD --></label>
+        <name>FCESBD__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCESEPDS --></label>
+        <name>FCESEPDS__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCESEXPR --></label>
+        <name>FCESEXPR__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCESLPDS --></label>
+        <name>FCESLPDS__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCESOCAD --></label>
+        <name>FCESOCAD__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCESOMAT --></label>
+        <name>FCESOMAT__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCESUBST --></label>
+        <name>FCESUBST__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCESUICD --></label>
+        <name>FCESUICD__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCETG --></label>
+        <name>FCETG__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCHCARE --></label>
+        <name>FCHCARE__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>95</masterLabel>
+            <translation><!-- 95 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCOCCUR --></label>
+        <name>FCOCCUR__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>95</masterLabel>
+            <translation><!-- 95 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCOPSERV --></label>
+        <name>FCOPSERV__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>95</masterLabel>
+            <translation><!-- 95 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FCSERVICE --></label>
+        <name>FCSERVICE__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FDDATE --></label>
+        <name>FDDATE__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDEVEL --></label>
+        <name>FDEVEL__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FDMICOG --></label>
+        <name>FDMICOG__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDMIEXP --></label>
+        <name>FDMIEXP__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDMIMOT --></label>
+        <name>FDMIMOT__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDMIREC --></label>
+        <name>FDMIREC__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDMISOC --></label>
+        <name>FDMISOC__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDMOCOG --></label>
+        <name>FDMOCOG__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDMOEXP --></label>
+        <name>FDMOEXP__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDMOMOT --></label>
+        <name>FDMOMOT__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDMOREC --></label>
+        <name>FDMOREC__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDMOSOC --></label>
+        <name>FDMOSOC__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDOV --></label>
+        <name>FDOV__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDSCESSTR --></label>
+        <name>FDSCESSTR__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDSDEATH --></label>
+        <name>FDSDEATH__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDSECOG --></label>
+        <name>FDSECOG__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDSEEXP --></label>
+        <name>FDSEEXP__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDSEMOT --></label>
+        <name>FDSEMOT__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDSEREC --></label>
+        <name>FDSEREC__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDSESOC --></label>
+        <name>FDSESOC__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDSNOCONT --></label>
+        <name>FDSNOCONT__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDSOTHER --></label>
+        <name>FDSOTHER__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDSOTHSP --></label>
+        <name>FDSOTHSP__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDSREFOUT --></label>
+        <name>FDSREFOUT__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDSREFTR --></label>
+        <name>FDSREFTR__c</name>
+    </fields>
+    <fields>
+        <label><!-- FEDSERV --></label>
+        <name>FEDSERV__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>95</masterLabel>
+            <translation><!-- 95 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FEMPSERV --></label>
+        <name>FEMPSERV__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>95</masterLabel>
+            <translation><!-- 95 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FEMREG --></label>
+        <name>FEMREG__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FFAMSERV --></label>
+        <name>FFAMSERV__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>95</masterLabel>
+            <translation><!-- 95 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FFAPGAR1 --></label>
+        <name>FFAPGAR1__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FFAPGAR2 --></label>
+        <name>FFAPGAR2__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FFAPGAR3 --></label>
+        <name>FFAPGAR3__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FFAPGAR4 --></label>
+        <name>FFAPGAR4__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FFAPGAR5 --></label>
+        <name>FFAPGAR5__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FFAPGAR_MET --></label>
+        <name>FFAPGAR_MET__c</name>
+    </fields>
+    <fields>
+        <label><!-- FFAPGAR_RAW --></label>
+        <name>FFAPGAR_RAW__c</name>
+    </fields>
+    <fields>
+        <label><!-- FFEEDING --></label>
+        <name>FFEEDING__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FHIVTEST --></label>
+        <name>FHIVTEST__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>95</masterLabel>
+            <translation><!-- 95 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FHOUSUPP --></label>
+        <name>FHOUSUPP__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>95</masterLabel>
+            <translation><!-- 95 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FIMRISK --></label>
+        <name>FIMRISK__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FISPACAD --></label>
+        <name>FISPACAD__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FISPALC --></label>
+        <name>FISPALC__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FISPATT --></label>
+        <name>FISPATT__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FISPBEHH --></label>
+        <name>FISPBEHH__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FISPBEHS --></label>
+        <name>FISPBEHS__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FISPCRIM --></label>
+        <name>FISPCRIM__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FISPCRRU --></label>
+        <name>FISPCRRU__c</name>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FISPCRSP --></label>
+        <name>FISPCRSP__c</name>
+    </fields>
+    <fields>
+        <label><!-- FISPCSA --></label>
+        <name>FISPCSA__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FISPDISA --></label>
+        <name>FISPDISA__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FISPED --></label>
+        <name>FISPED__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FISPRUN --></label>
+        <name>FISPRUN__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FISPSA --></label>
+        <name>FISPSA__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FISPSINJ --></label>
+        <name>FISPSINJ__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FISPSKPS --></label>
+        <name>FISPSKPS__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FISPSUIC --></label>
+        <name>FISPSUIC__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FISPSXBE --></label>
+        <name>FISPSXBE__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FMEDCARE --></label>
+        <name>FMEDCARE__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>95</masterLabel>
+            <translation><!-- 95 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FMENHLTH --></label>
+        <name>FMENHLTH__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>95</masterLabel>
+            <translation><!-- 95 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FMHS --></label>
+        <name>FMHS__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNADMINOSP --></label>
+        <name>FNADMINOSP__c</name>
+    </fields>
+    <fields>
+        <label><!-- FNADMIN --></label>
+        <name>FNADMIN__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>10</masterLabel>
+            <translation><!-- 10 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>11</masterLabel>
+            <translation><!-- 11 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation><!-- 5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>6</masterLabel>
+            <translation><!-- 6 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>7</masterLabel>
+            <translation><!-- 7 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>8</masterLabel>
+            <translation><!-- 8 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>9</masterLabel>
+            <translation><!-- 9 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>98</masterLabel>
+            <translation><!-- 98 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNALCOHOL --></label>
+        <name>FNALCOHOL__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNCANNABIS --></label>
+        <name>FNCANNABIS__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNCCTSBSLC --></label>
+        <name>FNCCTSBSLC__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNCOCAINE --></label>
+        <name>FNCOCAINE__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNDAILYL --></label>
+        <name>FNDAILYL__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation><!-- 5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>97</masterLabel>
+            <translation><!-- 97 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNDEPRESSED --></label>
+        <name>FNDEPRESSED__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNEFFORT --></label>
+        <name>FNEFFORT__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNFAMILY --></label>
+        <name>FNFAMILY__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation><!-- 5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>97</masterLabel>
+            <translation><!-- 97 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNFRIENDS --></label>
+        <name>FNFRIENDS__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation><!-- 5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>97</masterLabel>
+            <translation><!-- 97 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNHALLUCIN --></label>
+        <name>FNHALLUCIN__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNHOPELESS --></label>
+        <name>FNHOPELESS__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNINHALANT --></label>
+        <name>FNINHALANT__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNMETH --></label>
+        <name>FNMETH__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNNERVOUS --></label>
+        <name>FNNERVOUS__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNPCCULTURE --></label>
+        <name>FNPCCULTURE__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNPCGOALS --></label>
+        <name>FNPCGOALS__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNPCHELPWND --></label>
+        <name>FNPCHELPWND__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNPCHELPWNT --></label>
+        <name>FNPCHELPWNT__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNPCRESP --></label>
+        <name>FNPCRESP__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNPCRIGHT --></label>
+        <name>FNPCRIGHT__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNPCSATISF --></label>
+        <name>FNPCSATISF__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNPCSERVICE --></label>
+        <name>FNPCSERVICE__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNPCSPIRIT --></label>
+        <name>FNPCSPIRIT__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNPCSTUCK --></label>
+        <name>FNPCSTUCK__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNPCTALK --></label>
+        <name>FNPCTALK__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNPCTREAT --></label>
+        <name>FNPCTREAT__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNPCUNSTOOD --></label>
+        <name>FNPCUNSTOOD__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNPROPIOID --></label>
+        <name>FNPROPIOID__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNRESTLESS --></label>
+        <name>FNRESTLESS__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNSATISFY --></label>
+        <name>FNSATISFY__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation><!-- 5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>97</masterLabel>
+            <translation><!-- 97 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNSCCOMFORT --></label>
+        <name>FNSCCOMFORT__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation><!-- 5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNSCENJOY --></label>
+        <name>FNSCENJOY__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation><!-- 5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNSCHOOL --></label>
+        <name>FNSCHOOL__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation><!-- 5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>97</masterLabel>
+            <translation><!-- 97 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNSCLISTEN --></label>
+        <name>FNSCLISTEN__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation><!-- 5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNSCSUPPORT --></label>
+        <name>FNSCSUPPORT__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation><!-- 5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNSEDATIVE --></label>
+        <name>FNSEDATIVE__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNSOTHERSP --></label>
+        <name>FNSOTHERSP__c</name>
+    </fields>
+    <fields>
+        <label><!-- FNSOTHER --></label>
+        <name>FNSOTHER__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNSTIMULANT --></label>
+        <name>FNSTIMULANT__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNSTOPIOID --></label>
+        <name>FNSTOPIOID__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNTOBACCO --></label>
+        <name>FNTOBACCO__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNWORTHLESS --></label>
+        <name>FNWORTHLESS__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FNWRONG --></label>
+        <name>FNWRONG__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation><!-- 5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>96</masterLabel>
+            <translation><!-- 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>97</masterLabel>
+            <translation><!-- 97 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FOPRCORE --></label>
+        <name>FOPRCORE__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>95</masterLabel>
+            <translation><!-- 95 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FOPRSUPP --></label>
+        <name>FOPRSUPP__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>95</masterLabel>
+            <translation><!-- 95 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FOSATT --></label>
+        <name>FOSATT__c</name>
+    </fields>
+    <fields>
+        <label><!-- FOSBEH --></label>
+        <name>FOSBEH__c</name>
+    </fields>
+    <fields>
+        <label><!-- FOSCASMG --></label>
+        <name>FOSCASMG__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FOSCHWE2 --></label>
+        <name>FOSCHWE2__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FOSCOGB --></label>
+        <name>FOSCOGB__c</name>
+    </fields>
+    <fields>
+        <label><!-- FOSCOG --></label>
+        <name>FOSCOG__c</name>
+    </fields>
+    <fields>
+        <label><!-- FOSDAYTR --></label>
+        <name>FOSDAYTR__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FOSDET --></label>
+        <name>FOSDET__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FOSER --></label>
+        <name>FOSER__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FOSEXP --></label>
+        <name>FOSEXP__c</name>
+    </fields>
+    <fields>
+        <label><!-- FOSFAM --></label>
+        <name>FOSFAM__c</name>
+    </fields>
+    <fields>
+        <label><!-- FOSFOST --></label>
+        <name>FOSFOST__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FOSGROUP --></label>
+        <name>FOSGROUP__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FOSHEADS --></label>
+        <name>FOSHEADS__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FOSHOMV --></label>
+        <name>FOSHOMV__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FOSINHME --></label>
+        <name>FOSINHME__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FOSINPSY --></label>
+        <name>FOSINPSY__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FOSMED --></label>
+        <name>FOSMED__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FOSMEN --></label>
+        <name>FOSMEN__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FOSNAR --></label>
+        <name>FOSNAR__c</name>
+    </fields>
+    <fields>
+        <label><!-- FOSOSP --></label>
+        <name>FOSOSP__c</name>
+    </fields>
+    <fields>
+        <label><!-- FOSOTH --></label>
+        <name>FOSOTH__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FOSOUTPS --></label>
+        <name>FOSOUTPS__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FOSOUTTX --></label>
+        <name>FOSOUTTX__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FOSPARED --></label>
+        <name>FOSPARED__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FOSPEER --></label>
+        <name>FOSPEER__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FOSPHAS --></label>
+        <name>FOSPHAS__c</name>
+    </fields>
+    <fields>
+        <label><!-- FOSPLAY --></label>
+        <name>FOSPLAY__c</name>
+    </fields>
+    <fields>
+        <label><!-- FOSPRIMC --></label>
+        <name>FOSPRIMC__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FOSPROB --></label>
+        <name>FOSPROB__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FOSPSYAN --></label>
+        <name>FOSPSYAN__c</name>
+    </fields>
+    <fields>
+        <label><!-- FOSPSYDY --></label>
+        <name>FOSPSYDY__c</name>
+    </fields>
+    <fields>
+        <label><!-- FOSREC --></label>
+        <name>FOSREC__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FOSRES --></label>
+        <name>FOSRES__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FOSSCHCN --></label>
+        <name>FOSSCHCN__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FOSSELFH --></label>
+        <name>FOSSELFH__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FOSSOCSE --></label>
+        <name>FOSSOCSE__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FOSSOCSK --></label>
+        <name>FOSSOCSK__c</name>
+    </fields>
+    <fields>
+        <label><!-- FOSSOL --></label>
+        <name>FOSSOL__c</name>
+    </fields>
+    <fields>
+        <label><!-- FOSSPCL --></label>
+        <name>FOSSPCL__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FOSSTRE --></label>
+        <name>FOSSTRE__c</name>
+    </fields>
+    <fields>
+        <label><!-- FOSSUPP --></label>
+        <name>FOSSUPP__c</name>
+    </fields>
+    <fields>
+        <label><!-- FOSTOSP --></label>
+        <name>FOSTOSP__c</name>
+    </fields>
+    <fields>
+        <label><!-- FOSTOTH --></label>
+        <name>FOSTOTH__c</name>
+    </fields>
+    <fields>
+        <label><!-- FOSTXFOS --></label>
+        <name>FOSTXFOS__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FOSWRAP --></label>
+        <name>FOSWRAP__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FPLAY --></label>
+        <name>FPLAY__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FPRESCH --></label>
+        <name>FPRESCH__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>97</masterLabel>
+            <translation><!-- 97 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FPSYPHARM --></label>
+        <name>FPSYPHARM__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>95</masterLabel>
+            <translation><!-- 95 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FSCREEN --></label>
+        <name>FSCREEN__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>95</masterLabel>
+            <translation><!-- 95 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FSEXBEH --></label>
+        <name>FSEXBEH__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FSLEEP --></label>
+        <name>FSLEEP__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FSOCFUNC --></label>
+        <name>FSOCFUNC__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FSRDATE --></label>
+        <name>FSRDATE__c</name>
+    </fields>
+    <fields>
+        <label><!-- FSRECACT --></label>
+        <name>FSRECACT__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>95</masterLabel>
+            <translation><!-- 95 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FSTCOM --></label>
+        <name>FSTCOM__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FSTCOPE --></label>
+        <name>FSTCOPE__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FSTEDU --></label>
+        <name>FSTEDU__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>97</masterLabel>
+            <translation><!-- 97 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FSTFAM --></label>
+        <name>FSTFAM__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FSTINTP --></label>
+        <name>FSTINTP__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FSTOPT --></label>
+        <name>FSTOPT__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FSTRELT --></label>
+        <name>FSTRELT__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FSTRESC --></label>
+        <name>FSTRESC__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FSTSPIR --></label>
+        <name>FSTSPIR__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FSTTAL --></label>
+        <name>FSTTAL__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FSTVOC --></label>
+        <name>FSTVOC__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>97</masterLabel>
+            <translation><!-- 97 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FSUATMO --></label>
+        <name>FSUATMO__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FSUIATT --></label>
+        <name>FSUIATT__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FSUITALK --></label>
+        <name>FSUITALK__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FSUTAMO --></label>
+        <name>FSUTAMO__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FTRANS --></label>
+        <name>FTRANS__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>95</masterLabel>
+            <translation><!-- 95 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FTRPLAN --></label>
+        <name>FTRPLAN__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>95</masterLabel>
+            <translation><!-- 95 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FTRSPEC --></label>
+        <name>FTRSPEC__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>95</masterLabel>
+            <translation><!-- 95 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FTXCOMPL --></label>
+        <name>FTXCOMPL__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FTXCOMP --></label>
+        <name>FTXCOMP__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FTXCPDT --></label>
+        <name>FTXCPDT__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTXLFTDT --></label>
+        <name>FTXLFTDT__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTXSTDT --></label>
+        <name>FTXSTDT__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTXTYPE --></label>
+        <name>FTXTYPE__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation><!-- 5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>6</masterLabel>
+            <translation><!-- 6 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>7</masterLabel>
+            <translation><!-- 7 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>8</masterLabel>
+            <translation><!-- 8 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>9</masterLabel>
+            <translation><!-- 9 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>98</masterLabel>
+            <translation><!-- 98 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- FTXTYPSP --></label>
+        <name>FTXTYPSP__c</name>
+    </fields>
+    <fields>
+        <label><!-- SECTION --></label>
+        <name>SECTION__c</name>
+    </fields>
+    <fields>
+        <label><!-- STATUS BIS --></label>
+        <name>STATUS_BIS__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- STATUS BSLC --></label>
+        <name>STATUS_BSLC__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- STATUS CANSTR --></label>
+        <name>STATUS_CANSTR__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- STATUS CLINEVAL --></label>
+        <name>STATUS_CLINEVAL__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- STATUS FAPGAR --></label>
+        <name>STATUS_FAPGAR__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- STATUS INDSEV --></label>
+        <name>STATUS_INDSEV__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- STATUS NOMS --></label>
+        <name>STATUS_NOMS__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- STATUS SERVREC --></label>
+        <name>STATUS_SERVREC__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- STATUS YCINDSEV --></label>
+        <name>STATUS_YCINDSEV__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>DS Functioning Forms F Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Date cannot be in the future. --></errorMessage>
+        <name>Bis_date_completed_cannot_be_future</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Date client left treatment cannot be before date treatment started. --></errorMessage>
+        <name>Bis_date_left_cannot_be_before_start_dt</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Date cannot be in the future. --></errorMessage>
+        <name>Bis_date_left_cannot_be_future</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Date cannot be in the future. --></errorMessage>
+        <name>Bis_date_start_cannot_be_future</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Date cannot be before date of birth. --></errorMessage>
+        <name>Bis_date_started_cannot_be_before_birth</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Date treatment completed cannot be before date treatment started. --></errorMessage>
+        <name>Bis_dt_completed_cannot_be_before_start</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please indicate a treatment component. --></errorMessage>
+        <name>Bis_must_indicate_treatment_component</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify the treatment component. --></errorMessage>
+        <name>Bis_must_specify_treatment_component</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Date cannot be in the future. --></errorMessage>
+        <name>Bslc_date_completed_cannot_be_future</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Date client left treatment cannot be before date treatment started. --></errorMessage>
+        <name>Bslc_date_left_cannot_be_before_start_dt</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Date cannot be in the future. --></errorMessage>
+        <name>Bslc_date_left_cannot_be_future</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Date cannot be in the future. --></errorMessage>
+        <name>Bslc_date_start_cannot_be_future</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Date cannot be before date of birth. --></errorMessage>
+        <name>Bslc_date_started_cannot_be_before_birth</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Date treatment completed cannot be before date treatment started. --></errorMessage>
+        <name>Bslc_dt_completed_cannot_be_before_start</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify other additional problems/symptoms/disorders displayed by this child --></errorMessage>
+        <name>Clineval_must_specify_other_problems</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You MUST indicate if the child has talked about committing suicide in the past 30 days. --></errorMessage>
+        <name>Indsev_must_indicate_suicidality_30d</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You MUST indicate if the child has attempted suicide in the past 30 days. --></errorMessage>
+        <name>Indsev_must_indicate_suicide_attempt_30d</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Number of times and Refused or Unknown can not be indicated --></errorMessage>
+        <name>Indsev_must_not_blank_if_refused_unknown</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify the frequency of usage. --></errorMessage>
+        <name>Noms_must_specify_how_often_used_other</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify the administrator. --></errorMessage>
+        <name>Noms_must_specify_who_administered</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Specify service. --></errorMessage>
+        <name>Servrec_must_specify_other_service</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Specify therapy/treatment. --></errorMessage>
+        <name>Servrec_must_specify_other_therapy</name>
+    </validationRules>
+</CustomObjectTranslation>

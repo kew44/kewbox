@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Clinician</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Clinicians</value>
+    </caseValues>
+    <fields>
+        <label><!-- Center --></label>
+        <name>Center__c</name>
+        <relationshipLabel><!-- Clinicians --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Email --></label>
+        <name>Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Name --></label>
+        <name>Name__c</name>
+    </fields>
+    <layouts>
+        <layout>Clinician Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <workflowTasks>
+        <name>X123</name>
+        <subject><!-- 123 --></subject>
+    </workflowTasks>
+    <workflowTasks>
+        <name>X123456</name>
+        <subject><!-- 123456 --></subject>
+    </workflowTasks>
+</CustomObjectTranslation>

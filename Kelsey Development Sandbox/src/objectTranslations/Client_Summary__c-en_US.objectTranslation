@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Client Summary</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Client Summary</value>
+    </caseValues>
+    <fields>
+        <label><!-- Client --></label>
+        <name>Client__c</name>
+        <relationshipLabel><!-- Client Summary --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- FORM_TYPE --></label>
+        <name>FORM_TYPE__c</name>
+        <picklistValues>
+            <masterLabel>Assessment</masterLabel>
+            <translation><!-- Assessment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Baseline</masterLabel>
+            <translation><!-- Baseline --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Follow-up</masterLabel>
+            <translation><!-- Follow-up --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TD</masterLabel>
+            <translation><!-- TD --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- DS DATA Page --></label>
+        <name>Page__c</name>
+        <relationshipLabel><!-- Client Summary --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- REQUIRED --></label>
+        <name>REQUIRED__c</name>
+    </fields>
+    <fields>
+        <label><!-- SECTION --></label>
+        <name>SECTION__c</name>
+    </fields>
+    <fields>
+        <label><!-- STATUS --></label>
+        <name>STATUS__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>Client Summary Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

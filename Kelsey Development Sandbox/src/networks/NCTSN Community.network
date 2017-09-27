@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Network xmlns="http://soap.sforce.com/2006/04/metadata">
+    <allowMembersToFlag>false</allowMembersToFlag>
+    <branding>
+        <loginFooterText>salesforce.com</loginFooterText>
+        <primaryColor>#00589A</primaryColor>
+        <primaryComplementColor>#FFFFFF</primaryComplementColor>
+        <quaternaryColor>#4F81BD</quaternaryColor>
+        <quaternaryComplementColor>#FFFFFF</quaternaryComplementColor>
+        <secondaryColor>#00589A</secondaryColor>
+        <tertiaryColor>#FFFFFF</tertiaryColor>
+        <tertiaryComplementColor>#222222</tertiaryComplementColor>
+        <zeronaryColor>#4F81BD</zeronaryColor>
+        <zeronaryComplementColor>#FFFFFF</zeronaryComplementColor>
+    </branding>
+    <changePasswordTemplate>unfiled$public/CommunityChangePasswordEmailTemplate</changePasswordTemplate>
+    <emailSenderAddress>cdsadmin@nctsn.org</emailSenderAddress>
+    <emailSenderName>Customer Community</emailSenderName>
+    <enableGuestChatter>false</enableGuestChatter>
+    <enableInvitation>false</enableInvitation>
+    <enableKnowledgeable>false</enableKnowledgeable>
+    <enableNicknameDisplay>false</enableNicknameDisplay>
+    <enablePrivateMessages>false</enablePrivateMessages>
+    <enableReputation>false</enableReputation>
+    <enableSiteAsContainer>false</enableSiteAsContainer>
+    <forgotPasswordTemplate>unfiled$public/CommunityForgotPasswordEmailTemplate</forgotPasswordTemplate>
+    <networkMemberGroups>
+        <permissionSet>Center_Manager</permissionSet>
+        <permissionSet>Center_Admin</permissionSet>
+        <permissionSet>Center_Data_Manager</permissionSet>
+        <permissionSet>Subcenter_Admin</permissionSet>
+        <permissionSet>Clinician</permissionSet>
+        <permissionSet>Center_Create_View_Edit</permissionSet>
+        <permissionSet>Getting_Started_Developer</permissionSet>
+        <profile>Power User-System Admin</profile>
+        <profile>Company Communities Center Admin</profile>
+        <profile>Company Communities Sub-center Admin</profile>
+        <profile>Company Communities Clinician</profile>
+        <profile>Company Communities Center Data Manager</profile>
+        <profile>Cc Sub-center Data Manager</profile>
+        <profile>Company Communities User</profile>
+        <profile>Admin</profile>
+        <profile>Standard</profile>
+        <profile>StandardAul</profile>
+        <profile>Customer Community User</profile>
+    </networkMemberGroups>
+    <picassoSite>NCTSN_Community_C</picassoSite>
+    <selfRegistration>false</selfRegistration>
+    <sendWelcomeEmail>true</sendWelcomeEmail>
+    <site>NCTSN_Community</site>
+    <status>DownForMaintenance</status>
+    <tabs>
+        <customTab>Client__c</customTab>
+        <customTab>Clinician__c</customTab>
+        <defaultTab>home</defaultTab>
+        <standardTab>home</standardTab>
+        <standardTab>Dashboard</standardTab>
+        <standardTab>report</standardTab>
+    </tabs>
+    <urlPathPrefix>nctsn</urlPathPrefix>
+    <welcomeTemplate>unfiled$public/CommunityWelcomeEmailTemplate</welcomeTemplate>
+</Network>

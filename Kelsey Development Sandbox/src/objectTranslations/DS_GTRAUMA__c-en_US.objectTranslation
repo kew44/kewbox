@@ -1,0 +1,2545 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>DS GTRAUMA</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>DS GTRAUMA</value>
+    </caseValues>
+    <fields>
+        <label><!-- Client ID --></label>
+        <name>Client_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Client --></label>
+        <name>Client__c</name>
+        <relationshipLabel><!-- DS GTRAUMA --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- GT10RA0 --></label>
+        <name>GT10RA0__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT10RA10 --></label>
+        <name>GT10RA10__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT10RA11 --></label>
+        <name>GT10RA11__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT10RA12 --></label>
+        <name>GT10RA12__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT10RA13 --></label>
+        <name>GT10RA13__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT10RA14 --></label>
+        <name>GT10RA14__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT10RA15 --></label>
+        <name>GT10RA15__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT10RA16 --></label>
+        <name>GT10RA16__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT10RA17 --></label>
+        <name>GT10RA17__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT10RA18 --></label>
+        <name>GT10RA18__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT10RA1 --></label>
+        <name>GT10RA1__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT10RA2 --></label>
+        <name>GT10RA2__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT10RA3 --></label>
+        <name>GT10RA3__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT10RA4 --></label>
+        <name>GT10RA4__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT10RA5 --></label>
+        <name>GT10RA5__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT10RA6 --></label>
+        <name>GT10RA6__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT10RA7 --></label>
+        <name>GT10RA7__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT10RA8 --></label>
+        <name>GT10RA8__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT10RA9 --></label>
+        <name>GT10RA9__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT10RAU --></label>
+        <name>GT10RAU__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT10R --></label>
+        <name>GT10R__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- GT11RA0 --></label>
+        <name>GT11RA0__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT11RA10 --></label>
+        <name>GT11RA10__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT11RA11 --></label>
+        <name>GT11RA11__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT11RA12 --></label>
+        <name>GT11RA12__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT11RA13 --></label>
+        <name>GT11RA13__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT11RA14 --></label>
+        <name>GT11RA14__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT11RA15 --></label>
+        <name>GT11RA15__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT11RA16 --></label>
+        <name>GT11RA16__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT11RA17 --></label>
+        <name>GT11RA17__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT11RA18 --></label>
+        <name>GT11RA18__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT11RA1 --></label>
+        <name>GT11RA1__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT11RA2 --></label>
+        <name>GT11RA2__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT11RA3 --></label>
+        <name>GT11RA3__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT11RA4 --></label>
+        <name>GT11RA4__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT11RA5 --></label>
+        <name>GT11RA5__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT11RA6 --></label>
+        <name>GT11RA6__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT11RA7 --></label>
+        <name>GT11RA7__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT11RA8 --></label>
+        <name>GT11RA8__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT11RA9 --></label>
+        <name>GT11RA9__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT11RAU --></label>
+        <name>GT11RAU__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT11R --></label>
+        <name>GT11R__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- GT12RA0 --></label>
+        <name>GT12RA0__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT12RA10 --></label>
+        <name>GT12RA10__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT12RA11 --></label>
+        <name>GT12RA11__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT12RA12 --></label>
+        <name>GT12RA12__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT12RA13 --></label>
+        <name>GT12RA13__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT12RA14 --></label>
+        <name>GT12RA14__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT12RA15 --></label>
+        <name>GT12RA15__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT12RA16 --></label>
+        <name>GT12RA16__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT12RA17 --></label>
+        <name>GT12RA17__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT12RA18 --></label>
+        <name>GT12RA18__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT12RA1 --></label>
+        <name>GT12RA1__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT12RA2 --></label>
+        <name>GT12RA2__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT12RA3 --></label>
+        <name>GT12RA3__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT12RA4 --></label>
+        <name>GT12RA4__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT12RA5 --></label>
+        <name>GT12RA5__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT12RA6 --></label>
+        <name>GT12RA6__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT12RA7 --></label>
+        <name>GT12RA7__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT12RA8 --></label>
+        <name>GT12RA8__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT12RA9 --></label>
+        <name>GT12RA9__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT12RAU --></label>
+        <name>GT12RAU__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT12R --></label>
+        <name>GT12R__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- GT13RA0 --></label>
+        <name>GT13RA0__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT13RA10 --></label>
+        <name>GT13RA10__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT13RA11 --></label>
+        <name>GT13RA11__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT13RA12 --></label>
+        <name>GT13RA12__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT13RA13 --></label>
+        <name>GT13RA13__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT13RA14 --></label>
+        <name>GT13RA14__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT13RA15 --></label>
+        <name>GT13RA15__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT13RA16 --></label>
+        <name>GT13RA16__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT13RA17 --></label>
+        <name>GT13RA17__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT13RA18 --></label>
+        <name>GT13RA18__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT13RA1 --></label>
+        <name>GT13RA1__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT13RA2 --></label>
+        <name>GT13RA2__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT13RA3 --></label>
+        <name>GT13RA3__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT13RA4 --></label>
+        <name>GT13RA4__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT13RA5 --></label>
+        <name>GT13RA5__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT13RA6 --></label>
+        <name>GT13RA6__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT13RA7 --></label>
+        <name>GT13RA7__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT13RA8 --></label>
+        <name>GT13RA8__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT13RA9 --></label>
+        <name>GT13RA9__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT13RAU --></label>
+        <name>GT13RAU__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT13R --></label>
+        <name>GT13R__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- GT14RA0 --></label>
+        <name>GT14RA0__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT14RA10 --></label>
+        <name>GT14RA10__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT14RA11 --></label>
+        <name>GT14RA11__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT14RA12 --></label>
+        <name>GT14RA12__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT14RA13 --></label>
+        <name>GT14RA13__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT14RA14 --></label>
+        <name>GT14RA14__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT14RA15 --></label>
+        <name>GT14RA15__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT14RA16 --></label>
+        <name>GT14RA16__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT14RA17 --></label>
+        <name>GT14RA17__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT14RA18 --></label>
+        <name>GT14RA18__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT14RA1 --></label>
+        <name>GT14RA1__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT14RA2 --></label>
+        <name>GT14RA2__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT14RA3 --></label>
+        <name>GT14RA3__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT14RA4 --></label>
+        <name>GT14RA4__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT14RA5 --></label>
+        <name>GT14RA5__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT14RA6 --></label>
+        <name>GT14RA6__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT14RA7 --></label>
+        <name>GT14RA7__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT14RA8 --></label>
+        <name>GT14RA8__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT14RA9 --></label>
+        <name>GT14RA9__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT14RAU --></label>
+        <name>GT14RAU__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT14R --></label>
+        <name>GT14R__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- GT15RA0 --></label>
+        <name>GT15RA0__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT15RA10 --></label>
+        <name>GT15RA10__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT15RA11 --></label>
+        <name>GT15RA11__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT15RA12 --></label>
+        <name>GT15RA12__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT15RA13 --></label>
+        <name>GT15RA13__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT15RA14 --></label>
+        <name>GT15RA14__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT15RA15 --></label>
+        <name>GT15RA15__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT15RA16 --></label>
+        <name>GT15RA16__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT15RA17 --></label>
+        <name>GT15RA17__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT15RA18 --></label>
+        <name>GT15RA18__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT15RA1 --></label>
+        <name>GT15RA1__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT15RA2 --></label>
+        <name>GT15RA2__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT15RA3 --></label>
+        <name>GT15RA3__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT15RA4 --></label>
+        <name>GT15RA4__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT15RA5 --></label>
+        <name>GT15RA5__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT15RA6 --></label>
+        <name>GT15RA6__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT15RA7 --></label>
+        <name>GT15RA7__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT15RA8 --></label>
+        <name>GT15RA8__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT15RA9 --></label>
+        <name>GT15RA9__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT15RAU --></label>
+        <name>GT15RAU__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT15R --></label>
+        <name>GT15R__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- GT16RA0 --></label>
+        <name>GT16RA0__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT16RA10 --></label>
+        <name>GT16RA10__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT16RA11 --></label>
+        <name>GT16RA11__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT16RA12 --></label>
+        <name>GT16RA12__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT16RA13 --></label>
+        <name>GT16RA13__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT16RA14 --></label>
+        <name>GT16RA14__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT16RA15 --></label>
+        <name>GT16RA15__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT16RA16 --></label>
+        <name>GT16RA16__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT16RA17 --></label>
+        <name>GT16RA17__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT16RA18 --></label>
+        <name>GT16RA18__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT16RA1 --></label>
+        <name>GT16RA1__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT16RA2 --></label>
+        <name>GT16RA2__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT16RA3 --></label>
+        <name>GT16RA3__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT16RA4 --></label>
+        <name>GT16RA4__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT16RA5 --></label>
+        <name>GT16RA5__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT16RA6 --></label>
+        <name>GT16RA6__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT16RA7 --></label>
+        <name>GT16RA7__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT16RA8 --></label>
+        <name>GT16RA8__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT16RA9 --></label>
+        <name>GT16RA9__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT16RAU --></label>
+        <name>GT16RAU__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT16R --></label>
+        <name>GT16R__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- GT17RA0 --></label>
+        <name>GT17RA0__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT17RA10 --></label>
+        <name>GT17RA10__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT17RA11 --></label>
+        <name>GT17RA11__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT17RA12 --></label>
+        <name>GT17RA12__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT17RA13 --></label>
+        <name>GT17RA13__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT17RA14 --></label>
+        <name>GT17RA14__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT17RA15 --></label>
+        <name>GT17RA15__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT17RA16 --></label>
+        <name>GT17RA16__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT17RA17 --></label>
+        <name>GT17RA17__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT17RA18 --></label>
+        <name>GT17RA18__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT17RA1 --></label>
+        <name>GT17RA1__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT17RA2 --></label>
+        <name>GT17RA2__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT17RA3 --></label>
+        <name>GT17RA3__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT17RA4 --></label>
+        <name>GT17RA4__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT17RA5 --></label>
+        <name>GT17RA5__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT17RA6 --></label>
+        <name>GT17RA6__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT17RA7 --></label>
+        <name>GT17RA7__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT17RA8 --></label>
+        <name>GT17RA8__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT17RA9 --></label>
+        <name>GT17RA9__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT17RAU --></label>
+        <name>GT17RAU__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT17R --></label>
+        <name>GT17R__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- GT18RA0 --></label>
+        <name>GT18RA0__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT18RA10 --></label>
+        <name>GT18RA10__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT18RA11 --></label>
+        <name>GT18RA11__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT18RA12 --></label>
+        <name>GT18RA12__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT18RA13 --></label>
+        <name>GT18RA13__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT18RA14 --></label>
+        <name>GT18RA14__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT18RA15 --></label>
+        <name>GT18RA15__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT18RA16 --></label>
+        <name>GT18RA16__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT18RA17 --></label>
+        <name>GT18RA17__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT18RA18 --></label>
+        <name>GT18RA18__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT18RA1 --></label>
+        <name>GT18RA1__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT18RA2 --></label>
+        <name>GT18RA2__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT18RA3 --></label>
+        <name>GT18RA3__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT18RA4 --></label>
+        <name>GT18RA4__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT18RA5 --></label>
+        <name>GT18RA5__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT18RA6 --></label>
+        <name>GT18RA6__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT18RA7 --></label>
+        <name>GT18RA7__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT18RA8 --></label>
+        <name>GT18RA8__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT18RA9 --></label>
+        <name>GT18RA9__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT18RAU --></label>
+        <name>GT18RAU__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT18R --></label>
+        <name>GT18R__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- GT19RA0 --></label>
+        <name>GT19RA0__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT19RA10 --></label>
+        <name>GT19RA10__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT19RA11 --></label>
+        <name>GT19RA11__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT19RA12 --></label>
+        <name>GT19RA12__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT19RA13 --></label>
+        <name>GT19RA13__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT19RA14 --></label>
+        <name>GT19RA14__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT19RA15 --></label>
+        <name>GT19RA15__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT19RA16 --></label>
+        <name>GT19RA16__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT19RA17 --></label>
+        <name>GT19RA17__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT19RA18 --></label>
+        <name>GT19RA18__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT19RA1 --></label>
+        <name>GT19RA1__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT19RA2 --></label>
+        <name>GT19RA2__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT19RA3 --></label>
+        <name>GT19RA3__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT19RA4 --></label>
+        <name>GT19RA4__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT19RA5 --></label>
+        <name>GT19RA5__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT19RA6 --></label>
+        <name>GT19RA6__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT19RA7 --></label>
+        <name>GT19RA7__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT19RA8 --></label>
+        <name>GT19RA8__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT19RA9 --></label>
+        <name>GT19RA9__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT19RAU --></label>
+        <name>GT19RAU__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT19R --></label>
+        <name>GT19R__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- GT1RA0 --></label>
+        <name>GT1RA0__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT1RA10 --></label>
+        <name>GT1RA10__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT1RA11 --></label>
+        <name>GT1RA11__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT1RA12 --></label>
+        <name>GT1RA12__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT1RA13 --></label>
+        <name>GT1RA13__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT1RA14 --></label>
+        <name>GT1RA14__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT1RA15 --></label>
+        <name>GT1RA15__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT1RA16 --></label>
+        <name>GT1RA16__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT1RA17 --></label>
+        <name>GT1RA17__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT1RA18 --></label>
+        <name>GT1RA18__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT1RA1 --></label>
+        <name>GT1RA1__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT1RA2 --></label>
+        <name>GT1RA2__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT1RA3 --></label>
+        <name>GT1RA3__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT1RA4 --></label>
+        <name>GT1RA4__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT1RA5 --></label>
+        <name>GT1RA5__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT1RA6 --></label>
+        <name>GT1RA6__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT1RA7 --></label>
+        <name>GT1RA7__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT1RA8 --></label>
+        <name>GT1RA8__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT1RA9 --></label>
+        <name>GT1RA9__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT1RAU --></label>
+        <name>GT1RAU__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT1R --></label>
+        <name>GT1R__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- GT20RA0 --></label>
+        <name>GT20RA0__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT20RA10 --></label>
+        <name>GT20RA10__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT20RA11 --></label>
+        <name>GT20RA11__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT20RA12 --></label>
+        <name>GT20RA12__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT20RA13 --></label>
+        <name>GT20RA13__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT20RA14 --></label>
+        <name>GT20RA14__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT20RA15 --></label>
+        <name>GT20RA15__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT20RA16 --></label>
+        <name>GT20RA16__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT20RA17 --></label>
+        <name>GT20RA17__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT20RA18 --></label>
+        <name>GT20RA18__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT20RA1 --></label>
+        <name>GT20RA1__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT20RA2 --></label>
+        <name>GT20RA2__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT20RA3 --></label>
+        <name>GT20RA3__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT20RA4 --></label>
+        <name>GT20RA4__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT20RA5 --></label>
+        <name>GT20RA5__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT20RA6 --></label>
+        <name>GT20RA6__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT20RA7 --></label>
+        <name>GT20RA7__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT20RA8 --></label>
+        <name>GT20RA8__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT20RA9 --></label>
+        <name>GT20RA9__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT20RAU --></label>
+        <name>GT20RAU__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT20R --></label>
+        <name>GT20R__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- GT21RA0 --></label>
+        <name>GT21RA0__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT21RA10 --></label>
+        <name>GT21RA10__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT21RA11 --></label>
+        <name>GT21RA11__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT21RA12 --></label>
+        <name>GT21RA12__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT21RA13 --></label>
+        <name>GT21RA13__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT21RA14 --></label>
+        <name>GT21RA14__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT21RA15 --></label>
+        <name>GT21RA15__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT21RA16 --></label>
+        <name>GT21RA16__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT21RA17 --></label>
+        <name>GT21RA17__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT21RA18 --></label>
+        <name>GT21RA18__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT21RA1 --></label>
+        <name>GT21RA1__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT21RA2 --></label>
+        <name>GT21RA2__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT21RA3 --></label>
+        <name>GT21RA3__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT21RA4 --></label>
+        <name>GT21RA4__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT21RA5 --></label>
+        <name>GT21RA5__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT21RA6 --></label>
+        <name>GT21RA6__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT21RA7 --></label>
+        <name>GT21RA7__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT21RA8 --></label>
+        <name>GT21RA8__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT21RA9 --></label>
+        <name>GT21RA9__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT21RAU --></label>
+        <name>GT21RAU__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT21R --></label>
+        <name>GT21R__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- GT22RA0 --></label>
+        <name>GT22RA0__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT22RA10 --></label>
+        <name>GT22RA10__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT22RA11 --></label>
+        <name>GT22RA11__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT22RA12 --></label>
+        <name>GT22RA12__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT22RA13 --></label>
+        <name>GT22RA13__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT22RA14 --></label>
+        <name>GT22RA14__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT22RA15 --></label>
+        <name>GT22RA15__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT22RA16 --></label>
+        <name>GT22RA16__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT22RA17 --></label>
+        <name>GT22RA17__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT22RA18 --></label>
+        <name>GT22RA18__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT22RA1 --></label>
+        <name>GT22RA1__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT22RA2 --></label>
+        <name>GT22RA2__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT22RA3 --></label>
+        <name>GT22RA3__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT22RA4 --></label>
+        <name>GT22RA4__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT22RA5 --></label>
+        <name>GT22RA5__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT22RA6 --></label>
+        <name>GT22RA6__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT22RA7 --></label>
+        <name>GT22RA7__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT22RA8 --></label>
+        <name>GT22RA8__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT22RA9 --></label>
+        <name>GT22RA9__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT22RAU --></label>
+        <name>GT22RAU__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT22R --></label>
+        <name>GT22R__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- GT23RA0 --></label>
+        <name>GT23RA0__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT23RA10 --></label>
+        <name>GT23RA10__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT23RA11 --></label>
+        <name>GT23RA11__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT23RA12 --></label>
+        <name>GT23RA12__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT23RA13 --></label>
+        <name>GT23RA13__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT23RA14 --></label>
+        <name>GT23RA14__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT23RA15 --></label>
+        <name>GT23RA15__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT23RA16 --></label>
+        <name>GT23RA16__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT23RA17 --></label>
+        <name>GT23RA17__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT23RA18 --></label>
+        <name>GT23RA18__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT23RA1 --></label>
+        <name>GT23RA1__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT23RA2 --></label>
+        <name>GT23RA2__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT23RA3 --></label>
+        <name>GT23RA3__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT23RA4 --></label>
+        <name>GT23RA4__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT23RA5 --></label>
+        <name>GT23RA5__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT23RA6 --></label>
+        <name>GT23RA6__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT23RA7 --></label>
+        <name>GT23RA7__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT23RA8 --></label>
+        <name>GT23RA8__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT23RA9 --></label>
+        <name>GT23RA9__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT23RAU --></label>
+        <name>GT23RAU__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT23RSP --></label>
+        <name>GT23RSP__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT23R --></label>
+        <name>GT23R__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- GT2RA0 --></label>
+        <name>GT2RA0__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT2RA10 --></label>
+        <name>GT2RA10__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT2RA11 --></label>
+        <name>GT2RA11__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT2RA12 --></label>
+        <name>GT2RA12__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT2RA13 --></label>
+        <name>GT2RA13__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT2RA14 --></label>
+        <name>GT2RA14__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT2RA15 --></label>
+        <name>GT2RA15__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT2RA16 --></label>
+        <name>GT2RA16__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT2RA17 --></label>
+        <name>GT2RA17__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT2RA18 --></label>
+        <name>GT2RA18__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT2RA1 --></label>
+        <name>GT2RA1__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT2RA2 --></label>
+        <name>GT2RA2__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT2RA3 --></label>
+        <name>GT2RA3__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT2RA4 --></label>
+        <name>GT2RA4__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT2RA5 --></label>
+        <name>GT2RA5__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT2RA6 --></label>
+        <name>GT2RA6__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT2RA7 --></label>
+        <name>GT2RA7__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT2RA8 --></label>
+        <name>GT2RA8__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT2RA9 --></label>
+        <name>GT2RA9__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT2RAU --></label>
+        <name>GT2RAU__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT2R --></label>
+        <name>GT2R__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- GT3RA0 --></label>
+        <name>GT3RA0__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT3RA10 --></label>
+        <name>GT3RA10__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT3RA11 --></label>
+        <name>GT3RA11__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT3RA12 --></label>
+        <name>GT3RA12__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT3RA13 --></label>
+        <name>GT3RA13__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT3RA14 --></label>
+        <name>GT3RA14__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT3RA15 --></label>
+        <name>GT3RA15__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT3RA16 --></label>
+        <name>GT3RA16__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT3RA17 --></label>
+        <name>GT3RA17__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT3RA18 --></label>
+        <name>GT3RA18__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT3RA1 --></label>
+        <name>GT3RA1__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT3RA2 --></label>
+        <name>GT3RA2__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT3RA3 --></label>
+        <name>GT3RA3__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT3RA4 --></label>
+        <name>GT3RA4__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT3RA5 --></label>
+        <name>GT3RA5__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT3RA6 --></label>
+        <name>GT3RA6__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT3RA7 --></label>
+        <name>GT3RA7__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT3RA8 --></label>
+        <name>GT3RA8__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT3RA9 --></label>
+        <name>GT3RA9__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT3RAU --></label>
+        <name>GT3RAU__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT3R --></label>
+        <name>GT3R__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- GT4RA0 --></label>
+        <name>GT4RA0__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT4RA10 --></label>
+        <name>GT4RA10__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT4RA11 --></label>
+        <name>GT4RA11__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT4RA12 --></label>
+        <name>GT4RA12__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT4RA13 --></label>
+        <name>GT4RA13__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT4RA14 --></label>
+        <name>GT4RA14__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT4RA15 --></label>
+        <name>GT4RA15__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT4RA16 --></label>
+        <name>GT4RA16__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT4RA17 --></label>
+        <name>GT4RA17__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT4RA18 --></label>
+        <name>GT4RA18__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT4RA1 --></label>
+        <name>GT4RA1__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT4RA2 --></label>
+        <name>GT4RA2__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT4RA3 --></label>
+        <name>GT4RA3__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT4RA4 --></label>
+        <name>GT4RA4__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT4RA5 --></label>
+        <name>GT4RA5__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT4RA6 --></label>
+        <name>GT4RA6__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT4RA7 --></label>
+        <name>GT4RA7__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT4RA8 --></label>
+        <name>GT4RA8__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT4RA9 --></label>
+        <name>GT4RA9__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT4RAU --></label>
+        <name>GT4RAU__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT4R --></label>
+        <name>GT4R__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- GT5RA0 --></label>
+        <name>GT5RA0__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT5RA10 --></label>
+        <name>GT5RA10__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT5RA11 --></label>
+        <name>GT5RA11__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT5RA12 --></label>
+        <name>GT5RA12__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT5RA13 --></label>
+        <name>GT5RA13__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT5RA14 --></label>
+        <name>GT5RA14__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT5RA15 --></label>
+        <name>GT5RA15__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT5RA16 --></label>
+        <name>GT5RA16__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT5RA17 --></label>
+        <name>GT5RA17__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT5RA18 --></label>
+        <name>GT5RA18__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT5RA1 --></label>
+        <name>GT5RA1__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT5RA2 --></label>
+        <name>GT5RA2__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT5RA3 --></label>
+        <name>GT5RA3__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT5RA4 --></label>
+        <name>GT5RA4__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT5RA5 --></label>
+        <name>GT5RA5__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT5RA6 --></label>
+        <name>GT5RA6__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT5RA7 --></label>
+        <name>GT5RA7__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT5RA8 --></label>
+        <name>GT5RA8__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT5RA9 --></label>
+        <name>GT5RA9__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT5RAU --></label>
+        <name>GT5RAU__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT5R --></label>
+        <name>GT5R__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- GT6RA0 --></label>
+        <name>GT6RA0__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT6RA10 --></label>
+        <name>GT6RA10__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT6RA11 --></label>
+        <name>GT6RA11__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT6RA12 --></label>
+        <name>GT6RA12__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT6RA13 --></label>
+        <name>GT6RA13__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT6RA14 --></label>
+        <name>GT6RA14__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT6RA15 --></label>
+        <name>GT6RA15__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT6RA16 --></label>
+        <name>GT6RA16__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT6RA17 --></label>
+        <name>GT6RA17__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT6RA18 --></label>
+        <name>GT6RA18__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT6RA1 --></label>
+        <name>GT6RA1__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT6RA2 --></label>
+        <name>GT6RA2__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT6RA3 --></label>
+        <name>GT6RA3__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT6RA4 --></label>
+        <name>GT6RA4__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT6RA5 --></label>
+        <name>GT6RA5__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT6RA6 --></label>
+        <name>GT6RA6__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT6RA7 --></label>
+        <name>GT6RA7__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT6RA8 --></label>
+        <name>GT6RA8__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT6RA9 --></label>
+        <name>GT6RA9__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT6RAU --></label>
+        <name>GT6RAU__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT6R --></label>
+        <name>GT6R__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- GT7RA0 --></label>
+        <name>GT7RA0__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT7RA10 --></label>
+        <name>GT7RA10__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT7RA11 --></label>
+        <name>GT7RA11__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT7RA12 --></label>
+        <name>GT7RA12__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT7RA13 --></label>
+        <name>GT7RA13__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT7RA14 --></label>
+        <name>GT7RA14__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT7RA15 --></label>
+        <name>GT7RA15__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT7RA16 --></label>
+        <name>GT7RA16__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT7RA17 --></label>
+        <name>GT7RA17__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT7RA18 --></label>
+        <name>GT7RA18__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT7RA1 --></label>
+        <name>GT7RA1__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT7RA2 --></label>
+        <name>GT7RA2__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT7RA3 --></label>
+        <name>GT7RA3__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT7RA4 --></label>
+        <name>GT7RA4__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT7RA5 --></label>
+        <name>GT7RA5__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT7RA6 --></label>
+        <name>GT7RA6__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT7RA7 --></label>
+        <name>GT7RA7__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT7RA8 --></label>
+        <name>GT7RA8__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT7RA9 --></label>
+        <name>GT7RA9__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT7RAU --></label>
+        <name>GT7RAU__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT7R --></label>
+        <name>GT7R__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- GT8RA0 --></label>
+        <name>GT8RA0__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT8RA10 --></label>
+        <name>GT8RA10__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT8RA11 --></label>
+        <name>GT8RA11__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT8RA12 --></label>
+        <name>GT8RA12__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT8RA13 --></label>
+        <name>GT8RA13__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT8RA14 --></label>
+        <name>GT8RA14__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT8RA15 --></label>
+        <name>GT8RA15__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT8RA16 --></label>
+        <name>GT8RA16__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT8RA17 --></label>
+        <name>GT8RA17__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT8RA18 --></label>
+        <name>GT8RA18__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT8RA1 --></label>
+        <name>GT8RA1__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT8RA2 --></label>
+        <name>GT8RA2__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT8RA3 --></label>
+        <name>GT8RA3__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT8RA4 --></label>
+        <name>GT8RA4__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT8RA5 --></label>
+        <name>GT8RA5__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT8RA6 --></label>
+        <name>GT8RA6__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT8RA7 --></label>
+        <name>GT8RA7__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT8RA8 --></label>
+        <name>GT8RA8__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT8RA9 --></label>
+        <name>GT8RA9__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT8RAU --></label>
+        <name>GT8RAU__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT8R --></label>
+        <name>GT8R__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- GT9RA0 --></label>
+        <name>GT9RA0__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT9RA10 --></label>
+        <name>GT9RA10__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT9RA11 --></label>
+        <name>GT9RA11__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT9RA12 --></label>
+        <name>GT9RA12__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT9RA13 --></label>
+        <name>GT9RA13__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT9RA14 --></label>
+        <name>GT9RA14__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT9RA15 --></label>
+        <name>GT9RA15__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT9RA16 --></label>
+        <name>GT9RA16__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT9RA17 --></label>
+        <name>GT9RA17__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT9RA18 --></label>
+        <name>GT9RA18__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT9RA1 --></label>
+        <name>GT9RA1__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT9RA2 --></label>
+        <name>GT9RA2__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT9RA3 --></label>
+        <name>GT9RA3__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT9RA4 --></label>
+        <name>GT9RA4__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT9RA5 --></label>
+        <name>GT9RA5__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT9RA6 --></label>
+        <name>GT9RA6__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT9RA7 --></label>
+        <name>GT9RA7__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT9RA8 --></label>
+        <name>GT9RA8__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT9RA9 --></label>
+        <name>GT9RA9__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT9RAU --></label>
+        <name>GT9RAU__c</name>
+    </fields>
+    <fields>
+        <label><!-- GT9R --></label>
+        <name>GT9R__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- GTDATE --></label>
+        <name>GTDATE__c</name>
+    </fields>
+    <fields>
+        <label><!-- GTPRIMRY --></label>
+        <name>GTPRIMRY__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>10</masterLabel>
+            <translation><!-- 10 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>11</masterLabel>
+            <translation><!-- 11 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>12</masterLabel>
+            <translation><!-- 12 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>13</masterLabel>
+            <translation><!-- 13 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>14</masterLabel>
+            <translation><!-- 14 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>15</masterLabel>
+            <translation><!-- 15 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>16</masterLabel>
+            <translation><!-- 16 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>17</masterLabel>
+            <translation><!-- 17 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>18</masterLabel>
+            <translation><!-- 18 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>19</masterLabel>
+            <translation><!-- 19 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>20</masterLabel>
+            <translation><!-- 20 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>21</masterLabel>
+            <translation><!-- 21 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>22</masterLabel>
+            <translation><!-- 22 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>23</masterLabel>
+            <translation><!-- 23 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation><!-- 5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>6</masterLabel>
+            <translation><!-- 6 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>7</masterLabel>
+            <translation><!-- 7 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>8</masterLabel>
+            <translation><!-- 8 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>9</masterLabel>
+            <translation><!-- 9 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- SECTION --></label>
+        <name>SECTION__c</name>
+    </fields>
+    <fields>
+        <label><!-- STATUS GTRAUMA --></label>
+        <name>STATUS_GTRAUMA__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- General trauma administration date cannot be before birth. --></errorMessage>
+        <name>GTrauma_date_cannot_be_before_birth</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Date cannot be in the future. --></errorMessage>
+        <name>GTrauma_date_cannot_be_future</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Response (No, Yes, Suspected, or Unknown) is REQUIRED for Sexual maltreatment/abuse --></errorMessage>
+        <name>GTrauma_must_indicate_tr1</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Response (No, Yes, Suspected, or Unknown) is REQUIRED for War/Terrorism/PV outside  U.S. --></errorMessage>
+        <name>GTrauma_must_indicate_tr10</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Response (No, Yes, Suspected, or Unknown) is REQUIRED for Illness/Medical --></errorMessage>
+        <name>GTrauma_must_indicate_tr11</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Response (No, Yes, Suspected, or Unknown) is REQUIRED for Serious Injury/Accident --></errorMessage>
+        <name>GTrauma_must_indicate_tr12</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Response (No, Yes, Suspected, or Unknown) is REQUIRED for Natural Disaster --></errorMessage>
+        <name>GTrauma_must_indicate_tr13</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Response (No, Yes, Suspected, or Unknown) is REQUIRED for Kidnapping --></errorMessage>
+        <name>GTrauma_must_indicate_tr14</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Response (No, Yes, Suspected, or Unknown) is REQUIRED for Traumatic Loss or Bereavement --></errorMessage>
+        <name>GTrauma_must_indicate_tr15</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Response (No, Yes, Suspected, or Unknown) is REQUIRED for Separation --></errorMessage>
+        <name>GTrauma_must_indicate_tr16</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Response (No, Yes, Suspected, or Unknown) is REQUIRED for Forced Displacement --></errorMessage>
+        <name>GTrauma_must_indicate_tr17</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Response (No, Yes, Suspected, or Unknown) is REQUIRED for Impaired Caregiver --></errorMessage>
+        <name>GTrauma_must_indicate_tr18</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Response (No, Yes, Suspected, or Unknown) is REQUIRED for Extreme Interpersonal Violence --></errorMessage>
+        <name>GTrauma_must_indicate_tr19</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Response (No, Yes, Suspected, or Unknown) is REQUIRED for Sexual assault/rape --></errorMessage>
+        <name>GTrauma_must_indicate_tr2</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Response (No, Yes, Suspected, or Unknown) is REQUIRED for Community Violence --></errorMessage>
+        <name>GTrauma_must_indicate_tr20</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Response (No, Yes, Suspected, or Unknown) is REQUIRED for School  Violence --></errorMessage>
+        <name>GTrauma_must_indicate_tr21</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Response (No, Yes, Suspected, or Unknown) is REQUIRED for Bullying --></errorMessage>
+        <name>GTrauma_must_indicate_tr22</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Response (No, Yes, Suspected, or Unknown) is REQUIRED for Other Trauma --></errorMessage>
+        <name>GTrauma_must_indicate_tr23</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Response (No, Yes, Suspected, or Unknown) is REQUIRED for Sexual Exploitation --></errorMessage>
+        <name>GTrauma_must_indicate_tr3</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Response (No, Yes, Suspected, or Unknown) is REQUIRED for Physical maltreatment/abuse --></errorMessage>
+        <name>GTrauma_must_indicate_tr4</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Response (No, Yes, Suspected, or Unknown) is REQUIRED for Physical assault --></errorMessage>
+        <name>GTrauma_must_indicate_tr5</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Response (No, Yes, Suspected, or Unknown) is REQUIRED for Emotional abuse/Psych mal --></errorMessage>
+        <name>GTrauma_must_indicate_tr6</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Response (No, Yes, Suspected, or Unknown) is REQUIRED for Neglect --></errorMessage>
+        <name>GTrauma_must_indicate_tr7</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Response (No, Yes, Suspected, or Unknown) is REQUIRED for Domestic Violence --></errorMessage>
+        <name>GTrauma_must_indicate_tr8</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Response (No, Yes, Suspected, or Unknown) is REQUIRED for War/Terrorism/PV inside the U.S. --></errorMessage>
+        <name>GTrauma_must_indicate_tr9</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This item is in the list. --></errorMessage>
+        <name>Other_Textfield</name>
+    </validationRules>
+</CustomObjectTranslation>

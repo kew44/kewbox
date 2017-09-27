@@ -1,0 +1,18 @@
+<apex:page standardController="Clinician__c" >
+  <script src="/soap/ajax/29.0/connection.js" type="text/javascript"></script>
+  <script src="/soap/ajax/29.0/apex.js" type="text/javascript"></script>
+  <script>
+               
+      sforce.connection.sessionId = '{!GETSESSIONID()}';
+      
+      try {
+        var result = sforce.apex.execute("SuperDelete","deleteRecord", {id:"{!Clinician__c.Id}", item:"clinician"});
+      } catch(e) {
+          errorDiv.innerHTML = result; 
+          errorDiv.style.display = 'block'; 
+      }
+        
+      window.top.location.href = "/a01/o";
+      
+  </script>
+</apex:page>

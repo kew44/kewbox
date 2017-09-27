@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Foundation_States</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Foundation_States</value>
+    </caseValues>
+    <fields>
+        <label><!-- Country_Code --></label>
+        <name>Country_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- State_Code --></label>
+        <name>State_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- State_Name --></label>
+        <name>State_Name__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

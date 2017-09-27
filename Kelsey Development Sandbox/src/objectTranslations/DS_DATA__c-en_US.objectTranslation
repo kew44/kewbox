@@ -1,0 +1,723 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>DS DATA</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>DS DATA</value>
+    </caseValues>
+    <fields>
+        <label><!-- Allow Modify --></label>
+        <name>ALLOW_MODIFY__c</name>
+    </fields>
+    <fields>
+        <label><!-- Age_Range --></label>
+        <name>Age_Range__c</name>
+        <picklistValues>
+            <masterLabel>0_5</masterLabel>
+            <translation><!-- 0_5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1.5_5</masterLabel>
+            <translation><!-- 1.5_5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>11_17</masterLabel>
+            <translation><!-- 11_17 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>12_18</masterLabel>
+            <translation><!-- 12_18 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3_21</masterLabel>
+            <translation><!-- 3_21 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4_10</masterLabel>
+            <translation><!-- 4_10 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>6_18</masterLabel>
+            <translation><!-- 6_18 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>6_21</masterLabel>
+            <translation><!-- 6_21 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>7_18</masterLabel>
+            <translation><!-- 7_18 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>7_21</masterLabel>
+            <translation><!-- 7_21 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Blocker ID --></label>
+        <name>Blocker_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Codelist --></label>
+        <name>CODELIST__c</name>
+    </fields>
+    <fields>
+        <label><!-- CODE --></label>
+        <name>CODE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Category --></label>
+        <name>Category__c</name>
+    </fields>
+    <fields>
+        <label><!-- Content --></label>
+        <name>Content__c</name>
+    </fields>
+    <fields>
+        <label><!-- Data_Type --></label>
+        <name>Data_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Describe_Field --></label>
+        <name>Describe_Field__c</name>
+    </fields>
+    <fields>
+        <label><!-- File_name --></label>
+        <name>FILE_NAME__c</name>
+        <picklistValues>
+            <masterLabel>BASELINE</masterLabel>
+            <translation><!-- BASELINE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FOLLOWUP</masterLabel>
+            <translation><!-- FOLLOWUP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRAUMA</masterLabel>
+            <translation><!-- TRAUMA --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Field --></label>
+        <name>Field__c</name>
+    </fields>
+    <fields>
+        <label><!-- Form --></label>
+        <name>Form__c</name>
+        <picklistValues>
+            <masterLabel>DS_BIS</masterLabel>
+            <translation><!-- DS_BIS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_BSLC</masterLabel>
+            <translation><!-- DS_BSLC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_CANSTR</masterLabel>
+            <translation><!-- DS_CANSTR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_CBCL_0_5_B</masterLabel>
+            <translation><!-- DS_CBCL_0_5_B --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_CBCL_0_5_F</masterLabel>
+            <translation><!-- DS_CBCL_0_5_F --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_CBCL_6_18_B</masterLabel>
+            <translation><!-- DS_CBCL_6_18_B --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_CBCL_6_18_F</masterLabel>
+            <translation><!-- DS_CBCL_6_18_F --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_CLINEVAL</masterLabel>
+            <translation><!-- DS_CLINEVAL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_DEMO</masterLabel>
+            <translation><!-- DS_DEMO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_DOMENV</masterLabel>
+            <translation><!-- DS_DOMENV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_FAPGAR</masterLabel>
+            <translation><!-- DS_FAPGAR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_FOLLOWUPINFO</masterLabel>
+            <translation><!-- DS_FOLLOWUPINFO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_HEALTH</masterLabel>
+            <translation><!-- DS_HEALTH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_INDSEV</masterLabel>
+            <translation><!-- DS_INDSEV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_INSDOMENV</masterLabel>
+            <translation><!-- DS_INSDOMENV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_MILITARY</masterLabel>
+            <translation><!-- DS_MILITARY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_NCTSNTREAT</masterLabel>
+            <translation><!-- DS_NCTSNTREAT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_NOMS</masterLabel>
+            <translation><!-- DS_NOMS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_POST_NOMS</masterLabel>
+            <translation><!-- DS_POST_NOMS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_PTSD_CA_B</masterLabel>
+            <translation><!-- DS_PTSD_CA_B --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_PTSD_CA_F</masterLabel>
+            <translation><!-- DS_PTSD_CA_F --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_REFIMM</masterLabel>
+            <translation><!-- DS_REFIMM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_SDQ_P_04_10</masterLabel>
+            <translation><!-- DS_SDQ_P_04_10 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_SDQ_P_11_17</masterLabel>
+            <translation><!-- DS_SDQ_P_11_17 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_SDQ_S_11_17</masterLabel>
+            <translation><!-- DS_SDQ_S_11_17 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_SERVREC</masterLabel>
+            <translation><!-- DS_SERVREC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_YCINDSEV</masterLabel>
+            <translation><!-- DS_YCINDSEV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRABUSE</masterLabel>
+            <translation><!-- TRABUSE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRACCIDENT</masterLabel>
+            <translation><!-- TRACCIDENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRBEREAVE</masterLabel>
+            <translation><!-- TRBEREAVE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRBULLYING</masterLabel>
+            <translation><!-- TRBULLYING --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRCOMMEXP</masterLabel>
+            <translation><!-- TRCOMMEXP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRCOMMVIO</masterLabel>
+            <translation><!-- TRCOMMVIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRDISPLACE</masterLabel>
+            <translation><!-- TRDISPLACE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRDOMVIO</masterLabel>
+            <translation><!-- TRDOMVIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRIMPCARE</masterLabel>
+            <translation><!-- TRIMPCARE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRKIDNAP</masterLabel>
+            <translation><!-- TRKIDNAP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRMEDICAL</masterLabel>
+            <translation><!-- TRMEDICAL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRNATURALDIS</masterLabel>
+            <translation><!-- TRNATURALDIS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRNEGLECT</masterLabel>
+            <translation><!-- TRNEGLECT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRPHYSASSAULT</masterLabel>
+            <translation><!-- TRPHYSASSAULT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRPSYCHABUSE</masterLabel>
+            <translation><!-- TRPSYCHABUSE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRSCHOOLVIO</masterLabel>
+            <translation><!-- TRSCHOOLVIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRSEPARATION</masterLabel>
+            <translation><!-- TRSEPARATION --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRSEX</masterLabel>
+            <translation><!-- TRSEX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRSEXASSAULT</masterLabel>
+            <translation><!-- TRSEXASSAULT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRTRAFFICKING</masterLabel>
+            <translation><!-- TRTRAFFICKING --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRVIOLENCE</masterLabel>
+            <translation><!-- TRVIOLENCE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRWAR</masterLabel>
+            <translation><!-- TRWAR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRWAROUTSIDEUS</masterLabel>
+            <translation><!-- TRWAROUTSIDEUS --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Gender_Required --></label>
+        <name>Gender_Required__c</name>
+    </fields>
+    <fields>
+        <label><!-- Gender --></label>
+        <name>Gender__c</name>
+        <picklistValues>
+            <masterLabel>Boy</masterLabel>
+            <translation><!-- Boy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Girl</masterLabel>
+            <translation><!-- Girl --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- LONGLABEL --></label>
+        <name>LONGLABEL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Long_Description --></label>
+        <name>LONG_DESCRIPTION__c</name>
+    </fields>
+    <fields>
+        <label><!-- Note --></label>
+        <name>Note__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number --></label>
+        <name>Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object --></label>
+        <name>Object__c</name>
+    </fields>
+    <fields>
+        <label><!-- Page --></label>
+        <name>Page__c</name>
+    </fields>
+    <fields>
+        <label><!-- Percentile --></label>
+        <name>Percentile__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question_Field --></label>
+        <name>Question_Field__c</name>
+    </fields>
+    <fields>
+        <label><!-- Raw_Score --></label>
+        <name>Raw_Score__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source_form --></label>
+        <name>SOURCE_FORM__c</name>
+        <picklistValues>
+            <masterLabel>BIS</masterLabel>
+            <translation><!-- BIS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BSLC</masterLabel>
+            <translation><!-- BSLC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CANSTR</masterLabel>
+            <translation><!-- CANSTR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBCL_SCORES_OLD</masterLabel>
+            <translation><!-- CBCL_SCORES_OLD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBCL_SCORES_YOUNG</masterLabel>
+            <translation><!-- CBCL_SCORES_YOUNG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CLINEVAL</masterLabel>
+            <translation><!-- CLINEVAL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DEMO</masterLabel>
+            <translation><!-- DEMO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DOMENV</masterLabel>
+            <translation><!-- DOMENV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_CBCL_0_5</masterLabel>
+            <translation><!-- DS_CBCL_0_5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_CBCL_0_5_B</masterLabel>
+            <translation><!-- DS_CBCL_0_5_B --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_CBCL_0_5_F</masterLabel>
+            <translation><!-- DS_CBCL_0_5_F --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_CBCL_6_18</masterLabel>
+            <translation><!-- DS_CBCL_6_18 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_CBCL_6_18_B</masterLabel>
+            <translation><!-- DS_CBCL_6_18_B --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DS_CBCL_6_18_F</masterLabel>
+            <translation><!-- DS_CBCL_6_18_F --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FAPGAR</masterLabel>
+            <translation><!-- FAPGAR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FAPGAR_SCORES</masterLabel>
+            <translation><!-- FAPGAR_SCORES --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FOLLOWUPINFO</masterLabel>
+            <translation><!-- FOLLOWUPINFO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HEALTH</masterLabel>
+            <translation><!-- HEALTH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INDSEV</masterLabel>
+            <translation><!-- INDSEV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INSDOMENV</masterLabel>
+            <translation><!-- INSDOMENV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MILITARY</masterLabel>
+            <translation><!-- MILITARY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NCTSNTREAT</masterLabel>
+            <translation><!-- NCTSNTREAT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NOMS</masterLabel>
+            <translation><!-- NOMS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PTSD_CA</masterLabel>
+            <translation><!-- PTSD_CA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PTSD_SCORES</masterLabel>
+            <translation><!-- PTSD_SCORES --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>REFIMM</masterLabel>
+            <translation><!-- REFIMM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SDQ_PARENT</masterLabel>
+            <translation><!-- SDQ_PARENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SDQ_P_04_10</masterLabel>
+            <translation><!-- SDQ_P_04_10 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SDQ_P_11_17</masterLabel>
+            <translation><!-- SDQ_P_11_17 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SDQ_SCORES_PARENT</masterLabel>
+            <translation><!-- SDQ_SCORES_PARENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SDQ_SCORES_SELF</masterLabel>
+            <translation><!-- SDQ_SCORES_SELF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SDQ_SELF</masterLabel>
+            <translation><!-- SDQ_SELF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SDQ_S_11_17</masterLabel>
+            <translation><!-- SDQ_S_11_17 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SERVREC</masterLabel>
+            <translation><!-- SERVREC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRABUSE</masterLabel>
+            <translation><!-- TRABUSE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRACCIDENT</masterLabel>
+            <translation><!-- TRACCIDENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRBEREAVE</masterLabel>
+            <translation><!-- TRBEREAVE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRBULLYING</masterLabel>
+            <translation><!-- TRBULLYING --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRCOMMEXP</masterLabel>
+            <translation><!-- TRCOMMEXP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRCOMMVIO</masterLabel>
+            <translation><!-- TRCOMMVIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRDISPLACE</masterLabel>
+            <translation><!-- TRDISPLACE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRDOMVIO</masterLabel>
+            <translation><!-- TRDOMVIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRIMPCARE</masterLabel>
+            <translation><!-- TRIMPCARE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRKIDNAP</masterLabel>
+            <translation><!-- TRKIDNAP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRMEDICAL</masterLabel>
+            <translation><!-- TRMEDICAL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRNATURALDIS</masterLabel>
+            <translation><!-- TRNATURALDIS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRNEGLECT</masterLabel>
+            <translation><!-- TRNEGLECT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRPHYSASSAULT</masterLabel>
+            <translation><!-- TRPHYSASSAULT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRPSYCHABUSE</masterLabel>
+            <translation><!-- TRPSYCHABUSE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRSCHOOLVIO</masterLabel>
+            <translation><!-- TRSCHOOLVIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRSEPARATION</masterLabel>
+            <translation><!-- TRSEPARATION --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRSEX</masterLabel>
+            <translation><!-- TRSEX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRSEXASSAULT</masterLabel>
+            <translation><!-- TRSEXASSAULT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRVIOLENCE</masterLabel>
+            <translation><!-- TRVIOLENCE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRWAR</masterLabel>
+            <translation><!-- TRWAR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRWAROUTSIDEUS</masterLabel>
+            <translation><!-- TRWAROUTSIDEUS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>YCINDSEV</masterLabel>
+            <translation><!-- YCINDSEV --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Scale_Number --></label>
+        <name>Scale_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Scale --></label>
+        <name>Scale__c</name>
+        <picklistValues>
+            <masterLabel>I</masterLabel>
+            <translation><!-- I --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>II</masterLabel>
+            <translation><!-- II --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>III</masterLabel>
+            <translation><!-- III --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IV</masterLabel>
+            <translation><!-- IV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Total</masterLabel>
+            <translation><!-- Total --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>V</masterLabel>
+            <translation><!-- V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VI</masterLabel>
+            <translation><!-- VI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VII</masterLabel>
+            <translation><!-- VII --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VIII</masterLabel>
+            <translation><!-- VIII --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Section --></label>
+        <name>Section__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sig_Range --></label>
+        <name>Sig_Range__c</name>
+        <picklistValues>
+            <masterLabel>Borderline</masterLabel>
+            <translation><!-- Borderline --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Clinical</masterLabel>
+            <translation><!-- Clinical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Normal</masterLabel>
+            <translation><!-- Normal --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Symptom --></label>
+        <name>Symptom__c</name>
+    </fields>
+    <fields>
+        <label><!-- T_Score --></label>
+        <name>T_Score__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Variable_label --></label>
+        <name>VARIABLE_LABEL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Variable_name --></label>
+        <name>VARIABLE_NAME__c</name>
+    </fields>
+    <fields>
+        <label><!-- Variable_number --></label>
+        <name>VARIABLE_NUMBER__c</name>
+    </fields>
+    <fields>
+        <label><!-- Variable_type --></label>
+        <name>VARIABLE_TYPE__c</name>
+        <picklistValues>
+            <masterLabel>CHAR</masterLabel>
+            <translation><!-- CHAR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DATE</masterLabel>
+            <translation><!-- DATE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NUMBER</masterLabel>
+            <translation><!-- NUMBER --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Variable_value --></label>
+        <name>VARIABLE_VALUE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Variable --></label>
+        <name>Variable__c</name>
+    </fields>
+    <fields>
+        <label><!-- Weight --></label>
+        <name>Weight__c</name>
+    </fields>
+    <layouts>
+        <layout>DS DATA Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

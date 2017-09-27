@@ -1,0 +1,1837 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>DS SDQ PSI CDI B</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>DS SDQ PSI CDI B</value>
+    </caseValues>
+    <fields>
+        <label><!-- BBEHNULLP --></label>
+        <name>BBEHNULLP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BBEHNULLS --></label>
+        <name>BBEHNULLS__c</name>
+    </fields>
+    <fields>
+        <label><!-- BDOAPSI --></label>
+        <name>BDOAPSI__c</name>
+    </fields>
+    <fields>
+        <label><!-- BDOASDOP --></label>
+        <name>BDOASDOP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BDOASDOS --></label>
+        <name>BDOASDOS__c</name>
+    </fields>
+    <fields>
+        <label><!-- BDOASDYP --></label>
+        <name>BDOASDYP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BDOV --></label>
+        <name>BDOV__c</name>
+    </fields>
+    <fields>
+        <label><!-- BEMONULLP --></label>
+        <name>BEMONULLP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BEMONULLS --></label>
+        <name>BEMONULLS__c</name>
+    </fields>
+    <fields>
+        <label><!-- BFORM --></label>
+        <name>BFORM__c</name>
+    </fields>
+    <fields>
+        <label><!-- BHYPNULLP --></label>
+        <name>BHYPNULLP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BHYPNULLS --></label>
+        <name>BHYPNULLS__c</name>
+    </fields>
+    <fields>
+        <label><!-- BKHBNULLP --></label>
+        <name>BKHBNULLP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BKHBNULLS --></label>
+        <name>BKHBNULLS__c</name>
+    </fields>
+    <fields>
+        <label><!-- BMETSDOP --></label>
+        <name>BMETSDOP__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BMETSDOS --></label>
+        <name>BMETSDOS__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BMETSDYP --></label>
+        <name>BMETSDYP__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BOTCNULLP --></label>
+        <name>BOTCNULLP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BOTCNULLS --></label>
+        <name>BOTCNULLS__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPSIDC2 --></label>
+        <name>BPSIDC2__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPSIDC_PTLE2 --></label>
+        <name>BPSIDC_PTLE2__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPSIDC_PTLE --></label>
+        <name>BPSIDC_PTLE__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPSIDC --></label>
+        <name>BPSIDC__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPSIDR2 --></label>
+        <name>BPSIDR2__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPSIDR_PTLE2 --></label>
+        <name>BPSIDR_PTLE2__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPSIDR_PTLE --></label>
+        <name>BPSIDR_PTLE__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPSIDR --></label>
+        <name>BPSIDR__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPSIPCDI2 --></label>
+        <name>BPSIPCDI2__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPSIPCDI_PTLE2 --></label>
+        <name>BPSIPCDI_PTLE2__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPSIPCDI_PTLE --></label>
+        <name>BPSIPCDI_PTLE__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPSIPCDI --></label>
+        <name>BPSIPCDI__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPSIPD2 --></label>
+        <name>BPSIPD2__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPSIPD_PTLE2 --></label>
+        <name>BPSIPD_PTLE2__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPSIPD_PTLE --></label>
+        <name>BPSIPD_PTLE__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPSIPD --></label>
+        <name>BPSIPD__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPSITS2 --></label>
+        <name>BPSITS2__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPSITS_PTLE2 --></label>
+        <name>BPSITS_PTLE2__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPSITS_PTLE --></label>
+        <name>BPSITS_PTLE__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPSITS --></label>
+        <name>BPSITS__c</name>
+    </fields>
+    <fields>
+        <label><!-- BSDPAFRA --></label>
+        <name>BSDPAFRA__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPATTE --></label>
+        <name>BSDPATTE__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPBEH --></label>
+        <name>BSDPBEH__c</name>
+    </fields>
+    <fields>
+        <label><!-- BSDPBTYP --></label>
+        <name>BSDPBTYP__c</name>
+        <picklistValues>
+            <masterLabel>Abnormal</masterLabel>
+            <translation><!-- Abnormal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Borderline</masterLabel>
+            <translation><!-- Borderline --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Normal</masterLabel>
+            <translation><!-- Normal --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPBULL --></label>
+        <name>BSDPBULL__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPCARI --></label>
+        <name>BSDPCARI__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPCLIN --></label>
+        <name>BSDPCLIN__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPCOMM --></label>
+        <name>BSDPCOMM__c</name>
+    </fields>
+    <fields>
+        <label><!-- BSDPCONS --></label>
+        <name>BSDPCONS__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPDCL --></label>
+        <name>BSDPDCL__c</name>
+    </fields>
+    <fields>
+        <label><!-- BSDPDIST --></label>
+        <name>BSDPDIST__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPEBCD --></label>
+        <name>BSDPEBCD__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPEMO --></label>
+        <name>BSDPEMO__c</name>
+    </fields>
+    <fields>
+        <label><!-- BSDPETYP --></label>
+        <name>BSDPETYP__c</name>
+        <picklistValues>
+            <masterLabel>Abnormal</masterLabel>
+            <translation><!-- Abnormal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Borderline</masterLabel>
+            <translation><!-- Borderline --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Normal</masterLabel>
+            <translation><!-- Normal --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPFAM --></label>
+        <name>BSDPFAM__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPFIDG --></label>
+        <name>BSDPFIDG__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPFIGH --></label>
+        <name>BSDPFIGH__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPFRIE --></label>
+        <name>BSDPFRIE__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPHELP --></label>
+        <name>BSDPHELP__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPHTYP --></label>
+        <name>BSDPHTYP__c</name>
+        <picklistValues>
+            <masterLabel>Abnormal</masterLabel>
+            <translation><!-- Abnormal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Borderline</masterLabel>
+            <translation><!-- Borderline --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Normal</masterLabel>
+            <translation><!-- Normal --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPHYP --></label>
+        <name>BSDPHYP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BSDPIMPC --></label>
+        <name>BSDPIMPC__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPIMPF --></label>
+        <name>BSDPIMPF__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPIMPH --></label>
+        <name>BSDPIMPH__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPIMPL --></label>
+        <name>BSDPIMPL__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPINFOR --></label>
+        <name>BSDPINFOR__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPINFSP --></label>
+        <name>BSDPINFSP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BSDPITYP --></label>
+        <name>BSDPITYP__c</name>
+        <picklistValues>
+            <masterLabel>Abnormal</masterLabel>
+            <translation><!-- Abnormal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Borderline</masterLabel>
+            <translation><!-- Borderline --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Normal</masterLabel>
+            <translation><!-- Normal --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPKHB --></label>
+        <name>BSDPKHB__c</name>
+    </fields>
+    <fields>
+        <label><!-- BSDPKIND --></label>
+        <name>BSDPKIND__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPKTYP --></label>
+        <name>BSDPKTYP__c</name>
+        <picklistValues>
+            <masterLabel>Abnormal</masterLabel>
+            <translation><!-- Abnormal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Borderline</masterLabel>
+            <translation><!-- Borderline --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Normal</masterLabel>
+            <translation><!-- Normal --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPLIES --></label>
+        <name>BSDPLIES__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPLONE --></label>
+        <name>BSDPLONE__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPOBEY --></label>
+        <name>BSDPOBEY__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPOLDB --></label>
+        <name>BSDPOLDB__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPOTC --></label>
+        <name>BSDPOTC__c</name>
+    </fields>
+    <fields>
+        <label><!-- BSDPOTYP --></label>
+        <name>BSDPOTYP__c</name>
+        <picklistValues>
+            <masterLabel>Abnormal</masterLabel>
+            <translation><!-- Abnormal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Borderline</masterLabel>
+            <translation><!-- Borderline --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Normal</masterLabel>
+            <translation><!-- Normal --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPPOPU --></label>
+        <name>BSDPPOPU__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPREFL --></label>
+        <name>BSDPREFL__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPREST --></label>
+        <name>BSDPREST__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPSHAR --></label>
+        <name>BSDPSHAR__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPSOMA --></label>
+        <name>BSDPSOMA__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPSTEA --></label>
+        <name>BSDPSTEA__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPTANT --></label>
+        <name>BSDPTANT__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPTIME --></label>
+        <name>BSDPTIME__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPTOT --></label>
+        <name>BSDPTOT__c</name>
+    </fields>
+    <fields>
+        <label><!-- BSDPTYP --></label>
+        <name>BSDPTYP__c</name>
+        <picklistValues>
+            <masterLabel>Abnormal</masterLabel>
+            <translation><!-- Abnormal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Borderline</masterLabel>
+            <translation><!-- Borderline --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Normal</masterLabel>
+            <translation><!-- Normal --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPUNHA --></label>
+        <name>BSDPUNHA__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPUPSET --></label>
+        <name>BSDPUPSET__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDPWORR --></label>
+        <name>BSDPWORR__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSAFRA --></label>
+        <name>BSDSAFRA__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSATTE --></label>
+        <name>BSDSATTE__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSBEH --></label>
+        <name>BSDSBEH__c</name>
+    </fields>
+    <fields>
+        <label><!-- BSDSBTYP --></label>
+        <name>BSDSBTYP__c</name>
+        <picklistValues>
+            <masterLabel>Abnormal</masterLabel>
+            <translation><!-- Abnormal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Borderline</masterLabel>
+            <translation><!-- Borderline --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Normal</masterLabel>
+            <translation><!-- Normal --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSBULL --></label>
+        <name>BSDSBULL__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSCARI --></label>
+        <name>BSDSCARI__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSCLIN --></label>
+        <name>BSDSCLIN__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSCOMM --></label>
+        <name>BSDSCOMM__c</name>
+    </fields>
+    <fields>
+        <label><!-- BSDSCONS --></label>
+        <name>BSDSCONS__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSDCL --></label>
+        <name>BSDSDCL__c</name>
+    </fields>
+    <fields>
+        <label><!-- BSDSDIST --></label>
+        <name>BSDSDIST__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSEBCD --></label>
+        <name>BSDSEBCD__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSEMO --></label>
+        <name>BSDSEMO__c</name>
+    </fields>
+    <fields>
+        <label><!-- BSDSETYP --></label>
+        <name>BSDSETYP__c</name>
+        <picklistValues>
+            <masterLabel>Abnormal</masterLabel>
+            <translation><!-- Abnormal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Borderline</masterLabel>
+            <translation><!-- Borderline --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Normal</masterLabel>
+            <translation><!-- Normal --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSFAM --></label>
+        <name>BSDSFAM__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSFIDG --></label>
+        <name>BSDSFIDG__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSFIGH --></label>
+        <name>BSDSFIGH__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSFRIE --></label>
+        <name>BSDSFRIE__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSHELP --></label>
+        <name>BSDSHELP__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSHTYP --></label>
+        <name>BSDSHTYP__c</name>
+        <picklistValues>
+            <masterLabel>Abnormal</masterLabel>
+            <translation><!-- Abnormal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Borderline</masterLabel>
+            <translation><!-- Borderline --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Normal</masterLabel>
+            <translation><!-- Normal --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSHYP --></label>
+        <name>BSDSHYP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BSDSIMPC --></label>
+        <name>BSDSIMPC__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSIMPF --></label>
+        <name>BSDSIMPF__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSIMPH --></label>
+        <name>BSDSIMPH__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSIMPL --></label>
+        <name>BSDSIMPL__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSITYP --></label>
+        <name>BSDSITYP__c</name>
+        <picklistValues>
+            <masterLabel>Abnormal</masterLabel>
+            <translation><!-- Abnormal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Borderline</masterLabel>
+            <translation><!-- Borderline --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Normal</masterLabel>
+            <translation><!-- Normal --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSKHB --></label>
+        <name>BSDSKHB__c</name>
+    </fields>
+    <fields>
+        <label><!-- BSDSKIND --></label>
+        <name>BSDSKIND__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSKTYP --></label>
+        <name>BSDSKTYP__c</name>
+        <picklistValues>
+            <masterLabel>Abnormal</masterLabel>
+            <translation><!-- Abnormal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Borderline</masterLabel>
+            <translation><!-- Borderline --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Normal</masterLabel>
+            <translation><!-- Normal --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSLIES --></label>
+        <name>BSDSLIES__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSLONE --></label>
+        <name>BSDSLONE__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSOBEY --></label>
+        <name>BSDSOBEY__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSOLDB --></label>
+        <name>BSDSOLDB__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSOTC --></label>
+        <name>BSDSOTC__c</name>
+    </fields>
+    <fields>
+        <label><!-- BSDSOTYP --></label>
+        <name>BSDSOTYP__c</name>
+        <picklistValues>
+            <masterLabel>Abnormal</masterLabel>
+            <translation><!-- Abnormal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Borderline</masterLabel>
+            <translation><!-- Borderline --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Normal</masterLabel>
+            <translation><!-- Normal --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSPOPU --></label>
+        <name>BSDSPOPU__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSREFL --></label>
+        <name>BSDSREFL__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSREST --></label>
+        <name>BSDSREST__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSSHAR --></label>
+        <name>BSDSSHAR__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSSOMA --></label>
+        <name>BSDSSOMA__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSSTEA --></label>
+        <name>BSDSSTEA__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSTANT --></label>
+        <name>BSDSTANT__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSTIME --></label>
+        <name>BSDSTIME__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSTOT --></label>
+        <name>BSDSTOT__c</name>
+    </fields>
+    <fields>
+        <label><!-- BSDSTYP --></label>
+        <name>BSDSTYP__c</name>
+        <picklistValues>
+            <masterLabel>Abnormal</masterLabel>
+            <translation><!-- Abnormal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Borderline</masterLabel>
+            <translation><!-- Borderline --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Normal</masterLabel>
+            <translation><!-- Normal --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSUNHA --></label>
+        <name>BSDSUNHA__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSUPSET --></label>
+        <name>BSDSUPSET__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BSDSWORR --></label>
+        <name>BSDSWORR__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Background ID --></label>
+        <name>Background_ID__c</name>
+        <relationshipLabel><!-- DS SDQ PSI CDI B --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Client ID --></label>
+        <name>Client_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Client --></label>
+        <name>Client__c</name>
+        <relationshipLabel><!-- DS SDQ PSI CDI B --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- SECTION --></label>
+        <name>SECTION__c</name>
+    </fields>
+    <fields>
+        <label><!-- STATUS PSI --></label>
+        <name>STATUS_PSI__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- STATUS SDQ P 04 10 --></label>
+        <name>STATUS_SDQ_P_04_10__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- STATUS SDQ P 11 17 --></label>
+        <name>STATUS_SDQ_P_11_17__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- STATUS SDQ S 11 17 --></label>
+        <name>STATUS_SDQ_S_11_17__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>DS SDQ PSI CDI B Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- New Section --></label>
+            <section>New Section</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Difficult Child Percentile --></errorMessage>
+        <name>PSI_DC_P_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Percentile entered for Difficult Child is out of range. Please enter a valid score. --></errorMessage>
+        <name>PSI_DC_P_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Difficult Child Raw --></errorMessage>
+        <name>PSI_DC_Raw_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Raw Score entered for Difficult Child is out of range. Please enter a valid score. If this score is unavailable, enter 999. --></errorMessage>
+        <name>PSI_DC_Raw_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Defensive Responding Percentile --></errorMessage>
+        <name>PSI_DR_P_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Percentile entered for Defensive Responding is out of range. Please enter a valid score. --></errorMessage>
+        <name>PSI_DR_P_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Defensive Responding Raw --></errorMessage>
+        <name>PSI_DR_Raw_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Raw Score entered for Defensive Responding is out of range. Please enter a valid score. If this score is unavailable, enter 999. --></errorMessage>
+        <name>PSI_DR_Raw_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Parent-Child Dysfunctional Interaction Percentile --></errorMessage>
+        <name>PSI_PCDI_P_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Percentile entered for Parent-Child Dysfunctional Interaction  is out of range. Please enter a valid score. --></errorMessage>
+        <name>PSI_PCDI_P_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Parent-Child Dysfunctional Interaction Raw --></errorMessage>
+        <name>PSI_PCDI_Raw_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Raw Score entered for Parent-Child Dysfunctional Interaction  is out of range. Please enter a valid score. If this score is unavailable, enter 999. --></errorMessage>
+        <name>PSI_PCDI_Raw_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Parental Distress Percentile --></errorMessage>
+        <name>PSI_PD_P_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Percentile entered for Parental Distress is out of range. Please enter a valid score. --></errorMessage>
+        <name>PSI_PD_P_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Parental Distress Raw --></errorMessage>
+        <name>PSI_PD_Raw_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Raw Score entered for Parental Distress is out of range. Please enter a valid score.  If this score is unavailable, enter 999. --></errorMessage>
+        <name>PSI_PD_Raw_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Total Stress Percentile --></errorMessage>
+        <name>PSI_TS_P_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Percentile entered for Total Stress is out of range. Please enter a valid score. --></errorMessage>
+        <name>PSI_TS_P_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Total Stress Raw --></errorMessage>
+        <name>PSI_TS_Raw_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Raw Score entered for Total Stress is out of range. Please enter a valid score. Please enter a valid score. If this score is unavailable, enter 999. --></errorMessage>
+        <name>PSI_TS_Raw_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Baseline PSI date of administration cannot be before Baseline date of visit. --></errorMessage>
+        <name>PSI_date_cannot_be_before_BDOV</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Baseline date of administration cannot be before birth. --></errorMessage>
+        <name>PSI_date_cannot_be_before_birth</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Enter a valid date. --></errorMessage>
+        <name>PSI_date_cannot_be_future</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Baseline SDQ date of administration cannot be before Baseline date of visit. --></errorMessage>
+        <name>SDQ_OP_date_cannot_be_before_BDOV</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Baseline date of administration cannot be before birth. --></errorMessage>
+        <name>SDQ_OP_date_cannot_be_before_birth</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Enter a valid date. --></errorMessage>
+        <name>SDQ_OP_date_cannot_be_future</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Baseline SDQ date of administration cannot be before Baseline date of visit. --></errorMessage>
+        <name>SDQ_OS_date_cannot_be_before_BDOV</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Baseline date of administration cannot be before birth. --></errorMessage>
+        <name>SDQ_OS_date_cannot_be_before_birth</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Enter a valid date. --></errorMessage>
+        <name>SDQ_OS_date_cannot_be_future</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Baseline SDQ date of administration cannot be before Baseline date of visit. --></errorMessage>
+        <name>SDQ_YP_date_cannot_be_before_BDOV</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Baseline date of administration cannot be before birth. --></errorMessage>
+        <name>SDQ_YP_date_cannot_be_before_birth</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Enter a valid date. --></errorMessage>
+        <name>SDQ_YP_date_cannot_be_future</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please indicate the date of administration. --></errorMessage>
+        <name>SDQ_date_required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please indicate the method of administration. --></errorMessage>
+        <name>SDQ_must_indicate_method</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify the informant --></errorMessage>
+        <name>SDQ_must_specify_informant</name>
+    </validationRules>
+</CustomObjectTranslation>

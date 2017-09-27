@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Client</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Clients</value>
+    </caseValues>
+    <fields>
+        <label><!-- Age --></label>
+        <name>AGE__c</name>
+    </fields>
+    <fields>
+        <label><!-- BENRCDS1 --></label>
+        <name>BENRCDS1__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BENRCDS --></label>
+        <name>BENRCDS__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPREVCA --></label>
+        <name>BPREVCA__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPREVEPI --></label>
+        <name>BPREVEPI__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Center --></label>
+        <name>CENTER__c</name>
+        <relationshipLabel><!-- Clients --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- CURRENT_AGE --></label>
+        <name>CURRENT_AGE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Clinician Email --></label>
+        <name>Clinician_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Clinician Name --></label>
+        <name>Clinician_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Clinician ID --></label>
+        <name>Clinician__c</name>
+        <relationshipLabel><!-- Clients --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Closed Treatment --></label>
+        <name>Closed_Treatment__c</name>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation><!-- Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Open</masterLabel>
+            <translation><!-- Open --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Date of birth --></label>
+        <name>DOB1__c</name>
+    </fields>
+    <fields>
+        <label><!-- DOB2 --></label>
+        <name>DOB2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Gender --></label>
+        <name>GENDER__c</name>
+        <picklistValues>
+            <masterLabel>Declined</masterLabel>
+            <translation><!-- Declined --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Don&apos;t know/ Information not available</masterLabel>
+            <translation><!-- Don&apos;t know/ Information not available --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Female</masterLabel>
+            <translation><!-- Female --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Male</masterLabel>
+            <translation><!-- Male --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- INITIALS --></label>
+        <name>INIT__c</name>
+    </fields>
+    <fields>
+        <label><!-- SITEID --></label>
+        <name>SITEID__c</name>
+    </fields>
+    <layouts>
+        <layout>Client Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Forms --></label>
+            <section>Forms</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Client cannot be older than 21 --></errorMessage>
+        <name>Age_smaller_than_22</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Age is wrong --></errorMessage>
+        <name>Age_validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Date cannot be in the future. --></errorMessage>
+        <name>Date_of_birth_cannot_be_future_1</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Date cannot be in the future. --></errorMessage>
+        <name>Date_of_birth_cannot_be_future_2</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The two date of birth are different. --></errorMessage>
+        <name>Double_entry_for_dob</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Clinician you have entered is not available to receive this Client. Please select a Clinician from within your Center. --></errorMessage>
+        <name>Invalid_Owner_Selection</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- No number for initial --></errorMessage>
+        <name>No_number_for_Initial</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Do not proceed with Enrollment. Go to the Follow-up Assessment and create a Follow up Visit record. --></errorMessage>
+        <name>STOP_and_Go_to_Followup</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Delete --></label>
+        <name>Delete</name>
+    </webLinks>
+</CustomObjectTranslation>

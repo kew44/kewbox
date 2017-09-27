@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Audit Trail</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Audit Trail</value>
+    </caseValues>
+    <fields>
+        <label><!-- Action --></label>
+        <name>Action__c</name>
+    </fields>
+    <fields>
+        <label><!-- Client --></label>
+        <name>CLIENT__c</name>
+        <relationshipLabel><!-- Audit Trail --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Date --></label>
+        <name>Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Form ID --></label>
+        <name>FORM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Form --></label>
+        <name>FORM__c</name>
+    </fields>
+    <fields>
+        <label><!-- Label --></label>
+        <name>LABEL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number --></label>
+        <name>NUMBER__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prior Value --></label>
+        <name>Prior_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Question --></label>
+        <name>Question__c</name>
+    </fields>
+    <fields>
+        <label><!-- Section --></label>
+        <name>SECTION__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subject ID --></label>
+        <name>SUBJECT_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Time --></label>
+        <name>Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Updated Value --></label>
+        <name>Updated_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- User ID --></label>
+        <name>User_ID__c</name>
+        <relationshipLabel><!-- Audit Trail --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- User Initial --></label>
+        <name>User_Initial__c</name>
+    </fields>
+    <fields>
+        <label><!-- Variable --></label>
+        <name>VARIABLE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Visit Date --></label>
+        <name>VISIT_DATE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Visit Type --></label>
+        <name>Visit_Type__c</name>
+    </fields>
+    <layouts>
+        <layout>Audit Trail Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

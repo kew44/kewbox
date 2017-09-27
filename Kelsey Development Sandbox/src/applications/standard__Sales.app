@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <defaultLandingTab>standard-home</defaultLandingTab>
+    <tab>standard-Chatter</tab>
+    <tab>standard-UserProfile</tab>
+    <tab>standard-CollaborationGroup</tab>
+    <tab>standard-File</tab>
+    <tab>standard-Lead</tab>
+    <tab>standard-Account</tab>
+    <tab>standard-Contact</tab>
+    <tab>standard-Opportunity</tab>
+    <tab>standard-report</tab>
+    <tab>standard-Dashboard</tab>
+    <tab>standard-Product2</tab>
+    <tab>standard-Forecasting3</tab>
+    <tab>Getting_Started</tab>
+    <tab>Center__c</tab>
+    <tab>Clinician__c</tab>
+    <tab>DS_DATA__c</tab>
+    <tab>Audit_Trail__c</tab>
+    <tab>Client_Summary__c</tab>
+    <tab>Counter__c</tab>
+    <tab>DS_Functioning_Forms_B__c</tab>
+    <tab>DS_Background_Family_Info_F__c</tab>
+    <tab>DS_Functioning_Forms_F__c</tab>
+    <tab>DS_Background_Family_Info_B__c</tab>
+    <tab>DS_CBCL_F__c</tab>
+    <tab>DS_PTSD_CA_B__c</tab>
+    <tab>DS_PTSD_CA_F__c</tab>
+    <tab>DS_SDQ_PSI_CDI_B__c</tab>
+    <tab>DS_SDQ_PSI_CDI_F__c</tab>
+    <tab>DS_GTRAUMA__c</tab>
+    <tab>DS_TRDETAIL1__c</tab>
+    <tab>DS_TRDETAIL2__c</tab>
+</CustomApplication>

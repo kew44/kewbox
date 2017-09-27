@@ -1,0 +1,23 @@
+<!-- 
+	SAMPLE TEMPLATES FOR DIFFERENT FIELD TYPES 
+	Includes:
+	* 
+-->
+
+<apex:page standardController="DS_Background_Family_Info_B__c" extensions="DS_DEMO_Controller" sidebar="false">
+
+	<apex:form >
+
+		<!-- Drop down -->
+        <apex:outputPanel styleClass="form-group" layout="block">
+            <apex:outputLabel styleClass="col-md-6 control-label" value="How was this form administered?" />
+            <apex:outputPanel styleClass="col-md-4" layout="block">
+                <apex:selectList id="BMET__c" styleClass="form-control input-sm" value="{!obj['BMET__c']}" size="1" required="true">
+                    <apex:selectOptions value="{!BMETItems}"/> 
+                </apex:selectList>
+            </apex:outputPanel>
+        </apex:outputPanel>
+
+    </apex:form>
+
+</apex:page>

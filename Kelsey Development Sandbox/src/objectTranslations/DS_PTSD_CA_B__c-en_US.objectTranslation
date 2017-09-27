@@ -1,0 +1,2473 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>DS PTSD CA B</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>DS PTSD CA B</value>
+    </caseValues>
+    <fields>
+        <label><!-- BDOAPTSDP --></label>
+        <name>BDOAPTSDP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BDOAPTSD --></label>
+        <name>BDOAPTSD__c</name>
+    </fields>
+    <fields>
+        <label><!-- BDOV --></label>
+        <name>BDOV__c</name>
+    </fields>
+    <fields>
+        <label><!-- BMETPTSDP --></label>
+        <name>BMETPTSDP__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BMETPTSD --></label>
+        <name>BMETPTSD__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSAB1P --></label>
+        <name>BPTSAB1P__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAB1 --></label>
+        <name>BPTSAB1__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAB2P --></label>
+        <name>BPTSAB2P__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAB2 --></label>
+        <name>BPTSAB2__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAB3P --></label>
+        <name>BPTSAB3P__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAB3 --></label>
+        <name>BPTSAB3__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAB4P --></label>
+        <name>BPTSAB4P__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAB4 --></label>
+        <name>BPTSAB4__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAB5P --></label>
+        <name>BPTSAB5P__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAB5 --></label>
+        <name>BPTSAB5__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAC1P --></label>
+        <name>BPTSAC1P__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAC1 --></label>
+        <name>BPTSAC1__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAC2P --></label>
+        <name>BPTSAC2P__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAC2 --></label>
+        <name>BPTSAC2__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAD1P --></label>
+        <name>BPTSAD1P__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAD1 --></label>
+        <name>BPTSAD1__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAD2P --></label>
+        <name>BPTSAD2P__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAD2 --></label>
+        <name>BPTSAD2__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAD3P --></label>
+        <name>BPTSAD3P__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAD3 --></label>
+        <name>BPTSAD3__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAD4P --></label>
+        <name>BPTSAD4P__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAD4 --></label>
+        <name>BPTSAD4__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAD5P --></label>
+        <name>BPTSAD5P__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAD5 --></label>
+        <name>BPTSAD5__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAD6P --></label>
+        <name>BPTSAD6P__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAD6 --></label>
+        <name>BPTSAD6__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAD7P --></label>
+        <name>BPTSAD7P__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAD7 --></label>
+        <name>BPTSAD7__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAE1P --></label>
+        <name>BPTSAE1P__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAE1 --></label>
+        <name>BPTSAE1__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAE2P --></label>
+        <name>BPTSAE2P__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAE2 --></label>
+        <name>BPTSAE2__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAE3P --></label>
+        <name>BPTSAE3P__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAE3 --></label>
+        <name>BPTSAE3__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAE4P --></label>
+        <name>BPTSAE4P__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAE4 --></label>
+        <name>BPTSAE4__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAE5P --></label>
+        <name>BPTSAE5P__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAE5 --></label>
+        <name>BPTSAE5__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAE6P --></label>
+        <name>BPTSAE6P__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAE6 --></label>
+        <name>BPTSAE6__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAPPCNP --></label>
+        <name>BPTSAPPCNP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAPPCN --></label>
+        <name>BPTSAPPCN__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAPPCP --></label>
+        <name>BPTSAPPCP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSAPPC --></label>
+        <name>BPTSAPPC__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSBCNP --></label>
+        <name>BPTSBCNP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSBCN --></label>
+        <name>BPTSBCN__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSBMNP --></label>
+        <name>BPTSBMNP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSBMN --></label>
+        <name>BPTSBMN__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSBMP --></label>
+        <name>BPTSBMP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSBM --></label>
+        <name>BPTSBM__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSBRNP --></label>
+        <name>BPTSBRNP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSBRN --></label>
+        <name>BPTSBRN__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSCCNP --></label>
+        <name>BPTSCCNP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSCCN --></label>
+        <name>BPTSCCN__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSCMNP --></label>
+        <name>BPTSCMNP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSCMN --></label>
+        <name>BPTSCMN__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSCMP --></label>
+        <name>BPTSCMP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSCM --></label>
+        <name>BPTSCM__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSCRNP --></label>
+        <name>BPTSCRNP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSCRN --></label>
+        <name>BPTSCRN__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSD1P --></label>
+        <name>BPTSD1P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSD1SPP --></label>
+        <name>BPTSD1SPP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSD1 --></label>
+        <name>BPTSD1__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSDCNP --></label>
+        <name>BPTSDCNP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSDCN --></label>
+        <name>BPTSDCN__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSDCP --></label>
+        <name>BPTSDCP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSDC --></label>
+        <name>BPTSDC__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSDMNP --></label>
+        <name>BPTSDMNP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSDMN --></label>
+        <name>BPTSDMN__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSDMP --></label>
+        <name>BPTSDMP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSDM --></label>
+        <name>BPTSDM__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSDRNP --></label>
+        <name>BPTSDRNP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSDRN --></label>
+        <name>BPTSDRN__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSDURAP --></label>
+        <name>BPTSDURAP__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSDURA --></label>
+        <name>BPTSDURA__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSECNP --></label>
+        <name>BPTSECNP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSECN --></label>
+        <name>BPTSECN__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSEMNP --></label>
+        <name>BPTSEMNP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSEMN --></label>
+        <name>BPTSEMN__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSEMP --></label>
+        <name>BPTSEMP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSEM --></label>
+        <name>BPTSEM__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSERNP --></label>
+        <name>BPTSERNP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSERN --></label>
+        <name>BPTSERN__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSFCP --></label>
+        <name>BPTSFCP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSFC --></label>
+        <name>BPTSFC__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSFH1P --></label>
+        <name>BPTSFH1P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSFH1 --></label>
+        <name>BPTSFH1__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSFH2P --></label>
+        <name>BPTSFH2P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSFH2 --></label>
+        <name>BPTSFH2__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSFH3P --></label>
+        <name>BPTSFH3P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSFH3 --></label>
+        <name>BPTSFH3__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSFHCP --></label>
+        <name>BPTSFHCP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSFHC --></label>
+        <name>BPTSFHC__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSFHSPP --></label>
+        <name>BPTSFHSPP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSFHSP --></label>
+        <name>BPTSFHSP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSFP1P --></label>
+        <name>BPTSFP1P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSFP1 --></label>
+        <name>BPTSFP1__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSFP2P --></label>
+        <name>BPTSFP2P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSFPCP --></label>
+        <name>BPTSFPCP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSFPC --></label>
+        <name>BPTSFPC__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSFPSPP --></label>
+        <name>BPTSFPSPP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSFPSP --></label>
+        <name>BPTSFPSP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSFR1P --></label>
+        <name>BPTSFR1P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSFR1 --></label>
+        <name>BPTSFR1__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSFRCP --></label>
+        <name>BPTSFRCP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSFRC --></label>
+        <name>BPTSFRC__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSFRSPP --></label>
+        <name>BPTSFRSPP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSFRSP --></label>
+        <name>BPTSFRSP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSFS1P --></label>
+        <name>BPTSFS1P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSFS1 --></label>
+        <name>BPTSFS1__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSFS2P --></label>
+        <name>BPTSFS2P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSFS2 --></label>
+        <name>BPTSFS2__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSFSCP --></label>
+        <name>BPTSFSCP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSFSC --></label>
+        <name>BPTSFSC__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSFSSPP --></label>
+        <name>BPTSFSSPP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSFSSP --></label>
+        <name>BPTSFSSP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSOCNP --></label>
+        <name>BPTSOCNP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSOCN --></label>
+        <name>BPTSOCN__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSOCP --></label>
+        <name>BPTSOCP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSOC --></label>
+        <name>BPTSOC__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSORNP --></label>
+        <name>BPTSORNP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSORN --></label>
+        <name>BPTSORN__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSV10P --></label>
+        <name>BPTSV10P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV10 --></label>
+        <name>BPTSV10__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV11P --></label>
+        <name>BPTSV11P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV11 --></label>
+        <name>BPTSV11__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV12P --></label>
+        <name>BPTSV12P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV12 --></label>
+        <name>BPTSV12__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV13P --></label>
+        <name>BPTSV13P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV13 --></label>
+        <name>BPTSV13__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV14P --></label>
+        <name>BPTSV14P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV14 --></label>
+        <name>BPTSV14__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV15P --></label>
+        <name>BPTSV15P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV15 --></label>
+        <name>BPTSV15__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV16P --></label>
+        <name>BPTSV16P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV16 --></label>
+        <name>BPTSV16__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV17P --></label>
+        <name>BPTSV17P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV17 --></label>
+        <name>BPTSV17__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV18P --></label>
+        <name>BPTSV18P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV18 --></label>
+        <name>BPTSV18__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV19P --></label>
+        <name>BPTSV19P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV19 --></label>
+        <name>BPTSV19__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV1P --></label>
+        <name>BPTSV1P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV1 --></label>
+        <name>BPTSV1__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV20P --></label>
+        <name>BPTSV20P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV20 --></label>
+        <name>BPTSV20__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV21P --></label>
+        <name>BPTSV21P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV21 --></label>
+        <name>BPTSV21__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV22P --></label>
+        <name>BPTSV22P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV22 --></label>
+        <name>BPTSV22__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV23P --></label>
+        <name>BPTSV23P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV23 --></label>
+        <name>BPTSV23__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV24P --></label>
+        <name>BPTSV24P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV24 --></label>
+        <name>BPTSV24__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV25P --></label>
+        <name>BPTSV25P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV25 --></label>
+        <name>BPTSV25__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV26P --></label>
+        <name>BPTSV26P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV26 --></label>
+        <name>BPTSV26__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV27P --></label>
+        <name>BPTSV27P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV27 --></label>
+        <name>BPTSV27__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV28P --></label>
+        <name>BPTSV28P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV28 --></label>
+        <name>BPTSV28__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV29P --></label>
+        <name>BPTSV29P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV29 --></label>
+        <name>BPTSV29__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV2P --></label>
+        <name>BPTSV2P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV2 --></label>
+        <name>BPTSV2__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV30P --></label>
+        <name>BPTSV30P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV30 --></label>
+        <name>BPTSV30__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV31P --></label>
+        <name>BPTSV31P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV31 --></label>
+        <name>BPTSV31__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV3P --></label>
+        <name>BPTSV3P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV3 --></label>
+        <name>BPTSV3__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV4P --></label>
+        <name>BPTSV4P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV4 --></label>
+        <name>BPTSV4__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV5P --></label>
+        <name>BPTSV5P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV5 --></label>
+        <name>BPTSV5__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV6P --></label>
+        <name>BPTSV6P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV6 --></label>
+        <name>BPTSV6__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV7P --></label>
+        <name>BPTSV7P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV7 --></label>
+        <name>BPTSV7__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV8P --></label>
+        <name>BPTSV8P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV8 --></label>
+        <name>BPTSV8__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV9P --></label>
+        <name>BPTSV9P__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSV9 --></label>
+        <name>BPTSV9__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- BPTSVDA1P --></label>
+        <name>BPTSVDA1P__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSVDA1 --></label>
+        <name>BPTSVDA1__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSVDA2P --></label>
+        <name>BPTSVDA2P__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSVDA2 --></label>
+        <name>BPTSVDA2__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSVDACNP --></label>
+        <name>BPTSVDACNP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSVDACN --></label>
+        <name>BPTSVDACN__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSVDARNP --></label>
+        <name>BPTSVDARNP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSVDARN --></label>
+        <name>BPTSVDARN__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSVDSNP --></label>
+        <name>BPTSVDSNP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSVDSN --></label>
+        <name>BPTSVDSN__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSVDSP --></label>
+        <name>BPTSVDSP__c</name>
+    </fields>
+    <fields>
+        <label><!-- BPTSVDS --></label>
+        <name>BPTSVDS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Background ID --></label>
+        <name>Background_ID__c</name>
+        <relationshipLabel><!-- DS PTSD CA B --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Client ID --></label>
+        <name>Client_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Client --></label>
+        <name>Client__c</name>
+        <relationshipLabel><!-- DS PTSD CA B --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- SECTION --></label>
+        <name>SECTION__c</name>
+    </fields>
+    <fields>
+        <label><!-- STATUS PTSD CA --></label>
+        <name>STATUS_PTSD_CA__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- STATUS PTSD PA --></label>
+        <name>STATUS_PTSD_PA__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>DS PTSD CA B Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Baseline PTSD-RI date of administration cannot be before Baseline date of visit. --></errorMessage>
+        <name>PTSD_CA_date_cannot_be_before_BDOV</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Baseline date of administration cannot be before birth. --></errorMessage>
+        <name>PTSD_CA_date_cannot_be_before_birth</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Enter a valid date. --></errorMessage>
+        <name>PTSD_CA_date_cannot_be_future</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please indicate the date of administration. --></errorMessage>
+        <name>PTSD_CA_date_required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please indicate how this form was administered. --></errorMessage>
+        <name>PTSD_CA_must_indicate_method</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Baseline PTSD-RI date of administration cannot be before Baseline date of visit. --></errorMessage>
+        <name>PTSD_PA_date_cannot_be_before_BDOV</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Baseline date of administration cannot be before birth. --></errorMessage>
+        <name>PTSD_PA_date_cannot_be_before_birth</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Enter a valid date. --></errorMessage>
+        <name>PTSD_PA_date_cannot_be_future</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please indicate the date of administration. --></errorMessage>
+        <name>PTSD_PA_date_required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please indicate how this form was administered. --></errorMessage>
+        <name>PTSD_PA_must_indicate_method</name>
+    </validationRules>
+</CustomObjectTranslation>

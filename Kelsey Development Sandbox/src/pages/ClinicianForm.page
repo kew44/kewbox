@@ -1,0 +1,55 @@
+<apex:page standardController="Clinician__c" extensions="ClinicianController">
+    
+    <!--JQuery -->
+    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.9.1.js')}"  /><!--allows for JQuery dependencies-->  
+    <apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-ui-1.10.3.custom.min.js')}"  />
+    <apex:stylesheet value="{!URLFOR($Resource.jQuery, '/css/redmond/jquery-ui-1.10.3.custom.min.css')}"  />
+    
+    <script> $j = jQuery.noConflict(); </script><!--Reserves the '$' token for JQuery only-->
+    
+    <!--Begin form content-->
+        <apex:form >
+            <apex:sectionHeader title="{!title}" subtitle="{!subtitle}"/><br/>
+                
+                <!-- primary content pageBlock container-->
+                    <apex:pageBlock title="{!title}" >
+                        <apex:pageMessages /><!--placeholding structure that allows for system message display-->
+                            <apex:pageBlockSection title="General Information" columns="1" id="centerBlock">
+                            
+                            <!--center id-->
+                            <apex:inputField value="{!Clinician__c.Center__c}" id="centerID" label="Center ID"/>
+                            
+                            <!--Clinician name-->
+                            <apex:inputField value="{!Clinician__c.Name__c}" id="clinicianName"/>
+                            
+                            <!--clinician email-->
+                            <apex:inputField value="{!Clinician__c.Email__c}" id="clinicianEmail"/>
+                            
+                            <!--JQuery script to associate Center Type and User Type ? -->
+                            <script>
+                            $j(document).ready(function() {
+                                var edit = {!edit};
+                                var roleType = {!roleType};
+                                
+                                if(edit == 1) {
+                                    $j('[id$="centerID"]').attr('disabled', 'disabled');
+                                    $j('[id$="centerID"]').parent('span').children('a').hide();
+                                }
+                                
+                                if(roleType == 2)
+                                    $j('[id$=centerID]').parent('span').parent('td').parent('tr').hide();
+                            });
+                               </script>
+    <!--end JQuery script block-->
+</apex:pageBlockSection>
+
+<!--save and cancel control buttons for pageBlock-->
+<apex:pageBlockButtons >
+    <apex:commandButton action="{!save}" value="Save"/>
+</apex:pageBlockButtons><!--end buttons-->
+
+</apex:pageBlock><!--end pageBlock-->
+
+</apex:form>
+<!--end form content-->
+</apex:page>

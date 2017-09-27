@@ -1,0 +1,746 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>DS TSCC TSCYC F</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>DS TSCC TSCYC F</value>
+    </caseValues>
+    <fields>
+        <label><!-- BDOV --></label>
+        <name>BDOV__c</name>
+    </fields>
+    <fields>
+        <label><!-- Background ID --></label>
+        <name>Background_ID__c</name>
+        <relationshipLabel><!-- DS TSCC TSCYC F --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Client --></label>
+        <name>Client__c</name>
+        <relationshipLabel><!-- DS TSCC TSCYC F --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- FANG_R2 --></label>
+        <name>FANG_R2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FANG_R --></label>
+        <name>FANG_R__c</name>
+    </fields>
+    <fields>
+        <label><!-- FANG_T2 --></label>
+        <name>FANG_T2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FANG_T --></label>
+        <name>FANG_T__c</name>
+    </fields>
+    <fields>
+        <label><!-- FANX_R2 --></label>
+        <name>FANX_R2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FANX_R --></label>
+        <name>FANX_R__c</name>
+    </fields>
+    <fields>
+        <label><!-- FANX_T2 --></label>
+        <name>FANX_T2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FANX_T --></label>
+        <name>FANX_T__c</name>
+    </fields>
+    <fields>
+        <label><!-- FATR_R2 --></label>
+        <name>FATR_R2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FATR_R --></label>
+        <name>FATR_R__c</name>
+    </fields>
+    <fields>
+        <label><!-- FATR_T2 --></label>
+        <name>FATR_T2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FATR_T --></label>
+        <name>FATR_T__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDEP_R2 --></label>
+        <name>FDEP_R2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDEP_R --></label>
+        <name>FDEP_R__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDEP_T2 --></label>
+        <name>FDEP_T2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDEP_T --></label>
+        <name>FDEP_T__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDIS_R2 --></label>
+        <name>FDIS_R2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDIS_R --></label>
+        <name>FDIS_R__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDIS_T2 --></label>
+        <name>FDIS_T2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDIS_T --></label>
+        <name>FDIS_T__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDOATSCC --></label>
+        <name>FDOATSCC__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDOATSCYC --></label>
+        <name>FDOATSCYC__c</name>
+    </fields>
+    <fields>
+        <label><!-- FDOV --></label>
+        <name>FDOV__c</name>
+    </fields>
+    <fields>
+        <label><!-- FPTSAR_R2 --></label>
+        <name>FPTSAR_R2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FPTSAR_R --></label>
+        <name>FPTSAR_R__c</name>
+    </fields>
+    <fields>
+        <label><!-- FPTSAR_T2 --></label>
+        <name>FPTSAR_T2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FPTSAR_T --></label>
+        <name>FPTSAR_T__c</name>
+    </fields>
+    <fields>
+        <label><!-- FPTSAV_R2 --></label>
+        <name>FPTSAV_R2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FPTSAV_R --></label>
+        <name>FPTSAV_R__c</name>
+    </fields>
+    <fields>
+        <label><!-- FPTSAV_T2 --></label>
+        <name>FPTSAV_T2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FPTSAV_T --></label>
+        <name>FPTSAV_T__c</name>
+    </fields>
+    <fields>
+        <label><!-- FPTSI_R2 --></label>
+        <name>FPTSI_R2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FPTSI_R --></label>
+        <name>FPTSI_R__c</name>
+    </fields>
+    <fields>
+        <label><!-- FPTSI_T2 --></label>
+        <name>FPTSI_T2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FPTSI_T --></label>
+        <name>FPTSI_T__c</name>
+    </fields>
+    <fields>
+        <label><!-- FPTSTOT_R2 --></label>
+        <name>FPTSTOT_R2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FPTSTOT_R --></label>
+        <name>FPTSTOT_R__c</name>
+    </fields>
+    <fields>
+        <label><!-- FPTSTOT_T2 --></label>
+        <name>FPTSTOT_T2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FPTSTOT_T --></label>
+        <name>FPTSTOT_T__c</name>
+    </fields>
+    <fields>
+        <label><!-- FRL_R2 --></label>
+        <name>FRL_R2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FRL_R --></label>
+        <name>FRL_R__c</name>
+    </fields>
+    <fields>
+        <label><!-- FRL_T2 --></label>
+        <name>FRL_T2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FRL_T --></label>
+        <name>FRL_T__c</name>
+    </fields>
+    <fields>
+        <label><!-- FSC_R2 --></label>
+        <name>FSC_R2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FSC_R --></label>
+        <name>FSC_R__c</name>
+    </fields>
+    <fields>
+        <label><!-- FSC_T2 --></label>
+        <name>FSC_T2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FSC_T --></label>
+        <name>FSC_T__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCAGG2 --></label>
+        <name>FTSCAGG2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCAGG --></label>
+        <name>FTSCAGG__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCAGTN2 --></label>
+        <name>FTSCAGTN2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCAGTN --></label>
+        <name>FTSCAGTN__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCAXN2 --></label>
+        <name>FTSCAXN2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCAXN --></label>
+        <name>FTSCAXN__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCAXTN2 --></label>
+        <name>FTSCAXTN2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCAXTN --></label>
+        <name>FTSCAXTN__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCDPN2 --></label>
+        <name>FTSCDPN2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCDPN --></label>
+        <name>FTSCDPN__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCDPTN2 --></label>
+        <name>FTSCDPTN2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCDPTN --></label>
+        <name>FTSCDPTN__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCDSN2 --></label>
+        <name>FTSCDSN2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCDSN --></label>
+        <name>FTSCDSN__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCDSTN2 --></label>
+        <name>FTSCDSTN2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCDSTN --></label>
+        <name>FTSCDSTN__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCFNN2 --></label>
+        <name>FTSCFNN2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCFNN --></label>
+        <name>FTSCFNN__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCFNTN2 --></label>
+        <name>FTSCFNTN2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCFNTN --></label>
+        <name>FTSCFNTN__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCHYN2 --></label>
+        <name>FTSCHYN2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCHYN --></label>
+        <name>FTSCHYN__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCHYTN2 --></label>
+        <name>FTSCHYTN2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCHYTN --></label>
+        <name>FTSCHYTN__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCNTN2 --></label>
+        <name>FTSCNTN2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCNTN --></label>
+        <name>FTSCNTN__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCODN2 --></label>
+        <name>FTSCODN2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCODN --></label>
+        <name>FTSCODN__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCODTN2 --></label>
+        <name>FTSCODTN2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCODTN --></label>
+        <name>FTSCODTN__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCPTN2 --></label>
+        <name>FTSCPTN2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCPTN --></label>
+        <name>FTSCPTN__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCPTTN2 --></label>
+        <name>FTSCPTTN2__c</name>
+    </fields>
+    <fields>
+        <help><!-- 30-140 --></help>
+        <label><!-- FTSCPTTN --></label>
+        <name>FTSCPTTN__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCUNN2 --></label>
+        <name>FTSCUNN2__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCUNN --></label>
+        <name>FTSCUNN__c</name>
+    </fields>
+    <fields>
+        <label><!-- FTSCUNTN --></label>
+        <name>FTSCUNTN__c</name>
+    </fields>
+    <fields>
+        <label><!-- SECTION --></label>
+        <name>SECTION__c</name>
+    </fields>
+    <fields>
+        <label><!-- STATUS TSCC A --></label>
+        <name>STATUS_TSCC_A__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- STATUS TSCYC --></label>
+        <name>STATUS_TSCYC__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>DS TSCC TSCYC F Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- New Section --></label>
+            <section>New Section</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Anger Raw --></errorMessage>
+        <name>TSCC_A_ANG_Raw_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Raw Score entered for Anger is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCC_A_ANG_Raw_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Anger T-Score --></errorMessage>
+        <name>TSCC_A_ANG_T_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The T-Score entered for Anger is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCC_A_ANG_T_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Anxiety Raw --></errorMessage>
+        <name>TSCC_A_ANX_Raw_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Raw Score entered for Anxiety is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCC_A_ANX_Raw_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Anxiety T-Score --></errorMessage>
+        <name>TSCC_A_ANX_T_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The T-Score entered for Anxiety is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCC_A_ANX_T_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Depression Raw --></errorMessage>
+        <name>TSCC_A_DEP_Raw_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Raw Score entered for Depression is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCC_A_DEP_Raw_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Depression T-Score --></errorMessage>
+        <name>TSCC_A_DEP_T_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The T-Score entered for Depression is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCC_A_DEP_T_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Fantasy Raw --></errorMessage>
+        <name>TSCC_A_DIS_F_Raw_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Raw Score entered for Fantasy is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCC_A_DIS_F_Raw_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Fantasy T-Score --></errorMessage>
+        <name>TSCC_A_DIS_F_T_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The T-Score entered for Fantasy is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCC_A_DIS_F_T_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Overt Dissociation Raw --></errorMessage>
+        <name>TSCC_A_DIS_O_Raw_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Raw Score entered for Overt Dissociation is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCC_A_DIS_O_Raw_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Overt Dissociation T-Score --></errorMessage>
+        <name>TSCC_A_DIS_O_T_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The T-Score entered for Overt Dissociation is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCC_A_DIS_O_T_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Dissociation Raw --></errorMessage>
+        <name>TSCC_A_DIS_Raw_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Raw Score entered for Dissociation is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCC_A_DIS_Raw_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Dissociation T-Score --></errorMessage>
+        <name>TSCC_A_DIS_T_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The T-Score entered for Dissociation is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCC_A_DIS_T_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Hyperresponsive Raw --></errorMessage>
+        <name>TSCC_A_HYP_Raw_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Raw Score entered for Hyperresponsive is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCC_A_HYP_Raw_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Hyperresponsive T-Score --></errorMessage>
+        <name>TSCC_A_HYP_T_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The T-Score entered for Hyperresponsive is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCC_A_HYP_T_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Posttraumatic Stress Raw --></errorMessage>
+        <name>TSCC_A_PTS_Raw_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Raw Score entered for Posttraumatic Stress is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCC_A_PTS_Raw_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Posttraumatic Stress T-Score --></errorMessage>
+        <name>TSCC_A_PTS_T_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The T-Score entered for Posttraumatic Stress is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCC_A_PTS_T_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Underresponsive Raw --></errorMessage>
+        <name>TSCC_A_UND_Raw_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Raw Score entered for Underresponsive is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCC_A_UND_Raw_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Underresponsive T-Score --></errorMessage>
+        <name>TSCC_A_UND_T_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The T-Score entered for Underresponsive is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCC_A_UND_T_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Follow-Up TSCC-A date of administration cannot be before Follow-Up date of visit. --></errorMessage>
+        <name>TSCC_A_date_cannot_be_before_FDOV</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Follow-Up date of administration cannot be before birth. --></errorMessage>
+        <name>TSCC_A_date_cannot_be_before_birth</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Enter a valid date. --></errorMessage>
+        <name>TSCC_A_date_cannot_be_future</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Anger Raw --></errorMessage>
+        <name>TSCYC_ANG_Raw_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The RawScore entered for Anger is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCYC_ANG_Raw_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Anger T-Score --></errorMessage>
+        <name>TSCYC_ANG_T_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The T-Score entered for Anger is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCYC_ANG_T_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Anxiety Raw --></errorMessage>
+        <name>TSCYC_ANX_Raw_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Raw Score entered for Anxiety is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCYC_ANX_Raw_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Anxiety T-Score --></errorMessage>
+        <name>TSCYC_ANX_T_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The T-Score entered for Anxiety is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCYC_ANX_T_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Atypical Response Raw --></errorMessage>
+        <name>TSCYC_ATR_Raw_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Raw Score entered for Atypical Response is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCYC_ATR_Raw_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Atypical Response T-Score --></errorMessage>
+        <name>TSCYC_ATR_T_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The T-Score entered for Atypical Response is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCYC_ATR_T_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Depression Raw --></errorMessage>
+        <name>TSCYC_DEP_Raw_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Raw Score entered for Depression is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCYC_DEP_Raw_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Depression T-Score --></errorMessage>
+        <name>TSCYC_DEP_T_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The T-Score entered for Depression is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCYC_DEP_T_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Dissociation Raw --></errorMessage>
+        <name>TSCYC_DIS_Raw_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Raw Score entered for Dissociation is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCYC_DIS_Raw_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Dissociation T-Score --></errorMessage>
+        <name>TSCYC_DIS_T_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The T-Score entered for Dissociation is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCYC_DIS_T_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Posttraumatic Stress-Arousal Raw --></errorMessage>
+        <name>TSCYC_PTS_AR_Raw_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Raw Score entered for Posttraumatic Stress-Arousal is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCYC_PTS_AR_Raw_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Posttraumatic Stress-Arousal T-Score --></errorMessage>
+        <name>TSCYC_PTS_AR_T_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The T-Score entered for Posttraumatic Stress-Arousal is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCYC_PTS_AR_T_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Posttraumatic Stress-Avoidance Raw --></errorMessage>
+        <name>TSCYC_PTS_AV_Raw_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Raw Score entered for Posttraumatic Stress-Avoidance is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCYC_PTS_AV_Raw_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Posttraumatic Stress-Avoidance T-Score --></errorMessage>
+        <name>TSCYC_PTS_AV_T_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The T-Score entered for Posttraumatic Stress-Avoidance is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCYC_PTS_AV_T_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Posttraumatic Stress-Intrusion Raw --></errorMessage>
+        <name>TSCYC_PTS_I_Raw_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Raw Score entered for Posttraumatic Stress-Intrusion is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCYC_PTS_I_Raw_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Posttraumatic Stress-Intrusion T-Score --></errorMessage>
+        <name>TSCYC_PTS_I_T_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The T-Score entered for Posttraumatic Stress-Intrusion is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCYC_PTS_I_T_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Posttraumatic Stress-Total Raw --></errorMessage>
+        <name>TSCYC_PTS_TOT_Raw_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The  Raw Score entered for Posttraumatic Stress-Total is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCYC_PTS_TOT_Raw_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Posttraumatic Stress-Total T-Score --></errorMessage>
+        <name>TSCYC_PTS_TOT_T_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The T-Score entered for Posttraumatic Stress-Total is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCYC_PTS_TOT_T_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Response Level Raw --></errorMessage>
+        <name>TSCYC_RL_Raw_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Raw Score entered for Response Level is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCYC_RL_Raw_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Response Level T-Score --></errorMessage>
+        <name>TSCYC_RL_T_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The T-Score entered for Response Level is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCYC_RL_T_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Sexual Concerns Raw --></errorMessage>
+        <name>TSCYC_SC_Raw_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Raw Score entered for Sexual Concerns is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCYC_SC_Raw_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Double entry does not match for this score: Sexual Concerns T-Score --></errorMessage>
+        <name>TSCYC_SC_T_double_entry_mismatch</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The T-Score entered for Sexual Concerns is out of range. Please enter a valid score. --></errorMessage>
+        <name>TSCYC_SC_T_out_of_range</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Follow-Up TSCYC date of administration cannot be before Follow-Up date of visit. --></errorMessage>
+        <name>TSCYC_date_cannot_be_before_FDOV</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Follow-Up date of administration cannot be before birth. --></errorMessage>
+        <name>TSCYC_date_cannot_be_before_birth</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Enter a valid date. --></errorMessage>
+        <name>TSCYC_date_cannot_be_future</name>
+    </validationRules>
+</CustomObjectTranslation>

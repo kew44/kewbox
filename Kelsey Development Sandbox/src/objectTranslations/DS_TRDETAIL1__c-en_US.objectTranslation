@@ -1,0 +1,2712 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>DS TRDETAIL1</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>DS TRDETAIL1</value>
+    </caseValues>
+    <fields>
+        <label><!-- Client ID --></label>
+        <name>Client_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Client --></label>
+        <name>Client__c</name>
+        <relationshipLabel><!-- DS TRDETAIL1 --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- SECTION --></label>
+        <name>SECTION__c</name>
+    </fields>
+    <fields>
+        <label><!-- STATUS TRABUSE --></label>
+        <name>STATUS_TRABUSE__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- STATUS TRACCIDENT --></label>
+        <name>STATUS_TRACCIDENT__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- STATUS TRDOMVIO --></label>
+        <name>STATUS_TRDOMVIO__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- STATUS TRMEDICAL --></label>
+        <name>STATUS_TRMEDICAL__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- STATUS TRNATURALDIS --></label>
+        <name>STATUS_TRNATURALDIS__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- STATUS TRNEGLECT --></label>
+        <name>STATUS_TRNEGLECT__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- STATUS TRPHYSASSAULT --></label>
+        <name>STATUS_TRPHYSASSAULT__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- STATUS TRPSYCHABUSE --></label>
+        <name>STATUS_TRPSYCHABUSE__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- STATUS TRSEXASSAULT --></label>
+        <name>STATUS_TRSEXASSAULT__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- STATUS TRSEX --></label>
+        <name>STATUS_TRSEX__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- STATUS TRTRAFFICKING --></label>
+        <name>STATUS_TRTRAFFICKING__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- STATUS TRWAROUTSIDEUS --></label>
+        <name>STATUS_TRWAROUTSIDEUS__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- STATUS TRWAR --></label>
+        <name>STATUS_TRWAR__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Incomplete</masterLabel>
+            <translation><!-- Incomplete --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T10RBIO --></label>
+        <name>T10RBIO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T10RCHEM --></label>
+        <name>T10RCHEM__c</name>
+    </fields>
+    <fields>
+        <label><!-- T10RCONV --></label>
+        <name>T10RCONV__c</name>
+    </fields>
+    <fields>
+        <label><!-- T10RFREQ --></label>
+        <name>T10RFREQ__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T10RINJAR --></label>
+        <name>T10RINJAR__c</name>
+    </fields>
+    <fields>
+        <label><!-- T10RINJC --></label>
+        <name>T10RINJC__c</name>
+    </fields>
+    <fields>
+        <label><!-- T10RINJOS --></label>
+        <name>T10RINJOS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T10RINJOY --></label>
+        <name>T10RINJOY__c</name>
+    </fields>
+    <fields>
+        <label><!-- T10RINJO --></label>
+        <name>T10RINJO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T10RINJP --></label>
+        <name>T10RINJP__c</name>
+    </fields>
+    <fields>
+        <label><!-- T10RINJSB --></label>
+        <name>T10RINJSB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T10RINJUA --></label>
+        <name>T10RINJUA__c</name>
+    </fields>
+    <fields>
+        <label><!-- T10RINJ --></label>
+        <name>T10RINJ__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T10RRAD --></label>
+        <name>T10RRAD__c</name>
+    </fields>
+    <fields>
+        <label><!-- T10RRB --></label>
+        <name>T10RRB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T10RRMA --></label>
+        <name>T10RRMA__c</name>
+    </fields>
+    <fields>
+        <label><!-- T10RRODT --></label>
+        <name>T10RRODT__c</name>
+    </fields>
+    <fields>
+        <label><!-- T10RRO --></label>
+        <name>T10RRO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T10RSETC --></label>
+        <name>T10RSETC__c</name>
+    </fields>
+    <fields>
+        <label><!-- T10RSETH --></label>
+        <name>T10RSETH__c</name>
+    </fields>
+    <fields>
+        <label><!-- T10RSETOS --></label>
+        <name>T10RSETOS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T10RSETO --></label>
+        <name>T10RSETO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T10RSETS --></label>
+        <name>T10RSETS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T10RSETU --></label>
+        <name>T10RSETU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T10RTYPE --></label>
+        <name>T10RTYPE__c</name>
+    </fields>
+    <fields>
+        <label><!-- T10RTYPU --></label>
+        <name>T10RTYPU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T10RTYPV --></label>
+        <name>T10RTYPV__c</name>
+    </fields>
+    <fields>
+        <label><!-- T10RTYPW --></label>
+        <name>T10RTYPW__c</name>
+    </fields>
+    <fields>
+        <label><!-- T10RWPNU --></label>
+        <name>T10RWPNU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T11RFREQ --></label>
+        <name>T11RFREQ__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T11RFRGT --></label>
+        <name>T11RFRGT__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T11RILLAR --></label>
+        <name>T11RILLAR__c</name>
+    </fields>
+    <fields>
+        <label><!-- T11RILLC --></label>
+        <name>T11RILLC__c</name>
+    </fields>
+    <fields>
+        <label><!-- T11RILLOSP --></label>
+        <name>T11RILLOSP__c</name>
+    </fields>
+    <fields>
+        <label><!-- T11RILLOY --></label>
+        <name>T11RILLOY__c</name>
+    </fields>
+    <fields>
+        <label><!-- T11RILLO --></label>
+        <name>T11RILLO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T11RILLP --></label>
+        <name>T11RILLP__c</name>
+    </fields>
+    <fields>
+        <label><!-- T11RILLSB --></label>
+        <name>T11RILLSB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T11RILLUA --></label>
+        <name>T11RILLUA__c</name>
+    </fields>
+    <fields>
+        <label><!-- T11RLIFE --></label>
+        <name>T11RLIFE__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T11RPAIN --></label>
+        <name>T11RPAIN__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T11RPICU --></label>
+        <name>T11RPICU__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T11RRB --></label>
+        <name>T11RRB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T11RRODT --></label>
+        <name>T11RRODT__c</name>
+    </fields>
+    <fields>
+        <label><!-- T11RRO --></label>
+        <name>T11RRO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T11RSETEX --></label>
+        <name>T11RSETEX__c</name>
+    </fields>
+    <fields>
+        <label><!-- T11RSETHS --></label>
+        <name>T11RSETHS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T11RSETH --></label>
+        <name>T11RSETH__c</name>
+    </fields>
+    <fields>
+        <label><!-- T11RSETICU --></label>
+        <name>T11RSETICU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T11RSETOS --></label>
+        <name>T11RSETOS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T11RSETO --></label>
+        <name>T11RSETO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T11RSETU --></label>
+        <name>T11RSETU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T11RTYPE --></label>
+        <name>T11RTYPE__c</name>
+    </fields>
+    <fields>
+        <label><!-- T11RTYPU --></label>
+        <name>T11RTYPU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T11RTYPV --></label>
+        <name>T11RTYPV__c</name>
+    </fields>
+    <fields>
+        <label><!-- T11RTYPW --></label>
+        <name>T11RTYPW__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RACUK --></label>
+        <name>T12RACUK__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RDISC --></label>
+        <name>T12RDISC__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RDISOR --></label>
+        <name>T12RDISOR__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RDISOS --></label>
+        <name>T12RDISOS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RDISOY --></label>
+        <name>T12RDISOY__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RDISO --></label>
+        <name>T12RDISO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RDISP --></label>
+        <name>T12RDISP__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RDISSB --></label>
+        <name>T12RDISSB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RDISUA --></label>
+        <name>T12RDISUA__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RDIS --></label>
+        <name>T12RDIS__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T12RDOGBT --></label>
+        <name>T12RDOGBT__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RDRWN --></label>
+        <name>T12RDRWN__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RFALL --></label>
+        <name>T12RFALL__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RFREQ --></label>
+        <name>T12RFREQ__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T12RHSFRE --></label>
+        <name>T12RHSFRE__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RINJAB --></label>
+        <name>T12RINJAB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RINJBB --></label>
+        <name>T12RINJBB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RINJBN --></label>
+        <name>T12RINJBN__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RINJCC --></label>
+        <name>T12RINJCC__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RINJOS --></label>
+        <name>T12RINJOS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RINJO --></label>
+        <name>T12RINJO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RINJUK --></label>
+        <name>T12RINJUK__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RMV --></label>
+        <name>T12RMV__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12ROTHR --></label>
+        <name>T12ROTHR__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12ROTHSP --></label>
+        <name>T12ROTHSP__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RRB --></label>
+        <name>T12RRB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RRODT --></label>
+        <name>T12RRODT__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RRO --></label>
+        <name>T12RRO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RSETC --></label>
+        <name>T12RSETC__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RSETH --></label>
+        <name>T12RSETH__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RSETOS --></label>
+        <name>T12RSETOS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RSETO --></label>
+        <name>T12RSETO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RSETS --></label>
+        <name>T12RSETS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RSETU --></label>
+        <name>T12RSETU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RSHOOT --></label>
+        <name>T12RSHOOT__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RTYPE --></label>
+        <name>T12RTYPE__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RTYPU --></label>
+        <name>T12RTYPU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RTYPV --></label>
+        <name>T12RTYPV__c</name>
+    </fields>
+    <fields>
+        <label><!-- T12RTYPW --></label>
+        <name>T12RTYPW__c</name>
+    </fields>
+    <fields>
+        <label><!-- T13RDRGT --></label>
+        <name>T13RDRGT__c</name>
+    </fields>
+    <fields>
+        <label><!-- T13RDSUK --></label>
+        <name>T13RDSUK__c</name>
+    </fields>
+    <fields>
+        <label><!-- T13REQ --></label>
+        <name>T13REQ__c</name>
+    </fields>
+    <fields>
+        <label><!-- T13REVAC --></label>
+        <name>T13REVAC__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T13RFIRE --></label>
+        <name>T13RFIRE__c</name>
+    </fields>
+    <fields>
+        <label><!-- T13RFLOD --></label>
+        <name>T13RFLOD__c</name>
+    </fields>
+    <fields>
+        <label><!-- T13RFREQ --></label>
+        <name>T13RFREQ__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T13RHDAM --></label>
+        <name>T13RHDAM__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T13RHURR --></label>
+        <name>T13RHURR__c</name>
+    </fields>
+    <fields>
+        <label><!-- T13RINDS --></label>
+        <name>T13RINDS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T13RINJAR --></label>
+        <name>T13RINJAR__c</name>
+    </fields>
+    <fields>
+        <label><!-- T13RINJC --></label>
+        <name>T13RINJC__c</name>
+    </fields>
+    <fields>
+        <label><!-- T13RINJOS --></label>
+        <name>T13RINJOS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T13RINJOY --></label>
+        <name>T13RINJOY__c</name>
+    </fields>
+    <fields>
+        <label><!-- T13RINJO --></label>
+        <name>T13RINJO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T13RINJP --></label>
+        <name>T13RINJP__c</name>
+    </fields>
+    <fields>
+        <label><!-- T13RINJSB --></label>
+        <name>T13RINJSB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T13RINJUA --></label>
+        <name>T13RINJUA__c</name>
+    </fields>
+    <fields>
+        <label><!-- T13RINJ --></label>
+        <name>T13RINJ__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T13RLAND --></label>
+        <name>T13RLAND__c</name>
+    </fields>
+    <fields>
+        <label><!-- T13ROTHS --></label>
+        <name>T13ROTHS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T13ROTH --></label>
+        <name>T13ROTH__c</name>
+    </fields>
+    <fields>
+        <label><!-- T13RPHE --></label>
+        <name>T13RPHE__c</name>
+    </fields>
+    <fields>
+        <label><!-- T13RRB --></label>
+        <name>T13RRB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T13RRODT --></label>
+        <name>T13RRODT__c</name>
+    </fields>
+    <fields>
+        <label><!-- T13RRO --></label>
+        <name>T13RRO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T13RTORN --></label>
+        <name>T13RTORN__c</name>
+    </fields>
+    <fields>
+        <label><!-- T13RTYPE --></label>
+        <name>T13RTYPE__c</name>
+    </fields>
+    <fields>
+        <label><!-- T13RTYPU --></label>
+        <name>T13RTYPU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T13RTYPV --></label>
+        <name>T13RTYPV__c</name>
+    </fields>
+    <fields>
+        <label><!-- T13RTYPW --></label>
+        <name>T13RTYPW__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RFREQ --></label>
+        <name>T1RFREQ__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T1RINFWIT --></label>
+        <name>T1RINFWIT__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RINJAR --></label>
+        <name>T1RINJAR__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RINJC --></label>
+        <name>T1RINJC__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RINJOS --></label>
+        <name>T1RINJOS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RINJOY --></label>
+        <name>T1RINJOY__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RINJO --></label>
+        <name>T1RINJO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RINJP --></label>
+        <name>T1RINJP__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RINJSB --></label>
+        <name>T1RINJSB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RINJUA --></label>
+        <name>T1RINJUA__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RINJ --></label>
+        <name>T1RINJ__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T1RINMINR --></label>
+        <name>T1RINMINR__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RINOSP --></label>
+        <name>T1RINOSP__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RINO --></label>
+        <name>T1RINO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RINPRN --></label>
+        <name>T1RINPRN__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RPENET --></label>
+        <name>T1RPENET__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T1RPERAR --></label>
+        <name>T1RPERAR__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RPEROY --></label>
+        <name>T1RPEROY__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RPERP --></label>
+        <name>T1RPERP__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RPERSB --></label>
+        <name>T1RPERSB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RPERST --></label>
+        <name>T1RPERST__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RPERUA --></label>
+        <name>T1RPERUA__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RPERU --></label>
+        <name>T1RPERU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RRB --></label>
+        <name>T1RRB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RREPORT --></label>
+        <name>T1RREPORT__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T1RRODT --></label>
+        <name>T1RRODT__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RRO --></label>
+        <name>T1RRO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RSETC --></label>
+        <name>T1RSETC__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RSETH --></label>
+        <name>T1RSETH__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RSETOS --></label>
+        <name>T1RSETOS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RSETO --></label>
+        <name>T1RSETO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RSETS --></label>
+        <name>T1RSETS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RSETU --></label>
+        <name>T1RSETU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RTYPE --></label>
+        <name>T1RTYPE__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RTYPU --></label>
+        <name>T1RTYPU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RTYPV --></label>
+        <name>T1RTYPV__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RTYPW --></label>
+        <name>T1RTYPW__c</name>
+    </fields>
+    <fields>
+        <label><!-- T1RWEAPON --></label>
+        <name>T1RWEAPON__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T2RFREQ --></label>
+        <name>T2RFREQ__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T2RINFWIT --></label>
+        <name>T2RINFWIT__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RINJAR --></label>
+        <name>T2RINJAR__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RINJC --></label>
+        <name>T2RINJC__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RINJOS --></label>
+        <name>T2RINJOS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RINJOY --></label>
+        <name>T2RINJOY__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RINJO --></label>
+        <name>T2RINJO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RINJP --></label>
+        <name>T2RINJP__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RINJSB --></label>
+        <name>T2RINJSB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RINJUA --></label>
+        <name>T2RINJUA__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RINJ --></label>
+        <name>T2RINJ__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T2RINMINR --></label>
+        <name>T2RINMINR__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RINOSP --></label>
+        <name>T2RINOSP__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RINO --></label>
+        <name>T2RINO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RINPRN --></label>
+        <name>T2RINPRN__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RPENET --></label>
+        <name>T2RPENET__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T2RPERAR --></label>
+        <name>T2RPERAR__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RPEROY --></label>
+        <name>T2RPEROY__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RPERP --></label>
+        <name>T2RPERP__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RPERSB --></label>
+        <name>T2RPERSB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RPERST --></label>
+        <name>T2RPERST__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RPERUA --></label>
+        <name>T2RPERUA__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RPERU --></label>
+        <name>T2RPERU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RRB --></label>
+        <name>T2RRB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RREPORT --></label>
+        <name>T2RREPORT__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T2RRODT --></label>
+        <name>T2RRODT__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RRO --></label>
+        <name>T2RRO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RSETC --></label>
+        <name>T2RSETC__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RSETH --></label>
+        <name>T2RSETH__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RSETOS --></label>
+        <name>T2RSETOS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RSETO --></label>
+        <name>T2RSETO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RSETS --></label>
+        <name>T2RSETS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RSETU --></label>
+        <name>T2RSETU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RTYPE --></label>
+        <name>T2RTYPE__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RTYPU --></label>
+        <name>T2RTYPU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RTYPV --></label>
+        <name>T2RTYPV__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RTYPW --></label>
+        <name>T2RTYPW__c</name>
+    </fields>
+    <fields>
+        <label><!-- T2RWEAPON --></label>
+        <name>T2RWEAPON__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T3RBENAR --></label>
+        <name>T3RBENAR__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RBENC --></label>
+        <name>T3RBENC__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RBENOY --></label>
+        <name>T3RBENOY__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RBENP --></label>
+        <name>T3RBENP__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RBENSB --></label>
+        <name>T3RBENSB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RBENST --></label>
+        <name>T3RBENST__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RBENUA --></label>
+        <name>T3RBENUA__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RBENU --></label>
+        <name>T3RBENU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RCMPD --></label>
+        <name>T3RCMPD__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RCMPFD --></label>
+        <name>T3RCMPFD__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RCMPF --></label>
+        <name>T3RCMPF__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RCMPMP --></label>
+        <name>T3RCMPMP__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RCMPM --></label>
+        <name>T3RCMPM__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RCMPOS --></label>
+        <name>T3RCMPOS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RCMPO --></label>
+        <name>T3RCMPO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RCMPPS --></label>
+        <name>T3RCMPPS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RCMPSA --></label>
+        <name>T3RCMPSA__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RCMPS --></label>
+        <name>T3RCMPS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RCMP --></label>
+        <name>T3RCMP__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T3RFREQ --></label>
+        <name>T3RFREQ__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T3RMENB --></label>
+        <name>T3RMENB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RMENE --></label>
+        <name>T3RMENE__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RMENF --></label>
+        <name>T3RMENF__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RMENOL --></label>
+        <name>T3RMENOL__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RMENOS --></label>
+        <name>T3RMENOS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RMENO --></label>
+        <name>T3RMENO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RMENS --></label>
+        <name>T3RMENS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RMENU --></label>
+        <name>T3RMENU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RPERAR --></label>
+        <name>T3RPERAR__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RPEROS --></label>
+        <name>T3RPEROS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RPEROY --></label>
+        <name>T3RPEROY__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RPERO --></label>
+        <name>T3RPERO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RPERST --></label>
+        <name>T3RPERST__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RPERUA --></label>
+        <name>T3RPERUA__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RPERU --></label>
+        <name>T3RPERU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RRB --></label>
+        <name>T3RRB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RREPORT --></label>
+        <name>T3RREPORT__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T3RRODT --></label>
+        <name>T3RRODT__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RRO --></label>
+        <name>T3RRO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RSETC --></label>
+        <name>T3RSETC__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RSETH --></label>
+        <name>T3RSETH__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RSETOS --></label>
+        <name>T3RSETOS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RSETO --></label>
+        <name>T3RSETO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RSETS --></label>
+        <name>T3RSETS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RSETU --></label>
+        <name>T3RSETU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RTHICS --></label>
+        <name>T3RTHICS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RTHIDU --></label>
+        <name>T3RTHIDU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RTHIFA --></label>
+        <name>T3RTHIFA__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RTHIHF --></label>
+        <name>T3RTHIHF__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RTHIOS --></label>
+        <name>T3RTHIOS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RTHIO --></label>
+        <name>T3RTHIO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RTHIP --></label>
+        <name>T3RTHIP__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RTHIR --></label>
+        <name>T3RTHIR__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RTHIT --></label>
+        <name>T3RTHIT__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RTHI --></label>
+        <name>T3RTHI__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T3RTRNSP --></label>
+        <name>T3RTRNSP__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T3RTRSTL --></label>
+        <name>T3RTRSTL__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T3RTYPE --></label>
+        <name>T3RTYPE__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RTYPU --></label>
+        <name>T3RTYPU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RTYPV --></label>
+        <name>T3RTYPV__c</name>
+    </fields>
+    <fields>
+        <label><!-- T3RTYPW --></label>
+        <name>T3RTYPW__c</name>
+    </fields>
+    <fields>
+        <label><!-- T4RFREQ --></label>
+        <name>T4RFREQ__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T4RINJAR --></label>
+        <name>T4RINJAR__c</name>
+    </fields>
+    <fields>
+        <label><!-- T4RINJC --></label>
+        <name>T4RINJC__c</name>
+    </fields>
+    <fields>
+        <label><!-- T4RINJOS --></label>
+        <name>T4RINJOS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T4RINJOY --></label>
+        <name>T4RINJOY__c</name>
+    </fields>
+    <fields>
+        <label><!-- T4RINJO --></label>
+        <name>T4RINJO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T4RINJP --></label>
+        <name>T4RINJP__c</name>
+    </fields>
+    <fields>
+        <label><!-- T4RINJSB --></label>
+        <name>T4RINJSB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T4RINJUA --></label>
+        <name>T4RINJUA__c</name>
+    </fields>
+    <fields>
+        <label><!-- T4RINJ --></label>
+        <name>T4RINJ__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T4RPERAR --></label>
+        <name>T4RPERAR__c</name>
+    </fields>
+    <fields>
+        <label><!-- T4RPEROY --></label>
+        <name>T4RPEROY__c</name>
+    </fields>
+    <fields>
+        <label><!-- T4RPERP --></label>
+        <name>T4RPERP__c</name>
+    </fields>
+    <fields>
+        <label><!-- T4RPERSB --></label>
+        <name>T4RPERSB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T4RPERST --></label>
+        <name>T4RPERST__c</name>
+    </fields>
+    <fields>
+        <label><!-- T4RPERUA --></label>
+        <name>T4RPERUA__c</name>
+    </fields>
+    <fields>
+        <label><!-- T4RPERU --></label>
+        <name>T4RPERU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T4RRB --></label>
+        <name>T4RRB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T4RREPORT --></label>
+        <name>T4RREPORT__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T4RRODT --></label>
+        <name>T4RRODT__c</name>
+    </fields>
+    <fields>
+        <label><!-- T4RRO --></label>
+        <name>T4RRO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T4RSETC --></label>
+        <name>T4RSETC__c</name>
+    </fields>
+    <fields>
+        <label><!-- T4RSETH --></label>
+        <name>T4RSETH__c</name>
+    </fields>
+    <fields>
+        <label><!-- T4RSETOS --></label>
+        <name>T4RSETOS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T4RSETO --></label>
+        <name>T4RSETO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T4RSETS --></label>
+        <name>T4RSETS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T4RSETU --></label>
+        <name>T4RSETU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T4RTYPE --></label>
+        <name>T4RTYPE__c</name>
+    </fields>
+    <fields>
+        <label><!-- T4RTYPU --></label>
+        <name>T4RTYPU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T4RTYPV --></label>
+        <name>T4RTYPV__c</name>
+    </fields>
+    <fields>
+        <label><!-- T4RTYPW --></label>
+        <name>T4RTYPW__c</name>
+    </fields>
+    <fields>
+        <label><!-- T4RWEAPON --></label>
+        <name>T4RWEAPON__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T5RFREQ --></label>
+        <name>T5RFREQ__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T5RINJAR --></label>
+        <name>T5RINJAR__c</name>
+    </fields>
+    <fields>
+        <label><!-- T5RINJC --></label>
+        <name>T5RINJC__c</name>
+    </fields>
+    <fields>
+        <label><!-- T5RINJOS --></label>
+        <name>T5RINJOS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T5RINJOY --></label>
+        <name>T5RINJOY__c</name>
+    </fields>
+    <fields>
+        <label><!-- T5RINJO --></label>
+        <name>T5RINJO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T5RINJP --></label>
+        <name>T5RINJP__c</name>
+    </fields>
+    <fields>
+        <label><!-- T5RINJSB --></label>
+        <name>T5RINJSB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T5RINJUA --></label>
+        <name>T5RINJUA__c</name>
+    </fields>
+    <fields>
+        <label><!-- T5RINJ --></label>
+        <name>T5RINJ__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T5RPERAR --></label>
+        <name>T5RPERAR__c</name>
+    </fields>
+    <fields>
+        <label><!-- T5RPEROY --></label>
+        <name>T5RPEROY__c</name>
+    </fields>
+    <fields>
+        <label><!-- T5RPERP --></label>
+        <name>T5RPERP__c</name>
+    </fields>
+    <fields>
+        <label><!-- T5RPERSB --></label>
+        <name>T5RPERSB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T5RPERST --></label>
+        <name>T5RPERST__c</name>
+    </fields>
+    <fields>
+        <label><!-- T5RPERUA --></label>
+        <name>T5RPERUA__c</name>
+    </fields>
+    <fields>
+        <label><!-- T5RPERU --></label>
+        <name>T5RPERU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T5RRB --></label>
+        <name>T5RRB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T5RREPORT --></label>
+        <name>T5RREPORT__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T5RRODT --></label>
+        <name>T5RRODT__c</name>
+    </fields>
+    <fields>
+        <label><!-- T5RRO --></label>
+        <name>T5RRO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T5RSETC --></label>
+        <name>T5RSETC__c</name>
+    </fields>
+    <fields>
+        <label><!-- T5RSETH --></label>
+        <name>T5RSETH__c</name>
+    </fields>
+    <fields>
+        <label><!-- T5RSETOS --></label>
+        <name>T5RSETOS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T5RSETO --></label>
+        <name>T5RSETO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T5RSETS --></label>
+        <name>T5RSETS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T5RSETU --></label>
+        <name>T5RSETU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T5RTYPE --></label>
+        <name>T5RTYPE__c</name>
+    </fields>
+    <fields>
+        <label><!-- T5RTYPU --></label>
+        <name>T5RTYPU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T5RTYPV --></label>
+        <name>T5RTYPV__c</name>
+    </fields>
+    <fields>
+        <label><!-- T5RTYPW --></label>
+        <name>T5RTYPW__c</name>
+    </fields>
+    <fields>
+        <label><!-- T5RWEAPON --></label>
+        <name>T5RWEAPON__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T6RFREQ --></label>
+        <name>T6RFREQ__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T6RMTYPED --></label>
+        <name>T6RMTYPED__c</name>
+    </fields>
+    <fields>
+        <label><!-- T6RMTYPEN --></label>
+        <name>T6RMTYPEN__c</name>
+    </fields>
+    <fields>
+        <label><!-- T6RMTYPOS --></label>
+        <name>T6RMTYPOS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T6RMTYPOTH --></label>
+        <name>T6RMTYPOTH__c</name>
+    </fields>
+    <fields>
+        <label><!-- T6RMTYPU --></label>
+        <name>T6RMTYPU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T6RMTYPVA --></label>
+        <name>T6RMTYPVA__c</name>
+    </fields>
+    <fields>
+        <label><!-- T6RPERAR --></label>
+        <name>T6RPERAR__c</name>
+    </fields>
+    <fields>
+        <label><!-- T6RPEROY --></label>
+        <name>T6RPEROY__c</name>
+    </fields>
+    <fields>
+        <label><!-- T6RPERP --></label>
+        <name>T6RPERP__c</name>
+    </fields>
+    <fields>
+        <label><!-- T6RPERSB --></label>
+        <name>T6RPERSB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T6RPERST --></label>
+        <name>T6RPERST__c</name>
+    </fields>
+    <fields>
+        <label><!-- T6RPERUA --></label>
+        <name>T6RPERUA__c</name>
+    </fields>
+    <fields>
+        <label><!-- T6RPERU --></label>
+        <name>T6RPERU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T6RRB --></label>
+        <name>T6RRB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T6RREPORT --></label>
+        <name>T6RREPORT__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T6RRODT --></label>
+        <name>T6RRODT__c</name>
+    </fields>
+    <fields>
+        <label><!-- T6RRO --></label>
+        <name>T6RRO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T6RSETC --></label>
+        <name>T6RSETC__c</name>
+    </fields>
+    <fields>
+        <label><!-- T6RSETH --></label>
+        <name>T6RSETH__c</name>
+    </fields>
+    <fields>
+        <label><!-- T6RSETOS --></label>
+        <name>T6RSETOS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T6RSETO --></label>
+        <name>T6RSETO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T6RSETS --></label>
+        <name>T6RSETS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T6RSETU --></label>
+        <name>T6RSETU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T6RTYPE --></label>
+        <name>T6RTYPE__c</name>
+    </fields>
+    <fields>
+        <label><!-- T6RTYPU --></label>
+        <name>T6RTYPU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T6RTYPV --></label>
+        <name>T6RTYPV__c</name>
+    </fields>
+    <fields>
+        <label><!-- T6RTYPW --></label>
+        <name>T6RTYPW__c</name>
+    </fields>
+    <fields>
+        <label><!-- T7RFREQ --></label>
+        <name>T7RFREQ__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T7RPERAR --></label>
+        <name>T7RPERAR__c</name>
+    </fields>
+    <fields>
+        <label><!-- T7RPEROY --></label>
+        <name>T7RPEROY__c</name>
+    </fields>
+    <fields>
+        <label><!-- T7RPERP --></label>
+        <name>T7RPERP__c</name>
+    </fields>
+    <fields>
+        <label><!-- T7RPERSB --></label>
+        <name>T7RPERSB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T7RPERST --></label>
+        <name>T7RPERST__c</name>
+    </fields>
+    <fields>
+        <label><!-- T7RPERUA --></label>
+        <name>T7RPERUA__c</name>
+    </fields>
+    <fields>
+        <label><!-- T7RPERU --></label>
+        <name>T7RPERU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T7RRB --></label>
+        <name>T7RRB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T7RREPORT --></label>
+        <name>T7RREPORT__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T7RRODT --></label>
+        <name>T7RRODT__c</name>
+    </fields>
+    <fields>
+        <label><!-- T7RRO --></label>
+        <name>T7RRO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T7RSETC --></label>
+        <name>T7RSETC__c</name>
+    </fields>
+    <fields>
+        <label><!-- T7RSETH --></label>
+        <name>T7RSETH__c</name>
+    </fields>
+    <fields>
+        <label><!-- T7RSETOS --></label>
+        <name>T7RSETOS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T7RSETO --></label>
+        <name>T7RSETO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T7RSETS --></label>
+        <name>T7RSETS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T7RSETU --></label>
+        <name>T7RSETU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T7RTYPED --></label>
+        <name>T7RTYPED__c</name>
+    </fields>
+    <fields>
+        <label><!-- T7RTYPE --></label>
+        <name>T7RTYPE__c</name>
+    </fields>
+    <fields>
+        <label><!-- T7RTYPIS --></label>
+        <name>T7RTYPIS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T7RTYPMD --></label>
+        <name>T7RTYPMD__c</name>
+    </fields>
+    <fields>
+        <label><!-- T7RTYPOS --></label>
+        <name>T7RTYPOS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T7RTYPOTH --></label>
+        <name>T7RTYPOTH__c</name>
+    </fields>
+    <fields>
+        <label><!-- T7RTYPPH --></label>
+        <name>T7RTYPPH__c</name>
+    </fields>
+    <fields>
+        <label><!-- T7RTYPUK --></label>
+        <name>T7RTYPUK__c</name>
+    </fields>
+    <fields>
+        <label><!-- T7RTYPU --></label>
+        <name>T7RTYPU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T7RTYPVE --></label>
+        <name>T7RTYPVE__c</name>
+    </fields>
+    <fields>
+        <label><!-- T7RTYPV --></label>
+        <name>T7RTYPV__c</name>
+    </fields>
+    <fields>
+        <label><!-- T7RTYPW --></label>
+        <name>T7RTYPW__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RDVPEV --></label>
+        <name>T8RDVPEV__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RDVPV --></label>
+        <name>T8RDVPV__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RDVSV --></label>
+        <name>T8RDVSV__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RDVTFS --></label>
+        <name>T8RDVTFS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RDVUK --></label>
+        <name>T8RDVUK__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RFREQ --></label>
+        <name>T8RFREQ__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T8RINJAR --></label>
+        <name>T8RINJAR__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RINJC --></label>
+        <name>T8RINJC__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RINJOS --></label>
+        <name>T8RINJOS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RINJOY --></label>
+        <name>T8RINJOY__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RINJO --></label>
+        <name>T8RINJO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RINJP --></label>
+        <name>T8RINJP__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RINJSB --></label>
+        <name>T8RINJSB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RINJUA --></label>
+        <name>T8RINJUA__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RINJ --></label>
+        <name>T8RINJ__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T8RPERAR --></label>
+        <name>T8RPERAR__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RPEROY --></label>
+        <name>T8RPEROY__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RPERP --></label>
+        <name>T8RPERP__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RPERSB --></label>
+        <name>T8RPERSB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RPERST --></label>
+        <name>T8RPERST__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RPERUA --></label>
+        <name>T8RPERUA__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RPERU --></label>
+        <name>T8RPERU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RRB --></label>
+        <name>T8RRB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RREPORT --></label>
+        <name>T8RREPORT__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T8RRODT --></label>
+        <name>T8RRODT__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RRO --></label>
+        <name>T8RRO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RSETC --></label>
+        <name>T8RSETC__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RSETH --></label>
+        <name>T8RSETH__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RSETOS --></label>
+        <name>T8RSETOS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RSETO --></label>
+        <name>T8RSETO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RSETU --></label>
+        <name>T8RSETU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RTYPE --></label>
+        <name>T8RTYPE__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RTYPU --></label>
+        <name>T8RTYPU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RTYPV --></label>
+        <name>T8RTYPV__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RTYPW --></label>
+        <name>T8RTYPW__c</name>
+    </fields>
+    <fields>
+        <label><!-- T8RWEAPON --></label>
+        <name>T8RWEAPON__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T9RBIO --></label>
+        <name>T9RBIO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T9RCHEM --></label>
+        <name>T9RCHEM__c</name>
+    </fields>
+    <fields>
+        <label><!-- T9RCONV --></label>
+        <name>T9RCONV__c</name>
+    </fields>
+    <fields>
+        <label><!-- T9RFREQ --></label>
+        <name>T9RFREQ__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T9RINJAR --></label>
+        <name>T9RINJAR__c</name>
+    </fields>
+    <fields>
+        <label><!-- T9RINJC --></label>
+        <name>T9RINJC__c</name>
+    </fields>
+    <fields>
+        <label><!-- T9RINJOS --></label>
+        <name>T9RINJOS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T9RINJOY --></label>
+        <name>T9RINJOY__c</name>
+    </fields>
+    <fields>
+        <label><!-- T9RINJO --></label>
+        <name>T9RINJO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T9RINJP --></label>
+        <name>T9RINJP__c</name>
+    </fields>
+    <fields>
+        <label><!-- T9RINJSB --></label>
+        <name>T9RINJSB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T9RINJUA --></label>
+        <name>T9RINJUA__c</name>
+    </fields>
+    <fields>
+        <label><!-- T9RINJ --></label>
+        <name>T9RINJ__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>99</masterLabel>
+            <translation><!-- 99 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- T9RRAD --></label>
+        <name>T9RRAD__c</name>
+    </fields>
+    <fields>
+        <label><!-- T9RRB --></label>
+        <name>T9RRB__c</name>
+    </fields>
+    <fields>
+        <label><!-- T9RRMA --></label>
+        <name>T9RRMA__c</name>
+    </fields>
+    <fields>
+        <label><!-- T9RRODT --></label>
+        <name>T9RRODT__c</name>
+    </fields>
+    <fields>
+        <label><!-- T9RRO --></label>
+        <name>T9RRO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T9RSETC --></label>
+        <name>T9RSETC__c</name>
+    </fields>
+    <fields>
+        <label><!-- T9RSETH --></label>
+        <name>T9RSETH__c</name>
+    </fields>
+    <fields>
+        <label><!-- T9RSETOS --></label>
+        <name>T9RSETOS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T9RSETO --></label>
+        <name>T9RSETO__c</name>
+    </fields>
+    <fields>
+        <label><!-- T9RSETS --></label>
+        <name>T9RSETS__c</name>
+    </fields>
+    <fields>
+        <label><!-- T9RSETU --></label>
+        <name>T9RSETU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T9RTYPE --></label>
+        <name>T9RTYPE__c</name>
+    </fields>
+    <fields>
+        <label><!-- T9RTYPU --></label>
+        <name>T9RTYPU__c</name>
+    </fields>
+    <fields>
+        <label><!-- T9RTYPV --></label>
+        <name>T9RTYPV__c</name>
+    </fields>
+    <fields>
+        <label><!-- T9RTYPW --></label>
+        <name>T9RTYPW__c</name>
+    </fields>
+    <fields>
+        <label><!-- T9RWPNU --></label>
+        <name>T9RWPNU__c</name>
+    </fields>
+    <layouts>
+        <layout>DS TRDETAIL1 Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Please indicate to whom the injury was inflicted. --></errorMessage>
+        <name>TRABUSE_must_indicate_injury_victim</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify to whom serious injury was inflicted. --></errorMessage>
+        <name>TRABUSE_must_specify_injury_victim</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify the setting of the experience --></errorMessage>
+        <name>TRABUSE_must_specify_setting</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please indicate to whom the permanent disability/death was inflicted. --></errorMessage>
+        <name>TRACCIDENT_must_indicate_to_whom</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify the setting of the experience --></errorMessage>
+        <name>TRACCIDENT_must_specify_setting</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify the type of accident. --></errorMessage>
+        <name>TRACCIDENT_must_specify_type_accident</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify to whom the disability/death inflicted. --></errorMessage>
+        <name>TRACCIDENT_must_specify_type_death_disab</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please indicate the type of compensation received. --></errorMessage>
+        <name>TRCOMMEXP_must_indicate_compensation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please indicate the nature of the threat or injury. --></errorMessage>
+        <name>TRCOMMEXP_must_indicate_threat_injury</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify the other compensation received. --></errorMessage>
+        <name>TRCOMMEXP_must_specify_compensation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify the means by/through which the child was exploited/trafficked. --></errorMessage>
+        <name>TRCOMMEXP_must_specify_means</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify purchaser(s)/perpetrator(s) of the exploitation or service. --></errorMessage>
+        <name>TRCOMMEXP_must_specify_perpetrator</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify the setting of the experience. --></errorMessage>
+        <name>TRCOMMEXP_must_specify_setting</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify the other threat or injury. --></errorMessage>
+        <name>TRCOMMEXP_must_specify_threat_injury</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please indicate to whom the injury was inflicted. --></errorMessage>
+        <name>TRDOMVIO_must_indicate_injury_victim</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify to whom serious injury was inflicted. --></errorMessage>
+        <name>TRDOMVIO_must_specify_injury_victim</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify the setting of the experience --></errorMessage>
+        <name>TRDOMVIO_must_specify_setting</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify the setting of the experience --></errorMessage>
+        <name>TRMEDICAL_must_specify_setting</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please indicate to whom the serious injury was inflicted. --></errorMessage>
+        <name>TRNATURALDIS_must_indicate_to_whom</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify to whom serious injury was inflicted. --></errorMessage>
+        <name>TRNATURALDIS_must_specify_injury_victim</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify the type of disaster involved --></errorMessage>
+        <name>TRNATURALD_must_specify_type_disaster</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify the setting of the experience --></errorMessage>
+        <name>TRNEGLECT_must_specify_setting</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify the type of neglect involved. --></errorMessage>
+        <name>TRNEGLECT_must_specify_type_neglect</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify the setting of the experience --></errorMessage>
+        <name>TRPHYCHABUSE_must_specify_setting</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please indicate to whom the injury was inflicted. --></errorMessage>
+        <name>TRPHYSASLT_must_indicate_injury_victim</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify to whom serious injury was inflicted. --></errorMessage>
+        <name>TRPHYSASLT_must_specify_injury_victim</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify the setting of the experience --></errorMessage>
+        <name>TRPHYSASLT_must_specify_setting</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify the type of maltreatment involved. --></errorMessage>
+        <name>TRPSYCHABUSE_must_specify_type_mal</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please indicate to whom serious injury was inflicted. --></errorMessage>
+        <name>TRSEXASLT_must_indicate_to_whom_injury</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify to whom serious injury was inflicted. --></errorMessage>
+        <name>TRSEXASLT_must_specify_injury_victim</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify the setting for this experience. --></errorMessage>
+        <name>TRSEXASLT_must_specify_setting</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please indicate to whom serious injury was inflicted. --></errorMessage>
+        <name>TRSEX_must_indicate_to_whom_injury</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify the other victim of serious injury --></errorMessage>
+        <name>TRSEX_must_specify_other_injury_victim</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify the other setting for this experience. --></errorMessage>
+        <name>TRSEX_must_specify_other_setting</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please indicate to whom the injury was inflicted. --></errorMessage>
+        <name>TRWAROUTUS_must_indicate_injury_victim</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify to whom serious injury was inflicted. --></errorMessage>
+        <name>TRWAROUTUS_must_specify_injury_victim</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify the setting of the experience --></errorMessage>
+        <name>TRWAROUTUS_must_specify_setting</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please indicate to whom the injury was inflicted. --></errorMessage>
+        <name>TRWAR_must_indicate_injury_victim</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify to whom serious injury was inflicted. --></errorMessage>
+        <name>TRWAR_must_specify_injury_victim</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify the setting of the experience --></errorMessage>
+        <name>TRWAR_must_specify_setting</name>
+    </validationRules>
+</CustomObjectTranslation>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Counter</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Counters</value>
+    </caseValues>
+    <fields>
+        <label><!-- Counter 2 (Clinician) --></label>
+        <name>Counter_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Counter 3 (Client) --></label>
+        <name>Counter_3__c</name>
+    </fields>
+    <fields>
+        <label><!-- Counter (Sub-center) --></label>
+        <name>Counter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Item ID --></label>
+        <name>Item_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Item Name --></label>
+        <name>Item_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Role ID --></label>
+        <name>Role_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>
