@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Client__c.AGE__c</field>
+    </columns>
+    <columns>
+        <field>Client__c.GENDER__c</field>
+    </columns>
+    <columns>
+        <field>FK_$DS_Background_Family_Info_B__c.BHEIGHFT__c</field>
+    </columns>
+    <columns>
+        <field>FK_$DS_Background_Family_Info_B__c.BHEIGHIN__c</field>
+    </columns>
+    <columns>
+        <field>FK_$DS_Background_Family_Info_B__c.BWEIGHT__c</field>
+    </columns>
+    <columns>
+        <field>FK_$DS_Background_Family_Info_B__c.BWEIGEST__c</field>
+    </columns>
+    <format>Tabular</format>
+    <name>Client BMI</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntityCustomEntity$Client__c$DS_CBCL_B__c@DS_CBCL_B__c.Background_ID__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Client__c.DOB1__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

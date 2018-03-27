@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Client Due for Followup TEST</name>
+    <style>none</style>
+    <subject>CIMI Client Followup Visit TEST</subject>
+    <textOnly>Dear {!Client__c.00NV00000016Qtg}, This is a test reminder for Client ****-**- {!TRIM(RIGHT(Client__c.Name, 5))}. {!Client__c.INIT__c} {!Client__c.CENTER__c} {!Client__c.Closed_Treatment__c}</textOnly>
+    <type>custom</type>
+</EmailTemplate>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>DS_Background_Family_Info_F__c.FDOV__c</field>
+    </columns>
+    <columns>
+        <field>DS_Background_Family_Info_F__c.FUTYPE__c</field>
+    </columns>
+    <description>Report created by Carrie. Contains client ID, the Follow Up Date of Visit, and Type of Follow.</description>
+    <filter>
+        <criteriaItems>
+            <column>CUST_NAME</column>
+            <operator>contains</operator>
+            <value>3123</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Follow Up Visit</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntityCustomEntity$Client__c$DS_Background_Family_Info_F__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Client__c.DOB1__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

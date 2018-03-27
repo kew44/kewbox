@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>LOGIN_DATETIME</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>USERNAME</column>
+            <operator>notEqual</operator>
+            <value>cds@nctsn.org</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>LOGIN_IP</column>
+            <operator>equals</operator>
+            <value>168.9.22.118,50.194.229.94</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>USERNAME</column>
+            <operator>equals</operator>
+            <value>cl1@nctsn.org,cli3@nctsn.org</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>USERNAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Testing Logins with IPs used by YWCA</name>
+    <params>
+        <name>active</name>
+        <value>active</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>User</reportType>
+    <showDetails>true</showDetails>
+    <sortColumn>LOGIN_DATETIME</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>LAST_LOGIN</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

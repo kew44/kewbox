@@ -1,0 +1,31 @@
+<apex:page controller="DS_TDETAIL_Controller">
+    
+    <c:cimiPageHeader skipElement="{!JSENCODE(skipElementToJson)}" formElement="{!form}"/>
+    
+    <div class="{!HTMLENCODE(form.visitType)}-tdetail">
+        <apex:sectionHeader title="{!HTMLENCODE(form.title)}" subtitle="{!HTMLENCODE(form.subtitle)}" />
+    </div>
+    
+    <div class="bootwrap">
+        
+        <!--Begin form content-->
+        <apex:form id="DS_TDForm" styleClass="form-horizontal">
+            
+            <!-- pageblock to show ClientInformation header as described in Utility class-->
+            <c:cimiClientInfo displayVisitType="true" formElement="{!form}"/>
+            <!--end client info pageBlock-->
+            
+            <!--page content is dynamic based on trauma type-->     
+            <apex:dynamicComponent componentValue="{!Content}"/>  
+            <!--end dynamic display area-->
+      
+        </apex:form>
+        
+    </div>
+    
+    <!--citation information footer-->
+    <p class="footer" style="text-align:center">
+        <i>This form is part of the Clinical Improvement through Measurement Initiative (CIMI) of the National Child Traumatic Stress Network (NCTSN) - Trauma Detail - Version 7.0 2017
+        </i>
+    </p>   
+</apex:page>

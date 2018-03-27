@@ -1,0 +1,2337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fieldSets>
+        <fullName>STATUS</fullName>
+        <description>STATUS</description>
+        <displayedFields>
+            <field>STATUS_TSCC_A__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>STATUS_TSCYC__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>STATUS</label>
+    </fieldSets>
+    <fields>
+        <fullName>BDOV__c</fullName>
+        <externalId>false</externalId>
+        <formula>Background_ID__r.BDOV__c</formula>
+        <label>BDOV</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Background_ID__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Background ID</label>
+        <referenceTo>DS_Background_Family_Info_F__c</referenceTo>
+        <relationshipLabel>DS TSCC TSCYC F</relationshipLabel>
+        <relationshipName>DS_TSCC_TSCYC_F</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Client__c</fullName>
+        <externalId>false</externalId>
+        <label>Client</label>
+        <referenceTo>Client__c</referenceTo>
+        <relationshipLabel>DS TSCC TSCYC F</relationshipLabel>
+        <relationshipName>DS_TSCC_TSCYC_F</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>FANG_R2__c</fullName>
+        <description>Anger Scale Raw Score
+9-36</description>
+        <externalId>false</externalId>
+        <label>FANG_R2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FANG_R__c</fullName>
+        <description>Anger Scale Raw Score
+9-36</description>
+        <externalId>false</externalId>
+        <label>FANG_R</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FANG_T2__c</fullName>
+        <description>Anger Scale T Score
+30-140</description>
+        <externalId>false</externalId>
+        <label>FANG_T2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FANG_T__c</fullName>
+        <description>Anger Scale T Score
+30-140</description>
+        <externalId>false</externalId>
+        <label>FANG_T</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FANX_R2__c</fullName>
+        <description>Anxiety Scale Raw Score
+9-36</description>
+        <externalId>false</externalId>
+        <label>FANX_R2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FANX_R__c</fullName>
+        <description>Anxiety Scale Raw Score
+9-36</description>
+        <externalId>false</externalId>
+        <label>FANX_R</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FANX_T2__c</fullName>
+        <description>Anxiety Scale T Score
+30-140</description>
+        <externalId>false</externalId>
+        <label>FANX_T2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FANX_T__c</fullName>
+        <description>Anxiety Scale T Score
+30-140</description>
+        <externalId>false</externalId>
+        <label>FANX_T</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FATR_R2__c</fullName>
+        <description>Hyperresponsive Scale Raw Score
+9-36</description>
+        <externalId>false</externalId>
+        <label>FATR_R2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FATR_R__c</fullName>
+        <description>Hyperresponsive Scale Raw Score
+9-36</description>
+        <externalId>false</externalId>
+        <label>FATR_R</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FATR_T2__c</fullName>
+        <description>Hyperresponsive Scale T Score
+30-140</description>
+        <externalId>false</externalId>
+        <label>FATR_T2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FATR_T__c</fullName>
+        <description>Hyperresponsive Scale T Score
+30-140</description>
+        <externalId>false</externalId>
+        <label>FATR_T</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FDEP_R2__c</fullName>
+        <description>Depression Scale Raw Score
+9-36</description>
+        <externalId>false</externalId>
+        <label>FDEP_R2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FDEP_R__c</fullName>
+        <description>Depression Scale Raw Score
+9-36</description>
+        <externalId>false</externalId>
+        <label>FDEP_R</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FDEP_T2__c</fullName>
+        <description>Depression Scale T Score
+30-140</description>
+        <externalId>false</externalId>
+        <label>FDEP_T2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FDEP_T__c</fullName>
+        <description>Depression Scale T Score
+30-140</description>
+        <externalId>false</externalId>
+        <label>FDEP_T</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FDIS_R2__c</fullName>
+        <description>Dissociation Scale Raw Score
+9-36</description>
+        <externalId>false</externalId>
+        <label>FDIS_R2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FDIS_R__c</fullName>
+        <description>Dissociation Scale Raw Score
+9-36</description>
+        <externalId>false</externalId>
+        <label>FDIS_R</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FDIS_T2__c</fullName>
+        <description>Dissociation Scale T Score
+30-140</description>
+        <externalId>false</externalId>
+        <label>FDIS_T2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FDIS_T__c</fullName>
+        <description>Dissociation Scale T Score
+30-140</description>
+        <externalId>false</externalId>
+        <label>FDIS_T</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FDOATSCC__c</fullName>
+        <description>Briere/TSCC date of administration</description>
+        <externalId>false</externalId>
+        <label>FDOATSCC</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>FDOATSCYC__c</fullName>
+        <description>TSCYC date of administration</description>
+        <externalId>false</externalId>
+        <label>FDOATSCYC</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>FDOV__c</fullName>
+        <externalId>false</externalId>
+        <formula>Background_ID__r.FDOV__c</formula>
+        <label>FDOV</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>FPTSAR_R2__c</fullName>
+        <description>PTS Arousal Subscale Raw Score
+9-36</description>
+        <externalId>false</externalId>
+        <label>FPTSAR_R2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSAR_R__c</fullName>
+        <description>PTS Arousal Subscale Raw Score
+9-36</description>
+        <externalId>false</externalId>
+        <label>FPTSAR_R</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSAR_T2__c</fullName>
+        <description>PTS Arousal Subscale T Score
+30-140</description>
+        <externalId>false</externalId>
+        <label>FPTSAR_T2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSAR_T__c</fullName>
+        <description>PTS Arousal Subscale T Score
+30-140</description>
+        <externalId>false</externalId>
+        <label>FPTSAR_T</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSAV_R2__c</fullName>
+        <description>PTS Avoidance Subscale Raw Score
+9-36</description>
+        <externalId>false</externalId>
+        <label>FPTSAV_R2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSAV_R__c</fullName>
+        <description>PTS Avoidance Subscale Raw Score
+9-36</description>
+        <externalId>false</externalId>
+        <label>FPTSAV_R</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSAV_T2__c</fullName>
+        <description>PTS Avoidance Subscale T Score
+30-140</description>
+        <externalId>false</externalId>
+        <label>FPTSAV_T2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSAV_T__c</fullName>
+        <description>PTS Avoidance Subscale T Score
+30-140</description>
+        <externalId>false</externalId>
+        <label>FPTSAV_T</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSI_R2__c</fullName>
+        <description>PTS Intrusion Subscale Raw Score
+9-36</description>
+        <externalId>false</externalId>
+        <label>FPTSI_R2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSI_R__c</fullName>
+        <description>PTS Intrusion Subscale Raw Score
+9-36</description>
+        <externalId>false</externalId>
+        <label>FPTSI_R</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSI_T2__c</fullName>
+        <description>PTS Intrusion Subscale T Score
+30-140</description>
+        <externalId>false</externalId>
+        <label>FPTSI_T2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSI_T__c</fullName>
+        <description>PTS Intrusion Subscale T Score
+30-140</description>
+        <externalId>false</externalId>
+        <label>FPTSI_T</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSTOT_R2__c</fullName>
+        <description>PTS Total Scale Raw Score 27-108</description>
+        <externalId>false</externalId>
+        <label>FPTSTOT_R2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSTOT_R__c</fullName>
+        <description>PTS Total Scale Raw Score 27-108</description>
+        <externalId>false</externalId>
+        <label>FPTSTOT_R</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSTOT_T2__c</fullName>
+        <description>PTS Total Scale T Score 30-140</description>
+        <externalId>false</externalId>
+        <label>FPTSTOT_T2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FPTSTOT_T__c</fullName>
+        <description>PTS Total Scale T Score 30-140</description>
+        <externalId>false</externalId>
+        <label>FPTSTOT_T</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FRL_R2__c</fullName>
+        <description>Underresponsive Scale Raw Score
+0-9</description>
+        <externalId>false</externalId>
+        <label>FRL_R2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FRL_R__c</fullName>
+        <description>Underresponsive Scale Raw Score
+0-9</description>
+        <externalId>false</externalId>
+        <label>FRL_R</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FRL_T2__c</fullName>
+        <description>Underresponsive Scale T Score
+30-140</description>
+        <externalId>false</externalId>
+        <label>FRL_T2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FRL_T__c</fullName>
+        <description>Underresponsive Scale T Score
+30-140</description>
+        <externalId>false</externalId>
+        <label>FRL_T</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FSC_R2__c</fullName>
+        <description>Sexual Concerns Scale Raw Score
+9-36</description>
+        <externalId>false</externalId>
+        <label>FSC_R2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FSC_R__c</fullName>
+        <description>Sexual Concerns Scale Raw Score
+9-36</description>
+        <externalId>false</externalId>
+        <label>FSC_R</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FSC_T2__c</fullName>
+        <description>Sexual Concerns Scale T Score
+30-140</description>
+        <externalId>false</externalId>
+        <label>FSC_T2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FSC_T__c</fullName>
+        <description>Sexual Concerns Scale T Score
+30-140</description>
+        <externalId>false</externalId>
+        <label>FSC_T</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCAGG2__c</fullName>
+        <description>Briere: Anger - Num
+Raw: 0-27</description>
+        <externalId>false</externalId>
+        <label>FTSCAGG2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCAGG__c</fullName>
+        <description>Briere: Anger - Num
+Raw: 0-27</description>
+        <externalId>false</externalId>
+        <label>FTSCAGG</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCAGTN2__c</fullName>
+        <description>Briere: Anger T Score - Num
+30-140</description>
+        <externalId>false</externalId>
+        <label>FTSCAGTN2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCAGTN__c</fullName>
+        <description>Briere: Anger T Score - Num
+30-140</description>
+        <externalId>false</externalId>
+        <label>FTSCAGTN</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCAXN2__c</fullName>
+        <description>Briere: Anxiety - Num
+Raw: 0-27</description>
+        <externalId>false</externalId>
+        <label>FTSCAXN2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCAXN__c</fullName>
+        <description>Briere: Anxiety - Num
+Raw: 0-27</description>
+        <externalId>false</externalId>
+        <label>FTSCAXN</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCAXTN2__c</fullName>
+        <description>Briere: Anxiety T Score- Num
+30-140</description>
+        <externalId>false</externalId>
+        <label>FTSCAXTN2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCAXTN__c</fullName>
+        <description>Briere: Anxiety T Score- Num
+30-140</description>
+        <externalId>false</externalId>
+        <label>FTSCAXTN</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCDPN2__c</fullName>
+        <description>Briere: Depression - Num
+Raw: 0-27</description>
+        <externalId>false</externalId>
+        <label>FTSCDPN2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCDPN__c</fullName>
+        <description>Briere: Depression - Num
+Raw: 0-27</description>
+        <externalId>false</externalId>
+        <label>FTSCDPN</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCDPTN2__c</fullName>
+        <description>Briere: Depression T Score - Num
+30-140</description>
+        <externalId>false</externalId>
+        <label>FTSCDPTN2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCDPTN__c</fullName>
+        <description>Briere: Depression T Score - Num
+30-140</description>
+        <externalId>false</externalId>
+        <label>FTSCDPTN</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCDSN2__c</fullName>
+        <description>Briere: Dissociation - Num Raw: 0-30</description>
+        <externalId>false</externalId>
+        <label>FTSCDSN2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCDSN__c</fullName>
+        <description>Briere: Dissociation - Num Raw: 0-30</description>
+        <externalId>false</externalId>
+        <label>FTSCDSN</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCDSTN2__c</fullName>
+        <description>Briere: Dissociation T Score- Num
+30-140</description>
+        <externalId>false</externalId>
+        <label>FTSCDSTN2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCDSTN__c</fullName>
+        <description>Briere: Dissociation T Score- Num
+30-140</description>
+        <externalId>false</externalId>
+        <label>FTSCDSTN</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCFNN2__c</fullName>
+        <description>Briere: Fantasy - Num Raw: 0-9</description>
+        <externalId>false</externalId>
+        <label>FTSCFNN2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCFNN__c</fullName>
+        <description>Briere: Fantasy - Num Raw: 0-9</description>
+        <externalId>false</externalId>
+        <label>FTSCFNN</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCFNTN2__c</fullName>
+        <description>Briere: Fantasy T Score- Num
+30-140</description>
+        <externalId>false</externalId>
+        <label>FTSCFNTN2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCFNTN__c</fullName>
+        <description>Briere: Fantasy T Score- Num
+30-140</description>
+        <externalId>false</externalId>
+        <label>FTSCFNTN</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCHYN2__c</fullName>
+        <description>Briere: Hyperresponsive - Num Raw: 0-8</description>
+        <externalId>false</externalId>
+        <label>FTSCHYN2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCHYN__c</fullName>
+        <description>Briere: Hyperresponsive - Num Raw: 0-8</description>
+        <externalId>false</externalId>
+        <label>FTSCHYN</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCHYTN2__c</fullName>
+        <description>Briere: Hyperresponsive Tscore - Num
+30-140</description>
+        <externalId>false</externalId>
+        <label>FTSCHYTN2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCHYTN__c</fullName>
+        <description>Briere: Hyperresponsive Tscore - Num
+30-140</description>
+        <externalId>false</externalId>
+        <label>FTSCHYTN</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCNTN2__c</fullName>
+        <description>Briere: Underresponsive T Score- Num
+30-140</description>
+        <externalId>false</externalId>
+        <label>FTSCNTN2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCNTN__c</fullName>
+        <description>Briere: Underresponsive T Score- Num
+30-140</description>
+        <externalId>false</externalId>
+        <label>FTSCNTN</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCODN2__c</fullName>
+        <description>Briere: Overt Dissociation - Num Raw: 0-21</description>
+        <externalId>false</externalId>
+        <label>FTSCODN2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCODN__c</fullName>
+        <description>Briere: Overt Dissociation - Num Raw: 0-21</description>
+        <externalId>false</externalId>
+        <label>FTSCODN</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCODTN2__c</fullName>
+        <description>Briere: Overt Dissociation T Score - Num
+30-140</description>
+        <externalId>false</externalId>
+        <label>FTSCODTN2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCODTN__c</fullName>
+        <description>Briere: Overt Dissociation T Score - Num
+30-140</description>
+        <externalId>false</externalId>
+        <label>FTSCODTN</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCPTN2__c</fullName>
+        <description>Briere: Post Traumatic Stress - Num Raw: 0-30</description>
+        <externalId>false</externalId>
+        <label>FTSCPTN2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCPTN__c</fullName>
+        <description>Briere: Post Traumatic Stress - Num Raw: 0-30</description>
+        <externalId>false</externalId>
+        <label>FTSCPTN</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCPTTN2__c</fullName>
+        <description>Briere: Post Traumatic Stress T Score - Num
+30-140</description>
+        <externalId>false</externalId>
+        <label>FTSCPTTN2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCPTTN__c</fullName>
+        <description>Briere: Post Traumatic Stress T Score - Num 30-140</description>
+        <externalId>false</externalId>
+        <inlineHelpText>30-140</inlineHelpText>
+        <label>FTSCPTTN</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCUNN2__c</fullName>
+        <description>Briere: Underresponsive - Num Raw: 0-10</description>
+        <externalId>false</externalId>
+        <label>FTSCUNN2</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCUNN__c</fullName>
+        <description>Briere: Underresponsive - Num Raw: 0-10</description>
+        <externalId>false</externalId>
+        <label>FTSCUNN</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FTSCUNTN__c</fullName>
+        <description>Briere: Underresponsive T Score- Num 30-140</description>
+        <externalId>false</externalId>
+        <label>FTSCUNTN</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SECTION__c</fullName>
+        <externalId>false</externalId>
+        <label>SECTION</label>
+        <length>3</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>STATUS_TSCC_A__c</fullName>
+        <externalId>false</externalId>
+        <label>STATUS TSCC A</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Incomplete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Complete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>STATUS_TSCYC__c</fullName>
+        <externalId>false</externalId>
+        <label>STATUS TSCYC</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Incomplete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Complete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <label>DS TSCC TSCYC F</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>OBJECT_ID</columns>
+        <columns>NAME</columns>
+        <columns>Background_ID__c</columns>
+        <columns>Client__c</columns>
+        <columns>BDOV__c</columns>
+        <columns>FDOATSCYC__c</columns>
+        <columns>FDOATSCC__c</columns>
+        <columns>SECTION__c</columns>
+        <columns>STATUS_TSCYC__c</columns>
+        <columns>STATUS_TSCC_A__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>All1</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>DS TSCC TSCYC F Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>DS TSCC TSCYC F</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>TSCC_A_ANG_Raw_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FTSCAGG__c  &lt;&gt;  FTSCAGG2__c</errorConditionFormula>
+        <errorDisplayField>FTSCAGG2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Anger Raw</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_ANG_Raw_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT( 
+            (FTSCAGG__c&gt;=0)&amp;&amp;
+            (FTSCAGG__c&lt;=27)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCAGG__c)
+             )
+            &amp;&amp;
+            NOT(
+            FTSCAGG__c = 999)</errorConditionFormula>
+        <errorDisplayField>FTSCAGG__c</errorDisplayField>
+        <errorMessage>The Raw Score entered for Anger is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_ANG_T_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FTSCAGTN__c  &lt;&gt;  FTSCAGTN2__c</errorConditionFormula>
+        <errorDisplayField>FTSCAGTN2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Anger T-Score</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_ANG_T_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            ( FTSCAGTN__c &gt;= 30) &amp;&amp;
+            (FTSCAGTN__c &lt;= 140)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCAGTN__c)
+             )
+            &amp;&amp;
+            NOT(
+            FTSCAGTN__c = 0)</errorConditionFormula>
+        <errorDisplayField>FTSCAGTN__c</errorDisplayField>
+        <errorMessage>The T-Score entered for Anger is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_ANX_Raw_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FTSCAXN__c  &lt;&gt;  FTSCAXN2__c</errorConditionFormula>
+        <errorDisplayField>FTSCAXN2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Anxiety Raw</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_ANX_Raw_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FTSCAXN__c&gt;=0)&amp;&amp;
+            (FTSCAXN__c &lt;= 27)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCAXN__c)
+             )
+            &amp;&amp;
+            NOT(
+            FTSCAXN__c = 999)</errorConditionFormula>
+        <errorDisplayField>FTSCAXN__c</errorDisplayField>
+        <errorMessage>The Raw Score entered for Anxiety is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_ANX_T_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FTSCAXTN__c  &lt;&gt;  FTSCAXTN2__c</errorConditionFormula>
+        <errorDisplayField>FTSCAXTN2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Anxiety T-Score</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_ANX_T_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FTSCAXTN__c&gt;=30)&amp;&amp;
+            (FTSCAXTN__c &lt;= 140)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCAXTN__c)
+             )
+            &amp;&amp;
+            NOT(
+            FTSCAXTN__c = 0)</errorConditionFormula>
+        <errorDisplayField>FTSCAXTN__c</errorDisplayField>
+        <errorMessage>The T-Score entered for Anxiety is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_DEP_Raw_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FTSCDPN__c  &lt;&gt;  FTSCDPN2__c</errorConditionFormula>
+        <errorDisplayField>FTSCDPN2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Depression Raw</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_DEP_Raw_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FTSCDPN__c&gt;=0)&amp;&amp;
+            (FTSCDPN__c &lt;= 27)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCDPN__c)
+             )
+            &amp;&amp;
+            NOT(
+            FTSCDPN__c = 999)</errorConditionFormula>
+        <errorDisplayField>FTSCDPN__c</errorDisplayField>
+        <errorMessage>The Raw Score entered for Depression is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_DEP_T_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FTSCDPTN__c  &lt;&gt;  FTSCDPTN2__c</errorConditionFormula>
+        <errorDisplayField>FTSCDPTN2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Depression T-Score</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_DEP_T_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FTSCDPTN__c&gt;=30)&amp;&amp;
+            (FTSCDPTN__c &lt;= 140)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCDPTN__c)
+             )
+            &amp;&amp;
+            NOT(
+            FTSCDPTN__c = 0)</errorConditionFormula>
+        <errorDisplayField>FTSCDPTN__c</errorDisplayField>
+        <errorMessage>The T-Score entered for Depression is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_DIS_F_Raw_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FTSCFNN__c  &lt;&gt;  FTSCFNN2__c</errorConditionFormula>
+        <errorDisplayField>FTSCFNN2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Fantasy Raw</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_DIS_F_Raw_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FTSCFNN__c&gt;=0)&amp;&amp;
+            (FTSCFNN__c &lt;= 9)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCFNN__c)
+             )
+            &amp;&amp;
+            NOT(
+            FTSCFNN__c = 999)</errorConditionFormula>
+        <errorDisplayField>FTSCFNN__c</errorDisplayField>
+        <errorMessage>The Raw Score entered for Fantasy is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_DIS_F_T_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FTSCFNTN__c  &lt;&gt;  FTSCFNTN2__c</errorConditionFormula>
+        <errorDisplayField>FTSCFNTN2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Fantasy T-Score</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_DIS_F_T_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FTSCFNTN__c&gt;=30)&amp;&amp;
+            (FTSCFNTN__c &lt;= 140)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCFNTN__c)
+             )
+            &amp;&amp;
+            NOT(
+            FTSCFNTN__c = 0)</errorConditionFormula>
+        <errorDisplayField>FTSCFNTN__c</errorDisplayField>
+        <errorMessage>The T-Score entered for Fantasy is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_DIS_O_Raw_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FTSCODN__c  &lt;&gt;  FTSCODN2__c</errorConditionFormula>
+        <errorDisplayField>FTSCODN2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Overt Dissociation Raw</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_DIS_O_Raw_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FTSCODN__c&gt;=0)&amp;&amp;
+            (FTSCODN__c &lt;= 21)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCODN__c)
+             )
+            &amp;&amp;
+            NOT(
+            FTSCODN__c = 999)</errorConditionFormula>
+        <errorDisplayField>FTSCODN__c</errorDisplayField>
+        <errorMessage>The Raw Score entered for Overt Dissociation is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_DIS_O_T_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FTSCODTN__c  &lt;&gt;  FTSCODTN2__c</errorConditionFormula>
+        <errorDisplayField>FTSCODTN2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Overt Dissociation T-Score</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_DIS_O_T_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FTSCODTN__c&gt;=30)&amp;&amp;
+            (FTSCODTN__c &lt;= 140)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCODTN__c)
+             )
+            &amp;&amp;
+            NOT(
+            FTSCODTN__c = 0)</errorConditionFormula>
+        <errorDisplayField>FTSCODTN__c</errorDisplayField>
+        <errorMessage>The T-Score entered for Overt Dissociation is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_DIS_Raw_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FTSCDSN__c  &lt;&gt;  FTSCDSN2__c</errorConditionFormula>
+        <errorDisplayField>FTSCDSN2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Dissociation Raw</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_DIS_Raw_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FTSCDSN__c&gt;=0)&amp;&amp;
+            (FTSCDSN__c &lt;= 30)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCDSN__c)
+             )
+            &amp;&amp;
+            NOT(
+            FTSCDSN__c = 999)</errorConditionFormula>
+        <errorDisplayField>FTSCDSN__c</errorDisplayField>
+        <errorMessage>The Raw Score entered for Dissociation is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_DIS_T_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FTSCDSTN__c  &lt;&gt;  FTSCDSTN2__c</errorConditionFormula>
+        <errorDisplayField>FTSCDSTN2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Dissociation T-Score</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_DIS_T_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FTSCDSTN__c&gt;=30)&amp;&amp;
+            (FTSCDSTN__c &lt;= 140)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCDSTN__c)
+             )
+            &amp;&amp;
+            NOT(
+            FTSCDSTN__c = 0)</errorConditionFormula>
+        <errorDisplayField>FTSCDSTN__c</errorDisplayField>
+        <errorMessage>The T-Score entered for Dissociation is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_HYP_Raw_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FTSCHYN__c  &lt;&gt;  FTSCHYN2__c</errorConditionFormula>
+        <errorDisplayField>FTSCHYN2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Hyperresponsive Raw</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_HYP_Raw_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FTSCHYN__c&gt;=0)&amp;&amp;
+            (FTSCHYN__c &lt;= 8)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCHYN__c)
+             )
+            &amp;&amp;
+            NOT(
+            FTSCHYN__c = 999)</errorConditionFormula>
+        <errorDisplayField>FTSCHYN__c</errorDisplayField>
+        <errorMessage>The Raw Score entered for Hyperresponsive is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_HYP_T_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FTSCHYTN__c  &lt;&gt;  FTSCHYTN2__c</errorConditionFormula>
+        <errorDisplayField>FTSCHYTN2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Hyperresponsive T-Score</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_HYP_T_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FTSCHYTN__c&gt;=30)&amp;&amp;
+            (FTSCHYTN__c &lt;= 140)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCHYTN__c)
+             )
+            &amp;&amp;
+            NOT(
+            FTSCHYTN__c = 0)</errorConditionFormula>
+        <errorDisplayField>FTSCHYTN__c</errorDisplayField>
+        <errorMessage>The T-Score entered for Hyperresponsive is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_PTS_Raw_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FTSCPTN__c  &lt;&gt;  FTSCPTN2__c</errorConditionFormula>
+        <errorDisplayField>FTSCPTN2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Posttraumatic Stress Raw</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_PTS_Raw_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FTSCPTN__c&gt;=0)&amp;&amp;
+            (FTSCPTN__c &lt;= 30)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCPTN__c)
+             )
+            &amp;&amp;
+            NOT(
+            FTSCPTN__c = 999)</errorConditionFormula>
+        <errorDisplayField>FTSCPTN__c</errorDisplayField>
+        <errorMessage>The Raw Score entered for Posttraumatic Stress is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_PTS_T_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FTSCPTTN__c  &lt;&gt;  FTSCPTTN2__c</errorConditionFormula>
+        <errorDisplayField>FTSCPTTN2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Posttraumatic Stress T-Score</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_PTS_T_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FTSCPTTN__c&gt;=30)&amp;&amp;
+            (FTSCPTTN__c &lt;= 140)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCPTTN__c)
+             )
+            &amp;&amp;
+            NOT(
+            FTSCPTTN__c = 0)</errorConditionFormula>
+        <errorDisplayField>FTSCPTTN__c</errorDisplayField>
+        <errorMessage>The T-Score entered for Posttraumatic Stress is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_UND_Raw_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FTSCUNN__c  &lt;&gt;  FTSCUNN2__c</errorConditionFormula>
+        <errorDisplayField>FTSCUNN2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Underresponsive Raw</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_UND_Raw_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FTSCUNN__c&gt;=0)&amp;&amp;
+            (FTSCUNN__c &lt;= 10)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCUNN__c)
+             )
+            &amp;&amp;
+            NOT(
+            FTSCUNN__c = 999)</errorConditionFormula>
+        <errorDisplayField>FTSCUNN__c</errorDisplayField>
+        <errorMessage>The Raw Score entered for Underresponsive is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_UND_T_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FTSCNTN__c  &lt;&gt;  FTSCNTN2__c</errorConditionFormula>
+        <errorDisplayField>FTSCNTN2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Underresponsive T-Score</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_UND_T_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FTSCNTN__c&gt;=30)&amp;&amp;
+            (FTSCNTN__c &lt;= 140)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FTSCNTN__c)
+             )
+            &amp;&amp;
+            NOT(
+            FTSCNTN__c = 0)</errorConditionFormula>
+        <errorDisplayField>FTSCNTN__c</errorDisplayField>
+        <errorMessage>The T-Score entered for Underresponsive is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_date_cannot_be_before_FDOV</fullName>
+        <active>true</active>
+        <errorConditionFormula>FDOV__c &gt; FDOATSCC__c</errorConditionFormula>
+        <errorDisplayField>FDOATSCC__c</errorDisplayField>
+        <errorMessage>Follow-Up TSCC-A date of administration cannot be before Follow-Up date of visit.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_date_cannot_be_before_birth</fullName>
+        <active>true</active>
+        <errorConditionFormula>Client__r.DOB1__c &gt;FDOATSCC__c</errorConditionFormula>
+        <errorDisplayField>FDOATSCC__c</errorDisplayField>
+        <errorMessage>Follow-Up date of administration cannot be before birth.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCC_A_date_cannot_be_future</fullName>
+        <active>true</active>
+        <errorConditionFormula>FDOATSCC__c &gt; TODAY()</errorConditionFormula>
+        <errorDisplayField>FDOATSCC__c</errorDisplayField>
+        <errorMessage>Enter a valid date.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_ANG_Raw_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FANG_R__c  &lt;&gt;  FANG_R2__c</errorConditionFormula>
+        <errorDisplayField>FANG_R2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Anger Raw</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_ANG_Raw_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FANG_R__c&gt;=9)&amp;&amp;
+            (FANG_R__c &lt;= 36)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FANG_R__c)
+             )
+            &amp;&amp;
+            NOT(
+            FANG_R__c = 999)</errorConditionFormula>
+        <errorDisplayField>FANG_R__c</errorDisplayField>
+        <errorMessage>The RawScore entered for Anger is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_ANG_T_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FANG_T__c  &lt;&gt;  FANG_T2__c</errorConditionFormula>
+        <errorDisplayField>FANG_T2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Anger T-Score</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_ANG_T_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FANG_T__c&gt;=30)&amp;&amp;
+            (FANG_T__c &lt;= 140)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FANG_T__c)
+             )
+            &amp;&amp;
+            NOT(
+            FANG_T__c = 0)</errorConditionFormula>
+        <errorDisplayField>FANG_T__c</errorDisplayField>
+        <errorMessage>The T-Score entered for Anger is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_ANX_Raw_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FANX_R__c  &lt;&gt;  FANX_R2__c</errorConditionFormula>
+        <errorDisplayField>FANX_R2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Anxiety Raw</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_ANX_Raw_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FANX_R__c&gt;=9)&amp;&amp;
+            (FANX_R__c &lt;= 36)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FANX_R__c)
+             )
+            &amp;&amp;
+            NOT(
+            FANX_R__c = 999)</errorConditionFormula>
+        <errorDisplayField>FANX_R__c</errorDisplayField>
+        <errorMessage>The Raw Score entered for Anxiety is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_ANX_T_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FANX_T__c  &lt;&gt;  FANX_T2__c</errorConditionFormula>
+        <errorDisplayField>FANX_T2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Anxiety T-Score</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_ANX_T_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FANX_T__c&gt;=30)&amp;&amp;
+            (FANX_T__c &lt;= 140)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FANX_T__c)
+             )
+            &amp;&amp;
+            NOT(
+            FANX_T__c = 0)</errorConditionFormula>
+        <errorDisplayField>FANX_T__c</errorDisplayField>
+        <errorMessage>The T-Score entered for Anxiety is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_ATR_Raw_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FATR_R__c  &lt;&gt;  FATR_R2__c</errorConditionFormula>
+        <errorDisplayField>FATR_R2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Atypical Response Raw</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_ATR_Raw_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FATR_R__c&gt;=9)&amp;&amp;
+            (FATR_R__c &lt;= 36)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FATR_R__c)
+             )
+            &amp;&amp;
+            NOT(
+            FATR_R__c = 999)</errorConditionFormula>
+        <errorDisplayField>FATR_R__c</errorDisplayField>
+        <errorMessage>The Raw Score entered for Atypical Response is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_ATR_T_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FATR_T__c  &lt;&gt;  FATR_T2__c</errorConditionFormula>
+        <errorDisplayField>FATR_T2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Atypical Response T-Score</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_ATR_T_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FATR_T__c&gt;=30)&amp;&amp;
+            (FATR_T__c &lt;= 140)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FATR_T__c)
+             )
+            &amp;&amp;
+            NOT(
+            FATR_T__c = 0)</errorConditionFormula>
+        <errorDisplayField>FATR_T__c</errorDisplayField>
+        <errorMessage>The T-Score entered for Atypical Response is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_DEP_Raw_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FDEP_R__c  &lt;&gt;  FDEP_R2__c</errorConditionFormula>
+        <errorDisplayField>FDEP_R2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Depression Raw</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_DEP_Raw_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FDEP_R__c&gt;=9)&amp;&amp;
+            (FDEP_R__c &lt;= 36)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FDEP_R__c)
+             )
+            &amp;&amp;
+            NOT(
+            FDEP_R__c = 999)</errorConditionFormula>
+        <errorDisplayField>FDEP_R__c</errorDisplayField>
+        <errorMessage>The Raw Score entered for Depression is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_DEP_T_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FDEP_T__c  &lt;&gt;  FDEP_T2__c</errorConditionFormula>
+        <errorDisplayField>FDEP_T2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Depression T-Score</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_DEP_T_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FDEP_T__c&gt;=30)&amp;&amp;
+            (FDEP_T__c &lt;= 140)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FDEP_T__c)
+             )
+            &amp;&amp;
+            NOT(
+            FDEP_T__c = 0)</errorConditionFormula>
+        <errorDisplayField>FDEP_T__c</errorDisplayField>
+        <errorMessage>The T-Score entered for Depression is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_DIS_Raw_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FDIS_R__c  &lt;&gt;  FDIS_R2__c</errorConditionFormula>
+        <errorDisplayField>FDIS_R2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Dissociation Raw</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_DIS_Raw_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FDIS_R__c&gt;=9)&amp;&amp;
+            (FDIS_R__c &lt;= 36)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FDIS_R__c)
+             )
+            &amp;&amp;
+            NOT(
+            FDIS_R__c = 999)</errorConditionFormula>
+        <errorDisplayField>FDIS_R__c</errorDisplayField>
+        <errorMessage>The Raw Score entered for Dissociation is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_DIS_T_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FDIS_T__c  &lt;&gt;  FDIS_T2__c</errorConditionFormula>
+        <errorDisplayField>FDIS_T2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Dissociation T-Score</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_DIS_T_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FDIS_T__c&gt;=30)&amp;&amp;
+            (FDIS_T__c &lt;= 140)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FDIS_T__c)
+             )
+            &amp;&amp;
+            NOT(
+            FDIS_T__c = 0)</errorConditionFormula>
+        <errorDisplayField>FDIS_T__c</errorDisplayField>
+        <errorMessage>The T-Score entered for Dissociation is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_PTS_AR_Raw_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FPTSAR_R__c  &lt;&gt;  FPTSAR_R2__c</errorConditionFormula>
+        <errorDisplayField>FPTSAR_R2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Posttraumatic Stress-Arousal Raw</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_PTS_AR_Raw_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FPTSAR_R__c&gt;=9)&amp;&amp;
+            (FPTSAR_R__c &lt;= 36)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FPTSAR_R__c)
+             )
+            &amp;&amp;
+            NOT(
+            FPTSAR_R__c = 999)</errorConditionFormula>
+        <errorDisplayField>FPTSAR_R__c</errorDisplayField>
+        <errorMessage>The Raw Score entered for Posttraumatic Stress-Arousal is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_PTS_AR_T_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FPTSAR_T__c  &lt;&gt;  FPTSAR_T2__c</errorConditionFormula>
+        <errorDisplayField>FPTSAR_T2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Posttraumatic Stress-Arousal T-Score</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_PTS_AR_T_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FPTSAR_T__c&gt;=30)&amp;&amp;
+            (FPTSAR_T__c &lt;= 140)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FPTSAR_T__c)
+             )
+            &amp;&amp;
+            NOT(
+            FPTSAR_T__c = 0)</errorConditionFormula>
+        <errorDisplayField>FPTSAR_T__c</errorDisplayField>
+        <errorMessage>The T-Score entered for Posttraumatic Stress-Arousal is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_PTS_AV_Raw_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FPTSAV_R__c  &lt;&gt;  FPTSAV_R2__c</errorConditionFormula>
+        <errorDisplayField>FPTSAV_R2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Posttraumatic Stress-Avoidance Raw</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_PTS_AV_Raw_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FPTSAV_R__c&gt;=9)&amp;&amp;
+            (FPTSAV_R__c &lt;= 36)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FPTSAV_R__c)
+             )
+            &amp;&amp;
+            NOT(
+            FPTSAV_R__c = 999)</errorConditionFormula>
+        <errorDisplayField>FPTSAV_R__c</errorDisplayField>
+        <errorMessage>The Raw Score entered for Posttraumatic Stress-Avoidance is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_PTS_AV_T_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FPTSAV_T__c  &lt;&gt;  FPTSAV_T2__c</errorConditionFormula>
+        <errorDisplayField>FPTSAV_T2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Posttraumatic Stress-Avoidance T-Score</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_PTS_AV_T_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FPTSAV_T__c&gt;=30)&amp;&amp;
+            (FPTSAV_T__c &lt;= 140)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FPTSAV_T__c)
+             )
+            &amp;&amp;
+            NOT(
+            FPTSAV_T__c = 0)</errorConditionFormula>
+        <errorDisplayField>FPTSAV_T__c</errorDisplayField>
+        <errorMessage>The T-Score entered for Posttraumatic Stress-Avoidance is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_PTS_I_Raw_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FPTSI_R__c  &lt;&gt;  FPTSI_R2__c</errorConditionFormula>
+        <errorDisplayField>FPTSI_R2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Posttraumatic Stress-Intrusion Raw</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_PTS_I_Raw_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FPTSI_R__c&gt;=9)&amp;&amp;
+            (FPTSI_R__c &lt;= 36)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FPTSI_R__c)
+             )
+            &amp;&amp;
+            NOT(
+            FPTSI_R__c = 999)</errorConditionFormula>
+        <errorDisplayField>FPTSI_R__c</errorDisplayField>
+        <errorMessage>The Raw Score entered for Posttraumatic Stress-Intrusion is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_PTS_I_T_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FPTSI_T__c  &lt;&gt;  FPTSI_T2__c</errorConditionFormula>
+        <errorDisplayField>FPTSI_T2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Posttraumatic Stress-Intrusion T-Score</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_PTS_I_T_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FPTSI_T__c&gt;=30)&amp;&amp;
+            (FPTSI_T__c &lt;= 140)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FPTSI_T__c)
+             )
+            &amp;&amp;
+            NOT(
+            FPTSI_T__c = 0)</errorConditionFormula>
+        <errorDisplayField>FPTSI_T__c</errorDisplayField>
+        <errorMessage>The T-Score entered for Posttraumatic Stress-Intrusion is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_PTS_TOT_Raw_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FPTSTOT_R__c  &lt;&gt;  FPTSTOT_R2__c</errorConditionFormula>
+        <errorDisplayField>FPTSTOT_R2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Posttraumatic Stress-Total Raw</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_PTS_TOT_Raw_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FPTSTOT_R__c&gt;=27)&amp;&amp;
+            (FPTSTOT_R__c &lt;= 108)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FPTSTOT_R__c)
+             )
+            &amp;&amp;
+            NOT(
+            FPTSTOT_R__c = 999)</errorConditionFormula>
+        <errorDisplayField>FPTSTOT_R__c</errorDisplayField>
+        <errorMessage>The  Raw Score entered for Posttraumatic Stress-Total is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_PTS_TOT_T_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FPTSTOT_T__c  &lt;&gt;  FPTSTOT_T2__c</errorConditionFormula>
+        <errorDisplayField>FPTSTOT_T2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Posttraumatic Stress-Total T-Score</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_PTS_TOT_T_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FPTSTOT_T__c &gt;= 30) &amp;&amp;
+            (FPTSTOT_T__c &lt;= 140)
+            )
+            &amp;&amp; 
+            NOT(
+             ISNULL(FPTSTOT_T__c) 
+             )
+            &amp;&amp;
+            NOT(
+            FPTSTOT_T__c = 0)</errorConditionFormula>
+        <errorDisplayField>FPTSTOT_T__c</errorDisplayField>
+        <errorMessage>The T-Score entered for Posttraumatic Stress-Total is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_RL_Raw_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FRL_R__c  &lt;&gt;  FRL_R2__c</errorConditionFormula>
+        <errorDisplayField>FRL_R2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Response Level Raw</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_RL_Raw_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FRL_R__c&gt;=0)&amp;&amp;
+            (FRL_R__c &lt;= 9)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FRL_R__c)
+             )
+            &amp;&amp;
+            NOT(
+            FRL_R__c = 999)</errorConditionFormula>
+        <errorDisplayField>FRL_R__c</errorDisplayField>
+        <errorMessage>The Raw Score entered for Response Level is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_RL_T_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FRL_T__c  &lt;&gt;  FRL_T2__c</errorConditionFormula>
+        <errorDisplayField>FRL_T2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Response Level T-Score</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_RL_T_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FRL_T__c&gt;=30)&amp;&amp;
+            (FRL_T__c &lt;= 140)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FRL_T__c)
+             )
+            &amp;&amp;
+            NOT(
+            FRL_T__c = 0)</errorConditionFormula>
+        <errorDisplayField>FRL_T__c</errorDisplayField>
+        <errorMessage>The T-Score entered for Response Level is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_SC_Raw_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FSC_R__c  &lt;&gt;  FSC_R2__c</errorConditionFormula>
+        <errorDisplayField>FSC_R2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Sexual Concerns Raw</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_SC_Raw_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FSC_R__c&gt;=9)&amp;&amp;
+            (FSC_R__c &lt;= 36)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FSC_R__c)
+             )
+            &amp;&amp;
+            NOT(
+            FSC_R__c = 999)</errorConditionFormula>
+        <errorDisplayField>FSC_R__c</errorDisplayField>
+        <errorMessage>The Raw Score entered for Sexual Concerns is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_SC_T_double_entry_mismatch</fullName>
+        <active>true</active>
+        <errorConditionFormula>FSC_T__c  &lt;&gt;  FSC_T2__c</errorConditionFormula>
+        <errorDisplayField>FSC_T2__c</errorDisplayField>
+        <errorMessage>Double entry does not match for this score: Sexual Concerns T-Score</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_SC_T_out_of_range</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(
+            (FSC_T__c&gt;=30)&amp;&amp;
+            (FSC_T__c &lt;= 140)
+            )
+            &amp;&amp;
+            NOT(
+            ISNULL(FSC_T__c)
+             )
+            &amp;&amp;
+            NOT(
+            FSC_T__c = 0)</errorConditionFormula>
+        <errorDisplayField>FSC_T__c</errorDisplayField>
+        <errorMessage>The T-Score entered for Sexual Concerns is out of range. Please enter a valid score.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_date_cannot_be_before_FDOV</fullName>
+        <active>true</active>
+        <errorConditionFormula>FDOV__c &gt; FDOATSCYC__c</errorConditionFormula>
+        <errorDisplayField>FDOATSCYC__c</errorDisplayField>
+        <errorMessage>Follow-Up TSCYC date of administration cannot be before Follow-Up date of visit.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_date_cannot_be_before_birth</fullName>
+        <active>true</active>
+        <errorConditionFormula>Client__r.DOB1__c &gt;FDOATSCYC__c</errorConditionFormula>
+        <errorDisplayField>FDOATSCYC__c</errorDisplayField>
+        <errorMessage>Follow-Up date of administration cannot be before birth.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TSCYC_date_cannot_be_future</fullName>
+        <active>true</active>
+        <errorConditionFormula>FDOATSCYC__c &gt; TODAY()</errorConditionFormula>
+        <errorDisplayField>FDOATSCYC__c</errorDisplayField>
+        <errorMessage>Enter a valid date.</errorMessage>
+    </validationRules>
+</CustomObject>

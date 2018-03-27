@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_37361414</developerName>
+        <masterLabel>Ages 1.5-5, 6-11, 12-18</masterLabel>
+        <nullTreatment>z</nullTreatment>
+        <sourceColumnName>Client__c.AGE__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>5</to>
+            </sourceValues>
+            <value>Ages 1.5-5</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>5</from>
+                <to>11</to>
+            </sourceValues>
+            <value>Ages 6-11</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>11</from>
+            </sourceValues>
+            <value>Ages 12-18</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>CHILD_NAME</field>
+    </columns>
+    <columns>
+        <field>DS_CBCL_F__c.FDOV__c</field>
+    </columns>
+    <columns>
+        <field>DS_CBCL_F__c.FDOACY__c</field>
+    </columns>
+    <columns>
+        <field>DS_CBCL_F__c.FDOACO__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>DS_CBCL_F__c.FCBIBRNY__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>DS_CBCL_F__c.FCBEBRNY__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>DS_CBCL_F__c.FCBTSRNY__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>DS_CBCL_F__c.FCBIBRN__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>DS_CBCL_F__c.FCBEBRN__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>DS_CBCL_F__c.FCBTSRN__c</field>
+    </columns>
+    <description>This report displays the follow up CBCL scores. Date of administration can be modified using the FDOACY (young) field and the FDOACO (old) field. Young = 1-5 and Old = 6-18.</description>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_37361414</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Client__c.GENDER__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>qCBCL Follow Up Scores</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntityCustomEntity$Client__c$DS_CBCL_F__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>DS_CBCL_F__c.FDOACY__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>DS_SDQ_PSI_CDI_B__c.BDOV__c</field>
+    </columns>
+    <columns>
+        <field>DS_SDQ_PSI_CDI_B__c.BDOAPSI__c</field>
+    </columns>
+    <description>DOA</description>
+    <filter>
+        <criteriaItems>
+            <column>CUST_NAME</column>
+            <operator>greaterThan</operator>
+            <value>1004-00-0000</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>PSI</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntityCustomEntity$Client__c$DS_SDQ_PSI_CDI_B__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Client__c.DOB1__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

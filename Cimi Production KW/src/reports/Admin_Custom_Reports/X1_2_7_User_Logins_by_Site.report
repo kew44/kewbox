@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_22083981</developerName>
+        <masterLabel>Sites</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>ROLE</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>(3057-00) University of Kentucky</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3057-00-04) Sarah Ascienzo</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3057-00-08) Caroline Adams</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3057-00-06) Jodie Koch</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3057-00-15) Justin Benton</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3057-00-14) Galen McIntosh</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3057-00-16) Briana Jurrema</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3057-00-19) Dani Rosenkrantz</sourceValue>
+            </sourceValues>
+            <value>3057 UKY</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>(3123-00-08) Holly Trimble</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3123-00) Youth and Family Services, Inc.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3123-00-01) Rebecca Dodds</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3123-00-09) Emily Aberson</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3123-00-05) Jodi Burke</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3123-00-12) Katrina de los Santos</sourceValue>
+            </sourceValues>
+            <value>3123 YFS</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>(3071-00) Children&apos;s Research Triangle</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3071-00-02) Stefanie Ward</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3071-00-19) Mikhael Yitref</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3071-00-13) John Gobby</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3071-00-20) Tracy De</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3071-00-12) Tiffany Conroy</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3071-00-23) Soo Young Lee</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3071-00-06) Joyce Chestek</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3071-00-26) Amanda Mendoza</sourceValue>
+            </sourceValues>
+            <value>3071 CRT</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>(3063-02-01) Ceara Alexander</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3063-02-02) Becky Haskins</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3063-00) Chaddock Trauma Initiative</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3063-02-10) Kaylee Will</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3063-02-11) Karen Epley</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3063-02-09) Amanda Becks</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3063-02-07) Karen Epley</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3063-02-05) Deandra Bockhold</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3063-02) Chaddock Residential</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3063-03) Chaddock School</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3063-03-04) Courtney Bentley</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3063-02-08) Melissa Felsman</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3063-03-03) Nicole Treadway</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3063-01) Chaddock Family Solutions</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3063-01-04) Kirsty Reed</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3063-03-06) Katie Powell</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3063-03-07) Melissa Felsman</sourceValue>
+            </sourceValues>
+            <value>3063 Chaddock</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>VerticalColumnStacked</chartType>
+        <enableHoverLabels>true</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>BucketField_22083981</groupingColumn>
+        <legendPosition>Bottom</legendPosition>
+        <location>CHART_TOP</location>
+        <secondaryGroupingColumn>FULL_NAME</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <title>1.2.7 User Logins by Site</title>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>ALIAS</field>
+    </columns>
+    <columns>
+        <field>LOGIN_IP</field>
+    </columns>
+    <columns>
+        <field>BROWSER_TYPE</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>ALIAS</column>
+            <operator>notEqual</operator>
+            <value>Admin</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PROFILE</column>
+            <operator>notContain</operator>
+            <value>Power User</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>LOGIN_STATUS</column>
+            <operator>equals</operator>
+            <value>Success</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ROLE</column>
+            <operator>notContain</operator>
+            <value>1002-00</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_22083981</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FULL_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>LOGIN_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>1.2.7 User Logins by Site</name>
+    <params>
+        <name>active</name>
+        <value>active</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>User</reportType>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>LOGIN_DATETIME</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-09-20</startDate>
+    </timeFrameFilter>
+</Report>

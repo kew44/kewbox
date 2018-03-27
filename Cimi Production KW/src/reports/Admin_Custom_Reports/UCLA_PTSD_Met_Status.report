@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Client__c.AGE__c</field>
+    </columns>
+    <columns>
+        <field>DS_PTSD_CA_B__c.BDOAPTSD__c</field>
+    </columns>
+    <columns>
+        <field>DS_PTSD_CA_B__c.BPTSBMN__c</field>
+    </columns>
+    <columns>
+        <field>DS_PTSD_CA_B__c.BPTSCMN__c</field>
+    </columns>
+    <columns>
+        <field>DS_PTSD_CA_B__c.BPTSDMN__c</field>
+    </columns>
+    <columns>
+        <field>DS_PTSD_CA_B__c.BPTSEMN__c</field>
+    </columns>
+    <columns>
+        <field>DS_PTSD_CA_B__c.BPTSVDSN__c</field>
+    </columns>
+    <columns>
+        <field>DS_PTSD_CA_B__c.BPTSORN__c</field>
+    </columns>
+    <description>Table of met status for each scale item</description>
+    <filter>
+        <criteriaItems>
+            <column>CUST_NAME</column>
+            <operator>greaterThan</operator>
+            <value>1004-00-0000</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>UCLA PTSD Met Status</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntityCustomEntity$Client__c$DS_PTSD_CA_B__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Client__c.DOB1__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

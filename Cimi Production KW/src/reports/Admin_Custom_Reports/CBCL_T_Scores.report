@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Client__c.AGE__c</field>
+    </columns>
+    <columns>
+        <field>DS_CBCL_B__c.BDOACO__c</field>
+    </columns>
+    <columns>
+        <field>DS_CBCL_B__c.BDOACY__c</field>
+    </columns>
+    <columns>
+        <field>DS_CBCL_B__c.BCBEBTN__c</field>
+    </columns>
+    <columns>
+        <field>DS_CBCL_B__c.BCBEBTNY__c</field>
+    </columns>
+    <columns>
+        <field>DS_CBCL_B__c.BCBIBTN__c</field>
+    </columns>
+    <columns>
+        <field>DS_CBCL_B__c.BCBIBRNY__c</field>
+    </columns>
+    <columns>
+        <field>DS_CBCL_B__c.BCBTSTN__c</field>
+    </columns>
+    <columns>
+        <field>DS_CBCL_B__c.BCBTSTNY__c</field>
+    </columns>
+    <description>Total, Intern, Ext for 1.5-5 and 6-18</description>
+    <filter>
+        <criteriaItems>
+            <column>CUST_NAME</column>
+            <operator>greaterThan</operator>
+            <value>1004-00-000</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>CBCL T Scores</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntityCustomEntity$Client__c$DS_CBCL_B__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Client__c.DOB1__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

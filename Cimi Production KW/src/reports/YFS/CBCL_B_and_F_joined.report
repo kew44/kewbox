@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <block>
+        <blockInfo>
+            <blockId>B1</blockId>
+            <joinTable>x</joinTable>
+        </blockInfo>
+        <columns>
+            <field>CUST_NAME</field>
+        </columns>
+        <columns>
+            <field>DS_CBCL_B__c.BDOV__c</field>
+        </columns>
+        <columns>
+            <field>DS_CBCL_B__c.BDOACY__c</field>
+        </columns>
+        <columns>
+            <field>DS_CBCL_B__c.STATUS_CBCL_0_5__c</field>
+        </columns>
+        <columns>
+            <field>DS_CBCL_B__c.BDOACO__c</field>
+        </columns>
+        <columns>
+            <field>DS_CBCL_B__c.STATUS_CBCL_6_18__c</field>
+        </columns>
+        <columns>
+            <field>Client__c.Clinician__c</field>
+        </columns>
+        <format>Summary</format>
+        <name>Clients with DS CBCL B block 1</name>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>CustomEntityCustomEntity$Client__c$DS_CBCL_B__c</reportType>
+        <scope>organization</scope>
+        <sortColumn>DS_CBCL_B__c.BDOV__c</sortColumn>
+        <sortOrder>Asc</sortOrder>
+        <timeFrameFilter>
+            <dateColumn>Client__c.DOB1__c</dateColumn>
+            <interval>INTERVAL_CUSTOM</interval>
+        </timeFrameFilter>
+    </block>
+    <block>
+        <blockInfo>
+            <blockId>B0</blockId>
+            <joinTable>x</joinTable>
+        </blockInfo>
+        <columns>
+            <field>CUST_NAME</field>
+        </columns>
+        <columns>
+            <field>DS_CBCL_F__c.FDOV__c</field>
+        </columns>
+        <columns>
+            <field>DS_CBCL_F__c.FDOACY__c</field>
+        </columns>
+        <columns>
+            <field>DS_CBCL_F__c.STATUS_CBCL_0_5__c</field>
+        </columns>
+        <columns>
+            <field>DS_CBCL_F__c.FDOACO__c</field>
+        </columns>
+        <columns>
+            <field>DS_CBCL_F__c.STATUS_CBCL_6_18__c</field>
+        </columns>
+        <columns>
+            <field>Client__c.Clinician__c</field>
+        </columns>
+        <format>Summary</format>
+        <name>Clients with DS CBCL F block 2</name>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>CustomEntityCustomEntity$Client__c$DS_CBCL_F__c</reportType>
+        <scope>organization</scope>
+        <timeFrameFilter>
+            <dateColumn>Client__c.DOB1__c</dateColumn>
+            <interval>INTERVAL_CUSTOM</interval>
+        </timeFrameFilter>
+    </block>
+    <blockInfo>
+        <blockId xsi:nil="true"/>
+        <joinTable>x</joinTable>
+    </blockInfo>
+    <description>This report joins the Baseline and Follow Up CBCL(s) per client. It can be exported into excel, but cannot be manipulated easily.</description>
+    <format>MultiBlock</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CUST_ID</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>CBCL B and F joined</name>
+    <reportType>CustomEntityCustomEntity$Client__c$DS_CBCL_B__c</reportType>
+    <showDetails>true</showDetails>
+</Report>

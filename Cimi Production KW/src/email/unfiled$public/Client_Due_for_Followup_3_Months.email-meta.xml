@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Client Due for Followup 3 Months</name>
+    <style>none</style>
+    <subject>CIMI Client Followup Visit Due Soon</subject>
+    <textOnly>Dear {!Client__c.00NV00000016Qtg},  Our records indicate that your client, ****-**- {!TRIM(RIGHT(Client__c.Name, 5))}, is due for a followup CIMI visit within the next 10 days. According to your site&apos;s protocol, a Client should have a Followup Visit every 3 months after the Baseline Visit, or until treatment is completed. If you have already scheduled a follow-up visit with this Client, please disregard this message. If the client has concluded treatment, please make sure that their record is closed by indicating “End of Treatment” in the follow-up visit record.</textOnly>
+    <type>custom</type>
+</EmailTemplate>

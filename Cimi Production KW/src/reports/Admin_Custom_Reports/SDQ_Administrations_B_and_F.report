@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <block>
+        <blockInfo>
+            <blockId>B1</blockId>
+            <joinTable>x</joinTable>
+        </blockInfo>
+        <columns>
+            <field>CUST_NAME</field>
+        </columns>
+        <columns>
+            <field>DS_SDQ_PSI_CDI_B__c.BMETSDYP__c</field>
+        </columns>
+        <columns>
+            <field>DS_SDQ_PSI_CDI_B__c.BMETSDOP__c</field>
+        </columns>
+        <columns>
+            <field>DS_SDQ_PSI_CDI_B__c.BMETSDOS__c</field>
+        </columns>
+        <filter>
+            <criteriaItems>
+                <column>CUST_NAME</column>
+                <operator>greaterThan</operator>
+                <value>1004-00-00000</value>
+            </criteriaItems>
+        </filter>
+        <format>Tabular</format>
+        <name>Clients with DS SDQ PSI CDI B block 1</name>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>CustomEntityCustomEntity$Client__c$DS_SDQ_PSI_CDI_B__c</reportType>
+        <scope>organization</scope>
+        <timeFrameFilter>
+            <dateColumn>DS_SDQ_PSI_CDI_B__c.BDOV__c</dateColumn>
+            <endDate>2016-09-30</endDate>
+            <interval>INTERVAL_CUSTOM</interval>
+            <startDate>2015-04-01</startDate>
+        </timeFrameFilter>
+    </block>
+    <block>
+        <blockInfo>
+            <blockId>B0</blockId>
+            <joinTable>x</joinTable>
+        </blockInfo>
+        <columns>
+            <field>CUST_NAME</field>
+        </columns>
+        <columns>
+            <field>DS_SDQ_PSI_CDI_F__c.FMETSDYP__c</field>
+        </columns>
+        <columns>
+            <field>DS_SDQ_PSI_CDI_F__c.FMETSDOP__c</field>
+        </columns>
+        <columns>
+            <field>DS_SDQ_PSI_CDI_F__c.FMETSDOS__c</field>
+        </columns>
+        <filter>
+            <criteriaItems>
+                <column>CUST_NAME</column>
+                <operator>greaterThan</operator>
+                <value>1004-00-00000</value>
+            </criteriaItems>
+        </filter>
+        <format>Summary</format>
+        <name>Clients with DS SDQ PSI CDI F block 2</name>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>CustomEntityCustomEntity$Client__c$DS_SDQ_PSI_CDI_F__c</reportType>
+        <scope>organization</scope>
+        <timeFrameFilter>
+            <dateColumn>DS_SDQ_PSI_CDI_F__c.FDOV__c</dateColumn>
+            <endDate>2016-09-30</endDate>
+            <interval>INTERVAL_CUSTOM</interval>
+            <startDate>2015-04-01</startDate>
+        </timeFrameFilter>
+    </block>
+    <blockInfo>
+        <blockId xsi:nil="true"/>
+        <joinTable>x</joinTable>
+    </blockInfo>
+    <description>Count of BMETSD...</description>
+    <format>MultiBlock</format>
+    <name>SDQ Administrations B and F</name>
+    <reportType>CustomEntityCustomEntity$Client__c$DS_SDQ_PSI_CDI_B__c</reportType>
+    <showDetails>true</showDetails>
+</Report>

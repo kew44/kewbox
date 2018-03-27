@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_4106807</developerName>
+        <masterLabel>Primary Trauma</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>DS_GTRAUMA__c.GTPRIMRY__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>16</sourceValue>
+            </sourceValues>
+            <value>Seperation</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>17</sourceValue>
+            </sourceValues>
+            <value>Forced Displacement</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>18</sourceValue>
+            </sourceValues>
+            <value>Impaired Caregiver</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>19</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>20</sourceValue>
+            </sourceValues>
+            <value>Community OR Extreme Interpersonal Violence</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>21</sourceValue>
+            </sourceValues>
+            <value>School Violence</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>22</sourceValue>
+            </sourceValues>
+            <value>Bullying</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>1</sourceValue>
+            </sourceValues>
+            <value>Sexual Maltreatment/Abuse</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>2</sourceValue>
+            </sourceValues>
+            <value>Sexual Assault/Rape</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>3</sourceValue>
+            </sourceValues>
+            <value>Trafficking</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>4</sourceValue>
+            </sourceValues>
+            <value>Physical Maltreatment/Abuse</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>5</sourceValue>
+            </sourceValues>
+            <value>Physical Assault</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>6</sourceValue>
+            </sourceValues>
+            <value>Psychological or Emotional Maltreatment/Abuse</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>7</sourceValue>
+            </sourceValues>
+            <value>Neglect</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>8</sourceValue>
+            </sourceValues>
+            <value>Domestic Violence</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>9</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>10</sourceValue>
+            </sourceValues>
+            <value>War/Terrorism/Political Violence Inside OR Outside US</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>11</sourceValue>
+            </sourceValues>
+            <value>Illness/Medical Trauma</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>12</sourceValue>
+            </sourceValues>
+            <value>Serious Injury/Accident</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>13</sourceValue>
+            </sourceValues>
+            <value>Disaster(Natural and Manmade)</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>14</sourceValue>
+            </sourceValues>
+            <value>Kidnapping/Abduction</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>15</sourceValue>
+            </sourceValues>
+            <value>Bereavement</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>VerticalColumn</chartType>
+        <enableHoverLabels>true</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>BucketField_4106807</groupingColumn>
+        <location>CHART_TOP</location>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>true</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <title>Primary Traumas</title>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <description>For all Chaddock sub-centers. Shows the primary traumas reported for Clients.</description>
+    <filter>
+        <criteriaItems>
+            <column>Client__c.CENTER__c</column>
+            <operator>contains</operator>
+            <value>3063</value>
+        </criteriaItems>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_4106807</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <name>Chaddock Primary Traumas</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntityCustomEntity$Client__c$DS_GTRAUMA__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Client__c.DOB1__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

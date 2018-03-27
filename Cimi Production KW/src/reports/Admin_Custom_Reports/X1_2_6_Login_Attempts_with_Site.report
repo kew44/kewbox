@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_22083981</developerName>
+        <masterLabel>Sites</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>ROLE</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>(3057-00) University of Kentucky</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3057-00-04) Sarah Ascienzo</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3057-00-08) Caroline Adams</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3057-00-06) Jodie Koch</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3057-00-15) Justin Benton</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3057-00-14) Galen McIntosh</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3057-00-16) Briana Jurrema</sourceValue>
+            </sourceValues>
+            <value>3057 UKY</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>(3123-00-08) Holly Trimble</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3123-00) Youth and Family Services, Inc.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3123-00-01) Rebecca Dodds</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3123-00-09) Emily Aberson</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3123-00-05) Jodi Burke</sourceValue>
+            </sourceValues>
+            <value>3123 YFS</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>(3083-00-02) Sandra Meyer</sourceValue>
+            </sourceValues>
+            <value>3083 Children&apos;s Center</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>(3071-00) Children&apos;s Research Triangle</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3071-00-02) Stefanie Ward</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3071-00-19) Mikhael Yitref</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3071-00-13) John Gobby</sourceValue>
+            </sourceValues>
+            <value>3071 CRT</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>(3063-02-01) Ceara Alexander</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3063-02-02) Becky Haskins</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3063-00) Chaddock Trauma Initiative</sourceValue>
+            </sourceValues>
+            <value>3063 Chaddock</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Administrator</sourceValue>
+            </sourceValues>
+            <value>Admin</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>(1002-00-01) Clinician test1</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(1002-00-02) Clinician test2</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(1002-00-03) Clinician test3</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(1002-02-05) Wendy Hall</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(1002-02-04) Diane Greene</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(1002-01-03) Fran Bilas</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(1002-01-02) Judy Goldsmith</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(1002-00) Duke NCCTS Main test</sourceValue>
+            </sourceValues>
+            <value>1002 Test</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>VerticalColumnGroupedLine</chartType>
+        <enableHoverLabels>true</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>LOGIN_DATE</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_TOP</location>
+        <secondaryGroupingColumn>BucketField_22083981</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>true</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <title>1.2.6 User Login Attempts/Day with Site</title>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>ROLE</field>
+    </columns>
+    <columns>
+        <field>LOGIN_DATETIME</field>
+    </columns>
+    <columns>
+        <field>ALIAS</field>
+    </columns>
+    <columns>
+        <field>LOGIN_IP</field>
+    </columns>
+    <columns>
+        <field>BROWSER_TYPE</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>ALIAS</column>
+            <operator>notEqual</operator>
+            <value>Admin</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ALIAS</column>
+            <operator>notEqual</operator>
+            <value>Center</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ALIAS</column>
+            <operator>notEqual</operator>
+            <value>clin</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ALIAS</column>
+            <operator>notEqual</operator>
+            <value>clin2</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ALIAS</column>
+            <operator>notEqual</operator>
+            <value>cli3</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PROFILE</column>
+            <operator>notContain</operator>
+            <value>Power User</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>LOGIN_STATUS</column>
+            <operator>equals</operator>
+            <value>Success</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ROLE</column>
+            <operator>notEqual</operator>
+            <value>Administrator</value>
+        </criteriaItems>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_22083981</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>FULL_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>LOGIN_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>1.2.6 Login Attempts with Site</name>
+    <params>
+        <name>active</name>
+        <value>active</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>User</reportType>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>LOGIN_DATETIME</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2016-12-19</startDate>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,2 @@
+Dear {!Client__c.Clinician_Name__c}, 
+Our records indicate that your client, ****-**- {!TRIM(RIGHT(Client__c.Name, 5))}, is due for a followup CIMI visit within the next 10 days. According to your site's protocol, a Client should have a Followup Visit every 6 months after the Baseline Visit, or until treatment is completed. If you have already scheduled a follow-up visit with this Client, please disregard this message. If the client has concluded treatment, please make sure that their record is closed by indicating “End of Treatment” in the follow-up visit record.

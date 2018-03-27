@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_86039959</developerName>
+        <masterLabel>Ages 1.5-5, 6-11, 12-18</masterLabel>
+        <nullTreatment>z</nullTreatment>
+        <sourceColumnName>Client__c.AGE__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>5</to>
+            </sourceValues>
+            <value>Ages 1.5-5</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>5</from>
+                <to>11</to>
+            </sourceValues>
+            <value>Ages 6-11</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>11</from>
+            </sourceValues>
+            <value>Ages 12-18</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>DS_CBCL_B__c.BDOACY__c</field>
+    </columns>
+    <columns>
+        <field>DS_CBCL_B__c.BDOACO__c</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>CHILD_NAME</field>
+    </columns>
+    <columns>
+        <field>Client__c.AGE__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>DS_CBCL_B__c.BCBIBRNY__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>DS_CBCL_B__c.BCBEBRNY__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>DS_CBCL_B__c.BCBTSRNY__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>DS_CBCL_B__c.BCBIBRN__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>DS_CBCL_B__c.BCBEBRN__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>DS_CBCL_B__c.BCBTSRN__c</field>
+    </columns>
+    <description>For Dashboard - hard to get scores onto dashboard</description>
+    <format>Matrix</format>
+    <name>qCBCL Baseline Scores</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntityCustomEntity$Client__c$DS_CBCL_B__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <timeFrameFilter>
+        <dateColumn>DS_CBCL_B__c.BDOACO__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

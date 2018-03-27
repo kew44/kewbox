@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>CHILD_NAME</field>
+    </columns>
+    <columns>
+        <field>DS_TRDETAIL2__c.T14RFREQ__c</field>
+    </columns>
+    <columns>
+        <field>DS_TRDETAIL2__c.T15RFREQ__c</field>
+    </columns>
+    <columns>
+        <field>DS_TRDETAIL2__c.T16RFREQ__c</field>
+    </columns>
+    <columns>
+        <field>DS_TRDETAIL2__c.T17RFREQ__c</field>
+    </columns>
+    <columns>
+        <field>DS_TRDETAIL2__c.T18RFREQ__c</field>
+    </columns>
+    <columns>
+        <field>DS_TRDETAIL2__c.T19RFREQ__c</field>
+    </columns>
+    <columns>
+        <field>DS_TRDETAIL2__c.T20RFREQ__c</field>
+    </columns>
+    <columns>
+        <field>DS_TRDETAIL2__c.T21RFREQ__c</field>
+    </columns>
+    <columns>
+        <field>DS_TRDETAIL2__c.T22RFREQ__c</field>
+    </columns>
+    <description>Used for finding the frequency of exposure to each of the 22 specified trauma types. (types 1-13 on Trauma Detail 1 Report)</description>
+    <format>Tabular</format>
+    <name>4 Trauma Detail 2</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntityCustomEntity$Client__c$DS_TRDETAIL2__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Client__c.DOB1__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>
